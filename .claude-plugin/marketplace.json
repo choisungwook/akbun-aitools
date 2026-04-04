@@ -1,0 +1,17 @@
+{
+  "name": "akbun-aitools",
+  "owner": {
+    "name": "akbun"
+  },
+  "metadata": {
+    "description": "AI tools and skills used by akbun",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "akbun-skills",
+      "source": "./plugins/akbun-skills",
+      "description": "Collection of skills"
+    }
+  ]
+}
