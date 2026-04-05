@@ -15,21 +15,9 @@
       "strict": true
     },
     {
-      "name": "akbun-obsidian",
-      "source": "./plugins/akbun-obsidian",
-      "description": "Obsidian and markdown publishing helpers",
-      "strict": true
-    },
-    {
-      "name": "akbun-notion",
-      "source": "./plugins/akbun-notion",
-      "description": "Notion transfer helpers for akbun workflows",
-      "strict": true
-    },
-    {
-      "name": "learning",
-      "source": "./plugins/learning",
-      "description": "Study and learning helpers, starting with English practice tools",
+      "name": "akbun-learning",
+      "source": "./plugins/akbun-learning",
+      "description": "Study and learning helpers",
       "strict": true
     }
   ]
