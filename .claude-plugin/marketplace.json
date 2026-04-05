@@ -4,14 +4,33 @@
     "name": "akbun"
   },
   "metadata": {
-    "description": "AI tools and skills used by akbun",
+    "description": "Claude Code plugin marketplace for akbun tools",
     "version": "1.0.0"
   },
   "plugins": [
     {
-      "name": "akbun-skills",
-      "source": "./plugins/akbun-skills",
-      "description": "Collection of skills"
+      "name": "akbun-writing",
+      "source": "./plugins/akbun-writing",
+      "description": "Writing, review, and blog support skills",
+      "strict": true
+    },
+    {
+      "name": "akbun-obsidian",
+      "source": "./plugins/akbun-obsidian",
+      "description": "Obsidian and markdown publishing helpers",
+      "strict": true
+    },
+    {
+      "name": "akbun-notion",
+      "source": "./plugins/akbun-notion",
+      "description": "Notion transfer helpers for akbun workflows",
+      "strict": true
+    },
+    {
+      "name": "learning",
+      "source": "./plugins/learning",
+      "description": "Study and learning helpers, starting with English practice tools",
+      "strict": true
     }
   ]
 }

@@ -18,7 +18,7 @@ allowed-tools:
 Tistory 같은 블로그 플랫폼은 API 업로드를 지원하지 않아 내용을 수동으로 붙여넣어야 한다.
 Obsidian은 로컬 이미지 문법(`![[path/to/image.png]]`)을 사용하는데, 이는 표준 markdown이 아니라 pandoc이 `<img>` 태그로 렌더링할 수 없다.
 
-대신 pandoc은 `![[...]]`을 HTML 출력에 **plain text**로 남긴다. 이 텍스트 마커가 블로그 에디터에서 이미지를 수동으로 삽입할 위치를 알려준다.
+대신 pandoc은 `![[...]]`을 HTML 출력에 plain text로 남긴다. 이 텍스트 마커가 블로그 에디터에서 이미지를 수동으로 삽입할 위치를 알려준다.
 
 그 외 모든 markdown 요소(헤더, 코드 블록, 목록, 굵은 글씨, 링크 등)는 정상적으로 HTML로 변환된다.
 
@@ -47,10 +47,10 @@ bash scripts/md-to-html.sh "$OBSIDIAN_VAULT/my-post.md"
 
 ## 스크립트 동작
 
-1. **markdown을 standalone HTML로 변환** — `pandoc -s`를 실행해 `<html>`, `<head>`, `<body>` 태그를 포함한 완전한 HTML 문서를 생성한다(`-s`/`--standalone` 플래그로 HTML 파편이 아닌 유효한 파일을 출력한다)
-2. **줄 바꿈 보존** — `-f markdown+hard_line_breaks`로 단일 개행을 `<br />` 태그로 변환해 Obsidian의 줄 바꿈 동작을 그대로 유지한다
-3. **이미지 마커 보존** — Obsidian `![[...]]` 문법을 plain text로 남겨 수동 이미지 삽입 위치 표시자로 활용한다
-4. **`~/Downloads`에 출력** — 블로그 에디터에 바로 복사·붙여넣기할 수 있다
+1. markdown을 standalone HTML로 변환 — `pandoc -s`를 실행해 `<html>`, `<head>`, `<body>` 태그를 포함한 완전한 HTML 문서를 생성한다(`-s`/`--standalone` 플래그로 HTML 파편이 아닌 유효한 파일을 출력한다)
+2. 줄 바꿈 보존 — `-f markdown+hard_line_breaks`로 단일 개행을 `<br />` 태그로 변환해 Obsidian의 줄 바꿈 동작을 그대로 유지한다
+3. 이미지 마커 보존 — Obsidian `![[...]]` 문법을 plain text로 남겨 수동 이미지 삽입 위치 표시자로 활용한다
+4. `~/Downloads`에 출력 — 블로그 에디터에 바로 복사·붙여넣기할 수 있다
 
 ## 변환 후
 

@@ -1,0 +1,11 @@
+{
+  "name": "akbun-notion",
+  "description": "Notion transfer helpers for akbun workflows",
+  "version": "1.0.0",
+  "author": {
+    "name": "akbun"
+  },
+  "repository": "https://github.com/choisungwook/akbun-aitools",
+  "license": "MIT",
+  "keywords": ["notion", "markdown", "sync", "productivity"]
+}

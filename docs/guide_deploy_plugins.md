@@ -1,95 +1,101 @@
-# Claude marketplace에 plugin 배포하기
+# Claude plugin 배포 정리
 
-> ref: <https://code.claude.com/docs/en/plugin-marketplaces>
+Claude Code plugin을 배포할 때 필요한 작업을 정리합니다.
 
-## plugin이란
+## 배포 설정
 
-plugin은 skills, subagents, MCP servers, hooks를 묶어서 배포하는 단위다.
-`/plugin` 명령어로 설치하거나 비활성화할 수 있다.
+- marketplace entry는 `strict: true`로 유지
 
-## plugin.json vs marketplace.json
+## 1. 처음 생성
 
-| | plugin.json | marketplace.json |
-|---|---|---|
-| 위치 | `.claude-plugin/plugin.json` (plugin root) | `.claude-plugin/marketplace.json` (repo root) |
-| 역할 | plugin 1개의 메타데이터 | plugin 카탈로그 (여러 plugin 목록) |
-| 비유 | 앱 1개의 정보 | 앱스토어 |
-| 필수 여부 | plugin마다 1개 | GitHub 배포 시 필요 |
+새 plugin을 처음 만들 때 순서:
 
-## plugin 디렉토리 구조
+1. plugin root 생성
 
-```
-my-marketplace/                         ← marketplace root
-├── .claude-plugin/
-│   └── marketplace.json                ← 카탈로그: plugin 목록과 위치 정의
-├── plugins/
-│   └── my-plugin/                      ← plugin root
-│       ├── .claude-plugin/
-│       │   └── plugin.json             ← plugin 메타데이터 (name, version, author)
-│       ├── skills/<name>/SKILL.md      ← skills
-│       ├── agents/<name>.md            ← subagents
-│       └── hooks/
-│           ├── hooks.json              ← hook 설정
-│           └── *.sh                    ← hook 스크립트
+```text
+plugins/<plugin-name>/
+├── .claude-plugin/plugin.json
+├── skills/
+└── agents/   # option
 ```
 
-컴포넌트(`skills/`, `agents/`, `hooks/`)는 반드시 **plugin root**에 위치해야 한다. `.claude-plugin/` 안에 넣으면 안 된다.
+2. `plugin.json` 작성
 
-## strict mode
+최소 필드:
 
-marketplace.json의 plugin entry에서 `strict` 필드로 컴포넌트 정의 권한을 제어한다.
+- `name`
+- `description`
+- `version`
+- `author`
+- `repository`
+- `license`
 
-| 값 | 동작 |
-|---|---|
-| `true` (기본값) | `plugin.json`이 컴포넌트를 정의한다. marketplace entry는 보충만 가능 |
-| `false` | marketplace entry가 전체를 정의한다. plugin.json에 컴포넌트가 있으면 충돌 에러 |
+3. skill, agent 파일 배치
 
-대부분의 경우 `strict: true`(기본값)를 사용하면 된다. plugin이 자체 `plugin.json`을 가지고 있으면 marketplace entry에서 skills/hooks/agents 경로를 지정할 필요가 없다.
+- skill: `plugins/<plugin-name>/skills/<skill-name>/SKILL.md`
+- agent: `plugins/<plugin-name>/agents/<agent-name>.md`
 
-## plugin marketplace
+4. `.claude-plugin/marketplace.json`에 plugin 추가
 
-누구나 marketplace를 호스팅할 수 있다. `.claude-plugin/marketplace.json`이 포함된 git repo면 된다.
-
-marketplace.json 예시:
+예시:
 
 ```json
 {
-  "name": "my-marketplace",
-  "owner": { "name": "your-name" },
-  "metadata": { "description": "My plugins", "version": "1.0.0" },
-  "plugins": [
-    {
-      "name": "my-plugin",
-      "source": "./plugins/my-plugin",
-      "description": "What this plugin does"
-    }
-  ]
+  "name": "akbun-writing",
+  "source": "./plugins/akbun-writing",
+  "description": "Writing, review, blog, and publishing support skills",
+  "strict": true
 }
 ```
 
-## marketplace에서 설치
-
-```bash
-/plugin marketplace add user-or-org/repo-name
-/plugin install plugin-name@marketplace-name
-```
-
-## 업데이트
-
-```bash
-claude plugin marketplace update marketplace-name
-claude plugin update plugin-name@marketplace-name
-```
-
-## 로컬 테스트
+5. 로컬 검증
 
 ```bash
 claude plugin validate .
-claude --plugin-dir ./plugins/my-plugin
+claude --plugin-dir ./plugins/<plugin-name>
 ```
 
-## 참고 문서
+6. 커밋 후 push
 
-- plugin 만들기: <https://code.claude.com/docs/en/plugins>
-- plugin 레퍼런스: <https://code.claude.com/docs/en/plugins-reference>
-- marketplace 배포: <https://code.claude.com/docs/en/plugin-marketplaces>
+사용자는 아래 순서로 설치한다.
+
+```bash
+/plugin marketplace add choisungwook/akbun-aitools
+/plugin install <plugin-name>@akbun-aitools
+/reload-plugins
+```
+
+## 2. 버전 업데이트
+
+기존 plugin 내용을 수정해 다시 배포할 때 순서:
+
+1. 해당 plugin root 아래 리소스 수정
+
+- plugin 내용 수정
+- 필요 시 marketplace description 수정
+
+2. plugin 버전 증가
+
+수정 대상:
+
+```text
+plugins/<plugin-name>/.claude-plugin/plugin.json
+```
+
+3. 검증 후 커밋, push
+
+```bash
+claude plugin validate .
+```
+
+사용자 반영 방식:
+
+```bash
+claude plugin marketplace update akbun-aitools
+claude plugin update <plugin-name>@akbun-aitools
+```
+
+주의:
+
+- third-party marketplace는 auto-update가 기본 비활성화다.
+- repo를 push했다고 해서 사용자 쪽 plugin이 자동 반영되지는 않는다.
