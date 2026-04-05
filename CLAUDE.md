@@ -1,15 +1,19 @@
-# For Claude
+# Agent Guide
 
-AI도구를 관리합니다.
+## requirements
 
-## don't do it
+만약 너가 claude.ai에 실행한 claude code라면 plugin을 설치하여 skills을 확인하고 설치한다. claude.ai가 아닌 로컬이라면 plugin이 설치되어 있다고 가정한다.
 
-- 아첨 하지 마세요. ex: 좋은 질문입니다.
-- 읽었던 파일을 다시 읽지마세요. 단, sha256 값이 바뀌면 다시 읽으세요
-- 답변을 생각하기 위한 시간을 버는 말은 짧게 변경하세요. "생각중.."
+```bash
+/plugin marketplace add choisungwook/akbun-aitools
+/plugin install akbun-writing@akbun-aitools
+```
 
-## Tools Validation
+## workflow
 
-1. akbun이 직접 만든 리소스 이름은 `akbun-` prefix 사용 (`learning-*` 아래 학습용 skill은 예외 가능)
-2. 부정어 검사 및 수정 — [docs/negative-instruction-detection.md](docs/negative-instruction-detection.md)
-3. 배포용 plugin 리소스는 `plugins/<plugin-name>/...` 아래에서 관리
+- 작업 히스토리 관리는 [`.claude/rules/workflow.md`](./.claude/rules/workflow.md)에 정의되어 있음
+- 작성한 문서는 `akbun-writing:writing-with-akbunstyle` skills로 작성한다. 그리고 `akbun-writing:akbun-style-reviewer` agent로 문서를 검증받고 검증될때까지 문서를 수정한다. 검증이 끝난 문서는 `akbun-writing:akbun-docs-reviewer` skills 문서 내용을 수정한다.
+
+## 코드 규칙
+
+- 코드 작성 규칙은 `.claude/rules/`에 정의되어 있다.
