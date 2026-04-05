@@ -1,0 +1,11 @@
+{
+  "name": "akbun-obsidian",
+  "description": "Obsidian and markdown publishing helpers by akbun",
+  "version": "1.0.0",
+  "author": {
+    "name": "akbun"
+  },
+  "repository": "https://github.com/choisungwook/akbun-aitools",
+  "license": "MIT",
+  "keywords": ["obsidian", "markdown", "html", "publishing"]
+}

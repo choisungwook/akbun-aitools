@@ -1,0 +1,11 @@
+{
+  "name": "learning",
+  "description": "Study and learning helpers, starting with English practice tools",
+  "version": "1.0.0",
+  "author": {
+    "name": "akbun"
+  },
+  "repository": "https://github.com/choisungwook/akbun-aitools",
+  "license": "MIT",
+  "keywords": ["learning", "study", "english", "pronunciation", "korean"]
+}
