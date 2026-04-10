@@ -15,6 +15,7 @@ Then install the plugin you want:
 ```bash
 /plugin install akbun-writing@akbun-aitools
 /plugin install akbun-learning@akbun-aitools
+/plugin install akbun-tokenops@akbun-aitools
 ```
 
 Reload the current session after install:

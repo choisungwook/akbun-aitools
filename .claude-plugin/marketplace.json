@@ -19,6 +19,12 @@
       "source": "./plugins/akbun-learning",
       "description": "Study and learning helpers",
       "strict": true
+    },
+    {
+      "name": "akbun-tokenops",
+      "source": "./plugins/akbun-tokenops",
+      "description": "Token optimization skills for Korean-heavy agent workflows",
+      "strict": true
     }
   ]
 }

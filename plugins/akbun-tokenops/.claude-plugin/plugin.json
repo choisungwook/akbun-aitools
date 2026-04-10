@@ -1,0 +1,11 @@
+{
+  "name": "akbun-tokenops",
+  "description": "Token optimization hooks and skills for Korean-heavy agent workflows. UserPromptSubmit hook으로 한국어 간결 모드를 자동 적용한다.",
+  "version": "2.0.0",
+  "author": {
+    "name": "akbun"
+  },
+  "repository": "https://github.com/choisungwook/akbun-aitools",
+  "license": "MIT",
+  "keywords": ["token", "compression", "korean", "terse", "optimization", "hooks"]
+}
