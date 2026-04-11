@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-04-11 #4
+
+- offset/limit 부분 읽기 바이패스 추가 (캐싱/차단 대상에서 제외)
+- `READ_ONCE_DISABLED=1` 환경변수로 hook 비활성화 지원
+- `READ_ONCE_MODE=warn` 모드 추가 (읽기 허용 + JSON 경고 메시지)
+- 차단 메시지에 토큰 절약량 표시 (~N 토큰 절약)
+- 테스트 5개 추가 (총 19 passed)
+
 ## 2026-04-11 #3
 
 - `install_hook.sh`에 설치/제거 선택 메뉴 추가

@@ -1,6 +1,10 @@
 #!/bin/bash
 set -euo pipefail
 
+# --- 환경변수 비활성화 ---
+
+[[ "${READ_ONCE_DISABLED:-0}" == "1" ]] && exit 0
+
 # --- 입력 파싱 ---
 
 parse_input() {
@@ -8,6 +12,8 @@ parse_input() {
   FILE_PATH=$(echo "$INPUT" | jq -r '.tool_input.file_path')
   TRANSCRIPT=$(echo "$INPUT" | jq -r '.transcript_path')
   CWD=$(echo "$INPUT" | jq -r '.cwd')
+  OFFSET=$(echo "$INPUT" | jq -r '.tool_input.offset // empty')
+  LIMIT=$(echo "$INPUT" | jq -r '.tool_input.limit // empty')
   CACHE_FILE="${TRANSCRIPT%.jsonl}-read-cache.json"
   REL_PATH="${FILE_PATH#$CWD/}"
 }
@@ -50,6 +56,9 @@ write_cache() {
 
 main() {
   parse_input
+
+  # 부분 읽기(offset/limit)는 캐싱하지 않음
+  [[ -n "$OFFSET" || -n "$LIMIT" ]] && exit 0
 
   # 파일이 없으면 무시
   [[ ! -f "$FILE_PATH" ]] && exit 0

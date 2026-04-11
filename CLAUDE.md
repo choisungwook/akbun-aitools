@@ -9,10 +9,16 @@
 /plugin install akbun-writing@akbun-aitools
 ```
 
-## workflow
+## 플러그인 이력관리
 
-- 작업 히스토리 관리는 [`.claude/rules/workflow.md`](./.claude/rules/workflow.md)에 정의되어 있음
-- 작성한 문서는 `akbun-writing:writing-with-akbunstyle` skills로 작성한다. 그리고 `akbun-writing:akbun-style-reviewer` agent로 문서를 검증받고 검증될때까지 문서를 수정한다. 검증이 끝난 문서는 `akbun-writing:akbun-docs-reviewer` skills 문서 내용을 수정한다.
+- 플러그인 작업 내용은 ./plugins/{플러그인이름}/{plugin resource, ex: skills}/docs/changelog.md에 있다. 만약 없다면 아래 규칙으로 작성해라. 작업내용은 리스트형식으로 5개를 넘지 않도록 한다.
+
+```sh
+## {날짜} #{번호}
+
+- 작업내용 1
+- 작업내용 2
+```
 
 ## hook 생성 규칙
 

@@ -51,4 +51,4 @@
 ./hooks/readonce/tests/test-hooks.sh
 ```
 
-모든 테스트가 PASS여야 하며, 결과 요약에서 "N passed, 0 failed"로 전체 통과를 확인한다. 현재 기준: 12 passed, 0 failed.
+모든 테스트가 PASS여야 하며, 결과 요약에서 "N passed, 0 failed"로 전체 통과를 확인한다. 현재 기준: 19 passed, 0 failed.
