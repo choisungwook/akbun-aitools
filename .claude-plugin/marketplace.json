@@ -19,6 +19,12 @@
       "source": "./plugins/akbun-learning",
       "description": "Study and learning helpers",
       "strict": true
+    },
+    {
+      "name": "akbun-readonce",
+      "source": "./plugins/akbun-readonce",
+      "description": "Cache file reads to avoid re-reading unchanged files",
+      "strict": true
     }
   ]
 }
