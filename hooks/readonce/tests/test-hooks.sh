@@ -34,6 +34,8 @@ cleanup_temp_dir() {
 make_json() {
   local file_path="$1"
   local source="${2:-}"
+  local offset="${3:-}"
+  local limit="${4:-}"
 
   if [[ -n "$source" ]]; then
     # SessionStart 용
@@ -47,14 +49,17 @@ make_json() {
 EOF
   else
     # PreToolUse / PostToolUse 용
+    local tool_input="{\"file_path\": \"$file_path\""
+    [[ -n "$offset" ]] && tool_input="$tool_input, \"offset\": $offset"
+    [[ -n "$limit" ]] && tool_input="$tool_input, \"limit\": $limit"
+    tool_input="$tool_input}"
+
     cat <<EOF
 {
   "session_id": "test-session",
   "transcript_path": "$TRANSCRIPT",
   "cwd": "$TEMP_DIR",
-  "tool_input": {
-    "file_path": "$file_path"
-  }
+  "tool_input": $tool_input
 }
 EOF
   fi
@@ -253,6 +258,103 @@ test_session_start_clears_on_compact() {
   cleanup_temp_dir
 }
 
+test_pre_read_allows_partial_read() {
+  echo "[TEST] pre-read: offset/limit 있으면 항상 허용"
+
+  setup_temp_dir
+
+  # 캐시 생성
+  make_json "$TEST_FILE" | "$SCRIPTS_DIR/post-read.sh"
+
+  # offset 포함 읽기 시도 → 허용되어야 함
+  local exit_code=0
+  make_json "$TEST_FILE" "" "10" "" | "$SCRIPTS_DIR/pre-read.sh" 2>/dev/null || exit_code=$?
+  assert_exit_code "offset 있으면 exit 0 (허용)" 0 "$exit_code"
+
+  # limit 포함 읽기 시도 → 허용되어야 함
+  exit_code=0
+  make_json "$TEST_FILE" "" "" "100" | "$SCRIPTS_DIR/pre-read.sh" 2>/dev/null || exit_code=$?
+  assert_exit_code "limit 있으면 exit 0 (허용)" 0 "$exit_code"
+
+  cleanup_temp_dir
+}
+
+test_post_read_skips_partial_read() {
+  echo "[TEST] post-read: offset/limit 있으면 캐시 안 함"
+
+  setup_temp_dir
+
+  # offset 포함으로 post-read 실행
+  make_json "$TEST_FILE" "" "10" "" | "$SCRIPTS_DIR/post-read.sh"
+
+  assert_file_not_exists "캐시 파일 생성 안 됨" "$CACHE_FILE"
+
+  cleanup_temp_dir
+}
+
+test_disabled_env_allows_read() {
+  echo "[TEST] pre-read: READ_ONCE_DISABLED=1이면 허용"
+
+  setup_temp_dir
+
+  # 캐시 생성
+  make_json "$TEST_FILE" | "$SCRIPTS_DIR/post-read.sh"
+
+  # 비활성화 상태에서 읽기 → 허용되어야 함
+  local exit_code=0
+  make_json "$TEST_FILE" | READ_ONCE_DISABLED=1 "$SCRIPTS_DIR/pre-read.sh" 2>/dev/null || exit_code=$?
+
+  assert_exit_code "비활성화 시 exit 0 (허용)" 0 "$exit_code"
+
+  cleanup_temp_dir
+}
+
+test_warn_mode_outputs_json() {
+  echo "[TEST] pre-read: warn 모드에서 JSON 출력 + exit 0"
+
+  setup_temp_dir
+
+  # 캐시 생성
+  make_json "$TEST_FILE" | "$SCRIPTS_DIR/post-read.sh"
+
+  # warn 모드로 읽기 시도
+  local exit_code=0
+  local stdout
+  stdout=$(make_json "$TEST_FILE" | READ_ONCE_MODE=warn "$SCRIPTS_DIR/pre-read.sh" 2>/dev/null) || exit_code=$?
+
+  assert_exit_code "warn 모드에서 exit 0" 0 "$exit_code"
+
+  # JSON 출력 검증
+  local has_decision
+  has_decision=$(echo "$stdout" | jq -r '.hookSpecificOutput.permissionDecision // empty' 2>/dev/null || echo "")
+  if [[ "$has_decision" == "allow" ]]; then
+    echo "  PASS: JSON에 permissionDecision=allow 포함"
+    PASS_COUNT=$((PASS_COUNT + 1))
+  else
+    echo "  FAIL: JSON 출력에 permissionDecision=allow 없음"
+    FAIL_COUNT=$((FAIL_COUNT + 1))
+  fi
+
+  cleanup_temp_dir
+}
+
+test_deny_mode_exits_2() {
+  echo "[TEST] pre-read: deny 모드에서 exit 2"
+
+  setup_temp_dir
+
+  # 캐시 생성
+  make_json "$TEST_FILE" | "$SCRIPTS_DIR/post-read.sh"
+
+  # deny 모드(기본값)로 읽기 시도
+  local exit_code=0
+  make_json "$TEST_FILE" | READ_ONCE_MODE=deny "$SCRIPTS_DIR/pre-read.sh" 2>/dev/null || exit_code=$?
+
+  assert_exit_code "deny 모드에서 exit 2 (차단)" 2 "$exit_code"
+
+  cleanup_temp_dir
+}
+
 test_post_read_external_file() {
   echo "[TEST] post-read: 프로젝트 외부 파일은 절대 경로로 캐시"
 
@@ -293,6 +395,16 @@ main() {
   test_session_start_clears_on_clear
   echo ""
   test_session_start_clears_on_compact
+  echo ""
+  test_pre_read_allows_partial_read
+  echo ""
+  test_post_read_skips_partial_read
+  echo ""
+  test_disabled_env_allows_read
+  echo ""
+  test_warn_mode_outputs_json
+  echo ""
+  test_deny_mode_exits_2
   echo ""
   test_post_read_external_file
   echo ""

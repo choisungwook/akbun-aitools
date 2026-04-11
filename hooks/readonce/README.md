@@ -52,6 +52,17 @@ bash install_hook.sh
 
 스크립트가 `$HOME/.claude/hooks/readonce/` 디렉터리를 삭제하고, `~/.claude/settings.json`에서 readonce 관련 hook 설정을 자동 제거한다.
 
+## 환경변수
+
+| 변수 | 기본값 | 설명 |
+|---|---|---|
+| `READ_ONCE_DISABLED` | `0` | `1`로 설정하면 hook 비활성화 |
+| `READ_ONCE_MODE` | `deny` | `deny`: 재읽기 차단 (exit 2), `warn`: 읽기 허용 + 경고 메시지 |
+
+## 부분 읽기 (offset/limit)
+
+offset이나 limit 파라미터가 있는 부분 읽기는 캐싱하지 않고 항상 허용한다. 같은 파일의 다른 구간을 읽을 때 잘못 차단되는 것을 방지한다.
+
 ## 의존성
 
 - `jq`: JSON 파싱/쓰기
