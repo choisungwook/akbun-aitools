@@ -6,7 +6,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "${CLAUDE_PLUGIN_ROOT}/scripts/pre-read.sh"
+            "command": "bash $HOME/.claude/hooks/readonce/pre-read.sh"
           }
         ]
       }
@@ -17,7 +17,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "${CLAUDE_PLUGIN_ROOT}/scripts/post-read.sh"
+            "command": "bash $HOME/.claude/hooks/readonce/post-read.sh"
           }
         ]
       }
@@ -27,7 +27,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "${CLAUDE_PLUGIN_ROOT}/scripts/session-start.sh"
+            "command": "bash $HOME/.claude/hooks/readonce/session-start.sh"
           }
         ]
       }
