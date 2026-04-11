@@ -14,6 +14,12 @@
 - 작업 히스토리 관리는 [`.claude/rules/workflow.md`](./.claude/rules/workflow.md)에 정의되어 있음
 - 작성한 문서는 `akbun-writing:writing-with-akbunstyle` skills로 작성한다. 그리고 `akbun-writing:akbun-style-reviewer` agent로 문서를 검증받고 검증될때까지 문서를 수정한다. 검증이 끝난 문서는 `akbun-writing:akbun-docs-reviewer` skills 문서 내용을 수정한다.
 
+## hook 생성 규칙
+
+- hook은 `hooks/{hook이름}/` 디렉터리에 생성한다.
+- `hooks/{hook이름}/install/settings.json`에 사용자가 `~/.claude/settings.json`에 추가할 hook 설정을 정의한다.
+- `hooks/{hook이름}/scripts/`에 hook이 실행할 shell 스크립트를 배치한다. `install_hook.sh`는 이 디렉터리의 `.sh` 파일을 `$HOME/.claude/hooks/{hook이름}/`으로 복사한다.
+
 ## 코드 규칙
 
 - 코드 작성 규칙은 `.claude/rules/`에 정의되어 있다.
