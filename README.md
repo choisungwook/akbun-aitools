@@ -25,11 +25,11 @@ marketplace를 등록한 후 원하는 plugin을 설치한다.
 
 ## Hook 설치
 
-plugin이 아닌 hook 방식으로 배포되는 도구는 `install_hook.sh`로 설치한다.
+plugin이 아닌 hook 방식으로 배포되는 도구는 GitHub Release에서 다운로드하여 설치한다.
 
 ```bash
-git clone https://github.com/choisungwook/akbun-aitools.git
-cd akbun-aitools
+curl -L https://github.com/choisungwook/akbun-aitools/releases/latest/download/akbun-hooks.tar.gz -o akbun-hooks.tar.gz
+tar xzf akbun-hooks.tar.gz
 bash install_hook.sh
 ```
 
