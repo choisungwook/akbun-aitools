@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-04-11 #3
+
+- `install_hook.sh`에 설치/제거 선택 메뉴 추가
+- jq로 `~/.claude/settings.json` 자동 설정: 설치 시 hook 항목 merge, 제거 시 해당 항목만 필터링 삭제
+- 중복 설치 감지 및 settings.json 백업(.bak) 생성
+- 기존 수동 안내 방식(`show_settings_snippet`, `show_uninstall_settings_snippet`) 제거
+- README.md에 제거 가이드 섹션 추가
+
 ## 2026-04-11 #2
 
 - 플러그인 → hook 배포 방식 전환: `plugins/akbun-readonce/` → `hooks/readonce/`

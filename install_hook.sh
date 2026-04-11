@@ -122,6 +122,95 @@ check_dependencies() {
   success "의존성 확인 완료 (jq, shasum)"
 }
 
+# --- 작업 선택 ---
+
+show_action_menu() {
+  echo ""
+  echo -e "${BOLD}작업을 선택하세요:${NC}"
+  echo ""
+  echo -e "  ${BOLD}1${NC}) 설치"
+  echo -e "  ${BOLD}2${NC}) 제거"
+  echo ""
+}
+
+select_action() {
+  local choice
+
+  while true; do
+    read -rp "번호를 선택하세요 (q: 종료): " choice
+
+    if [[ "$choice" == "q" ]]; then
+      info "종료합니다."
+      exit 0
+    fi
+
+    if [[ "$choice" == "1" ]]; then
+      echo "install"
+      return
+    elif [[ "$choice" == "2" ]]; then
+      echo "uninstall"
+      return
+    fi
+
+    warn "올바른 번호를 입력하세요 (1-2)"
+  done
+}
+
+# --- hook 제거 ---
+
+uninstall_hook() {
+  local hook_name="$1"
+  local dst="${INSTALL_BASE}/${hook_name}"
+
+  if [[ ! -d "$dst" ]]; then
+    warn "${dst} 디렉터리가 존재하지 않습니다. 이미 제거되었거나 설치되지 않았습니다."
+    return
+  fi
+
+  read -rp "${dst} 디렉터리를 삭제하시겠습니까? (y/N): " confirm
+  if [[ "$confirm" != "y" && "$confirm" != "Y" ]]; then
+    info "제거를 취소합니다."
+    exit 0
+  fi
+
+  rm -rf "$dst"
+  success "${dst} 디렉터리를 삭제했습니다."
+}
+
+uninstall_settings() {
+  local hook_name="$1"
+
+  if [[ ! -f "$SETTINGS_FILE" ]]; then
+    warn "settings.json 파일이 없습니다."
+    return
+  fi
+
+  if ! jq -e --arg pattern "hooks/${hook_name}/" '.hooks // {} | to_entries[] | .value[] | .hooks[] | .command | contains($pattern)' "$SETTINGS_FILE" &>/dev/null; then
+    warn "settings.json에 ${hook_name} hook 설정이 없습니다."
+    return
+  fi
+
+  cp "$SETTINGS_FILE" "${SETTINGS_FILE}.bak"
+  info "백업 생성: ${SETTINGS_FILE}.bak"
+
+  local tmp
+  tmp=$(mktemp)
+  jq --indent 2 --arg pattern "hooks/${hook_name}/" '
+    .hooks |= (
+      to_entries | map(
+        .value |= map(
+          select(.hooks | any(.command | contains($pattern)) | not)
+        )
+        | select(.value | length > 0)
+      ) | from_entries
+    )
+    | if .hooks == {} then del(.hooks) else . end
+  ' "$SETTINGS_FILE" > "$tmp"
+
+  mv "$tmp" "$SETTINGS_FILE"
+  success "settings.json에서 hook 설정을 제거했습니다."
+}
+
 # --- 스크립트 복사 ---
 
 copy_scripts() {
@@ -152,25 +241,40 @@ copy_scripts() {
   success "${count}개 스크립트를 ${dst}/ 에 복사했습니다."
 }
 
-# --- settings.json snippet 생성 ---
+# --- settings.json 자동 설정 ---
 
-show_settings_snippet() {
+install_settings() {
   local hook_name="$1"
-  local settings_json="${HOOKS_DIR}/${hook_name}/install/settings.json"
+  local snippet="${HOOKS_DIR}/${hook_name}/install/settings.json"
 
-  echo ""
-  echo -e "${BOLD}========================================${NC}"
-  echo -e "${BOLD} settings.json 설정 안내${NC}"
-  echo -e "${BOLD}========================================${NC}"
-  echo ""
-  echo -e "아래 내용을 ${CYAN}${SETTINGS_FILE}${NC} 의 ${CYAN}\"hooks\"${NC} 항목에 추가하세요."
-  echo ""
+  if [[ ! -f "$SETTINGS_FILE" ]]; then
+    mkdir -p "$(dirname "$SETTINGS_FILE")"
+    echo '{}' > "$SETTINGS_FILE"
+    info "settings.json 파일을 생성했습니다."
+  fi
 
-  jq '.hooks' "$settings_json"
+  if jq -e --arg pattern "hooks/${hook_name}/" '.hooks // {} | to_entries[] | .value[] | .hooks[] | .command | contains($pattern)' "$SETTINGS_FILE" &>/dev/null; then
+    warn "settings.json에 ${hook_name} hook이 이미 등록되어 있습니다. 건너뜁니다."
+    return
+  fi
 
-  echo ""
-  echo -e "${YELLOW}주의:${NC} 이미 hooks 항목이 있다면 기존 배열에 추가하세요."
-  echo ""
+  cp "$SETTINGS_FILE" "${SETTINGS_FILE}.bak"
+  info "백업 생성: ${SETTINGS_FILE}.bak"
+
+  local tmp
+  tmp=$(mktemp)
+  jq -s --indent 2 '
+    .[0] as $existing | .[1] as $new |
+    $existing | .hooks = (
+      ($new.hooks | keys) | reduce .[] as $key (
+        ($existing.hooks // {});
+        .[$key] = ((.[$key] // []) + $new.hooks[$key])
+      )
+    )
+  ' "$SETTINGS_FILE" "$snippet" > "$tmp"
+
+  mv "$tmp" "$SETTINGS_FILE"
+  success "settings.json에 hook 설정을 추가했습니다."
 }
 
 # --- 메인 ---
@@ -192,25 +296,45 @@ main() {
   local hooks
   read -ra hooks <<< "$hooks_str"
 
-  # 선택 메뉴
+  # 작업 선택
+  show_action_menu
+  local action
+  action=$(select_action)
+
+  # hook 선택 메뉴
   show_menu "${hooks[@]}"
   local selected
   selected=$(select_hook "${hooks[@]}")
 
   echo ""
-  info "\"${selected}\" hook을 설치합니다."
-  echo ""
 
-  # 의존성 확인
-  check_dependencies "$selected"
+  if [[ "$action" == "install" ]]; then
+    info "\"${selected}\" hook을 설치합니다."
+    echo ""
 
-  # 스크립트 복사
-  copy_scripts "$selected"
+    # 의존성 확인
+    check_dependencies "$selected"
 
-  # settings.json snippet 안내
-  show_settings_snippet "$selected"
+    # 스크립트 복사
+    copy_scripts "$selected"
 
-  success "설치가 완료되었습니다!"
+    # settings.json 자동 설정
+    install_settings "$selected"
+
+    success "설치가 완료되었습니다!"
+  else
+    info "\"${selected}\" hook을 제거합니다."
+    echo ""
+
+    # 스크립트 디렉터리 삭제
+    uninstall_hook "$selected"
+
+    # settings.json 자동 제거
+    uninstall_settings "$selected"
+
+    success "제거가 완료되었습니다!"
+  fi
+
   echo ""
 }
 
