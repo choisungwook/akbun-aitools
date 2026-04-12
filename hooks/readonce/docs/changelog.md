@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-04-12 #5
+
+- compact 이후 캐시가 삭제되지 않는 버그 수정 (closes #20)
+- PreCompact 훅 추가: `scripts/pre-compact.sh`
+- `session-start.sh`의 동작하지 않던 compact 분기 제거
+- `install/settings.json`에 PreCompact 엔트리 추가
+- 테스트 교체: `test_session_start_clears_on_compact` → `test_pre_compact_clears_cache`
+
 ## 2026-04-11 #4
 
 - offset/limit 부분 읽기 바이패스 추가 (캐싱/차단 대상에서 제외)

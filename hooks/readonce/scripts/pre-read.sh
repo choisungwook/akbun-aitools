@@ -1,11 +1,11 @@
 #!/bin/bash
 set -euo pipefail
 
-# --- 환경변수 비활성화 ---
+# --- Disable via env var ---
 
 [[ "${READ_ONCE_DISABLED:-0}" == "1" ]] && exit 0
 
-# --- 입력 파싱 ---
+# --- Parse input ---
 
 parse_input() {
   INPUT=$(cat)
@@ -18,7 +18,7 @@ parse_input() {
   REL_PATH="${FILE_PATH#$CWD/}"
 }
 
-# --- 파일 상태 조회 ---
+# --- File stat helpers ---
 
 get_file_mtime() {
   if [[ "$(uname)" == "Darwin" ]]; then
@@ -32,14 +32,14 @@ get_file_sha256() {
   shasum -a 256 "$FILE_PATH" | cut -d' ' -f1
 }
 
-# --- 캐시 조회 ---
+# --- Cache lookup ---
 
 get_cached_value() {
   local key="$1"
   jq -r --arg p "$REL_PATH" ".[\$p].${key} // empty" "$CACHE_FILE" 2>/dev/null
 }
 
-# --- 캐시 업데이트 ---
+# --- Cache update ---
 
 update_cached_mtime() {
   local new_mtime="$1"
@@ -48,7 +48,7 @@ update_cached_mtime() {
     && mv "${CACHE_FILE}.tmp" "$CACHE_FILE"
 }
 
-# --- 차단 메시지 ---
+# --- Block message ---
 
 block_read() {
   local reason="$1"
@@ -67,7 +67,7 @@ block_read() {
   fi
 }
 
-# --- 비교 로직 ---
+# --- Comparison logic ---
 
 check_mtime() {
   local cached_mtime="$1"
@@ -78,7 +78,7 @@ check_mtime() {
     block_read "mtime 동일"
   fi
 
-  # mtime이 다르면 sha256으로 한 번 더 확인
+  # mtime differs — verify with sha256 to catch touch-only changes
   check_sha256 "$current_mtime"
 }
 
@@ -96,26 +96,26 @@ check_sha256() {
   fi
 }
 
-# --- 메인 ---
+# --- Main ---
 
 main() {
   parse_input
 
-  # 부분 읽기(offset/limit)는 캐싱하지 않고 항상 허용
+  # Always allow partial reads (offset/limit)
   [[ -n "$OFFSET" || -n "$LIMIT" ]] && exit 0
 
-  # 파일이 없으면 Read 허용 (Read가 에러 처리)
+  # Allow if file does not exist (let Read handle the error)
   [[ ! -f "$FILE_PATH" ]] && exit 0
 
-  # 캐시 파일 없으면 허용
+  # Allow if no cache file exists
   [[ ! -f "$CACHE_FILE" ]] && exit 0
 
-  # 캐시에 없으면 허용
+  # Allow if file not in cache
   local cached_mtime
   cached_mtime=$(get_cached_value "mtime")
   [[ -z "$cached_mtime" ]] && exit 0
 
-  # mtime → sha256 순서로 비교
+  # Compare mtime first, then sha256
   check_mtime "$cached_mtime"
 }
 

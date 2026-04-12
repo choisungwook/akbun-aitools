@@ -1,54 +1,61 @@
-# akbun-readonce 작업 가이드
+# akbun-readonce work guide
 
-- Claude Code가 같은 세션에서 동일한 파일을 반복 읽는 것을 방지하는 hook.
-- 파일의 mtime과 sha256을 추적하여, 변경되지 않은 파일은 Read를 차단하고 이전 컨텍스트를 사용하도록 안내한다.
+## Language
 
-## 설계 방향
+All code comments, documentation, and written content must be in **English**.
 
-세션별 고유 캐시 파일(JSON)에 읽은 파일의 mtime/sha256을 기록한다.
+## Overview
 
-- **첫 읽기**: 정상 통과 후 캐시에 기록
-- **재읽기 (미변경)**: Read 차단 + "이전에 읽은 내용을 사용하세요" 메시지 반환
-- **재읽기 (변경됨)**: 정상 통과 후 캐시 갱신
+A hook that prevents Claude Code from re-reading the same file within the same session.
+Tracks mtime and sha256 of each file. If unchanged, blocks the Read and instructs Claude to use the previously loaded context.
 
-캐시 파일 경로는 transcript 경로에서 파생되어 세션마다 고유하다.
+## Design
+
+Stores mtime/sha256 of read files in a per-session cache JSON file.
+
+- **First read**: passes through and writes to cache
+- **Re-read (unchanged)**: Read blocked + "use previously read content" message returned
+- **Re-read (changed)**: passes through and updates cache
+
+Cache file path is derived from the transcript path and is unique per session.
 
 ```
 ~/.claude/projects/<encoded-cwd>/<session-id>-read-cache.json
 ```
 
-## Hook 구성
+## Hook configuration
 
-| Hook | 스크립트 | 역할 |
+| Hook | Script | Role |
 |---|---|---|
-| PreToolUse(Read) | `scripts/pre-read.sh` | 캐시 확인 후 차단/허용 판단 |
-| PostToolUse(Read) | `scripts/post-read.sh` | 읽기 성공 후 캐시 기록 |
-| SessionStart | `scripts/session-start.sh` | /clear, compact 시 캐시 초기화 |
+| PreToolUse(Read) | `scripts/pre-read.sh` | Check cache and decide allow/block |
+| PostToolUse(Read) | `scripts/post-read.sh` | Write to cache after successful read |
+| PreCompact | `scripts/pre-compact.sh` | Delete cache before compact |
+| SessionStart | `scripts/session-start.sh` | Delete cache on /clear; purge stale caches on startup |
 
-## 변경 감지 순서
+## Change detection order
 
-1. mtime 비교 (빠름)
-2. mtime이 다르면 sha256 비교 (touch만 한 경우 대응)
-3. sha256도 다르면 변경된 것으로 판단 → Read 허용
+1. Compare mtime (fast)
+2. If mtime differs, compare sha256 (handles touch-only changes)
+3. If sha256 also differs, treat as changed → allow Read
 
-## 캐시 초기화 조건
+## Cache reset conditions
 
-| 이벤트 | 동작 |
+| Event | Action |
 |---|---|
-| `/clear` | 현재 세션 캐시 삭제 |
-| `compact` (컨텍스트 압축) | 현재 세션 캐시 삭제 |
-| `startup` (새 세션) | 7일 이상 된 캐시 파일 정리 |
+| `/clear` | SessionStart(source=clear) → delete current session cache |
+| compact | PreCompact hook → delete current session cache |
+| startup (new session) | SessionStart(source=startup) → delete cache files older than 7 days |
 
-## 작업 히스토리
+## Work history
 
-작업 내역은 `docs/changelog.md`에 날짜별로 기록되어 있다. 작업 시작 전에 읽고 현재 상태를 파악한다.
+Work history is recorded in `docs/changelog.md`. Read it before starting to understand the current state.
 
-## 작업 후 검증
+## Verification after changes
 
-코드를 수정한 후 반드시 단위 테스트를 실행한다.
+Always run unit tests after modifying code.
 
 ```bash
 ./hooks/readonce/tests/test-hooks.sh
 ```
 
-모든 테스트가 PASS여야 하며, 결과 요약에서 "N passed, 0 failed"로 전체 통과를 확인한다. 현재 기준: 19 passed, 0 failed.
+All tests must pass. Confirm with "N passed, 0 failed" in the summary. Current baseline: 19 passed, 0 failed.

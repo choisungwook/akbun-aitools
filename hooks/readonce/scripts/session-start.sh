@@ -1,7 +1,7 @@
 #!/bin/bash
 set -euo pipefail
 
-# --- 입력 파싱 ---
+# --- Parse input ---
 
 parse_input() {
   INPUT=$(cat)
@@ -11,7 +11,7 @@ parse_input() {
   CACHE_DIR=$(dirname "$CACHE_FILE")
 }
 
-# --- 캐시 관리 ---
+# --- Cache management ---
 
 delete_current_cache() {
   rm -f "$CACHE_FILE"
@@ -21,13 +21,13 @@ cleanup_old_caches() {
   find "$CACHE_DIR" -name "*-read-cache.json" -mtime +7 -delete 2>/dev/null
 }
 
-# --- 메인 ---
+# --- Main ---
 
 main() {
   parse_input
 
   case "$SOURCE" in
-    clear|compact)
+    clear)
       delete_current_cache
       ;;
     startup)
