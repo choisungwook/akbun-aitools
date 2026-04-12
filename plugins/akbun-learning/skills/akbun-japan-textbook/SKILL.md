@@ -96,6 +96,29 @@ After the file is written, print these instructions verbatim in Korean (adjust t
 📱 AnkiMobile / AnkiDroid 에서도 같은 계정으로 로그인 후 동기화하면 동일한 덱을 바로 사용할 수 있습니다.
 ```
 
+## Study Guide Mode (공부 가이드 생성)
+
+When the user asks for a study guide, learning plan, or "공부해야 할 주제/목표/공부방법" based on the textbook material they attached, generate a standalone markdown file and save it to `~/Downloads/{YYYYMMDD-HHMMSS}.md` in addition to (or instead of) the Anki deck, depending on what the user asked for. This mode produces a Notion-uploadable study plan.
+
+### Study Guide Output Rules
+
+- Save the file to `~/Downloads/{YYYYMMDD-HHMMSS}.md` using the current timestamp. Tell the user the full path after writing.
+- The file is meant for Notion upload, so:
+  - Do NOT use markdown tables. Notion's markdown importer mangles them.
+  - Use nested bullet lists (list depth) for every structured piece of information — vocabulary groups, activation patterns, schedules, etc.
+  - Headings: one `#` for the title, `##` for top-level sections. Do not skip heading levels.
+- Always include every Japanese term with both hiragana reading and Korean approximation in parentheses. Example: `高い(타카이, 비싸다)`, `学校(각코-, 학교)`.
+  - Use `-` for long vowels (장음: `おお`, `おう`, `えい` → `오-`, `에-`).
+  - Apply particle exceptions (`は`→와, `へ`→에, `を`→오) inside sentence examples.
+- Required sections, in this order:
+    1. `## 공부해야 할 주제` — what to study from the attached material. Break into sub-bullets: vocabulary (grouped by meaning pairs when possible), grammar patterns, exceptions, pronunciation points.
+    2. `## 목표` — measurable goals. Break into 단기(this week) / 중기(2 weeks) / 장기(1 month) sub-bullets.
+    3. `## 공부 방법` — concrete daily routine. Break into numbered 단계(steps) with time budget per step, plus a 주간 점검(weekly review) bullet.
+    4. `## 피해야 할 함정` — common traps and anti-patterns specific to this material (e.g., `いい → よくありません` irregular).
+- Keep bullets action-oriented and specific to the material the user provided. Do not write generic advice.
+- Do not invent vocabulary or grammar that was not in the user's input — stay faithful to the textbook pages.
+- If the user already received an Anki deck in the same turn, reference the deck filename in the 공부 방법 section so the routine ties back to the cards.
+
 ## Guardrails
 
 - Never produce cards whose reading is identical to the front. If the front is already all hiragana, repeat it in the `reading` field anyway — blank fields break the template.
