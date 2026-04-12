@@ -242,16 +242,16 @@ test_session_start_clears_on_clear() {
   cleanup_temp_dir
 }
 
-test_session_start_clears_on_compact() {
-  echo "[TEST] session-start: compact 시 캐시 삭제"
+test_pre_compact_clears_cache() {
+  echo "[TEST] pre-compact: compact 직전 캐시 삭제"
 
   setup_temp_dir
 
   # 캐시 생성
   make_json "$TEST_FILE" | "$SCRIPTS_DIR/post-read.sh"
 
-  # compact 시뮬레이션
-  make_json "" "compact" | "$SCRIPTS_DIR/session-start.sh" || true
+  # pre-compact 시뮬레이션
+  make_json "" | "$SCRIPTS_DIR/pre-compact.sh"
 
   assert_file_not_exists "캐시 파일 삭제됨" "$CACHE_FILE"
 
@@ -394,7 +394,7 @@ main() {
   echo ""
   test_session_start_clears_on_clear
   echo ""
-  test_session_start_clears_on_compact
+  test_pre_compact_clears_cache
   echo ""
   test_pre_read_allows_partial_read
   echo ""

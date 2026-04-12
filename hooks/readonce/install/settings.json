@@ -22,6 +22,17 @@
         ]
       }
     ],
+    "PreCompact": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash $HOME/.claude/hooks/readonce/pre-compact.sh"
+          }
+        ]
+      }
+    ],
     "SessionStart": [
       {
         "hooks": [
