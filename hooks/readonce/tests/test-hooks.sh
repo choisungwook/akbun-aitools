@@ -355,6 +355,30 @@ test_deny_mode_exits_2() {
   cleanup_temp_dir
 }
 
+test_post_read_consecutive_calls() {
+  echo "[TEST] post-read: 서로 다른 파일 연속 호출 모두 성공 (issue #22)"
+
+  setup_temp_dir
+
+  local file_a="$TEMP_DIR/a.txt"
+  local file_b="$TEMP_DIR/b.txt"
+  echo "aaa" > "$file_a"
+  echo "bbb" > "$file_b"
+
+  local exit_a=0
+  make_json "$file_a" | "$SCRIPTS_DIR/post-read.sh" || exit_a=$?
+  assert_exit_code "첫 번째 post-read exit 0" 0 "$exit_a"
+
+  local exit_b=0
+  make_json "$file_b" | "$SCRIPTS_DIR/post-read.sh" || exit_b=$?
+  assert_exit_code "두 번째 post-read exit 0 (캐시 파일 이미 존재)" 0 "$exit_b"
+
+  assert_cache_has_key "a.txt 캐시 기록됨" "a.txt"
+  assert_cache_has_key "b.txt 캐시 기록됨" "b.txt"
+
+  cleanup_temp_dir
+}
+
 test_post_read_external_file() {
   echo "[TEST] post-read: 프로젝트 외부 파일은 절대 경로로 캐시"
 
@@ -405,6 +429,8 @@ main() {
   test_warn_mode_outputs_json
   echo ""
   test_deny_mode_exits_2
+  echo ""
+  test_post_read_consecutive_calls
   echo ""
   test_post_read_external_file
   echo ""

@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-04-12 #6
+
+- [#22](https://github.com/choisungwook/akbun-aitools/issues/22) 한 세션에서 두 번째 이후 파일의 Read 해시가 캐시에 기록되지 않아 readonce 차단이 동작하지 않던 버그 수정 — `ensure_cache_file`을 `if`/`fi` 블록으로 재작성해 캐시 JSON이 이미 있을 때도 0을 반환하도록 수정
+- 모든 hook 스크립트에 ERR trap 추가: `set -eE` + 스크립트별 exit code(post-read=10, pre-read=20, pre-compact=30, session-start=40)로 구분. 향후 어떤 명령이 실패해도 stderr에 `[readonce/xxx.sh] failed at line N (rc=..., code=...)` 진단이 남음
+- 회귀 테스트 `test_post_read_consecutive_calls` 추가 (23 passed / 0 failed)
+
 ## 2026-04-12 #5
 
 - compact 이후 캐시가 삭제되지 않는 버그 수정 (closes #20)

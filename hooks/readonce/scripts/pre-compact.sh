@@ -1,5 +1,10 @@
 #!/bin/bash
-set -euo pipefail
+set -eEuo pipefail
+
+# --- Error trap ---
+# Exit code 30 identifies pre-compact.sh as the source.
+
+trap 'rc=$?; echo "[readonce/pre-compact.sh] unexpected failure at line $LINENO (rc=$rc, code=30)" >&2; exit 30' ERR
 
 # --- Parse input ---
 
