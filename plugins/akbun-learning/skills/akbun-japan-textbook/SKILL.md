@@ -49,7 +49,7 @@ For every extracted item, prepare three fields:
 | Field | Content |
 |---:|:---|
 | `japanese` | Original Japanese, kanji + kana as printed. |
-| `reading` | The entire line rewritten in hiragana only (no kanji, no katakana). This is the week-4 learner's lifeline — they can sound out hiragana and nothing else yet. |
+| `reading` | The entire line rewritten in hiragana only, followed by ` · ` and the Korean approximation pronunciation (한국어 발음). Example: `たかい · 타카이`, `がっこうはちかいですか · 각코-와 치카이데스카`. The hiragana half is the week-4 learner's lifeline; the Korean half lets them read the sentence out loud even when hiragana recall fails. Use `-` for long vowels (장음: `おお`, `おう`, `えい` → `오-`, `에-`), keep particle `は` as `와`, `へ` as `에`, `を` as `오`, and drop the final vowel of `です` when devoiced (`데스`). |
 | `meaning` | Korean meaning. Short and natural, not a literal word-for-word translation. If the item is a sentence, give a clean Korean sentence. If it's a single word, give the Korean word plus part-of-speech hint only when it helps (e.g., `먹다 (동사)`). |
 
 Optionally, if the item has a notable pronunciation trap (촉음, 장음, `は`→wa, devoiced `です`, etc.), append a one-line `tip` to the meaning field prefixed with `💡`. Do not invent tips for every card — only when it's genuinely useful.
@@ -71,7 +71,7 @@ Workflow:
 
 The script uses [`genanki`](https://github.com/kerrickstaley/genanki) and bootstraps its own virtualenv at `~/.cache/akbun-japan-textbook/venv` on first run, so the user does not need to install anything globally. Do not silently fall back to a `.txt` file — the user asked for a proper Anki package.
 
-The deck name is `Akbun Japan Textbook — {YYYY-MM-DD}`. The card template is intentionally simple: front shows the Japanese in a large serif font; back shows reading (hiragana) on one line and Korean meaning on the next line, with the tip (if any) in a smaller muted style.
+The deck name is `Akbun Japan Textbook — {YYYY-MM-DD}`. The card template is intentionally simple: front shows the Japanese in a large serif font; back shows reading (hiragana · 한국어 발음) on one line and Korean meaning on the next line, with the tip (if any) in a smaller muted style.
 
 ## Step 4 — Tell the user how to import and sync
 
@@ -101,5 +101,5 @@ After the file is written, print these instructions verbatim in Korean (adjust t
 - Never produce cards whose reading is identical to the front. If the front is already all hiragana, repeat it in the `reading` field anyway — blank fields break the template.
 - Never leave `meaning` empty. If you truly cannot determine a meaning, skip that card rather than ship a blank one.
 - Do not merge multiple vocabulary items into one card to "save space." Each card must test exactly one thing.
-- Never output the Japanese in romaji on the back. The learner is building hiragana fluency; romaji is a crutch that slows that down.
+- Never output the Japanese in romaji on the back. The learner is building hiragana fluency; romaji is a crutch that slows that down. Korean 발음 (한글 approximation) is allowed and required — it is NOT romaji.
 - Do not reorder or re-interpret the textbook. A textbook page is the source of truth; your job is faithful extraction, not curation.
