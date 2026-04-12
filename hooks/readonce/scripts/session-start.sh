@@ -1,5 +1,10 @@
 #!/bin/bash
-set -euo pipefail
+set -eEuo pipefail
+
+# --- Error trap ---
+# Exit code 40 identifies session-start.sh as the source.
+
+trap 'rc=$?; echo "[readonce/session-start.sh] unexpected failure at line $LINENO (rc=$rc, code=40)" >&2; exit 40' ERR
 
 # --- Parse input ---
 

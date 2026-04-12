@@ -1,5 +1,12 @@
 #!/bin/bash
-set -euo pipefail
+set -eEuo pipefail
+
+# --- Error trap ---
+# Emits diagnostic to stderr so the hook runner never sees a silent failure.
+# Exit code 20 identifies pre-read.sh as the source.
+# Note: deliberate exit 2 (block) and exit 0 (allow) are explicit and bypass this trap.
+
+trap 'rc=$?; echo "[readonce/pre-read.sh] unexpected failure at line $LINENO (rc=$rc, code=20)" >&2; exit 20' ERR
 
 # --- Disable via env var ---
 

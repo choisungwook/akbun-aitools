@@ -1,5 +1,11 @@
 #!/bin/bash
-set -euo pipefail
+set -eEuo pipefail
+
+# --- Error trap ---
+# Emits diagnostic to stderr so the hook runner never sees a silent failure.
+# Exit code 10 identifies post-read.sh as the source.
+
+trap 'rc=$?; echo "[readonce/post-read.sh] unexpected failure at line $LINENO (rc=$rc, code=10)" >&2; exit 10' ERR
 
 # --- Disable via env var ---
 
@@ -35,7 +41,9 @@ get_file_sha256() {
 # --- Cache initialization ---
 
 ensure_cache_file() {
-  [[ ! -f "$CACHE_FILE" ]] && echo '{}' > "$CACHE_FILE"
+  if [[ ! -f "$CACHE_FILE" ]]; then
+    echo '{}' > "$CACHE_FILE"
+  fi
 }
 
 # --- Cache write ---
