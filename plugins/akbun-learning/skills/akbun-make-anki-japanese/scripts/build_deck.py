@@ -9,7 +9,7 @@ Input JSON schema: a list of objects, each with:
   - meaning  (str, required): Korean meaning
   - tip      (str, optional): short pronunciation/grammar note
 
-Output: ~/Downloads/{YYYYMMDD-HHMMSS}.apkg (path is printed on success).
+Output: ~/anki-jp-{YYYYMMDD-HHMMSS}.apkg (path is printed on success).
 """
 
 import argparse
@@ -19,7 +19,7 @@ import os
 import subprocess
 import sys
 
-VENV_DIR = os.path.expanduser("~/.cache/akbun-japan-textbook/venv")
+VENV_DIR = os.path.expanduser("~/.cache/akbun-make-anki-japanese/venv")
 
 
 def _ensure_venv_and_reexec() -> None:
@@ -67,7 +67,10 @@ CARD_CSS = """
 hr { border: none; border-top: 1px solid #ddd; margin: 18px 0; }
 """
 
-FRONT_TMPL = '<div class="jp">{{Japanese}}</div>'
+FRONT_TMPL = (
+    '<div class="jp">{{Japanese}}</div>'
+    '<div class="tts">{{tts ja_JP voices=Apple_Kyoko,Apple_Otoya,Google_ja-JP:Japanese}}</div>'
+)
 BACK_TMPL = (
     '<div class="jp">{{Japanese}}</div>'
     "<hr>"
@@ -82,7 +85,7 @@ BACK_TMPL = (
 def build_model() -> "genanki.Model":
     return genanki.Model(
         MODEL_ID,
-        "Akbun Japan Textbook",
+        "Akbun Japanese",
         fields=[
             {"name": "Japanese"},
             {"name": "Reading"},
@@ -106,7 +109,7 @@ def main() -> int:
     parser.add_argument(
         "--name",
         default=None,
-        help="Deck name (default: 'Akbun Japan Textbook — YYYY-MM-DD')",
+        help="Deck name (default: 'Akbun Japanese — YYYY-MM-DD')",
     )
     args = parser.parse_args()
 
@@ -119,7 +122,7 @@ def main() -> int:
 
     now = dt.datetime.now()
     timestamp = now.strftime("%Y%m%d-%H%M%S")
-    deck_name = args.name or f"Akbun Japan Textbook — {now.strftime('%Y-%m-%d')}"
+    deck_name = args.name or f"Akbun Japanese — {now.strftime('%Y-%m-%d')}"
     deck_id = DECK_ID_BASE + int(now.strftime("%H%M%S"))
 
     model = build_model()
@@ -145,9 +148,7 @@ def main() -> int:
         sys.stderr.write("no valid cards to write\n")
         return 1
 
-    downloads = os.path.expanduser("~/Downloads")
-    os.makedirs(downloads, exist_ok=True)
-    out_path = os.path.join(downloads, f"{timestamp}.apkg")
+    out_path = os.path.expanduser(f"~/anki-jp-{timestamp}.apkg")
     genanki.Package(deck).write_to_file(out_path)
 
     print(f"wrote {len(deck.notes)} cards to {out_path}")

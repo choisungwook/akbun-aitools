@@ -1,5 +1,5 @@
 ---
-name: learning-japanese
+name: akbun-learning-japanese
 description: "Japanese pronunciation and reading guide for Korean learners. Provide Korean approximation pronunciation (한국어 발음), hiragana conversion for kanji, kanji meaning breakdown, chunked reading, direct translation (직독직해), and pronunciation tips for Japanese words, sentences, or paragraphs. Use this skill when the user provides Japanese text and asks for pronunciation help, reading guidance, Korean phonetic transcription, kanji reading, or Japanese study assistance. Trigger on: Japanese sentences or paragraphs with requests like '발음', '읽기', '번역', 'pronunciation', 'how to read', '일본어 공부', '일본어 문장', '끊어 읽기', '한자', '히라가나', or any request to break down Japanese text for a Korean learner."
 ---
 
