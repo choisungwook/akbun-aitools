@@ -18,7 +18,7 @@ Turn **photos (screenshots) or PDF files containing Japanese words or sentences*
 3. Build an Anki deck where:
    - **Front** = the original Japanese exactly as printed (kanji + kana intact) **plus Anki TTS audio** of that Japanese so the learner hears it the moment the card flips up.
    - **Back** = hiragana reading (furigana for the whole line) + Korean 발음 approximation + Korean meaning + optional short tip.
-4. Package the deck as `.apkg` and save it to `~/anki-jp-{YYYYMMDD-HHMMSS}.apkg`.
+4. Package the deck as `.apkg` and save it to `~/Downloads/anki-jp-{YYYYMMDD-HHMMSS}.apkg`.
 5. Tell the user how to import it into Anki for macOS and sync to AnkiWeb.
 
 ## Step 1 — Read the source material
@@ -55,6 +55,7 @@ For every extracted item, prepare three fields:
 | `japanese` | Original Japanese, kanji + kana as printed. This is what Anki TTS will speak on the front of the card. |
 | `reading` | The entire line rewritten in hiragana only, followed by ` · ` and the Korean approximation pronunciation (한국어 발음). Example: `たかい · 타카이`, `がっこうはちかいですか · 각코-와 치카이데스카`. Use `-` for long vowels (장음: `おお`, `おう`, `えい` → `오-`, `에-`), keep particle `は` as `와`, `へ` as `에`, `を` as `오`, and drop the devoiced vowel of `です` (`데스`). |
 | `meaning` | Korean meaning. Short and natural, not word-for-word. For sentences, give a clean Korean sentence. For single words, give the Korean word plus a part-of-speech hint only when it helps (e.g., `먹다 (동사)`). |
+| `kanji` | **Required whenever the Japanese contains one or more kanji.** One entry per kanji appearing in the `japanese` field, joined with ` · `. Each entry is `{한자}: {한국어 훈음}` — e.g. for `学校は高いですか`, set `kanji` to `学: 배울 학 · 校: 학교 교 · 高: 높을 고`. Use traditional 훈음 (뜻+음) the learner would see in a Korean 한자 dictionary. Preserve the order the kanji appear in the sentence and do not deduplicate — if the same kanji appears twice, list it twice. Omit this field entirely only when the Japanese line has zero kanji (pure kana). |
 
 Optionally, append a one-line `tip` (prefixed with `💡`) when there's a genuine pronunciation trap (촉음, 장음, `は`→wa, devoiced `です`, etc.). Do not invent tips for every card.
 
@@ -64,18 +65,18 @@ Use the bundled script `scripts/build_deck.py`. It takes a JSON file of cards an
 
 Workflow:
 
-1. Write the extracted cards to a temp JSON file, e.g. `/tmp/japan_cards.json`, as an array of `{japanese, reading, meaning}` objects (include `tip` only when present).
+1. Write the extracted cards to a temp JSON file, e.g. `/tmp/japan_cards.json`, as an array of `{japanese, reading, meaning}` objects. Include `kanji` whenever the Japanese contains any kanji, and include `tip` only when present.
 2. Run the build script:
 
-    ```bash
-    python3 scripts/build_deck.py /tmp/japan_cards.json
-    ```
+```bash
+python3 scripts/build_deck.py /tmp/japan_cards.json
+```
 
 3. The script prints the output path. Confirm it to the user.
 
 The script uses [`genanki`](https://github.com/kerrickstaley/genanki) and bootstraps its own virtualenv at `~/.cache/akbun-make-anki-japanese/venv` on first run, so the user does not need to install anything globally. Do not silently fall back to a `.txt` file — the user asked for a proper Anki package.
 
-The deck name is `Akbun Japanese — {YYYY-MM-DD}`. The front shows the Japanese in a large serif font and plays Anki TTS automatically; the back shows reading (hiragana · 한국어 발음) on one line and Korean meaning on the next line, with the tip (if any) in a smaller muted style.
+The deck name is `Akbun Japanese — {YYYY-MM-DD}`. The front shows the Japanese in a large serif font and plays Anki TTS automatically; the back shows reading (hiragana · 한국어 발음) on one line, Korean meaning on the next line, and — when the front contains kanji — a 한자 훈음 line directly below the Korean meaning. The tip (if any) is shown in a smaller muted style.
 
 ### Anki TTS requirement
 
@@ -92,12 +93,12 @@ Mention this requirement to the user once, after generating the deck, so they kn
 After the file is written, print these instructions verbatim in Korean (adjust the filename to match what was actually generated):
 
 ```
-✅ Anki 덱이 생성되었습니다: ~/anki-jp-{timestamp}.apkg
+✅ Anki 덱이 생성되었습니다: ~/Downloads/anki-jp-{timestamp}.apkg
 
 📥 Anki (macOS)에 import하기
 1. Anki를 실행합니다. (없다면 https://apps.ankiweb.net 에서 설치)
 2. 메뉴에서 파일 → 가져오기(File → Import) 를 선택합니다.
-3. ~/anki-jp-{timestamp}.apkg 를 선택하고 열기.
+3. ~/Downloads/anki-jp-{timestamp}.apkg 를 선택하고 열기.
 4. "가져오기 완료" 메시지가 뜨면 좌측 덱 목록에 "Akbun Japanese — {날짜}" 가 보입니다.
 
 🔊 TTS(음성) 안내
@@ -115,7 +116,7 @@ After the file is written, print these instructions verbatim in Korean (adjust t
 📱 AnkiMobile / AnkiDroid 에서도 같은 계정으로 로그인 후 동기화하면 동일한 덱을 바로 사용할 수 있습니다.
 ```
 
-## Study Guide Mode (공부 가이드 생성)
+## Study Guide Mode
 
 When the user asks for a study guide, learning plan, or "공부해야 할 주제/목표/공부방법" based on the material they attached, generate a standalone markdown file and save it to `~/Downloads/{YYYYMMDD-HHMMSS}.md` in addition to (or instead of) the Anki deck, depending on what the user asked for. This mode produces a Notion-uploadable study plan.
 
@@ -126,7 +127,7 @@ When the user asks for a study guide, learning plan, or "공부해야 할 주제
   - Do NOT use markdown tables. Notion's markdown importer mangles them.
   - Use nested bullet lists (list depth) for every structured piece of information — vocabulary groups, activation patterns, schedules, etc.
   - Headings: one `#` for the title, `##` for top-level sections. Do not skip heading levels.
-- Always include every Japanese term with both hiragana reading and Korean approximation in parentheses. Example: `高い(타카이, 비싸다)`, `学校(각코-, 학교)`.
+- Always include every Japanese term with both hiragana reading and Korean approximation in parentheses. Example: `高い(たかい, 비싸다)`, `学校(がっこう, 학교)`.
   - Use `-` for long vowels (장음: `おお`, `おう`, `えい` → `오-`, `에-`).
   - Apply particle exceptions (`は`→와, `へ`→에, `を`→오) inside sentence examples.
 - Required sections, in this order:

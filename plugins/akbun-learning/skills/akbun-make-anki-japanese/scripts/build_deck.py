@@ -7,6 +7,7 @@ Input JSON schema: a list of objects, each with:
   - japanese (str, required): front of card, original Japanese text
   - reading  (str, required): full hiragana reading of the line
   - meaning  (str, required): Korean meaning
+  - kanji    (str, optional): kanji gloss line, e.g. "高: 높을 고 · 校: 학교 교"
   - tip      (str, optional): short pronunciation/grammar note
 
 Output: ~/anki-jp-{YYYYMMDD-HHMMSS}.apkg (path is printed on success).
@@ -48,7 +49,7 @@ _ensure_venv_and_reexec()
 import genanki  # noqa: E402
 
 
-MODEL_ID = 1730000001  # stable random id — do not change after first release
+MODEL_ID = 1730000002  # bumped when Kanji field was added
 DECK_ID_BASE = 1730000100
 
 CARD_CSS = """
@@ -63,6 +64,7 @@ CARD_CSS = """
 .jp { font-family: "Hiragino Mincho ProN", "Noto Serif CJK JP", serif; font-size: 42px; }
 .reading { color: #0b6; font-size: 28px; margin-top: 10px; }
 .meaning { color: #333; font-size: 24px; margin-top: 14px; }
+.kanji { color: #a44; font-size: 20px; margin-top: 8px; }
 .tip { color: #888; font-size: 18px; margin-top: 18px; font-style: italic; }
 hr { border: none; border-top: 1px solid #ddd; margin: 18px 0; }
 """
@@ -76,6 +78,9 @@ BACK_TMPL = (
     "<hr>"
     '<div class="reading">{{Reading}}</div>'
     '<div class="meaning">{{Meaning}}</div>'
+    "{{#Kanji}}"
+    '<div class="kanji">🈶 {{Kanji}}</div>'
+    "{{/Kanji}}"
     "{{#Tip}}"
     '<div class="tip">💡 {{Tip}}</div>'
     "{{/Tip}}"
@@ -90,6 +95,7 @@ def build_model() -> "genanki.Model":
             {"name": "Japanese"},
             {"name": "Reading"},
             {"name": "Meaning"},
+            {"name": "Kanji"},
             {"name": "Tip"},
         ],
         templates=[
@@ -133,6 +139,7 @@ def main() -> int:
         jp = (c.get("japanese") or "").strip()
         reading = (c.get("reading") or "").strip()
         meaning = (c.get("meaning") or "").strip()
+        kanji = (c.get("kanji") or "").strip()
         tip = (c.get("tip") or "").strip()
         if not jp or not reading or not meaning:
             skipped += 1
@@ -140,7 +147,7 @@ def main() -> int:
         deck.add_note(
             genanki.Note(
                 model=model,
-                fields=[jp, reading, meaning, tip],
+                fields=[jp, reading, meaning, kanji, tip],
             )
         )
 
