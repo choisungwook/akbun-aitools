@@ -49,7 +49,7 @@ _ensure_venv_and_reexec()
 import genanki  # noqa: E402
 
 
-MODEL_ID = 1730000002  # bumped when Kanji field was added
+MODEL_ID = 1730000003  # bumped when back-side TTS + darker meaning color added
 DECK_ID_BASE = 1730000100
 
 CARD_CSS = """
@@ -63,7 +63,7 @@ CARD_CSS = """
 }
 .jp { font-family: "Hiragino Mincho ProN", "Noto Serif CJK JP", serif; font-size: 42px; }
 .reading { color: #0b6; font-size: 28px; margin-top: 10px; }
-.meaning { color: #333; font-size: 24px; margin-top: 14px; }
+.meaning { color: #111; font-size: 28px; font-weight: 600; margin-top: 14px; }
 .kanji { color: #a44; font-size: 20px; margin-top: 8px; }
 .tip { color: #888; font-size: 18px; margin-top: 18px; font-style: italic; }
 hr { border: none; border-top: 1px solid #ddd; margin: 18px 0; }
@@ -75,6 +75,7 @@ FRONT_TMPL = (
 )
 BACK_TMPL = (
     '<div class="jp">{{Japanese}}</div>'
+    '<div class="tts">{{tts ja_JP voices=Apple_Kyoko,Apple_Otoya,Google_ja-JP:Japanese}}</div>'
     "<hr>"
     '<div class="reading">{{Reading}}</div>'
     '<div class="meaning">{{Meaning}}</div>'

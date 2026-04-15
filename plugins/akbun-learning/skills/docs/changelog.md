@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-04-16 #3
+
+- `akbun-make-anki-japanese`: play Japanese TTS on the back of the card too (previously only the front spoke).
+- Darken and bold the Korean meaning (#111, 28px, weight 600) so 해석 is clearly readable.
+- Bump Anki model id to 1730000003.
+
 ## 2026-04-16 #2
 
 - `akbun-make-anki-japanese`: add `Kanji` field to the card template so the back of the card shows 한자 훈음 (예: `学: 배울 학 · 校: 학교 교`) directly below the Korean meaning whenever the front contains kanji.
