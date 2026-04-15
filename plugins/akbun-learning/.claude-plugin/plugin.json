@@ -1,11 +1,11 @@
 {
   "name": "akbun-learning",
-  "description": "Study and learning helpers, starting with English practice tools",
-  "version": "1.0.1",
+  "description": "Study and learning helpers, starting with English and Japanese practice tools",
+  "version": "1.0.2",
   "author": {
     "name": "akbun"
   },
   "repository": "https://github.com/choisungwook/akbun-aitools",
   "license": "MIT",
-  "keywords": ["learning", "study", "english", "pronunciation", "korean"]
+  "keywords": ["learning", "study", "english", "pronunciation", "japanese"]
 }
