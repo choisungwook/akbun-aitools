@@ -26,7 +26,7 @@ jobs:
           fi
 
       - name: Package hooks
-        run: tar czf akbun-hooks.tar.gz install_hook.sh hooks/
+        run: tar czf akbun-hooks.tar.gz install_claude_hook.sh hooks/
 
       - name: Create release
         run: gh release create "${{ steps.version.outputs.tag }}" akbun-hooks.tar.gz --title "${{ steps.version.outputs.tag }}" --generate-notes
