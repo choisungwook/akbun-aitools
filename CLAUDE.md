@@ -24,7 +24,7 @@
 
 - hook은 `hooks/{hook이름}/` 디렉터리에 생성한다.
 - `hooks/{hook이름}/install/settings.json`에 사용자가 `~/.claude/settings.json`에 추가할 hook 설정을 정의한다.
-- `hooks/{hook이름}/scripts/`에 hook이 실행할 shell 스크립트를 배치한다. `install_hook.sh`는 이 디렉터리의 `.sh` 파일을 `$HOME/.claude/hooks/{hook이름}/`으로 복사한다.
+- `hooks/{hook이름}/scripts/`에 hook이 실행할 shell 스크립트를 배치한다. `install_claude_hook.sh`는 이 디렉터리의 `.sh` 파일을 `$HOME/.claude/hooks/{hook이름}/`으로 복사한다.
 
 ## 코드 규칙
 

@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-04-22 #7
+
+- Claude hook 설치 스크립트 이름 변경: `install_hook.sh` → `install_claude_hook.sh`
+- `hooks/readonce/README.md`의 설치/제거 명령을 새 스크립트명으로 갱신
+- release workflow의 hook 패키징 대상 스크립트명 갱신
+
 ## 2026-04-12 #6
 
 - [#22](https://github.com/choisungwook/akbun-aitools/issues/22) 한 세션에서 두 번째 이후 파일의 Read 해시가 캐시에 기록되지 않아 readonce 차단이 동작하지 않던 버그 수정 — `ensure_cache_file`을 `if`/`fi` 블록으로 재작성해 캐시 JSON이 이미 있을 때도 0을 반환하도록 수정
