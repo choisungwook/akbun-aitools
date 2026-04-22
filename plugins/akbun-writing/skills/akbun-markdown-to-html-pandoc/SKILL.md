@@ -7,7 +7,6 @@ description: >
   Triggers on: "markdown to html", "pandoc convert", "tistory", "obsidian to html",
   "blog upload", "블로그 업로드", "HTML 변환", "마크다운 변환".
 allowed-tools:
-  - Bash(bash ~/.claude/skills/akbun-markdown-to-html-pandoc/scripts/md-to-html.sh *)
   - Read
 ---
 

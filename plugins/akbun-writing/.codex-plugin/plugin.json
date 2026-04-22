@@ -1,0 +1,40 @@
+{
+  "name": "akbun-writing",
+  "version": "1.0.2",
+  "description": "Writing, review, and blog support skills by akbun",
+  "author": {
+    "name": "akbun",
+    "url": "https://github.com/choisungwook"
+  },
+  "homepage": "https://github.com/choisungwook/akbun-aitools",
+  "repository": "https://github.com/choisungwook/akbun-aitools",
+  "license": "MIT",
+  "keywords": [
+    "writing",
+    "blog",
+    "review",
+    "korean"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "akbun Writing",
+    "shortDescription": "Korean writing and blog support skills",
+    "longDescription": "Writing, review, hands-on, and publishing skills for Korean technical documents and blog posts in akbun's working style.",
+    "developerName": "akbun",
+    "category": "Writing",
+    "capabilities": [
+      "Interactive",
+      "Write"
+    ],
+    "websiteURL": "https://github.com/choisungwook/akbun-aitools",
+    "privacyPolicyURL": "https://docs.github.com/site-policy/privacy-policies/github-general-privacy-statement",
+    "termsOfServiceURL": "https://docs.github.com/en/site-policy/github-terms/github-terms-of-service",
+    "defaultPrompt": [
+      "Write a Korean technical blog post in akbun's style",
+      "Review this draft against akbun's writing rules",
+      "Convert this Obsidian markdown post for publishing"
+    ],
+    "brandColor": "#0F766E",
+    "screenshots": []
+  }
+}

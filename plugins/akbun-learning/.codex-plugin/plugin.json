@@ -1,0 +1,41 @@
+{
+  "name": "akbun-learning",
+  "version": "1.0.4",
+  "description": "Study and learning helpers, starting with English and Japanese practice tools",
+  "author": {
+    "name": "akbun",
+    "url": "https://github.com/choisungwook"
+  },
+  "homepage": "https://github.com/choisungwook/akbun-aitools",
+  "repository": "https://github.com/choisungwook/akbun-aitools",
+  "license": "MIT",
+  "keywords": [
+    "learning",
+    "study",
+    "english",
+    "pronunciation",
+    "japanese"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "akbun Learning",
+    "shortDescription": "English and Japanese study helper skills",
+    "longDescription": "Learning support skills for Korean learners, including English pronunciation guidance and Japanese study tooling.",
+    "developerName": "akbun",
+    "category": "Education",
+    "capabilities": [
+      "Interactive",
+      "Write"
+    ],
+    "websiteURL": "https://github.com/choisungwook/akbun-aitools",
+    "privacyPolicyURL": "https://docs.github.com/site-policy/privacy-policies/github-general-privacy-statement",
+    "termsOfServiceURL": "https://docs.github.com/en/site-policy/github-terms/github-terms-of-service",
+    "defaultPrompt": [
+      "Break down this English sentence for a Korean learner",
+      "Turn this Japanese study material into an Anki deck",
+      "Explain the pronunciation and stress in this phrase"
+    ],
+    "brandColor": "#2563EB",
+    "screenshots": []
+  }
+}
