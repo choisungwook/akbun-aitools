@@ -1,27 +1,31 @@
 # akbun-aitools
 
-Claude Code plugin marketplace for akbun tools.
+akbun tools for both Claude Code and Codex plugin workflows.
 
-## Plugin 설치
+## Claude Code
 
-marketplace를 등록한 후 원하는 plugin을 설치한다.
+Claude Code marketplace metadata lives in:
+
+- `.claude-plugin/marketplace.json`
+- `plugins/<plugin-name>/.claude-plugin/plugin.json`
+
+기존 설치 방식은 그대로 유지한다.
 
 ```bash
 /plugin marketplace add choisungwook/akbun-aitools
-```
-
-사용 가능한 plugin 목록:
-
-```bash
 /plugin install akbun-writing@akbun-aitools
 /plugin install akbun-learning@akbun-aitools
-```
-
-설치 후 세션을 새로고침한다.
-
-```bash
 /reload-plugins
 ```
+
+## Codex
+
+Codex plugin metadata lives in:
+
+- `.agents/plugins/marketplace.json`
+- `plugins/<plugin-name>/.codex-plugin/plugin.json`
+
+현재 Codex용 plugin manifest에는 동일한 `skills/` 디렉터리를 연결했다. `agents/` 아래 문서는 여전히 Claude 중심 문서라서 Codex manifest에는 포함하지 않았다.
 
 ## Hook 설치
 
