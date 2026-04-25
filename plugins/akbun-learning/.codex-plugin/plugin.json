@@ -1,7 +1,7 @@
 {
   "name": "akbun-learning",
-  "version": "1.0.4",
-  "description": "Study and learning helpers, starting with English and Japanese practice tools",
+  "version": "1.0.5",
+  "description": "Study and learning helpers — English and Japanese practice tools, plus YouTube transcript walkthroughs in Korean",
   "author": {
     "name": "akbun",
     "url": "https://github.com/choisungwook"
@@ -14,13 +14,15 @@
     "study",
     "english",
     "pronunciation",
-    "japanese"
+    "japanese",
+    "youtube",
+    "transcript"
   ],
   "skills": "./skills/",
   "interface": {
     "displayName": "akbun Learning",
-    "shortDescription": "English and Japanese study helper skills",
-    "longDescription": "Learning support skills for Korean learners, including English pronunciation guidance and Japanese study tooling.",
+    "shortDescription": "English / Japanese study and YouTube transcript walkthrough skills",
+    "longDescription": "Learning support skills for Korean learners — English pronunciation guidance, Japanese study tooling, and a YouTube transcript walkthrough that downloads captions with yt-dlp and produces a Korean markdown report.",
     "developerName": "akbun",
     "category": "Education",
     "capabilities": [
@@ -33,7 +35,8 @@
     "defaultPrompt": [
       "Break down this English sentence for a Korean learner",
       "Turn this Japanese study material into an Anki deck",
-      "Explain the pronunciation and stress in this phrase"
+      "Explain the pronunciation and stress in this phrase",
+      "이 유튜브 영상 자막으로 풀어 설명해줘: <YOUTUBE_URL>"
     ],
     "brandColor": "#2563EB",
     "screenshots": []
