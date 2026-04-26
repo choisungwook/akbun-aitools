@@ -20,16 +20,28 @@ Claude Code marketplace metadata lives in:
 
 ## Codex
 
+Codex plugin 설치 명령어
+
+```bash
+$ codex plugin marketplace add choisungwook/akbun-aitools
+$ vi ~/.codex/config.toml
+[plugins."akbun-learning@akbun-aitools"]
+enabled = true
+
+[plugins."akbun-writing@akbun-aitools"]
+enabled = true
+```
+
+Codex plugin 업그레이드
+
+```bash
+codex plugin marketplace upgrade
+```
+
 Codex plugin metadata lives in:
 
 - `.agents/plugins/marketplace.json`
 - `plugins/<plugin-name>/.codex-plugin/plugin.json`
-
-리포지토리 루트에서 설치 스크립트를 실행하면 `~/plugins`와 `~/.agents/plugins/marketplace.json`을 자동 갱신한다.
-
-```bash
-bash install_codex_plugin.sh
-```
 
 ## Hook 설치
 
