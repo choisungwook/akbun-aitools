@@ -1,6 +1,6 @@
 {
   "name": "akbun-writing",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Writing, review, and blog support skills by akbun",
   "author": {
     "name": "akbun",
@@ -13,7 +13,8 @@
     "writing",
     "blog",
     "review",
-    "korean"
+    "korean",
+    "geo"
   ],
   "skills": "./skills/",
   "interface": {
@@ -32,7 +33,8 @@
     "defaultPrompt": [
       "Write a Korean technical blog post in akbun's style",
       "Review this draft against akbun's writing rules",
-      "Convert this Obsidian markdown post for publishing"
+      "Convert this Obsidian markdown post for publishing",
+      "Add GEO keywords to this blog draft"
     ],
     "brandColor": "#0F766E",
     "screenshots": []
