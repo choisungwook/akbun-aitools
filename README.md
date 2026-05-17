@@ -57,4 +57,4 @@ bash install_claude_hook.sh
 
 | hook | 설명 |
 |---|---|
-| `readonce` | 같은 세션에서 변경되지 않은 파일의 반복 Read를 차단 |
+| `readonce` (deprecated) | 같은 세션에서 변경되지 않은 파일의 반복 Read를 차단 |

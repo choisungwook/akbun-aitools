@@ -2,10 +2,11 @@
 name: akbun-md-to-notion
 description: >
   Transfer an Obsidian markdown file to a Notion "Tasks" database using the
-  Notion MCP. Reads the markdown content, parses YAML frontmatter for metadata,
-  sets database properties (Tags, Start & End Date, Status), and creates a new
-  page with the content. If a page with the same title already exists, asks
-  before overwriting. Use this skill whenever the user mentions Notion in the
+  Notion CLI (`ntn`) first and the Notion MCP as a fallback. Reads the markdown
+  content, parses YAML frontmatter for metadata, skips uploads when the Notion
+  payload hash has not changed, sets database properties (Tags, Start & End
+  Date, Status), and creates or updates the same Notion page using
+  `notion_page_id`. Use this skill whenever the user mentions Notion in the
   context of transferring, uploading, or syncing content — even if they just
   say "send this to Notion" or "노션에 올려줘" without specifying the file format.
   Also triggers when the user wants to create a Notion page from any markdown
@@ -15,6 +16,24 @@ description: >
   involving moving written content into a Notion database.
 allowed-tools:
   - Bash(echo:*)
+  - Bash(pwd:*)
+  - Bash(ls:*)
+  - Bash(cat:*)
+  - Bash(test:*)
+  - Bash(find:*)
+  - Bash(rg:*)
+  - Bash(sed:*)
+  - Bash(awk:*)
+  - Bash(jq:*)
+  - Bash(shasum:*)
+  - Bash(stat:*)
+  - Bash(date:*)
+  - Bash(mktemp:*)
+  - Bash(mkdir:*)
+  - Bash(mv:*)
+  - Bash(cp:*)
+  - Bash(printf:*)
+  - Bash(ntn:*)
   - mcp__notion__notion-search
   - mcp__notion__notion-fetch
   - mcp__notion__notion-create-pages
@@ -26,28 +45,97 @@ allowed-tools:
 
 ## 개요
 
-Notion MCP를 통해 Obsidian markdown 파일을 Notion "Tasks" 데이터베이스로 전송한다.
-Obsidian의 `![[image]]` 문법은 plain text로 유지된다(Notion은 로컬 이미지를 렌더링할 수 없다).
+markdown 파일을 Notion 데이터베이스로 동기화한다. `ntn` CLI로 먼저 시도하고, 실패하면 Notion MCP로 fallback한다.
 
 ## 사전 요구사항
 
-- Codex 또는 Claude Code에 Notion MCP 연결
-- `~/.zshrc`에 `$OBSIDIAN_VAULT` 환경변수 설정
-- `~/.zshrc`에 `$NOTION_TASKS_DATASOURCE_ID` 환경변수 설정
+- `$OBSIDIAN_VAULT` 환경변수 설정.
+- `$NOTION_TASKS_DATASOURCE_ID` 환경변수 설정. 만약 NOTION_TASKS_DATASOURCE_ID가 설정되어 있지 않으면 중단하고, 사용자에게 아래 오류 메세지를 알린다.
 
-## Notion 데이터베이스 정보
+```log
+NOTION_TASKS_DATASOURCE_ID 환경변수가 설정되어 있지 않습니다. 이 스킬을 사용하려면 Notion Tasks 데이터베이스의 datasource ID를 환경변수로 설정해야 합니다.
+```
 
-- 데이터베이스: Tasks
-- Data Source ID: `$NOTION_TASKS_DATASOURCE_ID` 환경변수에서 읽는다
+- (옵션) ntn CLI를 사용하려면 `NOTION_API_TOKEN` 환경변수 설정
+- fallback을 위해 Codex 또는 Claude Code에 Notion MCP 연결
+
+## Notion 도구 사용 우선순위
+
+1. `ntn api` + `NOTION_API_TOKEN`
+  - Codex automation처럼 사람이 자리에 없는 실행은 이 경로를 우선한다.
+  - `NOTION_API_TOKEN`이 있으면 `ntn login`으로 Keychain에 저장된 인증보다 우선한다.
+2. `ntn api` + `ntn login` Keychain 인증
+  - 로컬 수동 실행에서만 사용한다.
+3. Notion MCP
+  - `ntn`이 없거나 인증이 없거나, markdown content replace를 안전하게 수행하기 어렵다면 fallback으로 사용한다.
+
+## Obsidian frontmatter
+
+마크다운에 아래 frontmatter가 있으면, obsidian으로 취급한다. notion과 동기화가 되었는지 기록하는 메타데이터이다.
+
+```yaml
+notion_sync: false
+notion_page_id: ""
+```
+
+- `notion_sync`: 자동화 대상 여부. Codex automation은 `true`인 파일만 동기화한다.
+- `notion_page_id`: 이미 생성된 Notion page를 다시 업데이트할 때 사용하는 고정 ID.
 
 ## 워크플로우
 
-1. Obsidian markdown 파일을 읽는다
-2. YAML frontmatter에서 `name`, `created` 날짜, `tags`를 파싱한다
-3. 동일한 제목의 페이지가 있는지 Notion에서 검색한다
-  - 있으면: 덮어쓰기 전에 사용자에게 확인한다 (`replace_content`로 `notion-update-page` 사용)
-  - 없으면: 새 페이지를 생성한다
-4. 속성과 콘텐츠로 Notion 페이지를 생성/업데이트한다
+1. 입력받은 마크다운 파일을 읽는다.
+2. YAML frontmatter에서 `created` 날짜, `tags`, `notion_sync`, `notion_page_id`가 있으면 해당 frontmatter를 파싱한다.
+4. Notion에 보낼 payload를 만든다.
+  - YAML frontmatter는 콘텐츠에서 제거한다。
+  - `.md` 확장자를 제외한 파일명을 Notion `Name`으로 사용한다。
+  - 속성 payload와 본문 payload를 합쳐 canonical hash를 계산한다。
+5. state 파일의 이전 hash와 같으면 업로드하지 않는다。
+6. `notion_page_id`가 있으면 해당 페이지를 업데이트한다。
+7. `notion_page_id`가 없으면 제목으로 기존 페이지를 검색한다。
+  - 찾으면 해당 page id를 사용한다。
+  - 없으면 새 페이지를 만든다。
+8. 첫 업로드 또는 page id 발견 시 Obsidian frontmatter에 `notion_sync: true`, `notion_page_id`를 설정한다。
+9. 업로드 성공 후 state 파일에 최신 hash, page id, sync time을 저장한다。
+
+## 변경 감지와 state
+
+업로드 전 반드시 Notion payload hash를 계산한다。 hash가 같으면 Notion API/MCP 호출을 하지 않는다。
+
+- hash 입력: Notion 속성 payload + frontmatter를 제거한 markdown 본문 + 줄 바꿈 규칙 적용 결과
+- hash 제외: `notion_sync`, `notion_page_id`, state 파일 값
+- state 위치: `$CODEX_HOME/automations/obsidian-notion-sync/state.json`
+  - `$CODEX_HOME`이 없으면 `~/.codex`를 사용한다.
+- state key: vault 상대 경로
+- state value 예시:
+
+```json
+{
+  "inbox/example.md": {
+    "notion_page_id": "page-id",
+    "last_payload_sha256": "hash",
+    "last_synced_at": "2026-05-17T10:00:00+09:00"
+  }
+}
+```
+
+`notion_page_id`가 이미 있는데 state가 없다면 한 번 업로드해서 Notion과 로컬 상태를 수렴시키고 state를 만든다。
+그 다음 실행부터는 hash가 같으면 업로드하지 않는다。
+
+## 업로드 방식
+
+### 1순위: `ntn api`
+
+- `ntn --version`으로 CLI 존재를 확인한다.
+- `NOTION_API_TOKEN`이 있으면 무인 자동화 경로로 간주한다.
+- `ntn api`로 검색, page 생성, page 속성 업데이트, block children 교체/추가를 수행한다.
+- markdown을 Notion blocks JSON으로 안전하게 변환할 수 없는 경우에는 `ntn` 경로를 실패로 보고 MCP fallback을 사용한다.
+
+### 2순위: Notion MCP fallback
+
+- `notion-search`로 기존 page를 찾는다.
+- 생성은 `notion-create-pages`를 사용한다.
+- 업데이트는 `notion-update-page`의 `replace_content`를 사용한다.
+- 자동화 실행에서는 기존 페이지가 있어도 사용자 확인을 묻지 않는다. `notion_sync: true`가 명시된 파일은 덮어쓰기 승인으로 간주한다.
 
 ## 속성 매핑
 
@@ -105,11 +193,3 @@ code here
 <empty-block/>
 이어지는 내용.
 ```
-
-## 기존 태그 참고
-
-데이터베이스에 이미 있는 공통 태그: AI, aws, Kubernetes, EKS, terraform,
-claude, tools, git, linux, ebpf, Cilium, MLOps, kubeflow, OIDC, oauth,
-security, vpn, skills, notion, blog, study.
-
-새 태그를 만들기보다 기존 태그를 재사용하는 것을 우선한다.
