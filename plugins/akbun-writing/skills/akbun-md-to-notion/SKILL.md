@@ -45,7 +45,7 @@ allowed-tools:
 
 ## 개요
 
-markdown 파일을 Notion 데이터베이스로 동기화한다. `ntn` CLI로 먼저 시도하고, 실패하면 Notion MCP로 fallback한다.
+markdown 파일을 Notion 데이터베이스로 동기화한다.
 
 ## 사전 요구사항
 
@@ -60,6 +60,8 @@ NOTION_TASKS_DATASOURCE_ID 환경변수가 설정되어 있지 않습니다. 이
 - fallback을 위해 Codex 또는 Claude Code에 Notion MCP 연결
 
 ## Notion 도구 사용 우선순위
+
+`ntn` CLI로 먼저 시도하고, 실패하면 Notion MCP로 fallback한다.
 
 1. `ntn api` + `NOTION_API_TOKEN`
   - Codex automation처럼 사람이 자리에 없는 실행은 이 경로를 우선한다.
@@ -78,7 +80,7 @@ notion_sync: false
 notion_page_id: ""
 ```
 
-- `notion_sync`: 자동화 대상 여부. Codex automation은 `true`인 파일만 동기화한다.
+- `notion_sync`: 자동화 대상 여부. true/false상관 없이 notion 업로드가 된 적이 있는 파일은 true로 간주한다. 업로드 성공 시 자동으로 true로 설정한다. false는 한번도 notion에 sync된 적이 없는 파일로 간주한다.
 - `notion_page_id`: 이미 생성된 Notion page를 다시 업데이트할 때 사용하는 고정 ID.
 
 ## 워크플로우
@@ -89,37 +91,11 @@ notion_page_id: ""
   - YAML frontmatter는 콘텐츠에서 제거한다。
   - `.md` 확장자를 제외한 파일명을 Notion `Name`으로 사용한다。
   - 속성 payload와 본문 payload를 합쳐 canonical hash를 계산한다。
-5. state 파일의 이전 hash와 같으면 업로드하지 않는다。
-6. `notion_page_id`가 있으면 해당 페이지를 업데이트한다。
-7. `notion_page_id`가 없으면 제목으로 기존 페이지를 검색한다。
-  - 찾으면 해당 page id를 사용한다。
-  - 없으면 새 페이지를 만든다。
-8. 첫 업로드 또는 page id 발견 시 Obsidian frontmatter에 `notion_sync: true`, `notion_page_id`를 설정한다。
-9. 업로드 성공 후 state 파일에 최신 hash, page id, sync time을 저장한다。
-
-## 변경 감지와 state
-
-업로드 전 반드시 Notion payload hash를 계산한다。 hash가 같으면 Notion API/MCP 호출을 하지 않는다。
-
-- hash 입력: Notion 속성 payload + frontmatter를 제거한 markdown 본문 + 줄 바꿈 규칙 적용 결과
-- hash 제외: `notion_sync`, `notion_page_id`, state 파일 값
-- state 위치: `$CODEX_HOME/automations/obsidian-notion-sync/state.json`
-  - `$CODEX_HOME`이 없으면 `~/.codex`를 사용한다.
-- state key: vault 상대 경로
-- state value 예시:
-
-```json
-{
-  "inbox/example.md": {
-    "notion_page_id": "page-id",
-    "last_payload_sha256": "hash",
-    "last_synced_at": "2026-05-17T10:00:00+09:00"
-  }
-}
-```
-
-`notion_page_id`가 이미 있는데 state가 없다면 한 번 업로드해서 Notion과 로컬 상태를 수렴시키고 state를 만든다。
-그 다음 실행부터는 hash가 같으면 업로드하지 않는다。
+5. `notion_page_id`가 있으면 해당 페이지를 업데이트한다。`notion_page_id`가 없으면 제목으로 기존 페이지를 검색한다。
+  - 찾으면 해당 page id를 사용한다.
+  - 없으면 새 페이지를 만든다.
+6. 첫 업로드 또는 page id 발견 시 Obsidian frontmatter에 `notion_sync: true`, `notion_page_id`를 설정한다。
+7. 업로드 성공 후 state 파일에 최신 hash, page id, sync time을 저장한다。
 
 ## 업로드 방식
 
