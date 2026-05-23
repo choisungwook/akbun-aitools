@@ -1,5 +1,25 @@
 # Changelog
 
+## 2026-05-23 #5
+
+- `akbun-drawio-aws-vpc` 스킬을 기준 이미지 유사도 검증 중심에서 재사용 가능한 AWS VPC 레이아웃 가이드 중심으로 재정리했다.
+- `a.png`는 복제 대상이 아니라 스타일/구조 참고 예시로만 다루도록 명시했다.
+- 사용자가 검증 이미지를 제공하지 않아도 XML 정적 검증, draw.io CLI export, PNG 육안 확인으로 완료할 수 있게 작업 순서를 바꿨다.
+- 일본어 plain text 라벨, 48x48 AWS icon, group nesting, orthogonal edge, full background, Managed Services/VPC Endpoint 배치 규칙을 reference에 추가했다.
+- reference PNG 비교 스크립트를 제거하고, XML 검증 스크립트가 배경, group size, icon size, edge style, plain label 규칙을 검사하도록 수정했다.
+- `akbun-writing` plugin manifest 버전을 `1.0.8`로 올렸다.
+
+## 2026-05-23 #4
+
+- `akbun-drawio-aws-vpc` 스킬 추가: draw.io Desktop CLI와 AWS icon pack으로 AWS VPC 아키텍처 XML을 만들고 PNG로 export한다.
+- 공식 draw.io XML/CLI 문서에서 필요한 내용만 한국어 reference로 정리했다.
+- XML 검증, CLI export, PNG 유사도 비교 스크립트와 AWS VPC 템플릿을 추가했다.
+- 사용자 기준 PNG와 비교하는 검증 게이트를 필수화하고 self-compare를 실패 처리한다.
+- `a.png` 기준 구조에 맞춰 multi-AZ AWS VPC 템플릿을 보강하고, foreground 기반 유사도 점수로 검증했다.
+- 번호 동그라미와 Route53을 제거하고, 같은 subnet 내부 컴포넌트의 위쪽 정렬/동일 크기, 직선 화살표, 라벨 겹침 방지 규칙을 추가했다.
+- 기존 기준 PNG에서 의도적으로 제거한 영역만 제외하는 `--ignore-rect` 비교 옵션과 draw.io 렌더링 오차용 `--tolerance` 옵션을 추가하고 95% 검증 기준으로 상향했다.
+- `akbun-writing` plugin manifest 버전을 `1.0.7`로 올렸다.
+
 ## 2026-05-17 #3
 
 - `akbun-md-to-notion` 스킬을 `ntn api` 우선, Notion MCP fallback 구조로 정리했다.

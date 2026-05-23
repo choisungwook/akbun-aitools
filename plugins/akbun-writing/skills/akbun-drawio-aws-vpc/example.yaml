@@ -1,0 +1,70 @@
+diagram:
+  title: Basic AWS Multi VPC
+  output_name: basic-aws-multi-vpc
+
+vpcs:
+- id: service-vpc
+  name: Service VPC
+  cidr: 10.0.0.0/16
+  azs:
+  - id: a
+    name: Availability Zone A
+  - id: b
+    name: Availability Zone B
+  internet_gateway:
+    enabled: true
+  nat_gateway:
+    enabled: true
+    placement: per_public_subnet
+  subnet_tiers:
+  - name: public
+    label: Public Subnet
+    subnets:
+    - name: Public Subnet A
+      az: a
+      cidr: 10.0.1.0/24
+    - name: Public Subnet B
+      az: b
+      cidr: 10.0.2.0/24
+  - name: application
+    label: Application Subnet
+    subnets:
+    - name: Application Subnet A
+      az: a
+      cidr: 10.0.11.0/24
+    - name: Application Subnet B
+      az: b
+      cidr: 10.0.12.0/24
+  - name: db
+    label: DB Subnet
+    subnets:
+    - name: DB Subnet A
+      az: a
+      cidr: 10.0.21.0/24
+    - name: DB Subnet B
+      az: b
+      cidr: 10.0.22.0/24
+
+- id: network-vpc
+  name: Network VPC
+  cidr: 10.10.0.0/16
+  azs:
+  - id: a
+    name: Availability Zone A
+  - id: b
+    name: Availability Zone B
+  internet_gateway:
+    enabled: false
+  nat_gateway:
+    enabled: false
+    placement: per_public_subnet
+  subnet_tiers:
+  - name: private
+    label: Private Subnet
+    subnets:
+    - name: Private Subnet A
+      az: a
+      cidr: 10.10.11.0/24
+    - name: Private Subnet B
+      az: b
+      cidr: 10.10.12.0/24
