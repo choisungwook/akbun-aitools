@@ -1,6 +1,6 @@
 {
   "name": "akbun-writing",
-  "version": "1.0.6",
+  "version": "1.0.8",
   "description": "Writing, review, and blog support skills by akbun",
   "author": {
     "name": "akbun",
@@ -14,13 +14,15 @@
     "blog",
     "review",
     "korean",
-    "geo"
+    "geo",
+    "drawio",
+    "architecture"
   ],
   "skills": "./skills/",
   "interface": {
     "displayName": "akbun Writing",
     "shortDescription": "Korean writing and blog support skills",
-    "longDescription": "Writing, review, hands-on, and publishing skills for Korean technical documents and blog posts in akbun's working style.",
+    "longDescription": "Writing, review, hands-on, publishing, and draw.io architecture diagram skills for Korean technical documents and blog posts in akbun's working style.",
     "developerName": "akbun",
     "category": "Writing",
     "capabilities": [
@@ -34,7 +36,8 @@
       "Write a Korean technical blog post in akbun's style",
       "Review this draft against akbun's writing rules",
       "Convert this Obsidian markdown post for publishing",
-      "Add GEO keywords to this blog draft"
+      "Add GEO keywords to this blog draft",
+      "Create a draw.io AWS VPC architecture diagram"
     ],
     "brandColor": "#0F766E",
     "screenshots": []

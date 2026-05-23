@@ -1,0 +1,4 @@
+interface:
+  display_name: "akbun draw.io AWS VPC"
+  short_description: "draw.io CLI로 AWS VPC subnet 기초 다이어그램 생성"
+  default_prompt: "Use $akbun-drawio-aws-vpc to create a draw.io AWS VPC subnet foundation diagram with AWS icons, AZ dashed containers, CIDR labels, optional IGW/NAT Gateway, and local CLI export validation."
