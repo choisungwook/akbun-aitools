@@ -1,0 +1,42 @@
+cluster:
+  name: k3s
+
+entrypoint:
+  actors:
+    - id: web
+      label: Web user
+    - id: mobile
+      label: Mobile app
+  lb:
+    name: k3s ingress/LB
+    location: in_cluster
+    domains:
+      - app.example.com
+      - mobile.example.com
+  ingress_controller:
+    enabled: true
+    name: nginx ingress controller
+
+services:
+  - id: chatbot
+    name: chatbotui service
+    target:
+      type: deployment
+      name: chatbotui deployment
+      draw_pod: false
+    branches:
+      - label: Shopping Assistant
+        target:
+          type: deployment
+          name: RAG application deployment
+          draw_pod: false
+        calls:
+          - type: statefulset
+            name: qdrant sts
+          - type: external
+            name: OpenAI model
+      - label: Loyalty program
+        target:
+          type: deployment
+          name: Fine-tuned model deployment
+          draw_pod: false

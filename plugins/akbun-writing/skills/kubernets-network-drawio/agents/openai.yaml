@@ -1,0 +1,4 @@
+interface:
+  display_name: "Kubernetes 네트워크 Draw.io"
+  short_description: "Kubernetes 서비스 네트워크 다이어그램 생성"
+  default_prompt: "$kubernets-network-drawio를 사용해 자연어, 사진, YAML 입력을 Kubernetes 서비스 네트워크 draw.io 다이어그램과 PNG로 변환하세요."
