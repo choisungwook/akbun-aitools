@@ -1,5 +1,50 @@
 # Changelog
 
+## 2026-05-25 #10
+
+- `kubernets-network-drawio` 스킬의 YAML 설명을 정정했다.
+- YAML 입력은 `example.yaml`을 읽는 것이 아니라, 사용자가 넘긴 YAML 파일 또는 YAML 형식 텍스트를 읽도록 명확히 했다.
+- `example.yaml`은 실제 입력이 아니라 작성 예시로만 참고한다고 정리했다.
+- `akbun-writing` plugin manifest 버전을 마지막 버전 `1.0.8`에서 `1.0.9`로 올렸다.
+
+## 2026-05-25 #9
+
+- `kubernets-network-drawio` 스킬에서 어색한 한국어 기술 용어를 자연스러운 영어 표현으로 정리했다.
+- `작업 루프`를 `Workflow`로 바꾸고, `topology`, `export`, `validation`, `assumptions`, `boundary`, `external system` 표현을 사용하도록 조정했다.
+- `akbun-writing` plugin manifest 버전을 마지막 버전 `1.0.7`에서 `1.0.8`로 올렸다.
+
+## 2026-05-25 #8
+
+- `kubernets-network-drawio` 스킬 본문을 한국어 중심으로 변경했다.
+- `agents/openai.yaml` 표시 이름, 짧은 설명, 기본 프롬프트를 한국어로 변경했다.
+- 이전에 고정한 frontmatter `description: draw kubernetes network with draw.io`는 유지했다.
+- `akbun-writing` plugin manifest 버전을 마지막 버전 `1.0.6`에서 `1.0.7`로 올렸다.
+
+## 2026-05-25 #7
+
+- `kubernets-network-drawio` 스킬을 `grill-with-docs` 스타일처럼 `<what-to-do>`와 `<supporting-info>` 구조로 다듬었다.
+- 자연어, 사진, YAML, 기존 draw.io 입력을 모두 topology로 통합하고, 가능한 경우 파일 생성까지 진행하도록 운영 루프를 정리했다.
+- 입력이 불완전해도 보수적 가정과 `확인 필요`를 분리해 다이어그램 생성을 막지 않도록 ambiguity 처리 규칙을 추가했다.
+- `agents/openai.yaml` 기본 프롬프트에 자연어, 사진, YAML 입력을 반영했다.
+
+## 2026-05-25 #6
+
+- `kubernets-network-drawio` 스킬의 입력 모드를 자연어, 사진, YAML로 명확히 했다.
+- 사진 입력 시 topology와 레이아웃을 해석하고, 불명확한 텍스트나 edge 방향은 `확인 필요`로 묻도록 규칙을 추가했다.
+- 기본 산출물 위치를 `~/Downloads/<name>.drawio`와 `~/Downloads/<name>.drawio.png`로 명시했다.
+
+## 2026-05-25 #5
+
+- `kubernets-network-drawio` 스킬의 YAML 입력을 선택 사항으로 명확히 하고 `example.yaml`을 추가했다.
+- workload가 지정되면 Pod를 생략할 수 있도록 intake, 레이아웃 규칙, 검증 스크립트를 수정했다.
+- ingress controller 이름, 여러 actor 구분, LB domain 매핑 규칙을 추가했다.
+
+## 2026-05-24 #4
+
+- `kubernets-network-drawio` 스킬 추가: draw.io Desktop CLI로 Kubernetes 서비스 네트워크 아키텍처를 `.drawio`로 만들고 PNG/SVG/PDF로 export한다.
+- 외부 호출 `User -> LB -> optional ingress controller -> Service -> Pod` 흐름과 Pod 외부 호출을 그리는 레이아웃 규칙을 추가했다.
+- draw.io 공식 XML validation checklist를 반영한 정적 검증 스크립트와 기준 템플릿을 추가했다.
+
 ## 2026-05-23 #5
 
 - `akbun-drawio-aws-vpc` 스킬을 기준 이미지 유사도 검증 중심에서 재사용 가능한 AWS VPC 레이아웃 가이드 중심으로 재정리했다.
