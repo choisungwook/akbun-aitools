@@ -48,7 +48,7 @@ what 질문은 메모만 해두고, why와 what-if 질문을 question 노트로 
 
 노트를 생성하기 전에 사용자에게 저장 경로를 묻는다. 사용자가 응답하지 않거나 경로를 지정하지 않으면 `~/Downloads/{YYMMDDhh}-questions-byakbun.md`에 생성한다. 예: `26041014-questions-byakbun.md`
 
-프로젝트의 CLAUDE.md나 템플릿에 저장 경로나 frontmatter 규칙이 정의되어 있으면 그것을 우선한다.
+프로젝트의 AGENTS.md, `.ai/context.md`, 템플릿에 저장 경로나 frontmatter 규칙이 정의되어 있으면 그것을 우선한다.
 
 ## question 노트 구조
 

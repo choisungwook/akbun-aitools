@@ -2,10 +2,10 @@
 
 When writing or editing any of these files:
 
-- `CLAUDE.md`
-- `.claude/rules/*.md`
-- `.claude/skills/*/SKILL.md`
-- `.claude/agents/*.md`
+- `AGENTS.md`
+- `.ai/context.md`
+- `plugins/*/skills/*/SKILL.md`
+- `plugins/*/agents/*.md`
 
 If the content includes negative language such as `never`, `don't`, `do not`, `must not`, `should not`, `avoid`, `prohibited` — stop and do the following:
 
