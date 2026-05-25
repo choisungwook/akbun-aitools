@@ -1,6 +1,5 @@
 ---
 name: akbun-hands-on
-description: "Generate short, terse, bullet-heavy hands-on markdown skeletons for akbun's GitHub repos. This is the first stage of a 2-step workflow: akbun-hands-on writes the skeleton (commands, environment, steps, verification), then akbun-writing later expands it with personal narrative, failures, team context, and reflection — like turning a screenplay into a movie. Make sure to use this skill whenever the user asks for a hands-on document, lab guide, practice note, reproducible step-by-step markdown, github 실습 문서, 핸즈온 뼈대, 실습 뼈대, skeleton markdown, or 각본, even if they don't explicitly say 'skeleton'. Also trigger when the user says things like '명령어 위주로 짧게 정리해줘', 'github에 올릴 실습 노트 만들어줘', '핸즈온 초안', or any request where the user wants a concise command-first markdown that another skill will flesh out later. Trigger keywords: '핸즈온 뼈대', 'hands-on 뼈대', 'akbun 핸즈온', '실습 뼈대', '실습 문서', '핸즈온 문서', '핸즈온 초안', '각본', 'github 실습', 'skeleton', 'lab guide', 'practice notes'."
 ---
 
 # akbun 스타일 hands-on 뼈대

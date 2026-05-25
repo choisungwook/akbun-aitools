@@ -1,6 +1,5 @@
 ---
 name: akbun-make-anki-japanese
-description: "Convert photos or PDFs of Japanese words and sentences into an Anki deck (.apkg) for a Korean beginner learner. Takes one or more screenshot images and/or a PDF containing Japanese vocabulary or example sentences, extracts each item, and generates an Anki package where the front shows the Japanese (kanji/kana) with built-in Anki TTS audio and the back shows hiragana reading + Korean meaning. Saves the deck to ~/anki-jp-{timestamp}.apkg. Trigger on: '일본어 사진', '일본어 스크린샷', '일본어 pdf', '일본어 단어', '일본어 문장', 'anki 만들어', '앙키 덱', '일본어 단어장', 'japanese photo to anki', 'japanese screenshot to anki', 'japanese pdf to anki', or any request to turn photos/PDFs of Japanese words or sentences into an Anki import file. Use this skill whenever the user provides Japanese images or PDFs and wants flashcards — even if they don't explicitly say 'Anki'."
 ---
 
 # Akbun Make Anki (Japanese)

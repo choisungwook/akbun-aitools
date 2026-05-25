@@ -1,11 +1,5 @@
 ---
 name: akbun-markdown-to-html-pandoc
-description: >
-  Obsidian markdown을 pandoc으로 HTML로 변환한다. Tistory 같은 블로그 플랫폼에 업로드할 때 사용한다.
-  Obsidian 이미지 문법(![[...]])은 plain text 마커로 보존되어 수동으로 이미지를 삽입할 위치를 알 수 있다.
-  헤더, 코드 블록 등 일반 markdown 요소는 정상적으로 HTML로 변환된다.
-  Triggers on: "markdown to html", "pandoc convert", "tistory", "obsidian to html",
-  "blog upload", "블로그 업로드", "HTML 변환", "마크다운 변환".
 allowed-tools:
   - Read
 ---
