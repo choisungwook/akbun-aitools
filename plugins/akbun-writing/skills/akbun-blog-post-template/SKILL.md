@@ -1,6 +1,5 @@
 ---
 name: blog-post-template
-description: "기술 블로그 포스트의 문서틀(목차, 공부 배경, 결론, 참고자료 등)을 생성한다. 글의 구조와 섹션 순서를 정의하는 템플릿 스킬. Trigger on: '문서틀', '블로그 템플릿', '글 구조', 'post template', 'blog template', '목차 만들어줘', '글 틀 잡아줘', or any request to create a blog post structure or template."
 ---
 
 # Blog Post Template

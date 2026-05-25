@@ -1,19 +1,5 @@
 ---
 name: akbun-md-to-notion
-description: >
-  Transfer an Obsidian markdown file to a Notion "Tasks" database using the
-  Notion CLI (`ntn`) first and the Notion MCP as a fallback. Reads the markdown
-  content, parses YAML frontmatter for metadata, skips uploads when the Notion
-  payload hash has not changed, sets database properties (Tags, Start & End
-  Date, Status), and creates or updates the same Notion page using
-  `notion_page_id`. Use this skill whenever the user mentions Notion in the
-  context of transferring, uploading, or syncing content — even if they just
-  say "send this to Notion" or "노션에 올려줘" without specifying the file format.
-  Also triggers when the user wants to create a Notion page from any markdown
-  content. Triggers on: "notion", "send to notion", "md to notion",
-  "obsidian to notion", "transfer to notion", "sync to notion", "upload to notion",
-  "노션", "노션에 보내줘", "노션에 올려줘", "노션 페이지 만들어줘", or any request
-  involving moving written content into a Notion database.
 allowed-tools:
   - Bash(echo:*)
   - Bash(pwd:*)

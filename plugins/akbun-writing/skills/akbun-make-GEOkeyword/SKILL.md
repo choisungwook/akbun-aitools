@@ -1,6 +1,5 @@
 ---
 name: akbun-make-GEOkeyword
-description: "기술 블로그 초안이나 마크다운 문서를 읽고 GEO(Generative Engine Optimization)를 위해 AI가 답변에 가져가기 쉬운 상단 요약 키워드 블록을 만든다. Trigger on: 'GEO 키워드', 'AI 검색 키워드', 'AI web search', 'AI가 답변에 가져가기 쉬운 구조', '이 글에서 알 수 있는 것', '주요 키워드', '검색 최적화 키워드', 'GEOkeyword', or any request to add concise discovery keywords and reader-intent bullets to a blog post."
 allowed-tools:
   - Read
   - Edit

@@ -1,6 +1,5 @@
 ---
 name: akbun-learning-english
-description: "English pronunciation and reading guide for Korean learners. Provide Korean approximation pronunciation (한국어 발음), stress/accent marks, chunked reading, direct translation (직독직해), and pronunciation tips for English words, sentences, or paragraphs. Use this skill when the user provides English text and asks for pronunciation help, reading guidance, accent/stress marking, Korean phonetic transcription, or English study assistance. Trigger on: English sentences or paragraphs with requests like '발음', '읽기', '번역', 'pronunciation', 'how to read', '영어 공부', '영어 문장', '끊어 읽기', '악센트', '강세', or any request to break down English text for a Korean learner."
 ---
 
 # Learning English - Pronunciation Guide for Korean Learners

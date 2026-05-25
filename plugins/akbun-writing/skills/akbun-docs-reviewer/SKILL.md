@@ -1,16 +1,5 @@
 ---
 name: akbun-docs-reviewer
-description: >
-  Review and improve Korean technical documentation (markdown, Terraform HCL) for
-  clarity, consistency, and readability. Acts as a technical writer and editor:
-  fixes grammar, standardizes terminology casing (eBPF, cilium, kubernetes, MetalLB, etc.),
-  enforces markdown conventions, checks for header/bold/backtick overuse, and simplifies
-  complex sentences for beginner-friendly reading. Use this skill whenever the user asks
-  to review, proofread, edit, or polish any technical document — including blog posts,
-  README files, runbooks, and infrastructure docs. Triggers on: 'review', 'proofread',
-  '리뷰', '교정', '문서 검토', '문서 리뷰', 'check my docs', 'edit markdown',
-  'fix my writing', '글 다듬어줘', '문서 수정', '기술 문서', 'technical writing',
-  or any request to improve the quality of written technical content in Korean.
 ---
 
 # 기술 문서 리뷰

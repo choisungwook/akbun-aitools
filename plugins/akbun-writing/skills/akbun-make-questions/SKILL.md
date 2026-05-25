@@ -1,6 +1,5 @@
 ---
 name: akbun-make-questions
-description: "기술 노트를 읽고 질문을 생성하거나, 열린 질문을 관리한다. Trigger on: '질문 만들어줘', '질문 생성', 'generate questions', '궁금한 점', '더 공부할 것', '질문 정리', 'question from note', or any request to create study questions from technical content."
 allowed-tools:
   - Read
   - Write
