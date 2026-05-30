@@ -1,7 +1,7 @@
 {
   "name": "akbun-learning",
-  "version": "1.0.6",
-  "description": "Study and learning helpers — English and Japanese practice tools, plus YouTube transcript walkthroughs in Korean",
+  "version": "1.0.7",
+  "description": "Study and learning helpers — English and Japanese practice tools, plus YouTube transcript Markdown conversion",
   "author": {
     "name": "akbun",
     "url": "https://github.com/choisungwook"
@@ -21,8 +21,8 @@
   "skills": "./skills/",
   "interface": {
     "displayName": "akbun Learning",
-    "shortDescription": "English / Japanese study and YouTube transcript walkthrough skills",
-    "longDescription": "Learning support skills for Korean learners — English pronunciation guidance, Japanese study tooling, and a YouTube transcript walkthrough that downloads captions with yt-dlp and produces a Korean markdown report.",
+    "shortDescription": "English / Japanese study and YouTube transcript Markdown skills",
+    "longDescription": "Learning support skills for Korean learners — English pronunciation guidance, Japanese study tooling, and a YouTube transcript workflow that downloads captions with yt-dlp and converts them into a Markdown script.",
     "developerName": "akbun",
     "category": "Education",
     "capabilities": [
@@ -36,7 +36,7 @@
       "Break down this English sentence for a Korean learner",
       "Turn this Japanese study material into an Anki deck",
       "Explain the pronunciation and stress in this phrase",
-      "이 유튜브 영상 자막으로 풀어 설명해줘: <YOUTUBE_URL>"
+      "이 유튜브 영상 자막을 Markdown 대본으로 옮겨줘: <YOUTUBE_URL>"
     ],
     "brandColor": "#2563EB",
     "screenshots": []
