@@ -1,5 +1,6 @@
 ---
 name: akbun-md-to-notion
+description: Use when a task involves Notion work such as syncing Markdown or Obsidian files, creating or updating pages, replacing page content, or verifying Notion sync via ntn CLI or Notion MCP.
 allowed-tools:
   - Bash(echo:*)
   - Bash(pwd:*)
