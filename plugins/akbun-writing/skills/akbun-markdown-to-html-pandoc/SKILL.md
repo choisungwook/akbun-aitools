@@ -1,5 +1,6 @@
 ---
 name: akbun-markdown-to-html-pandoc
+description: "Markdown을 블로그에 업로드하기 위해 HTML로 변환할 때만 사용한다."
 allowed-tools:
   - Read
 ---
