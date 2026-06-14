@@ -1,8 +1,14 @@
 ---
 name: akbun-docs-reviewer
+description: "Use only when the user explicitly asks to inspect or review an existing Korean technical document against akbun style or akbun document rules."
 ---
 
 # 기술 문서 리뷰
+
+## 호출 범위
+
+- 사용자가 기존 한국어 기술 문서를 akbun style 기준으로 검사하거나 리뷰해 달라고 명시적으로 요청할 때만 사용한다
+- 새 글 작성, 일반 맞춤법 검사, 번역, 요약, Markdown 변환, Notion 동기화에는 사용하지 않는다
 
 ## 역할
 
