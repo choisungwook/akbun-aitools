@@ -23,20 +23,34 @@ Claude Code marketplace metadata lives in:
 Codex plugin 설치 명령어
 
 ```bash
-$ codex plugin marketplace add choisungwook/akbun-aitools
-$ vi ~/.codex/config.toml
-[plugins."akbun-learning@akbun-aitools"]
-enabled = true
-
-[plugins."akbun-writing@akbun-aitools"]
-enabled = true
+codex plugin marketplace add choisungwook/akbun-aitools --json
+codex plugin add akbun-learning@akbun-aitools --json
+codex plugin add akbun-writing@akbun-aitools --json
 ```
 
 Codex plugin 업그레이드
 
+아래 예시는 `akbun-writing` 기준이다. 다른 plugin은 plugin selector만 바꾼다.
+
+옵션 1: marketplace snapshot을 먼저 갱신하고 plugin을 다시 추가한다. 일반적인 업데이트에는 이 방법을 우선 사용한다.
+
 ```bash
-codex plugin marketplace upgrade
+codex plugin marketplace upgrade akbun-aitools --json
+codex plugin add akbun-writing@akbun-aitools --json
 ```
+
+- 장점: 설치 상태를 크게 흔들지 않고 최신 marketplace 기준으로 plugin을 다시 맞춘다.
+- 단점: 기존 설치 상태(에: 캐시)가 꼬여 있으면 문제가 남을 수 있다.
+
+옵션 2: 기존 plugin을 제거한 뒤 다시 추가한다. 설치 상태가 꼬였거나 옵션 1로 반영되지 않을 때 사용한다.
+
+```bash
+codex plugin remove akbun-writing@akbun-aitools --json
+codex plugin add akbun-writing@akbun-aitools --json
+```
+
+- 장점: plugin cache와 local config를 깨끗하게 다시 만든다.
+- 단점: 기존 plugin 설정이 제거될 수 있다.
 
 Codex plugin metadata lives in:
 
