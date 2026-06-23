@@ -1,6 +1,6 @@
 {
   "name": "akbun-writing",
-  "version": "1.0.13",
+  "version": "1.0.14",
   "description": "Writing, review, and blog support skills by akbun",
   "author": {
     "name": "akbun",
@@ -34,6 +34,7 @@
     "termsOfServiceURL": "https://docs.github.com/en/site-policy/github-terms/github-terms-of-service",
     "defaultPrompt": [
       "Write a Korean technical blog post in akbun's style",
+      "Write an akbun-style study post driven by questions",
       "Review this draft against akbun's writing rules",
       "Convert this Obsidian markdown post for publishing",
       "Add GEO keywords to this blog draft",

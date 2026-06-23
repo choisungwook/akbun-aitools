@@ -13,3 +13,4 @@ akbun-writing은 한국어 기술 글쓰기, 문서 리뷰, 블로그 업로드,
 - 확인 필요: 가정으로 처리하기 어렵거나 다음 작업자가 다시 확인해야 하는 불확실성을 표시하는 말이다.
 - Notion sync: Markdown to Notion은 CLI(`ntn`)를 우선하고 MCP를 fallback으로 둔다. `notion_sync`와 payload hash로 반복 업로드를 줄인다.
 - language study blog: 영어공부/일본어공부 정리 요청에만 쓰는 일기형 학습 기록이다. 일반 기술 블로그, 발음, 번역, 게시/업로드 요청과 구분한다.
+- question style(질문식): "질문이 글을 끌고 간다"는 골격으로 쓰는 akbun 공부 정리 글이다. `도입 훅(상황 + 관통 질문) -> 질문으로 여는 섹션 -> 마무리 종합` 흐름으로 궁금증을 유발해 끝까지 읽히게 한다. 인터뷰·대담이 아니라 글쓴이 한 명의 정리이며, 화자를 지어내지 않는다. 질문은 why·what-if로 잡는다. self-contained skill: `akbun-writing-with-question`(톤·포맷 규칙을 자체 포함).
