@@ -84,7 +84,7 @@ Codex 쪽은 우선 JSON 유효성과 경로 일관성을 확인한다:
 기존 plugin 내용을 수정해 다시 배포할 때 순서:
 
 1. 해당 plugin root 아래 리소스 수정
-2. 필요하면 양쪽 manifest 버전도 같이 증가
+2. 양쪽 manifest 버전을 항상 같이 증가시킨다 (필수). skill/agent 추가·수정·삭제는 모두 버전 업데이트 대상이다. 기본은 patch 증가
 
 수정 대상:
 
@@ -93,8 +93,8 @@ plugins/<plugin-name>/.claude-plugin/plugin.json
 plugins/<plugin-name>/.codex-plugin/plugin.json
 ```
 
-3. marketplace description/category가 바뀌면 해당 marketplace 파일도 함께 수정
-4. 검증 후 커밋, push
+1. marketplace description/category가 바뀌면 해당 marketplace 파일도 함께 수정
+2. 검증 후 커밋, push
 
 Claude 사용자 반영 방식:
 
