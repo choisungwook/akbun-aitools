@@ -1,6 +1,6 @@
 {
   "name": "akbun-writing",
-  "version": "1.0.16",
+  "version": "1.0.17",
   "description": "Writing, review, and blog support skills by akbun",
   "author": {
     "name": "akbun",
@@ -35,6 +35,7 @@
     "defaultPrompt": [
       "Write a Korean technical blog post in akbun's style",
       "Write an akbun-style study post driven by questions",
+      "Write an akbun-style post in 설득식/persuasive form (악분설득스타일)",
       "Review this draft against akbun's writing rules",
       "Convert this Obsidian markdown post for publishing",
       "Add GEO keywords to this blog draft",
