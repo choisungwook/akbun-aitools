@@ -2,7 +2,53 @@
 
 akbun tools for both Claude Code and Codex plugin workflows.
 
-## Claude Code
+## plugin 목록
+
+설치 가능한 plugin과 각 plugin이 제공하는 skill이다. plugin이나 skill을 추가/삭제하면 이 목록도 함께 갱신한다(`AGENTS.md`의 플러그인 변경 규칙 참고).
+
+### akbun-writing
+
+글쓰기, 리뷰, 블로그 발행, 다이어그램 지원 skill 모음.
+
+| skill | 설명 |
+|---|---|
+| [akbun-writing](./plugins/akbun-writing/skills/akbun-writing/) | akbun 스타일 한국어 기술 블로그 작성·확장 |
+| [akbun-writing-with-question](./plugins/akbun-writing/skills/akbun-writing-with-question/) | 질문 기반 akbun 스타일 학습형 블로그 작성 |
+| [akbun-blog-post-template](./plugins/akbun-writing/skills/akbun-blog-post-template/) | 기술 블로그 포스트 문서틀(목차·구조) 생성 |
+| [akbun-hands-on](./plugins/akbun-writing/skills/akbun-hands-on/) | GitHub 실습용 명령어 위주 핸즈온 뼈대(각본) 작성 |
+| [akbun-make-questions](./plugins/akbun-writing/skills/akbun-make-questions/) | 기술 노트에서 학습 질문 생성·관리 |
+| [akbun-docs-reviewer](./plugins/akbun-writing/skills/akbun-docs-reviewer/) | 한국어 기술 문서 교정·용어 표기 표준화 리뷰 |
+| [akbun-make-GEOkeyword](./plugins/akbun-writing/skills/akbun-make-GEOkeyword/) | 블로그 초안에 GEO 키워드 추가 |
+| [akbun-markdown-to-html-pandoc](./plugins/akbun-writing/skills/akbun-markdown-to-html-pandoc/) | Obsidian markdown을 pandoc으로 HTML 변환(블로그 업로드) |
+| [akbun-md-to-notion](./plugins/akbun-writing/skills/akbun-md-to-notion/) | Obsidian markdown을 Notion Tasks DB로 전송 |
+| [akbun-learning-language-blog](./plugins/akbun-writing/skills/akbun-learning-language-blog/) | 언어공부 노트를 일기형 학습 기록으로 정리 |
+| [akbun-drawio-aws-vpc](./plugins/akbun-writing/skills/akbun-drawio-aws-vpc/) | draw.io로 AWS VPC 기초 다이어그램 생성 |
+| [kubernets-network-drawio](./plugins/akbun-writing/skills/kubernets-network-drawio/) | draw.io로 Kubernetes 네트워크 다이어그램 생성 |
+| [akbun-generateimage-code](./plugins/akbun-writing/skills/akbun-generateimage-code/) | 코드 설명용 블로그 figure의 이미지 생성 프롬프트 작성 |
+| [akbun-repo-relation-sketch](./plugins/akbun-writing/skills/akbun-repo-relation-sketch/) | 여러 git repo 연관관계를 손그림 다이어그램으로 시각화 |
+
+아래는 `akbun-repo-relation-sketch`로 만든 예시다. 여러 git repo·모듈의 연관관계를 핵심 키워드 화살표가 달린 손그림 다이어그램으로 시각화한다.
+
+<p align="center">
+  <img src="./imgs/akbun-repo-relation-sketch.png"
+       alt="gpu_node/terraform이 vpc·eks 모듈을 사용하는 연관관계를 손그림 다이어그램으로 표현한 예시"
+       width="480">
+</p>
+
+### akbun-learning
+
+언어·학습 보조 skill 모음.
+
+| skill | 설명 |
+|---|---|
+| [akbun-describe-youtube-transcript](./plugins/akbun-learning/skills/akbun-describe-youtube-transcript/) | 유튜브 자막을 한국어 보고서로 정리 |
+| [akbun-learning-english](./plugins/akbun-learning/skills/akbun-learning-english/) | 한국어 학습자용 영어 발음·읽기 가이드 |
+| [akbun-learning-japanese](./plugins/akbun-learning/skills/akbun-learning-japanese/) | 한국어 학습자용 일본어 발음·읽기 가이드 |
+| [akbun-make-anki-japanese](./plugins/akbun-learning/skills/akbun-make-anki-japanese/) | 일본어 교재 이미지/PDF를 Anki 덱으로 변환 |
+
+## 설치 방법
+
+### Claude Code
 
 Claude Code marketplace metadata lives in:
 
@@ -18,7 +64,7 @@ Claude Code marketplace metadata lives in:
 /reload-plugins
 ```
 
-## Codex
+### Codex
 
 Codex plugin 설치 명령어
 
@@ -57,7 +103,7 @@ Codex plugin metadata lives in:
 - `.agents/plugins/marketplace.json`
 - `plugins/<plugin-name>/.codex-plugin/plugin.json`
 
-## Hook 설치
+### Hook 설치
 
 plugin이 아닌 hook 방식으로 배포되는 도구는 GitHub Release에서 다운로드하여 설치한다.
 
