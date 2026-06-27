@@ -19,10 +19,8 @@ akbun tools for both Claude Code and Codex plugin workflows.
 | [akbun-hands-on](./plugins/akbun-writing/skills/akbun-hands-on/) | GitHub 실습용 명령어 위주 핸즈온 뼈대(각본) 작성 |
 | [akbun-make-questions](./plugins/akbun-writing/skills/akbun-make-questions/) | 기술 노트에서 학습 질문 생성·관리 |
 | [akbun-docs-reviewer](./plugins/akbun-writing/skills/akbun-docs-reviewer/) | 한국어 기술 문서 교정·용어 표기 표준화 리뷰 |
-| [akbun-make-GEOkeyword](./plugins/akbun-writing/skills/akbun-make-GEOkeyword/) | 블로그 초안에 GEO 키워드 추가 |
 | [akbun-markdown-to-html-pandoc](./plugins/akbun-writing/skills/akbun-markdown-to-html-pandoc/) | Obsidian markdown을 pandoc으로 HTML 변환(블로그 업로드) |
 | [akbun-md-to-notion](./plugins/akbun-writing/skills/akbun-md-to-notion/) | Obsidian markdown을 Notion Tasks DB로 전송 |
-| [akbun-learning-language-blog](./plugins/akbun-writing/skills/akbun-learning-language-blog/) | 언어공부 노트를 일기형 학습 기록으로 정리 |
 | [akbun-drawio-aws-vpc](./plugins/akbun-writing/skills/akbun-drawio-aws-vpc/) | draw.io로 AWS VPC 기초 다이어그램 생성 |
 | [kubernets-network-drawio](./plugins/akbun-writing/skills/kubernets-network-drawio/) | draw.io로 Kubernetes 네트워크 다이어그램 생성 |
 | [akbun-generateimage-code](./plugins/akbun-writing/skills/akbun-generateimage-code/) | 코드 설명용 블로그 figure의 이미지 생성 프롬프트 작성 |
@@ -77,45 +75,29 @@ codex plugin add akbun-writing@akbun-aitools --json
 
 Codex plugin 업그레이드
 
-아래 예시는 `akbun-writing` 기준이다. 다른 plugin은 plugin selector만 바꾼다.
+Codex에게 요청할 프롬프트
 
-옵션 1: marketplace snapshot을 먼저 갱신하고 plugin을 다시 추가한다. 일반적인 업데이트에는 이 방법을 우선 사용한다.
-
-```bash
-codex plugin marketplace upgrade akbun-aitools --json
-codex plugin add akbun-writing@akbun-aitools --json
+```text
+akbun-aitools Codex plugin을 hard reset하세요.
 ```
 
-- 장점: 설치 상태를 크게 흔들지 않고 최신 marketplace 기준으로 plugin을 다시 맞춘다.
-- 단점: 기존 설치 상태(에: 캐시)가 꼬여 있으면 문제가 남을 수 있다.
-
-옵션 2: 기존 plugin을 제거한 뒤 다시 추가한다. 설치 상태가 꼬였거나 옵션 1로 반영되지 않을 때 사용한다.
+Hard reset 명령어
 
 ```bash
 codex plugin remove akbun-writing@akbun-aitools --json
-codex plugin add akbun-writing@akbun-aitools --json
-```
+codex plugin remove akbun-learning@akbun-aitools --json
 
-- 장점: plugin cache와 local config를 깨끗하게 다시 만든다.
-- 단점: 기존 plugin 설정이 제거될 수 있다.
+rm -rf ~/.codex/plugins/cache/akbun-aitools
+rm -rf ~/.codex/.tmp/marketplaces/akbun-aitools
+
+codex plugin marketplace add choisungwook/akbun-aitools --json
+codex plugin add akbun-writing@akbun-aitools --json
+codex plugin add akbun-learning@akbun-aitools --json
+
+codex plugin list --json
+```
 
 Codex plugin metadata lives in:
 
 - `.agents/plugins/marketplace.json`
 - `plugins/<plugin-name>/.codex-plugin/plugin.json`
-
-### Hook 설치
-
-plugin이 아닌 hook 방식으로 배포되는 도구는 GitHub Release에서 다운로드하여 설치한다.
-
-```bash
-curl -L https://github.com/choisungwook/akbun-aitools/releases/latest/download/akbun-hooks.tar.gz -o akbun-hooks.tar.gz
-tar xzf akbun-hooks.tar.gz
-bash install_claude_hook.sh
-```
-
-사용 가능한 hook 목록:
-
-| hook | 설명 |
-|---|---|
-| `readonce` (deprecated) | 같은 세션에서 변경되지 않은 파일의 반복 Read를 차단 |
