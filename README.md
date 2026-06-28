@@ -25,12 +25,21 @@ akbun tools for both Claude Code and Codex plugin workflows.
 | [kubernets-network-drawio](./plugins/akbun-writing/skills/kubernets-network-drawio/) | draw.io로 Kubernetes 네트워크 다이어그램 생성 |
 | [akbun-generateimage-code](./plugins/akbun-writing/skills/akbun-generateimage-code/) | 코드 설명용 블로그 figure의 이미지 생성 프롬프트 작성 |
 | [akbun-repo-relation-sketch](./plugins/akbun-writing/skills/akbun-repo-relation-sketch/) | 여러 git repo 연관관계를 손그림 다이어그램으로 시각화 |
+| [akbun-draw-network-relationship](./plugins/akbun-writing/skills/akbun-draw-network-relationship/) | 컴퍼넌트 간 네트워크 흐름 그림의 이미지 생성 프롬프트 작성 |
 
 아래는 `akbun-repo-relation-sketch`로 만든 예시다. 여러 git repo·모듈의 연관관계를 핵심 키워드 화살표가 달린 손그림 다이어그램으로 시각화한다.
 
 <p align="center">
   <img src="./imgs/akbun-repo-relation-sketch.png"
        alt="gpu_node/terraform이 vpc·eks 모듈을 사용하는 연관관계를 손그림 다이어그램으로 표현한 예시"
+       width="480">
+</p>
+
+아래는 `akbun-draw-network-relationship`로 만든 예시다. 여러 git repo·모듈의 연관관계를 핵심 키워드 화살표가 달린 손그림 다이어그램으로 시각화한다.
+
+<p align="center">
+  <img src="./imgs/akbun-draw-network-relationship.png"
+       alt="쿠버네티스 istio waypoint 통신"
        width="480">
 </p>
 
