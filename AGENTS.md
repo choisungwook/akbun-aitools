@@ -28,6 +28,10 @@ plugin의 버전을 올린다. 사용자에게 버전 업데이트 여부를 묻
 - 두 파일의 `version`은 항상 동일하게 맞춘다.
 - 기본은 patch 증가(예: `1.0.14` -> `1.0.15`). 새 skill/agent 추가도 patch로 본다. 동작이 크게 바뀌거나
   호환이 깨지면 minor 증가.
+- 버전은 **배포된 마지막 버전에서 +1** 한 값이다. 한 PR/작업 안에서 같은 plugin을 여러 번 고쳐도 매번
+  올리지 않는다. 기준점은 `origin/main`의 현재 `version`이며, 그 값에서 한 번만 올린다(예: main이 `1.0.20`
+  이면 이번 작업은 몇 번을 수정하든 `1.0.21`). 이미 이번 작업에서 올려둔 상태로 추가 수정이 생기면 번호를
+  더 올리지 말고 그대로 둔다.
 - skill을 새로 추가하면, 해당 plugin manifest의 `interface.defaultPrompt`에 그 skill을 부르는 예시 한 줄을 추가한다.
 - plugin을 추가/삭제하거나 plugin 아래 skill을 추가/삭제하면 `README.md`의 `## plugin 목록` 섹션도 함께 갱신한다.
   plugin이 추가되면 해당 plugin의 `### <plugin-name>` 하위 섹션과 skill 표를 만들고, 삭제되면 그 섹션을 지운다.
