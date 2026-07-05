@@ -1,0 +1,11 @@
+{
+  "name": "akbun-cardnews-c",
+  "description": "Card news toolkit — turns images and text into card copy, image-generation prompts, and Figma/Canva-ready SVG cards",
+  "version": "1.0.0",
+  "author": {
+    "name": "akbun"
+  },
+  "repository": "https://github.com/choisungwook/akbun-aitools",
+  "license": "MIT",
+  "keywords": ["cardnews", "carousel", "instagram", "svg", "figma", "canva", "image-prompt"]
+}

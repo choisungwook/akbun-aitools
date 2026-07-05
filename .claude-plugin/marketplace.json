@@ -19,6 +19,12 @@
       "source": "./plugins/akbun-learning",
       "description": "Study and learning helpers",
       "strict": true
+    },
+    {
+      "name": "akbun-cardnews-c",
+      "source": "./plugins/akbun-cardnews-c",
+      "description": "Card news copy, image prompts, and Figma/Canva-ready SVG generation",
+      "strict": true
     }
   ]
 }

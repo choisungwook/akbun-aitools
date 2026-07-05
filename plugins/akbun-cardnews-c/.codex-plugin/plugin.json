@@ -1,0 +1,42 @@
+{
+  "name": "akbun-cardnews-c",
+  "version": "1.0.0",
+  "description": "Card news toolkit — turns images and text into card copy, image-generation prompts, and Figma/Canva-ready SVG cards",
+  "author": {
+    "name": "akbun",
+    "url": "https://github.com/choisungwook"
+  },
+  "homepage": "https://github.com/choisungwook/akbun-aitools",
+  "repository": "https://github.com/choisungwook/akbun-aitools",
+  "license": "MIT",
+  "keywords": [
+    "cardnews",
+    "carousel",
+    "instagram",
+    "svg",
+    "figma",
+    "canva",
+    "image-prompt"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "akbun Card News",
+    "shortDescription": "Card news copy, image prompts, and Figma/Canva-ready SVG generation",
+    "longDescription": "Turns user-provided images and text into an editorial-style card news set: it writes the per-card copy (or drafts it from the source material when no copy is given), produces English prompts for image-generation AI agents, and renders each card as an SVG with editable text that imports cleanly into Figma or Canva.",
+    "developerName": "akbun",
+    "category": "Design",
+    "capabilities": [
+      "Interactive",
+      "Write"
+    ],
+    "websiteURL": "https://github.com/choisungwook/akbun-aitools",
+    "privacyPolicyURL": "https://docs.github.com/site-policy/privacy-policies/github-general-privacy-statement",
+    "termsOfServiceURL": "https://docs.github.com/en/site-policy/github-terms/github-terms-of-service",
+    "defaultPrompt": [
+      "이 내용으로 카드뉴스 만들어줘: <주제 또는 원고>",
+      "이 이미지를 분석해서 카드뉴스 문구와 SVG를 만들어줘"
+    ],
+    "brandColor": "#F4A26B",
+    "screenshots": []
+  }
+}

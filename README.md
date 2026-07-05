@@ -52,6 +52,14 @@ akbun tools for both Claude Code and Codex plugin workflows.
 | [akbun-learning-japanese](./plugins/akbun-learning/skills/akbun-learning-japanese/) | 한국어 학습자용 일본어 발음·읽기 가이드 |
 | [akbun-make-anki-japanese](./plugins/akbun-learning/skills/akbun-make-anki-japanese/) | 일본어 교재 이미지/PDF를 Anki 덱으로 변환 |
 
+### akbun-cardnews-c
+
+이미지·텍스트를 카드뉴스로 만드는 skill 모음.
+
+| skill | 설명 |
+|---|---|
+| [akbun-cardnews](./plugins/akbun-cardnews-c/skills/akbun-cardnews/) | 이미지·텍스트를 분석해 카드뉴스 문구, 이미지 생성 프롬프트, Figma/Canva용 SVG 생성 |
+
 ## 설치 방법
 
 ### Claude Code
