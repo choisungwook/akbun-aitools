@@ -28,7 +28,7 @@ description: >
 
 항상 두 가지를 출력한다.
 
-1. **영어 이미지 생성 프롬프트** — 한 개의 코드 펜스 블록(```text)에 담아, 그대로 복사해 이미지 생성 AI agent에 붙여넣을 수 있게 한다.
+1. **영어 이미지 생성 프롬프트** — 코드 블록 하나에 담아, 그대로 복사해 이미지 생성 AI agent에 붙여넣을 수 있게 한다.
 2. **한국어 한 줄 설명** — 어떤 컴퍼넌트를 남기고 무엇을 합쳤는지, 어떤 관계를 화살표로 그렸는지 1~2문장.
 
 ## 추상화 원칙 (이 skill의 핵심)
@@ -170,8 +170,7 @@ COMPONENTS (rounded rectangles with a thin black outline, name centered inside):
 
 RELATIONSHIPS (thin dotted black arrows with small arrowheads; each label is written in italic
 next to its arrow):
-- A dotted arrow from "Istiod" down to "Sidecar proxy", with no label (it simply points into the
-  pod it configures).
+- A dotted arrow from "Istiod" down to "Sidecar proxy", labeled "configure".
 - A dotted arrow from "Istio CNI DaemonSet" to "CNI Network Plugin", labeled "install".
 - A dotted arrow from "CNI Network Plugin" up to the "User pod" box, labeled "configure pod
   traffic redirection".

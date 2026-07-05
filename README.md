@@ -28,7 +28,7 @@ akbun tools for both Claude Code and Codex plugin workflows.
 | [akbun-draw-network-relationship](./plugins/akbun-writing/skills/akbun-draw-network-relationship/) | 컴퍼넌트 간 네트워크 흐름 그림의 이미지 생성 프롬프트 작성 |
 | [akbun-generate-headline](./plugins/akbun-writing/skills/akbun-generate-headline/) | 넘긴 내용·파일을 분석해 클릭을 부르는 헤드라인(글 제목) 후보 생성 |
 
-아래는 `akbun-draw-network-relationship`로 만든 예시다. 여러 git repo·모듈의 연관관계를 핵심 키워드 화살표가 달린 손그림 다이어그램으로 시각화한다.
+아래는 `akbun-draw-network-relationship`로 만든 예시다. 컴퍼넌트 사이의 네트워크 트래픽 흐름을 방향 화살표와 프로토콜 주석이 달린 손그림 다이어그램으로 시각화한다.
 
 <p align="center">
   <img src="./imgs/akbun-draw-network-relationship.png"
