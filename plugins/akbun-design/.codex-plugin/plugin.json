@@ -1,0 +1,42 @@
+{
+  "name": "akbun-design",
+  "version": "1.0.0",
+  "description": "File and folder layout diagram tools by akbun",
+  "author": {
+    "name": "akbun",
+    "url": "https://github.com/choisungwook"
+  },
+  "homepage": "https://github.com/choisungwook/akbun-aitools",
+  "repository": "https://github.com/choisungwook/akbun-aitools",
+  "license": "MIT",
+  "keywords": [
+    "design",
+    "diagram",
+    "file-tree",
+    "folder-layout",
+    "svg",
+    "figma",
+    "canva"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "akbun Design",
+    "shortDescription": "File/folder layout diagram prompt and SVG skills",
+    "longDescription": "Design support skills that turn a directory structure into a clean file-and-folder layout diagram: an English image-generation prompt for image AI agents, plus an SVG that can be imported into Figma or Canva.",
+    "developerName": "akbun",
+    "category": "Design",
+    "capabilities": [
+      "Interactive",
+      "Write"
+    ],
+    "websiteURL": "https://github.com/choisungwook/akbun-aitools",
+    "privacyPolicyURL": "https://docs.github.com/site-policy/privacy-policies/github-general-privacy-statement",
+    "termsOfServiceURL": "https://docs.github.com/en/site-policy/github-terms/github-terms-of-service",
+    "defaultPrompt": [
+      "Draw this project's folder layout as a file-tree diagram image prompt",
+      "Make a file-tree SVG of this directory that I can import into Figma or Canva"
+    ],
+    "brandColor": "#E8720C",
+    "screenshots": []
+  }
+}

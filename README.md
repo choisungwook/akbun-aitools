@@ -52,6 +52,14 @@ akbun tools for both Claude Code and Codex plugin workflows.
 | [akbun-learning-japanese](./plugins/akbun-learning/skills/akbun-learning-japanese/) | 한국어 학습자용 일본어 발음·읽기 가이드 |
 | [akbun-make-anki-japanese](./plugins/akbun-learning/skills/akbun-make-anki-japanese/) | 일본어 교재 이미지/PDF를 Anki 덱으로 변환 |
 
+### akbun-design
+
+파일/폴더 레이아웃 다이어그램 지원 skill 모음.
+
+| skill | 설명 |
+|---|---|
+| [akbun-draw-file-tree](./plugins/akbun-design/skills/akbun-draw-file-tree/) | 디렉터리 트리를 파일/폴더 레이아웃 다이어그램의 이미지 생성 프롬프트와 Figma/Canva용 SVG로 작성 |
+
 ## 설치 방법
 
 ### Claude Code
@@ -67,6 +75,7 @@ Claude Code marketplace metadata lives in:
 /plugin marketplace add choisungwook/akbun-aitools
 /plugin install akbun-writing@akbun-aitools
 /plugin install akbun-learning@akbun-aitools
+/plugin install akbun-design@akbun-aitools
 /reload-plugins
 ```
 
@@ -78,6 +87,7 @@ Codex plugin 설치 명령어
 codex plugin marketplace add choisungwook/akbun-aitools --json
 codex plugin add akbun-learning@akbun-aitools --json
 codex plugin add akbun-writing@akbun-aitools --json
+codex plugin add akbun-design@akbun-aitools --json
 ```
 
 Codex plugin 업그레이드
@@ -93,6 +103,7 @@ Hard reset 명령어
 ```bash
 codex plugin remove akbun-writing@akbun-aitools --json
 codex plugin remove akbun-learning@akbun-aitools --json
+codex plugin remove akbun-design@akbun-aitools --json
 
 rm -rf ~/.codex/plugins/cache/akbun-aitools
 rm -rf ~/.codex/.tmp/marketplaces/akbun-aitools
@@ -100,6 +111,7 @@ rm -rf ~/.codex/.tmp/marketplaces/akbun-aitools
 codex plugin marketplace add choisungwook/akbun-aitools --json
 codex plugin add akbun-writing@akbun-aitools --json
 codex plugin add akbun-learning@akbun-aitools --json
+codex plugin add akbun-design@akbun-aitools --json
 
 codex plugin list --json
 ```

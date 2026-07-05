@@ -1,0 +1,11 @@
+{
+  "name": "akbun-design",
+  "description": "File and folder layout diagram tools by akbun",
+  "version": "1.0.0",
+  "author": {
+    "name": "akbun"
+  },
+  "repository": "https://github.com/choisungwook/akbun-aitools",
+  "license": "MIT",
+  "keywords": ["design", "diagram", "file-tree", "folder-layout", "svg", "figma", "canva"]
+}
