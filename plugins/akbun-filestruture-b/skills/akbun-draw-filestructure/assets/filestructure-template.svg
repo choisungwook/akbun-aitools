@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1080" width="1080" height="1080">
+  <!-- background: solid paper tone (no texture filter, for Figma/Canva import) -->
+  <rect x="0" y="0" width="1080" height="1080" fill="#E9E7E3"/>
+
+  <!-- dark panel: 6 rows -> height = 100 + 63 * 5 = 415 -->
+  <rect x="254" y="86" width="632" height="415" rx="10" fill="#232637"/>
+
+  <!-- row 0, cy = 136 -->
+  <g transform="translate(298,119)">
+    <path d="M0 5 Q0 1 4 1 H15 L19 6 H39 Q43 6 43 10 V29 Q43 33 39 33 H4 Q0 33 0 29 Z" fill="#5FA8DC"/>
+    <rect x="0" y="10" width="43" height="23" rx="3" fill="#8FC7EE"/>
+  </g>
+  <text x="364" y="148" font-family="Pretendard, 'Noto Sans KR', sans-serif" font-size="34" font-weight="700" fill="#FFFFFF">0_아이디어</text>
+  <path d="M830 125 l11 11 l-11 11" stroke="#B9BDCE" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- row 1, cy = 199 -->
+  <g transform="translate(298,182)">
+    <path d="M0 5 Q0 1 4 1 H15 L19 6 H39 Q43 6 43 10 V29 Q43 33 39 33 H4 Q0 33 0 29 Z" fill="#5FA8DC"/>
+    <rect x="0" y="10" width="43" height="23" rx="3" fill="#8FC7EE"/>
+  </g>
+  <text x="364" y="211" font-family="Pretendard, 'Noto Sans KR', sans-serif" font-size="34" font-weight="700" fill="#FFFFFF">1_초안</text>
+  <path d="M830 188 l11 11 l-11 11" stroke="#B9BDCE" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- row 2, cy = 262 -->
+  <g transform="translate(298,245)">
+    <path d="M0 5 Q0 1 4 1 H15 L19 6 H39 Q43 6 43 10 V29 Q43 33 39 33 H4 Q0 33 0 29 Z" fill="#5FA8DC"/>
+    <rect x="0" y="10" width="43" height="23" rx="3" fill="#8FC7EE"/>
+  </g>
+  <text x="364" y="274" font-family="Pretendard, 'Noto Sans KR', sans-serif" font-size="34" font-weight="700" fill="#FFFFFF">2_퇴고</text>
+  <path d="M830 251 l11 11 l-11 11" stroke="#B9BDCE" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- row 3, cy = 325 -->
+  <g transform="translate(298,308)">
+    <path d="M0 5 Q0 1 4 1 H15 L19 6 H39 Q43 6 43 10 V29 Q43 33 39 33 H4 Q0 33 0 29 Z" fill="#5FA8DC"/>
+    <rect x="0" y="10" width="43" height="23" rx="3" fill="#8FC7EE"/>
+  </g>
+  <text x="364" y="337" font-family="Pretendard, 'Noto Sans KR', sans-serif" font-size="34" font-weight="700" fill="#FFFFFF">3_이미지</text>
+  <path d="M830 314 l11 11 l-11 11" stroke="#B9BDCE" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- row 4, cy = 388 -->
+  <g transform="translate(298,371)">
+    <path d="M0 5 Q0 1 4 1 H15 L19 6 H39 Q43 6 43 10 V29 Q43 33 39 33 H4 Q0 33 0 29 Z" fill="#5FA8DC"/>
+    <rect x="0" y="10" width="43" height="23" rx="3" fill="#8FC7EE"/>
+  </g>
+  <text x="364" y="400" font-family="Pretendard, 'Noto Sans KR', sans-serif" font-size="34" font-weight="700" fill="#FFFFFF">4_발행</text>
+  <path d="M830 377 l11 11 l-11 11" stroke="#B9BDCE" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- row 5, cy = 451 -->
+  <g transform="translate(298,434)">
+    <path d="M0 5 Q0 1 4 1 H15 L19 6 H39 Q43 6 43 10 V29 Q43 33 39 33 H4 Q0 33 0 29 Z" fill="#5FA8DC"/>
+    <rect x="0" y="10" width="43" height="23" rx="3" fill="#8FC7EE"/>
+  </g>
+  <text x="364" y="463" font-family="Pretendard, 'Noto Sans KR', sans-serif" font-size="34" font-weight="700" fill="#FFFFFF">보관함</text>
+  <path d="M830 440 l11 11 l-11 11" stroke="#B9BDCE" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- caption box: y = 501 + 36 = 537, height = 40 + 52 * 4 = 248 -->
+  <rect x="254" y="537" width="632" height="248" fill="#FFFFFF" stroke="#1A1A1A" stroke-width="2"/>
+  <text x="570" y="599" text-anchor="middle" font-family="Pretendard, 'Noto Sans KR', sans-serif" font-size="33" fill="#222222">블로그 글 하나가 발행될 때까지</text>
+  <text x="570" y="651" text-anchor="middle" font-family="Pretendard, 'Noto Sans KR', sans-serif" font-size="33" fill="#222222">이 순서대로 폴더를 거쳐가는데요!</text>
+  <text x="570" y="703" text-anchor="middle" font-family="Pretendard, 'Noto Sans KR', sans-serif" font-size="33" fill="#222222">각 폴더가 어떤 역할을 하는지</text>
+  <text x="570" y="755" text-anchor="middle" font-family="Pretendard, 'Noto Sans KR', sans-serif" font-size="33" fill="#222222">하나씩 소개해드릴게요!</text>
+</svg>

@@ -41,6 +41,14 @@ akbun tools for both Claude Code and Codex plugin workflows.
 | `akbun-draw-sketchbook-card` | <img src="./imgs/akbun-draw-sketchbook-card.png" alt="연필 스케치북 카드 예시" width="320"> |
 | `akbun-draw-network-relationship` | <img src="./imgs/akbun-draw-network-relationship.png" alt="쿠버네티스 istio waypoint 통신" width="320"> |
 
+### akbun-filestruture-b
+
+파일·폴더 구조 카드 이미지 지원 skill 모음.
+
+| skill | 설명 |
+|---|---|
+| [akbun-draw-filestructure](./plugins/akbun-filestruture-b/skills/akbun-draw-filestructure/) | 파일·폴더 구조 목록을 다크 패널 카드 이미지 생성 프롬프트와 Figma/Canva용 SVG로 작성 |
+
 ### akbun-learning
 
 언어·학습 보조 skill 모음.
@@ -67,6 +75,7 @@ Claude Code marketplace metadata lives in:
 /plugin marketplace add choisungwook/akbun-aitools
 /plugin install akbun-writing@akbun-aitools
 /plugin install akbun-learning@akbun-aitools
+/plugin install akbun-filestruture-b@akbun-aitools
 /reload-plugins
 ```
 
@@ -78,6 +87,7 @@ Codex plugin 설치 명령어
 codex plugin marketplace add choisungwook/akbun-aitools --json
 codex plugin add akbun-learning@akbun-aitools --json
 codex plugin add akbun-writing@akbun-aitools --json
+codex plugin add akbun-filestruture-b@akbun-aitools --json
 ```
 
 Codex plugin 업그레이드
@@ -93,6 +103,7 @@ Hard reset 명령어
 ```bash
 codex plugin remove akbun-writing@akbun-aitools --json
 codex plugin remove akbun-learning@akbun-aitools --json
+codex plugin remove akbun-filestruture-b@akbun-aitools --json
 
 rm -rf ~/.codex/plugins/cache/akbun-aitools
 rm -rf ~/.codex/.tmp/marketplaces/akbun-aitools
@@ -100,6 +111,7 @@ rm -rf ~/.codex/.tmp/marketplaces/akbun-aitools
 codex plugin marketplace add choisungwook/akbun-aitools --json
 codex plugin add akbun-writing@akbun-aitools --json
 codex plugin add akbun-learning@akbun-aitools --json
+codex plugin add akbun-filestruture-b@akbun-aitools --json
 
 codex plugin list --json
 ```

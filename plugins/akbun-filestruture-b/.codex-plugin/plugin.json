@@ -1,0 +1,40 @@
+{
+  "name": "akbun-filestruture-b",
+  "version": "1.0.0",
+  "description": "File/folder structure card image prompt and Figma/Canva SVG skills by akbun",
+  "author": {
+    "name": "akbun",
+    "url": "https://github.com/choisungwook"
+  },
+  "homepage": "https://github.com/choisungwook/akbun-aitools",
+  "repository": "https://github.com/choisungwook/akbun-aitools",
+  "license": "MIT",
+  "keywords": [
+    "filestructure",
+    "folder",
+    "image-prompt",
+    "svg",
+    "figma",
+    "canva"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "akbun File Structure B",
+    "shortDescription": "Folder structure card image prompt and SVG",
+    "longDescription": "Turns a file/folder structure into a dark-panel folder list card: an image generation prompt for AI image models and an editable SVG for Figma or Canva.",
+    "developerName": "akbun",
+    "category": "Design",
+    "capabilities": [
+      "Interactive",
+      "Write"
+    ],
+    "websiteURL": "https://github.com/choisungwook/akbun-aitools",
+    "privacyPolicyURL": "https://docs.github.com/site-policy/privacy-policies/github-general-privacy-statement",
+    "termsOfServiceURL": "https://docs.github.com/en/site-policy/github-terms/github-terms-of-service",
+    "defaultPrompt": [
+      "Make a folder-structure card image prompt and a Figma/Canva SVG from this content"
+    ],
+    "brandColor": "#232637",
+    "screenshots": []
+  }
+}

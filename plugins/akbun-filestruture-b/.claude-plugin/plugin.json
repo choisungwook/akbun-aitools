@@ -1,0 +1,11 @@
+{
+  "name": "akbun-filestruture-b",
+  "description": "File/folder structure card image prompt and Figma/Canva SVG skills by akbun",
+  "version": "1.0.0",
+  "author": {
+    "name": "akbun"
+  },
+  "repository": "https://github.com/choisungwook/akbun-aitools",
+  "license": "MIT",
+  "keywords": ["filestructure", "folder", "image-prompt", "svg", "figma", "canva"]
+}

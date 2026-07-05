@@ -27,6 +27,18 @@
         "authentication": "ON_INSTALL"
       },
       "category": "Education"
+    },
+    {
+      "name": "akbun-filestruture-b",
+      "source": {
+        "source": "local",
+        "path": "./plugins/akbun-filestruture-b"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Design"
     }
   ]
 }
