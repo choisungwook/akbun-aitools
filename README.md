@@ -27,6 +27,7 @@ akbun tools for both Claude Code and Codex plugin workflows.
 | [akbun-draw-component](./plugins/akbun-writing/skills/akbun-draw-component/) | 코드·컴퍼넌트를 분석해 하이레벨 아키텍처/연관관계 그림의 이미지 생성 프롬프트 작성 |
 | [akbun-draw-network-relationship](./plugins/akbun-writing/skills/akbun-draw-network-relationship/) | 컴퍼넌트 간 네트워크 흐름 그림의 이미지 생성 프롬프트 작성 |
 | [akbun-generate-headline](./plugins/akbun-writing/skills/akbun-generate-headline/) | 넘긴 내용·파일을 분석해 클릭을 부르는 헤드라인(글 제목) 후보 생성 |
+| [akbun-draw-webtoon](./plugins/akbun-writing/skills/akbun-draw-webtoon/) | 사용자 내용을 3~4컷 흑백 스틱피겨 웹툰의 이미지 생성 프롬프트로 작성 |
 
 아래는 `akbun-draw-network-relationship`로 만든 예시다. 컴퍼넌트 사이의 네트워크 트래픽 흐름을 방향 화살표와 프로토콜 주석이 달린 손그림 다이어그램으로 시각화한다.
 
