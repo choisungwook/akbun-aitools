@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1350" viewBox="0 0 1080 1350">
+  <!--
+    카드뉴스 내용 페이지 템플릿 (1080x1350, 4:5)
+    - 상단 50%: 사진. 아래 placeholder rect를 실제 사진 <image>로 교체한다.
+      예: <image href="data:image/jpeg;base64,..." x="0" y="0" width="1080" height="675" preserveAspectRatio="xMidYMid slice"/>
+    - 하단 50%: 검정 패널(#0D0D0D) + 번호 제목 + 본문.
+    - 본문 행간 50px, 문단 사이는 +80px. 강조는 font-weight 700 + <line> 밑줄(baseline +14).
+      밑줄 x2는 강조 텍스트의 실제 폭에 맞춰 조정한다.
+    - 폰트는 저작권 무료 폰트만 사용한다 (Pretendard / Noto Sans KR, SIL OFL).
+  -->
+
+  <!-- 상단 사진 placeholder: 실제 사진으로 교체 -->
+  <rect id="content-photo" x="0" y="0" width="1080" height="675" fill="#9C9284"/>
+
+  <!-- 하단 검정 패널 -->
+  <rect x="0" y="675" width="1080" height="675" fill="#0D0D0D"/>
+
+  <!-- 제목: 번호 + 마침표 + 공백으로 시작, 50px / 700 / 흰색, baseline y=810 -->
+  <text id="content-heading" x="76" y="810" font-family="Pretendard, 'Noto Sans KR', sans-serif"
+        font-size="50" font-weight="700" fill="#FFFFFF">1. 기록이 기억을 이긴다</text>
+
+  <!-- 본문: 30px / 행간 50 / #E8E8E8, 첫 baseline y=890 -->
+  <text id="content-body" font-family="Pretendard, 'Noto Sans KR', sans-serif"
+        font-size="30" fill="#E8E8E8">
+    <tspan x="76" y="890">기록 습관이 바뀌었다.</tspan>
+    <tspan x="76" y="940">머리로 기억하는 시대는 끝났다.</tspan>
+    <tspan x="76" y="990" font-weight="700" fill="#FFFFFF">이제는 적어두는 사람이 이긴다.</tspan>
+
+    <tspan x="76" y="1070">메모는 두 번째 뇌다.</tspan>
+    <tspan x="76" y="1120" font-weight="700" fill="#FFFFFF">생각은 사라지지만 기록은 남는다.</tspan>
+
+    <tspan x="76" y="1200">그래서 오늘부터 한 줄이라도 적는다.</tspan>
+  </text>
+
+  <!-- 강조 밑줄: baseline +14, 두께 2.5, 흰색 -->
+  <line x1="76" y1="1004" x2="530" y2="1004" stroke="#FFFFFF" stroke-width="2.5"/>
+  <line x1="76" y1="1134" x2="545" y2="1134" stroke="#FFFFFF" stroke-width="2.5"/>
+</svg>

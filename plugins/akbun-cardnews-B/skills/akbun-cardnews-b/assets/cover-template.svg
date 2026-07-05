@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1350" viewBox="0 0 1080 1350">
+  <!--
+    카드뉴스 표지 템플릿 (1080x1350, 4:5)
+    - 배경: 아래 placeholder rect를 실제 사진 <image>로 교체한다.
+      예: <image href="data:image/jpeg;base64,..." x="0" y="0" width="1080" height="1350" preserveAspectRatio="xMidYMid slice"/>
+    - 텍스트/로고/핸들은 layout-spec.md의 좌표를 그대로 따른다.
+    - 폰트는 저작권 무료 폰트만 사용한다 (Pretendard / Noto Sans KR, SIL OFL).
+  -->
+
+  <!-- 배경 사진 placeholder: 실제 사진으로 교체 -->
+  <rect id="cover-photo" x="0" y="0" width="1080" height="1350" fill="#C6AD93"/>
+
+  <!-- (선택) 사진이 밝을 때만 사용하는 하단 그라데이션. 기본은 주석 유지.
+  <defs>
+    <linearGradient id="bottom-fade" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#000000" stop-opacity="0"/>
+      <stop offset="1" stop-color="#000000" stop-opacity="0.45"/>
+    </linearGradient>
+  </defs>
+  <rect x="0" y="878" width="1080" height="472" fill="url(#bottom-fade)"/>
+  -->
+
+  <!-- 브랜드 마크(로고) placeholder: 실제 로고로 교체. 영역 x=76, y=230, 폭 약 360 -->
+  <g id="brand-mark" opacity="0.85">
+    <rect x="76" y="230" width="300" height="300" rx="48" fill="none" stroke="#6B5B4A" stroke-width="18"/>
+    <text x="226" y="440" text-anchor="middle" font-family="Pretendard, 'Noto Sans KR', sans-serif"
+          font-size="190" font-weight="800" fill="#6B5B4A">M</text>
+  </g>
+
+  <!-- 제목: 2줄, 90px / 800 / 흰색, baseline y=1005, y=1127 -->
+  <text id="cover-title" font-family="Pretendard, 'Noto Sans KR', sans-serif"
+        font-size="90" font-weight="800" fill="#FFFFFF">
+    <tspan x="76" y="1005">메모를</tspan>
+    <tspan x="76" y="1127">시작했습니다</tspan>
+  </text>
+
+  <!-- 핸들(계정명): 중앙 하단 -->
+  <text id="cover-handle" x="540" y="1250" text-anchor="middle"
+        font-family="Pretendard, 'Noto Sans KR', sans-serif"
+        font-size="38" font-weight="600" fill="#FFFFFF">akbun</text>
+</svg>

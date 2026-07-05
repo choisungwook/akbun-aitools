@@ -27,6 +27,18 @@
         "authentication": "ON_INSTALL"
       },
       "category": "Education"
+    },
+    {
+      "name": "akbun-cardnews-B",
+      "source": {
+        "source": "local",
+        "path": "./plugins/akbun-cardnews-B"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Design"
     }
   ]
 }

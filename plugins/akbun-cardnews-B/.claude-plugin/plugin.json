@@ -1,0 +1,11 @@
+{
+  "name": "akbun-cardnews-B",
+  "description": "Card news builder by akbun — turns text and images into cover/content page layouts, image-generation AI prompts, and Figma/Canva-ready SVGs",
+  "version": "1.0.0",
+  "author": {
+    "name": "akbun"
+  },
+  "repository": "https://github.com/choisungwook/akbun-aitools",
+  "license": "MIT",
+  "keywords": ["cardnews", "instagram", "svg", "figma", "canva", "image-prompt", "korean"]
+}
