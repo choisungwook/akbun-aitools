@@ -39,6 +39,12 @@ plugin의 버전을 올린다. 사용자에게 버전 업데이트 여부를 묻
 - marketplace의 description/category가 바뀐 경우에만 `.claude-plugin/marketplace.json`, `.agents/plugins/marketplace.json`도 함께 수정한다.
 - 배포 절차 상세는 `docs/guide_deploy_plugins.md`를 따른다.
 
+## Pull Request 작성 규칙
+
+- PR 설명은 한국어로 쓴다.
+- `.github/pull_request_template.md`의 섹션 구조(`## 요약`, `## 주요 변경`)를 따른다.
+- 불필요한 내용(파일별 세부 나열, 구현 로그, 자명한 설명)은 넣지 않는다. 핵심만 간단히 남긴다.
+
 ## 시작 절차
 
 작업 시작 시 관련 디렉터리에서 가장 가까운 `.ai/context.md`를 찾는다.
