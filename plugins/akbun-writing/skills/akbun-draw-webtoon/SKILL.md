@@ -98,50 +98,6 @@ figures, no watermarks, no extra panels, no Korean or other non-English text in 
 misspell the title, labels, or speech bubbles.
 ```
 
-## 예시 (gold reference)
-
-이 예시는 레퍼런스 이미지("Evolution of Programming" 3컷)를 위 템플릿으로 역산한 완성 프롬프트다. 새 프롬프트의 품질 기준으로 삼는다.
-
-입력 예: "프로그래밍이 어떻게 변해왔는지 3컷으로 — 옛날엔 키보드로 치고, 요즘은 AI한테 말로 시키고, 미래엔 생각만 하면 된다."
-
-skill이 한 구성(자동): 같은 인물·책상·의자 구도를 3컷 모두 반복하고 입력 장치만 키보드 → 마이크 → 뇌 케이블로 바꿔 진행을 표현했다. 연도 라벨(2019/2026/2040)로 시간 흐름을 보여주고, 마지막 컷(머리에 케이블을 꽂고 컴퓨터에 직접 연결)이 펀치라인이다.
-
-출력 프롬프트:
-
-```text
-A 3-panel black-and-white stick figure comic strip in the style of xkcd, drawn with thin
-hand-drawn black ink lines on a clean white background. No color, no shading, no gray fills — pure
-line art only. All text is in English, in a friendly handwritten font.
-
-TITLE: large handwritten title at the top, above the panels, reading exactly: "Evolution of
-Programming".
-
-LAYOUT: 3 tall rectangular panels side by side, each with a thin black border, with white space
-between panels. Each panel has a short handwritten label at the top inside: "2019", "2026", "2040".
-
-PANEL 1 (2019): a stick figure with a round empty head sits on a simple office swivel chair at a
-desk, typing on a keyboard in front of a monitor.
-
-PANEL 2 (2026): the same stick figure at the same desk, now leaning toward a large microphone on
-the desk and speaking into it (small motion lines near the mouth area), with the monitor pushed to
-the side. No keyboard.
-
-PANEL 3 (2040): the same stick figure at the same desk, sitting still with a single cable plugged
-directly from its round head into the computer on the desk. No keyboard, no microphone.
-
-CHARACTERS: one stick figure with a round empty head (no facial features), thin line body and
-limbs, identical design in all three panels. Express the change only through the input device.
-
-STYLE: minimalist, clean, generous white space, slightly wobbly hand-drawn lines, legible
-handwritten English text. 3:2 horizontal aspect ratio.
-
-DO NOT: no color, no shading, no gradients, no photorealism, no facial features on the stick
-figure, no watermarks, no extra panels, no Korean or other non-English text in the image. Do not
-misspell the title or the year labels.
-```
-
-한국어 컷 구성 설명: 같은 인물과 책상을 3컷 내내 고정하고 입력 장치만 키보드 → 마이크 → 뇌 케이블로 바꿔 "프로그래밍의 진화"를 표현했습니다. 연도 라벨로 시간 흐름을 보여주고, 머리에 케이블을 꽂는 마지막 컷이 펀치라인입니다.
-
 ## 완료 전 확인
 
 - 사용자가 남긴 내용을 근거로 컷을 나눴는가? (skill이 임의로 소재를 지어내지 않았는가?)
