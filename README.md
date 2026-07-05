@@ -29,14 +29,14 @@ akbun tools for both Claude Code and Codex plugin workflows.
 | [akbun-generate-headline](./plugins/akbun-writing/skills/akbun-generate-headline/) | 넘긴 내용·파일을 분석해 클릭을 부르는 헤드라인(글 제목) 후보 생성 |
 | [akbun-draw-webtoon](./plugins/akbun-writing/skills/akbun-draw-webtoon/) | 사용자 내용을 3~4컷 흑백 스틱피겨 웹툰의 이미지 생성 프롬프트로 작성 |
 | [akbun-generate-sketch-text](./plugins/akbun-writing/skills/akbun-generate-sketch-text/) | 문구를 린넨 원단 자수 텍스트 + 형광펜 강조 스타일의 이미지 생성 프롬프트로 작성 |
+| [akbun-draw-sketchbook-card](./plugins/akbun-writing/skills/akbun-draw-sketchbook-card/) | 개념을 연필 스케치북 카드(손글씨 제목·체크리스트+일러스트)로 그리는 이미지 생성 프롬프트 작성 |
 
-아래는 `akbun-draw-network-relationship`로 만든 예시다. 컴퍼넌트 사이의 네트워크 트래픽 흐름을 방향 화살표와 프로토콜 주석이 달린 손그림 다이어그램으로 시각화한다.
+아래는 각 skill로 만든 예시다.
 
-<p align="center">
-  <img src="./imgs/akbun-draw-network-relationship.png"
-       alt="쿠버네티스 istio waypoint 통신"
-       width="480">
-</p>
+| skill | 이미지 |
+|---|---|
+| `akbun-draw-sketchbook-card` | <img src="./imgs/akbun-draw-sketchbook-card.png" alt="연필 스케치북 카드 예시" width="320"> |
+| `akbun-draw-network-relationship` | <img src="./imgs/akbun-draw-network-relationship.png" alt="쿠버네티스 istio waypoint 통신" width="320"> |
 
 ### akbun-learning
 
