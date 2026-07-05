@@ -1,0 +1,11 @@
+{
+  "name": "akbun-cardnews",
+  "description": "Korean card news (cover + content pages) copy, image-generation prompts, and Figma/Canva-ready SVG",
+  "version": "1.0.0",
+  "author": {
+    "name": "akbun"
+  },
+  "repository": "https://github.com/choisungwook/akbun-aitools",
+  "license": "MIT",
+  "keywords": ["cardnews", "instagram", "sns", "svg", "figma", "canva", "korean"]
+}

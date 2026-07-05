@@ -1,0 +1,62 @@
+# 카드뉴스 레이아웃 스펙
+
+## 공통
+
+- 캔버스: 1080 x 1350 px (4:5). 모든 좌표는 이 캔버스 기준 절대값이다.
+- 폰트: `Pretendard, 'Noto Sans KR', sans-serif`
+- 좌우 기본 여백: 76px
+- 페이지 알약(pill): 모든 페이지 우상단 공통
+  - rect: x=936, y=60, width=100, height=54, rx=18, fill=#000000, fill-opacity=0.55
+  - text: `n/N`, 중앙 정렬(x=986, y=97, text-anchor=middle), 30px, weight 700, #FFFFFF
+  - N이 두 자리면 width=124, x=912로 넓힌다 (text x=974).
+
+## 표지 페이지
+
+배경 사진이 캔버스 전체(0,0 ~ 1080,1350)를 덮는다.
+
+| 요소 | 위치·크기 | 스타일 |
+|---|---|---|
+| 배경 사진 | x=0, y=0, w=1080, h=1350 | placeholder: fill=#8A8F98 |
+| 하단 스크림 | x=0, y=740, w=1080, h=610 | 위→아래 linearGradient, #000 opacity 0 → 0.55 |
+| 브랜드 이름 | x=76, baseline y=106 | 40px, weight 700, #FFFFFF |
+| 제목 1행 | x=76, baseline y=1064 | 86px, weight 800, #FFFFFF |
+| 제목 2행 | x=76, baseline y=1180 | 86px, weight 800, #FFFFFF |
+| 제목 3행 | x=76, baseline y=1296 | 86px, weight 800, #FFFFFF |
+
+- 제목 행간은 116px(폰트 86px × 1.35) 고정이다.
+- 제목이 3줄 미만이면 마지막 줄을 baseline y=1296에 맞추고 위로 채운다. 예: 2줄이면 y=1180, y=1296.
+- 제목은 왼쪽 정렬이며 줄바꿈 위치는 의미 단위로 끊는다. 한 줄 최대 폭은 928px(1080 - 76×2)이다. 86px 기준 한글 약 10자.
+
+## 내용 페이지
+
+상단 사진 2/3 + 하단 흰색 패널 1/3 구조다.
+
+| 요소 | 위치·크기 | 스타일 |
+|---|---|---|
+| 사진 영역 | x=0, y=0, w=1080, h=900 | placeholder: fill=#8A8F98 |
+| 사진 크레딧 | x=1056(text-anchor=end), baseline y=872 | 24px, weight 400, #FFFFFF, opacity 0.85 |
+| 흰색 패널 | x=0, y=900, w=1080, h=450 | fill=#FFFFFF |
+| 제목(한국어) | x=76, baseline y=990 | 56px, weight 800, #111111 |
+| 제목(영문) | 제목 끝 + 12px, 같은 text의 tspan(dy=-18) | 26px, weight 700, #444444, 대문자 |
+| 구분선 | x1=76, y1=1022, x2=1004, y2=1022 | stroke=#DDDDDD, width 2 |
+| 형광펜 rect | x=70, y=1078, h=22 | fill=#FFE15A, fill-opacity=0.75. width는 소제목 길이에 맞춤 |
+| 소제목 | x=76, baseline y=1092 | 38px, weight 700, #111111 |
+| 본문 1행 | 아이콘 top y=1132 | 아이콘 36px + 텍스트 33px |
+| 본문 2행 | 아이콘 top y=1200 | 행 간격 68px 고정 |
+| 본문 3행(메타) | 아이콘 top y=1268 | 위치핀 아이콘 + 33px 텍스트 |
+
+- 본문 행 구조: 아이콘 x=76(36x36), 텍스트 x=132, baseline은 아이콘 top + 29.
+- 체크 아이콘: rx=8 사각 테두리(stroke=#111111, width 3) + 체크 path(stroke #111111, width 4, round cap/join).
+- 위치핀 아이콘: 물방울 모양 path + 안쪽 원, stroke=#E5484D, width 3.
+- 본문 텍스트는 한 줄 33px 기준 최대 약 26자. 넘치면 문장을 줄인다. 두 줄로 감지 않는다.
+- 형광펜 rect는 소제목 텍스트의 아래쪽 절반에 겹치게 깔린다(텍스트보다 먼저 그린다).
+
+## 사진 삽입 (선택)
+
+사용자가 실제 이미지를 주면 placeholder rect를 다음으로 교체한다.
+
+```xml
+<image href="data:image/jpeg;base64,..." x="0" y="0" width="1080" height="900" preserveAspectRatio="xMidYMid slice"/>
+```
+
+표지는 height=1350으로 한다. base64 임베드만 Figma/Canva에서 안전하게 열린다. 외부 URL 참조는 쓰지 않는다.

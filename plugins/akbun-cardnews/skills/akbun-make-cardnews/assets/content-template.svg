@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1350" viewBox="0 0 1080 1350">
+  <g id="photo">
+    <rect id="photo-placeholder" x="0" y="0" width="1080" height="900" fill="#8A8F98"/>
+    <text x="540" y="460" text-anchor="middle" font-family="Pretendard, 'Noto Sans KR', sans-serif" font-size="32" font-weight="500" fill="#FFFFFF" opacity="0.7">사진 영역 1080x900</text>
+    <text id="photo-credit" x="1056" y="872" text-anchor="end" font-family="Pretendard, 'Noto Sans KR', sans-serif" font-size="24" font-weight="400" fill="#FFFFFF" opacity="0.85">{{PHOTO_CREDIT}}</text>
+  </g>
+  <g id="page-pill">
+    <rect x="936" y="60" width="100" height="54" rx="18" fill="#000000" fill-opacity="0.55"/>
+    <text x="986" y="97" text-anchor="middle" font-family="Pretendard, 'Noto Sans KR', sans-serif" font-size="30" font-weight="700" fill="#FFFFFF">{{PAGE_NUM}}/{{TOTAL_PAGES}}</text>
+  </g>
+  <g id="panel">
+    <rect x="0" y="900" width="1080" height="450" fill="#FFFFFF"/>
+    <text id="panel-title" x="76" y="990" font-family="Pretendard, 'Noto Sans KR', sans-serif" font-size="56" font-weight="800" fill="#111111">{{TITLE_KO}}<tspan dx="12" dy="-18" font-size="26" font-weight="700" fill="#444444">{{TITLE_EN}}</tspan></text>
+    <line x1="76" y1="1022" x2="1004" y2="1022" stroke="#DDDDDD" stroke-width="2"/>
+    <rect id="subhead-highlight" x="70" y="1078" width="{{HIGHLIGHT_WIDTH}}" height="22" fill="#FFE15A" fill-opacity="0.75"/>
+    <text id="subhead" x="76" y="1092" font-family="Pretendard, 'Noto Sans KR', sans-serif" font-size="38" font-weight="700" fill="#111111">{{SUBHEAD}}</text>
+  </g>
+  <g id="bullet-1">
+    <rect x="76" y="1132" width="36" height="36" rx="8" fill="none" stroke="#111111" stroke-width="3"/>
+    <path d="M84 1150 l9 9 l15 -16" fill="none" stroke="#111111" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="132" y="1161" font-family="Pretendard, 'Noto Sans KR', sans-serif" font-size="33" font-weight="400" fill="#111111">{{BULLET_1}}</text>
+  </g>
+  <g id="bullet-2">
+    <rect x="76" y="1200" width="36" height="36" rx="8" fill="none" stroke="#111111" stroke-width="3"/>
+    <path d="M84 1218 l9 9 l15 -16" fill="none" stroke="#111111" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="132" y="1229" font-family="Pretendard, 'Noto Sans KR', sans-serif" font-size="33" font-weight="400" fill="#111111">{{BULLET_2}}</text>
+  </g>
+  <g id="bullet-meta">
+    <path d="M94 1268 c-10 0 -18 8 -18 18 c0 13 18 32 18 32 c0 0 18 -19 18 -32 c0 -10 -8 -18 -18 -18 z" fill="none" stroke="#E5484D" stroke-width="3" stroke-linejoin="round"/>
+    <circle cx="94" cy="1287" r="6" fill="none" stroke="#E5484D" stroke-width="3"/>
+    <text x="132" y="1297" font-family="Pretendard, 'Noto Sans KR', sans-serif" font-size="33" font-weight="400" fill="#111111">{{META}}</text>
+  </g>
+</svg>

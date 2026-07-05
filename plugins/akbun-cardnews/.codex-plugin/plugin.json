@@ -1,0 +1,41 @@
+{
+  "name": "akbun-cardnews",
+  "version": "1.0.0",
+  "description": "Korean card news (cover + content pages) copy, image-generation prompts, and Figma/Canva-ready SVG",
+  "author": {
+    "name": "akbun",
+    "url": "https://github.com/choisungwook"
+  },
+  "homepage": "https://github.com/choisungwook/akbun-aitools",
+  "repository": "https://github.com/choisungwook/akbun-aitools",
+  "license": "MIT",
+  "keywords": [
+    "cardnews",
+    "instagram",
+    "sns",
+    "svg",
+    "figma",
+    "canva",
+    "korean"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "akbun Card News",
+    "shortDescription": "Korean SNS card news copy, image prompts, and SVG",
+    "longDescription": "Turns a topic, text, or reference images into Korean SNS card news: per-page copy (cover + content pages), English prompts for image-generation AI agents, and editable 1080x1350 SVG files that import into Figma or Canva.",
+    "developerName": "akbun",
+    "category": "Design",
+    "capabilities": [
+      "Interactive",
+      "Write"
+    ],
+    "websiteURL": "https://github.com/choisungwook/akbun-aitools",
+    "privacyPolicyURL": "https://docs.github.com/site-policy/privacy-policies/github-general-privacy-statement",
+    "termsOfServiceURL": "https://docs.github.com/en/site-policy/github-terms/github-terms-of-service",
+    "defaultPrompt": [
+      "Make Korean card news (copy, image prompts, and Figma/Canva SVG) from this topic"
+    ],
+    "brandColor": "#B45309",
+    "screenshots": []
+  }
+}
