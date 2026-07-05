@@ -1,6 +1,6 @@
 {
   "name": "akbun-writing",
-  "version": "1.0.26",
+  "version": "1.0.27",
   "description": "Writing, review, and blog support skills by akbun",
   "author": {
     "name": "akbun",
@@ -43,7 +43,8 @@
       "Make an image prompt showing how traffic flows between these components",
       "Generate click-worthy Korean headline candidates for this draft",
       "Make a 3 or 4 panel webtoon prompt from this story",
-      "Make a stitched-text image prompt for a motivational quote"
+      "Make a stitched-text image prompt for a motivational quote",
+      "Make a pencil sketchbook concept-card image prompt for this topic"
     ],
     "brandColor": "#0F766E",
     "screenshots": []
