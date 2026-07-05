@@ -73,8 +73,9 @@ line art only. All text is in English, in a friendly handwritten font.
 TITLE: large handwritten title at the top, above the panels, reading exactly: "<TITLE>".
 
 LAYOUT: <3|4> tall rectangular panels side by side, each with a thin black border, with white
-space between panels. Each panel has a short handwritten label at the top inside: <"label 1",
-"label 2", "label 3">. (Delete the label sentence if no labels.)
+space between panels. Each panel has a short handwritten label at the top inside: <list one label
+per panel, matching the panel count, e.g. "label 1", "label 2", "label 3" for 3 panels, or add a
+4th for 4 panels>. (Delete the label sentence entirely if no labels.)
 
 PANEL 1 (<label>): <scene: who is doing what, with which minimal props, e.g. "a stick figure with
 a round empty head sits on a simple office chair at a desk, typing on a keyboard in front of a
