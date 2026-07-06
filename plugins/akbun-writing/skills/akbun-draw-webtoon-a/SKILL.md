@@ -1,5 +1,5 @@
 ---
-name: akbun-draw-webtoon
+name: akbun-draw-webtoon-a
 description: >
   사용자가 남긴 내용(주제, 상황, 이야기)을 분석해 3컷 또는 4컷 웹툰의 이미지 생성 프롬프트를 만든다.
   스타일은 xkcd풍 흑백 스틱피겨 컷만화로 고정한다 — 깨끗한 흰 배경, 손으로 그린 가는 검정 잉크 선,
