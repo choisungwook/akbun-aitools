@@ -28,7 +28,7 @@ akbun tools for both Claude Code and Codex plugin workflows.
 | [akbun-draw-network-relationship](./plugins/akbun-writing/skills/akbun-draw-network-relationship/) | 컴퍼넌트 간 네트워크 흐름 그림의 이미지 생성 프롬프트 작성 |
 | [akbun-generate-headline](./plugins/akbun-writing/skills/akbun-generate-headline/) | 넘긴 내용·파일을 분석해 클릭을 부르는 헤드라인(글 제목) 후보 생성 |
 | [akbun-draw-webtoon-a](./plugins/akbun-writing/skills/akbun-draw-webtoon-a/) | 사용자 내용을 3~4컷 흑백 스틱피겨 웹툰의 이미지 생성 프롬프트로 작성 |
-| [akbun-draw-webtoon-b](./plugins/akbun-writing/skills/akbun-draw-webtoon-b/) | 이미지·글로 파스텔 치비 웹툰 페이지의 이미지 생성 프롬프트 + Figma/Canva용 텍스트 SVG 작성 |
+| [akbun-draw-webtoon-b](./plugins/akbun-writing/skills/akbun-draw-webtoon-b/) | 이미지·글로 파스텔 치비 동물 캐릭터 웹툰 페이지의 이미지 생성 프롬프트 + Figma/Canva용 텍스트 SVG 작성 |
 | [akbun-generate-sketch-text](./plugins/akbun-writing/skills/akbun-generate-sketch-text/) | 문구를 린넨 원단 자수 텍스트 + 형광펜 강조 스타일의 이미지 생성 프롬프트로 작성 |
 | [akbun-draw-sketchbook-card](./plugins/akbun-writing/skills/akbun-draw-sketchbook-card/) | 개념을 연필 스케치북 카드(손글씨 제목·체크리스트+일러스트)로 그리는 이미지 생성 프롬프트 작성 |
 | [akbun-draw-storytellingimage](./plugins/akbun-writing/skills/akbun-draw-storytellingimage/) | 이야기를 장면별 손그림 마커 스케치 삽화의 이미지 생성 프롬프트로 작성 |

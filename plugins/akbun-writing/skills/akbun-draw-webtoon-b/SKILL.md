@@ -1,15 +1,15 @@
 ---
 name: akbun-draw-webtoon-b
 description: >
-  사용자가 준 이미지·글로 파스텔 수채 치비 스타일 웹툰 페이지를 만든다. 컷별 이미지 생성 프롬프트(글자 없는 그림)와
+  사용자가 준 이미지·글로 파스텔 수채 치비 동물 캐릭터 웹툰 페이지를 만든다. 컷별 이미지 생성 프롬프트(글자 없는 그림)와
   Figma/Canva로 가져갈 수 있는 한글 텍스트 오버레이 SVG를 함께 만들고, 글이 없으면 내용을 분석해 이야기를 먼저 만든다.
 ---
 
-# 파스텔 웹툰 페이지 만들기 (이미지 프롬프트 + SVG)
+# 파스텔 동물 캐릭터 웹툰 페이지 만들기 (이미지 프롬프트 + SVG)
 
 ## 이 skill이 하는 일
 
-사용자가 남긴 이미지와 글(이야기, 상황, 일기)을 분석해서 **파스텔 수채 치비 스타일 웹툰 페이지**를 만든다. 결과물은 두 가지다.
+사용자가 남긴 이미지와 글(이야기, 상황, 일기)을 분석해서 **파스텔 수채 치비 동물 캐릭터 웹툰 페이지**를 만든다. 결과물은 두 가지다.
 
 1. **컷별 영어 이미지 생성 프롬프트** — GPT image, nano-banana 같은 이미지 생성 모델(agent)에 그대로 붙여넣는다. 그림에는 **글자를 넣지 않는다**.
 2. **페이지 레이아웃 SVG** — 내레이션·대사·연출 텍스트를 담은 SVG 파일. Figma나 Canva로 가져와 생성된 그림과 합치고 텍스트를 자유롭게 수정할 수 있다.
@@ -18,7 +18,23 @@ description: >
 
 사용자가 글을 주지 않으면 skill이 먼저 첨부 이미지나 대화 맥락을 분석해 내레이션·대사 초안(한국어)을 만들고, 그 초안으로 컷 구성과 프롬프트 작업을 진행한다.
 
-akbun-draw-webtoon-a(xkcd풍 흑백 스틱피겨)와 다른 skill이다. 이 skill은 파스텔 채색 치비 그림체와 SVG 텍스트 오버레이가 고정이다.
+akbun-draw-webtoon-a(xkcd풍 흑백 스틱피겨)와 다른 skill이다. 이 skill은 파스텔 채색 치비 동물 캐릭터 그림체와 SVG 텍스트 오버레이가 고정이다.
+
+## 주인공 캐릭터 (고정)
+
+이 웹툰의 주인공은 이 skill 전용 오리지널 캐릭터다. 사람을 그리지 않고 의인화된 동물 캐릭터만 쓴다.
+
+- **주인공**: 수컷 치비 수달. 부드러운 연갈색 털, 크림색 주둥이와 배, 작고 동그란 귀, 크고 반짝이는 진갈색 눈, 발그레한 볼터치, 머리털에 흰 하이라이트 줄기, 뮤트 그레이블루 후드티를 입는다. 이야기의 화자("나")를 이 캐릭터로 그린다.
+- **조연**: 다른 등장인물도 전부 의인화 동물로 그린다. 주인공과 다른 종(토끼, 곰, 오리 등)과 다른 파스텔 색을 골라 구분한다.
+- 사용자가 다른 동물·외모를 지정하면 그대로 따르되, 사람 캐릭터 요청이 아닌 한 동물 캐릭터를 유지한다.
+
+주인공의 영어 CHARACTER 문장(모든 컷 프롬프트에 글자 그대로 복사):
+
+```text
+a chibi male otter character with soft light-brown fur, a cream muzzle and belly, small round
+ears, big sparkling dark-brown eyes, blushing cheeks, white highlight streaks on his head fur,
+wearing a muted gray-blue hoodie
+```
 
 ## 비주얼 스타일 (모든 프롬프트에 고정)
 
@@ -28,7 +44,7 @@ akbun-draw-webtoon-a(xkcd풍 흑백 스틱피겨)와 다른 skill이다. 이 ski
 - **선**: 따뜻한 진회색(먹색)의 가늘고 살짝 흔들리는 연필/잉크 손그림 외곽선.
 - **채색**: 수채처럼 투명하고 부드러운 파스텔 톤. 면을 꽉 채우지 않고 흰 여백이 배어나온다.
 - **팔레트**: 더스티 로즈 핑크, 크림 옐로, 뮤트 그레이블루, 연갈색. 한 컷에 3~4색이면 충분하다.
-- **인물**: 치비(2~3등신) 캐릭터. 크고 반짝이는 눈, 발그레한 볼터치, 단순한 코·입. 머리카락에 흰 하이라이트 줄기를 넣는다.
+- **인물**: 의인화된 치비(2~3등신) 동물 캐릭터. 크고 반짝이는 눈, 발그레한 볼터치, 단순한 코·입. 머리털에 흰 하이라이트 줄기를 넣는다. 주인공은 `주인공 캐릭터 (고정)`을 따른다.
 - **감정 연출**: 놀람 느낌표, 땀방울, 움직임 곡선 같은 만화 기호를 아껴서 쓴다. 이 기호들은 그림에 포함해도 된다(글자가 아니므로).
 - **분위기**: 잔잔하고 따뜻한 일상·감성 무드. 과장된 액션보다 표정과 몸짓 중심.
 - **글자 금지**: 그림 안에 어떤 언어의 텍스트도 넣지 않는다. 제목·대사·효과음은 전부 SVG가 담당한다.
@@ -78,7 +94,7 @@ SVG의 모든 텍스트는 저작권 걱정 없는 무료 폰트만 쓴다.
 1. **입력 파악.** 사용자가 남긴 이미지와 글을 읽는다. 이미지가 있으면 인물·상황·감정을 분석한다.
 2. **이야기 확보.** 글이 있으면 그대로 쓴다. 없으면 첨부 이미지와 맥락을 근거로 내레이션·대사 초안을 한국어로 만든다. 지어낸 이야기임을 밝히고 컷 시나리오에 포함한다.
 3. **페이지·컷 구성.** 이야기를 페이지 단위로 나눈다. 나란히 이어지는 두 장면은 2컷 페이지, 감정을 크게 보여줄 장면은 1컷 페이지로 잡는다.
-4. **캐릭터 고정.** 등장인물의 외모(머리 색·모양, 옷, 특징)를 한 번 정의하고, 모든 컷 프롬프트에 **똑같은 문장으로** 복사해 넣는다. 이미지 모델은 컷 간 기억이 없다.
+4. **캐릭터 고정.** 화자는 `주인공 캐릭터 (고정)`의 수달 캐릭터로 그린다. 조연이 나오면 종·색·옷을 한 번 정의하고, 모든 컷 프롬프트에 **똑같은 문장으로** 복사해 넣는다. 이미지 모델은 컷 간 기억이 없다.
 5. **컷별 프롬프트 작성.** 아래 `이미지 프롬프트 템플릿`을 채운다. 글자 금지를 매 프롬프트에 명시한다.
 6. **SVG 작성.** 아래 `SVG 템플릿`을 페이지 레이아웃 규칙의 수치대로 채워 저장한다. 생성된 그림 파일이 이미 있으면 `<image>`로 넣고, 없으면 연회색 자리표시 사각형에 컷 번호를 적는다.
 7. **출력.** 컷 시나리오 + 프롬프트 블록들 + SVG 파일 경로(폰트 설치 안내 포함)를 출력한다.
@@ -101,13 +117,15 @@ warm dark-gray pencil ink outlines on a pure white background. Transparent water
 coloring that leaves white space showing through — dusty rose pink, cream yellow, muted gray-blue,
 light brown palette.
 
-CHARACTER: <recurring character definition, e.g. "a chibi young woman with long wavy dusty-pink
-hair with white highlight streaks, big sparkling brown eyes, blushing cheeks, wearing a cream
-yellow off-shoulder sweater and jeans">. (Reuse this exact sentence in every panel.)
+CHARACTER: <recurring character definition — for the narrator, paste the main-character sentence
+from the 주인공 캐릭터 section verbatim; for side characters define a different animal species
+with a different pastel color, e.g. "a chibi rabbit character with dusty-pink fur, long droopy
+ears, big sparkling gray eyes, blushing cheeks, wearing a cream yellow cardigan">. (Reuse the
+exact same sentence in every panel.)
 
 SCENE: <what happens in this panel: action, posture, emotion, and the one or two props that
-matter, e.g. "she crouches down holding out a small treat to a tiny gray kitten, leaning in with
-a nervous but delighted smile, small sweat drop near her cheek">.
+matter, e.g. "he wrestles with sticky cookie dough on a small wooden table, flour dust on his
+head fur, a nervous but determined expression, small sweat drop near his cheek">.
 
 COMPOSITION: <full body | upper body | bust shot>, the subject centered with generous white
 margins on all sides, minimal background — only <the one prop/surface that matters, in pale
@@ -116,8 +134,9 @@ gray lines and light pastel>.
 STYLE: gentle slice-of-life mood, comic emotion marks allowed (surprise marks, sweat drops,
 motion curves) but used sparingly. <4:5 vertical | 1:1 square> aspect ratio.
 
-DO NOT: no text, no letters, no speech bubbles, no panel borders, no photorealism, no heavy
-shading, no saturated colors, no gray or colored background fills, no watermarks.
+DO NOT: no text, no letters, no speech bubbles, no panel borders, no human characters, no
+photorealism, no heavy shading, no saturated colors, no gray or colored background fills,
+no watermarks.
 ```
 
 ## SVG 템플릿
@@ -169,24 +188,24 @@ shading, no saturated colors, no gray or colored background fills, no watermarks
 입력 예시:
 
 ```text
-유기묘를 처음 입양한 날 이야기를 웹툰으로 만들어줘. 보호소에서 데려올 때는 서로 어색했는데,
-집에 오자마자 고양이가 내 무릎에서 잠들었어.
+처음으로 홈베이킹에 도전한 날 이야기를 웹툰으로 만들어줘. 반죽은 엉망이 되고 첫 판은
+태워 먹었는데, 두 번째 판은 그럴싸한 쿠키가 나왔어.
 ```
 
-출력 개요 예시 (페이지 구성과 텍스트 배치를 보여준다):
+출력 개요 예시 (페이지 구성과 텍스트 배치를 보여준다. 주인공은 고정 수달 캐릭터다):
 
 ```text
 페이지 1 — 2컷 페이지 (1200×900)
-  상단 내레이션: "보호소에서 처음 만난 날…"
-  컷 1: 이동장 안에서 몸을 웅크리고 경계하는 회색 아기 고양이 (놀람 표시)
-  컷 2: 같은 순간, 어색하게 손을 내밀며 땀 흘리는 주인공
-  하단 내레이션: "우리는 서로가 낯설었다…"
-  보조 내레이션: "(눈도 안 마주쳐줌…)"
+  상단 내레이션: "첫 홈베이킹에 도전한 날…"
+  컷 1: 작은 나무 탁자에서 끈적한 반죽과 씨름하는 주인공, 머리털에 밀가루 (땀방울)
+  컷 2: 연기가 새어 나오는 오븐 앞에서 놀라 뒤로 넘어지는 주인공 (놀람 표시)
+  하단 내레이션: "첫 판은 숯이 되었다…"
+  보조 내레이션: "(연기 감지기까지 울림…)"
 
 페이지 2 — 1컷 페이지 (1080×1080)
-  상단 내레이션: "그런데 집에 도착한 지 십 분 만에…"
-  그림: 주인공 무릎 위에서 동그랗게 말려 잠든 고양이, 주인공은 감동해서 굳어 있음
-  대사: "움직일 수가 없어…"
+  상단 내레이션: "그런데 두 번째 판은…"
+  그림: 그럴싸한 쿠키가 담긴 접시를 두 손으로 들고 눈을 반짝이며 감격한 주인공
+  대사: "이게 되네…?"
 ```
 
 각 컷을 이미지 프롬프트 템플릿에 넣어 컷별 프롬프트를 만들고, 페이지마다 SVG 파일을 저장한다.
@@ -195,6 +214,7 @@ shading, no saturated colors, no gray or colored background fills, no watermarks
 
 - 사용자가 준 이미지·글을 근거로 이야기를 구성했는가? 글이 없어서 지어냈다면 그 사실을 밝혔는가?
 - 이미지 프롬프트의 DO NOT에 텍스트·말풍선·패널 테두리 금지를 넣었는가?
+- 화자를 고정 수달 캐릭터로 그렸고, 모든 등장인물이 의인화 동물 캐릭터인가?
 - CHARACTER 문장을 모든 컷 프롬프트에서 글자 그대로 재사용했는가?
 - SVG가 페이지 레이아웃 규칙의 캔버스 크기·좌표·글자 크기를 그대로 따르는가?
 - SVG의 모든 텍스트가 `'Nanum Pen Script', 'Gaegu', cursive`를 쓰는가? 폰트 설치 안내를 덧붙였는가?
