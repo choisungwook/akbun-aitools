@@ -1,5 +1,5 @@
 ---
-name: akbun-cardnews
+name: akbun-draw-cardnews-A
 description: >
   사용자의 글과 이미지(또는 주제만)로 인스타그램 카드뉴스 표지·내용 페이지 구조를 만들고,
   Figma/Canva에서 편집 가능한 SVG로 출력한다.

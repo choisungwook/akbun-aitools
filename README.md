@@ -31,7 +31,7 @@ akbun tools for both Claude Code and Codex plugin workflows.
 | [akbun-generate-sketch-text](./plugins/akbun-writing/skills/akbun-generate-sketch-text/) | 문구를 린넨 원단 자수 텍스트 + 형광펜 강조 스타일의 이미지 생성 프롬프트로 작성 |
 | [akbun-draw-sketchbook-card](./plugins/akbun-writing/skills/akbun-draw-sketchbook-card/) | 개념을 연필 스케치북 카드(손글씨 제목·체크리스트+일러스트)로 그리는 이미지 생성 프롬프트 작성 |
 | [akbun-draw-storytellingimage](./plugins/akbun-writing/skills/akbun-draw-storytellingimage/) | 이야기를 장면별 손그림 마커 스케치 삽화의 이미지 생성 프롬프트로 작성 |
-| [akbun-cardnews](./plugins/akbun-writing/skills/akbun-cardnews/) | 글·이미지로 카드뉴스 표지·내용 페이지 구조를 만들고 Figma/Canva용 SVG로 출력 |
+| [akbun-draw-cardnews-A](./plugins/akbun-writing/skills/akbun-draw-cardnews-A/) | 글·이미지로 카드뉴스 표지·내용 페이지 구조를 만들고 Figma/Canva용 SVG로 출력 |
 | [akbun-generate-background-image](./plugins/akbun-writing/skills/akbun-generate-background-image/) | 카드뉴스 페이지별 배경 사진의 이미지 생성 AI agent용 영어 프롬프트 작성 |
 
 아래는 각 skill로 만든 예시다.
