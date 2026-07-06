@@ -71,7 +71,7 @@ no facial features, sketched softly together as one background group
 
 ## 페이지 레이아웃 규칙
 
-캔버스는 **항상 1080×1080 정사각**이고 배경은 순백색이다. 요소 위치를 고정 좌표로 정하지 않는다. 캐릭터 수, 대사 길이, 사물 위치, 글씨 위치에 맞춰 자연스럽게 배치하되 아래 원칙을 지킨다.
+캔버스는 **항상 1080×1350 세로형(4:5)**이고 배경은 순백색이다. 요소 위치를 고정 좌표로 정하지 않는다. 캐릭터 수, 대사 길이, 사물 위치, 글씨 위치에 맞춰 자연스럽게 배치하되 아래 원칙을 지킨다.
 
 - **상단 내레이션**: 페이지 맨 위 가운데. 상황을 여는 문장을 둔다.
 - **하단 내레이션**: 페이지 맨 아래 가운데, 상단보다 크게. 핵심·여운 문장을 둔다. 보조 내레이션이 필요하면 괄호로 감싸 더 작게, 오른쪽으로 치우쳐 그 아래 둔다.
@@ -123,7 +123,7 @@ SVG의 모든 텍스트는 저작권 걱정 없는 무료 폰트만 쓴다.
 아래 영어 템플릿의 `<...>`를 페이지마다 채운다. 캐릭터 문장은 `캐릭터 (고정)` 섹션에서 글자 그대로 복사하고, 나오지 않는 캐릭터 줄과 쓰지 않는 텍스트 줄은 지운다.
 
 ```text
-A square 1:1 webtoon page illustration in a soft pastel Korean chibi style. Thin, slightly
+A vertical 4:5 (1080x1350) webtoon page illustration in a soft pastel Korean chibi style. Thin, slightly
 wobbly warm dark-gray pencil ink outlines on a pure white background. Transparent
 watercolor-like pastel coloring that leaves white space showing through — dusty rose pink,
 cream yellow, muted gray-blue, light brown palette.
@@ -159,12 +159,12 @@ Korean text, and do not add any text beyond the lines listed above.
 
 ## SVG 템플릿
 
-2컷 페이지용 뼈대다. 캔버스는 항상 1080×1080이고, 아래 좌표는 배치 예시다 — 페이지의 캐릭터·사물·글씨 위치에 맞춰 조정한다. 1컷·대화 페이지는 괘선·분할선을 지우고 텍스트만 배치한다. 생성된 그림이 있으면 자리표시 `<rect>`/`<text>`를 `<image x="..." y="..." width="..." height="..." href="page-1.png"/>`로 교체한다.
+2컷 페이지용 뼈대다. 캔버스는 항상 1080×1350이고, 아래 좌표는 배치 예시다 — 페이지의 캐릭터·사물·글씨 위치에 맞춰 조정한다. 1컷·대화 페이지는 괘선·분할선을 지우고 텍스트만 배치한다. 생성된 그림이 있으면 자리표시 `<rect>`/`<text>`를 `<image x="..." y="..." width="..." height="..." href="page-1.png"/>`로 교체한다.
 
 ```xml
-<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1080" viewBox="0 0 1080 1080">
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1350" viewBox="0 0 1080 1350">
   <!-- 배경 -->
-  <rect width="1080" height="1080" fill="#ffffff"/>
+  <rect width="1080" height="1350" fill="#ffffff"/>
 
   <!-- 상단 내레이션: 페이지 맨 위 가운데 -->
   <text x="540" y="70" text-anchor="middle" dominant-baseline="middle"
@@ -172,17 +172,17 @@ Korean text, and do not add any text beyond the lines listed above.
 
   <!-- 패널 괘선(2컷 페이지만): 위·아래 전폭 가로선 -->
   <line x1="0" y1="130" x2="1080" y2="130" stroke="#3a3a3a" stroke-width="2"/>
-  <line x1="0" y1="820" x2="1080" y2="820" stroke="#3a3a3a" stroke-width="2"/>
+  <line x1="0" y1="1060" x2="1080" y2="1060" stroke="#3a3a3a" stroke-width="2"/>
 
   <!-- 컷 분할선(2컷 페이지만): 살짝 기울임 -->
-  <line x1="552" y1="130" x2="522" y2="820" stroke="#3a3a3a" stroke-width="2"/>
+  <line x1="552" y1="130" x2="522" y2="1060" stroke="#3a3a3a" stroke-width="2"/>
 
   <!-- 그림 자리표시: 그림이 생기면 <image>로 교체 -->
-  <rect x="30" y="160" width="470" height="630" fill="#f4f4f4"/>
-  <text x="265" y="480" text-anchor="middle" font-family="'Nanum Pen Script', 'Gaegu', cursive"
+  <rect x="30" y="160" width="470" height="870" fill="#f4f4f4"/>
+  <text x="265" y="600" text-anchor="middle" font-family="'Nanum Pen Script', 'Gaegu', cursive"
         font-size="36" fill="#9a9a9a">컷 1 그림</text>
-  <rect x="580" y="160" width="470" height="630" fill="#f4f4f4"/>
-  <text x="815" y="480" text-anchor="middle" font-family="'Nanum Pen Script', 'Gaegu', cursive"
+  <rect x="580" y="160" width="470" height="870" fill="#f4f4f4"/>
+  <text x="815" y="600" text-anchor="middle" font-family="'Nanum Pen Script', 'Gaegu', cursive"
         font-size="36" fill="#9a9a9a">컷 2 그림</text>
 
   <!-- 대사: 말하는 캐릭터 머리 근처 빈 공간으로 옮겨 배치 -->
@@ -190,11 +190,11 @@ Korean text, and do not add any text beyond the lines listed above.
         font-size="34" fill="#3a3a3a">대사 한 마디 -</text>
 
   <!-- 하단 내레이션: 페이지 맨 아래 가운데, 상단보다 크게 -->
-  <text x="540" y="900" text-anchor="middle" dominant-baseline="middle"
+  <text x="540" y="1150" text-anchor="middle" dominant-baseline="middle"
         font-family="'Nanum Pen Script', 'Gaegu', cursive" font-size="52" fill="#3a3a3a">하단 내레이션…</text>
 
   <!-- 보조 내레이션: 괄호 혼잣말, 오른쪽 치우침 -->
-  <text x="840" y="970" text-anchor="middle" dominant-baseline="middle"
+  <text x="840" y="1230" text-anchor="middle" dominant-baseline="middle"
         font-family="'Nanum Pen Script', 'Gaegu', cursive" font-size="34" fill="#3a3a3a">(보조 내레이션…)</text>
 </svg>
 ```
@@ -237,7 +237,7 @@ Korean text, and do not add any text beyond the lines listed above.
 - 사용자가 준 이미지·글을 근거로 이야기를 구성했는가? 글이 없어서 지어냈다면 그 사실을 밝혔는가?
 - 화자는 주인공 캐릭터, 2인 대화는 상대 캐릭터, 셋 이상 무리는 얼굴 없는 군중 캐릭터로 배정했는가?
 - 캐릭터 정의 문장을 모든 프롬프트에서 글자 그대로 재사용했는가?
-- 캔버스가 1080×1080 정사각인가? 좌표를 억지로 고정하지 않고 내용에 맞춰 배치했는가?
+- 캔버스가 1080×1350 세로형인가? 좌표를 억지로 고정하지 않고 내용에 맞춰 배치했는가?
 - 그림에 넣을 한글 텍스트를 프롬프트에 한 줄씩 정확히 나열했고, DO NOT에 텍스트 변형·추가 금지를 넣었는가?
 - SVG가 같은 텍스트를 담고, 모든 텍스트가 `'Nanum Pen Script', 'Gaegu', cursive`를 쓰는가? 폰트 설치 안내를 덧붙였는가?
 - 컷당 감정이 하나이고, 대사가 15자 이내인가?
