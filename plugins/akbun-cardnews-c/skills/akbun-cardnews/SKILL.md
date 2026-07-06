@@ -54,14 +54,14 @@ description: >
 
 본문 내 단일 강조 구절에는 피치 `#FADBC8`를 기본으로 쓴다.
 
-## 폰트 규칙 (저작권 무료만 사용)
+## 폰트 규칙 (저작권 침해 없는 폰트만 사용)
 
-모두 SIL Open Font License라 상업적 사용이 자유롭다. 다른 폰트를 쓰지 않는다.
+핵심 기준은 **상업적 사용에 라이선스 문제가 없는가**다. 상용 유료 폰트나 라이선스가 불분명한 폰트는 쓰지 않는다. 아래는 SIL Open Font License 기반의 권장 예시이며, 같은 라이선스 조건을 만족하는 다른 폰트로 대체해도 된다.
 
-- **제목(영문)**: Playfair Display Bold — 한 줄 64px, 두 줄 60px
-- **제목(한글)**: Noto Serif KR Bold — 같은 크기
+- **제목(영문)**: Playfair Display Bold(예시) — 한 줄 64px, 두 줄 60px
+- **제목(한글)**: Noto Serif KR Bold(예시) — 같은 크기
 - **리스트 항목**: 제목과 같은 세리프 계열 SemiBold/Bold, 42px
-- **본문·핸들**: Pretendard(대체: Noto Sans KR) — 본문 Regular 34px, 핸들 24px
+- **본문·핸들**: Pretendard(예시, 대체: Noto Sans KR) — 본문 Regular 34px, 핸들 24px
 
 SVG의 `font-family`에는 항상 대체 폰트까지 지정한다: `"Playfair Display", "Noto Serif KR", serif` / `Pretendard, "Noto Sans KR", sans-serif`.
 
@@ -72,8 +72,8 @@ SVG의 `font-family`에는 항상 대체 폰트까지 지정한다: `"Playfair D
 - SVG에는 자동 줄바꿈이 없으므로 줄바꿈은 skill이 직접 나눠 `<tspan x="..." dy="...">`로 처리한다.
 - 하이라이트 `<rect>`는 해당 `<text>`보다 먼저(뒤 레이어로) 둔다. 글자 폭은 대략 `글자수 × 폰트크기 × 0.55`(한글은 `× 1.0`)로 추정해 rect 폭을 잡는다.
 - 외부 리소스 금지: `<image>` 링크, 웹폰트 `@import`, CSS `<style>` 블록을 쓰지 않는다. 속성 기반 스타일만 쓴다.
-- 파일은 카드마다 하나씩 작업 디렉터리의 `cardnews-<주제slug>/` 폴더에 `card-01.svg`, `card-02.svg` … 로 저장한다.
-- 사용자에게 안내 한 줄을 덧붙인다: Figma/Canva에서 지정 폰트가 설치되어 있지 않으면 대체 폰트로 표시되므로, Playfair Display·Noto Serif KR·Pretendard를 설치(또는 Canva 폰트 목록에서 선택)하라고 알린다.
+- 파일은 카드마다 하나씩 `$HOME/Downloads/cardnewsC-<timestamp>/` 폴더에 `card-01.svg`, `card-02.svg` … 로 저장한다. `<timestamp>`는 작업 시작 시각 기준 `YYYYMMDD-HHMMSS` 형식이다.
+- 사용자에게 안내 한 줄을 덧붙인다: Figma/Canva에서 지정 폰트가 설치되어 있지 않으면 대체 폰트로 표시되므로, 사용한 폰트(예: Playfair Display·Noto Serif KR·Pretendard)를 설치(또는 Canva 폰트 목록에서 선택)하라고 알린다.
 
 ## 이미지 생성 프롬프트 규칙
 
@@ -113,7 +113,7 @@ icons, gradients, textures, or borders.
 2. **입력 파악.** 텍스트가 있으면 그대로 쓰고, 이미지·주제만 있으면 분석해 문구 초안을 만든다.
 3. **카드 분할.** 후크 카드 + 내용 카드(텍스트/리스트)로 나누고 카드 구성안 표를 만든다.
 4. **프롬프트 작성.** 카드마다 템플릿을 채워 영어 프롬프트를 만든다.
-5. **SVG 생성.** 카드마다 레이아웃 스펙 수치대로 SVG 파일을 저장한다.
+5. **SVG 생성.** `$HOME/Downloads/cardnewsC-<timestamp>/` 폴더를 만들고, 카드마다 레이아웃 스펙 수치대로 SVG 파일을 저장한다.
 6. **출력.** 카드 구성안 → 카드별 프롬프트 → SVG 파일 경로 + 폰트 안내 순으로 정리해 보여준다.
 
 ## 예시 (리스트 카드 한 장)
@@ -152,7 +152,7 @@ DO NOT: misspell any text. Do not add any text beyond what is listed. No photos,
 icons, gradients, textures, or borders.
 ```
 
-같은 카드의 SVG(`cardnews-homecafe/card-01.svg`):
+같은 카드의 SVG(`$HOME/Downloads/cardnewsC-20260706-153000/card-01.svg`):
 
 ```xml
 <svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1080" viewBox="0 0 1080 1080">
@@ -183,7 +183,8 @@ icons, gradients, textures, or borders.
 
 - 사용자가 준 문구를 바꾸지 않고 그대로 넣었는가? (문구가 없을 때만 skill이 초안을 만들고, 만들었다고 밝혔는가?)
 - 레이아웃 수치(배경색, 제목 위치, 줄 간격, 하단 핸들 위치, 상단 무게 구도)를 스펙 그대로 지켰는가?
-- 폰트를 Playfair Display / Noto Serif KR / Pretendard(Noto Sans KR) 밖에서 쓰지 않았는가?
+- 사용한 폰트가 저작권을 위반하지 않는가? (예: Noto Sans KR처럼 상업적 사용이 자유로운 라이선스인가)
 - SVG의 텍스트가 `<text>` 요소로 편집 가능하게 남아 있고, 외부 리소스가 없는가?
 - 프롬프트의 모든 텍스트를 `reading exactly: "..."`로 지정했는가?
+- SVG 파일을 `$HOME/Downloads/cardnewsC-<timestamp>/`에 저장했는가?
 - 세 가지 결과물(구성안, 프롬프트, SVG 파일 경로)을 모두 출력했는가?
