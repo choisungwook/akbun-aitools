@@ -12,13 +12,12 @@
 
 ## 표지 페이지
 
-배경 사진이 캔버스 전체(0,0 ~ 1080,1350)를 덮는다.
+배경 사진이 캔버스 전체(0,0 ~ 1080,1350)를 덮는다. 사진과 배경 크기가 같아 흰 여백이 보이면 안 된다. 사진 위에 브랜드명·출처 글자를 얹지 않는다.
 
 | 요소 | 위치·크기 | 스타일 |
 |---|---|---|
 | 배경 사진 | x=0, y=0, w=1080, h=1350 | placeholder: fill=#8A8F98 |
 | 하단 스크림 | x=0, y=740, w=1080, h=610 | 위→아래 linearGradient, #000 opacity 0 → 0.55 |
-| 브랜드 이름 | x=76, baseline y=106 | 40px, weight 700, #FFFFFF |
 | 제목 1행 | x=76, baseline y=1064 | 86px, weight 800, #FFFFFF |
 | 제목 2행 | x=76, baseline y=1180 | 86px, weight 800, #FFFFFF |
 | 제목 3행 | x=76, baseline y=1296 | 86px, weight 800, #FFFFFF |
@@ -33,8 +32,7 @@
 
 | 요소 | 위치·크기 | 스타일 |
 |---|---|---|
-| 사진 영역 | x=0, y=0, w=1080, h=900 | placeholder: fill=#8A8F98 |
-| 사진 크레딧 | x=1056(text-anchor=end), baseline y=872 | 24px, weight 400, #FFFFFF, opacity 0.85 |
+| 사진 영역 | x=0, y=0, w=1080, h=900 | placeholder: fill=#8A8F98. 사진 위에 출처·브랜드 글자를 넣지 않는다 |
 | 흰색 패널 | x=0, y=900, w=1080, h=450 | fill=#FFFFFF |
 | 제목(한국어) | x=76, baseline y=990 | 56px, weight 800, #111111 |
 | 제목(영문) | 제목 끝 + 12px, 같은 text의 tspan(dy=-18) | 26px, weight 700, #444444, 대문자 |
