@@ -5,10 +5,8 @@
 - 캔버스: 1080 x 1350 px (4:5). 모든 좌표는 이 캔버스 기준 절대값이다.
 - 폰트: `Pretendard, 'Noto Sans KR', sans-serif`
 - 좌우 기본 여백: 76px
-- 페이지 알약(pill): 모든 페이지 우상단 공통
-  - rect: x=936, y=60, width=100, height=54, rx=18, fill=#000000, fill-opacity=0.55
-  - text: `n/N`, 중앙 정렬(x=986, y=97, text-anchor=middle), 30px, weight 700, #FFFFFF
-  - N이 두 자리면 width=124, x=912로 넓힌다 (text x=974).
+- base rect: 모든 페이지의 첫 요소로 `x=0, y=0, w=1080, h=1350, fill=#FFFFFF`를 깐다. 사진·패널이 덮지 않는 영역이 투명으로 남지 않게 하는 흰색 바탕이다.
+- 페이지 번호 표시는 넣지 않는다. 사진 위에는 표지 제목 외 어떤 글자(브랜드·출처·페이지 번호)도 얹지 않는다.
 
 ## 표지 페이지
 
