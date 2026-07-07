@@ -1,6 +1,6 @@
 {
   "name": "akbun-writing",
-  "version": "1.0.28",
+  "version": "1.0.29",
   "description": "Writing, review, and blog support skills by akbun",
   "author": {
     "name": "akbun",
@@ -45,7 +45,8 @@
       "Make a 3 or 4 panel webtoon prompt from this story",
       "Make a stitched-text image prompt for a motivational quote",
       "Make a pencil sketchbook concept-card image prompt for this topic",
-      "Make hand-drawn storytelling image prompts for this story"
+      "Make hand-drawn storytelling image prompts for this story",
+      "Make a card news set (cover, quote pages, SVG for Figma/Canva) from this content"
     ],
     "brandColor": "#0F766E",
     "screenshots": []

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1350" width="1080" height="1350">
+  <rect id="page-background" x="0" y="0" width="1080" height="1350" fill="#E8E0D1"/>
+  <!-- large inset photo: replace this rect with the generated image -->
+  <rect id="photo-placeholder" x="192" y="139" width="868" height="635" fill="#B0A897"/>
+  <text id="caption" font-family="Pretendard, Noto Sans KR, sans-serif" font-size="36" fill="#211D1A">
+    <tspan x="67" y="915">지난봄, 어라운드 커피는 작은 로스팅</tspan>
+    <tspan x="67" y="969">클래스를 열어 이웃 스무 명과 함께</tspan>
+    <tspan x="67" y="1023">생두를 볶았습니다. 김하늘 로스터가</tspan>
+    <tspan x="67" y="1077">진행했습니다.</tspan>
+  </text>
+</svg>

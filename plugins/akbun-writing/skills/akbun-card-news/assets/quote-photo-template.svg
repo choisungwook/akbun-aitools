@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1350" width="1080" height="1350">
+  <rect id="page-background" x="0" y="0" width="1080" height="1350" fill="#E8E0D1"/>
+  <!-- top-right inset photo: replace this rect with the generated image -->
+  <rect id="photo-placeholder" x="498" y="63" width="522" height="414" fill="#B0A897"/>
+  <text id="question-label" font-family="Pretendard, Noto Sans KR, sans-serif" font-size="30" fill="#211D1A">
+    <tspan x="81" y="650">원두는 어떻게 고르나요?</tspan>
+  </text>
+  <text id="quote-open-mark" font-family="Noto Serif KR, Noto Serif, serif" font-size="58" fill="#211D1A">
+    <tspan x="56" y="760">“</tspan>
+  </text>
+  <text id="quote-body" font-family="Noto Serif KR, Noto Serif, serif" font-size="58" fill="#211D1A">
+    <tspan x="85" y="760">볶기 전에 생두 냄새부터</tspan>
+    <tspan x="85" y="840">맡아요. 산지가 같아도</tspan>
+    <tspan x="85" y="920">해마다 향이 다르거든요.</tspan>
+    <tspan x="85" y="1000">그 차이를 기록해 두는 게</tspan>
+    <tspan x="85" y="1080">제 일의 절반이에요.”</tspan>
+  </text>
+  <text id="attribution-name" font-family="Pretendard, Noto Sans KR, sans-serif" font-size="30" font-weight="bold" fill="#211D1A">
+    <tspan x="81" y="1240">김하늘</tspan>
+  </text>
+  <text id="attribution-role" font-family="Pretendard, Noto Sans KR, sans-serif" font-size="30" fill="#211D1A">
+    <tspan x="81" y="1278">로스터, 어라운드 커피</tspan>
+  </text>
+</svg>

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1350" width="1080" height="1350">
+  <!-- full-bleed cover photo: replace this rect with the generated image -->
+  <rect id="cover-photo-placeholder" x="0" y="0" width="1080" height="1350" fill="#B0A897"/>
+  <rect id="cover-photo-overlay" x="0" y="0" width="1080" height="1350" fill="#000000" opacity="0.25"/>
+  <text id="cover-headline" font-family="Noto Serif KR, Noto Serif, serif" font-size="78" fill="#F4EFE6">
+    <tspan x="116" y="157">좋은 원두는</tspan>
+    <tspan x="116" y="247">어떻게 고르나요?</tspan>
+  </text>
+  <text id="cover-subtitle" font-family="Noto Serif KR, Noto Serif, serif" font-size="29" fill="#F4EFE6">
+    <tspan x="116" y="333">10년 차 로스터 김하늘 님을 만나</tspan>
+    <tspan x="116" y="375">원두 고르는 기준과 로스팅에 대한</tspan>
+    <tspan x="116" y="417">생각을 물었습니다.</tspan>
+  </text>
+</svg>

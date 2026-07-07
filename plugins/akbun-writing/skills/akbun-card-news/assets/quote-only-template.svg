@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1350" width="1080" height="1350">
+  <rect id="page-background" x="0" y="0" width="1080" height="1350" fill="#E8E0D1"/>
+  <text id="question-label" font-family="Pretendard, Noto Sans KR, sans-serif" font-size="30" fill="#211D1A">
+    <tspan x="81" y="110">로스팅에서 무엇이 제일 어렵나요?</tspan>
+  </text>
+  <text id="quote-open-mark" font-family="Noto Serif KR, Noto Serif, serif" font-size="58" fill="#211D1A">
+    <tspan x="56" y="240">“</tspan>
+  </text>
+  <text id="quote-body" font-family="Noto Serif KR, Noto Serif, serif" font-size="58" fill="#211D1A">
+    <tspan x="85" y="240">매일 같은 맛을 내는</tspan>
+    <tspan x="85" y="320">일이요. 원두는 농산물이라</tspan>
+    <tspan x="85" y="400">어제와 오늘이 다른데,</tspan>
+    <tspan x="85" y="480">손님은 늘 같은 커피를</tspan>
+    <tspan x="85" y="560">기대하니까요. 그 간격을</tspan>
+    <tspan x="85" y="640">줄이는 게 로스터의</tspan>
+    <tspan x="85" y="720">일이라고 생각해요.”</tspan>
+  </text>
+  <text id="attribution-name" font-family="Pretendard, Noto Sans KR, sans-serif" font-size="30" font-weight="bold" fill="#211D1A">
+    <tspan x="81" y="810">김하늘</tspan>
+  </text>
+  <text id="attribution-role" font-family="Pretendard, Noto Sans KR, sans-serif" font-size="30" fill="#211D1A">
+    <tspan x="81" y="848">로스터, 어라운드 커피</tspan>
+  </text>
+</svg>
