@@ -1,7 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700" font-family="sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1350" font-family="sans-serif">
   <!-- ===== background: upper zone (above horizon) ===== -->
-  <rect x="0" y="0" width="1000" height="700" fill="#ECECE9"/>
-  <rect x="0" y="0" width="1000" height="301" fill="#E9E9E6"/>
+  <rect x="0" y="0" width="1080" height="1350" fill="#ECECE9"/>
+  <rect x="0" y="0" width="1080" height="580" fill="#E9E9E6"/>
 
   <!-- ===== background: lower zone (ground, darker toward bottom) ===== -->
   <defs>
@@ -10,110 +10,113 @@
       <stop offset="1" stop-color="#8C8C88"/>
     </linearGradient>
   </defs>
-  <rect x="0" y="301" width="1000" height="399" fill="url(#ground)"/>
+  <rect x="0" y="580" width="1080" height="770" fill="url(#ground)"/>
 
-  <!-- ===== dashed ground marks ===== -->
-  <g stroke="#DEDEDA" stroke-width="4" stroke-linecap="round">
-    <line x1="120" y1="430" x2="165" y2="430"/>
-    <line x1="230" y1="500" x2="262" y2="500"/>
-    <line x1="90"  y1="580" x2="140" y2="580"/>
-    <line x1="300" y1="640" x2="352" y2="640"/>
-    <line x1="560" y1="620" x2="600" y2="620"/>
-    <line x1="700" y1="560" x2="738" y2="560"/>
-    <line x1="840" y1="620" x2="895" y2="620"/>
-    <line x1="880" y1="480" x2="915" y2="480"/>
-    <line x1="620" y1="470" x2="650" y2="470"/>
-  </g>
-
-  <!-- ===== submarine resting on the ground, behind the figures ===== -->
-  <g stroke="#1A1A1A" stroke-width="3" stroke-linejoin="round">
-    <!-- hull -->
-    <path d="M 430 330 Q 640 250 850 300 Q 930 320 940 355 Q 945 385 880 400 L 520 415 Q 430 405 415 370 Q 415 345 430 330 Z" fill="#2E2E2C"/>
-    <!-- top deck highlight -->
-    <path d="M 470 322 Q 650 262 860 306 L 854 324 Q 650 282 478 336 Z" fill="#EDEDEA"/>
-    <!-- windows on the deck -->
-    <g fill="#2E2E2C" stroke="none">
-      <rect x="560" y="292" width="42" height="12" rx="4" transform="rotate(-7 581 298)"/>
-      <rect x="630" y="282" width="42" height="12" rx="4" transform="rotate(-5 651 288)"/>
-      <rect x="700" y="277" width="42" height="12" rx="4" transform="rotate(-2 721 283)"/>
-      <rect x="770" y="277" width="42" height="12" rx="4" transform="rotate(2 791 283)"/>
+  <!-- ===== illustration scene ===== -->
+  <g transform="translate(-302,240) scale(1.4)">
+    <!-- dashed ground marks -->
+    <g stroke="#DEDEDA" stroke-width="4" stroke-linecap="round">
+      <line x1="238" y1="430" x2="283" y2="430"/>
+      <line x1="230" y1="500" x2="262" y2="500"/>
+      <line x1="250" y1="580" x2="300" y2="580"/>
+      <line x1="300" y1="640" x2="352" y2="640"/>
+      <line x1="560" y1="620" x2="600" y2="620"/>
+      <line x1="700" y1="560" x2="738" y2="560"/>
+      <line x1="840" y1="620" x2="895" y2="620"/>
+      <line x1="880" y1="480" x2="915" y2="480"/>
+      <line x1="620" y1="470" x2="650" y2="470"/>
     </g>
-    <!-- side fin -->
-    <path d="M 415 360 L 330 345 Q 315 350 330 358 L 418 378 Z" fill="#2E2E2C"/>
-    <!-- landing legs -->
-    <path d="M 860 400 L 880 428 L 900 428" fill="none" stroke-width="5"/>
-    <circle cx="905" cy="428" r="9" fill="#2E2E2C"/>
-  </g>
 
-  <!-- ===== secondary diver (smaller, right of center, walking away) ===== -->
-  <g stroke="#1A1A1A" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
-    <!-- legs -->
-    <path d="M 705 500 L 700 585 L 692 588" fill="none" stroke-width="14" stroke="#E6E6E3"/>
-    <path d="M 728 500 L 735 583 L 744 586" fill="none" stroke-width="14" stroke="#E6E6E3"/>
-    <path d="M 705 500 L 700 585 M 728 500 L 735 583" fill="none"/>
-    <!-- body -->
-    <rect x="688" y="420" width="58" height="92" rx="18" fill="#E6E6E3"/>
-    <!-- tank line on back -->
-    <rect x="694" y="432" width="16" height="60" rx="8" fill="#C9C9C5"/>
-    <!-- arm -->
-    <path d="M 742 434 Q 766 466 756 508 L 738 504 Q 748 468 728 444 Z" fill="#E6E6E3"/>
-    <!-- helmet, seen from behind-side, small orange visor edge -->
-    <circle cx="719" cy="402" r="26" fill="#EDEDEA"/>
-    <path d="M 736 392 A 26 26 0 0 1 740 410 L 728 406 A 14 14 0 0 0 726 396 Z" fill="#D96B2B" stroke-width="2.5"/>
-    <!-- ground shadow -->
-    <ellipse cx="718" cy="592" rx="42" ry="7" fill="#7C7C78" stroke="none"/>
-  </g>
+    <!-- submarine resting on the ground, behind the figures -->
+    <g stroke="#1A1A1A" stroke-width="3" stroke-linejoin="round">
+      <!-- hull -->
+      <path d="M 430 330 Q 640 250 850 300 Q 930 320 940 355 Q 945 385 880 400 L 520 415 Q 430 405 415 370 Q 415 345 430 330 Z" fill="#2E2E2C"/>
+      <!-- top deck highlight -->
+      <path d="M 470 322 Q 650 262 860 306 L 854 324 Q 650 282 478 336 Z" fill="#EDEDEA"/>
+      <!-- windows on the deck -->
+      <g fill="#2E2E2C" stroke="none">
+        <rect x="560" y="292" width="42" height="12" rx="4" transform="rotate(-7 581 298)"/>
+        <rect x="630" y="282" width="42" height="12" rx="4" transform="rotate(-5 651 288)"/>
+        <rect x="700" y="277" width="42" height="12" rx="4" transform="rotate(-2 721 283)"/>
+        <rect x="770" y="277" width="42" height="12" rx="4" transform="rotate(2 791 283)"/>
+      </g>
+      <!-- side fin -->
+      <path d="M 415 360 L 330 345 Q 315 350 330 358 L 418 378 Z" fill="#2E2E2C"/>
+      <!-- landing legs -->
+      <path d="M 860 400 L 880 428 L 900 428" fill="none" stroke-width="5"/>
+      <circle cx="905" cy="428" r="9" fill="#2E2E2C"/>
+    </g>
 
-  <!-- ===== main diver (large, left of center, facing viewer) ===== -->
-  <g stroke="#1A1A1A" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round">
-    <!-- ground shadow -->
-    <ellipse cx="368" cy="612" rx="86" ry="9" fill="#7C7C78" stroke="none"/>
-    <!-- legs -->
-    <path d="M 330 460 L 322 590 L 302 604 L 348 604 L 352 470 Z" fill="#E6E6E3"/>
-    <path d="M 398 460 L 406 590 L 430 604 L 384 604 L 380 470 Z" fill="#EDEDEA"/>
-    <!-- knee pads -->
-    <rect x="316" y="512" width="38" height="30" rx="8" fill="#C9C9C5"/>
-    <rect x="380" y="512" width="38" height="30" rx="8" fill="#DADAD6"/>
-    <!-- torso -->
-    <path d="M 306 320 Q 300 300 322 292 L 410 292 Q 432 300 426 322 L 420 470 Q 366 486 312 470 Z" fill="#E6E6E3"/>
-    <!-- chest control panel -->
-    <rect x="344" y="352" width="44" height="52" rx="6" fill="#C9C9C5"/>
-    <rect x="352" y="360" width="18" height="22" rx="3" fill="#4A4A46"/>
-    <circle cx="380" cy="366" r="4" fill="#4A4A46" stroke="none"/>
-    <circle cx="380" cy="380" r="4" fill="#4A4A46" stroke="none"/>
-    <!-- suit seams -->
-    <path d="M 330 420 L 344 420 M 388 420 L 402 420" fill="none" stroke-width="2.5"/>
-    <!-- left arm (viewer's left) -->
-    <path d="M 306 322 Q 268 330 262 380 Q 258 430 272 466 L 300 460 Q 292 410 300 350 Z" fill="#DADAD6"/>
-    <rect x="258" y="386" width="34" height="26" rx="7" fill="#C9C9C5"/>
-    <!-- right arm, slightly bent with glove -->
-    <path d="M 426 322 Q 466 334 470 386 Q 472 428 458 462 L 430 454 Q 440 404 432 350 Z" fill="#DADAD6"/>
-    <rect x="440" y="398" width="34" height="26" rx="7" fill="#C9C9C5"/>
-    <path d="M 452 458 q -8 18 6 26 q 16 8 24 -6 q 6 -14 -8 -22 Z" fill="#EDEDEA"/>
-    <!-- shoulder armor -->
-    <path d="M 300 296 Q 276 300 272 326 L 306 332 Q 306 310 316 296 Z" fill="#4A4A46"/>
-    <path d="M 432 296 Q 456 300 460 326 L 426 332 Q 426 310 416 296 Z" fill="#4A4A46"/>
-    <!-- neck ring -->
-    <rect x="336" y="278" width="60" height="20" rx="9" fill="#C9C9C5"/>
-    <!-- helmet -->
-    <circle cx="366" cy="234" r="52" fill="#EDEDEA"/>
-    <!-- visor: the single orange accent -->
-    <path d="M 326 226 Q 328 196 366 194 Q 404 196 406 226 Q 404 252 366 254 Q 328 252 326 226 Z" fill="#D96B2B"/>
-    <path d="M 340 214 q 4 -10 16 -12" fill="none" stroke="#F4E9DF" stroke-width="5"/>
+    <!-- secondary diver (smaller, right of center, walking away) -->
+    <g stroke="#1A1A1A" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
+      <!-- legs -->
+      <path d="M 705 500 L 700 585 L 692 588" fill="none" stroke-width="14" stroke="#E6E6E3"/>
+      <path d="M 728 500 L 735 583 L 744 586" fill="none" stroke-width="14" stroke="#E6E6E3"/>
+      <path d="M 705 500 L 700 585 M 728 500 L 735 583" fill="none"/>
+      <!-- body -->
+      <rect x="688" y="420" width="58" height="92" rx="18" fill="#E6E6E3"/>
+      <!-- tank line on back -->
+      <rect x="694" y="432" width="16" height="60" rx="8" fill="#C9C9C5"/>
+      <!-- arm -->
+      <path d="M 742 434 Q 766 466 756 508 L 738 504 Q 748 468 728 444 Z" fill="#E6E6E3"/>
+      <!-- helmet, seen from behind-side, small orange visor edge -->
+      <circle cx="719" cy="402" r="26" fill="#EDEDEA"/>
+      <path d="M 736 392 A 26 26 0 0 1 740 410 L 728 406 A 14 14 0 0 0 726 396 Z" fill="#D96B2B" stroke-width="2.5"/>
+      <!-- ground shadow -->
+      <ellipse cx="718" cy="592" rx="42" ry="7" fill="#7C7C78" stroke="none"/>
+    </g>
+
+    <!-- main diver (large, left of center, facing viewer) -->
+    <g stroke="#1A1A1A" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round">
+      <!-- ground shadow -->
+      <ellipse cx="368" cy="612" rx="86" ry="9" fill="#7C7C78" stroke="none"/>
+      <!-- legs -->
+      <path d="M 330 460 L 322 590 L 302 604 L 348 604 L 352 470 Z" fill="#E6E6E3"/>
+      <path d="M 398 460 L 406 590 L 430 604 L 384 604 L 380 470 Z" fill="#EDEDEA"/>
+      <!-- knee pads -->
+      <rect x="316" y="512" width="38" height="30" rx="8" fill="#C9C9C5"/>
+      <rect x="380" y="512" width="38" height="30" rx="8" fill="#DADAD6"/>
+      <!-- torso -->
+      <path d="M 306 320 Q 300 300 322 292 L 410 292 Q 432 300 426 322 L 420 470 Q 366 486 312 470 Z" fill="#E6E6E3"/>
+      <!-- chest control panel -->
+      <rect x="344" y="352" width="44" height="52" rx="6" fill="#C9C9C5"/>
+      <rect x="352" y="360" width="18" height="22" rx="3" fill="#4A4A46"/>
+      <circle cx="380" cy="366" r="4" fill="#4A4A46" stroke="none"/>
+      <circle cx="380" cy="380" r="4" fill="#4A4A46" stroke="none"/>
+      <!-- suit seams -->
+      <path d="M 330 420 L 344 420 M 388 420 L 402 420" fill="none" stroke-width="2.5"/>
+      <!-- left arm (viewer's left) -->
+      <path d="M 306 322 Q 268 330 262 380 Q 258 430 272 466 L 300 460 Q 292 410 300 350 Z" fill="#DADAD6"/>
+      <rect x="258" y="386" width="34" height="26" rx="7" fill="#C9C9C5"/>
+      <!-- right arm, slightly bent with glove -->
+      <path d="M 426 322 Q 466 334 470 386 Q 472 428 458 462 L 430 454 Q 440 404 432 350 Z" fill="#DADAD6"/>
+      <rect x="440" y="398" width="34" height="26" rx="7" fill="#C9C9C5"/>
+      <path d="M 452 458 q -8 18 6 26 q 16 8 24 -6 q 6 -14 -8 -22 Z" fill="#EDEDEA"/>
+      <!-- shoulder armor -->
+      <path d="M 300 296 Q 276 300 272 326 L 306 332 Q 306 310 316 296 Z" fill="#4A4A46"/>
+      <path d="M 432 296 Q 456 300 460 326 L 426 332 Q 426 310 416 296 Z" fill="#4A4A46"/>
+      <!-- neck ring -->
+      <rect x="336" y="278" width="60" height="20" rx="9" fill="#C9C9C5"/>
+      <!-- helmet -->
+      <circle cx="366" cy="234" r="52" fill="#EDEDEA"/>
+      <!-- visor: the single orange accent -->
+      <path d="M 326 226 Q 328 196 366 194 Q 404 196 406 226 Q 404 252 366 254 Q 328 252 326 226 Z" fill="#D96B2B"/>
+      <path d="M 340 214 q 4 -10 16 -12" fill="none" stroke="#F4E9DF" stroke-width="5"/>
+    </g>
   </g>
 
   <!-- ===== title, serif capitals, letterspaced ===== -->
-  <text x="500" y="86" text-anchor="middle"
+  <text x="540" y="146" text-anchor="middle"
         font-family="Cinzel, 'Playfair Display', Georgia, serif"
-        font-size="46" font-weight="600" letter-spacing="26"
+        font-size="58" font-weight="600" letter-spacing="32"
         fill="#1A1A1A">DEEP DIVE</text>
 
   <!-- ===== caption, handwritten style ===== -->
-  <text x="500" y="648" text-anchor="middle"
+  <text x="540" y="1262" text-anchor="middle"
         font-family="'Patrick Hand', 'Nanum Pen Script', 'Comic Sans MS', cursive"
-        font-size="34" letter-spacing="1"
+        font-size="44" letter-spacing="1"
         fill="#26262A">Down here, we only have each other.</text>
 
   <!-- ===== outer frame on top of everything ===== -->
-  <rect x="5" y="5" width="990" height="690" fill="none" stroke="#1A1A1A" stroke-width="3"/>
+  <rect x="6" y="6" width="1068" height="1338" fill="none" stroke="#1A1A1A" stroke-width="3.5"/>
 </svg>
