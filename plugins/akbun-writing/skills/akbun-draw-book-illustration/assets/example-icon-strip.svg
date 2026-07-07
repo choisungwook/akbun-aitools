@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 600" width="1600" height="600">
+  <!-- palette (shared with akbun-draw-poster-monogray): bg #F4F2ED / ink #3A3A3A / grays #E3E3E3 #C9C9C9 / dark screen #5A5A5A / accent #E8833A -->
+  <rect id="paper" width="1600" height="600" fill="#F4F2ED"/>
+
+  <g id="icon-1-minipc" transform="rotate(-1 320 240)" stroke="#3A3A3A" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="225" y="150" width="190" height="135" rx="16" fill="#E3E3E3" stroke-width="8"/>
+    <rect x="248" y="172" width="144" height="91" rx="8" fill="#5A5A5A" stroke-width="5"/>
+    <rect x="305" y="285" width="30" height="26" fill="#C9C9C9" stroke-width="7"/>
+    <rect x="268" y="311" width="104" height="14" rx="7" fill="#E3E3E3" stroke-width="7"/>
+  </g>
+
+  <g id="icon-2-ram" transform="rotate(1 640 260)" stroke="#3A3A3A" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="530" y="200" width="220" height="95" rx="12" fill="#E3E3E3" stroke-width="8"/>
+    <rect x="553" y="224" width="42" height="47" fill="#C9C9C9" stroke-width="5"/>
+    <rect x="619" y="224" width="42" height="47" fill="#C9C9C9" stroke-width="5"/>
+    <rect x="685" y="224" width="42" height="47" fill="#C9C9C9" stroke-width="5"/>
+    <line x1="558" y1="295" x2="558" y2="317" stroke-width="8"/>
+    <line x1="599" y1="295" x2="599" y2="320" stroke-width="8"/>
+    <line x1="640" y1="295" x2="640" y2="316" stroke-width="8"/>
+    <line x1="681" y1="295" x2="681" y2="319" stroke-width="8"/>
+    <line x1="722" y1="295" x2="722" y2="317" stroke-width="8"/>
+  </g>
+
+  <g id="icon-3-disk" transform="rotate(-0.8 960 250)" stroke="#3A3A3A" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M860 170 L860 330 A100 30 0 0 0 1060 330 L1060 170" fill="#E3E3E3" stroke-width="8"/>
+    <path d="M860 225 A100 30 0 0 0 1060 225" fill="none" stroke-width="6"/>
+    <path d="M860 280 A100 30 0 0 0 1060 280" fill="none" stroke-width="6"/>
+    <ellipse cx="960" cy="170" rx="100" ry="30" fill="#C9C9C9" stroke-width="8"/>
+  </g>
+
+  <g id="icon-4-money" transform="rotate(0.6 1280 280)" stroke-linecap="round" stroke-linejoin="round">
+    <g id="sparkles" stroke="#E8833A" stroke-width="8">
+      <line x1="1235" y1="150" x2="1215" y2="120"/>
+      <line x1="1280" y1="140" x2="1280" y2="105"/>
+      <line x1="1325" y1="150" x2="1345" y2="120"/>
+    </g>
+    <rect x="1150" y="300" width="260" height="62" rx="10" fill="#E3E3E3" stroke="#3A3A3A" stroke-width="8"/>
+    <rect x="1264" y="303" width="32" height="56" fill="#E8833A"/>
+    <rect x="1160" y="246" width="250" height="60" rx="10" fill="#E3E3E3" stroke="#3A3A3A" stroke-width="8"/>
+    <rect x="1270" y="249" width="32" height="54" fill="#E8833A"/>
+    <rect x="1152" y="192" width="256" height="60" rx="10" fill="#E3E3E3" stroke="#3A3A3A" stroke-width="8"/>
+    <rect x="1266" y="195" width="32" height="54" fill="#E8833A"/>
+  </g>
+
+  <g id="labels" font-family="Gaegu, 'Nanum Pen Script', 'Patrick Hand', sans-serif" font-size="52" fill="#3A3A3A" text-anchor="middle">
+    <text x="320" y="485" transform="rotate(-0.6 320 470)">미니PC 1대</text>
+    <text x="640" y="485">메모리 64GB</text>
+    <text x="960" y="485" transform="rotate(0.5 960 470)">디스크 2TB</text>
+    <text x="1280" y="485">월 전기 1만원</text>
+  </g>
+</svg>

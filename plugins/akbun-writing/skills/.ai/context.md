@@ -12,4 +12,5 @@ akbun-writing은 한국어 기술 글쓰기, 문서 리뷰, 블로그 업로드,
 - reference image: 그대로 복제할 대상이 아니라 레이아웃, 스타일, 구조를 판단하는 참고 이미지이다.
 - 확인 필요: 가정으로 처리하기 어렵거나 다음 작업자가 다시 확인해야 하는 불확실성을 표시하는 말이다.
 - Notion sync: Markdown to Notion은 CLI(`ntn`)를 우선하고 MCP를 fallback으로 둔다. `notion_sync`와 payload hash로 반복 업로드를 줄인다.
+- book illustration layout(책 삽화 레이아웃): `akbun-draw-poster-monogray`와 같은 팔레트(진회색 잉크+플랫 회색+오렌지 포인트 하나+off-white)를 쓰되, 구도를 자유롭게 두지 않고 참고 이미지에서 뽑은 고정 레이아웃 5종(flow-stack, zoom-detail, poster-card, dialog-scene, icon-strip)과 상하좌우 간격에 맞춰 배치한다. `akbun-draw-book-illustration`이 담당하며, 산출물은 이미지 프롬프트와 편집 가능한 SVG 두 가지다. 스타일만 필요하고 구도가 자유로우면 monogray, 정해진 레이아웃·간격이 필요하면 이 skill을 쓴다.
 - question style(질문식): "질문이 글을 끌고 간다"는 골격으로 쓰는 akbun 공부 정리 글이다. `도입 훅(상황 + 관통 질문) -> 질문으로 여는 섹션 -> 마무리 종합` 흐름으로 궁금증을 유발해 끝까지 읽히게 한다. 인터뷰·대담이 아니라 글쓴이 한 명의 정리이며, 화자를 지어내지 않는다. 질문은 why·what-if로 잡는다. self-contained skill: `akbun-writing-with-question`(톤·포맷 규칙을 자체 포함).
