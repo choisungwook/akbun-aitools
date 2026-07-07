@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 940" font-family="'Noto Sans KR','Noto Sans',sans-serif">
+  <!-- page background -->
+  <rect width="1200" height="940" fill="#ffffff"/>
+
+  <!-- browser frame -->
+  <rect x="55" y="42" width="1090" height="856" rx="10" fill="#ffffff" stroke="#202124" stroke-width="2.5"/>
+
+  <!-- header: search engine wordmark -->
+  <text x="105" y="107" font-size="42" font-weight="700"><tspan fill="#4285F4">G</tspan><tspan fill="#EA4335">o</tspan><tspan fill="#FBBC05">o</tspan><tspan fill="#4285F4">g</tspan><tspan fill="#34A853">l</tspan><tspan fill="#EA4335">e</tspan></text>
+
+  <!-- header: search pill -->
+  <rect x="290" y="68" width="660" height="58" rx="29" fill="#ffffff" stroke="#dfe1e5" stroke-width="1.5"/>
+  <text x="322" y="105" font-size="21" fill="#202124">쿠버네티스에서 파드가 무엇인가요</text>
+
+  <!-- pill icons: clear(x), divider, keyboard, mic, lens, magnifier -->
+  <g stroke="#5f6368" stroke-width="2" stroke-linecap="round">
+    <line x1="765" y1="90" x2="779" y2="104"/>
+    <line x1="779" y1="90" x2="765" y2="104"/>
+  </g>
+  <line x1="800" y1="82" x2="800" y2="112" stroke="#dfe1e5" stroke-width="1.5"/>
+  <g stroke="#5f6368" fill="none" stroke-width="1.8">
+    <rect x="818" y="88" width="26" height="18" rx="3"/>
+    <line x1="824" y1="101" x2="838" y2="101"/>
+    <line x1="823" y1="93" x2="825" y2="93"/>
+    <line x1="830" y1="93" x2="832" y2="93"/>
+    <line x1="837" y1="93" x2="839" y2="93"/>
+  </g>
+  <rect x="857" y="83" width="10" height="17" rx="5" fill="#5f6368"/>
+  <path d="M853 96 a9 9 0 0 0 18 0" fill="none" stroke="#5f6368" stroke-width="2"/>
+  <line x1="862" y1="105" x2="862" y2="110" stroke="#5f6368" stroke-width="2"/>
+  <circle cx="894" cy="97" r="9" fill="none" stroke="#5f6368" stroke-width="2"/>
+  <circle cx="894" cy="97" r="3.5" fill="#5f6368"/>
+  <circle cx="923" cy="94" r="8" fill="none" stroke="#4285F4" stroke-width="2.5"/>
+  <line x1="929" y1="100" x2="936" y2="107" stroke="#4285F4" stroke-width="2.5" stroke-linecap="round"/>
+
+  <!-- tab row -->
+  <text x="105" y="184" font-size="19" font-weight="700" fill="#1a73e8">전체</text>
+  <rect x="105" y="193" width="40" height="3" rx="1.5" fill="#1a73e8"/>
+  <g font-size="19" fill="#5f6368">
+    <text x="175" y="184">동영상</text>
+    <text x="265" y="184">이미지</text>
+    <text x="355" y="184">쇼핑</text>
+    <text x="428" y="184">뉴스</text>
+    <text x="496" y="184">도서</text>
+    <text x="564" y="184">웹</text>
+    <text x="615" y="184">⋮ 더보기</text>
+  </g>
+  <line x1="56" y1="205" x2="1144" y2="205" stroke="#ecedef" stroke-width="1.5"/>
+
+  <!-- featured snippet: highlight marks first, then border box, then text -->
+  <rect x="212" y="242" width="570" height="30" fill="#e2e2e2"/>
+  <rect x="129" y="279" width="242" height="30" fill="#e2e2e2"/>
+  <rect x="105" y="225" width="930" height="100" rx="8" fill="none" stroke="#e8710a" stroke-width="3"/>
+  <text x="133" y="265" font-size="23" font-weight="700" fill="#202124">파드란 쿠버네티스에서 생성하고 관리할 수 있는 배포 가능한</text>
+  <text x="133" y="302" font-size="23" font-weight="700" fill="#202124">가장 작은 컴퓨팅 단위입니다.<tspan dx="12" font-size="17" font-weight="400" fill="#70757a">2023. 5. 12.</tspan></text>
+
+  <!-- featured snippet source -->
+  <circle cx="127" cy="372" r="21" fill="#326ce5"/>
+  <text x="127" y="380" text-anchor="middle" font-size="20" font-weight="700" fill="#ffffff">K</text>
+  <text x="162" y="366" font-size="19" fill="#202124">Kubernetes Docs</text>
+  <text x="162" y="390" font-size="16" fill="#4d5156">https://kubernetes.io › docs › concepts<tspan dx="14" fill="#5f6368">⋮</tspan></text>
+  <text x="105" y="432" font-size="26" fill="#1a0dab">파드(Pod) 개념 이해하기</text>
+
+  <!-- dashed divider + feedback row -->
+  <line x1="105" y1="466" x2="745" y2="466" stroke="#9aa0a6" stroke-width="1.5" stroke-dasharray="2 5"/>
+  <circle cx="779" cy="461" r="9" fill="none" stroke="#5f6368" stroke-width="1.5"/>
+  <text x="779" y="466" text-anchor="middle" font-size="12" fill="#5f6368">?</text>
+  <text x="796" y="466" font-size="14" fill="#5f6368">추천 스니펫 정보</text>
+  <text x="920" y="466" font-size="14" fill="#5f6368">•</text>
+  <text x="938" y="466" font-size="14" fill="#5f6368">⚑ 의견</text>
+
+  <!-- organic result 1 -->
+  <circle cx="127" cy="540" r="21" fill="#0f766e"/>
+  <text x="127" y="548" text-anchor="middle" font-size="20" font-weight="700" fill="#ffffff">C</text>
+  <text x="162" y="534" font-size="19" fill="#202124">cloudlab.kr</text>
+  <text x="162" y="558" font-size="16" fill="#4d5156">https://cloudlab.kr › ... › 쿠버네티스 기술 블로그<tspan dx="14" fill="#5f6368">⋮</tspan></text>
+  <text x="105" y="600" font-size="26" fill="#1a0dab">쿠버네티스 파드 완벽 가이드 - 클라우드랩</text>
+  <text x="105" y="632" font-size="18" fill="#4d5156"><tspan fill="#70757a">2024. 8. 21.</tspan> — 파드 안에 컨테이너를 배치하는 기준. 2. 사이드카 패턴으로 로그를 모으는 방법. 3.</text>
+  <text x="105" y="658" font-size="18" fill="#4d5156">파드와 디플로이먼트의 정의와 정확한 차이.</text>
+
+  <!-- organic result 2 -->
+  <circle cx="127" cy="730" r="21" fill="#202124"/>
+  <text x="127" y="738" text-anchor="middle" font-size="20" font-weight="700" fill="#ffffff">W</text>
+  <text x="162" y="724" font-size="19" fill="#202124">위키백과</text>
+  <text x="162" y="748" font-size="16" fill="#4d5156">https://ko.wikipedia.org › wiki › 쿠버네티스<tspan dx="14" fill="#5f6368">⋮</tspan></text>
+  <text x="105" y="790" font-size="26" fill="#1a0dab">쿠버네티스</text>
+  <text x="105" y="822" font-size="18" fill="#4d5156"><tspan fill="#70757a">5일 전</tspan> — 쿠버네티스는 컨테이너화된 애플리케이션의 배포와 스케일링을 자동화하는 오픈</text>
+  <text x="105" y="848" font-size="18" fill="#4d5156">소스 플랫폼으로, 컨테이너 오케스트레이션의 사실상 표준이며 ...</text>
+</svg>
