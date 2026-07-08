@@ -146,7 +146,7 @@ Do not let any element touch the border frame.
 
 ## SVG 작성 규칙
 
-SVG는 skill이 직접 그린다. 형태 배치와 수치는 `assets/example-poster.svg`를 열어 기준으로 삼는다.
+SVG는 skill이 직접 그린다. 형태 배치와 수치는 아래 `레이아웃 스펙 (고정)`과 `비주얼 스타일 (고정)` 규칙을 기준으로 삼는다.
 
 - `viewBox="0 0 1080 1350"`(인스타그램 세로형 4:5), 외부 이미지·스크립트 없는 순수 SVG 1.1로 작성한다. Figma와 Canva가 그대로 불러온다.
 - 레이어 순서: 배경(하늘→바닥 그라디언트) → 대시 마크 → 큰 오브젝트 → 보조 피사체 → 주 피사체 → 제목 `<text>` → 캡션 `<text>` → 테두리 프레임.
@@ -202,8 +202,6 @@ DO NOT: add any color beyond the grays and the single accent color. Do not add e
 logos, textures, gradients on the subjects, or facial features. Do not misspell any text.
 Do not let any element touch the border frame.
 ```
-
-출력 SVG: `assets/example-poster.svg` — 같은 장면을 레이아웃 스펙 좌표 그대로 그린 파일이다.
 
 한국어 한 줄 설명: 제목 DEEP DIVE 아래에 정면 다이버·뒷모습 다이버·잠수함으로 심해 탐사 장면을 만들고,
 헬멧 바이저에만 주황 포인트를 줘서 "Down here, we only have each other." 캡션으로 마무리했습니다.
