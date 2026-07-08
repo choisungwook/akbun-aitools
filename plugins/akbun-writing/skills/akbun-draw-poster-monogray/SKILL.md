@@ -118,7 +118,7 @@ Figma/Canva 호환을 위해 아래를 지킨다.
 - SVG 1.1 기본 요소만 쓴다: `rect`, `circle`, `ellipse`, `path`, `polygon`, `line`, `text`, `g`.
 - `filter`, `mask`, `foreignObject`, 외부 이미지 참조, 임베디드 폰트는 쓰지 않는다.
 - 텍스트는 `text` 요소로 남겨 가져온 뒤 바로 편집할 수 있게 한다.
-- 폰트는 저작권 걱정 없는 SIL OFL 폰트만 지정한다: 한글 손글씨 `Gaegu`(개구체), 대체
+- 폰트는 저작권 없는 폰트를 사용한다(예: SIL OFL): 한글 손글씨 `Gaegu`(개구체), 대체
   `Nanum Pen Script`, 라틴 대체 `Patrick Hand`. 셋 다 Google Fonts에서 무료다. Figma/Canva에서
   해당 폰트가 없으면 fallback으로 표시되며, 텍스트가 편집 가능하므로 원하는 폰트로 바꾸면 된다.
 
@@ -209,5 +209,5 @@ photographic shading, no digital gloss, no busy background. No watermarks, no lo
 - 오렌지 `#E8833A`를 화면에서 가장 중요한 **한 요소**에만 썼는가? 나머지는 전부 회색인가?
 - 잉크 라인(`#3A3A3A`, 둥근 join/cap), 플랫 회색 면, off-white 종이, 넉넉한 여백을 지켰는가?
 - 그림 속 문구는 사용자가 준 그대로 넣었는가? (없을 때만 skill이 만든다) 짧고 손글씨인가?
-- SVG가 기본 요소만 쓰고 텍스트가 편집 가능한 `text`로 남아 있는가? 폰트가 SIL OFL(Gaegu 등)인가?
+- SVG가 기본 요소만 쓰고 텍스트가 편집 가능한 `text`로 남아 있는가? 폰트가 저작권 없는 폰트(예: SIL OFL)인가?
 - 프롬프트 블록, SVG 파일 경로, 한국어 한 줄 설명을 모두 출력했는가?
