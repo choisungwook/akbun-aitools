@@ -49,7 +49,8 @@
       "Make a minimal poster card image prompt and a Figma/Canva-ready SVG from this image",
       "Draw this subject in the monogray flat-ink style (image prompt + Figma/Canva SVG)",
       "Make a book-figure image prompt and an editable SVG using a fixed layout (icon strip, zoom, dialog, flow, or poster card)",
-      "Make a naive-doodle safety issue card-news with whale characters (image prompt + Figma/Canva SVG) from this situation"
+      "Make a naive-doodle safety issue card-news with whale characters (image prompt + Figma/Canva SVG) from this situation",
+      "Make a whale-mascot cheatsheet infographic (image prompt + Figma/Canva SVG) for this topic"
     ],
     "brandColor": "#0F766E",
     "screenshots": []

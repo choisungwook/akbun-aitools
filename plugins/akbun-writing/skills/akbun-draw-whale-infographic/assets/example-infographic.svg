@@ -1,0 +1,295 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1200 1160" width="1200" height="1160">
+  <style>
+    text { font-family: 'Patrick Hand', 'Comic Neue', 'Gaegu', cursive; fill: #1A1A1A; }
+    .stroke { stroke: #1A1A1A; stroke-linecap: round; stroke-linejoin: round; }
+  </style>
+  <defs>
+    <!-- kawaii whale mascot, facing right, centered at origin, ~120 wide -->
+    <g id="whale">
+      <path class="stroke" d="M -40 0 L -62 -14 L -55 2 L -64 14 Z" fill="#D9D9D9" stroke-width="4"/>
+      <ellipse class="stroke" cx="0" cy="0" rx="46" ry="32" fill="#D9D9D9" stroke-width="4"/>
+      <ellipse cx="4" cy="15" rx="32" ry="13" fill="#FFFFFF"/>
+      <path class="stroke" d="M -6 8 q 14 2 18 14 q -18 4 -22 -8 z" fill="#D9D9D9" stroke-width="3.5"/>
+      <circle cx="22" cy="-8" r="3.5" fill="#1A1A1A"/>
+      <circle cx="30" cy="1" r="5" fill="#F0F0F0"/>
+      <path class="stroke" d="M 32 -3 q 4 4 9 1" fill="none" stroke-width="3"/>
+    </g>
+    <!-- 4-point sparkle -->
+    <path id="spark" d="M 0 -9 L 2.5 -2.5 L 9 0 L 2.5 2.5 L 0 9 L -2.5 2.5 L -9 0 L -2.5 -2.5 Z" fill="#1A1A1A"/>
+  </defs>
+
+  <!-- background -->
+  <rect x="0" y="0" width="1200" height="1160" fill="#FFFFFF"/>
+
+  <!-- ================= BAND 1 : HEADER (y 10-385) ================= -->
+  <text x="45" y="100" font-size="62">Pour Over</text>
+  <text x="45" y="165" font-size="62">Coffee</text>
+  <line class="stroke" x1="45" y1="192" x2="150" y2="192" stroke-width="4"/>
+  <text x="45" y="240" font-size="24">The slow brew.</text>
+  <text x="45" y="275" font-size="24">You don't rush it.</text>
+  <text x="45" y="310" font-size="24">The water does the work.</text>
+
+  <!-- thought bubble -->
+  <g>
+    <circle class="stroke" cx="355" cy="150" r="42" fill="#FFFFFF" stroke-width="4"/>
+    <circle class="stroke" cx="420" cy="120" r="46" fill="#FFFFFF" stroke-width="4"/>
+    <circle class="stroke" cx="480" cy="150" r="40" fill="#FFFFFF" stroke-width="4"/>
+    <circle class="stroke" cx="420" cy="185" r="48" fill="#FFFFFF" stroke-width="4"/>
+    <ellipse cx="418" cy="155" rx="80" ry="52" fill="#FFFFFF"/>
+    <!-- steaming coffee cup icon -->
+    <path class="stroke" d="M 390 150 L 396 190 L 440 190 L 446 150 Z" fill="#F0F0F0" stroke-width="4"/>
+    <path class="stroke" d="M 446 158 q 18 4 0 22" fill="none" stroke-width="4"/>
+    <path class="stroke" d="M 405 128 q 4 -8 0 -14 M 420 130 q 4 -8 0 -14 M 435 128 q 4 -8 0 -14" fill="none" stroke-width="3"/>
+    <circle class="stroke" cx="352" cy="250" r="9" fill="#FFFFFF" stroke-width="3.5"/>
+    <circle class="stroke" cx="332" cy="278" r="6" fill="#FFFFFF" stroke-width="3"/>
+  </g>
+  <!-- thinking whale -->
+  <use xlink:href="#whale" transform="translate(370,336) scale(1.0)"/>
+
+  <!-- stack of 4 -->
+  <g>
+    <rect class="stroke" x="585" y="60" width="320" height="62" rx="12" fill="#2B2B2B" stroke-width="4"/>
+    <circle class="stroke" cx="622" cy="91" r="16" fill="#FFFFFF" stroke-width="3.5"/>
+    <text x="622" y="98" font-size="20" text-anchor="middle">4</text>
+    <text x="652" y="99" font-size="26" style="fill:#FFFFFF">Pour Over</text>
+
+    <rect class="stroke" x="585" y="136" width="320" height="62" rx="12" fill="#F0F0F0" stroke-width="4"/>
+    <circle class="stroke" cx="622" cy="167" r="16" fill="#FFFFFF" stroke-width="3.5"/>
+    <text x="622" y="174" font-size="20" text-anchor="middle">3</text>
+    <text x="652" y="175" font-size="26">French Press</text>
+
+    <rect class="stroke" x="585" y="212" width="320" height="62" rx="12" fill="#FFFFFF" stroke-width="4"/>
+    <circle class="stroke" cx="622" cy="243" r="16" fill="#FFFFFF" stroke-width="3.5"/>
+    <text x="622" y="250" font-size="20" text-anchor="middle">2</text>
+    <text x="652" y="251" font-size="26">Drip Machine</text>
+
+    <rect class="stroke" x="585" y="288" width="320" height="62" rx="12" fill="#FFFFFF" stroke-width="4"/>
+    <circle class="stroke" cx="622" cy="319" r="16" fill="#FFFFFF" stroke-width="3.5"/>
+    <text x="622" y="326" font-size="20" text-anchor="middle">1</text>
+    <text x="652" y="327" font-size="26">Instant</text>
+  </g>
+
+  <!-- ladder whale -->
+  <g>
+    <line class="stroke" x1="1005" y1="372" x2="1068" y2="128" stroke-width="5"/>
+    <line class="stroke" x1="1055" y1="372" x2="1118" y2="128" stroke-width="5"/>
+    <line class="stroke" x1="1018" y1="330" x2="1068" y2="330" stroke-width="4"/>
+    <line class="stroke" x1="1030" y1="283" x2="1080" y2="283" stroke-width="4"/>
+    <line class="stroke" x1="1042" y1="236" x2="1092" y2="236" stroke-width="4"/>
+    <line class="stroke" x1="1054" y1="189" x2="1104" y2="189" stroke-width="4"/>
+    <use xlink:href="#whale" transform="translate(1075,160) scale(-0.85,0.85)"/>
+    <use xlink:href="#spark" transform="translate(1128,70)"/>
+    <use xlink:href="#spark" transform="translate(1155,110) scale(0.7)"/>
+    <use xlink:href="#spark" transform="translate(1100,45) scale(0.6)"/>
+  </g>
+
+  <!-- band line 1 -->
+  <line class="stroke" x1="10" y1="385" x2="1190" y2="385" stroke-width="5"/>
+
+  <!-- ================= BAND 2 : 5 STEPS (y 385-660) ================= -->
+  <g>
+    <path class="stroke" d="M 439 398 L 761 398 L 770 406.5 L 763 415 L 770 423.5 L 761 432 L 439 432 L 430 423.5 L 437 415 L 430 406.5 Z" fill="#FFFFFF" stroke-width="3"/>
+    <text x="600" y="423" font-size="22" text-anchor="middle" letter-spacing="1">ONE CUP = 5 MOVES</text>
+  </g>
+  <line class="stroke" x1="246" y1="440" x2="246" y2="650" stroke-width="3"/>
+  <line class="stroke" x1="482" y1="440" x2="482" y2="650" stroke-width="3"/>
+  <line class="stroke" x1="718" y1="440" x2="718" y2="650" stroke-width="3"/>
+  <line class="stroke" x1="954" y1="440" x2="954" y2="650" stroke-width="3"/>
+
+  <!-- step headers -->
+  <g font-size="24">
+    <circle class="stroke" cx="72" cy="466" r="14" fill="#FFFFFF" stroke-width="3"/>
+    <text x="72" y="473" font-size="18" text-anchor="middle">1</text>
+    <text x="96" y="474">Grind</text>
+    <circle class="stroke" cx="300" cy="466" r="14" fill="#FFFFFF" stroke-width="3"/>
+    <text x="300" y="473" font-size="18" text-anchor="middle">2</text>
+    <text x="324" y="474">Bloom</text>
+    <circle class="stroke" cx="540" cy="466" r="14" fill="#FFFFFF" stroke-width="3"/>
+    <text x="540" y="473" font-size="18" text-anchor="middle">3</text>
+    <text x="564" y="474">Pour</text>
+    <circle class="stroke" cx="756" cy="466" r="14" fill="#FFFFFF" stroke-width="3"/>
+    <text x="756" y="473" font-size="18" text-anchor="middle">4</text>
+    <text x="780" y="474">Drawdown</text>
+    <circle class="stroke" cx="1010" cy="466" r="14" fill="#FFFFFF" stroke-width="3"/>
+    <text x="1010" y="473" font-size="18" text-anchor="middle">5</text>
+    <text x="1034" y="474">Taste</text>
+  </g>
+
+  <!-- step illustrations -->
+  <!-- 1 grind: whale + hand grinder -->
+  <use xlink:href="#whale" transform="translate(105,585) scale(0.72)"/>
+  <rect class="stroke" x="160" y="560" width="40" height="46" rx="6" fill="#F0F0F0" stroke-width="3.5"/>
+  <path class="stroke" d="M 180 560 L 180 544 L 202 538" fill="none" stroke-width="3.5"/>
+  <circle class="stroke" cx="205" cy="537" r="6" fill="#D9D9D9" stroke-width="3"/>
+  <!-- 2 bloom: whale watching grounds puff -->
+  <use xlink:href="#whale" transform="translate(330,585) scale(0.72)"/>
+  <path class="stroke" d="M 395 606 q 25 -26 50 0 Z" fill="#2B2B2B" stroke-width="3.5"/>
+  <circle class="stroke" cx="405" cy="568" r="7" fill="#FFFFFF" stroke-width="3"/>
+  <circle class="stroke" cx="422" cy="556" r="9" fill="#FFFFFF" stroke-width="3"/>
+  <circle class="stroke" cx="440" cy="566" r="6" fill="#FFFFFF" stroke-width="3"/>
+  <!-- 3 pour: whale + gooseneck kettle over dripper -->
+  <use xlink:href="#whale" transform="translate(565,585) scale(0.72)"/>
+  <path class="stroke" d="M 622 540 q 22 -14 34 4" fill="none" stroke-width="4"/>
+  <ellipse class="stroke" cx="622" cy="552" rx="18" ry="14" fill="#D9D9D9" stroke-width="3.5"/>
+  <path class="stroke" d="M 650 556 q 4 14 2 24" fill="none" stroke-width="3"/>
+  <path class="stroke" d="M 636 588 L 668 588 L 652 610 Z" fill="#F0F0F0" stroke-width="3.5"/>
+  <!-- 4 drawdown: whale waiting by dripper with drops -->
+  <use xlink:href="#whale" transform="translate(800,585) scale(0.72)"/>
+  <path class="stroke" d="M 856 550 L 900 550 L 878 582 Z" fill="#F0F0F0" stroke-width="3.5"/>
+  <path class="stroke" d="M 878 592 l 0 8 M 872 606 l 0 8 M 884 606 l 0 8" stroke-width="3"/>
+  <rect class="stroke" x="862" y="620" width="32" height="16" rx="4" fill="#D9D9D9" stroke-width="3"/>
+  <!-- 5 taste: whale sipping with sparkles -->
+  <use xlink:href="#whale" transform="translate(1055,585) scale(0.72)"/>
+  <path class="stroke" d="M 1105 570 L 1109 596 L 1137 596 L 1141 570 Z" fill="#F0F0F0" stroke-width="3.5"/>
+  <use xlink:href="#spark" transform="translate(1125,540) scale(0.7)"/>
+  <use xlink:href="#spark" transform="translate(1150,562) scale(0.5)"/>
+
+  <!-- arrows between steps -->
+  <g>
+    <circle cx="246" cy="560" r="15" fill="#FFFFFF"/>
+    <path class="stroke" d="M 236 560 L 254 560 M 248 553 L 256 560 L 248 567" fill="none" stroke-width="3.5"/>
+    <circle cx="482" cy="560" r="15" fill="#FFFFFF"/>
+    <path class="stroke" d="M 472 560 L 490 560 M 484 553 L 492 560 L 484 567" fill="none" stroke-width="3.5"/>
+    <circle cx="718" cy="560" r="15" fill="#FFFFFF"/>
+    <path class="stroke" d="M 708 560 L 726 560 M 720 553 L 728 560 L 720 567" fill="none" stroke-width="3.5"/>
+    <circle cx="954" cy="560" r="15" fill="#FFFFFF"/>
+    <path class="stroke" d="M 944 560 L 962 560 M 956 553 L 964 560 L 956 567" fill="none" stroke-width="3.5"/>
+  </g>
+
+  <!-- band line 2 -->
+  <line class="stroke" x1="10" y1="660" x2="1190" y2="660" stroke-width="5"/>
+
+  <!-- ================= BAND 3 : 6 TOOLS + COMPARISON (y 660-920) ================= -->
+  <g>
+    <path class="stroke" d="M 274 672 L 596 672 L 605 680.5 L 598 689 L 605 697.5 L 596 706 L 274 706 L 265 697.5 L 272 689 L 265 680.5 Z" fill="#FFFFFF" stroke-width="3"/>
+    <text x="435" y="697" font-size="22" text-anchor="middle" letter-spacing="1">6 TOOLS THAT MAKE IT</text>
+  </g>
+  <g stroke="#1A1A1A" stroke-width="2.5" stroke-dasharray="6 8">
+    <line x1="152" y1="720" x2="152" y2="905"/>
+    <line x1="293" y1="720" x2="293" y2="905"/>
+    <line x1="435" y1="720" x2="435" y2="905"/>
+    <line x1="576" y1="720" x2="576" y2="905"/>
+    <line x1="718" y1="720" x2="718" y2="905"/>
+  </g>
+
+  <!-- tools -->
+  <use xlink:href="#whale" transform="translate(75,810) scale(0.5)"/>
+  <ellipse class="stroke" cx="108" cy="765" rx="14" ry="10" transform="rotate(-30 108 765)" fill="#D9D9D9" stroke-width="3"/>
+  <path class="stroke" d="M 100 771 q 8 -8 16 -12" fill="none" stroke-width="2.5"/>
+  <text x="81" y="885" font-size="20" text-anchor="middle">Beans</text>
+
+  <use xlink:href="#whale" transform="translate(216,810) scale(0.5)"/>
+  <rect class="stroke" x="238" y="742" width="26" height="30" rx="4" fill="#F0F0F0" stroke-width="3"/>
+  <path class="stroke" d="M 251 742 L 251 732 L 266 728" fill="none" stroke-width="3"/>
+  <circle class="stroke" cx="268" cy="727" r="4.5" fill="#D9D9D9" stroke-width="2.5"/>
+  <text x="222" y="885" font-size="20" text-anchor="middle">Grinder</text>
+
+  <use xlink:href="#whale" transform="translate(358,810) scale(0.5)"/>
+  <ellipse class="stroke" cx="392" cy="756" rx="15" ry="12" fill="#D9D9D9" stroke-width="3"/>
+  <path class="stroke" d="M 392 744 q 16 -10 24 2" fill="none" stroke-width="3.5"/>
+  <text x="364" y="885" font-size="20" text-anchor="middle">Kettle</text>
+
+  <use xlink:href="#whale" transform="translate(499,810) scale(0.5)"/>
+  <path class="stroke" d="M 518 744 L 552 744 L 535 770 Z" fill="#F0F0F0" stroke-width="3"/>
+  <text x="505" y="885" font-size="20" text-anchor="middle">Filter</text>
+
+  <use xlink:href="#whale" transform="translate(641,810) scale(0.5)"/>
+  <rect class="stroke" x="662" y="752" width="34" height="18" rx="4" fill="#F0F0F0" stroke-width="3"/>
+  <rect x="670" y="757" width="12" height="7" fill="#2B2B2B"/>
+  <text x="647" y="885" font-size="20" text-anchor="middle">Scale</text>
+
+  <use xlink:href="#whale" transform="translate(782,810) scale(0.5)"/>
+  <circle class="stroke" cx="812" cy="756" r="14" fill="#F0F0F0" stroke-width="3"/>
+  <path class="stroke" d="M 812 756 L 812 746 M 812 756 L 820 760" fill="none" stroke-width="2.5"/>
+  <text x="788" y="885" font-size="20" text-anchor="middle">Timer</text>
+
+  <!-- comparison inset panel -->
+  <g>
+    <rect class="stroke" x="870" y="672" width="310" height="238" rx="10" fill="#FFFFFF" stroke-width="5"/>
+    <rect class="stroke" x="895" y="660" width="260" height="34" rx="6" fill="#FFFFFF" stroke-width="3.5"/>
+    <text x="1025" y="684" font-size="21" text-anchor="middle" letter-spacing="1">FRESH &#8800; STALE</text>
+    <line class="stroke" x1="1025" y1="706" x2="1025" y2="898" stroke-width="3"/>
+    <text x="947" y="732" font-size="18" text-anchor="middle">Months old?</text>
+    <text x="1103" y="732" font-size="18" text-anchor="middle">Fresh roast!</text>
+    <!-- droopy whale + dusty bag -->
+    <use xlink:href="#whale" transform="translate(935,790) scale(0.42)"/>
+    <path class="stroke" d="M 968 758 q 6 8 2 14" fill="none" stroke-width="2.5"/>
+    <rect class="stroke" x="962" y="796" width="26" height="32" rx="4" fill="#D9D9D9" stroke-width="3"/>
+    <path class="stroke" d="M 902 838 L 938 866 M 938 838 L 902 866" fill="none" stroke-width="6"/>
+    <!-- happy whale + shiny bag -->
+    <use xlink:href="#whale" transform="translate(1090,790) scale(0.42)"/>
+    <rect class="stroke" x="1118" y="796" width="26" height="32" rx="4" fill="#F0F0F0" stroke-width="3"/>
+    <use xlink:href="#spark" transform="translate(1148,752) scale(0.6)"/>
+    <path class="stroke" d="M 1078 852 L 1092 866 L 1120 834" fill="none" stroke-width="6"/>
+  </g>
+
+  <!-- band line 3 -->
+  <line class="stroke" x1="10" y1="920" x2="1190" y2="920" stroke-width="5"/>
+
+  <!-- ================= BAND 4 : BOTTOM (y 920-1150) ================= -->
+  <line class="stroke" x1="490" y1="920" x2="490" y2="1150" stroke-width="4"/>
+  <line class="stroke" x1="745" y1="920" x2="745" y2="1150" stroke-width="4"/>
+
+  <!-- left: brews in practice -->
+  <g>
+    <path class="stroke" d="M 119 932 L 381 932 L 390 939.5 L 383 947 L 390 954.5 L 381 962 L 119 962 L 110 954.5 L 117 947 L 110 939.5 Z" fill="#FFFFFF" stroke-width="3"/>
+    <text x="250" y="954" font-size="19" text-anchor="middle" letter-spacing="1">BREWS IN PRACTICE</text>
+  </g>
+  <g stroke="#1A1A1A" stroke-width="2.5" stroke-dasharray="6 8">
+    <line x1="170" y1="975" x2="170" y2="1140"/>
+    <line x1="330" y1="975" x2="330" y2="1140"/>
+  </g>
+  <text x="90" y="992" font-size="18" text-anchor="middle">Morning V60</text>
+  <circle class="stroke" cx="55" cy="1035" r="13" fill="#F0F0F0" stroke-width="3"/>
+  <path class="stroke" d="M 55 1016 l 0 -8 M 71 1023 l 6 -6 M 39 1023 l -6 -6" stroke-width="2.5"/>
+  <use xlink:href="#whale" transform="translate(105,1085) scale(0.5)"/>
+  <text x="250" y="992" font-size="18" text-anchor="middle">Camp Brew</text>
+  <path class="stroke" d="M 215 1050 q 8 -22 12 -6 q 6 -14 10 2 q -2 12 -11 12 q -9 0 -11 -8 Z" fill="#D9D9D9" stroke-width="3"/>
+  <line class="stroke" x1="206" y1="1058" x2="240" y2="1058" stroke-width="3.5"/>
+  <use xlink:href="#whale" transform="translate(268,1085) scale(0.5)"/>
+  <text x="410" y="992" font-size="18" text-anchor="middle">Cafe</text>
+  <text x="410" y="1014" font-size="18" text-anchor="middle">&#62;300 cups/day</text>
+  <rect class="stroke" x="360" y="1088" width="52" height="22" rx="4" fill="#F0F0F0" stroke-width="3"/>
+  <use xlink:href="#whale" transform="translate(432,1078) scale(0.5)"/>
+
+  <!-- middle: 4 silent mistakes -->
+  <g>
+    <path class="stroke" d="M 517 932 L 709 932 L 718 939.5 L 711 947 L 718 954.5 L 709 962 L 517 962 L 508 954.5 L 515 947 L 508 939.5 Z" fill="#FFFFFF" stroke-width="3"/>
+    <text x="613" y="954" font-size="18" text-anchor="middle" letter-spacing="1">4 SILENT MISTAKES</text>
+  </g>
+  <g font-size="19">
+    <line class="stroke" x1="527" y1="994" x2="527" y2="1006" stroke-width="3"/>
+    <circle class="stroke" cx="527" cy="1009" r="5" fill="#2B2B2B" stroke-width="2.5"/>
+    <text x="548" y="1010">Water too hot</text>
+    <circle cx="522" cy="1048" r="2.5" fill="#1A1A1A"/>
+    <circle cx="530" cy="1044" r="2.5" fill="#1A1A1A"/>
+    <circle cx="529" cy="1053" r="2.5" fill="#1A1A1A"/>
+    <text x="548" y="1053">Grind too fine</text>
+    <path class="stroke" d="M 517 1094 q 6 -8 12 0 q 6 8 12 0" fill="none" stroke-width="3"/>
+    <text x="548" y="1096">Uneven pour</text>
+    <path class="stroke" d="M 517 1128 L 539 1128 L 528 1142 Z" fill="#D9D9D9" stroke-width="2.5"/>
+    <text x="548" y="1139">Dirty filter</text>
+  </g>
+
+  <!-- right: same beans, different cup -->
+  <g>
+    <path class="stroke" d="M 787 932 L 1149 932 L 1158 939.5 L 1151 947 L 1158 954.5 L 1149 962 L 787 962 L 778 954.5 L 785 947 L 778 939.5 Z" fill="#FFFFFF" stroke-width="3"/>
+    <text x="968" y="954" font-size="18" text-anchor="middle" letter-spacing="1">SAME BEANS, DIFFERENT CUP</text>
+  </g>
+  <line x1="967" y1="975" x2="967" y2="1140" stroke="#1A1A1A" stroke-width="2.5" stroke-dasharray="6 8"/>
+  <text x="856" y="992" font-size="18" text-anchor="middle">Barista A</text>
+  <text x="856" y="1014" font-size="18" text-anchor="middle">takes care</text>
+  <use xlink:href="#whale" transform="translate(830,1085) scale(0.5)"/>
+  <path class="stroke" d="M 886 1046 L 912 1046 L 908 1066 Q 899 1074 890 1066 Z" fill="#F0F0F0" stroke-width="3"/>
+  <path class="stroke" d="M 893 1074 L 905 1074 M 891 1080 L 907 1080" stroke-width="3"/>
+  <use xlink:href="#spark" transform="translate(915,1025) scale(0.6)"/>
+  <text x="1078" y="992" font-size="18" text-anchor="middle">Barista B</text>
+  <text x="1078" y="1014" font-size="18" text-anchor="middle">rushes</text>
+  <use xlink:href="#whale" transform="translate(1050,1085) scale(0.5)"/>
+  <path class="stroke" d="M 1088 1042 q 6 8 2 14" fill="none" stroke-width="2.5"/>
+  <path class="stroke" d="M 1104 1052 L 1140 1052 L 1122 1078 Z" fill="#F0F0F0" stroke-width="3"/>
+  <path class="stroke" d="M 1112 1086 l 0 8 M 1122 1090 l 0 8 M 1132 1086 l 0 8" stroke-width="2.5"/>
+
+  <!-- outer frame -->
+  <rect x="10" y="10" width="1180" height="1140" rx="24" fill="none" stroke="#1A1A1A" stroke-width="7"/>
+</svg>
