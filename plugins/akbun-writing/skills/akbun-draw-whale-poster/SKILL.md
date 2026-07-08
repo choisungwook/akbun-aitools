@@ -1,21 +1,22 @@
 ---
-name: akbun-draw-whale-infographic
+name: akbun-draw-whale-poster
 description: >
-  주제나 글, 자료를 받아 흑백 손그림 고래 캐릭터가 안내하는 한 장짜리 치트시트 인포그래픽
-  (4단 밴드 포스터) 스타일의 이미지 생성 프롬프트와 Figma/Canva에서 편집 가능한 SVG를 함께 만든다.
-  사용자가 인포그래픽, 치트시트, 요약 포스터, 개념 정리 한 장, 고래 캐릭터를 언급하면 이 skill을 사용한다.
+  주제나 글, 자료를 받아 흑백 손그림 고래 캐릭터가 안내하는 치트시트 포스터 한 장을 그리는
+  이미지 생성 프롬프트와 Figma/Canva에서 편집 가능한 SVG를 함께 만든다. 사용자가 포스터,
+  치트시트, 인포그래픽, 개념 정리 한 장, 고래 캐릭터를 언급하면 이 skill을 사용한다.
 ---
 
-# 고래 치트시트 인포그래픽 프롬프트 + SVG 생성
+# 고래 치트시트 포스터 프롬프트 + SVG 생성
 
 ## 이 skill이 하는 일
 
-하나의 주제(개념, 프로세스, 기술, 습관 등)를 **한 장짜리 흑백 손그림 치트시트 인포그래픽**으로 바꾼다.
-둥근 모서리의 검은 외곽 프레임 안이 4개의 가로 밴드로 나뉘고, 각 밴드에 제목·단계·구성 요소·비교가
-배치된다. 통통한 고래 마스코트가 곳곳에서 생각하고, 가리키고, 일하며 내용을 안내한다. 화이트보드
-만화 같은 따뜻한 손그림 스타일이다.
+하나의 주제(개념, 프로세스, 기술, 습관 등)를 **흑백 손그림 치트시트 포스터 한 장**으로 그린다.
+장면 여러 개를 따로 묘사하는 skill이 아니다 — 결과물은 언제나 **포스터 1장, 프롬프트 1개, SVG 1개**다.
+포스터 내부는 둥근 모서리의 검은 외곽 프레임 안에서 4개의 가로 밴드로 구획되지만, 이것은 한 장의
+그림 안에 있는 구역 나누기일 뿐이다. 통통한 고래 마스코트가 포스터 곳곳에서 생각하고, 가리키고,
+일하며 내용을 안내한다. 화이트보드 만화 같은 따뜻한 손그림 스타일이다.
 
-결과물은 두 가지 형태로 같은 인포그래픽을 만든다.
+결과물은 두 가지 형태로 같은 포스터를 만든다.
 
 1. **이미지 생성 프롬프트** — GPT image, nano-banana 같은 이미지 생성 모델(AI agent)에 그대로 붙여넣는 영어 프롬프트.
 2. **SVG 파일** — Figma나 Canva로 불러와 직접 수정할 수 있는 벡터 파일. 텍스트가 `<text>` 요소로 남아 있어 편집 가능하다.
@@ -27,8 +28,9 @@ description: >
 
 항상 세 가지를 출력한다.
 
-1. **영어 이미지 생성 프롬프트** — 코드 블록 하나.
-2. **SVG 파일** — 작업 디렉터리에 `<slug>.svg`로 저장하고 경로를 알려준다.
+1. **영어 이미지 생성 프롬프트** — 포스터 한 장을 통째로 묘사하는 코드 블록 하나. 밴드·칸별로
+   프롬프트를 쪼개지 않는다.
+2. **SVG 파일** — 작업 디렉터리에 `<slug>.svg`로 저장하고 경로를 알려준다. 파일도 한 개다.
 3. **한국어 한 줄 설명** — 어떤 제목·단계·구성으로 채웠는지 1~2문장.
 
 ## 입력 다루기
@@ -56,7 +58,7 @@ description: >
 
 ## 캐릭터 규칙 (고정)
 
-기본 마스코트는 **통통한 고래**다. 캐릭터가 1마리인 장면은 항상 고래다.
+기본 마스코트는 **통통한 고래**다. 캐릭터가 1마리인 자리는 항상 고래다.
 
 - 몸: 콩 모양의 둥근 몸통, 흰 배, 등은 밝은 회색. 작은 옆지느러미 2개, 납작한 꼬리지느러미.
 - 얼굴: 까만 점 눈 2개, 작은 곡선 입. 뺨에 연회색 동그라미 패치를 넣어도 된다.
@@ -65,11 +67,11 @@ description: >
 - 마스코트는 최소 6곳 이상 등장한다. 헤더에 2마리(생각하는 고래 + 사다리 고래), 스텝마다,
   구성 요소마다, 비교 패널마다 작게 등장한다.
 
-같은 장면 안에 캐릭터가 **2마리** 함께 등장하면(손님-주인, 전달, 협업 등) 두 번째 캐릭터는 **토끼**다.
+한 칸 안에 캐릭터가 **2마리** 함께 등장하면(손님-주인, 전달, 협업 등) 두 번째 캐릭터는 **토끼**다.
 
 - 토끼: 둥근 흰 몸통, 긴 귀 2개(귀 안쪽은 연회색), 까만 점 눈, 작은 입. 고래보다 약간 작게 그린다.
-- 고래와 토끼 외의 동물은 쓰지 않는다. 같은 장면에 고래를 2마리 겹쳐 그리지 않는다 — 두 번째는 항상 토끼다.
-- 헤더의 생각 고래와 사다리 고래처럼 **서로 다른 장면**이면 둘 다 고래로 그린다.
+- 고래와 토끼 외의 동물은 쓰지 않는다. 한 칸에 고래를 2마리 겹쳐 그리지 않는다 — 두 번째는 항상 토끼다.
+- 헤더의 생각 고래와 사다리 고래처럼 **서로 다른 칸·자리**면 둘 다 고래로 그린다.
 
 ## 스타일이 정체성이다
 
@@ -78,7 +80,7 @@ description: >
 1. **레이아웃**: 둥근 검은 외곽 프레임, 4개의 가로 밴드와 그 경계선, 리본형 섹션 제목, 밴드 안의
    칸 나누기(세로 실선·점선)와 상하좌우 간격.
 2. **그림 언어**: 두껍고 둥근 검은 외곽선의 손그림, 흰 바탕 + 회색 2~3단계만 쓰는 흑백,
-   카와이 고래 마스코트(2마리 장면은 고래+토끼), 캐릭터만큼 큼직한 소품, 원문자 번호, 반짝이·움직임 선.
+   카와이 고래 마스코트(2마리 칸은 고래+토끼), 캐릭터만큼 큼직한 소품, 원문자 번호, 반짝이·움직임 선.
 
 반대로 **각 칸에 무엇이 들어가는지(주제, 문구, 소품)는 입력에 맞게 자유**다. 주제를 스타일에 끼워
 맞추지 말고, 스타일로 주제를 그린다.
@@ -151,9 +153,10 @@ description: >
 1. **입력 파악.** 자료를 읽고 카피 슬롯 중 비어 있는 것을 확인한다.
 2. **카피 작성.** 빈 슬롯을 채운다. 스택은 아래→위로 갈수록 발전하는 순서, 스텝은 시간 순서로 배열한다.
 3. **캐릭터·소품 설계.** 칸마다 내용에 맞는 포즈·소품을 하나씩 정한다. 같은 포즈를 연달아 쓰지 않고,
-   소품은 캐릭터만큼 크게 잡는다. 캐릭터 2마리가 함께 나오는 장면은 고래+토끼로 구성한다.
-4. **프롬프트 조립.** 아래 `프롬프트 템플릿`의 빈칸을 채우고, 쓰지 않는 줄은 지운다.
-5. **SVG 작성.** 아래 `SVG 작성 규칙`을 따라 같은 인포그래픽을 그려 파일로 저장한다.
+   소품은 캐릭터만큼 크게 잡는다. 캐릭터 2마리가 함께 나오는 칸은 고래+토끼로 구성한다.
+4. **프롬프트 조립.** 아래 `프롬프트 템플릿`의 빈칸을 채워 **포스터 한 장을 통째로 묘사하는 프롬프트
+   하나**를 만든다. 밴드·칸별로 프롬프트를 나누지 않는다. 쓰지 않는 줄은 지운다.
+5. **SVG 작성.** 아래 `SVG 작성 규칙`을 따라 같은 포스터를 그려 파일 하나로 저장한다.
 6. **출력.** 작성한 카피 요약 + 프롬프트 블록 + SVG 파일 경로 + 한국어 한 줄 설명을 출력한다.
 
 ## 프롬프트 템플릿
@@ -161,17 +164,18 @@ description: >
 아래 영어 템플릿의 `<...>`를 채워 완성한다.
 
 ```text
-A hand-drawn black-and-white cheatsheet infographic poster, nearly square (1200x1160),
-white background, framed by a thick rounded black border. Cute kawaii whale mascots
-(chubby body, white belly, light gray back, tiny fins, dot eyes, small smile) appear
-throughout, guiding the content. When a scene needs a second character (a customer,
-a partner, a hand-off), it is a small rabbit (round white body, two long ears, dot eyes);
+ONE single hand-drawn black-and-white cheatsheet poster, nearly square (1200x1160),
+white background, framed by a thick rounded black border. It is one unified drawing —
+not a set of separate images. Cute kawaii whale mascots (chubby body, white belly,
+light gray back, tiny fins, dot eyes, small smile) appear throughout, guiding the
+content. When two characters share one cell (a customer, a partner, a hand-off), the
+second character is a small rabbit (round white body, two long ears, dot eyes);
 only whales and rabbits appear. Whiteboard-comic style: thick rounded black outlines,
 grayscale only (white, light gray, mid gray, near-black), playful hand-lettered text,
 circled numbers, small sparkles. Props and tools are drawn LARGE and simple — each prop
 roughly as tall as the character beside it, recognizable by silhouette alone. No color.
 
-The poster is divided into 4 horizontal bands by full-width black lines.
+Inside this one poster, full-width black lines divide the canvas into 4 horizontal bands.
 
 BAND 1 — HEADER (top 32%):
 - Left: a large hand-lettered two-line title reading exactly: "<TITLE>", with a short
@@ -219,7 +223,7 @@ the frame and band lines.
 
 ## SVG 작성 규칙
 
-SVG는 skill이 직접 그린다. 형태 배치와 수치는 `assets/example-infographic.svg`를 열어 기준으로 삼는다.
+SVG는 skill이 직접 그린다. 형태 배치와 수치는 `assets/example-poster.svg`를 열어 기준으로 삼는다.
 
 - `viewBox="0 0 1200 1160"`, 외부 이미지·스크립트 없는 순수 SVG 1.1로 작성한다. Figma와 Canva가 그대로 불러온다.
 - 레이어 순서: 흰 배경 → 밴드 경계선·칸 구분선 → 칸 배경(연회색) → 고래·소품 일러스트 → 리본·상자 →
@@ -247,23 +251,24 @@ SVG는 skill이 직접 그린다. 형태 배치와 수치는 `assets/example-inf
 
 skill이 한 판단: 문구가 없어서 카피 전부를 만들었다. 스택은 커피 추출 방식의 발전 단계
 (인스턴트 → 드립머신 → 프렌치프레스 → 푸어오버), 스텝은 한 잔을 내리는 시간 순서, 구성 요소는
-도구 6가지, 비교는 원두 신선도로 정했다. 카페 장면은 캐릭터가 2마리라서 고래 바리스타 +
+도구 6가지, 비교는 원두 신선도로 정했다. 카페 칸은 캐릭터가 2마리라서 고래 바리스타 +
 토끼 손님으로 구성했다.
 
 출력 프롬프트:
 
 ```text
-A hand-drawn black-and-white cheatsheet infographic poster, nearly square (1200x1160),
-white background, framed by a thick rounded black border. Cute kawaii whale mascots
-(chubby body, white belly, light gray back, tiny fins, dot eyes, small smile) appear
-throughout, guiding the content. When a scene needs a second character (a customer,
-a partner, a hand-off), it is a small rabbit (round white body, two long ears, dot eyes);
+ONE single hand-drawn black-and-white cheatsheet poster, nearly square (1200x1160),
+white background, framed by a thick rounded black border. It is one unified drawing —
+not a set of separate images. Cute kawaii whale mascots (chubby body, white belly,
+light gray back, tiny fins, dot eyes, small smile) appear throughout, guiding the
+content. When two characters share one cell (a customer, a partner, a hand-off), the
+second character is a small rabbit (round white body, two long ears, dot eyes);
 only whales and rabbits appear. Whiteboard-comic style: thick rounded black outlines,
 grayscale only (white, light gray, mid gray, near-black), playful hand-lettered text,
 circled numbers, small sparkles. Props and tools are drawn LARGE and simple — each prop
 roughly as tall as the character beside it, recognizable by silhouette alone. No color.
 
-The poster is divided into 4 horizontal bands by full-width black lines.
+Inside this one poster, full-width black lines divide the canvas into 4 horizontal bands.
 
 BAND 1 — HEADER (top 32%):
 - Left: a large hand-lettered two-line title reading exactly: "Pour Over Coffee", with a
@@ -315,17 +320,18 @@ and the rabbit, draw props tiny or ambiguous, misspell any text, or let elements
 the frame and band lines.
 ```
 
-출력 SVG: `assets/example-infographic.svg` — 같은 내용을 레이아웃 스펙 좌표 그대로 그린 파일이다.
+출력 SVG: `assets/example-poster.svg` — 같은 내용을 레이아웃 스펙 좌표 그대로 그린 파일이다.
 
 한국어 한 줄 설명: 푸어오버 커피를 주제로 추출 방식 4단 스택, 한 잔 내리는 5 스텝, 도구 6가지,
 원두 신선도 비교, 실전 사례·실수·결과 대비까지 고래 마스코트가 안내하는 치트시트로 정리했습니다.
 
 ## 완료 전 확인
 
+- 결과물이 포스터 한 장인가? (프롬프트 1개, SVG 파일 1개 — 밴드·칸별로 쪼개지 않았는가?)
 - 사용자가 준 문구를 바꾸지 않고 그대로 넣었는가? (없을 때만 skill이 만들고, 만든 카피를 보여줬는가?)
 - 그림 속 모든 텍스트를 `reading exactly: "..."`로 철자까지 지정했는가?
 - 4개 밴드 구조와 레이아웃 수치(밴드 경계 y=385/660/920, 프레임, 칸 좌표)를 프롬프트와 SVG 양쪽에 지켰는가?
-- 캐릭터가 고래(2마리 장면은 고래+토끼)뿐인가? 6곳 이상 등장하고 포즈가 겹치지 않는가?
+- 캐릭터가 고래(2마리 칸은 고래+토끼)뿐인가? 6곳 이상 등장하고 포즈가 겹치지 않는가?
 - 소품이 캐릭터 키의 60% 이상으로 커서 실루엣만으로 무엇인지 구별되는가?
 - 흰색 + 회색 3단계 흑백 규칙을 지켰는가? 색·그라디언트·질감이 없는가?
 - 폰트가 전부 SIL OFL(Patrick Hand, Comic Neue, Gaegu 등)인가?
