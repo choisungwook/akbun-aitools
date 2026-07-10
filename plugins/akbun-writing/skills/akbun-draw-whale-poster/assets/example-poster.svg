@@ -1,0 +1,203 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1200 1160" width="1200" height="1160">
+  <style>
+    text { font-family: 'Patrick Hand', 'Comic Neue', 'Gaegu', cursive; fill: #1A1A1A; }
+    .stroke { stroke: #1A1A1A; stroke-linecap: round; stroke-linejoin: round; }
+  </style>
+  <defs>
+    <!-- kawaii whale mascot, facing right, centered at origin, ~120 wide -->
+    <g id="whale">
+      <path class="stroke" d="M -40 0 L -62 -14 L -55 2 L -64 14 Z" fill="#D9D9D9" stroke-width="4"/>
+      <ellipse class="stroke" cx="0" cy="0" rx="46" ry="32" fill="#D9D9D9" stroke-width="4"/>
+      <ellipse cx="4" cy="15" rx="32" ry="13" fill="#FFFFFF"/>
+      <path class="stroke" d="M -6 8 q 14 2 18 14 q -18 4 -22 -8 z" fill="#D9D9D9" stroke-width="3.5"/>
+      <circle cx="22" cy="-8" r="3.5" fill="#1A1A1A"/>
+      <circle cx="30" cy="1" r="5" fill="#F0F0F0"/>
+      <path class="stroke" d="M 32 -3 q 4 4 9 1" fill="none" stroke-width="3"/>
+    </g>
+    <!-- kawaii rabbit (second character), front-facing, centered at origin, ~56 wide -->
+    <g id="rabbit">
+      <ellipse class="stroke" cx="-11" cy="-42" rx="8" ry="21" transform="rotate(-12 -11 -42)" fill="#FFFFFF" stroke-width="3.5"/>
+      <ellipse cx="-11" cy="-40" rx="3.5" ry="13" transform="rotate(-12 -11 -40)" fill="#F0F0F0"/>
+      <ellipse class="stroke" cx="11" cy="-42" rx="8" ry="21" transform="rotate(12 11 -42)" fill="#FFFFFF" stroke-width="3.5"/>
+      <ellipse cx="11" cy="-40" rx="3.5" ry="13" transform="rotate(12 11 -40)" fill="#F0F0F0"/>
+      <ellipse class="stroke" cx="0" cy="0" rx="26" ry="28" fill="#FFFFFF" stroke-width="4"/>
+      <circle cx="-8" cy="-6" r="3.2" fill="#1A1A1A"/>
+      <circle cx="8" cy="-6" r="3.2" fill="#1A1A1A"/>
+      <circle cx="-14" cy="3" r="4.5" fill="#F0F0F0"/>
+      <circle cx="14" cy="3" r="4.5" fill="#F0F0F0"/>
+      <path class="stroke" d="M -4 3 q 4 4 8 0" fill="none" stroke-width="3"/>
+    </g>
+    <!-- 4-point sparkle -->
+    <path id="spark" d="M 0 -9 L 2.5 -2.5 L 9 0 L 2.5 2.5 L 0 9 L -2.5 2.5 L -9 0 L -2.5 -2.5 Z" fill="#1A1A1A"/>
+  </defs>
+
+  <!-- background -->
+  <rect x="0" y="0" width="1200" height="1160" fill="#FFFFFF"/>
+
+  <!-- ============ TITLE ZONE (top) ============ -->
+  <text x="48" y="120" font-size="70">Deep Work</text>
+  <line class="stroke" x1="50" y1="150" x2="235" y2="150" stroke-width="5"/>
+  <text x="50" y="200" font-size="26">One hard thing.</text>
+  <text x="50" y="236" font-size="26">No pings, no tabs — just you.</text>
+
+  <!-- hero: whale wearing headphones at a big laptop -->
+  <g>
+    <!-- laptop (big prop) -->
+    <path class="stroke" d="M 556 300 L 700 300 L 690 232 L 566 232 Z" fill="#F0F0F0" stroke-width="4"/>
+    <path class="stroke" d="M 574 244 L 682 244 L 674 292 L 582 292 Z" fill="#FFFFFF" stroke-width="3"/>
+    <path class="stroke" d="M 540 300 L 716 300 L 724 316 L 532 316 Z" fill="#D9D9D9" stroke-width="4"/>
+    <!-- whale -->
+    <use xlink:href="#whale" transform="translate(500,272) scale(1.05)"/>
+    <!-- headphones over the whale -->
+    <path class="stroke" d="M 470 250 q 30 -44 66 -2" fill="none" stroke-width="5"/>
+    <rect class="stroke" x="462" y="248" width="16" height="30" rx="7" fill="#2B2B2B" stroke-width="3.5"/>
+    <rect class="stroke" x="530" y="250" width="16" height="30" rx="7" fill="#2B2B2B" stroke-width="3.5"/>
+    <use xlink:href="#spark" transform="translate(726,214) scale(0.8)"/>
+    <use xlink:href="#spark" transform="translate(534,196) scale(0.6)"/>
+  </g>
+
+  <!-- round "STAY DEEP" seal (far right of title zone) -->
+  <g>
+    <circle class="stroke" cx="1006" cy="176" r="104" fill="#FFFFFF" stroke-width="5"/>
+    <circle class="stroke" cx="1006" cy="176" r="88" fill="#FFFFFF" stroke-width="2.5"/>
+    <g stroke="#1A1A1A" stroke-width="3">
+      <line x1="1006" y1="52" x2="1006" y2="66"/>
+      <line x1="1130" y1="176" x2="1116" y2="176"/>
+      <line x1="1006" y1="300" x2="1006" y2="286"/>
+      <line x1="882" y1="176" x2="896" y2="176"/>
+      <line x1="1094" y1="88" x2="1084" y2="98"/>
+      <line x1="1094" y1="264" x2="1084" y2="254"/>
+      <line x1="918" y1="264" x2="928" y2="254"/>
+      <line x1="918" y1="88" x2="928" y2="98"/>
+    </g>
+    <use xlink:href="#whale" transform="translate(985,150) scale(0.5)"/>
+    <text x="1006" y="212" font-size="26" text-anchor="middle" letter-spacing="2">STAY DEEP</text>
+  </g>
+
+  <!-- ============ DIVIDERS (hand-drawn, uneven sections) ============ -->
+  <!-- horizontal rule under the title zone -->
+  <line class="stroke" x1="30" y1="342" x2="1170" y2="342" stroke-width="5"/>
+  <!-- vertical rule splitting body into a wide left and a narrow right -->
+  <line class="stroke" x1="770" y1="342" x2="770" y2="1150" stroke-width="5"/>
+  <!-- horizontal rule inside the left column, dividing loop (top) from practice (bottom) -->
+  <line class="stroke" x1="30" y1="742" x2="770" y2="742" stroke-width="4"/>
+
+  <!-- ============ LEFT-TOP: THE FOCUS LOOP ============ -->
+  <g>
+    <path class="stroke" d="M 250 364 L 550 364 L 559 372.5 L 552 381 L 559 389.5 L 550 398 L 250 398 L 241 389.5 L 248 381 L 241 372.5 Z" fill="#FFFFFF" stroke-width="3"/>
+    <text x="400" y="389" font-size="24" text-anchor="middle" letter-spacing="1">THE FOCUS LOOP</text>
+  </g>
+  <!-- cell dividers -->
+  <line class="stroke" x1="277" y1="430" x2="277" y2="710" stroke-width="2.5"/>
+  <line class="stroke" x1="524" y1="430" x2="524" y2="710" stroke-width="2.5"/>
+
+  <!-- 1 Pick One: whale pointing at a big bullseye -->
+  <circle class="stroke" cx="60" cy="452" r="15" fill="#FFFFFF" stroke-width="3"/>
+  <text x="60" y="459" font-size="19" text-anchor="middle">1</text>
+  <text x="86" y="459" font-size="22">Pick One</text>
+  <circle class="stroke" cx="180" cy="565" r="52" fill="#FFFFFF" stroke-width="4"/>
+  <circle class="stroke" cx="180" cy="565" r="33" fill="#F0F0F0" stroke-width="3.5"/>
+  <circle cx="180" cy="565" r="14" fill="#2B2B2B"/>
+  <use xlink:href="#whale" transform="translate(90,650) scale(0.5)"/>
+
+  <!-- 2 Silence: whale pressing a big face-down phone with a struck bell -->
+  <circle class="stroke" cx="303" cy="452" r="15" fill="#FFFFFF" stroke-width="3"/>
+  <text x="303" y="459" font-size="19" text-anchor="middle">2</text>
+  <text x="329" y="459" font-size="22">Silence</text>
+  <rect class="stroke" x="360" y="512" width="80" height="128" rx="14" fill="#D9D9D9" stroke-width="4"/>
+  <rect x="374" y="528" width="52" height="88" rx="6" fill="#2B2B2B"/>
+  <g>
+    <path class="stroke" d="M 400 476 q 20 0 20 18 q 0 14 6 20 l -52 0 q 6 -6 6 -20 q 0 -18 20 -18 Z" fill="#F0F0F0" stroke-width="3.5"/>
+    <line class="stroke" x1="366" y1="470" x2="434" y2="516" stroke-width="4"/>
+  </g>
+  <use xlink:href="#whale" transform="translate(335,668) scale(0.5)"/>
+
+  <!-- 3 Deep Dive: whale beside a big hourglass -->
+  <circle class="stroke" cx="550" cy="452" r="15" fill="#FFFFFF" stroke-width="3"/>
+  <text x="550" y="459" font-size="19" text-anchor="middle">3</text>
+  <text x="576" y="459" font-size="22">Deep Dive</text>
+  <g>
+    <line class="stroke" x1="600" y1="502" x2="690" y2="502" stroke-width="4"/>
+    <line class="stroke" x1="600" y1="638" x2="690" y2="638" stroke-width="4"/>
+    <path class="stroke" d="M 610 502 L 680 502 L 645 570 Z" fill="#F0F0F0" stroke-width="3.5"/>
+    <path class="stroke" d="M 610 638 L 680 638 L 645 570 Z" fill="#F0F0F0" stroke-width="3.5"/>
+    <path d="M 626 522 L 664 522 L 645 560 Z" fill="#2B2B2B"/>
+    <path d="M 645 578 L 662 618 L 628 618 Z" fill="#2B2B2B"/>
+  </g>
+  <use xlink:href="#whale" transform="translate(560,678) scale(0.46)"/>
+
+  <!-- arrows between cells -->
+  <g>
+    <circle cx="277" cy="560" r="15" fill="#FFFFFF"/>
+    <path class="stroke" d="M 267 560 L 285 560 M 279 553 L 287 560 L 279 567" fill="none" stroke-width="3.5"/>
+    <circle cx="524" cy="560" r="15" fill="#FFFFFF"/>
+    <path class="stroke" d="M 514 560 L 532 560 M 526 553 L 534 560 L 526 567" fill="none" stroke-width="3.5"/>
+  </g>
+
+  <!-- ============ LEFT-BOTTOM: IN PRACTICE ============ -->
+  <g>
+    <path class="stroke" d="M 268 762 L 532 762 L 541 770.5 L 534 779 L 541 787.5 L 532 796 L 268 796 L 259 787.5 L 266 779 L 259 770.5 Z" fill="#FFFFFF" stroke-width="3"/>
+    <text x="400" y="787" font-size="22" text-anchor="middle" letter-spacing="1">IN PRACTICE</text>
+  </g>
+  <line class="stroke" x1="400" y1="820" x2="400" y2="1120" stroke-width="2.5" stroke-dasharray="6 8"/>
+  <!-- 90-min Sprint: whale + big hourglass -->
+  <text x="205" y="850" font-size="22" text-anchor="middle">90-min Sprint</text>
+  <g>
+    <line class="stroke" x1="160" y1="890" x2="250" y2="890" stroke-width="4"/>
+    <line class="stroke" x1="160" y1="1020" x2="250" y2="1020" stroke-width="4"/>
+    <path class="stroke" d="M 170 890 L 240 890 L 205 955 Z" fill="#F0F0F0" stroke-width="3.5"/>
+    <path class="stroke" d="M 170 1020 L 240 1020 L 205 955 Z" fill="#F0F0F0" stroke-width="3.5"/>
+    <path d="M 186 908 L 224 908 L 205 946 Z" fill="#2B2B2B"/>
+  </g>
+  <use xlink:href="#whale" transform="translate(150,1075) scale(0.5)"/>
+  <use xlink:href="#spark" transform="translate(250,905) scale(0.6)"/>
+  <!-- Hand-off: whale passes a big folder to a rabbit (two characters) -->
+  <text x="590" y="850" font-size="22" text-anchor="middle">Hand-off</text>
+  <use xlink:href="#rabbit" transform="translate(690,1035) scale(0.72)"/>
+  <path class="stroke" d="M 500 940 L 590 940 L 590 1010 L 500 1010 Z" fill="#F0F0F0" stroke-width="4"/>
+  <path class="stroke" d="M 500 940 L 540 940 L 552 924 L 500 924 Z" fill="#D9D9D9" stroke-width="4"/>
+  <line class="stroke" x1="512" y1="972" x2="578" y2="972" stroke-width="3"/>
+  <use xlink:href="#whale" transform="translate(505,975) scale(-0.5,0.5)"/>
+
+  <!-- ============ RIGHT COLUMN: SHALLOW vs DEEP comparison ============ -->
+  <g>
+    <path class="stroke" d="M 828 364 L 1112 364 L 1121 372.5 L 1114 381 L 1121 389.5 L 1112 398 L 828 398 L 819 389.5 L 826 381 L 819 372.5 Z" fill="#FFFFFF" stroke-width="3"/>
+    <text x="970" y="389" font-size="23" text-anchor="middle" letter-spacing="1">SHALLOW vs DEEP</text>
+  </g>
+  <!-- horizontal split of the right column -->
+  <line class="stroke" x1="800" y1="748" x2="1140" y2="748" stroke-width="3"/>
+
+  <!-- top: Shallow — droopy whale buried under tiny notifications, big X -->
+  <text x="970" y="452" font-size="24" text-anchor="middle">Shallow</text>
+  <g fill="#F0F0F0" class="stroke" stroke-width="2.5">
+    <rect x="836" y="486" width="34" height="34" rx="6"/>
+    <rect x="892" y="474" width="34" height="34" rx="6"/>
+    <rect x="1058" y="480" width="34" height="34" rx="6"/>
+    <rect x="1104" y="500" width="34" height="34" rx="6"/>
+    <rect x="948" y="470" width="34" height="34" rx="6"/>
+  </g>
+  <g fill="#2B2B2B">
+    <circle cx="853" cy="503" r="4"/><circle cx="909" cy="491" r="4"/>
+    <circle cx="1075" cy="497" r="4"/><circle cx="1121" cy="517" r="4"/>
+    <circle cx="965" cy="487" r="4"/>
+  </g>
+  <use xlink:href="#whale" transform="translate(946,585) scale(0.66)"/>
+  <path class="stroke" d="M 980 545 q 8 10 2 18" fill="none" stroke-width="2.5"/>
+  <path class="stroke" d="M 852 640 L 894 682 M 894 640 L 852 682" fill="none" stroke-width="7"/>
+
+  <!-- bottom: Deep — happy whale hugging one big task block, check + sparkles -->
+  <text x="970" y="812" font-size="24" text-anchor="middle">Deep</text>
+  <rect class="stroke" x="900" y="850" width="150" height="120" rx="12" fill="#F0F0F0" stroke-width="4"/>
+  <rect class="stroke" x="918" y="872" width="26" height="26" rx="5" fill="#FFFFFF" stroke-width="3"/>
+  <path class="stroke" d="M 922 886 L 930 894 L 942 876" fill="none" stroke-width="3.5"/>
+  <line class="stroke" x1="956" y1="886" x2="1032" y2="886" stroke-width="3"/>
+  <line class="stroke" x1="918" y1="922" x2="1032" y2="922" stroke-width="3"/>
+  <line class="stroke" x1="918" y1="946" x2="1000" y2="946" stroke-width="3"/>
+  <use xlink:href="#whale" transform="translate(884,1050) scale(0.62)"/>
+  <path class="stroke" d="M 986 1024 L 1006 1046 L 1046 1000" fill="none" stroke-width="7"/>
+  <use xlink:href="#spark" transform="translate(1060,1004) scale(0.7)"/>
+  <use xlink:href="#spark" transform="translate(1092,1044) scale(0.5)"/>
+
+  <!-- outer frame -->
+  <rect x="10" y="10" width="1180" height="1140" rx="24" fill="none" stroke="#1A1A1A" stroke-width="7"/>
+</svg>
