@@ -1,6 +1,6 @@
 {
   "name": "akbun-writing",
-  "version": "1.0.34",
+  "version": "1.0.35",
   "description": "Writing, review, and blog support skills by akbun",
   "author": {
     "name": "akbun",
@@ -50,7 +50,8 @@
       "Draw this subject in the monogray flat-ink style (image prompt + Figma/Canva SVG)",
       "Make a book-figure image prompt and an editable SVG using a fixed layout (icon strip, zoom, dialog, flow, or poster card)",
       "Make a naive-doodle safety issue card-news with whale characters (image prompt + Figma/Canva SVG) from this situation",
-      "Make a whale-mascot cheatsheet poster (image prompt + Figma/Canva SVG) for this topic"
+      "Make a whale-mascot cheatsheet poster (image prompt + Figma/Canva SVG) for this topic",
+      "Make a dark-theme animated concept explainer video (MP4) with HyperFrames"
     ],
     "brandColor": "#0F766E",
     "screenshots": []
