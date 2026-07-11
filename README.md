@@ -62,6 +62,14 @@ akbun tools for both Claude Code and Codex plugin workflows.
 | [akbun-learning-japanese](./plugins/akbun-learning/skills/akbun-learning-japanese/) | 한국어 학습자용 일본어 발음·읽기 가이드 |
 | [akbun-make-anki-japanese](./plugins/akbun-learning/skills/akbun-make-anki-japanese/) | 일본어 교재 이미지/PDF를 Anki 덱으로 변환 |
 
+## skill 연관관계
+
+일부 skill은 다른 skill의 정의를 참조한다. 참조 대상 skill을 바꾸면 참조하는 skill의 결과물도 함께 바뀐다.
+
+- `akbun-mascot-whale`: akbun 마스코트 고래의 표준 외형을 정의하는 기준 skill. 캐릭터를 그리는 아래 skill들이 이 스펙을 참조한다.
+  - 캐릭터로 직접 사용: `akbun-draw-whale-poster`, `akbun-draw-cartoon-b`, `akbun-draw-webtoon-b`, `akbun-draw-storytellingimage`
+  - 인물이 필요할 때 사용: `akbun-draw-book-illustration`, `akbun-draw-minimal-poster`, `akbun-draw-poster-monogray`, `akbun-draw-sketchbook-card`
+
 ## 설치 방법
 
 ### Claude Code
