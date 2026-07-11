@@ -45,10 +45,13 @@ akbun tools for both Claude Code and Codex plugin workflows.
 
 | skill | 이미지 |
 |---|---|
+| `akbun-mascot-whale` | <img src="./imgs/akbun-mascot-whale.png" alt="akbun-mascot-whale" width="320"> |
 | `akbun-draw-whale-poster` | <img src="./imgs/akbun-draw-whale-poster.png" alt="akbun-draw-whale-poster" width="320"> |
+| `akbun-draw-cardnews-cream` | <img src="./imgs/akbun-draw-cardnews-cream" alt="akbun-draw-cardnews-cream" width="320"> |
 | `akbun-draw-storytellingimage` | <img src="./imgs/akbun-draw-storytellingimage.png" alt="akbun-draw-storytellingimage" width="320"> |
 | `akbun-draw-webtoon-a` | <img src="./imgs/akbun-draw-webtoon.png" alt="akbun-draw-webtoon-a" width="320"> |
 | `akbun-draw-webtoon-b` | <img src="./imgs/akbun-draw-webtoon-b.png" alt="akbun-draw-webtoon-b" width="320"> |
+| `akbun-draw-webtoon-c` | <img src="./imgs/akbun-draw-webtoon-c.png" alt="akbun-draw-webtoon-c" width="320"> |
 | `akbun-draw-cartoon-b` | <img src="./imgs/akbun-draw-cartoon-b.png" alt="akbun-draw-cartoon-b" width="320"> |
 | `akbun-draw-sketchbook-card` | <img src="./imgs/akbun-draw-sketchbook-card.png" alt="연필 스케치북 카드 예시" width="320"> |
 | `akbun-draw-network-relationship` | <img src="./imgs/akbun-draw-network-relationship.png" alt="쿠버네티스 istio waypoint 통신" width="320"> |
