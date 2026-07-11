@@ -29,6 +29,7 @@ akbun tools for both Claude Code and Codex plugin workflows.
 | [akbun-generate-headline](./plugins/akbun-writing/skills/akbun-generate-headline/) | 넘긴 내용·파일을 분석해 클릭을 부르는 헤드라인(글 제목) 후보 생성 |
 | [akbun-draw-webtoon-a](./plugins/akbun-writing/skills/akbun-draw-webtoon-a/) | 사용자 내용을 3~4컷 흑백 스틱피겨 웹툰의 이미지 생성 프롬프트로 작성 |
 | [akbun-draw-webtoon-b](./plugins/akbun-writing/skills/akbun-draw-webtoon-b/) | 이미지·글로 파스텔 치비 동물 캐릭터 웹툰 페이지의 이미지 생성 프롬프트 + Figma/Canva용 텍스트 SVG 작성 |
+| [akbun-draw-webtoon-c](./plugins/akbun-writing/skills/akbun-draw-webtoon-c/) | 글·이미지로 가로형 1컷 에세이툰(상단 내레이션+고래 마스코트 단일 장면) 페이지의 이미지 생성 프롬프트 + Figma/Canva용 텍스트 SVG 작성 |
 | [akbun-generate-sketch-text](./plugins/akbun-writing/skills/akbun-generate-sketch-text/) | 문구를 린넨 원단 자수 텍스트 + 형광펜 강조 스타일의 이미지 생성 프롬프트로 작성 |
 | [akbun-draw-sketchbook-card](./plugins/akbun-writing/skills/akbun-draw-sketchbook-card/) | 개념을 연필 스케치북 카드(손글씨 제목·체크리스트+일러스트)로 그리는 이미지 생성 프롬프트 작성 |
 | [akbun-draw-storytellingimage](./plugins/akbun-writing/skills/akbun-draw-storytellingimage/) | 이야기를 장면별 손그림 마커 스케치 삽화의 이미지 생성 프롬프트로 작성 |
@@ -69,7 +70,7 @@ akbun tools for both Claude Code and Codex plugin workflows.
 일부 skill은 다른 skill의 정의를 참조한다. 참조 대상 skill을 바꾸면 참조하는 skill의 결과물도 함께 바뀐다.
 
 - `akbun-mascot-whale`: akbun 마스코트 고래의 표준 외형을 정의하는 기준 skill. 캐릭터를 그리는 아래 skill들이 이 스펙을 참조한다.
-  - 캐릭터로 직접 사용: `akbun-draw-whale-poster`, `akbun-draw-cartoon-b`, `akbun-draw-webtoon-b`, `akbun-draw-storytellingimage`
+  - 캐릭터로 직접 사용: `akbun-draw-whale-poster`, `akbun-draw-cartoon-b`, `akbun-draw-webtoon-b`, `akbun-draw-webtoon-c`, `akbun-draw-storytellingimage`
   - 인물이 필요할 때 사용: `akbun-draw-book-illustration`, `akbun-draw-minimal-poster`, `akbun-draw-poster-monogray`, `akbun-draw-sketchbook-card`
 
 ## 설치 방법
