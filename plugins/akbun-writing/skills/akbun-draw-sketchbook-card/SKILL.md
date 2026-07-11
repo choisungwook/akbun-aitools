@@ -11,7 +11,7 @@ description: >
 
 하나의 개념을 한 장짜리 **연필 스케치북 카드**로 보여주는 그림의 **이미지 생성 프롬프트**를 만든다. 입력은 개념 이름과 설명, 체크리스트, 시리즈 번호 같은 카드 내용이거나, 그냥 주제 하나일 수도 있다. 결과물은 그림이 아니라, GPT image나 nano-banana 같은 이미지 생성 모델에 그대로 붙여넣을 **영어 프롬프트 한 덩어리**다.
 
-카드의 레이아웃은 레퍼런스에 고정되어 있다. 스파이럴 링이 달린 스케치북 한 페이지에, 왼쪽에는 손글씨로 쓴 번호·제목·부제·설명·체크리스트가 있고, 오른쪽에는 얇은 연필 테두리 액자 안에 정밀한 연필 일러스트가 있다. 일러스트 위에는 개념을 설명하는 주석(점선 화살표 등)을 굵은 연필 선으로 덧그린다. 카드 전체가 흑연 연필로만 그린 모노크롬이다.
+카드의 레이아웃은 레퍼런스에 고정되어 있다. 스파이럴 링이 달린 세로형 스케치북 한 페이지에, 위쪽에는 손글씨로 쓴 번호·제목·부제·설명·체크리스트가 있고, 아래쪽에는 얇은 연필 테두리 액자 안에 정밀한 연필 일러스트가 있다. 일러스트 위에는 개념을 설명하는 주석(점선 화살표 등)을 굵은 연필 선으로 덧그린다. 카드 전체가 흑연 연필로만 그린 모노크롬이다.
 
 `akbun-draw-component`(하이레벨 아키텍처), `akbun-draw-network-relationship`(네트워크 흐름)과 짝이 되는, "개념 카드 일러스트" 버전이다. 다이어그램이 아니라 **한 장면의 그림으로 개념을 각인시키고 싶을 때** 쓴다. 인스타그램 카루셀, 블로그 표지, 시리즈물 카드에 어울린다.
 
@@ -40,7 +40,7 @@ description: >
 - **밑줄**: 제목 블록 아래 짧고 굵은 손그림 밑줄
 - **설명**: 한두 줄 손글씨 설명 (`가운데부터 원을 그리며 물을 부어 부풀린다`)
 - **체크리스트**: 손그림 체크마크로 시작하는 항목 2~4개 (`균일한 추출`, `가스 배출`, `부드러운 바디`)
-- **일러스트**: 오른쪽 약 2/3 영역, 얇은 연필 테두리 액자 안의 정밀한 연필 그림 (드리퍼 위 손과 커피)
+- **일러스트**: 아래쪽 약 2/3 영역, 얇은 연필 테두리 액자 안의 정밀한 연필 그림 (드리퍼 위 손과 커피)
 - **주석 오버레이** (선택이지만 강력 추천): 일러스트 위에 굵은 연필 선으로 덧그린 개념 표시 (중심에서 퍼지는 점선 나선 화살표)
 
 ## 장면과 주석 고르기 (이 skill의 핵심)
@@ -75,10 +75,10 @@ description: >
 
 - **매체**: 흑연 연필로만 그린 모노크롬. 색 없음. 손글씨와 일러스트 모두 연필.
 - **종이**: 따뜻한 미색(off-white) 스케치북 종이, 은은한 종이 질감. 왼쪽 가장자리에 검은 스파이럴 링.
-- **왼쪽 텍스트 열**: 페이지의 약 1/3. 큰 손글씨 번호·제목, 작은 손글씨 부제·설명, 체크마크 리스트.
-- **오른쪽 일러스트**: 페이지의 약 2/3. 얇은 손그림 연필 테두리 액자, 그 안에 섬세한 해칭과 풍부한 음영의 정밀 연필화.
+- **위쪽 텍스트 블록**: 페이지의 위 약 1/3. 큰 손글씨 번호·제목, 작은 손글씨 부제·설명, 체크마크 리스트.
+- **아래쪽 일러스트**: 페이지의 아래 약 2/3. 얇은 손그림 연필 테두리 액자, 그 안에 섬세한 해칭과 풍부한 음영의 정밀 연필화.
 - **주석**: 일러스트 위에 일반 선보다 굵은 연필 선으로 덧그린 점선/화살표. 스케치 위의 개념 다이어그램처럼 읽힌다.
-- **비율**: 가로형 4:3.
+- **비율**: 세로형 4:5 (1080×1350, 인스타그램 세로형).
 
 ## 프롬프트 템플릿
 
@@ -90,7 +90,7 @@ along the left edge. The paper is a warm off-white with a subtle grain. Everythi
 is drawn in graphite pencil only — hand lettering and illustration alike — monochrome, no color,
 like a designer's concept sketchbook.
 
-LEFT COLUMN (about one third of the page width, hand-lettered in pencil, top to bottom):
+TOP BLOCK (about the top third of the page, hand-lettered in pencil, top to bottom):
 - A large handwritten index number, reading exactly: "<NUMBER>". (delete if none)
 - A large hand-lettered title in capital letters, reading exactly: "<TITLE>".
 - Below the title, a smaller handwritten subtitle in parentheses, reading exactly:
@@ -102,7 +102,7 @@ LEFT COLUMN (about one third of the page width, hand-lettered in pencil, top to 
   - reading exactly: "<CHECK ITEM 2>"
     ... (2–4 items)
 
-RIGHT SIDE (about two thirds of the page): a thin hand-drawn pencil rectangle frames a detailed
+BOTTOM (about the lower two thirds of the page): a thin hand-drawn pencil rectangle frames a detailed
 graphite pencil illustration: <SCENE — one or two sentences: a single clear subject, the
 background, and the composition, e.g. "a lone astronaut seen from behind, standing on a rocky
 ridge overlooking a vast desolate landscape under a hazy sky">. Fine hatching, rich pencil
@@ -114,7 +114,7 @@ with an arrowhead showing the direction of movement">. It reads like a concept d
 over the illustration. (delete if none)
 
 STYLE: monochrome graphite pencil on off-white sketchbook paper, hand-drawn and warm, clean
-composition, very legible lettering. Landscape 4:3 aspect ratio.
+composition, very legible lettering. Portrait 4:5 (1080x1350) aspect ratio.
 
 DO NOT: use any color except the pencil graphite and paper tone. No digital-looking fonts —
 all text is handwritten. Do not misspell any text. Do not add extra text beyond what is listed
@@ -142,7 +142,7 @@ along the left edge. The paper is a warm off-white with a subtle grain. Everythi
 is drawn in graphite pencil only — hand lettering and illustration alike — monochrome, no color,
 like a designer's concept sketchbook.
 
-LEFT COLUMN (about one third of the page width, hand-lettered in pencil, top to bottom):
+TOP BLOCK (about the top third of the page, hand-lettered in pencil, top to bottom):
 - A large handwritten index number, reading exactly: "03".
 - A large hand-lettered title in capital letters, reading exactly: "BLOOM".
 - Below the title, a smaller handwritten subtitle in parentheses, in Korean, reading exactly:
@@ -155,7 +155,7 @@ LEFT COLUMN (about one third of the page width, hand-lettered in pencil, top to 
   - reading exactly: "가스 배출"
   - reading exactly: "부드러운 바디"
 
-RIGHT SIDE (about two thirds of the page): a thin hand-drawn pencil rectangle frames a detailed
+BOTTOM (about the lower two thirds of the page): a thin hand-drawn pencil rectangle frames a detailed
 graphite pencil illustration: an overhead view of a single hand holding a kettle, pouring hot
 water onto coffee grounds resting in a dripper on a wooden table, thin wisps of steam rising.
 Fine hatching, rich pencil shading, strong sense of depth.
@@ -166,7 +166,7 @@ with an arrowhead at the outer end showing the direction of the pour. It reads l
 diagram sketched over the illustration.
 
 STYLE: monochrome graphite pencil on off-white sketchbook paper, hand-drawn and warm, clean
-composition, very legible lettering. Landscape 4:3 aspect ratio.
+composition, very legible lettering. Portrait 4:5 (1080x1350) aspect ratio.
 
 DO NOT: use any color except the pencil graphite and paper tone. No digital-looking fonts —
 all text is handwritten. Do not misspell any text. Do not add extra text beyond what is listed

@@ -3,7 +3,7 @@ name: akbun-draw-webtoon-a
 description: >
   사용자가 남긴 내용(주제, 상황, 이야기)을 분석해 3컷 또는 4컷 웹툰의 이미지 생성 프롬프트를 만든다.
   스타일은 xkcd풍 흑백 스틱피겨 컷만화로 고정한다 — 깨끗한 흰 배경, 손으로 그린 가는 검정 잉크 선,
-  동그란 머리의 스틱피겨, 얇은 검정 테두리의 컷 패널이 가로로 나란히 배치되고, 패널 위에 손글씨 제목이
+  동그란 머리의 스틱피겨, 얇은 검정 테두리의 컷 패널이 세로로 위에서 아래로 쌓이고, 패널 위에 손글씨 제목이
   붙는다. 이 skill은 그림을 직접 그리지 않고 GPT image, nano-banana 같은 이미지 생성 모델(agent)에
   그대로 넣을 영어 프롬프트만 만든다.
   Trigger on: "웹툰 그려줘", "웹툰 프롬프트", "3컷 만화", "4컷 만화", "컷만화", "만화로 그려줘",
@@ -25,8 +25,8 @@ description: >
 
 모든 프롬프트는 아래 스타일을 그대로 묘사한다. xkcd풍 흑백 스틱피겨 컷만화 레퍼런스("Evolution of Programming")의 분위기를 따른다.
 
-- **전체 구성**: 큰 손글씨 제목이 맨 위에 있고, 그 아래 컷 패널이 **가로로 나란히** 배치된다.
-- **패널**: 각 컷은 얇은 검정 직선 테두리의 세로형 직사각형. 패널 사이에 흰 여백을 둔다.
+- **전체 구성**: 큰 손글씨 제목이 맨 위에 있고, 그 아래 컷 패널이 **세로로 위에서 아래로** 쌓인다(세로 스크롤 웹툰 형식).
+- **패널**: 각 컷은 얇은 검정 직선 테두리의 가로로 긴 직사각형. 패널 사이에 흰 여백을 둔다.
 - **패널 라벨**: 각 컷 위쪽 안에 짧은 라벨(연도, 단계 이름 등)을 손글씨로 쓸 수 있다. 없어도 된다.
 - **배경**: 깨끗한 순백색. 격자·질감·그림자 없음.
 - **선**: 손으로 그린 가는 검정 잉크 선. 살짝 흔들리는 손그림 느낌이지만 깔끔하다.
@@ -35,7 +35,7 @@ description: >
 - **소품**: 책상, 의자, 모니터, 마이크처럼 장면에 꼭 필요한 것만 최소한의 선으로 그린다.
 - **텍스트**: 제목·라벨·말풍선 모두 친근한 손글씨체 영어. 말풍선은 꼭 필요할 때만 짧게.
 - **유머 구조**: 컷이 진행되며 상황이 고조되거나 반전되는 진행형 유머. 마지막 컷이 펀치라인이다.
-- **비율**: 3컷이면 가로형(약 3:2), 4컷이면 더 넓은 가로형(약 2:1). 사용자가 세로 스크롤형을 요구하면 세로 배치로 바꾼다.
+- **비율**: 3컷이든 4컷이든 세로형 4:5 (1080×1350, 인스타그램 세로형). 패널을 위에서 아래로 쌓는다. 사용자가 가로 배치를 요구하면 그때만 가로형으로 바꾼다.
 
 ## 결과물 형식
 
@@ -63,19 +63,19 @@ description: >
 
 ## 프롬프트 템플릿
 
-아래 영어 템플릿의 `<...>`를 채워 완성한다. 4컷이면 PANEL 4를 추가하고 비율을 2:1로 바꾼다. 사용하지 않는 줄(라벨, 말풍선)은 지운다.
+아래 영어 템플릿의 `<...>`를 채워 완성한다. 4컷이면 PANEL 4를 추가한다(비율은 그대로 세로형 4:5). 사용하지 않는 줄(라벨, 말풍선)은 지운다.
 
 ```text
-A <3-panel|4-panel> black-and-white stick figure comic strip in the style of xkcd, drawn with thin
+A <3-panel|4-panel> black-and-white stick figure vertical webtoon in the style of xkcd, drawn with thin
 hand-drawn black ink lines on a clean white background. No color, no shading, no gray fills — pure
 line art only. All text is in English, in a friendly handwritten font.
 
 TITLE: large handwritten title at the top, above the panels, reading exactly: "<TITLE>".
 
-LAYOUT: <3|4> tall rectangular panels side by side, each with a thin black border, with white
-space between panels. Each panel has a short handwritten label at the top inside: <list one label
-per panel, matching the panel count, e.g. "label 1", "label 2", "label 3" for 3 panels, or add a
-4th for 4 panels>. (Delete the label sentence entirely if no labels.)
+LAYOUT: <3|4> wide rectangular panels stacked vertically, top to bottom, each with a thin black
+border, with white space between panels. Each panel has a short handwritten label at the top
+inside: <list one label per panel, matching the panel count, e.g. "label 1", "label 2", "label 3"
+for 3 panels, or add a 4th for 4 panels>. (Delete the label sentence entirely if no labels.)
 
 PANEL 1 (<label>): <scene: who is doing what, with which minimal props, e.g. "a stick figure with
 a round empty head sits on a simple office chair at a desk, typing on a keyboard in front of a
@@ -91,7 +91,7 @@ CHARACTERS: stick figures with round empty heads (no facial features), thin line
 Express emotion through posture and props only. Keep the same character design across all panels.
 
 STYLE: minimalist, clean, generous white space, slightly wobbly hand-drawn lines, legible
-handwritten English text. <3:2 horizontal|2:1 wide horizontal> aspect ratio.
+handwritten English text. Portrait 4:5 (1080x1350) aspect ratio, panels stacked vertically.
 
 DO NOT: no color, no shading, no gradients, no photorealism, no facial features on the stick
 figures, no watermarks, no extra panels, no Korean or other non-English text in the image. Do not

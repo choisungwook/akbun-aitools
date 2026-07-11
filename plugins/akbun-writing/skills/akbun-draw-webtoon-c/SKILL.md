@@ -1,28 +1,28 @@
 ---
 name: akbun-draw-webtoon-c
 description: >
-  사용자가 남긴 글·이미지로 가로형 1컷 에세이툰 페이지를 만든다. 스타일은 고정이다 — 따뜻한
+  사용자가 남긴 글·이미지로 세로형 1컷 에세이툰 페이지를 만든다. 스타일은 고정이다 — 따뜻한
   오프화이트 배경, 페이지 상단의 굵은 손글씨 한글 내레이션, 그 아래 테두리 없는 한 장면.
   주인공은 플랫 채색된 akbun 고래 마스코트, 배경 인물은 채색 없는 선화 실루엣, 속마음은 부드러운
   회색 말풍선에 담는다. 결과물은 페이지별 영어 이미지 생성 프롬프트와 Figma/Canva에서 편집할 수
   있는 한글 텍스트 SVG다.
-  Trigger on: "에세이툰", "가로형 웹툰", "1컷 웹툰", "내레이션 웹툰", "감성 회사툰",
+  Trigger on: "에세이툰", "세로형 웹툰", "1컷 웹툰", "내레이션 웹툰", "감성 회사툰",
   "essay-toon", "one-cut webtoon", or any request to turn a story/feeling into
   narration-driven single-scene webtoon pages.
 ---
 
-# 가로형 1컷 에세이툰 페이지 만들기 (이미지 프롬프트 + SVG)
+# 세로형 1컷 에세이툰 페이지 만들기 (이미지 프롬프트 + SVG)
 
 ## 이 skill이 하는 일
 
-사용자가 남긴 글(이야기, 상황, 감정)과 이미지를 분석해서 **가로형 1컷 에세이툰 페이지**를 만든다. 내레이션 문장이 이야기를 끌고 가고, 그림은 그 문장의 감정을 한 장면으로 보여주는 형식이다. 결과물은 두 가지다.
+사용자가 남긴 글(이야기, 상황, 감정)과 이미지를 분석해서 **세로형 1컷 에세이툰 페이지**를 만든다. 내레이션 문장이 이야기를 끌고 가고, 그림은 그 문장의 감정을 한 장면으로 보여주는 형식이다. 결과물은 두 가지다.
 
 1. **페이지별 영어 이미지 생성 프롬프트** — GPT image, nano-banana 같은 이미지 생성 모델(agent)에 그대로 붙여넣는다. 내레이션·속마음 같은 한글 텍스트도 그림에 포함하도록 지시한다.
 2. **페이지별 SVG 파일** — 같은 한글 텍스트를 편집 가능한 `text`로 담은 SVG. Figma/Canva로 가져와 문구를 다듬거나, 그림 속 글자가 틀렸을 때 그림 위에 얹는 텍스트 레이어로 쓴다.
 
 사용자가 글을 주지 않으면 첨부 이미지와 대화 맥락을 분석해 내레이션 초안(한국어)을 먼저 만들고, 지어낸 이야기임을 밝힌 뒤 진행한다.
 
-다른 웹툰 skill과의 구분: `akbun-draw-webtoon-a`는 가로로 나란한 3~4컷 흑백 스틱피겨 컷만화, `akbun-draw-webtoon-b`는 세로형(4:5) 파스텔 수채 치비 페이지다. 이 skill은 **가로형(16:10) 1컷 + 상단 내레이션 + 플랫 채색**이 고정이다.
+다른 웹툰 skill과의 구분: `akbun-draw-webtoon-a`는 세로로 쌓은 3~4컷 흑백 스틱피겨 컷만화, `akbun-draw-webtoon-b`는 세로형(4:5) 파스텔 수채 치비 페이지다. 이 skill은 **세로형(4:5) 1컷 + 상단 내레이션 + 플랫 채색**(수채가 아닌 플랫 단색)이 고정이다.
 
 ## 캐릭터 (고정)
 
@@ -56,7 +56,7 @@ bodies and heads in thin dark-brown outlines only, no fill color, no facial feat
 
 모든 이미지 프롬프트는 아래 스타일을 그대로 묘사한다. 담담한 내레이션과 귀여운 그림의 대비로 감정을 전달하는 한국 에세이툰 스타일이다.
 
-- **캔버스**: 가로형 16:10 (1200×750 기준). 컷 테두리·괘선 없음. 페이지 전체가 하나의 장면이다.
+- **캔버스**: 세로형 4:5 (1080×1350 기준, 인스타그램 세로형). 컷 테두리·괘선 없음. 페이지 전체가 하나의 장면이다.
 - **배경**: 따뜻한 오프화이트(`#F7F4EE`) 단색. 벽·바닥·풍경을 그리지 않고, 장면에 꼭 필요한 소품만 남긴다.
 - **선**: 가늘고 깔끔한 진갈색(웜 블랙) 외곽선. 흔들림 없이 부드러운 곡선 위주.
 - **채색**: 플랫 단색 채우기. 그라데이션·질감·그림자 없음. 주인공과 소품만 칠하고 배경 인물은 칠하지 않는다.
@@ -124,7 +124,7 @@ SVG의 모든 텍스트는 저작권 걱정 없는 무료 폰트만 쓴다.
 아래 영어 템플릿의 `<...>`를 페이지마다 채운다. 캐릭터 문장은 `캐릭터 (고정)` 섹션에서 글자 그대로 복사하고, 나오지 않는 캐릭터 줄과 쓰지 않는 텍스트 줄은 지운다.
 
 ```text
-A wide 16:10 (1200x750) single-scene Korean essay-webtoon page. Flat minimal digital
+A vertical 4:5 (1080x1350) single-scene Korean essay-webtoon page. Flat minimal digital
 illustration on a solid warm off-white background (#F7F4EE). Thin clean dark-brown
 outlines, flat warm coloring only — cream, warm gray, light brown with one warm orange
 accent. No gradients, no shading, no texture, no panel borders, no background walls or
@@ -159,32 +159,32 @@ not add any text beyond the lines listed above.
 
 ## SVG 템플릿
 
-1페이지용 뼈대다. 캔버스는 항상 1200×750이고, 아래 좌표는 배치 예시다 — 내레이션 길이와 장면 구성에 맞춰 조정한다. 쓰지 않는 텍스트 요소는 지운다. 생성된 그림 파일이 이미 있으면 자리표시 `<rect>`/`<text>`를 `<image x="..." y="..." width="..." height="..." href="page-1.png"/>`로 교체한다.
+1페이지용 뼈대다. 캔버스는 항상 1080×1350이고, 아래 좌표는 배치 예시다 — 내레이션 길이와 장면 구성에 맞춰 조정한다. 쓰지 않는 텍스트 요소는 지운다. 생성된 그림 파일이 이미 있으면 자리표시 `<rect>`/`<text>`를 `<image x="..." y="..." width="..." height="..." href="page-1.png"/>`로 교체한다.
 
 ```xml
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="750" viewBox="0 0 1200 750">
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1350" viewBox="0 0 1080 1350">
   <!-- 배경: 따뜻한 오프화이트 -->
-  <rect width="1200" height="750" fill="#F7F4EE"/>
+  <rect width="1080" height="1350" fill="#F7F4EE"/>
 
   <!-- 상단 내레이션: 왼쪽 정렬, 페이지에서 가장 크고 굵게. 두 줄이면 tspan으로 나눈다 -->
-  <text x="60" y="90" font-family="'Jua', 'Gaegu', cursive" font-size="52" fill="#2B2724">
-    <tspan x="60" dy="0">내레이션 첫 줄…</tspan>
-    <tspan x="60" dy="64">내레이션 둘째 줄…</tspan>
+  <text x="70" y="130" font-family="'Jua', 'Gaegu', cursive" font-size="58" fill="#2B2724">
+    <tspan x="70" dy="0">내레이션 첫 줄…</tspan>
+    <tspan x="70" dy="72">내레이션 둘째 줄…</tspan>
   </text>
 
   <!-- 그림 자리표시: 그림이 생기면 <image>로 교체 -->
-  <rect x="380" y="280" width="440" height="380" fill="#EFEBE3"/>
-  <text x="600" y="480" text-anchor="middle" font-family="'Gaegu', 'Jua', cursive"
-        font-size="32" fill="#9A948A">장면 그림</text>
+  <rect x="210" y="560" width="660" height="560" fill="#EFEBE3"/>
+  <text x="540" y="840" text-anchor="middle" font-family="'Gaegu', 'Jua', cursive"
+        font-size="34" fill="#9A948A">장면 그림</text>
 
   <!-- 속마음 말풍선: 주인공 머리 옆 빈 공간. 꼬리 없는 회색 타원 -->
-  <ellipse cx="960" cy="330" rx="150" ry="80" fill="#DEDAD3"/>
-  <text x="960" y="330" text-anchor="middle" dominant-baseline="middle"
+  <ellipse cx="838" cy="420" rx="170" ry="86" fill="#DEDAD3"/>
+  <text x="838" y="420" text-anchor="middle" dominant-baseline="middle"
         font-family="'Gaegu', 'Jua', cursive" font-size="34" fill="#2B2724">속마음 한 마디…</text>
 
   <!-- 웅성거림: 배경 인물 근처에 작게. 없으면 지운다 -->
-  <text x="300" y="620" text-anchor="middle" font-family="'Gaegu', 'Jua', cursive"
-        font-size="28" fill="#2B2724">웅성웅성</text>
+  <text x="320" y="1200" text-anchor="middle" font-family="'Gaegu', 'Jua', cursive"
+        font-size="30" fill="#2B2724">웅성웅성</text>
 </svg>
 ```
 
@@ -222,7 +222,7 @@ not add any text beyond the lines listed above.
 - 사용자가 준 글·이미지를 근거로 이야기를 구성했는가? 글이 없어서 지어냈다면 그 사실을 밝혔는가?
 - 페이지마다 내레이션이 1~2문장이고, 문체(존댓말 서술체 또는 개조식)가 작품 전체에서 하나로 통일됐는가?
 - 주인공은 akbun 고래 마스코트 문장을, 배경 인물은 선화 실루엣 문장을 글자 그대로 복사했는가?
-- 캔버스가 1200×750 가로형이고, 컷 테두리 없이 상단 내레이션 + 단일 장면 구성인가?
+- 캔버스가 1080×1350 세로형이고, 컷 테두리 없이 상단 내레이션 + 단일 장면 구성인가?
 - 플랫 채색·오프화이트 배경·배경 인물 무채색을 프롬프트에 명시했고, DO NOT에 그라데이션·배경 풍경·텍스트 변형 금지를 넣었는가?
 - 속마음 말풍선이 페이지당 최대 1개이고, 내레이션과 온도차가 있는가?
 - SVG가 같은 한글 텍스트를 담고, 내레이션은 Jua, 그 외는 Gaegu를 쓰는가? 폰트 설치 안내를 덧붙였는가?
