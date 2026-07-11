@@ -56,7 +56,7 @@ description: >
 - **초점 하나.** 화면에 시선이 모이는 요소 하나를 정하고, 오렌지 포인트를 거기에 준다.
 - **여백을 넉넉히.** 요소를 꽉 채우지 않는다.
 - **단순한 형태.** 둥글고 깔끔한 도형 위주로, 디테일을 덜어낸 아이콘·삽화 수준으로 그린다.
-- **비율**: 특별한 요청이 없으면 가로형(예: 7:5). 소재에 맞으면 정사각·세로도 된다.
+- **비율**: 특별한 요청이 없으면 세로형 4:5 (1080×1350, 인스타그램 세로형). 소재에 맞으면 정사각·가로도 된다.
 
 ## 입력 다루기
 
@@ -107,7 +107,7 @@ clean icon-illustration, with generous empty space around it.
 <TEXT (optional): a short hand-lettered caption in dark gray, reading exactly: "<CAPTION>".>
 
 STYLE: flat hand-drawn ink illustration, monochrome gray with a single warm-orange accent, warm
-off-white paper, friendly and legible, plenty of whitespace. <ASPECT, e.g. "Landscape 7:5">.
+off-white paper, friendly and legible, plenty of whitespace. <ASPECT, e.g. "Portrait 4:5 (1080x1350)">.
 
 DO NOT: use any color other than the grays and the single orange accent. No gradients, no
 photographic shading, no digital gloss, no busy background. No watermarks, no logos.
@@ -167,7 +167,7 @@ TEXT: a short hand-lettered caption in dark gray below the cloud, reading exactl
 "서버가 또 죽었다...".
 
 STYLE: flat hand-drawn ink illustration, monochrome gray with a single warm-orange accent, warm
-off-white paper, friendly and legible, plenty of whitespace. Landscape 7:5.
+off-white paper, friendly and legible, plenty of whitespace. Portrait 4:5 (1080x1350).
 
 DO NOT: use any color other than the grays and the single orange accent. No gradients, no
 photographic shading, no digital gloss, no busy background. No watermarks, no logos.
@@ -176,11 +176,13 @@ photographic shading, no digital gloss, no busy background. No watermarks, no lo
 출력 SVG (`server-down-monogray.svg`로 저장):
 
 ```xml
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1680 1200" width="1680" height="1200">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1350" width="1080" height="1350">
   <!-- palette: bg #F4F2ED / ink #3A3A3A / grays #C9C9C9 #E3E3E3 / accent #E8833A -->
-  <rect width="1680" height="1200" fill="#F4F2ED"/>
+  <rect width="1080" height="1350" fill="#F4F2ED"/>
 
-  <g stroke="#3A3A3A" stroke-width="9" stroke-linejoin="round" stroke-linecap="round">
+  <!-- cloud + bolt drawn in original coords, placed and scaled into the portrait canvas -->
+  <g transform="translate(-46,120) scale(0.72)"
+     stroke="#3A3A3A" stroke-width="12" stroke-linejoin="round" stroke-linecap="round">
     <!-- storm cloud (flat gray), single silhouette path -->
     <path d="M560 620
              C470 620 440 520 520 486
@@ -195,7 +197,7 @@ photographic shading, no digital gloss, no busy background. No watermarks, no lo
              fill="#E8833A"/>
   </g>
 
-  <text x="840" y="1064" text-anchor="middle" fill="#3A3A3A"
+  <text x="540" y="1010" text-anchor="middle" fill="#3A3A3A"
         font-family="Gaegu, 'Nanum Pen Script', 'Patrick Hand', sans-serif"
         font-size="76" font-weight="700">서버가 또 죽었다...</text>
 </svg>
