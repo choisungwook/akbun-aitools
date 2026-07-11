@@ -24,14 +24,14 @@ akbun-draw-webtoon-a(xkcd풍 흑백 스틱피겨)와 다른 skill이다. 이 ski
 
 ### 주인공 캐릭터
 
-이야기의 화자("나")를 그리는 캐릭터. 수컷 치비 수달 — 부드러운 연갈색 털, 크림색 주둥이와 배, 작고 동그란 귀, 크고 반짝이는 진갈색 눈, 발그레한 볼터치, 머리털에 흰 하이라이트 줄기, 뮤트 그레이블루 후드티.
+이야기의 화자("나")를 그리는 캐릭터. **akbun 마스코트 고래의 치비 버전**이다. 기본 외형(콩 모양 통통한 몸, 흰 배, 밝은 회색 등, 작은 옆지느러미 2개, 납작한 꼬리, 까만 점 눈, 작은 곡선 입)은 `akbun-mascot-whale` skill의 캐릭터 스펙을 따르고, 이 skill에서는 파스텔 수채 치비로 렌더링하며 발그레한 볼터치와 뮤트 그레이블루 후드티를 더한다.
 
 주인공의 영어 CHARACTER 문장:
 
 ```text
-a chibi male otter character with soft light-brown fur, a cream muzzle and belly, small round
-ears, big sparkling dark-brown eyes, blushing cheeks, white highlight streaks on his head fur,
-wearing a muted gray-blue hoodie
+a chibi whale character (the akbun whale mascot): a chubby bean-shaped body with a soft
+light-gray back and cream-white belly, two tiny side fins, a small flat tail, two black dot
+eyes, a small curved smile, blushing cheeks, wearing a muted gray-blue hoodie
 ```
 
 ### 상대 캐릭터
@@ -213,7 +213,7 @@ Korean text, and do not add any text beyond the lines listed above.
 ```text
 페이지 1 — 2컷 페이지 (주인공)
   상단 내레이션: "첫 홈베이킹에 도전한 날…"
-  컷 1: 작은 나무 탁자에서 끈적한 반죽과 씨름하는 주인공, 머리털에 밀가루 (땀방울)
+  컷 1: 작은 나무 탁자에서 끈적한 반죽과 씨름하는 주인공, 머리에 밀가루 (땀방울)
   컷 2: 연기가 새어 나오는 오븐 앞에서 놀라 뒤로 넘어지는 주인공 (놀람 표시)
   하단 내레이션: "첫 판은 숯이 되었다…"
   보조 내레이션: "(연기 감지기까지 울림…)"

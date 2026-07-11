@@ -37,6 +37,7 @@ akbun tools for both Claude Code and Codex plugin workflows.
 | [akbun-draw-book-illustration](./plugins/akbun-writing/skills/akbun-draw-book-illustration/) | 소재·문구를 monogray 삽화 스타일 + 고정 레이아웃 5종(아이콘 스트립·확대·대화·흐름·포스터)과 상하좌우 간격으로 배치한 이미지 생성 프롬프트와 Figma/Canva용 SVG 작성 |
 | [akbun-draw-cartoon-b](./plugins/akbun-writing/skills/akbun-draw-cartoon-b/) | 아무 상황을 회색 그라데이션+베이지 테두리+낙서풍 고래 캐릭터+올리브 포인트 하나의 이슈 카드뉴스 스타일로 그리는 이미지 생성 프롬프트와 Figma/Canva용 SVG 작성 |
 | [akbun-draw-whale-poster](./plugins/akbun-writing/skills/akbun-draw-whale-poster/) | 주제·자료를 흑백 손그림 고래 캐릭터 치트시트 포스터 한 장의 이미지 생성 프롬프트와 Figma/Canva용 SVG로 작성 |
+| [akbun-mascot-whale](./plugins/akbun-writing/skills/akbun-mascot-whale/) | akbun 마스코트 고래 캐릭터의 표준 외형 스펙(다른 그리기 skill이 참조) |
 
 아래는 각 skill로 만든 예시다.
 
