@@ -37,17 +37,19 @@ description: >
 
 ## 캐릭터 (고정 — 고래)
 
-이 카드뉴스는 사람을 그리지 않고 **단순한 낙서풍 고래 캐릭터**만 쓴다. 아래 정의 문장을 프롬프트에
-**글자 그대로** 복사한다. 이미지 모델은 문장이 다르면 캐릭터가 달라지므로 표현을 바꾸지 않는다.
-사용자가 다른 동작·소품을 지정해도 고래 캐릭터는 유지한다.
+이 카드뉴스는 사람을 그리지 않고 **akbun 마스코트 고래를 낙서풍으로 그린 캐릭터**만 쓴다. 기본
+외형(콩 모양 몸통, 흰 배, 작은 지느러미, 점 눈, 곡선 입)은 `akbun-mascot-whale` skill의 캐릭터
+스펙을 따르고, 이 skill에서는 어린아이 낙서 같은 잉크 라인으로 렌더링한다. 아래 정의 문장을
+프롬프트에 **글자 그대로** 복사한다. 이미지 모델은 문장이 다르면 캐릭터가 달라지므로 표현을 바꾸지
+않는다. 사용자가 다른 동작·소품을 지정해도 고래 캐릭터는 유지한다.
 
 고래 캐릭터의 영어 CHARACTER 문장:
 
 ```text
-a simple naive-doodle whale character standing upright, drawn with a childlike hand-drawn black
-ink outline: a plump rounded whale body, a tiny blowhole spout on top of its head, small stubby
-fin-arms on the sides, a little forked tail at the bottom it stands on, one small dot eye and no
-other facial features
+a simple naive-doodle rendering of the akbun whale mascot standing upright on its small flat
+tail, drawn with a childlike hand-drawn black ink outline: a chubby bean-shaped whale body,
+white belly, two small stubby side fins, two black dot eyes and a small curved smile, no other
+facial features
 ```
 
 - **여러 캐릭터가 나오면 채움으로 대비한다.** 행동의 주체인 고래는 **속이 빈 흰색(검정 외곽선만)**
@@ -139,10 +141,10 @@ Everything is drawn with simple, slightly wobbly uniform black ink outlines (#1A
 rounded corners — like a child's doodle. Flat fills only: white and medium gray. No gradients on
 the figures, no texture, no hatching, no photographic shading.
 
-CHARACTERS: a simple naive-doodle whale character standing upright, drawn with a childlike
-hand-drawn black ink outline: a plump rounded whale body, a tiny blowhole spout on top of its
-head, small stubby fin-arms on the sides, a little forked tail at the bottom it stands on, one
-small dot eye and no other facial features.
+CHARACTERS: a simple naive-doodle rendering of the akbun whale mascot standing upright on its
+small flat tail, drawn with a childlike hand-drawn black ink outline: a chubby bean-shaped whale
+body, white belly, two small stubby side fins, two black dot eyes and a small curved smile, no
+other facial features.
 CONTRAST: draw the acting whale as an OUTLINE-ONLY white figure (black outline, white fill), and
 the reacting/second whale as a SOLID medium-gray silhouette. <remove this line if only one whale>
 
@@ -221,10 +223,10 @@ Everything is drawn with simple, slightly wobbly uniform black ink outlines (#1A
 rounded corners — like a child's doodle. Flat fills only: white and medium gray. No gradients on
 the figures, no texture, no hatching, no photographic shading.
 
-CHARACTERS: a simple naive-doodle whale character standing upright, drawn with a childlike
-hand-drawn black ink outline: a plump rounded whale body, a tiny blowhole spout on top of its
-head, small stubby fin-arms on the sides, a little forked tail at the bottom it stands on, one
-small dot eye and no other facial features.
+CHARACTERS: a simple naive-doodle rendering of the akbun whale mascot standing upright on its
+small flat tail, drawn with a childlike hand-drawn black ink outline: a chubby bean-shaped whale
+body, white belly, two small stubby side fins, two black dot eyes and a small curved smile, no
+other facial features.
 CONTRAST: draw the acting whale as an OUTLINE-ONLY white figure (black outline, white fill), and
 the reacting/second whale as a SOLID medium-gray silhouette.
 

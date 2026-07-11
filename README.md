@@ -37,6 +37,7 @@ akbun tools for both Claude Code and Codex plugin workflows.
 | [akbun-draw-book-illustration](./plugins/akbun-writing/skills/akbun-draw-book-illustration/) | 소재·문구를 monogray 삽화 스타일 + 고정 레이아웃 5종(아이콘 스트립·확대·대화·흐름·포스터)과 상하좌우 간격으로 배치한 이미지 생성 프롬프트와 Figma/Canva용 SVG 작성 |
 | [akbun-draw-cartoon-b](./plugins/akbun-writing/skills/akbun-draw-cartoon-b/) | 아무 상황을 회색 그라데이션+베이지 테두리+낙서풍 고래 캐릭터+올리브 포인트 하나의 이슈 카드뉴스 스타일로 그리는 이미지 생성 프롬프트와 Figma/Canva용 SVG 작성 |
 | [akbun-draw-whale-poster](./plugins/akbun-writing/skills/akbun-draw-whale-poster/) | 주제·자료를 흑백 손그림 고래 캐릭터 치트시트 포스터 한 장의 이미지 생성 프롬프트와 Figma/Canva용 SVG로 작성 |
+| [akbun-mascot-whale](./plugins/akbun-writing/skills/akbun-mascot-whale/) | akbun 마스코트 고래 캐릭터의 표준 외형 스펙(다른 그리기 skill이 참조) |
 
 아래는 각 skill로 만든 예시다.
 
@@ -60,6 +61,14 @@ akbun tools for both Claude Code and Codex plugin workflows.
 | [akbun-learning-english](./plugins/akbun-learning/skills/akbun-learning-english/) | 한국어 학습자용 영어 발음·읽기 가이드 |
 | [akbun-learning-japanese](./plugins/akbun-learning/skills/akbun-learning-japanese/) | 한국어 학습자용 일본어 발음·읽기 가이드 |
 | [akbun-make-anki-japanese](./plugins/akbun-learning/skills/akbun-make-anki-japanese/) | 일본어 교재 이미지/PDF를 Anki 덱으로 변환 |
+
+## skill 연관관계
+
+일부 skill은 다른 skill의 정의를 참조한다. 참조 대상 skill을 바꾸면 참조하는 skill의 결과물도 함께 바뀐다.
+
+- `akbun-mascot-whale`: akbun 마스코트 고래의 표준 외형을 정의하는 기준 skill. 캐릭터를 그리는 아래 skill들이 이 스펙을 참조한다.
+  - 캐릭터로 직접 사용: `akbun-draw-whale-poster`, `akbun-draw-cartoon-b`, `akbun-draw-webtoon-b`, `akbun-draw-storytellingimage`
+  - 인물이 필요할 때 사용: `akbun-draw-book-illustration`, `akbun-draw-minimal-poster`, `akbun-draw-poster-monogray`, `akbun-draw-sketchbook-card`
 
 ## 설치 방법
 

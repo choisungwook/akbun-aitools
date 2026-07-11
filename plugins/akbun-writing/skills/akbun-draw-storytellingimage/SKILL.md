@@ -24,8 +24,8 @@ description: >
 - **선**: 진한 네이비/검정 잉크의 손그림 외곽선. 굵고 자신감 있게, 살짝 흔들리고 겹쳐 그은 스케치 느낌.
 - **채색**: 마커(사인펜)로 **낙서하듯 빗금으로 칠한** 채색. 면을 꽉 채우지 않고 스크리블(scribble) 획이 그대로 보이며, 색이 외곽선을 살짝 삐져나온다.
 - **팔레트**: 밝은 원색 위주 — 파랑, 노랑, 주황, 초록, 빨강. 갈색은 나무·흙·머리카락 같은 보조색. 한 장면에 3~5색이면 충분하다.
-- **인물(주인공)**: 친근한 카툰 캐릭터. 단순한 얼굴(점 눈, 한 줄 곡선 입), 과장된 표정과 몸짓. 옷은 마커 낙서로 채색.
-- **인물(군중)**: 여러 명이 필요한 장면에서는 채색 없는 단순한 흰 미니 피겨(둥근 머리, 단순한 몸)로 그려 주인공과 구분한다.
+- **인물(주인공)**: akbun 마스코트 고래를 마커 낙서 스타일로 그린다. 외형(콩 모양 통통한 몸, 흰 배, 밝은 회색 등, 작은 지느러미, 점 눈, 한 줄 곡선 입)은 `akbun-mascot-whale` skill의 캐릭터 스펙을 따르고, 과장된 표정과 몸짓으로 감정을 표현한다.
+- **인물(군중)**: 여러 명이 필요한 장면에서는 채색 없는 단순한 흰 미니 고래 실루엣(이목구비 없음)으로 그려 주인공과 구분한다.
 - **연출 요소**: 움직임 곡선(motion swoosh), 땀방울, 강조 화살표(빨강/주황), 짧은 라벨 같은 만화적 기호를 아껴서 쓴다.
 - **비유 소품**: 산, 바위, 깃발, 씨앗, 사다리처럼 이야기의 비유를 그대로 그린 큼직한 소품이 잘 어울린다.
 - **여백**: 대상 하나가 화면 가운데를 차지하고 주변은 넉넉히 비운다. 배경 디테일을 그리지 않는다.
@@ -42,7 +42,7 @@ description: >
 
 1. **이야기 파악.** 사용자가 남긴 이야기/개념/시나리오를 읽는다. 첨부 자료가 있으면 그 내용도 소재로 삼는다.
 2. **장면 나누기.** 사용자가 장면 수나 장면 내용을 지정하면 그대로 따른다. 지정이 없으면 이야기의 전환점(도입 → 문제 → 절정/해결)을 기준으로 2~5장면을 제안한다. 한 장짜리 요청이면 이야기 전체를 대표하는 한 장면만 만든다.
-3. **주인공 고정.** 여러 장면에 같은 인물이 나오면 외모(머리 모양, 옷, 색)를 한 번 정의하고 모든 장면 프롬프트에 **똑같은 문장으로** 복사해 넣는다. 이미지 모델은 장면 간 기억이 없어서, 문장이 다르면 인물이 달라진다.
+3. **주인공 고정.** 주인공은 akbun 마스코트 고래다. CHARACTER 문장을 한 번 정하고 모든 장면 프롬프트에 **똑같은 문장으로** 복사해 넣는다. 이미지 모델은 장면 간 기억이 없어서, 문장이 다르면 인물이 달라진다.
 4. **장면 묘사 작성.** 장면마다 (a) 인물의 행동과 표정, (b) 꼭 필요한 소품, (c) 연출 요소(움직임 곡선, 화살표, 라벨)를 정한다. 개념 설명이면 인물 대신 비유 소품 중심으로 구성해도 된다.
 5. **프롬프트 조립.** 아래 `프롬프트 템플릿`의 빈칸을 채워 장면마다 영어 프롬프트를 완성한다.
 6. **출력.** 장면별 영어 프롬프트 블록들 + 한국어 장면 구성 설명을 출력한다.
@@ -66,16 +66,16 @@ hand-drawn feel. Colored with loose marker scribble strokes that leave visible h
 slightly overshoot the outlines — not flat fills. Bright palette of <3-5 colors, e.g. blue,
 yellow, orange, green>.
 
-CHARACTER: <recurring character definition, e.g. "a friendly cartoon woman with a black ponytail,
-dot eyes, a simple curved-line smile, wearing a green hoodie and dark trousers, all colored in
-marker scribbles">. (Reuse this exact sentence in every scene of the series.)
+CHARACTER: the akbun whale mascot — a chubby bean-shaped whale with a white belly, a light gray
+back, two tiny side fins, a small flat tail, black dot eyes and a simple curved-line smile,
+colored in loose marker scribbles. (Reuse this exact sentence in every scene of the series.)
 
 SCENE: <what happens in this moment: the character's action, posture and emotion, plus the one or
-two props that matter, e.g. "he holds a tiny green sprout in a clay pot, leaning in close with a
+two props that matter, e.g. "the whale holds a tiny green sprout in a clay pot, leaning in close with a
 proud smile, small motion swooshes around the sprout">.
 
-<Optional CROWD: small simple white doodle figures with round heads and plain bodies, no color,
-doing <action> in the background.>
+<Optional CROWD: small simple white doodle whale figures with plain rounded bodies, no facial
+features, no color, doing <action> in the background.>
 
 <Optional LABEL: one short handwritten label reading exactly: "<...>", with a small <red|orange>
 arrow pointing at <target>.>
@@ -100,12 +100,12 @@ text beyond the label, no watermarks, no panel borders.
 출력 개요 예시 (장면 나누기와 CHARACTER 문장 재사용을 보여준다):
 
 ```text
-Scene 1 — 결심: the character stands proudly with fists on hips next to a huge to-do list
-covered in red marker scribbles, a small red flag planted beside it.
-Scene 2 — 포기: the same character (identical CHARACTER sentence) slumps on the floor with
-sweat drops, the giant to-do list toppling over him like a falling wall.
-Scene 3 — 아주 작은 습관: the same character does one tiny push-up with a big smile, next to a
-small calendar where three days are checked with green marker.
+Scene 1 — 결심: the whale mascot stands proudly with its fins on its hips next to a huge to-do
+list covered in red marker scribbles, a small red flag planted beside it.
+Scene 2 — 포기: the same whale (identical CHARACTER sentence) slumps on the floor with sweat
+drops, the giant to-do list toppling over it like a falling wall.
+Scene 3 — 아주 작은 습관: the same whale does one tiny push-up on its fins with a big smile,
+next to a small calendar where three days are checked with green marker.
 ```
 
 각 장면을 위 템플릿에 넣어 3개의 독립된 영어 프롬프트로 출력한다.
