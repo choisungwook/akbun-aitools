@@ -27,6 +27,18 @@
         "authentication": "ON_INSTALL"
       },
       "category": "Education"
+    },
+    {
+      "name": "akbun-presentation",
+      "source": {
+        "source": "local",
+        "path": "./plugins/akbun-presentation"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Writing"
     }
   ]
 }
