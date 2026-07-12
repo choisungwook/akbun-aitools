@@ -68,6 +68,20 @@ akbun tools for both Claude Code and Codex plugin workflows.
 | [akbun-learning-japanese](./plugins/akbun-learning/skills/akbun-learning-japanese/) | 한국어 학습자용 일본어 발음·읽기 가이드 |
 | [akbun-make-anki-japanese](./plugins/akbun-learning/skills/akbun-make-anki-japanese/) | 일본어 교재 이미지/PDF를 Anki 덱으로 변환 |
 
+### akbun-presentation
+
+akbun 발표자료 스타일(다크 스텝 슬라이드) skill 모음.
+
+| skill | 설명 |
+|---|---|
+| [akbun-presentation](./plugins/akbun-presentation/skills/akbun-presentation/) | 주제·글·코드를 akbun 발표 스타일 pptx 덱으로 생성 — 외부 발표 모드(다크 표지·섹션+흰 내용 슬라이드+노란 세로 바+코드 패널+링크 푸터)와 스터디 모드(전체 다크+슬라이드당 메시지 한 줄), 공통 질문 훅 스토리와 노랑/빨강 강조 |
+
+아래는 skill로 만든 예시다.
+
+| skill | 이미지 |
+|---|---|
+| `akbun-presentation` | <img src="./imgs/akbun-presentation.png" alt="akbun-presentation 예시 슬라이드" width="480"> |
+
 ## skill 연관관계
 
 일부 skill은 다른 skill의 정의를 참조한다. 참조 대상 skill을 바꾸면 참조하는 skill의 결과물도 함께 바뀐다.
@@ -91,6 +105,7 @@ Claude Code marketplace metadata lives in:
 /plugin marketplace add choisungwook/akbun-aitools
 /plugin install akbun-writing@akbun-aitools
 /plugin install akbun-learning@akbun-aitools
+/plugin install akbun-presentation@akbun-aitools
 /reload-plugins
 ```
 
@@ -102,6 +117,7 @@ Codex plugin 설치 명령어
 codex plugin marketplace add choisungwook/akbun-aitools --json
 codex plugin add akbun-learning@akbun-aitools --json
 codex plugin add akbun-writing@akbun-aitools --json
+codex plugin add akbun-presentation@akbun-aitools --json
 ```
 
 Codex plugin 업그레이드
@@ -117,6 +133,7 @@ Hard reset 명령어
 ```bash
 codex plugin remove akbun-writing@akbun-aitools --json
 codex plugin remove akbun-learning@akbun-aitools --json
+codex plugin remove akbun-presentation@akbun-aitools --json
 
 rm -rf ~/.codex/plugins/cache/akbun-aitools
 rm -rf ~/.codex/.tmp/marketplaces/akbun-aitools
@@ -124,6 +141,7 @@ rm -rf ~/.codex/.tmp/marketplaces/akbun-aitools
 codex plugin marketplace add choisungwook/akbun-aitools --json
 codex plugin add akbun-writing@akbun-aitools --json
 codex plugin add akbun-learning@akbun-aitools --json
+codex plugin add akbun-presentation@akbun-aitools --json
 
 codex plugin list --json
 ```

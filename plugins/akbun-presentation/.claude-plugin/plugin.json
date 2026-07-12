@@ -1,0 +1,11 @@
+{
+  "name": "akbun-presentation",
+  "description": "akbun presentation formats — external light-sandwich decks and dark step-slide study decks with consistent voice, layout, and diagram language (pptx/Google Slides)",
+  "version": "1.0.0",
+  "author": {
+    "name": "akbun"
+  },
+  "repository": "https://github.com/choisungwook/akbun-aitools",
+  "license": "MIT",
+  "keywords": ["presentation", "slides", "pptx", "deck", "korean", "dark-theme", "diagram"]
+}
