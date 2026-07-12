@@ -25,7 +25,7 @@ akbun tools for both Claude Code and Codex plugin workflows.
 | [kubernets-network-drawio](./plugins/akbun-writing/skills/kubernets-network-drawio/) | draw.io로 Kubernetes 네트워크 다이어그램 생성 |
 | [akbun-generateimage-code](./plugins/akbun-writing/skills/akbun-generateimage-code/) | 코드 설명용 블로그 figure의 이미지 생성 프롬프트 작성 |
 | [akbun-draw-component](./plugins/akbun-writing/skills/akbun-draw-component/) | 코드·컴퍼넌트를 분석해 하이레벨 아키텍처/연관관계 그림의 이미지 생성 프롬프트 작성 |
-| [akbun-draw-network-relationship](./plugins/akbun-writing/skills/akbun-draw-network-relationship/) | 컴퍼넌트 간 네트워크 흐름 그림의 이미지 생성 프롬프트 작성 |
+| [akbun-draw-network-relationship](./plugins/akbun-writing/skills/akbun-draw-network-relationship/) | 컴퍼넌트 간 네트워크 흐름 그림의 이미지 생성 프롬프트 작성, 요청 시 Figma/Canva 편집용 SVG 포함 |
 | [akbun-generate-headline](./plugins/akbun-writing/skills/akbun-generate-headline/) | 넘긴 내용·파일을 분석해 클릭을 부르는 헤드라인(글 제목) 후보 생성 |
 | [akbun-draw-webtoon-a](./plugins/akbun-writing/skills/akbun-draw-webtoon-a/) | 사용자 내용을 3~4컷 흑백 스틱피겨 웹툰의 이미지 생성 프롬프트로 작성 |
 | [akbun-draw-webtoon-b](./plugins/akbun-writing/skills/akbun-draw-webtoon-b/) | 이미지·글로 파스텔 치비 동물 캐릭터 웹툰 페이지의 이미지 생성 프롬프트 + Figma/Canva용 텍스트 SVG 작성 |
