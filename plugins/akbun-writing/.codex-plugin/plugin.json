@@ -1,6 +1,6 @@
 {
   "name": "akbun-writing",
-  "version": "1.0.41",
+  "version": "1.0.42",
   "description": "Writing, review, and blog support skills by akbun",
   "author": {
     "name": "akbun",
@@ -13,15 +13,13 @@
     "writing",
     "blog",
     "review",
-    "korean",
-    "drawio",
-    "architecture"
+    "korean"
   ],
   "skills": "./skills/",
   "interface": {
     "displayName": "akbun Writing",
     "shortDescription": "Korean writing and blog support skills",
-    "longDescription": "Writing, review, hands-on, publishing, and draw.io architecture diagram skills for Korean technical documents and blog posts in akbun's working style.",
+    "longDescription": "Writing, review, hands-on, and publishing skills for Korean technical documents and blog posts in akbun's working style.",
     "developerName": "akbun",
     "category": "Writing",
     "capabilities": [
@@ -37,23 +35,7 @@
       "Write an akbun-style post in 설득식/persuasive form (악분설득스타일)",
       "Review this draft against akbun's writing rules",
       "Convert this Obsidian markdown post for publishing",
-      "Create a draw.io AWS VPC architecture diagram",
-      "Make an image prompt that explains this code as a blog figure",
-      "Draw a high-level component architecture diagram of this code",
-      "Make an image prompt showing how traffic flows between these components",
-      "Generate click-worthy Korean headline candidates for this draft",
-      "Make a 3 or 4 panel webtoon prompt from this story",
-      "Make a pastel animal-character webtoon page (image prompts + Figma/Canva SVG) from these images and story",
-      "Make a landscape one-cut essay-toon page with the whale mascot (image prompt + Figma/Canva SVG) from this story",
-      "Make a stitched-text image prompt for a motivational quote",
-      "Make a pencil sketchbook concept-card image prompt for this topic",
-      "Make a minimal poster card image prompt and a Figma/Canva-ready SVG from this image",
-      "Draw this subject in the monogray flat-ink style (image prompt + Figma/Canva SVG)",
-      "Make a book-figure image prompt and an editable SVG using a fixed layout (icon strip, zoom, dialog, flow, or poster card)",
-      "Make a naive-doodle safety issue card-news with whale characters (image prompt + Figma/Canva SVG) from this situation",
-      "Make a cream handwritten explainer card-news (image prompt + Figma/Canva SVG) for this concept",
-      "Make a whale-mascot cheatsheet poster (image prompt + Figma/Canva SVG) for this topic",
-      "Describe the akbun whale mascot character spec for use in another drawing skill"
+      "Generate click-worthy Korean headline candidates for this draft"
     ],
     "brandColor": "#0F766E",
     "screenshots": []

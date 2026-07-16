@@ -1,11 +1,11 @@
 {
   "name": "akbun-writing",
   "description": "Writing, review, and blog support skills by akbun",
-  "version": "1.0.41",
+  "version": "1.0.42",
   "author": {
     "name": "akbun"
   },
   "repository": "https://github.com/choisungwook/akbun-aitools",
   "license": "MIT",
-  "keywords": ["writing", "blog", "review", "korean", "drawio", "architecture"]
+  "keywords": ["writing", "blog", "review", "korean"]
 }

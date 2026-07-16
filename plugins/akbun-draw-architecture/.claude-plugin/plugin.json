@@ -1,0 +1,11 @@
+{
+  "name": "akbun-draw-architecture",
+  "description": "Architecture drawing skills by akbun — AWS/Kubernetes draw.io diagrams and architecture/network flow figure prompts",
+  "version": "1.0.0",
+  "author": {
+    "name": "akbun"
+  },
+  "repository": "https://github.com/choisungwook/akbun-aitools",
+  "license": "MIT",
+  "keywords": ["architecture", "diagram", "drawio", "aws", "kubernetes", "network"]
+}

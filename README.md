@@ -8,7 +8,7 @@ akbun tools for both Claude Code and Codex plugin workflows.
 
 ### akbun-writing
 
-글쓰기, 리뷰, 블로그 발행, 다이어그램 지원 skill 모음.
+글쓰기, 리뷰, 블로그 발행 지원 skill 모음.
 
 | skill | 설명 |
 |---|---|
@@ -20,25 +20,28 @@ akbun tools for both Claude Code and Codex plugin workflows.
 | [akbun-docs-reviewer](./plugins/akbun-writing/skills/akbun-docs-reviewer/) | 한국어 기술 문서 교정·용어 표기 표준화 리뷰 |
 | [akbun-markdown-to-html-pandoc](./plugins/akbun-writing/skills/akbun-markdown-to-html-pandoc/) | Obsidian markdown을 pandoc으로 HTML 변환(블로그 업로드) |
 | [akbun-md-to-notion](./plugins/akbun-writing/skills/akbun-md-to-notion/) | Obsidian markdown을 Notion Tasks DB로 전송 |
-| [akbun-drawio-aws-vpc](./plugins/akbun-writing/skills/akbun-drawio-aws-vpc/) | draw.io로 AWS VPC 기초 다이어그램 생성 |
-| [kubernets-network-drawio](./plugins/akbun-writing/skills/kubernets-network-drawio/) | draw.io로 Kubernetes 네트워크 다이어그램 생성 |
-| [akbun-generateimage-code](./plugins/akbun-writing/skills/akbun-generateimage-code/) | 코드 설명용 블로그 figure의 이미지 생성 프롬프트 작성 |
-| [akbun-draw-component](./plugins/akbun-writing/skills/akbun-draw-component/) | 코드·컴퍼넌트를 분석해 하이레벨 아키텍처/연관관계 그림의 이미지 생성 프롬프트 작성 |
-| [akbun-draw-network-relationship](./plugins/akbun-writing/skills/akbun-draw-network-relationship/) | 컴퍼넌트 간 네트워크 흐름 그림의 이미지 생성 프롬프트 작성, 요청 시 Figma/Canva 편집용 SVG 포함 |
 | [akbun-generate-headline](./plugins/akbun-writing/skills/akbun-generate-headline/) | 넘긴 내용·파일을 분석해 클릭을 부르는 헤드라인(글 제목) 후보 생성 |
-| [akbun-draw-webtoon-a](./plugins/akbun-writing/skills/akbun-draw-webtoon-a/) | 사용자 내용을 3~4컷 흑백 스틱피겨 웹툰의 이미지 생성 프롬프트로 작성 |
-| [akbun-draw-webtoon-b](./plugins/akbun-writing/skills/akbun-draw-webtoon-b/) | 이미지·글로 파스텔 치비 동물 캐릭터 웹툰 페이지의 이미지 생성 프롬프트 + Figma/Canva용 텍스트 SVG 작성 |
-| [akbun-draw-webtoon-c](./plugins/akbun-writing/skills/akbun-draw-webtoon-c/) | 글·이미지로 세로형 1컷 에세이툰(상단 내레이션+고래 마스코트 단일 장면) 페이지의 이미지 생성 프롬프트 + Figma/Canva용 텍스트 SVG 작성 |
-| [akbun-generate-sketch-text](./plugins/akbun-writing/skills/akbun-generate-sketch-text/) | 문구를 린넨 원단 자수 텍스트 + 형광펜 강조 스타일의 이미지 생성 프롬프트로 작성 |
-| [akbun-draw-sketchbook-card](./plugins/akbun-writing/skills/akbun-draw-sketchbook-card/) | 개념을 연필 스케치북 카드(손글씨 제목·체크리스트+일러스트)로 그리는 이미지 생성 프롬프트 작성 |
-| [akbun-draw-storytellingimage](./plugins/akbun-writing/skills/akbun-draw-storytellingimage/) | 이야기를 장면별 손그림 마커 스케치 삽화의 이미지 생성 프롬프트로 작성 |
-| [akbun-draw-minimal-poster](./plugins/akbun-writing/skills/akbun-draw-minimal-poster/) | 이미지·문구를 미니멀 포스터 카드(세리프 제목+플랫 일러스트+손글씨 캡션)의 이미지 생성 프롬프트와 Figma/Canva용 SVG로 작성 |
-| [akbun-draw-poster-monogray](./plugins/akbun-writing/skills/akbun-draw-poster-monogray/) | 아무 소재를 손그림 진회색 잉크+플랫 회색+오렌지 포인트 하나의 테크북 삽화 스타일로 그리는 이미지 생성 프롬프트와 Figma/Canva용 SVG 작성 |
-| [akbun-draw-book-illustration](./plugins/akbun-writing/skills/akbun-draw-book-illustration/) | 소재·문구를 monogray 삽화 스타일 + 고정 레이아웃 5종(아이콘 스트립·확대·대화·흐름·포스터)과 상하좌우 간격으로 배치한 이미지 생성 프롬프트와 Figma/Canva용 SVG 작성 |
-| [akbun-draw-cartoon-b](./plugins/akbun-writing/skills/akbun-draw-cartoon-b/) | 아무 상황을 회색 그라데이션+베이지 테두리+낙서풍 고래 캐릭터+올리브 포인트 하나의 이슈 카드뉴스 스타일로 그리는 이미지 생성 프롬프트와 Figma/Canva용 SVG 작성 |
-| [akbun-draw-cardnews-cream](./plugins/akbun-writing/skills/akbun-draw-cardnews-cream/) | 아무 개념을 크림 배경+손글씨 제목·본문+낙서 다이어그램+파란 빗금 포인트 하나의 설명형 카드뉴스 스타일로 그리는 이미지 생성 프롬프트와 Figma/Canva용 SVG 작성 |
-| [akbun-draw-whale-poster](./plugins/akbun-writing/skills/akbun-draw-whale-poster/) | 주제·자료를 흑백 손그림 고래 캐릭터 치트시트 포스터 한 장의 이미지 생성 프롬프트와 Figma/Canva용 SVG로 작성 |
-| [akbun-mascot-whale](./plugins/akbun-writing/skills/akbun-mascot-whale/) | akbun 마스코트 고래 캐릭터의 표준 외형 스펙(다른 그리기 skill이 참조) |
+
+### akbun-draw
+
+이미지 그리기 skill 모음. 소재·글·코드를 akbun 고정 스타일의 이미지 생성 프롬프트와 Figma/Canva 편집용 SVG로 만든다.
+
+| skill | 설명 |
+|---|---|
+| [akbun-generateimage-code](./plugins/akbun-draw/skills/akbun-generateimage-code/) | 코드 설명용 블로그 figure의 이미지 생성 프롬프트 작성 |
+| [akbun-draw-webtoon-a](./plugins/akbun-draw/skills/akbun-draw-webtoon-a/) | 사용자 내용을 3~4컷 흑백 스틱피겨 웹툰의 이미지 생성 프롬프트로 작성 |
+| [akbun-draw-webtoon-b](./plugins/akbun-draw/skills/akbun-draw-webtoon-b/) | 이미지·글로 파스텔 치비 동물 캐릭터 웹툰 페이지의 이미지 생성 프롬프트 + Figma/Canva용 텍스트 SVG 작성 |
+| [akbun-draw-webtoon-c](./plugins/akbun-draw/skills/akbun-draw-webtoon-c/) | 글·이미지로 세로형 1컷 에세이툰(상단 내레이션+고래 마스코트 단일 장면) 페이지의 이미지 생성 프롬프트 + Figma/Canva용 텍스트 SVG 작성 |
+| [akbun-generate-sketch-text](./plugins/akbun-draw/skills/akbun-generate-sketch-text/) | 문구를 린넨 원단 자수 텍스트 + 형광펜 강조 스타일의 이미지 생성 프롬프트로 작성 |
+| [akbun-draw-sketchbook-card](./plugins/akbun-draw/skills/akbun-draw-sketchbook-card/) | 개념을 연필 스케치북 카드(손글씨 제목·체크리스트+일러스트)로 그리는 이미지 생성 프롬프트 작성 |
+| [akbun-draw-storytellingimage](./plugins/akbun-draw/skills/akbun-draw-storytellingimage/) | 이야기를 장면별 손그림 마커 스케치 삽화의 이미지 생성 프롬프트로 작성 |
+| [akbun-draw-minimal-poster](./plugins/akbun-draw/skills/akbun-draw-minimal-poster/) | 이미지·문구를 미니멀 포스터 카드(세리프 제목+플랫 일러스트+손글씨 캡션)의 이미지 생성 프롬프트와 Figma/Canva용 SVG로 작성 |
+| [akbun-draw-poster-monogray](./plugins/akbun-draw/skills/akbun-draw-poster-monogray/) | 아무 소재를 손그림 진회색 잉크+플랫 회색+오렌지 포인트 하나의 테크북 삽화 스타일로 그리는 이미지 생성 프롬프트와 Figma/Canva용 SVG 작성 |
+| [akbun-draw-book-illustration](./plugins/akbun-draw/skills/akbun-draw-book-illustration/) | 소재·문구를 monogray 삽화 스타일 + 고정 레이아웃 5종(아이콘 스트립·확대·대화·흐름·포스터)과 상하좌우 간격으로 배치한 이미지 생성 프롬프트와 Figma/Canva용 SVG 작성 |
+| [akbun-draw-cartoon-b](./plugins/akbun-draw/skills/akbun-draw-cartoon-b/) | 아무 상황을 회색 그라데이션+베이지 테두리+낙서풍 고래 캐릭터+올리브 포인트 하나의 이슈 카드뉴스 스타일로 그리는 이미지 생성 프롬프트와 Figma/Canva용 SVG 작성 |
+| [akbun-draw-cardnews-cream](./plugins/akbun-draw/skills/akbun-draw-cardnews-cream/) | 아무 개념을 크림 배경+손글씨 제목·본문+낙서 다이어그램+파란 빗금 포인트 하나의 설명형 카드뉴스 스타일로 그리는 이미지 생성 프롬프트와 Figma/Canva용 SVG 작성 |
+| [akbun-draw-whale-poster](./plugins/akbun-draw/skills/akbun-draw-whale-poster/) | 주제·자료를 흑백 손그림 고래 캐릭터 치트시트 포스터 한 장의 이미지 생성 프롬프트와 Figma/Canva용 SVG로 작성 |
+| [akbun-mascot-whale](./plugins/akbun-draw/skills/akbun-mascot-whale/) | akbun 마스코트 고래 캐릭터의 표준 외형 스펙(다른 그리기 skill이 참조) |
 
 아래는 각 skill로 만든 예시다.
 
@@ -53,8 +56,24 @@ akbun tools for both Claude Code and Codex plugin workflows.
 | `akbun-draw-webtoon-c` | <img src="./imgs/akbun-draw-webtoon-c.png" alt="akbun-draw-webtoon-c" width="320"> |
 | `akbun-draw-cartoon-b` | <img src="./imgs/akbun-draw-cartoon-b.png" alt="akbun-draw-cartoon-b" width="320"> |
 | `akbun-draw-sketchbook-card` | <img src="./imgs/akbun-draw-sketchbook-card.png" alt="연필 스케치북 카드 예시" width="320"> |
-| `akbun-draw-network-relationship` | <img src="./imgs/akbun-draw-network-relationship.png" alt="쿠버네티스 istio waypoint 통신" width="320"> |
 | `akbun-draw-minimal-poster` | <img src="./imgs/akbun-draw-minimal-poster.png" alt="akbun-draw-minimal-poster" width="320"> |
+
+### akbun-draw-architecture
+
+아키텍처 그리기 skill 모음. AWS/Kubernetes draw.io 다이어그램과 아키텍처·네트워크 흐름 그림 프롬프트를 만든다.
+
+| skill | 설명 |
+|---|---|
+| [akbun-drawio-aws-vpc](./plugins/akbun-draw-architecture/skills/akbun-drawio-aws-vpc/) | draw.io로 AWS VPC 기초 다이어그램 생성 |
+| [kubernets-network-drawio](./plugins/akbun-draw-architecture/skills/kubernets-network-drawio/) | draw.io로 Kubernetes 네트워크 다이어그램 생성 |
+| [akbun-draw-component](./plugins/akbun-draw-architecture/skills/akbun-draw-component/) | 코드·컴퍼넌트를 분석해 하이레벨 아키텍처/연관관계 그림의 이미지 생성 프롬프트 작성 |
+| [akbun-draw-network-relationship](./plugins/akbun-draw-architecture/skills/akbun-draw-network-relationship/) | 컴퍼넌트 간 네트워크 흐름 그림의 이미지 생성 프롬프트 작성, 요청 시 Figma/Canva 편집용 SVG 포함 |
+
+아래는 skill로 만든 예시다.
+
+| skill | 이미지 |
+|---|---|
+| `akbun-draw-network-relationship` | <img src="./imgs/akbun-draw-network-relationship.png" alt="쿠버네티스 istio waypoint 통신" width="320"> |
 
 ### akbun-learning
 
@@ -87,7 +106,7 @@ akbun 발표자료 스타일(다크 스텝 슬라이드) skill 모음.
 
 일부 skill은 다른 skill의 정의를 참조한다. 참조 대상 skill을 바꾸면 참조하는 skill의 결과물도 함께 바뀐다.
 
-- `akbun-mascot-whale`: akbun 마스코트 고래의 표준 외형을 정의하는 기준 skill. 캐릭터를 그리는 아래 skill들이 이 스펙을 참조한다.
+- `akbun-mascot-whale`(akbun-draw): akbun 마스코트 고래의 표준 외형을 정의하는 기준 skill. 캐릭터를 그리는 아래 skill들이 이 스펙을 참조한다.
   - 캐릭터로 직접 사용: `akbun-draw-whale-poster`, `akbun-draw-cartoon-b`, `akbun-draw-webtoon-b`, `akbun-draw-webtoon-c`, `akbun-draw-storytellingimage`
   - 인물이 필요할 때 사용: `akbun-draw-book-illustration`, `akbun-draw-minimal-poster`, `akbun-draw-poster-monogray`, `akbun-draw-sketchbook-card`
 
@@ -105,6 +124,8 @@ Claude Code marketplace metadata lives in:
 ```bash
 /plugin marketplace add choisungwook/akbun-aitools
 /plugin install akbun-writing@akbun-aitools
+/plugin install akbun-draw@akbun-aitools
+/plugin install akbun-draw-architecture@akbun-aitools
 /plugin install akbun-learning@akbun-aitools
 /plugin install akbun-presentation@akbun-aitools
 /reload-plugins
@@ -118,6 +139,8 @@ Codex plugin 설치 명령어
 codex plugin marketplace add choisungwook/akbun-aitools --json
 codex plugin add akbun-learning@akbun-aitools --json
 codex plugin add akbun-writing@akbun-aitools --json
+codex plugin add akbun-draw@akbun-aitools --json
+codex plugin add akbun-draw-architecture@akbun-aitools --json
 codex plugin add akbun-presentation@akbun-aitools --json
 ```
 
@@ -133,6 +156,8 @@ Hard reset 명령어
 
 ```bash
 codex plugin remove akbun-writing@akbun-aitools --json
+codex plugin remove akbun-draw@akbun-aitools --json
+codex plugin remove akbun-draw-architecture@akbun-aitools --json
 codex plugin remove akbun-learning@akbun-aitools --json
 codex plugin remove akbun-presentation@akbun-aitools --json
 
@@ -141,6 +166,8 @@ rm -rf ~/.codex/.tmp/marketplaces/akbun-aitools
 
 codex plugin marketplace add choisungwook/akbun-aitools --json
 codex plugin add akbun-writing@akbun-aitools --json
+codex plugin add akbun-draw@akbun-aitools --json
+codex plugin add akbun-draw-architecture@akbun-aitools --json
 codex plugin add akbun-learning@akbun-aitools --json
 codex plugin add akbun-presentation@akbun-aitools --json
 

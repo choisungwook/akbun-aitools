@@ -1,0 +1,43 @@
+{
+  "name": "akbun-draw-architecture",
+  "version": "1.0.0",
+  "description": "Architecture drawing skills by akbun — AWS/Kubernetes draw.io diagrams and architecture/network flow figure prompts",
+  "author": {
+    "name": "akbun",
+    "url": "https://github.com/choisungwook"
+  },
+  "homepage": "https://github.com/choisungwook/akbun-aitools",
+  "repository": "https://github.com/choisungwook/akbun-aitools",
+  "license": "MIT",
+  "keywords": [
+    "architecture",
+    "diagram",
+    "drawio",
+    "aws",
+    "kubernetes",
+    "network"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "akbun Draw Architecture",
+    "shortDescription": "Architecture and network diagram drawing skills",
+    "longDescription": "Architecture drawing skills — draw.io AWS VPC and Kubernetes network diagrams, plus image-generation prompts for high-level component architecture and network traffic flow figures.",
+    "developerName": "akbun",
+    "category": "Writing",
+    "capabilities": [
+      "Interactive",
+      "Write"
+    ],
+    "websiteURL": "https://github.com/choisungwook/akbun-aitools",
+    "privacyPolicyURL": "https://docs.github.com/site-policy/privacy-policies/github-general-privacy-statement",
+    "termsOfServiceURL": "https://docs.github.com/en/site-policy/github-terms/github-terms-of-service",
+    "defaultPrompt": [
+      "Create a draw.io AWS VPC architecture diagram",
+      "Draw a Kubernetes network diagram with draw.io",
+      "Draw a high-level component architecture diagram of this code",
+      "Make an image prompt showing how traffic flows between these components"
+    ],
+    "brandColor": "#0F766E",
+    "screenshots": []
+  }
+}
