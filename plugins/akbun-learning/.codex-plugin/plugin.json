@@ -1,7 +1,7 @@
 {
   "name": "akbun-learning",
-  "version": "1.1.0",
-  "description": "Study and learning helpers — English and Japanese practice tools, plus YouTube transcript Markdown conversion",
+  "version": "1.1.1",
+  "description": "Study and learning helpers — English and Japanese practice tools, algorithm tutoring, plus YouTube transcript Markdown conversion",
   "author": {
     "name": "akbun",
     "url": "https://github.com/choisungwook"
@@ -36,7 +36,8 @@
       "Break down this English sentence for a Korean learner",
       "Turn this Japanese study material into an Anki deck",
       "Explain the pronunciation and stress in this phrase",
-      "이 유튜브 영상 자막을 Markdown 대본으로 옮겨줘: <YOUTUBE_URL>"
+      "이 유튜브 영상 자막을 Markdown 대본으로 옮겨줘: <YOUTUBE_URL>",
+      "LeetCode Two Sum 문제 힌트 줘"
     ],
     "brandColor": "#2563EB",
     "screenshots": []
