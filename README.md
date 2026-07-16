@@ -64,7 +64,7 @@ akbun tools for both Claude Code and Codex plugin workflows.
 |---|---|
 | [akbun-algorithm-tutor](./plugins/akbun-learning/skills/akbun-algorithm-tutor/) | 학습자 눈높이에 맞춘 알고리즘 문제 풀이·복잡도 과외 |
 | [akbun-describe-youtube-transcript](./plugins/akbun-learning/skills/akbun-describe-youtube-transcript/) | 유튜브 자막을 한국어 보고서로 정리 |
-| [hypothesis-driven-tech-learning](./plugins/akbun-learning/skills/hypothesis-driven-tech-learning/) | 가설 검증형 학습자를 위한 기술 개념 설명 스타일(판정 우선·구조 시각화·연쇄 질문 대응) |
+| [akbun-driven-learning](./plugins/akbun-learning/skills/akbun-driven-learning/) | 가설 검증형 학습자를 위한 기술 개념 설명 스타일(판정 우선·구조 시각화·연쇄 질문 대응) |
 | [akbun-learning-english](./plugins/akbun-learning/skills/akbun-learning-english/) | 한국어 학습자용 영어 발음·읽기 가이드 |
 | [akbun-learning-japanese](./plugins/akbun-learning/skills/akbun-learning-japanese/) | 한국어 학습자용 일본어 발음·읽기 가이드 |
 | [akbun-make-anki-japanese](./plugins/akbun-learning/skills/akbun-make-anki-japanese/) | 일본어 교재 이미지/PDF를 Anki 덱으로 변환 |

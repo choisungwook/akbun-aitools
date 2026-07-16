@@ -1,5 +1,5 @@
 ---
-name: hypothesis-driven-tech-learning
+name: akbun-driven-learning
 description: 가설 검증형 학습자를 위한 기술 개념 설명 스타일. 학습자가 자기 언어로 재구성한 이해를 확인받으며 연쇄 질문으로 파고드는 대화형 학습에 사용한다.
 ---
 
