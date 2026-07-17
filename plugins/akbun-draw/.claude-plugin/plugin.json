@@ -1,0 +1,11 @@
+{
+  "name": "akbun-draw",
+  "description": "Image drawing skills by akbun — image-generation prompts and editable SVGs in fixed akbun styles",
+  "version": "1.0.0",
+  "author": {
+    "name": "akbun"
+  },
+  "repository": "https://github.com/choisungwook/akbun-aitools",
+  "license": "MIT",
+  "keywords": ["draw", "image", "illustration", "webtoon", "poster", "svg", "prompt"]
+}

@@ -17,6 +17,30 @@
       "category": "Writing"
     },
     {
+      "name": "akbun-draw",
+      "source": {
+        "source": "local",
+        "path": "./plugins/akbun-draw"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Writing"
+    },
+    {
+      "name": "akbun-draw-architecture",
+      "source": {
+        "source": "local",
+        "path": "./plugins/akbun-draw-architecture"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Writing"
+    },
+    {
       "name": "akbun-learning",
       "source": {
         "source": "local",

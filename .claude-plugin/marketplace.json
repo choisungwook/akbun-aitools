@@ -5,13 +5,25 @@
   },
   "metadata": {
     "description": "Claude Code plugin marketplace for akbun tools",
-    "version": "1.2.0"
+    "version": "1.3.0"
   },
   "plugins": [
     {
       "name": "akbun-writing",
       "source": "./plugins/akbun-writing",
       "description": "Writing, review, and blog support skills",
+      "strict": true
+    },
+    {
+      "name": "akbun-draw",
+      "source": "./plugins/akbun-draw",
+      "description": "Image drawing skills — image-generation prompts and editable SVGs in fixed akbun styles",
+      "strict": true
+    },
+    {
+      "name": "akbun-draw-architecture",
+      "source": "./plugins/akbun-draw-architecture",
+      "description": "Architecture drawing skills — AWS/Kubernetes draw.io diagrams and architecture/network flow figure prompts",
       "strict": true
     },
     {

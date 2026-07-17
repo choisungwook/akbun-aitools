@@ -1,0 +1,54 @@
+{
+  "name": "akbun-draw",
+  "version": "1.0.0",
+  "description": "Image drawing skills by akbun — image-generation prompts and editable SVGs in fixed akbun styles",
+  "author": {
+    "name": "akbun",
+    "url": "https://github.com/choisungwook"
+  },
+  "homepage": "https://github.com/choisungwook/akbun-aitools",
+  "repository": "https://github.com/choisungwook/akbun-aitools",
+  "license": "MIT",
+  "keywords": [
+    "draw",
+    "image",
+    "illustration",
+    "webtoon",
+    "poster",
+    "svg",
+    "prompt"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "akbun Draw",
+    "shortDescription": "Image drawing skills in fixed akbun styles",
+    "longDescription": "Image drawing skills that turn any subject, story, or code into image-generation prompts (GPT image, nano-banana, etc.) and Figma/Canva-editable SVGs, each in a fixed akbun illustration style — webtoons, posters, card news, book figures, sketch text, and the akbun whale mascot spec.",
+    "developerName": "akbun",
+    "category": "Writing",
+    "capabilities": [
+      "Interactive",
+      "Write"
+    ],
+    "websiteURL": "https://github.com/choisungwook/akbun-aitools",
+    "privacyPolicyURL": "https://docs.github.com/site-policy/privacy-policies/github-general-privacy-statement",
+    "termsOfServiceURL": "https://docs.github.com/en/site-policy/github-terms/github-terms-of-service",
+    "defaultPrompt": [
+      "Make an image prompt that explains this code as a blog figure",
+      "Make a 3 or 4 panel webtoon prompt from this story",
+      "Make a pastel animal-character webtoon page (image prompts + Figma/Canva SVG) from these images and story",
+      "Make a landscape one-cut essay-toon page with the whale mascot (image prompt + Figma/Canva SVG) from this story",
+      "Make a stitched-text image prompt for a motivational quote",
+      "Make a pencil sketchbook concept-card image prompt for this topic",
+      "Make a minimal poster card image prompt and a Figma/Canva-ready SVG from this image",
+      "Draw this subject in the monogray flat-ink style (image prompt + Figma/Canva SVG)",
+      "Make a book-figure image prompt and an editable SVG using a fixed layout (icon strip, zoom, dialog, flow, or poster card)",
+      "Make a naive-doodle safety issue card-news with whale characters (image prompt + Figma/Canva SVG) from this situation",
+      "Make a cream handwritten explainer card-news (image prompt + Figma/Canva SVG) for this concept",
+      "Make a whale-mascot cheatsheet poster (image prompt + Figma/Canva SVG) for this topic",
+      "Make hand-drawn marker sketch illustration prompts for each scene of this story",
+      "Describe the akbun whale mascot character spec for use in another drawing skill"
+    ],
+    "brandColor": "#0F766E",
+    "screenshots": []
+  }
+}
