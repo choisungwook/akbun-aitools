@@ -35,7 +35,7 @@
     {
       "name": "akbun-presentation",
       "source": "./plugins/akbun-presentation",
-      "description": "akbun presentation formats (external light-sandwich / dark step-slide study) for pptx/Google Slides decks",
+      "description": "akbun presentation formats (light-sandwich / dark-step) for pptx/Google Slides decks",
       "strict": true
     }
   ]

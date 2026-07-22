@@ -1,7 +1,7 @@
 {
   "name": "akbun-presentation",
   "version": "1.0.1",
-  "description": "akbun presentation formats — external light-sandwich decks and dark step-slide study decks with consistent voice, layout, and diagram language (pptx/Google Slides)",
+  "description": "akbun presentation formats — light-sandwich decks and dark-step decks with consistent voice, layout, and diagram language (pptx/Google Slides)",
   "author": {
     "name": "akbun",
     "url": "https://github.com/choisungwook"
@@ -21,8 +21,8 @@
   "skills": "./skills/",
   "interface": {
     "displayName": "akbun Presentation",
-    "shortDescription": "akbun presentation decks — external light-sandwich or dark step-slide study format (pptx / Google Slides)",
-    "longDescription": "Turns any topic, post, code, or incident story into a presentation deck in akbun's style, with two modes. External mode (default, for meetups/seminars): dark cover and section slides with a yellow accent bar sandwich white content slides carrying numbered section headers, square-bullet hierarchies, thin black-line diagrams with pale-yellow workload and pale-green resource fills, VS Code-style dark code panels, github/demo footers, and page numbers. Study mode: all-dark charcoal slides, Gmarket Sans, one message per slide, unfilled white-outline diagrams. Both share a question-driven story flow with yellow point and red problem accents. Outputs a pptx file that can also be imported into Google Slides.",
+    "shortDescription": "akbun presentation decks — light-sandwich or dark-step format (pptx / Google Slides)",
+    "longDescription": "Turns any topic, post, code, or incident story into a presentation deck in akbun's style, with two layouts. Light-sandwich: dark cover and section slides with a yellow accent bar sandwich white content slides carrying numbered section headers, square-bullet hierarchies, thin black-line diagrams with pale-yellow workload and pale-green resource fills, VS Code-style dark code panels, github/demo footers, and page numbers. Dark-step: all-dark charcoal slides, Gmarket Sans, one message per slide, unfilled white-outline diagrams. Both share a question-driven story flow with yellow point and red problem accents. Outputs a pptx file that can also be imported into Google Slides.",
     "developerName": "akbun",
     "category": "Writing",
     "capabilities": [
@@ -33,8 +33,8 @@
     "privacyPolicyURL": "https://docs.github.com/site-policy/privacy-policies/github-general-privacy-statement",
     "termsOfServiceURL": "https://docs.github.com/en/site-policy/github-terms/github-terms-of-service",
     "defaultPrompt": [
-      "이 주제로 밋업에서 발표할 akbun 스타일 외부 발표자료(pptx) 만들어줘",
-      "Make an akbun-style dark step-slide study deck (pptx) about this topic",
+      "이 주제로 akbun 라이트 샌드위치 스타일 발표자료(pptx) 만들어줘",
+      "Make an akbun-style dark-step deck (pptx) about this topic",
       "이 블로그 글을 akbun 발표 스타일 슬라이드로 만들어줘",
       "이 장애 경험을 질문-여정-답 구조의 발표 덱으로 만들어줘"
     ],
