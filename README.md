@@ -95,8 +95,8 @@ akbun 발표자료 스타일 skill 모음.
 
 | skill | 설명 |
 |---|---|
-| [akbun-presentation-external](./plugins/akbun-presentation/skills/akbun-presentation-external/) | 주제·글·코드를 akbun 외부 발표 스타일(라이트 샌드위치) pptx 덱으로 생성 — 다크 표지·섹션+흰 내용 슬라이드+노란 세로 바+코드 패널+링크 푸터, 질문 훅 스토리와 노랑/빨강 강조 |
-| [akbun-presentation-study](./plugins/akbun-presentation/skills/akbun-presentation-study/) | 주제·글·코드를 akbun 스터디 발표 스타일(다크 스텝) pptx 덱으로 생성 — 전체 다크+슬라이드당 메시지 한 줄+흰 테두리 다이어그램, 질문 훅 스토리와 노랑/빨강 강조 |
+| [akbun-presentation-lightsandwich](./plugins/akbun-presentation/skills/akbun-presentation-lightsandwich/) | 주제·글·코드를 akbun 외부 발표 스타일(라이트 샌드위치) pptx 덱으로 생성 — 다크 표지·섹션+흰 내용 슬라이드+노란 세로 바+코드 패널+링크 푸터, 질문 훅 스토리와 노랑/빨강 강조 |
+| [akbun-presentation-darkstep](./plugins/akbun-presentation/skills/akbun-presentation-darkstep/) | 주제·글·코드를 akbun 스터디 발표 스타일(다크 스텝) pptx 덱으로 생성 — 전체 다크+슬라이드당 메시지 한 줄+흰 테두리 다이어그램, 질문 훅 스토리와 노랑/빨강 강조 |
 
 아래는 skill로 만든 예시다.
 

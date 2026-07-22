@@ -1,5 +1,5 @@
 ---
-name: akbun-presentation-study
+name: akbun-presentation-darkstep
 description: >
   주제·글·코드·장애 경험을 받아 akbun 스터디 발표 스타일(다크 스텝)의 발표 덱(.pptx)을 만든다.
   사내 스터디·내부 공유·블로그 보조용이다. 전 슬라이드 진회색(#252525) 배경 + G마켓 산스 +
@@ -7,7 +7,7 @@ description: >
   스토리를 끌고 가고 노랑 포인트·빨강 문제 강조를 쓴다. 스타일 정의·그림 언어·스크린샷 규칙은
   design.md를 따른다. 산출물은 pptxgenjs로 생성한 .pptx 파일과 슬라이드 아웃라인이며, Google
   Slides로 가져가 쓸 수 있다. 밋업·세미나 등 외부 청중용 정식 발표 덱은
-  akbun-presentation-external을 쓴다.
+  akbun-presentation-lightsandwich을 쓴다.
   Trigger on: "스터디 발표", "스터디 자료", "사내 공유 슬라이드", "다크 스텝 덱", "akbun 스터디
   발표 스타일", "study deck", "dark step slides", or any request to turn a topic/post/incident
   into a study presentation in akbun's dark step style.
@@ -22,7 +22,7 @@ description: >
 싣는 미니멀 "다크 스텝" 형식이다.
 
 밋업·세미나·컨퍼런스 등 외부 청중을 위한 정식 발표 덱(목차·실습자료 안내·페이지 번호 포함)이
-필요하면 이 skill 대신 **akbun-presentation-external** skill을 쓴다.
+필요하면 이 skill 대신 **akbun-presentation-lightsandwich** skill을 쓴다.
 
 산출물은 두 가지다.
 

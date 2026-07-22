@@ -6,7 +6,7 @@ akbun 스터디 발표자료의 스타일을 재현하기 위한 자기완결적
 
 사내 스터디·내부 공유·블로그 보조를 위한 형식이다. 전 슬라이드 다크에 슬라이드당 메시지 한 줄만
 싣는 미니멀 "다크 스텝" 형식이다. 밋업·세미나 등 외부 청중용 라이트 샌드위치 형식은
-akbun-presentation-external skill의 design.md를 따른다.
+akbun-presentation-lightsandwich skill의 design.md를 따른다.
 
 ## 원칙
 

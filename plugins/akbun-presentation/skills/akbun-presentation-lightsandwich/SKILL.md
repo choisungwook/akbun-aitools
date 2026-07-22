@@ -1,5 +1,5 @@
 ---
-name: akbun-presentation-external
+name: akbun-presentation-lightsandwich
 description: >
   주제·글·코드·장애 경험을 받아 akbun 외부 발표 스타일(라이트 샌드위치)의 발표 덱(.pptx)을 만든다.
   밋업·세미나·컨퍼런스 등 외부 청중용이다. 다크(#212022) 표지·섹션 슬라이드가 흰 내용 슬라이드를
@@ -8,7 +8,7 @@ description: >
   푸터 + 페이지 번호를 쓴다. 질문 훅으로 스토리를 끌고 가고 노랑 포인트·빨강 문제 강조를 쓴다.
   스타일 정의·그림 언어·스크린샷 규칙은 design.md를 따른다. 산출물은 pptxgenjs로 생성한 .pptx
   파일과 슬라이드 아웃라인이며, Google Slides로 가져가 쓸 수 있다. 사내 스터디·내부 공유용 다크 스텝
-  덱은 akbun-presentation-study를 쓴다.
+  덱은 akbun-presentation-darkstep를 쓴다.
   Trigger on: "발표자료 만들어", "발표 덱 만들어", "슬라이드 만들어", "pptx 만들어", "밋업 발표",
   "세미나 자료", "외부 발표", "컨퍼런스 발표", "akbun 발표 스타일", "presentation deck", "make slides",
   or any request to turn a topic/post/incident into an external presentation in akbun's deck style.
@@ -23,7 +23,7 @@ description: >
 "라이트 샌드위치" 구조에 목차·실습자료 안내·페이지 번호·링크 푸터까지 갖춘 정식 발표 형식이다.
 
 사내 스터디·내부 공유·블로그 보조용의 미니멀 다크 덱이 필요하면 이 skill 대신
-**akbun-presentation-study** skill을 쓴다.
+**akbun-presentation-darkstep** skill을 쓴다.
 
 산출물은 두 가지다.
 
