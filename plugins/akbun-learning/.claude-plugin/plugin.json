@@ -1,11 +1,11 @@
 {
   "name": "akbun-learning",
-  "description": "Study and learning helpers — English and Japanese practice tools, algorithm tutoring, plus YouTube transcript Markdown conversion",
-  "version": "1.1.3",
+  "description": "Study and learning helpers — English and Japanese practice tools, algorithm tutoring, plus YouTube and X (Twitter) video transcript Markdown conversion",
+  "version": "1.1.4",
   "author": {
     "name": "akbun"
   },
   "repository": "https://github.com/choisungwook/akbun-aitools",
   "license": "MIT",
-  "keywords": ["learning", "study", "english", "pronunciation", "japanese", "youtube", "transcript"]
+  "keywords": ["learning", "study", "english", "pronunciation", "japanese", "youtube", "twitter", "transcript"]
 }
