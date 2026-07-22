@@ -32,6 +32,7 @@ akbun tools for both Claude Code and Codex plugin workflows.
 | [akbun-draw-webtoon-a](./plugins/akbun-draw/skills/akbun-draw-webtoon-a/) | 사용자 내용을 3~4컷 흑백 스틱피겨 웹툰의 이미지 생성 프롬프트로 작성 |
 | [akbun-draw-webtoon-b](./plugins/akbun-draw/skills/akbun-draw-webtoon-b/) | 이미지·글로 파스텔 치비 동물 캐릭터 웹툰 페이지의 이미지 생성 프롬프트 + Figma/Canva용 텍스트 SVG 작성 |
 | [akbun-draw-webtoon-c](./plugins/akbun-draw/skills/akbun-draw-webtoon-c/) | 글·이미지로 세로형 1컷 에세이툰(상단 내레이션+고래 마스코트 단일 장면) 페이지의 이미지 생성 프롬프트 + Figma/Canva용 텍스트 SVG 작성 |
+| [akbun-draw-webtoon-d](./plugins/akbun-draw/skills/akbun-draw-webtoon-d/) | 실제 경험담을 가로형 흑백 다큐툰(거친 잉크 낙서선+하단 자막 내레이션+얼굴 없는 실루엣 군중)의 장면별 이미지 생성 프롬프트로 작성 |
 | [akbun-generate-sketch-text](./plugins/akbun-draw/skills/akbun-generate-sketch-text/) | 문구를 린넨 원단 자수 텍스트 + 형광펜 강조 스타일의 이미지 생성 프롬프트로 작성 |
 | [akbun-draw-sketchbook-card](./plugins/akbun-draw/skills/akbun-draw-sketchbook-card/) | 개념을 연필 스케치북 카드(손글씨 제목·체크리스트+일러스트)로 그리는 이미지 생성 프롬프트 작성 |
 | [akbun-draw-storytellingimage](./plugins/akbun-draw/skills/akbun-draw-storytellingimage/) | 이야기를 장면별 손그림 마커 스케치 삽화의 이미지 생성 프롬프트로 작성 |

@@ -1,7 +1,7 @@
 {
   "name": "akbun-draw",
   "description": "Image drawing skills by akbun — image-generation prompts and editable SVGs in fixed akbun styles",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": {
     "name": "akbun"
   },
