@@ -101,12 +101,12 @@ three subjects, no texture or watermarks.
 입력 예:
 
 ```text
-퇴근길에 비가 막 그친 순간을 그려줘. 문구 없이 잔잔하게.
+낮잠에서 막 깬 고양이의 한가로운 오후를 그려줘.
 ```
 
-skill이 한 판단: 정적인 순간을 "비가 그친 직후, 접은 우산을 들고 신호등 앞에 선 사람"으로 잡았다.
-왼쪽에 신호등 기둥, 오른쪽에 뒷모습의 인물을 두고 사이를 넓게 비웠으며, 틸 포인트는 인물이 든 접은
-우산에 줬다.
+skill이 한 판단: 정적인 순간을 "낮잠에서 깬 고양이가 굴러가다 멈춘 털실 뭉치를 바라보는 오후"로
+잡았다. 오른쪽에 옆모습으로 앉은 고양이를 두고 왼쪽에 작은 털실 뭉치 하나만 떨어뜨려 나머지를 넓게
+비웠으며, 틸 포인트는 털실 뭉치에 줬다.
 
 출력 프롬프트:
 
@@ -122,15 +122,14 @@ black, no gradients, no photographic shading.
 
 SCENE (one to three subjects only, placed small along the ground line with generous empty
 cream space around them, each subject about a quarter to a third of the canvas height): on
-the left, a slim pedestrian traffic light pole drawn in simple pencil lines; on the right, a
-person seen from behind standing still before the crossing, one hand holding a closed
-umbrella pointed down, a few tiny pencil raindrop puddles at their feet; a wide empty cream
-gap stretches between the pole and the person in the stillness just after the rain has
-stopped.
+the right, a plump cat sits in profile on the ground line, just woken from a nap, eyes
+half-closed, drawn with soft pencil hatching; on the left, far from the cat, a small ball of
+yarn rests where it stopped rolling, a faint wavy pencil trail behind it; the wide empty
+cream space between them holds the lazy stillness of the afternoon.
 
 COLOR RULE: the entire drawing is grayscale pencil on cream EXCEPT for exactly ONE small
-hand-sized object — the closed umbrella in the person's hand, filled flat with muted teal
-(#2E7D8C). Nothing else has any color.
+hand-sized object — the ball of yarn, filled flat with muted teal (#2E7D8C). Nothing else
+has any color.
 
 STYLE: minimal quiet slice-of-life pencil sketch, generous negative space, restrained detail,
 still and contemplative mood, like a wordless page from a gentle picture essay.
@@ -140,8 +139,8 @@ details, no front-facing faces, no cartoon emotion marks, no dramatic action, no
 three subjects, no texture or watermarks.
 ```
 
-한국어 한 줄 설명: 비가 막 그친 신호등 앞의 망설임을 뒷모습 인물과 신호등 기둥 두 소재로 구성했고,
-틸 포인트는 인물이 든 접은 우산에 줬습니다.
+한국어 한 줄 설명: 낮잠에서 깬 고양이의 한가로운 오후를 옆모습 고양이와 멈춘 털실 뭉치 두 소재로
+구성했고, 틸 포인트는 털실 뭉치에 줬습니다.
 
 ## 완료 전 확인
 
