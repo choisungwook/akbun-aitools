@@ -23,7 +23,7 @@
 장면 1 — 설정 샷:
 
 ```text
-A horizontal 16:9 (1920x1080) frame of a Korean documentary-style webtoon. Rough
+A vertical 3:4 (1080x1440) Instagram-feed frame of a Korean documentary-style webtoon. Rough
 hand-drawn black ink doodle lines with uneven sketchy strokes on a plain white
 background, grayscale only: white, flat mid-gray fills, flat light-gray shading
 blobs, no gradients, no color, no panel borders.
@@ -47,7 +47,7 @@ Korean text, and do not add any text beyond the lines listed above.
 장면 2 — 군중과 목격자 시점:
 
 ```text
-A horizontal 16:9 (1920x1080) frame of a Korean documentary-style webtoon. Rough
+A vertical 3:4 (1080x1440) Instagram-feed frame of a Korean documentary-style webtoon. Rough
 hand-drawn black ink doodle lines with uneven sketchy strokes on a plain white
 background, grayscale only: white, flat mid-gray fills, flat light-gray shading
 blobs, no gradients, no color, no panel borders.
@@ -81,7 +81,7 @@ rearrange the Korean text, and do not add any text beyond the lines listed above
 장면 3 — 뒷모습 마무리:
 
 ```text
-A horizontal 16:9 (1920x1080) frame of a Korean documentary-style webtoon. Rough
+A vertical 3:4 (1080x1440) Instagram-feed frame of a Korean documentary-style webtoon. Rough
 hand-drawn black ink doodle lines with uneven sketchy strokes on a plain white
 background, grayscale only: white, flat mid-gray fills, flat light-gray shading
 blobs, no gradients, no color, no panel borders.
