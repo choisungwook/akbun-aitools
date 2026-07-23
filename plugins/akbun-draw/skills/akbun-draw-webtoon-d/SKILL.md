@@ -1,7 +1,7 @@
 ---
 name: akbun-draw-webtoon-d
 description: >
-  사용자의 실제 이야기(경험담, 회상, 썰)를 가로형 흑백 다큐멘터리 웹툰으로 만든다. 스타일은 고정이다 —
+  사용자의 실제 이야기(경험담, 회상, 썰)를 인스타그램 세로형(3:4) 흑백 다큐멘터리 웹툰으로 만든다. 스타일은 고정이다 —
   거친 검정 잉크 낙서선, 흰 배경, 플랫 회색 음영, 화면 하단의 영상 자막 스타일 한글 내레이션 바.
   주인공급 얼굴은 최대 4명, 주변 인물은 얼굴 없는 회색 실루엣으로 그린다. 장면(1장)마다 이미지 생성
   프롬프트를 따로따로 만들고, 이야기 소재가 없으면 그리지 않고 먼저 인터뷰한다.
@@ -14,11 +14,11 @@ description: >
 
 ## 이 skill이 하는 일
 
-사용자의 실제 이야기(경험담, 회상, 썰)를 **가로형 흑백 다큐멘터리 웹툰**으로 만든다. 유튜브 썰툰 영상의 한 프레임처럼, 이미지마다 하단 자막 바의 한글 내레이션이 이야기를 서술한다. 결과물은 **장면(1장)마다 따로 만든 영어 이미지 생성 프롬프트**다 — GPT image, nano-banana 같은 이미지 생성 모델(agent)에 한 장면씩 그대로 붙여넣는다.
+사용자의 실제 이야기(경험담, 회상, 썰)를 **인스타그램 세로형(3:4) 흑백 다큐멘터리 웹툰**으로 만든다. 유튜브 썰툰 영상의 한 프레임처럼, 이미지마다 하단 자막 바의 한글 내레이션이 이야기를 서술한다. 결과물은 **장면(1장)마다 따로 만든 영어 이미지 생성 프롬프트**다 — GPT image, nano-banana 같은 이미지 생성 모델(agent)에 한 장면씩 그대로 붙여넣는다.
 
 비주얼 스타일은 이 skill이 정하지 않고 같은 디렉터리의 [design.md](design.md)에 고정되어 있다. **프롬프트를 쓰기 전에 design.md를 반드시 읽는다.** 소재·장면·구도는 사용자 이야기에 맞춰 자유롭게 정하되, design.md의 그림 언어(선, 회색 팔레트, 자막 바, 인물 위계)는 그대로 따른다.
 
-다른 웹툰 skill과의 구분: `akbun-draw-webtoon-a`는 세로로 쌓은 3~4컷 스틱피겨 컷만화, `akbun-draw-webtoon-b`는 세로형 파스텔 치비 페이지, `akbun-draw-webtoon-c`는 세로형 1컷 에세이툰(고래 마스코트)이다. 이 skill은 **가로형 16:9 + 하단 자막 내레이션 + 흑백 낙서선 + 사람 캐릭터**가 고정이다.
+다른 웹툰 skill과의 구분: `akbun-draw-webtoon-a`는 세로로 쌓은 3~4컷 스틱피겨 컷만화, `akbun-draw-webtoon-b`는 세로형 파스텔 치비 페이지, `akbun-draw-webtoon-c`는 세로형 1컷 에세이툰(고래 마스코트)이다. 이 skill은 **세로형 3:4(인스타 피드) + 하단 자막 내레이션 + 흑백 낙서선 + 사람 캐릭터**가 고정이다.
 
 ## 소재가 없으면 그리지 않는다 (인터뷰 우선)
 
@@ -60,7 +60,7 @@ description: >
 장면마다 아래 영어 템플릿의 `<...>`를 채운다. 스타일 문단과 DO NOT 문단은 design.md를 요약한 고정 문구이므로 바꾸지 않는다. 그 장면에 나오지 않는 캐릭터 문장과 쓰지 않는 텍스트 줄은 지운다.
 
 ```text
-A horizontal 16:9 (1920x1080) frame of a Korean documentary-style webtoon. Rough
+A vertical 3:4 (1080x1440) Instagram-feed frame of a Korean documentary-style webtoon. Rough
 hand-drawn black ink doodle lines with uneven sketchy strokes on a plain white
 background, grayscale only: white, flat mid-gray fills, flat light-gray shading
 blobs, no gradients, no color, no panel borders.
