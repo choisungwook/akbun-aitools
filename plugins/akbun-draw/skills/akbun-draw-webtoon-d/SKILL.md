@@ -1,5 +1,6 @@
 ---
 name: akbun-draw-webtoon-d
+disable-model-invocation: true
 description: >
   사용자의 실제 이야기(경험담, 회상, 썰)를 인스타그램 세로형(3:4) 흑백 다큐멘터리 웹툰으로 만든다. 스타일은 고정이다 —
   거친 검정 잉크 낙서선, 흰 배경, 플랫 회색 음영, 화면 하단의 영상 자막 스타일 한글 내레이션 바.
