@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- ═══════════════════════════════════════════════════════════════
+  akbun-studysheet 템플릿 (akbun 라이트 샌드위치 스타일)
+  - 이 파일을 복사한 뒤 {{...}} 자리와 예시 페이지 내용을 교체한다.
+  - <section class="page">가 학습지 한 장이다. 전체 20장 미만.
+  - CSS/JS는 수정하지 않아도 동작한다. 필요한 컴포넌트만 골라 쓴다.
+  - 표지만 다크(#212022), 내용은 전부 흰 배경이다.
+  - 설명은 박스에 가두지 말고 짧은 글과 ■/- 불릿으로 쓴다.
+    박스는 다이어그램과 코드 패널에만 쓴다.
+  - 색 문법: 노랑(#FFC000) = 포인트, 빨강(#FF0000) = 문제·에러.
+    본문 키워드 강조는 노란 형광펜(<mark>) 또는 빨간 글씨, 한 장에 1~2곳.
+═══════════════════════════════════════════════════════════════ -->
+<title>{{학습지 제목}}</title>
+<style>
+:root{
+  --dark:#212022;       /* 표지 배경 */
+  --ink:#000000;        /* 본문·도형선 */
+  --point:#FFC000;      /* 포인트(노랑) */
+  --hl:#FFE066;         /* 본문 형광펜 */
+  --prob:#FF0000;       /* 문제·에러(빨강) */
+  --wl:#FFF2CC;         /* 다이어그램 워크로드 채움(연노랑) */
+  --rs:#E2EFDA;         /* 다이어그램 리소스 채움(연초록) */
+  --grp:#F2F2F2;        /* 다이어그램 묶음 채움(연회색) */
+  --code-bg:#1E1E1E; --code-ink:#D4D4D4;  /* VS Code Dark+ 코드 패널 */
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{font-size:17px}
+body{
+  background:#fff;color:var(--ink);
+  font-family:"NanumBarunGothic","나눔바른고딕","Pretendard","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  line-height:1.75;
+}
+#book{max-width:820px;margin:0 auto;padding:34px 22px 110px}
+.page{display:none;animation:fade .25s ease}
+.page.on{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+/* ── 표지(다크) ── */
+.page.dark{background:var(--dark);color:#fff;border-radius:12px;
+  padding:56px 44px;min-height:62vh}
+.page.dark.on{display:flex;flex-direction:column;justify-content:center}
+.page.dark .bar{border-left:7px solid var(--point);padding-left:20px}
+.page.dark h1{font-size:2rem;font-weight:800;color:#fff;line-height:1.4;margin-bottom:10px}
+.page.dark h1 mark{background:none;color:var(--point)}   /* 표지 핵심 키워드는 노랑 글자 */
+.page.dark .sub{color:#CFCFCF;margin-bottom:34px}
+.page.dark .glance p{margin:10px 0;color:#EBEBEB}
+.page.dark .glance b{color:#fff}
+.page.dark .glance .p-prob{color:var(--prob);font-weight:700}
+.page.dark .glance .p-point{color:var(--point);font-weight:700}
+
+/* ── 내용 페이지 머리: "N. 섹션명" 헤더 ── */
+.sec{font-size:.95rem;font-weight:800;color:var(--ink);letter-spacing:.02em}
+h2.page-title{font-size:1.45rem;font-weight:800;margin:6px 0 20px;letter-spacing:-.01em}
+p{margin:10px 0}
+mark{background:var(--hl);color:var(--ink);padding:0 2px}          /* 노란 형광펜 */
+.prob-text,mark.prob{background:none;color:var(--prob);font-weight:700}
+.xmark{color:var(--prob);font-weight:900}
+.dim{color:#666;font-size:.9rem}
+
+/* ■/- 불릿 */
+ul.bullets{list-style:none;margin:10px 0}
+ul.bullets>li{margin:8px 0}
+ul.bullets>li::before{content:"■";font-size:.7em;margin-right:9px;vertical-align:.15em}
+ul.bullets ul{list-style:none;margin:4px 0 4px 22px}
+ul.bullets ul>li::before{content:"-";margin-right:8px}
+
+/* ── 다이어그램: 흰 채움 + 검정 얇은 테두리 ── */
+.diagram{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;
+  padding:20px 8px;margin:12px 0}
+.dbox{border:1.2px solid var(--ink);border-radius:6px;padding:10px 16px;background:#fff;
+  font-weight:600;font-size:.92rem;text-align:center}
+.dbox small{display:block;font-weight:400;color:#555;font-size:.75rem}
+.dbox.wl{background:var(--wl)}     /* 워크로드(pod·앱) */
+.dbox.rs{background:var(--rs)}     /* 인프라 리소스(service 등) */
+.dbox.hot{background:var(--point);border-color:var(--ink);font-weight:800}  /* 지금 설명하는 주인공 */
+.dbox.bad{border-color:var(--prob);color:var(--prob)}
+.dbox.dim{opacity:.3}
+.darrow{font-weight:900;color:var(--ink);font-size:1.1rem}
+.darrow.bad{color:var(--prob)}
+.dgroup{border:1.2px solid var(--ink);border-radius:10px;background:var(--grp);
+  padding:22px 14px 12px;position:relative;margin-top:12px}
+.dgroup>b{position:absolute;top:4px;left:12px;font-size:.75rem;font-weight:700}
+.marker{display:inline-flex;width:24px;height:24px;border-radius:50%;background:#fff;
+  border:1.6px solid var(--ink);font-weight:800;font-size:.8rem;
+  align-items:center;justify-content:center;flex:none}
+.marker.bad{border-color:var(--prob);color:var(--prob)}
+.caption{text-align:center;font-size:.82rem;color:#555;margin-top:4px}
+
+/* 구조 애니메이션(stepper): 필요할 때만 쓴다 */
+.stepper{margin:12px 0}
+.step{display:none}
+.step.on{display:block;animation:fade .25s ease}
+.step .exp{margin-top:8px}
+.step-nav{display:flex;align-items:center;justify-content:center;gap:14px;margin-top:14px;
+  padding-top:12px;border-top:1px solid #E5E5E5}
+.step-nav button{border:1.4px solid var(--ink);background:#fff;color:var(--ink);
+  border-radius:999px;padding:6px 18px;font-weight:700;font-size:.9rem;cursor:pointer}
+.step-nav button:disabled{opacity:.25;cursor:default}
+.step-count{font-weight:800;color:#777;font-size:.9rem;min-width:52px;text-align:center}
+
+/* ── 코드 패널: VS Code Dark+ ── */
+pre.code{background:var(--code-bg);color:var(--code-ink);border-radius:8px;
+  padding:16px 18px;overflow-x:auto;font-size:.86rem;line-height:1.6;margin:12px 0;
+  font-family:Consolas,ui-monospace,Menlo,monospace}
+pre.code .k{color:#569CD6}          /* 키·키워드 */
+pre.code .s{color:#CE9178}          /* 문자열 */
+pre.code .c{color:#6A9955}          /* 주석 */
+pre.code .hot{color:var(--point);font-weight:700}
+pre.code .bad{color:#FF6B6B;font-weight:700}
+.codedesc{font-size:.9rem;color:#444;margin:14px 0 0;font-weight:700}
+
+/* 확인 문제: 클릭형 객관식 — 보기 클릭 즉시 정답 여부 + 피드백 */
+.quiz{margin:18px 0 26px}
+.quiz .q{font-weight:700}
+.quiz .opts{list-style:none;margin:10px 0}
+.quiz .opts li{border:1.4px solid var(--ink);border-radius:8px;background:#fff;
+  padding:8px 14px;margin:8px 0;font-size:.95rem;cursor:pointer;user-select:none}
+.quiz .opts li:focus-visible{outline:2px solid var(--point);outline-offset:2px}
+.quiz.done .opts li{cursor:default}
+.quiz .opts li.correct{background:var(--point);font-weight:700}
+.quiz .opts li.wrong{border-color:var(--prob);color:var(--prob)}
+.quiz .fb{display:none;margin-top:8px;padding-left:14px;border-left:3px solid var(--point)}
+.quiz.done .fb{display:block;animation:fade .25s ease}
+.quiz .fb .verdict{font-weight:800}
+.quiz .fb.no{border-left-color:var(--prob)}
+.quiz .fb.no .verdict{color:var(--prob)}
+
+/* 트레이드오프: 박스 없이 두 단 리스트 */
+.tradeoff{display:flex;gap:30px;flex-wrap:wrap;margin:14px 0}
+.tradeoff>div{flex:1;min-width:240px}
+.tradeoff h3{font-size:1rem;margin-bottom:6px;padding-bottom:4px;border-bottom:2px solid var(--ink)}
+.tradeoff .con h3{border-color:var(--prob);color:var(--prob)}
+.tradeoff ul{list-style:none}
+.tradeoff li{margin:6px 0}
+.tradeoff .pro li::before{content:"■";font-size:.7em;margin-right:9px;vertical-align:.15em}
+.tradeoff .con li::before{content:"✕";color:var(--prob);font-weight:900;margin-right:9px}
+
+/* 링크 푸터(핸즈온 재현 링크 등) */
+.foot{font-size:.82rem;color:#555;margin-top:22px}
+.foot a{color:#555}
+
+/* ── 하단 내비게이션 ── */
+#nav{position:fixed;left:0;right:0;bottom:0;background:rgba(255,255,255,.96);
+  border-top:1px solid #E2E2E2;backdrop-filter:blur(4px)}
+#nav .in{max-width:820px;margin:0 auto;display:flex;align-items:center;gap:14px;padding:12px 20px}
+#nav button{border:none;background:var(--dark);color:#fff;border-radius:999px;
+  padding:9px 22px;font-weight:700;font-size:.95rem;cursor:pointer}
+#nav button:disabled{opacity:.25;cursor:default}
+#dots{flex:1;display:flex;justify-content:center;gap:6px;flex-wrap:wrap}
+#dots button{width:9px;height:9px;border:none;padding:0;border-radius:50%;background:#DDD;cursor:pointer}
+#dots button.on{background:var(--point);transform:scale(1.25)}
+#dots button:focus-visible{outline:2px solid var(--point);outline-offset:2px}
+#counter{font-weight:800;color:#777;font-size:.9rem;min-width:64px;text-align:right}
+
+/* 인쇄: 전 페이지 펼침 */
+@media print{
+  .page,.step{display:block !important}
+  #nav,.step-nav,#dots{display:none !important}
+  .page{page-break-after:always}
+}
+@media (max-width:640px){
+  html{font-size:15.5px}
+  .page.dark{padding:36px 24px}
+  .tradeoff{gap:16px}
+}
+</style>
+</head>
+<body>
+<main id="book">
+
+<!-- ════════ 1장. 표지 + 미리보기 (다크) ════════ -->
+<section class="page dark">
+  <div class="bar">
+    <h1>{{학습지 제목 — 핵심 키워드만 <mark>노랑</mark>}}</h1>
+    <p class="sub">{{누구를 위한, 무엇을 다루는 학습지인지 한 문장}}</p>
+  </div>
+  <!-- 미리보기는 간접 화법으로 쓴다. 이 방법이 유일한 답은 아니기 때문이다. -->
+  <div class="glance">
+    <p><b class="p-prob">이런 상황이 있다면</b> — {{상황을 한 문장으로}}</p>
+    <p><b class="p-point">이렇게 풀었을 것 같다</b> — {{접근을 한 문장으로. 열쇠가 되는 원리·도구까지만}}</p>
+  </div>
+</section>
+
+<!-- ════════ 2장. 문제 상황 ════════ -->
+<section class="page">
+  <p class="sec">1. 문제 상황</p>
+  <h2 class="page-title">{{문제를 한 문장으로}}</h2>
+  <p class="dim">{{실제 문제 or "이런 상황이라고 가정합니다"}}</p>
+  <p>{{무슨 일이 벌어졌나 — 짧은 글로}}</p>
+  <ul class="bullets">
+    <li><span class="xmark">✕</span> {{증상 1}}</li>
+    <li><span class="xmark">✕</span> {{증상 2}}</li>
+  </ul>
+  <p>{{왜 이게 아픈가, 왜 임시방편으론 안 되나}}</p>
+</section>
+
+<!-- ════════ 3장. 원리 ════════ -->
+<section class="page">
+  <p class="sec">2. 원리</p>
+  <h2 class="page-title">{{핵심 원리를 한 문장으로}}</h2>
+  <p>{{왜 이렇게 설계되었는지 — 키워드 한 곳만 <mark>형광펜</mark>}}</p>
+  <ul class="bullets">
+    <li>{{핵심 포인트}}
+      <ul><li>{{부가 설명}}</li></ul>
+    </li>
+  </ul>
+  <p><b>다른 곳에도 적용됩니다.</b> {{이 원리가 응용되는 다른 사례 한 문장}}</p>
+</section>
+
+<!-- ════════ 4장. 구조 이해하기 ════════ -->
+<section class="page">
+  <p class="sec">3. 구조 이해하기</p>
+  <h2 class="page-title">{{구조를 한 문장으로}}</h2>
+  <p>{{그림을 읽기 전에 알아야 할 한 문장}}</p>
+
+  <!-- 아키텍처 그림: 흰/연노랑(워크로드)/연초록(리소스) 박스 + 검정 화살표.
+       구조가 한 장으로 충분하면 stepper 없이 이 다이어그램만 쓴다. -->
+  <div class="dgroup"><b>{{논리 경계 이름}}</b>
+    <div class="diagram" style="padding:6px">
+      <div class="dbox wl">{{워크로드}}</div>
+      <div class="darrow">→</div>
+      <div class="dbox rs">{{리소스}}</div>
+    </div>
+  </div>
+  <p class="caption">[ {{그림 설명 한 줄}} ]</p>
+
+  <!-- 흐름·상태 전이가 있어 단계로 보는 게 더 이해하기 쉬울 때만 stepper를 쓴다.
+       같은 구도를 반복하며 마커·강조만 바꿔 장면을 진행한다. -->
+  <div class="stepper">
+    <div class="step">
+      <div class="diagram">
+        <span class="marker">1</span>
+        <div class="dbox hot">{{요소A}}</div>
+        <div class="darrow">→</div>
+        <div class="dbox dim">{{요소B}}</div>
+      </div>
+      <p class="exp"><b>1단계.</b> {{이 단계에서 일어나는 일}}</p>
+    </div>
+    <div class="step">
+      <div class="diagram">
+        <span class="marker">2</span>
+        <div class="dbox dim">{{요소A}}</div>
+        <div class="darrow">→</div>
+        <div class="dbox hot">{{요소B}}</div>
+      </div>
+      <p class="exp"><b>2단계.</b> {{이 단계에서 일어나는 일}}</p>
+    </div>
+    <div class="step-nav">
+      <button class="step-prev">← 이전</button>
+      <span class="step-count"></span>
+      <button class="step-next">다음 →</button>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ 5장. 핸즈온 ════════ -->
+<section class="page">
+  <p class="sec">4. 핸즈온</p>
+  <h2 class="page-title">{{직접 해보기}}</h2>
+  <p class="codedesc">{{이 코드는 무엇인지 설명}}</p>
+  <pre class="code"><span class="c"># {{주석}}</span>
+{{명령어 또는 코드 — 핵심부는 <span class="hot">강조</span>}}</pre>
+  <p class="codedesc">기대 결과</p>
+  <pre class="code">{{기대 출력}}</pre>
+  <p><b>체크포인트.</b> {{여기까지 되면 무엇이 확인된 것인지}}</p>
+  <p class="foot">github 링크: {{실습 repo URL, 없으면 이 줄 삭제}}</p>
+</section>
+
+<!-- ════════ 6장. 확인해 보기 ════════ -->
+<section class="page">
+  <p class="sec">5. 확인해 보기</p>
+  <h2 class="page-title">스스로 점검</h2>
+  <!-- 객관식: 정답 보기에만 data-answer를 단다. 오답 보기도 그럴듯하게. -->
+  <div class="quiz">
+    <p class="q">Q1. {{문제 상황의 조건을 바꾼 변형 질문}}</p>
+    <ul class="opts">
+      <li>{{보기 1}}</li>
+      <li data-answer>{{정답 보기}}</li>
+      <li>{{보기 3}}</li>
+    </ul>
+    <p class="fb"><b class="verdict"></b> {{원리로 돌아가는 피드백 한 줄}}</p>
+  </div>
+</section>
+
+<!-- ════════ 7장. 트레이드오프 ════════ -->
+<section class="page">
+  <p class="sec">6. 트레이드오프</p>
+  <h2 class="page-title">무엇을 얻고 무엇을 잃는가</h2>
+  <div class="tradeoff">
+    <div class="pro"><h3>얻는 것</h3><ul><li>{{장점}}</li></ul></div>
+    <div class="con"><h3>잃는 것</h3><ul><li>{{단점}}</li></ul></div>
+  </div>
+  <p><b>그래서 언제 쓰나.</b> {{쓰는 상황 / 쓰지 않는 상황}}</p>
+</section>
+
+<!-- ════════ 8장. 결론 ════════ -->
+<section class="page">
+  <p class="sec">7. 결론</p>
+  <h2 class="page-title">{{도입 문제로 돌아가서}}</h2>
+  <p>{{문제 상황이 원리로 어떻게 풀렸는지 짧은 글로 요약}}</p>
+  <p>{{기억할 원리 한 문장 + 다음에 응용할 지점}}</p>
+</section>
+
+</main>
+
+<nav id="nav"><div class="in">
+  <button id="prev">← 이전</button>
+  <div id="dots"></div>
+  <span id="counter"></span>
+  <button id="next">다음 →</button>
+</div></nav>
+
+<script>
+// 페이지 넘김: 이전/다음 버튼, 점 클릭, 키보드 ←/→
+(function(){
+  var pages=[].slice.call(document.querySelectorAll('.page')),i=0;
+  var prev=document.getElementById('prev'),next=document.getElementById('next');
+  var dots=document.getElementById('dots'),counter=document.getElementById('counter');
+  pages.forEach(function(_,j){
+    var d=document.createElement('button');
+    d.setAttribute('aria-label',(j+1)+'페이지로 이동');
+    d.onclick=function(){i=j;show();};
+    dots.appendChild(d);
+  });
+  function show(){
+    pages.forEach(function(p,j){p.classList.toggle('on',j===i);});
+    [].forEach.call(dots.children,function(d,j){d.classList.toggle('on',j===i);});
+    counter.textContent=(i+1)+' / '+pages.length;
+    prev.disabled=i===0; next.disabled=i===pages.length-1;
+    window.scrollTo(0,0);
+  }
+  prev.onclick=function(){if(i>0){i--;show();}};
+  next.onclick=function(){if(i<pages.length-1){i++;show();}};
+  document.addEventListener('keydown',function(e){
+    if(e.key==='ArrowLeft')prev.onclick();
+    if(e.key==='ArrowRight')next.onclick();
+  });
+  show();
+})();
+
+// 확인 문제: 보기 클릭 → 정답이면 노랑, 오답이면 클릭한 보기 빨강 + 정답 노랑 표시
+document.querySelectorAll('.quiz').forEach(function(qz){
+  var opts=[].slice.call(qz.querySelectorAll('.opts li'));
+  opts.forEach(function(o){
+    o.setAttribute('role','button');
+    o.tabIndex=0;
+    o.onkeydown=function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();o.onclick();}};
+    o.onclick=function(){
+      if(qz.classList.contains('done'))return;
+      qz.classList.add('done');
+      var ok=o.hasAttribute('data-answer');
+      opts.forEach(function(x){
+        if(x.hasAttribute('data-answer'))x.classList.add('correct');
+      });
+      var fb=qz.querySelector('.fb');
+      if(!ok){o.classList.add('wrong');fb.classList.add('no');}
+      fb.querySelector('.verdict').textContent=ok?'정답입니다.':'오답입니다. 정답은 노란 보기입니다.';
+    };
+  });
+});
+
+// 구조 애니메이션: stepper마다 독립 동작
+document.querySelectorAll('.stepper').forEach(function(st){
+  var steps=[].slice.call(st.querySelectorAll('.step')),i=0;
+  var prev=st.querySelector('.step-prev'),next=st.querySelector('.step-next');
+  var count=st.querySelector('.step-count');
+  function show(){
+    steps.forEach(function(s,j){s.classList.toggle('on',j===i);});
+    count.textContent=(i+1)+' / '+steps.length;
+    prev.disabled=i===0; next.disabled=i===steps.length-1;
+  }
+  prev.onclick=function(){if(i>0){i--;show();}};
+  next.onclick=function(){if(i<steps.length-1){i++;show();}};
+  show();
+});
+</script>
+</body>
+</html>
