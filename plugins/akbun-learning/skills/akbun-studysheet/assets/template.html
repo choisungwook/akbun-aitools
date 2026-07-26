@@ -119,6 +119,7 @@ pre.code .bad{color:#FF6B6B;font-weight:700}
 .quiz .opts{list-style:none;margin:10px 0}
 .quiz .opts li{border:1.4px solid var(--ink);border-radius:8px;background:#fff;
   padding:8px 14px;margin:8px 0;font-size:.95rem;cursor:pointer;user-select:none}
+.quiz .opts li:focus-visible{outline:2px solid var(--point);outline-offset:2px}
 .quiz.done .opts li{cursor:default}
 .quiz .opts li.correct{background:var(--point);font-weight:700}
 .quiz .opts li.wrong{border-color:var(--prob);color:var(--prob)}
@@ -150,8 +151,9 @@ pre.code .bad{color:#FF6B6B;font-weight:700}
   padding:9px 22px;font-weight:700;font-size:.95rem;cursor:pointer}
 #nav button:disabled{opacity:.25;cursor:default}
 #dots{flex:1;display:flex;justify-content:center;gap:6px;flex-wrap:wrap}
-#dots i{width:9px;height:9px;border-radius:50%;background:#DDD;cursor:pointer}
-#dots i.on{background:var(--point);transform:scale(1.25)}
+#dots button{width:9px;height:9px;border:none;padding:0;border-radius:50%;background:#DDD;cursor:pointer}
+#dots button.on{background:var(--point);transform:scale(1.25)}
+#dots button:focus-visible{outline:2px solid var(--point);outline-offset:2px}
 #counter{font-weight:800;color:#777;font-size:.9rem;min-width:64px;text-align:right}
 
 /* 인쇄: 전 페이지 펼침 */
@@ -319,7 +321,8 @@ pre.code .bad{color:#FF6B6B;font-weight:700}
   var prev=document.getElementById('prev'),next=document.getElementById('next');
   var dots=document.getElementById('dots'),counter=document.getElementById('counter');
   pages.forEach(function(_,j){
-    var d=document.createElement('i');
+    var d=document.createElement('button');
+    d.setAttribute('aria-label',(j+1)+'페이지로 이동');
     d.onclick=function(){i=j;show();};
     dots.appendChild(d);
   });
@@ -343,6 +346,9 @@ pre.code .bad{color:#FF6B6B;font-weight:700}
 document.querySelectorAll('.quiz').forEach(function(qz){
   var opts=[].slice.call(qz.querySelectorAll('.opts li'));
   opts.forEach(function(o){
+    o.setAttribute('role','button');
+    o.tabIndex=0;
+    o.onkeydown=function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();o.onclick();}};
     o.onclick=function(){
       if(qz.classList.contains('done'))return;
       qz.classList.add('done');
