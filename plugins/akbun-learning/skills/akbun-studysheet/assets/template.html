@@ -4,11 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- ═══════════════════════════════════════════════════════════════
-  akbun-studysheet 템플릿 (akbun 라이트 샌드위치 스타일)
+  akbun-studysheet 템플릿 (akbun 라이트 스타일)
   - 이 파일을 복사한 뒤 {{...}} 자리와 예시 페이지 내용을 교체한다.
-  - <section class="page">가 학습지 한 장이다. 전체 20장 미만.
+  - <section class="page">가 학습지 한 장 = 16:9 슬라이드 하나다. 전체 20장 미만.
   - CSS/JS는 수정하지 않아도 동작한다. 필요한 컴포넌트만 골라 쓴다.
-  - 표지를 포함한 전 페이지가 흰 배경(light theme)이다.
+  - 표지를 포함한 전 슬라이드가 흰 배경(light theme)이고,
+    슬라이드 바깥 여백만 연회색(#F2F2F2) 캔버스다.
   - 문체는 프레젠테이션용 개조식이다 — 핵심어 중심으로 짧게 끊고
     명사형으로 종결한다("~함", "~임", "~필요"). 존댓말·긴 서술형 문장 금지.
   - 설명은 박스에 가두지 말고 짧은 글과 ■/- 불릿으로 쓴다.
@@ -356,11 +357,13 @@ pre.code .bad{color:#FF6B6B;font-weight:700}
 })();
 
 // 전체 화면 보기: 버튼 클릭으로 진입/해제 토글
+// Fullscreen API를 못 쓰는 환경(미지원 브라우저, allowfullscreen 없는 iframe)에서는 버튼을 숨긴다
 (function(){
-  var fs=document.getElementById('fs');
+  var fs=document.getElementById('fs'),el=document.documentElement;
+  if(!el.requestFullscreen||!document.fullscreenEnabled){fs.style.display='none';return;}
   fs.onclick=function(){
-    if(document.fullscreenElement)document.exitFullscreen();
-    else document.documentElement.requestFullscreen();
+    var p=document.fullscreenElement?document.exitFullscreen():el.requestFullscreen();
+    if(p&&p.catch)p.catch(function(){});   // 정책상 차단되면 조용히 무시
   };
   document.addEventListener('fullscreenchange',function(){
     fs.textContent=document.fullscreenElement?'창 모드':'전체 화면';
