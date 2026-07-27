@@ -63,6 +63,18 @@
         "authentication": "ON_INSTALL"
       },
       "category": "Writing"
+    },
+    {
+      "name": "akbun-utils",
+      "source": {
+        "source": "local",
+        "path": "./plugins/akbun-utils"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
     }
   ]
 }

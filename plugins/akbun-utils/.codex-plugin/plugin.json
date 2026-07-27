@@ -1,0 +1,42 @@
+{
+  "name": "akbun-utils",
+  "version": "1.0.0",
+  "description": "Utility helpers — daily recap from iCalendar (.ics) data and other small productivity tools",
+  "author": {
+    "name": "akbun",
+    "url": "https://github.com/choisungwook"
+  },
+  "homepage": "https://github.com/choisungwook/akbun-aitools",
+  "repository": "https://github.com/choisungwook/akbun-aitools",
+  "license": "MIT",
+  "keywords": [
+    "utility",
+    "productivity",
+    "calendar",
+    "icalendar",
+    "ics",
+    "recap",
+    "daily"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "akbun Utils",
+    "shortDescription": "Utility skills — daily recap from iCalendar (.ics) data",
+    "longDescription": "Small utility skills for everyday productivity. Includes a daily recap skill that reads iCalendar (.ics) data, collects today's events from 00:00 to 23:30, and summarizes what happened today as a short numbered list in a terse, slide-style format.",
+    "developerName": "akbun",
+    "category": "Productivity",
+    "capabilities": [
+      "Interactive",
+      "Write"
+    ],
+    "websiteURL": "https://github.com/choisungwook/akbun-aitools",
+    "privacyPolicyURL": "https://docs.github.com/site-policy/privacy-policies/github-general-privacy-statement",
+    "termsOfServiceURL": "https://docs.github.com/en/site-policy/github-terms/github-terms-of-service",
+    "defaultPrompt": [
+      "오늘 내 캘린더(.ics)로 오늘 뭐 했는지 정리해줘: <ICS_PATH_OR_URL>",
+      "아이캘린더 데이터로 오늘 하루 recap 만들어줘"
+    ],
+    "brandColor": "#0EA5E9",
+    "screenshots": []
+  }
+}

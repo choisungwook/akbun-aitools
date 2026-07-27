@@ -108,6 +108,14 @@ akbun 발표자료 스타일 skill 모음.
 |---|---|
 | `akbun-presentation` | <img src="./imgs/akbun-presentation.png" alt="akbun-presentation 예시 슬라이드" width="480"> |
 
+### akbun-utils
+
+유틸리티 도구 skill 모음.
+
+| skill | 설명 |
+|---|---|
+| [akbun-recap-fromicalendar](./plugins/akbun-utils/skills/akbun-recap-fromicalendar/) | 아이캘린더(.ics)에서 오늘 00:00~23:30 일정을 가져와 오늘 한 일을 숫자 리스트 단답형으로 정리 |
+
 ## skill 연관관계
 
 일부 skill은 다른 skill의 정의를 참조한다. 참조 대상 skill을 바꾸면 참조하는 skill의 결과물도 함께 바뀐다.
@@ -134,6 +142,7 @@ Claude Code marketplace metadata lives in:
 /plugin install akbun-draw-architecture@akbun-aitools
 /plugin install akbun-learning@akbun-aitools
 /plugin install akbun-presentation@akbun-aitools
+/plugin install akbun-utils@akbun-aitools
 /reload-plugins
 ```
 
@@ -148,6 +157,7 @@ codex plugin add akbun-writing@akbun-aitools --json
 codex plugin add akbun-draw@akbun-aitools --json
 codex plugin add akbun-draw-architecture@akbun-aitools --json
 codex plugin add akbun-presentation@akbun-aitools --json
+codex plugin add akbun-utils@akbun-aitools --json
 ```
 
 Codex plugin 업그레이드
@@ -166,6 +176,7 @@ codex plugin remove akbun-draw@akbun-aitools --json
 codex plugin remove akbun-draw-architecture@akbun-aitools --json
 codex plugin remove akbun-learning@akbun-aitools --json
 codex plugin remove akbun-presentation@akbun-aitools --json
+codex plugin remove akbun-utils@akbun-aitools --json
 
 rm -rf ~/.codex/plugins/cache/akbun-aitools
 rm -rf ~/.codex/.tmp/marketplaces/akbun-aitools
@@ -176,6 +187,7 @@ codex plugin add akbun-draw@akbun-aitools --json
 codex plugin add akbun-draw-architecture@akbun-aitools --json
 codex plugin add akbun-learning@akbun-aitools --json
 codex plugin add akbun-presentation@akbun-aitools --json
+codex plugin add akbun-utils@akbun-aitools --json
 
 codex plugin list --json
 ```

@@ -1,0 +1,11 @@
+{
+  "name": "akbun-utils",
+  "description": "Utility helpers — daily recap from iCalendar (.ics) data and other small productivity tools",
+  "version": "1.0.0",
+  "author": {
+    "name": "akbun"
+  },
+  "repository": "https://github.com/choisungwook/akbun-aitools",
+  "license": "MIT",
+  "keywords": ["utility", "productivity", "calendar", "icalendar", "ics", "recap", "daily"]
+}
