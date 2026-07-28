@@ -1,0 +1,17 @@
+policies:
+  - name: ec2-untagged-mark-stop
+    comment: |
+      비용 배분에 필요한 Owner, CostCenter tag가 없는 EC2 instance를
+      3일 뒤 stop 대상으로 표시한다. 실제 stop은 ec2-marked-stop이 수행한다.
+    resource: aws.ec2
+    filters:
+      - "State.Name": running
+      - or:
+          - "tag:Owner": absent
+          - "tag:CostCenter": absent
+      - "tag:c7n-untagged-stop": absent
+    actions:
+      - type: mark-for-op
+        tag: c7n-untagged-stop
+        op: stop
+        days: 3

@@ -1,0 +1,13 @@
+policies:
+  - name: ec2-marked-stop
+    comment: |
+      ec2-untagged-mark-stop이 표시한 instance 중 유예 기간이 지난 것을 중지한다.
+      tag가 다시 채워지면 unmark하고 stop 대상에서 제외한다.
+    resource: aws.ec2
+    filters:
+      - "State.Name": running
+      - type: marked-for-op
+        tag: c7n-untagged-stop
+        op: stop
+    actions:
+      - type: stop

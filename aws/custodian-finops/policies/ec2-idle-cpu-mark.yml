@@ -1,0 +1,22 @@
+policies:
+  - name: ec2-idle-cpu-mark
+    comment: |
+      14일 평균 CPU 사용률이 5% 미만인 running EC2 instance를
+      7일 뒤 stop 대상으로 표시한다. rightsizing 후보 식별용.
+    resource: aws.ec2
+    filters:
+      - "State.Name": running
+      - type: metrics
+        name: CPUUtilization
+        namespace: AWS/EC2
+        statistics: Average
+        days: 14
+        period: 86400
+        value: 5
+        op: less-than
+      - "tag:c7n-idle-stop": absent
+    actions:
+      - type: mark-for-op
+        tag: c7n-idle-stop
+        op: stop
+        days: 7

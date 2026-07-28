@@ -1,0 +1,17 @@
+policies:
+  - name: ec2-offhours-stop
+    comment: |
+      업무 시간 외(평일 20시 이후, 주말)에 개발용 EC2 instance를 중지한다.
+      Custodian_downtime tag로 opt-out 대상을 지정한다.
+    resource: aws.ec2
+    filters:
+      - "State.Name": running
+      - "tag:Environment": dev
+      - type: offhour
+        tag: custodian_downtime
+        default_tz: Asia/Seoul
+        offhour: 20
+        weekends: true
+        opt-out: true
+    actions:
+      - type: stop

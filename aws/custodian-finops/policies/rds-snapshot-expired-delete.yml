@@ -1,0 +1,13 @@
+policies:
+  - name: rds-snapshot-expired-delete
+    comment: |
+      30일이 지난 수동 RDS snapshot을 삭제한다.
+      자동 snapshot은 retention period가 따로 관리되므로 manual만 대상으로 한다.
+    resource: aws.rds-snapshot
+    filters:
+      - SnapshotType: manual
+      - type: age
+        days: 30
+        op: greater-than
+    actions:
+      - type: delete

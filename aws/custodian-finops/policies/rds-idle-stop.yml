@@ -1,0 +1,19 @@
+policies:
+  - name: rds-idle-stop
+    comment: |
+      14일간 DatabaseConnections 최댓값이 0인 개발용 RDS instance를 중지한다.
+      Multi-AZ, read replica는 stop이 불가하므로 filter로 제외한다.
+    resource: aws.rds
+    filters:
+      - DBInstanceStatus: available
+      - MultiAZ: false
+      - "tag:Environment": dev
+      - type: metrics
+        name: DatabaseConnections
+        statistics: Maximum
+        days: 14
+        period: 86400
+        value: 0
+        op: equal
+    actions:
+      - type: stop

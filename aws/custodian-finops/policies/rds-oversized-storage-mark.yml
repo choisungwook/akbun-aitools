@@ -1,0 +1,23 @@
+policies:
+  - name: rds-oversized-storage-mark
+    comment: |
+      할당 storage가 500GB 이상이면서 14일 평균 FreeStorageSpace가 400GB를 넘는
+      RDS instance를 과다 할당 후보로 표시한다. 축소 검토용이며 자동 변경은 하지 않는다.
+    resource: aws.rds
+    filters:
+      - DBInstanceStatus: available
+      - type: value
+        key: AllocatedStorage
+        value: 500
+        op: greater-than
+      - type: metrics
+        name: FreeStorageSpace
+        statistics: Average
+        days: 14
+        period: 86400
+        value: 429496729600
+        op: greater-than
+    actions:
+      - type: tag
+        key: c7n-oversized-storage
+        value: review-required

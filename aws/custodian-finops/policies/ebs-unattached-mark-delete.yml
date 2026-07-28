@@ -1,0 +1,14 @@
+policies:
+  - name: ebs-unattached-mark-delete
+    comment: |
+      instance에 붙어 있지 않은 EBS volume을 7일 뒤 삭제 대상으로 표시한다.
+      terminate된 instance가 남긴 orphan volume이 주 대상이다.
+    resource: aws.ebs
+    filters:
+      - State: available
+      - "tag:c7n-unattached-delete": absent
+    actions:
+      - type: mark-for-op
+        tag: c7n-unattached-delete
+        op: delete
+        days: 7

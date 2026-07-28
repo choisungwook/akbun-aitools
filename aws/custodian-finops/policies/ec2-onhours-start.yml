@@ -1,0 +1,17 @@
+policies:
+  - name: ec2-onhours-start
+    comment: |
+      업무 시간(평일 09시)에 중지된 개발용 EC2 instance를 다시 시작한다.
+      ec2-offhours-stop과 짝을 이룬다.
+    resource: aws.ec2
+    filters:
+      - "State.Name": stopped
+      - "tag:Environment": dev
+      - type: onhour
+        tag: custodian_downtime
+        default_tz: Asia/Seoul
+        onhour: 9
+        weekends: true
+        opt-out: true
+    actions:
+      - type: start
