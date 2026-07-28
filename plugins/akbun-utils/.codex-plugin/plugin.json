@@ -22,7 +22,7 @@
   "interface": {
     "displayName": "akbun Utils",
     "shortDescription": "Utility skills — daily recap from iCalendar (.ics) data",
-    "longDescription": "Small utility skills for everyday productivity. Includes a daily recap skill that reads iCalendar (.ics) data, collects today's events from 00:00 to 23:30, and summarizes what happened today as a short numbered list in a terse, slide-style format.",
+    "longDescription": "Small utility skills for everyday productivity. Includes a daily recap skill that reads the built-in macOS Calendar or iCalendar (.ics) data directly, collects today's events from 00:00 to 23:30, and summarizes what happened today as a short numbered list in a terse, slide-style format.",
     "developerName": "akbun",
     "category": "Productivity",
     "capabilities": [

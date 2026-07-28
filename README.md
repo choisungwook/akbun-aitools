@@ -114,7 +114,7 @@ akbun 발표자료 스타일 skill 모음.
 
 | skill | 설명 |
 |---|---|
-| [akbun-recap-fromicalendar](./plugins/akbun-utils/skills/akbun-recap-fromicalendar/) | 아이캘린더(.ics)에서 오늘 00:00~23:30 일정을 가져와 오늘 한 일을 숫자 리스트 단답형으로 정리 |
+| [akbun-recap-fromicalendar](./plugins/akbun-utils/skills/akbun-recap-fromicalendar/) | 맥 내장 캘린더·아이캘린더(.ics)에서 오늘 00:00~23:30 일정을 가져와 오늘 한 일을 숫자 리스트 단답형으로 정리 |
 
 ## skill 연관관계
 
