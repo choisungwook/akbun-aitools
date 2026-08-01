@@ -160,6 +160,26 @@ pre.code .bad{color:#FF6B6B;font-weight:700}
 #dots button:focus-visible{outline:2px solid var(--point);outline-offset:2px}
 #counter{font-weight:800;color:#777;font-size:14px;min-width:64px;text-align:right}
 
+/* ── 전체 화면: 하단 내비게이션을 macOS dock처럼 자동 숨김 ──
+   전체 화면(body.fs)에서는 내비게이션이 슬라이드를 가리지 않게 떠 있는 알약 dock이 되고,
+   포인터가 화면 아래로 내려왔을 때(body.dock-on)만 올라온다. */
+body.fs #book{width:min(97vw,calc((100vh - 24px) * 16 / 9));padding:12px 0}
+body.fs #nav{left:50%;right:auto;bottom:16px;width:auto;
+  border:1px solid #E2E2E2;border-radius:999px;box-shadow:0 8px 26px rgba(0,0,0,.18);
+  transform:translate(-50%,calc(100% + 26px));opacity:0;pointer-events:none;
+  transition:transform .22s ease,opacity .22s ease}
+body.fs #nav .in{width:auto;padding:8px 14px}
+body.fs #dots{flex:0 0 auto}
+body.fs.dock-on #nav{transform:translate(-50%,0);opacity:1;pointer-events:auto}
+
+/* dock 안내: 전체 화면에 들어갈 때 잠깐 떴다 사라진다 */
+#dockhint{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);
+  background:rgba(33,32,34,.92);color:#fff;border-radius:999px;padding:7px 16px;
+  font-size:13px;font-weight:700;opacity:0;pointer-events:none;
+  transition:opacity .4s ease}
+#dockhint.on{opacity:1}
+@media (prefers-reduced-motion:reduce){#nav,#dockhint{transition:none}}
+
 /* 인쇄: 전 페이지 펼침 */
 @media print{
   body{background:#fff}
@@ -176,6 +196,7 @@ pre.code .bad{color:#FF6B6B;font-weight:700}
   #book{padding:10px 8px 86px}
   .page,.page.cover{aspect-ratio:auto;min-height:70vh;padding:26px 20px}
   .tradeoff{gap:16px}
+  body.fs #book{width:auto;padding:10px 8px 24px}
 }
 </style>
 </head>
@@ -357,16 +378,50 @@ pre.code .bad{color:#FF6B6B;font-weight:700}
 })();
 
 // 전체 화면 보기: 버튼 클릭으로 진입/해제 토글
+// 전체 화면에서는 하단 내비게이션을 macOS dock처럼 다룬다 —
+// 포인터가 화면 아래로 내려오면 올라오고, 다른 곳으로 옮기면 다시 숨는다.
 // Fullscreen API를 못 쓰는 환경(미지원 브라우저, allowfullscreen 없는 iframe)에서는 버튼을 숨긴다
 (function(){
-  var fs=document.getElementById('fs'),el=document.documentElement;
+  var fs=document.getElementById('fs'),nav=document.getElementById('nav'),el=document.documentElement;
   if(!el.requestFullscreen||!document.fullscreenEnabled){fs.style.display='none';return;}
+  var HOT=72;      // 화면 아래 이 높이(px) 안에 포인터가 들어오면 dock을 띄운다
+  var over=false;  // 포인터가 dock 위에 있는 동안은 계속 띄워 둔다
+  var hintTimer;
+
+  var hint=document.createElement('div');
+  hint.id='dockhint';
+  hint.textContent='마우스를 화면 아래로 내리면 메뉴 표시 · Esc로 창 모드';
+  document.body.appendChild(hint);
+
+  function dock(on){
+    document.body.classList.toggle('dock-on',on);
+    if(on)hint.classList.remove('on');   // dock을 한 번 띄웠으면 안내는 끝
+  }
+  function track(e){
+    if(!document.body.classList.contains('fs')||over)return;
+    dock(e.clientY>=window.innerHeight-HOT);
+  }
+  document.addEventListener('pointermove',track);
+  document.addEventListener('pointerdown',track);   // 터치: 아래쪽을 탭하면 dock이 올라온다
+  nav.addEventListener('pointerenter',function(){over=true;dock(true);});
+  nav.addEventListener('pointerleave',function(){over=false;dock(false);});
+  nav.addEventListener('focusin',function(){dock(true);});   // 키보드 탭 이동
+  nav.addEventListener('focusout',function(e){
+    if(!over&&!nav.contains(e.relatedTarget))dock(false);
+  });
+
   fs.onclick=function(){
     var p=document.fullscreenElement?document.exitFullscreen():el.requestFullscreen();
     if(p&&p.catch)p.catch(function(){});   // 정책상 차단되면 조용히 무시
   };
   document.addEventListener('fullscreenchange',function(){
-    fs.textContent=document.fullscreenElement?'창 모드':'전체 화면';
+    var on=!!document.fullscreenElement;
+    fs.textContent=on?'창 모드':'전체 화면';
+    document.body.classList.toggle('fs',on);
+    over=false; dock(false);
+    clearTimeout(hintTimer);
+    hint.classList.toggle('on',on);
+    if(on)hintTimer=setTimeout(function(){hint.classList.remove('on');},2600);
   });
 })();
 
