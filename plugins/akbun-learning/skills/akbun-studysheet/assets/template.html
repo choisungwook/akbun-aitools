@@ -394,15 +394,20 @@ body.fs.dock-on #nav{transform:translate(-50%,0);opacity:1;pointer-events:auto}
   document.body.appendChild(hint);
 
   function dock(on){
+    if(on&&!document.body.classList.contains('fs'))return;   // dock은 전체 화면에서만
     document.body.classList.toggle('dock-on',on);
     if(on)hint.classList.remove('on');   // dock을 한 번 띄웠으면 안내는 끝
   }
   function track(e){
-    if(!document.body.classList.contains('fs')||over)return;
+    if(over)return;   // 포인터가 dock 위에 있으면 그대로 둔다
     dock(e.clientY>=window.innerHeight-HOT);
   }
-  document.addEventListener('pointermove',track);
-  document.addEventListener('pointerdown',track);   // 터치: 아래쪽을 탭하면 dock이 올라온다
+  // 포인터 추적은 전체 화면일 때만 건다 — 창 모드에서 매 포인터 이벤트를 받지 않는다
+  function watchPointer(on){
+    var m=on?'addEventListener':'removeEventListener';
+    document[m]('pointermove',track,{passive:true});
+    document[m]('pointerdown',track,{passive:true});   // 터치: 아래쪽을 탭하면 dock이 올라온다
+  }
   nav.addEventListener('pointerenter',function(){over=true;dock(true);});
   nav.addEventListener('pointerleave',function(){over=false;dock(false);});
   nav.addEventListener('focusin',function(){dock(true);});   // 키보드 탭 이동
@@ -418,7 +423,7 @@ body.fs.dock-on #nav{transform:translate(-50%,0);opacity:1;pointer-events:auto}
     var on=!!document.fullscreenElement;
     fs.textContent=on?'창 모드':'전체 화면';
     document.body.classList.toggle('fs',on);
-    over=false; dock(false);
+    over=false; dock(false); watchPointer(on);
     clearTimeout(hintTimer);
     hint.classList.toggle('on',on);
     if(on)hintTimer=setTimeout(function(){hint.classList.remove('on');},2600);
