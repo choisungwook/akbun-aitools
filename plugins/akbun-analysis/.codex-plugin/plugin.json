@@ -1,0 +1,46 @@
+{
+  "name": "akbun-analysis",
+  "version": "1.0.0",
+  "description": "Codebase analysis skills — map service relationships and business roles into a persistent knowledge store (SQLite graph + LLM wiki + mermaid) and answer structure/impact/risk questions from it with minimal tokens",
+  "author": {
+    "name": "akbun",
+    "url": "https://github.com/choisungwook"
+  },
+  "homepage": "https://github.com/choisungwook/akbun-aitools",
+  "repository": "https://github.com/choisungwook/akbun-aitools",
+  "license": "MIT",
+  "keywords": [
+    "analysis",
+    "architecture",
+    "codebase",
+    "dependency-graph",
+    "impact-analysis",
+    "knowledge-base",
+    "sqlite",
+    "wiki",
+    "mermaid"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "akbun Analysis",
+    "shortDescription": "Codebase service-relationship analysis with a reusable knowledge store (SQLite graph + LLM wiki)",
+    "longDescription": "Analyzes a codebase once — services, their business roles, and how they connect (HTTP/gRPC calls, events, shared data, cross-repo links) — and persists the result in an OS-standard data directory as a SQLite relationship graph plus an LLM-oriented wiki with mermaid diagrams. Later questions about code structure, service responsibilities, or the impact and risk of a change are answered by reading the stored wiki and querying the graph first, keeping input tokens low; the store is updated incrementally as the code drifts.",
+    "developerName": "akbun",
+    "category": "Developer Tools",
+    "capabilities": [
+      "Interactive",
+      "Write"
+    ],
+    "websiteURL": "https://github.com/choisungwook/akbun-aitools",
+    "privacyPolicyURL": "https://docs.github.com/site-policy/privacy-policies/github-general-privacy-statement",
+    "termsOfServiceURL": "https://docs.github.com/en/site-policy/github-terms/github-terms-of-service",
+    "defaultPrompt": [
+      "이 저장소를 분석해서 서비스 관계 지식 저장소를 만들어줘",
+      "Analyze this codebase and build the reusable service-relationship knowledge store",
+      "저장된 분석으로 이 코드베이스 구조와 각 서비스의 비즈니스 역할을 설명해줘",
+      "이 서비스 로직을 바꾸면 영향받는 서비스와 리스크를 알려줘"
+    ],
+    "brandColor": "#0F766E",
+    "screenshots": []
+  }
+}

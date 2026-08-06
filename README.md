@@ -108,6 +108,14 @@ akbun 발표자료 스타일 skill 모음.
 |---|---|
 | `akbun-presentation` | <img src="./imgs/akbun-presentation.png" alt="akbun-presentation 예시 슬라이드" width="480"> |
 
+### akbun-analysis
+
+코드베이스 분석 skill 모음. 분석 결과를 OS 표준 경로의 영구 지식 저장소(SQLite 관계 그래프 + LLM wiki + mermaid)로 남기고, 이후 질문은 코드 대신 저장소를 먼저 읽어 적은 입력 토큰으로 답한다.
+
+| skill | 설명 |
+|---|---|
+| [akbun-analysiscode](./plugins/akbun-analysis/skills/akbun-analysiscode/) | 서비스 간 관계·비즈니스 역할을 분석해 영구 지식 저장소를 만들고, 코드 구조·서비스 역할·변경 영향도/리스크 질문에 저장소 기반으로 답변 |
+
 ## skill 연관관계
 
 일부 skill은 다른 skill의 정의를 참조한다. 참조 대상 skill을 바꾸면 참조하는 skill의 결과물도 함께 바뀐다.
@@ -134,6 +142,7 @@ Claude Code marketplace metadata lives in:
 /plugin install akbun-draw-architecture@akbun-aitools
 /plugin install akbun-learning@akbun-aitools
 /plugin install akbun-presentation@akbun-aitools
+/plugin install akbun-analysis@akbun-aitools
 /reload-plugins
 ```
 
@@ -148,6 +157,7 @@ codex plugin add akbun-writing@akbun-aitools --json
 codex plugin add akbun-draw@akbun-aitools --json
 codex plugin add akbun-draw-architecture@akbun-aitools --json
 codex plugin add akbun-presentation@akbun-aitools --json
+codex plugin add akbun-analysis@akbun-aitools --json
 ```
 
 Codex plugin 업그레이드
@@ -166,6 +176,7 @@ codex plugin remove akbun-draw@akbun-aitools --json
 codex plugin remove akbun-draw-architecture@akbun-aitools --json
 codex plugin remove akbun-learning@akbun-aitools --json
 codex plugin remove akbun-presentation@akbun-aitools --json
+codex plugin remove akbun-analysis@akbun-aitools --json
 
 rm -rf ~/.codex/plugins/cache/akbun-aitools
 rm -rf ~/.codex/.tmp/marketplaces/akbun-aitools
@@ -176,6 +187,7 @@ codex plugin add akbun-draw@akbun-aitools --json
 codex plugin add akbun-draw-architecture@akbun-aitools --json
 codex plugin add akbun-learning@akbun-aitools --json
 codex plugin add akbun-presentation@akbun-aitools --json
+codex plugin add akbun-analysis@akbun-aitools --json
 
 codex plugin list --json
 ```
