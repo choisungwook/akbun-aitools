@@ -98,16 +98,22 @@ def run_git(root: Path, *args: str) -> str | None:
     return out if proc.returncode == 0 and out else None
 
 
+def repo_name_from_remote(remote: str) -> str | None:
+    """Extract the repo name from https, ssh://, scp-like (git@host:path), or local-path remotes."""
+    tail = remote.rstrip("/")
+    if "://" not in tail and ":" in tail:
+        tail = tail.rsplit(":", 1)[-1].rstrip("/")
+    tail = tail.rsplit("/", 1)[-1]
+    tail = tail[:-4] if tail.endswith(".git") else tail
+    return tail or None
+
+
 def project_identity(root: Path) -> tuple[str, str, str | None]:
     """Return (project_id, name, remote). Stable across machines for the same remote."""
     remote = run_git(root, "remote", "get-url", "origin")
     seed = remote or str(root)
     digest = hashlib.sha256(seed.encode("utf-8")).hexdigest()[:8]
-    name = root.name
-    if remote:
-        tail = remote.rstrip("/").rsplit("/", 1)[-1]
-        tail = tail[:-4] if tail.endswith(".git") else tail
-        name = tail or name
+    name = (repo_name_from_remote(remote) if remote else None) or root.name
     slug = re.sub(r"[^A-Za-z0-9._-]+", "-", name).strip("-.").lower() or "project"
     return f"{slug}-{digest}", slug, remote
 
