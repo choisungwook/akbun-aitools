@@ -63,6 +63,18 @@
         "authentication": "ON_INSTALL"
       },
       "category": "Writing"
+    },
+    {
+      "name": "akbun-analysis",
+      "source": {
+        "source": "local",
+        "path": "./plugins/akbun-analysis"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Developer Tools"
     }
   ]
 }
