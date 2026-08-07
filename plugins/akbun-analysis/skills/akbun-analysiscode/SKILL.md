@@ -49,7 +49,7 @@ description: 소스코드의 서비스 구조와 관계를 분석해 OS 표준 �
 python3 <이 skill의 base 디렉터리>/scripts/init_store.py <프로젝트 루트>
 ```
 
-출력 JSON에 db·wiki 경로, `analyzed_commit`, 현재 `head_commit`, `stale` 여부, 같은 루트에 분석된 `other_projects`가 담긴다. 스키마·파일 형식·예시 쿼리 전체 계약은 `references/storage.md`에 있다. 분석/갱신 모드에서는 반드시 먼저 읽고, 활용 모드에서는 영향도 쿼리가 필요할 때 참고한다.
+출력 JSON에 db·wiki 경로, `analyzed_commit`, 현재 `head_commit`, `stale` 여부, 같은 루트에 분석된 `other_projects`가 담긴다. 분석이나 갱신을 **마칠 때**는 `--mark-analyzed`를 붙여 한 번 더 실행한다 — analyzed_commit·시각·요약 수치·레지스트리가 자동 갱신된다. 스키마·파일 형식·예시 쿼리 전체 계약은 `references/storage.md`에 있다. 분석/갱신 모드에서는 반드시 먼저 읽고, 활용 모드에서는 영향도 쿼리가 필요할 때 참고한다.
 
 ## 작업 흐름
 
@@ -73,10 +73,10 @@ python3 <이 skill의 base 디렉터리>/scripts/init_store.py <프로젝트 루
 
 - 서비스/컴포넌트 식별: 그 코드베이스가 실제로 나뉘는 단위를 찾는다. monorepo 패키지, 배포 매니페스트, docker-compose, 빌드 모듈, API 경계 등은 힌트일 뿐 체크리스트가 아니다.
 - 각 서비스의 **비즈니스 역할**을 도메인 언어로 1~2문장 정리한다. "무엇을 하는 코드인가"가 아니라 "비즈니스에서 어떤 책임인가"를 쓴다.
-- 관계 수집: 실제로 통신·의존하는 방식(HTTP/gRPC 호출, 이벤트/큐, 공유 DB, import, 설정 연결)을 evidence(file:line)와 함께 edge로 기록한다.
+- 관계 수집: 실제로 통신·의존하는 방식(HTTP/gRPC 호출, 이벤트/큐, 공유 DB, import, 설정 연결)을 evidence(file:line)와 함께 edge로 기록한다. edge는 **의존 방향**(source가 target에 의존, 이벤트는 소비자→발행자)으로 넣는다 — 방향 규칙은 `references/storage.md`가 기준이다.
 - 다른 소스코드와의 연결: `other_projects`에 이미 분석된 프로젝트가 있으면 그쪽 서비스와의 edge를 `target_project`로 잇는다. 아직 분석되지 않은 외부 시스템은 `external` node로 남겨 나중에 이을 수 있게 한다.
 - 결과를 DB(nodes/edges/files)와 wiki에 쓴다. mermaid 그래프는 index(핵심 흐름만)와 architecture(전체)에 넣는다.
-- 끝나면 `meta.json`의 `analyzed_commit`/`analyzed_at`과 요약 수치를 갱신한다.
+- 끝나면 `init_store.py <프로젝트 루트> --mark-analyzed`를 실행해 meta와 레지스트리를 갱신한다.
 
 질문에 답하러 왔는데 저장소가 아예 없으면, 이 분석을 먼저 수행한 뒤 답한다. 코드베이스가 커서 전체 분석이 부담이면 질문에 필요한 범위를 먼저 분석·저장해 답하고, 나머지 전체 분석을 제안한다.
 
@@ -87,7 +87,7 @@ python3 <이 skill의 base 디렉터리>/scripts/init_store.py <프로젝트 루
 1. `git diff --name-only <analyzed_commit>..HEAD`로 바뀐 파일을 얻는다.
 2. `files` 테이블로 바뀐 파일이 속한 node를 찾는다.
 3. 그 node들의 관계·역할·wiki 페이지만 다시 확인해 고친다. 서비스가 새로 생기거나 경계가 크게 바뀌었으면 그때 전면 재분석한다.
-4. `meta.json`을 갱신한다.
+4. `init_store.py <프로젝트 루트> --mark-analyzed`로 마무리한다.
 
 ## 저장소 작성 원칙
 

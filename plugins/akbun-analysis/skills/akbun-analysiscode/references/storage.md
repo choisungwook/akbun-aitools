@@ -19,7 +19,7 @@ akbun-analysiscode가 만들고 읽는 영구 저장소의 계약이다. 여기 
       decisions/0001-slug.md     # ADR (번호 증가)
 ```
 
-`project-id`는 `<repo이름 slug>-<해시 8자리>`다. 해시는 git remote URL(없으면 절대 경로)의 sha256 앞 8자리로, `scripts/init_store.py`가 계산한다. 같은 repo는 어디서 분석해도 같은 저장소를 쓰게 된다.
+`project-id`는 `<repo이름 slug>-<해시 8자리>`다. 해시는 git remote URL(없으면 절대 경로)의 sha256 앞 8자리로, `scripts/init_store.py`가 계산한다. remote가 있으면 같은 repo는 어디서 분석해도 같은 저장소로 이어진다. remote가 없으면 절대 경로 기준이라 경로가 바뀌면 별개 저장소가 되니, 그런 프로젝트는 `projects.json`에서 이름으로 찾아 확인한다.
 
 ## meta.json
 
@@ -39,7 +39,7 @@ akbun-analysiscode가 만들고 읽는 영구 저장소의 계약이다. 여기 
 ```
 
 - `analyzed_commit`이 `null`이면 초기화만 되고 분석 전이다.
-- 분석·갱신을 마칠 때마다 `analyzed_commit`, `analyzed_at`, `counts`를 갱신한다.
+- 분석·갱신을 마치면 `init_store.py <프로젝트 루트> --mark-analyzed`를 실행한다. 현재 HEAD와 시각, counts(nodes/edges/files는 DB에서, wiki_pages는 `wiki/` 아래 모든 `.md` — ADR 포함)를 자동 기록하고 레지스트리도 함께 갱신한다.
 
 ## projects.json
 
@@ -63,6 +63,12 @@ akbun-analysiscode가 만들고 읽는 영구 저장소의 계약이다. 여기 
 
 ## SQLite 스키마 (graph.sqlite)
 
+**edge 방향은 의존 방향이다: `source`가 `target`에 의존한다.** target이 바뀌면 source가 영향받는다. 이 방향이 일정해야 아래 영향도 쿼리가 성립하므로 반드시 지킨다.
+
+- 호출: 호출자 → 피호출자. 예: `web-frontend --http-call--> order-service`
+- 이벤트: 소비자는 발행자의 payload 계약에 의존한다. `consumer --event-sub--> publisher`로 기록하고, 발행자·소비자의 broker 의존은 각각 `--event-pub-->`/`--queue-consume--> broker`로 잇는다.
+- 데이터: 읽고 쓰는 쪽 → datastore. 예: `order-service --db-write--> orders-db`
+
 `init_store.py`가 아래 DDL로 생성한다. 수동으로 만들 때도 동일하게 만든다.
 
 ```sql
@@ -75,27 +81,28 @@ CREATE TABLE IF NOT EXISTS nodes (
   name      TEXT PRIMARY KEY,   -- 서비스/컴포넌트 이름 (소문자-하이픈)
   kind      TEXT NOT NULL,      -- 아래 node kind 어휘
   role      TEXT,               -- 비즈니스 역할 1~2문장
-  path      TEXT,               -- repo 루트 기준 소스 위치
-  wiki_page TEXT                -- wiki/ 기준 상대 경로 (예: services/order-service.md)
+  path      TEXT,               -- repo 루트 기준 소스 위치. 없으면 NULL (예: compose로만 정의된 인프라, 외부 시스템)
+  wiki_page TEXT                -- wiki/ 기준 상대 경로 (예: services/order-service.md). 페이지 없으면 NULL
 );
 
 CREATE TABLE IF NOT EXISTS edges (
-  source         TEXT NOT NULL,             -- nodes.name
-  target         TEXT NOT NULL,             -- nodes.name (target_project가 있으면 그 프로젝트의 node)
+  source         TEXT NOT NULL,             -- nodes.name (의존하는 쪽 = 영향받는 쪽)
+  target         TEXT NOT NULL,             -- nodes.name (의존 대상. target_project가 있으면 그 프로젝트의 node)
   kind           TEXT NOT NULL,             -- 아래 edge kind 어휘
-  detail         TEXT,                      -- 무엇을 주고받는지 짧게
-  evidence       TEXT,                      -- 근거 file:line
+  detail         TEXT,                      -- 무엇을 주고받는지 짧게. 부가 근거도 여기에
+  evidence       TEXT,                      -- 대표 근거 file:line 하나
   target_project TEXT NOT NULL DEFAULT '',  -- ''이면 같은 프로젝트, 아니면 상대 project_id
   UNIQUE (source, target, kind, target_project)
 );
 
 CREATE TABLE IF NOT EXISTS files (
-  path TEXT PRIMARY KEY,   -- repo 루트 기준 상대 경로. 디렉터리 매핑이면 끝에 /
-  node TEXT NOT NULL       -- nodes.name
+  path TEXT NOT NULL,      -- repo 루트 기준 상대 경로. 디렉터리 매핑이면 끝에 /
+  node TEXT NOT NULL,      -- nodes.name
+  PRIMARY KEY (path, node)
 );
 ```
 
-- `files`는 변경 파일 → 영향 node를 찾기 위한 매핑이다. 서비스 디렉터리 단위(`services/order/` 형태)로 넣는 것을 우선하고, 경계가 갈리는 개별 파일만 파일 단위로 넣어 테이블을 작게 유지한다.
+- `files`는 변경 파일 → 영향 node를 찾기 위한 매핑이다. 서비스 디렉터리 단위(`services/order/` 형태)로 넣는 것을 우선하고, 경계가 갈리는 개별 파일만 파일 단위로 넣어 테이블을 작게 유지한다. `docker-compose.yml`처럼 여러 node에 걸치는 파일은 관련 node마다 한 행씩 넣는다.
 - `meta` 테이블에는 `schema_version`이 들어 있다. kind 어휘를 확장하면 `kind:<이름>` key로 짧은 설명을 남겨 다음 agent가 알게 한다.
 
 ### kind 어휘
@@ -146,7 +153,7 @@ WHERE path = :changed
 
 ### index.md
 
-목적: 이것 하나만 읽고 대부분의 구조·역할 질문에 답하기. 뼈대:
+목적: 이것 하나만 읽고 대부분의 구조·역할 질문에 답하기. 서비스 표에는 datastore·queue·external node도 포함해 전체 그림을 보여주되, 상세 페이지는 코드 서비스 위주로만 만든다. 뼈대:
 
 ```markdown
 # {프로젝트 이름}
@@ -158,6 +165,7 @@ WHERE path = :changed
 | 서비스 | kind | 비즈니스 역할 | 페이지 |
 |---|---|---|---|
 | order-service | service | 주문 생성·상태 관리 | services/order-service.md |
+| orders-db | datastore | 주문 원본 데이터 | — |
 
 ## 핵심 그래프
 
@@ -210,7 +218,7 @@ WHERE path = :changed
 
 ### mermaid 표기
 
-edge label에 kind를 쓰고, 아직 분석되지 않은 외부 시스템은 점선으로 구분한다. 예시:
+mermaid는 읽기 좋게 **데이터 흐름 방향**(호출자→피호출자, 발행자→소비자)으로 그린다. DB edge의 의존 방향과 이벤트에서 화살표가 반대가 되는데, 시각화는 이해용이고 영향도 계산은 항상 DB 쿼리 기준이므로 괜찮다. edge label에 kind를 쓰고, 아직 분석되지 않은 외부 시스템은 점선으로 구분한다. 예시:
 
 ```mermaid
 graph LR

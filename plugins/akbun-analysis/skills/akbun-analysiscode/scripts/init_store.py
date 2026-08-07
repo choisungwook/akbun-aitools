@@ -5,16 +5,23 @@ Idempotent — run it at the start of every akbun-analysiscode session:
 
     python3 init_store.py [PROJECT_ROOT]
 
+and once more when an analysis (or incremental update) is finished:
+
+    python3 init_store.py [PROJECT_ROOT] --mark-analyzed
+
 Resolves the OS-standard store root ($AKBUN_ANALYSIS_HOME override first),
 derives a stable project id from the git remote (or absolute path), creates
 the directory layout and SQLite schema if missing, registers the project in
 projects.json, and prints resolved paths plus freshness info as JSON.
+--mark-analyzed additionally records the current HEAD, timestamp, and store
+counts in meta.json and syncs the registry.
 
-Standard library only. Never deletes or overwrites existing analysis data.
+Standard library only. Never deletes existing analysis data.
 """
 
 from __future__ import annotations
 
+import argparse
 import hashlib
 import json
 import os
@@ -53,8 +60,9 @@ CREATE TABLE IF NOT EXISTS edges (
 );
 
 CREATE TABLE IF NOT EXISTS files (
-  path TEXT PRIMARY KEY,
-  node TEXT NOT NULL
+  path TEXT NOT NULL,
+  node TEXT NOT NULL,
+  PRIMARY KEY (path, node)
 );
 """
 
@@ -117,6 +125,19 @@ def ensure_db(db_path: Path) -> None:
         conn.close()
 
 
+def store_counts(db_path: Path, wiki_dir: Path) -> dict:
+    conn = sqlite3.connect(db_path)
+    try:
+        counts = {
+            table: conn.execute(f"SELECT COUNT(*) FROM {table}").fetchone()[0]
+            for table in ("nodes", "edges", "files")
+        }
+    finally:
+        conn.close()
+    counts["wiki_pages"] = len(list(wiki_dir.rglob("*.md")))
+    return counts
+
+
 def load_json(path: Path) -> dict | None:
     if not path.exists():
         return None
@@ -132,8 +153,16 @@ def write_json(path: Path, data: dict) -> None:
 
 
 def main() -> int:
-    root_arg = sys.argv[1] if len(sys.argv) > 1 else "."
-    project_root = Path(root_arg).expanduser().resolve()
+    parser = argparse.ArgumentParser(description="Locate or create the akbun-analysis knowledge store")
+    parser.add_argument("project_root", nargs="?", default=".", help="project root (default: cwd)")
+    parser.add_argument(
+        "--mark-analyzed",
+        action="store_true",
+        help="record current HEAD, timestamp, and store counts as the completed analysis",
+    )
+    args = parser.parse_args()
+
+    project_root = Path(args.project_root).expanduser().resolve()
     if not project_root.is_dir():
         print(json.dumps({"error": f"project root not found: {project_root}"}), file=sys.stderr)
         return 1
@@ -149,6 +178,9 @@ def main() -> int:
     db_path = project_dir / "graph.sqlite"
     ensure_db(db_path)
 
+    now = datetime.now(timezone.utc).isoformat(timespec="seconds")
+    head = run_git(project_root, "rev-parse", "HEAD")
+
     meta_path = project_dir / "meta.json"
     meta = load_json(meta_path) or {
         "schema_version": SCHEMA_VERSION,
@@ -160,9 +192,12 @@ def main() -> int:
     }
     meta["root_path"] = str(project_root)
     meta["remote"] = remote
+    if args.mark_analyzed:
+        meta["analyzed_commit"] = head
+        meta["analyzed_at"] = now
+        meta["counts"] = store_counts(db_path, wiki_dir)
     write_json(meta_path, meta)
 
-    now = datetime.now(timezone.utc).isoformat(timespec="seconds")
     registry_path = root / "projects.json"
     registry = load_json(registry_path) or {"schema_version": SCHEMA_VERSION, "projects": []}
     projects = registry.setdefault("projects", [])
@@ -180,7 +215,6 @@ def main() -> int:
     )
     write_json(registry_path, registry)
 
-    head = run_git(project_root, "rev-parse", "HEAD")
     analyzed = meta.get("analyzed_commit")
     stale = (analyzed != head) if (head and analyzed) else None
 
@@ -195,9 +229,11 @@ def main() -> int:
                 "meta": str(meta_path),
                 "projects_registry": str(registry_path),
                 "created": created,
+                "marked_analyzed": args.mark_analyzed,
                 "analyzed_commit": analyzed,
                 "head_commit": head,
                 "stale": stale,
+                "counts": meta.get("counts", {}),
                 "other_projects": [
                     p.get("project_id") for p in projects if p.get("project_id") != project_id
                 ],
