@@ -1,7 +1,7 @@
 {
   "name": "akbun-analysis",
-  "version": "1.0.0",
-  "description": "Codebase analysis skills — map service relationships and business roles into a persistent knowledge store (SQLite graph + LLM wiki + mermaid) and answer structure/impact/risk questions from it with minimal tokens",
+  "version": "1.1.0",
+  "description": "Codebase analysis skills — evidence-backed service/component relationships in JSON with interactive HTML, optional draw.io, and incremental updates",
   "author": {
     "name": "akbun",
     "url": "https://github.com/choisungwook"
@@ -13,18 +13,18 @@
     "analysis",
     "architecture",
     "codebase",
-    "dependency-graph",
+    "relationship-graph",
     "impact-analysis",
-    "knowledge-base",
-    "sqlite",
-    "wiki",
-    "mermaid"
+    "json",
+    "html",
+    "drawio",
+    "incremental"
   ],
   "skills": "./skills/",
   "interface": {
     "displayName": "akbun Analysis",
-    "shortDescription": "Codebase service-relationship analysis with a reusable knowledge store (SQLite graph + LLM wiki)",
-    "longDescription": "Analyzes a codebase once — services, their business roles, and how they connect (HTTP/gRPC calls, events, shared data, cross-repo links) — and persists the result in an OS-standard data directory as a SQLite relationship graph plus an LLM-oriented wiki with mermaid diagrams. Later questions about code structure, service responsibilities, or the impact and risk of a change are answered by reading the stored wiki and querying the graph first, keeping input tokens low; the store is updated incrementally as the code drifts.",
+    "shortDescription": "Evidence-backed service/component relationship analysis with JSON, interactive HTML, and draw.io",
+    "longDescription": "Analyzes service and component boundaries plus HTTP/gRPC calls, database reads and writes, external APIs, events, and queues. Every component and relationship carries file:line evidence in one validated analysis.json source, which generates a self-contained interactive HTML map and optional editable draw.io export. Stored analysis is refreshed incrementally from Git changes, and optional cross-project views combine independently maintained project JSON files.",
     "developerName": "akbun",
     "category": "Developer Tools",
     "capabilities": [
@@ -35,10 +35,10 @@
     "privacyPolicyURL": "https://docs.github.com/site-policy/privacy-policies/github-general-privacy-statement",
     "termsOfServiceURL": "https://docs.github.com/en/site-policy/github-terms/github-terms-of-service",
     "defaultPrompt": [
-      "이 저장소를 분석해서 서비스 관계 지식 저장소를 만들어줘",
-      "Analyze this codebase and build the reusable service-relationship knowledge store",
-      "저장된 분석으로 이 코드베이스 구조와 각 서비스의 비즈니스 역할을 설명해줘",
-      "이 서비스 로직을 바꾸면 영향받는 서비스와 리스크를 알려줘"
+      "이 저장소의 서비스·컴포넌트 호출 관계를 분석해서 인터랙티브 HTML로 시각화해줘",
+      "Analyze this codebase and create an evidence-backed service relationship JSON and HTML map",
+      "저장된 분석을 증분 갱신하고 이 변경의 영향 가능 컴포넌트를 알려줘",
+      "분석된 관계도를 편집 가능한 draw.io 파일로 내보내줘"
     ],
     "brandColor": "#0F766E",
     "screenshots": []

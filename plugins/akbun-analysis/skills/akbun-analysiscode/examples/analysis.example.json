@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "project": {
+    "id": "order-platform-1a2b3c4d",
+    "name": "order-platform",
+    "root_path": "/workspace/order-platform",
+    "remote": "https://github.com/example/order-platform.git",
+    "analyzed_commit": "0123456789abcdef",
+    "analyzed_at": "2026-08-13T00:00:00+00:00",
+    "worktree_fingerprint": "clean"
+  },
+  "summary": "주문 접수부터 결제 요청과 상태 저장까지 담당하는 서비스 묶음",
+  "related_project_ids": [],
+  "components": [
+    {
+      "id": "order-api",
+      "name": "Order API",
+      "kind": "service",
+      "role": "주문을 접수하고 결제 처리를 요청한다.",
+      "importance": "core",
+      "owned_paths": ["services/order-api"],
+      "evidence": [
+        {
+          "path": "services/order-api/main.go",
+          "line": 18,
+          "description": "Order API 서버 엔트리포인트"
+        }
+      ]
+    },
+    {
+      "id": "orders-db",
+      "name": "Orders DB",
+      "kind": "datastore",
+      "role": "주문 원본과 상태를 저장한다.",
+      "importance": "core",
+      "owned_paths": ["deploy/postgres"],
+      "evidence": [
+        {
+          "path": "deploy/docker-compose.yml",
+          "line": 31,
+          "description": "orders PostgreSQL 인스턴스 정의"
+        }
+      ]
+    }
+  ],
+  "relationships": [
+    {
+      "id": "order-api-writes-orders-db",
+      "source": "order-api",
+      "target": "orders-db",
+      "kind": "db-write",
+      "label": "주문 저장",
+      "details": {
+        "database": "orders",
+        "table": "orders"
+      },
+      "evidence": [
+        {
+          "path": "services/order-api/repository/order.go",
+          "line": 42,
+          "end_line": 48,
+          "description": "orders 테이블 INSERT 실행"
+        }
+      ]
+    }
+  ]
+}

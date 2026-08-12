@@ -41,7 +41,7 @@
     {
       "name": "akbun-analysis",
       "source": "./plugins/akbun-analysis",
-      "description": "Codebase analysis skills — persistent service-relationship knowledge store (SQLite graph + LLM wiki) for low-token structure/impact answers",
+      "description": "Codebase analysis skills — evidence-backed service/component relationship JSON with interactive HTML, optional draw.io, and incremental updates",
       "strict": true
     }
   ]

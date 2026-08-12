@@ -2,11 +2,12 @@
 
 ## 작업 맥락
 
-akbun-analysis skills는 코드베이스 분석 결과를 repo 바깥의 영구 지식 저장소로 남기고 재사용하는 skill 모음이다. 첫 분석에서 서비스 관계 그래프(SQLite)와 LLM wiki를 만들고, 이후 구조·역할·영향도 질문은 코드 대신 저장소를 먼저 읽어 입력 토큰을 줄인다. 저장소 경로·스키마 같은 계약은 `references/storage.md`에 고정하고, 분석 방법 자체는 agent 판단에 맡긴다.
+akbun-analysis skills는 코드베이스의 서비스·컴포넌트 관계를 repo 바깥에 영구 저장하고 시각화한다. `analysis.json`만 분석 원본이며 self-contained HTML과 선택적 draw.io는 JSON에서 생성한다. 이후 구조·역할·영향 가능성 질문은 JSON을 먼저 읽고, 코드 변경은 file:line 근거와 소유 경로를 이용해 증분 반영한다.
 
 ## 용어 정리
 
-- 지식 저장소(knowledge store): OS 표준 데이터 경로 아래 프로젝트별로 쌓이는 분석 산출물 전체(graph.sqlite + wiki + meta.json).
-- LLM wiki: 사람이 아니라 다음 LLM agent가 읽는 것을 전제로 쓴 문서 묶음. index-first로 탐색한다.
-- 활용 모드: 저장소를 먼저 읽어 질문에 답하는 기본 모드. 분석 모드는 저장소가 없거나 전면 재분석이 필요할 때만 수행한다.
+- 분석 원본: 프로젝트별 `analysis.json`. SQLite와 wiki는 사용하지 않는다.
+- 파생 산출물: `analysis.json`에서 생성하는 `analysis.html`과 선택적 `analysis.drawio`. draw.io 변경은 JSON으로 역동기화하지 않는다.
+- 활용 모드: JSON을 먼저 읽어 질문에 답하는 기본 모드. 최초 분석과 증분 갱신에서만 코드를 탐색한다.
 - project-id: repo이름 slug + git remote(없으면 절대경로) sha256 앞 8자리. 같은 repo는 항상 같은 저장소로 이어진다.
+- 영향 가능성: 관계 방향과 종류로 계산한 도달 가능성. 장애 범위나 실제 리스크를 의미하지 않는다.
