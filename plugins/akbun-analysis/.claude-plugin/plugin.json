@@ -1,11 +1,11 @@
 {
   "name": "akbun-analysis",
-  "description": "Codebase analysis skills — map service relationships and business roles into a persistent knowledge store (SQLite graph + LLM wiki + mermaid) and answer structure/impact/risk questions from it with minimal tokens",
-  "version": "1.0.0",
+  "description": "Codebase analysis skills — evidence-backed service/component relationships in JSON with interactive HTML, optional draw.io, and incremental updates",
+  "version": "1.1.0",
   "author": {
     "name": "akbun"
   },
   "repository": "https://github.com/choisungwook/akbun-aitools",
   "license": "MIT",
-  "keywords": ["analysis", "architecture", "codebase", "dependency-graph", "impact-analysis", "knowledge-base", "sqlite", "wiki"]
+  "keywords": ["analysis", "architecture", "codebase", "relationship-graph", "impact-analysis", "json", "html", "drawio", "incremental"]
 }

@@ -110,11 +110,11 @@ akbun 발표자료 스타일 skill 모음.
 
 ### akbun-analysis
 
-코드베이스 분석 skill 모음. 분석 결과를 OS 표준 경로의 영구 지식 저장소(SQLite 관계 그래프 + LLM wiki + mermaid)로 남기고, 이후 질문은 코드 대신 저장소를 먼저 읽어 적은 입력 토큰으로 답한다.
+코드베이스 분석 skill 모음. 서비스·컴포넌트의 호출 관계를 file:line 근거가 있는 JSON으로 저장하고, 인터랙티브 HTML과 선택적 draw.io 관계도를 생성·증분 갱신한다.
 
 | skill | 설명 |
 |---|---|
-| [akbun-analysiscode](./plugins/akbun-analysis/skills/akbun-analysiscode/) | 서비스 간 관계·비즈니스 역할을 분석해 영구 지식 저장소를 만들고, 코드 구조·서비스 역할·변경 영향도/리스크 질문에 저장소 기반으로 답변 |
+| [akbun-analysiscode](./plugins/akbun-analysis/skills/akbun-analysiscode/) | HTTP/gRPC·DB·외부 API·이벤트·큐 관계를 근거 기반 JSON으로 분석하고 인터랙티브 HTML·draw.io로 시각화·증분 갱신 |
 
 ## skill 연관관계
 

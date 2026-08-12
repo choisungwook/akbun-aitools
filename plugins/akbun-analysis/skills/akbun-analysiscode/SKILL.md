@@ -1,100 +1,123 @@
 ---
 name: akbun-analysiscode
-description: 소스코드의 서비스 구조와 관계를 분석해 OS 표준 경로에 영구 지식 저장소(SQLite 관계 그래프 + LLM wiki + mermaid 시각화)를 만들고, 이후에는 코드 대신 저장소를 먼저 읽어 적은 입력 토큰으로 답하는 skill. 코드베이스/아키텍처 분석, 서비스 간 관계·의존성 파악, 서비스의 비즈니스 역할(기능) 설명, 코드 변경의 영향도·리스크 평가 요청에 사용한다. "이 코드 구조 설명해줘", "이 서비스 역할이 뭐야", "이거 바꾸면 어디가 영향받아?" 같은 질문은 명시적인 분석 요청이 없어도 반드시 이 skill로 저장된 분석을 먼저 확인한다.
+description: 소스코드에서 서비스·컴포넌트 수준의 실제 호출 관계를 file:line 근거와 함께 분석해 OS 표준 경로의 analysis.json에 저장하고, 로컬 브라우저용 인터랙티브 HTML과 선택적 draw.io 관계도를 생성·증분 갱신하는 skill. 코드베이스 구조/아키텍처 시각화, HTTP·gRPC·DB 읽기/쓰기·외부 API·이벤트·큐 관계 파악, 컴포넌트 역할 설명, 변경 영향 가능성·리스크 평가 요청에 사용한다. "이 코드 관계도를 그려줘", "서비스 호출 구조를 분석해줘", "이 변경이 어디에 영향 줄까?" 같은 요청은 저장된 JSON의 신선도를 먼저 확인한다.
 ---
 
 # akbun-analysiscode
 
-## 목적
+서비스·컴포넌트 관계를 한 번 근거 기반으로 분석하고 재사용한다. `analysis.json`만 분석 원본이며 HTML과 draw.io는 파생 산출물이다.
 
-코드베이스를 한 번 깊게 분석해, **다음 agent가 코드를 다시 읽지 않고도** 구조·역할·영향도 질문에 답할 수 있는 영구 지식 저장소를 만든다. 저장소는 세 가지로 구성된다.
+## 실행 순서
 
-- **SQLite 관계 그래프**(`graph.sqlite`): 서비스/컴포넌트를 node, 호출·이벤트·데이터 의존을 edge로 저장한다. 영향도 질문을 쿼리로 푼다.
-- **LLM wiki**(`wiki/`): 다음 agent가 읽는 것을 전제로 쓴 문서. index, 아키텍처, 서비스별 페이지, ADR(결정 기록).
-- **그래프 시각화**: wiki 안의 mermaid 다이어그램. 텍스트라서 영구 저장되고, 렌더링되고, 토큰을 적게 쓴다.
-
-같은 저장소 루트에 여러 프로젝트가 쌓이므로, 다른 소스코드(다른 repo)와의 연결도 프로젝트 간 edge로 기록한다.
-
-## 저장 위치
-
-저장소는 프로젝트 repo 바깥, OS 표준 데이터 경로에 둔다. repo에 커밋되지 않고, 여러 repo의 분석이 한곳에 모여 서로 연결할 수 있다.
-
-저장소 루트는 위에서부터 첫 번째로 해당하는 경로다.
-
-| 조건 | 경로 |
-|---|---|
-| 환경변수 override | `$AKBUN_ANALYSIS_HOME` |
-| macOS | `~/Library/Application Support/akbun-analysis` |
-| Windows | `%APPDATA%\akbun-analysis` |
-| Linux 등 | `${XDG_DATA_HOME:-~/.local/share}/akbun-analysis` |
-
-프로젝트별 저장소 레이아웃은 다음과 같다.
-
-```text
-<저장소 루트>/
-  projects.json                  # 분석된 프로젝트 레지스트리
-  projects/<project-id>/         # project-id = repo이름-해시8자리 (스크립트가 계산)
-    meta.json                    # 분석 시점 commit, 경로, 요약 수치
-    graph.sqlite                 # 관계 그래프
-    wiki/
-      index.md                   # 입구 — 항상 이것부터 읽는다
-      architecture.md            # 전체 그림: mermaid 그래프 + 구조 트리
-      services/<service>.md      # 서비스별 페이지
-      decisions/0001-slug.md     # ADR
-```
-
-경로 계산과 초기화는 스크립트가 한다. **어떤 모드든 가장 먼저 실행**해서 경로·신선도·다른 프로젝트 목록을 확인한다. (python3가 없으면 `python`/`py`로 시도하고, 그것도 없으면 `references/storage.md`대로 수동으로 만든다.)
+모든 요청에서 가장 먼저 저장 위치와 신선도를 확인한다.
 
 ```bash
-python3 <이 skill의 base 디렉터리>/scripts/init_store.py <프로젝트 루트>
+python3 <skill-dir>/scripts/locate_analysis.py <project-root>
 ```
 
-출력 JSON에 db·wiki 경로, `analyzed_commit`, 현재 `head_commit`, `stale` 여부, 같은 루트에 분석된 `other_projects`가 담긴다. 분석이나 갱신을 **마칠 때**는 `--mark-analyzed`를 붙여 한 번 더 실행한다 — analyzed_commit·시각·요약 수치·레지스트리가 자동 갱신된다. 스키마·파일 형식·예시 쿼리 전체 계약은 `references/storage.md`에 있다. 분석/갱신 모드에서는 반드시 먼저 읽고, 활용 모드에서는 영향도 쿼리가 필요할 때 참고한다.
+출력의 `mode`에 따라 진행한다.
 
-## 작업 흐름
+- `initial`: 최초 분석을 수행한다.
+- `reuse`: 코드를 전면 탐색하지 않고 `paths.analysis`를 먼저 읽는다.
+- `incremental`: `changed_files`, `affected_component_ids`, `unmapped_changed_files`만 중심으로 갱신한다.
+- `full`: 마지막 분석 commit을 현재 Git에서 찾을 수 없으므로 전면 재분석한다.
 
-분석 대상은 기본적으로 **로컬 파일시스템 경로**(프로젝트 루트)다. 사용자가 git 주소를 주면 로컬 clone이 이미 있는지 먼저 확인하고, 없으면 적절한 위치(예: `<저장소 루트>/checkouts/<repo이름>`)에 clone해 그 경로를 프로젝트 루트로 쓴다. project-id가 remote 기준이라 어디에 clone하든 같은 지식 저장소로 이어진다.
+저장 위치는 `$AKBUN_ANALYSIS_HOME` override가 우선이며, 기본값은 macOS `~/Library/Application Support/akbun-analysis`, Windows `%APPDATA%/akbun-analysis`, Linux `${XDG_DATA_HOME:-~/.local/share}/akbun-analysis`다. 프로젝트 저장소에는 산출물을 만들지 않는다.
 
-스크립트 출력을 기준으로 세 모드 중 하나를 고른다. 저장소가 없으면 분석 모드, 있으면 활용 모드가 기본이고, `stale`이면 질문에 걸리는 범위만 갱신하고 답한다.
+```text
+<store-root>/
+  projects.json
+  projects/<project-id>/
+    analysis.json
+    analysis.html
+    analysis.drawio  # 사용자가 요청한 뒤부터 존재
+```
 
-### 활용 모드 — 질문에 답하기 (기본)
+## 최초 분석
 
-저장소가 있으면 코드보다 저장소를 먼저 읽는다. 이 skill의 존재 이유가 입력 토큰 절약이다.
+`references/analysis-format.md`, `schemas/analysis.schema.json`, `examples/analysis.example.json`을 읽는다.
 
-1. `wiki/index.md`를 읽는다. 대부분의 구조·역할 질문은 여기서 끝나야 정상이다.
-2. 더 필요한 만큼만 해당 서비스 페이지나 `architecture.md`를 골라 읽는다.
-3. 영향도·리스크 질문은 `graph.sqlite`를 쿼리한다. 직접 의존자 + 재귀 CTE로 전이 의존자를 구한다(`references/storage.md`의 예시 쿼리). `sqlite3` CLI가 없으면 python3의 `sqlite3` 모듈로 실행한다.
-4. 세부 확인이 필요하면 저장소가 evidence로 가리키는 파일만 핀포인트로 연다. 전체 재탐색은 하지 않는다.
-5. 답하면서 새로 알게 된 사실, 저장소와 코드의 불일치는 저장소에 반영한다. 기준은 하나다 — 이게 없으면 다음 agent가 다르게(틀리게) 답할 내용인가.
+1. 배포 매니페스트, 실행 엔트리포인트, 라우팅·클라이언트, DB 연결, 메시지 설정을 탐색해 실제 아키텍처 경계를 찾는다.
+2. `service`, `component`, `datastore`, `message-broker`, `external-system`만 기록한다. import, 라이브러리, 클래스, 함수 호출은 제외한다.
+3. HTTP/gRPC 호출, DB 읽기·쓰기, 외부 API, 이벤트 발행·구독, 큐 생산·소비 관계만 기록한다.
+4. 모든 컴포넌트와 관계에 실제 `file:line` 근거를 최소 1개 넣는다. 근거가 없으면 관계도에 넣지 않는다.
+5. 근거 확인 중 발견한 method/path, gRPC service/method, DB/table, broker/topic/queue, 외부 endpoint만 `details`에 넣는다. 세부정보만 찾기 위한 추가 전면 검색은 하지 않는다.
+6. JSON에는 근거가 확인된 모든 컴포넌트를 넣고 첫 화면에 필요한 항목만 `importance: core`로 둔다.
+7. 최종 저장 경로를 직접 수정하지 말고 별도 candidate JSON을 만든다. commit이 동적 project metadata를 현재 값으로 교체한다.
+8. candidate를 검증하고 오류가 가리키는 항목만 수정한다.
 
-영향도·리스크 판단 프레임: 영향 범위는 그래프에서 변경 지점의 역방향으로 도달 가능한 의존자들이다. 리스크는 edge 종류(동기 호출은 즉시 전파, 이벤트는 지연·유실, 공유 DB는 데이터 정합성)와 해당 서비스의 비즈니스 역할 중요도를 함께 본다. 영향도·리스크 결론은 말하기 전에 evidence(file:line)가 가리키는 실제 코드에서 확인한다.
+```bash
+python3 <skill-dir>/scripts/validate_analysis.py <candidate.json> <project-root>
+```
 
-### 분석 모드 — 저장소 만들기 (최초 또는 전면 재분석)
+9. 검증 성공 후 candidate를 전달한다. 이 명령이 JSON과 self-contained HTML을 갱신하며, 기존 `analysis.drawio`가 있으면 함께 덮어쓴다.
 
-목표는 하나다. **저장소만 읽은 agent가 이 시스템의 아키텍처 리뷰를 할 수 있게 하는 것.** 그 목표에 닿는 방법은 코드베이스에 맞게 자유롭게 정한다.
+```bash
+python3 <skill-dir>/scripts/commit_analysis.py <project-root> <candidate.json>
+```
 
-- 서비스/컴포넌트 식별: 그 코드베이스가 실제로 나뉘는 단위를 찾는다. monorepo 패키지, 배포 매니페스트, docker-compose, 빌드 모듈, API 경계 등은 힌트일 뿐 체크리스트가 아니다.
-- 각 서비스의 **비즈니스 역할**을 도메인 언어로 1~2문장 정리한다. "무엇을 하는 코드인가"가 아니라 "비즈니스에서 어떤 책임인가"를 쓴다.
-- 관계 수집: 실제로 통신·의존하는 방식(HTTP/gRPC 호출, 이벤트/큐, 공유 DB, import, 설정 연결)을 evidence(file:line)와 함께 edge로 기록한다. edge는 **의존 방향**(source가 target에 의존, 이벤트는 소비자→발행자)으로 넣는다 — 방향 규칙은 `references/storage.md`가 기준이다.
-- 다른 소스코드와의 연결: `other_projects`에 이미 분석된 프로젝트가 있으면 그쪽 서비스와의 edge를 `target_project`로 잇는다. 아직 분석되지 않은 외부 시스템은 `external` node로 남겨 나중에 이을 수 있게 한다.
-- 결과를 DB(nodes/edges/files)와 wiki에 쓴다. mermaid 그래프는 index(핵심 흐름만)와 architecture(전체)에 넣는다.
-- 끝나면 `init_store.py <프로젝트 루트> --mark-analyzed`를 실행해 meta와 레지스트리를 갱신한다.
+## 증분 갱신
 
-질문에 답하러 왔는데 저장소가 아예 없으면, 이 분석을 먼저 수행한 뒤 답한다. 코드베이스가 커서 전체 분석이 부담이면 질문에 필요한 범위를 먼저 분석·저장해 답하고, 나머지 전체 분석을 제안한다.
+`locate_analysis.py`가 마지막 분석 commit, 현재 HEAD, 작업 트리 지문을 비교한다.
 
-### 갱신 모드 — 코드 변경 반영
+1. 기존 `analysis.json`을 candidate로 복사한다.
+2. `affected_component_ids`의 역할·근거·들어오고 나가는 관계만 다시 확인한다.
+3. `unmapped_changed_files`에서 새 서비스, 배포 경계, 공용 설정 변경 가능성을 확인한다. 관계 없는 변경이면 JSON을 늘리지 않는다.
+4. 삭제되거나 이동된 근거, 사라진 관계, 새 관계를 candidate에 반영한다.
+5. 검증 후 `commit_analysis.py`로 전달한다.
 
-저장소는 있는데 `analyzed_commit`과 HEAD가 다르면 전체 재분석 대신 차이만 반영한다.
+전면 재분석은 서비스 경계가 크게 바뀌었거나 분석 계약 자체가 달라진 경우에만 한다.
 
-1. `git diff --name-only <analyzed_commit>..HEAD`로 바뀐 파일을 얻는다.
-2. `files` 테이블로 바뀐 파일이 속한 node를 찾는다.
-3. 그 node들의 관계·역할·wiki 페이지만 다시 확인해 고친다. 서비스가 새로 생기거나 경계가 크게 바뀌었으면 그때 전면 재분석한다.
-4. `init_store.py <프로젝트 루트> --mark-analyzed`로 마무리한다.
+## 저장된 분석 활용
 
-## 저장소 작성 원칙
+구조·역할·관계 질문은 `analysis.json`만 필요한 범위로 읽고, 세부 확인은 evidence가 가리키는 파일만 연다. 저장 내용과 코드가 다르면 증분 갱신한 뒤 답한다.
 
-- **독자는 사람이 아니라 다음 LLM agent다.** 밀도 높게, 중복 없이 쓴다. 인사말·서론·자명한 설명은 넣지 않는다. 표·목록·mermaid가 산문보다 우선이다.
-- **index-first**: `index.md` 하나로 질문의 대부분이 커버되게 유지한다. index가 비대해지면 상세를 서비스 페이지로 내리고 index에는 표와 링크만 남긴다.
-- **주장에는 근거**: 관계·역할 서술에 evidence(file:line)를 남긴다. 다음 agent가 검증할 수 있어야 저장소를 신뢰하고 재탐색을 안 한다.
-- **작게 유지**: 한 페이지가 한 번에 읽기 부담스러우면 나눈다. 저장소 전체가 원본 코드만큼 커지면 실패다.
-- ADR은 "되돌리기 어렵고, 맥락 없이는 이상해 보이고, 실제 트레이드오프가 있었던" 결정만 1~3문장으로 남긴다.
+영향 가능 컴포넌트는 다음 명령으로 탐색한다.
+
+```bash
+python3 <skill-dir>/scripts/trace_impact.py <analysis.json> <component-id>
+```
+
+그래프 결과를 장애 범위나 실제 리스크로 단정하지 않는다. 리스크 결론 전에 변경 코드와 반환된 관계 근거를 확인한다.
+
+## 여러 프로젝트
+
+사용자가 다른 프로젝트 경로를 명시한 경우에만 프로젝트 간 분석을 활성화한다.
+
+1. 각 프로젝트에서 `locate_analysis.py`를 실행하고 독립된 `analysis.json`을 최신 상태로 만든다.
+2. 현재 JSON의 `related_project_ids`에 함께 표시할 프로젝트만 넣는다.
+3. 프로젝트 간 관계에는 `target_project_id`를 넣는다.
+4. commit 시 선택된 JSON들을 결합해 현재 프로젝트 HTML과 기존 draw.io에 표시한다.
+
+## HTML과 draw.io
+
+`analysis.html`은 외부 CDN·서버 없이 로컬 브라우저에서 열린다. 기본 화면은 core 컴포넌트만 표시하며 다음 기능을 제공한다.
+
+- 컴포넌트 검색과 supporting 표시
+- 관계 유형 필터
+- 선택 컴포넌트의 들어오고 나가는 관계 강조
+- 관계별 세부정보와 `file:line` 근거 표시
+
+draw.io는 사용자가 요청했을 때 처음 생성한다.
+
+```bash
+python3 <skill-dir>/scripts/export_drawio.py <analysis.json> <analysis.drawio>
+```
+
+JSON → draw.io 단방향이다. draw.io의 사람 수정 내용을 JSON으로 가져오지 않으며 이후 증분 갱신은 같은 `analysis.drawio`를 덮어쓴다.
+
+HTML이나 draw.io만 다시 만들 때는 각각 다음 명령을 사용한다.
+
+```bash
+python3 <skill-dir>/scripts/render_analysis.py <analysis.json> <analysis.html>
+python3 <skill-dir>/scripts/export_drawio.py <analysis.json> <analysis.drawio>
+```
+
+## 완료 보고
+
+사용자에게 다음을 짧게 알린다.
+
+- 분석 모드: 최초/재사용/증분
+- 컴포넌트·관계 수와 분석 commit
+- `analysis.json`, `analysis.html`, 존재하면 `analysis.drawio` 절대 경로
+- 검증 경고 또는 아직 근거를 확인하지 못한 범위
