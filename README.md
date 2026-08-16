@@ -114,7 +114,7 @@ akbun 발표자료 스타일 skill 모음.
 
 | skill | 설명 |
 |---|---|
-| [akbun-analysiscode](./plugins/akbun-analysis/skills/akbun-analysiscode/) | HTTP/gRPC·DB·외부 API·이벤트·큐 관계를 근거 기반 JSON으로 분석하고 인터랙티브 HTML·draw.io로 시각화·증분 갱신 |
+| [akbun-analysiscode](./plugins/akbun-analysis/skills/akbun-analysiscode/) | 비즈니스 흐름과 그 흐름에 쓰인 코드를 근거 기반 JSON으로 분석하고 비즈니스·서비스 두 화면의 인터랙티브 HTML·draw.io로 시각화·증분 갱신 |
 
 ## skill 연관관계
 
