@@ -1,0 +1,114 @@
+<!--
+  akbun-studysheet 선택형 UI 조각
+  필요한 조각만 template.html의 <main id="book"> 안에 복사한다.
+  아래 순서는 학습 순서가 아니다. 제목과 라벨도 주제에 맞게 바꾼다.
+  SVG, Canvas, CSS 3D는 개념의 실제 관계에 맞춰 새로 설계한다.
+-->
+
+<!-- 기본 페이지 -->
+<section class="page">
+  <p class="sec">{{선택적 섹션·단계·질문}}</p>
+  <h2 class="page-title">{{페이지의 한 가지 초점}}</h2>
+  <p>{{짧은 설명}}</p>
+  <ul class="bullets">
+    <li>{{핵심}}
+      <ul><li>{{필요한 세부 내용}}</li></ul>
+    </li>
+  </ul>
+</section>
+
+<!-- 구성요소와 경계 -->
+<div class="dgroup"><b>{{논리 경계}}</b>
+  <div class="diagram" style="padding:6px">
+    <div class="dbox wl">{{구성요소 A}}</div>
+    <div class="darrow">→</div>
+    <div class="dbox rs">{{구성요소 B}}</div>
+  </div>
+</div>
+<p class="caption">[ {{그림으로 확인할 관계}} ]</p>
+
+<!-- 시간 흐름: 구성요소가 아닌 메시지를 화살표 라벨로 표현한다 -->
+<svg viewBox="0 0 900 320" role="img" aria-labelledby="seq-title seq-desc" style="width:100%;height:auto">
+  <title id="seq-title">{{시퀀스 제목}}</title>
+  <desc id="seq-desc">{{텍스트로 설명한 동일한 요청 순서}}</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#000"/>
+    </marker>
+  </defs>
+  <g fill="#fff" stroke="#000" stroke-width="2">
+    <rect x="70" y="20" width="170" height="48" rx="8"/>
+    <rect x="365" y="20" width="170" height="48" rx="8"/>
+    <rect x="660" y="20" width="170" height="48" rx="8"/>
+  </g>
+  <g text-anchor="middle" font-weight="700">
+    <text x="155" y="51">{{참여자 A}}</text>
+    <text x="450" y="51">{{참여자 B}}</text>
+    <text x="745" y="51">{{참여자 C}}</text>
+  </g>
+  <g stroke="#777" stroke-dasharray="6 6">
+    <line x1="155" y1="68" x2="155" y2="300"/>
+    <line x1="450" y1="68" x2="450" y2="300"/>
+    <line x1="745" y1="68" x2="745" y2="300"/>
+  </g>
+  <g stroke="#000" stroke-width="2" marker-end="url(#arrow)">
+    <line x1="155" y1="125" x2="445" y2="125"/>
+    <line x1="450" y1="205" x2="740" y2="205"/>
+  </g>
+  <g text-anchor="middle">
+    <text x="300" y="115">① {{메시지}}</text>
+    <text x="595" y="195">② {{메시지}}</text>
+  </g>
+</svg>
+
+<!-- 같은 구도의 단계 애니메이션 -->
+<div class="stepper">
+  <div class="step">
+    <div class="diagram">
+      <span class="marker">1</span>
+      <div class="dbox hot">{{현재 요소}}</div>
+      <div class="darrow">→</div>
+      <div class="dbox dim">{{다음 요소}}</div>
+    </div>
+    <p class="exp">{{첫 단계에서 관찰할 변화}}</p>
+  </div>
+  <div class="step">
+    <div class="diagram">
+      <span class="marker">2</span>
+      <div class="dbox dim">{{이전 요소}}</div>
+      <div class="darrow">→</div>
+      <div class="dbox hot">{{현재 요소}}</div>
+    </div>
+    <p class="exp">{{둘째 단계에서 관찰할 변화}}</p>
+  </div>
+  <div class="step-nav">
+    <button class="step-prev">← 이전</button>
+    <span class="step-count"></span>
+    <button class="step-next">다음 →</button>
+  </div>
+</div>
+
+<!-- 실행 가능한 핸즈온 -->
+<p class="codedesc">{{무엇을 실행하는가}}</p>
+<pre class="code">{{복사 가능한 명령 또는 코드}}</pre>
+<p class="codedesc">기대 결과</p>
+<pre class="code">{{성공할 때 관찰되는 핵심 출력}}</pre>
+<p><b>성공 판정.</b> {{학습자가 직접 확인할 조건}}</p>
+<p class="foot">github 링크: {{실습 repo URL, 없으면 삭제}}</p>
+
+<!-- 즉시 피드백이 유용한 객관식 확인 -->
+<div class="quiz">
+  <p class="q">{{암기가 아니라 개념 적용을 묻는 질문}}</p>
+  <ul class="opts">
+    <li>{{그럴듯한 선택지}}</li>
+    <li data-answer>{{근거가 있는 정답}}</li>
+    <li>{{그럴듯한 선택지}}</li>
+  </ul>
+  <p class="fb"><b class="verdict"></b> {{핵심 개념으로 돌아가는 피드백}}</p>
+</div>
+
+<!-- 실제 선택 판단이 있을 때만 쓰는 트레이드오프 -->
+<div class="tradeoff">
+  <div class="pro"><h3>{{얻는 것}}</h3><ul><li>{{효과}}</li></ul></div>
+  <div class="con"><h3>{{치르는 비용}}</h3><ul><li>{{비용·복잡도·한계}}</li></ul></div>
+</div>

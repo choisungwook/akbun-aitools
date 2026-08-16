@@ -1,6 +1,6 @@
 {
   "name": "akbun-learning",
-  "version": "1.1.7",
+  "version": "1.2.0",
   "description": "Study and learning helpers — English and Japanese practice tools, algorithm tutoring, plus YouTube and X (Twitter) video transcript Markdown conversion",
   "author": {
     "name": "akbun",
@@ -42,7 +42,7 @@
       "이 x.com post 영상을 Markdown 대본으로 옮겨줘: <X_POST_URL>",
       "이 알고리즘 문제를 힌트부터 단계별로 리드해줘",
       "내 가설이 맞는지 판정하면서 이 기술 개념을 설명해줘 (가설 검증형 학습)",
-      "이 주제를 HTML 학습지로 만들어줘 (문제 상황 → 원리 → 핸즈온)"
+      "처음 접하는 이 주제를 개념 이해와 검증 가능한 핸즈온이 포함된 HTML 퀵스타트 학습지로 만들어줘"
     ],
     "brandColor": "#2563EB",
     "screenshots": []
