@@ -24,6 +24,27 @@ def write_candidate(path: Path, content: str) -> Path:
   return candidate
 
 
+def carry_over_layout(normalized: dict, stored_path: Path, candidate_set_layout: bool) -> None:
+  """candidate가 배치를 담고 있지 않으면 이미 저장된 드래그 위치를 잃지 않게 옮긴다.
+
+  candidate가 layout 키를 직접 넣었으면 그 값을 그대로 존중한다. 빈 객체는 배치를
+  지우겠다는 뜻이므로 저장된 값으로 되살리지 않는다.
+  """
+  if candidate_set_layout:
+    return
+  stored = load_json(stored_path) or {}
+  layout = stored.get("layout")
+  if not isinstance(layout, dict):
+    return
+  known = {component["id"] for component in normalized.get("components", []) if isinstance(component, dict)}
+  carried = {
+    view: {key: value for key, value in positions.items() if key in known}
+    for view, positions in layout.items()
+    if isinstance(positions, dict)
+  }
+  normalized["layout"] = {view: positions for view, positions in carried.items() if positions}
+
+
 def file_receipt(path: Path) -> dict[str, object]:
   content = path.read_bytes()
   return {
@@ -46,6 +67,7 @@ def main() -> int:
   register_project(root)
   paths = project_paths(root)
   normalized = normalize_analysis(data, root)
+  carry_over_layout(normalized, paths["analysis"], "layout" in data)
   validation = validate_analysis(normalized, root)
   if not validation["ok"]:
     print(json.dumps(validation, ensure_ascii=False, indent=2))

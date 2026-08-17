@@ -54,10 +54,18 @@ def main() -> int:
         "kind": relationship["kind"],
         "evidence": relationship["evidence"],
       })
+  touched = seen | {origin}
+  business_flows = [
+    {"business": business["name"], "flow": flow["name"], "flow_id": flow["uid"]}
+    for business in graph["businesses"]
+    for flow in business["flows"]
+    if any(uid in touched for uid in graph["views"][flow["view_id"]]["nodes"])
+  ]
   print(json.dumps({
     "ok": True,
     "origin": origin,
     "possible_affected": affected,
+    "possible_affected_flows": business_flows,
     "warning": "그래프 도달 가능성은 장애 범위나 실제 리스크를 증명하지 않는다. 결론 전에 변경 코드와 관계 근거를 확인한다.",
   }, ensure_ascii=False, indent=2))
   return 0

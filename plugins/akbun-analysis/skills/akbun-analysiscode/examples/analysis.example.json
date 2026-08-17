@@ -1,5 +1,5 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "project": {
     "id": "order-platform-1a2b3c4d",
     "name": "order-platform",
@@ -9,21 +9,136 @@
     "analyzed_at": "2026-08-13T00:00:00+00:00",
     "worktree_fingerprint": "clean"
   },
-  "summary": "주문 접수부터 결제 요청과 상태 저장까지 담당하는 서비스 묶음",
+  "summary": "고객 주문을 접수해 결제를 요청하고 주문 상태를 확정하는 서비스 묶음",
   "related_project_ids": [],
+  "businesses": [
+    {
+      "id": "order",
+      "name": "주문",
+      "description": "고객이 장바구니를 주문으로 확정하고 그 상태를 추적하는 업무 영역",
+      "flows": [
+        {
+          "id": "order.create",
+          "name": "주문 생성",
+          "description": "고객이 주문을 요청하면 결제를 승인받고 주문을 확정 상태로 저장한다.",
+          "trigger": "POST /orders",
+          "entry": "order-api",
+          "steps": [
+            "order-api-calls-place-order",
+            "place-order-calls-order-repository",
+            "order-repository-writes-orders-db",
+            "place-order-calls-payment-client",
+            "payment-client-calls-payment-gateway",
+            "place-order-publishes-order-created"
+          ]
+        }
+      ]
+    }
+  ],
+  "apis": [
+    {
+      "id": "post-orders",
+      "name": "주문 생성",
+      "protocol": "http",
+      "method": "POST",
+      "path": "/orders",
+      "provider": "order-api",
+      "entrypoint": true,
+      "flow_ids": ["order.create"],
+      "evidence": [
+        {
+          "path": "services/order-api/handler/order.go",
+          "line": 18,
+          "description": "POST /orders 라우트 등록"
+        }
+      ]
+    },
+    {
+      "id": "pg-authorize",
+      "name": "카드 승인",
+      "protocol": "http",
+      "method": "POST",
+      "path": "/v1/payments",
+      "provider": "payment-gateway",
+      "entrypoint": false,
+      "flow_ids": ["order.create"],
+      "evidence": [
+        {
+          "path": "internal/payment/client/gateway.go",
+          "line": 48,
+          "description": "결제 대행사 승인 endpoint"
+        }
+      ]
+    }
+  ],
   "components": [
     {
       "id": "order-api",
       "name": "Order API",
       "kind": "service",
-      "role": "주문을 접수하고 결제 처리를 요청한다.",
+      "layer": "entrypoint",
+      "origin": {"type": "git", "label": "order-platform"},
+      "capacity": {"replicas": 3, "cpu_millicores": 1000, "memory_mib": 1024, "max_replicas": 10, "source": "manifest"},
+      "role": "고객의 주문 요청을 받아 주문 업무를 시작한다.",
       "importance": "core",
-      "owned_paths": ["services/order-api"],
+      "owned_paths": ["services/order-api/handler"],
       "evidence": [
         {
-          "path": "services/order-api/main.go",
+          "path": "services/order-api/handler/order.go",
           "line": 18,
-          "description": "Order API 서버 엔트리포인트"
+          "description": "POST /orders 핸들러 등록"
+        }
+      ]
+    },
+    {
+      "id": "place-order",
+      "name": "주문 확정 유스케이스",
+      "kind": "module",
+      "layer": "application",
+      "origin": {"type": "code", "label": "internal/order/usecase"},
+      "role": "재고와 결제 승인을 확인해 주문을 확정할지 결정한다.",
+      "importance": "core",
+      "owned_paths": ["internal/order/usecase"],
+      "evidence": [
+        {
+          "path": "internal/order/usecase/place_order.go",
+          "line": 24,
+          "end_line": 71,
+          "description": "PlaceOrder 유스케이스 본문"
+        }
+      ]
+    },
+    {
+      "id": "order-repository",
+      "name": "주문 저장소",
+      "kind": "module",
+      "layer": "infrastructure",
+      "origin": {"type": "code", "label": "internal/order/repository"},
+      "role": "확정된 주문을 영구 저장하고 조회한다.",
+      "importance": "core",
+      "owned_paths": ["internal/order/repository"],
+      "evidence": [
+        {
+          "path": "internal/order/repository/order.go",
+          "line": 30,
+          "description": "OrderRepository 구현"
+        }
+      ]
+    },
+    {
+      "id": "payment-client",
+      "name": "결제 클라이언트",
+      "kind": "module",
+      "layer": "infrastructure",
+      "origin": {"type": "code", "label": "internal/payment/client"},
+      "role": "외부 결제 대행사에 승인을 요청한다.",
+      "importance": "core",
+      "owned_paths": ["internal/payment/client"],
+      "evidence": [
+        {
+          "path": "internal/payment/client/gateway.go",
+          "line": 41,
+          "description": "결제 승인 HTTP 클라이언트"
         }
       ]
     },
@@ -31,6 +146,9 @@
       "id": "orders-db",
       "name": "Orders DB",
       "kind": "datastore",
+      "layer": "external",
+      "origin": {"type": "database", "engine": "rds", "label": "orders"},
+      "capacity": {"replicas": 1, "cpu_millicores": 4000, "memory_mib": 16384, "source": "manifest"},
       "role": "주문 원본과 상태를 저장한다.",
       "importance": "core",
       "owned_paths": ["deploy/postgres"],
@@ -41,27 +159,143 @@
           "description": "orders PostgreSQL 인스턴스 정의"
         }
       ]
+    },
+    {
+      "id": "order-events",
+      "name": "order-created 토픽",
+      "kind": "message-broker",
+      "layer": "external",
+      "origin": {"type": "database", "engine": "kafka", "label": "order-events"},
+      "role": "주문 확정 사실을 다른 업무 영역에 알린다.",
+      "importance": "core",
+      "owned_paths": ["deploy/kafka"],
+      "evidence": [
+        {
+          "path": "deploy/kafka/topics.yaml",
+          "line": 7,
+          "description": "order-created 토픽 정의"
+        }
+      ]
+    },
+    {
+      "id": "payment-gateway",
+      "name": "결제 대행사",
+      "kind": "external-system",
+      "layer": "external",
+      "origin": {"type": "git", "label": "external/pg-provider"},
+      "role": "카드 결제를 실제로 승인한다.",
+      "importance": "core",
+      "owned_paths": [],
+      "evidence": [
+        {
+          "path": "internal/payment/client/gateway.go",
+          "line": 48,
+          "description": "결제 대행사 승인 endpoint 호출"
+        }
+      ]
     }
   ],
   "relationships": [
     {
-      "id": "order-api-writes-orders-db",
+      "id": "order-api-calls-place-order",
       "source": "order-api",
+      "target": "place-order",
+      "kind": "code-call",
+      "label": "주문 확정 요청",
+      "details": {"function": "PlaceOrder"},
+      "evidence": [
+        {
+          "path": "services/order-api/handler/order.go",
+          "line": 33,
+          "description": "PlaceOrder 유스케이스 호출"
+        }
+      ]
+    },
+    {
+      "id": "place-order-calls-order-repository",
+      "source": "place-order",
+      "target": "order-repository",
+      "kind": "code-call",
+      "label": "주문 저장 위임",
+      "details": {"function": "Save"},
+      "evidence": [
+        {
+          "path": "internal/order/usecase/place_order.go",
+          "line": 58,
+          "description": "OrderRepository.Save 호출"
+        }
+      ]
+    },
+    {
+      "id": "order-repository-writes-orders-db",
+      "source": "order-repository",
       "target": "orders-db",
       "kind": "db-write",
       "label": "주문 저장",
-      "details": {
-        "database": "orders",
-        "table": "orders"
+      "details": {"database": "orders", "table": "orders"},
+      "load": {
+        "fan_out": 3,
+        "fan_out_note": "주문 항목마다 INSERT 를 반복한다. 항목 수 평균 3건 기준",
+        "sync": true,
+        "crypto": "tls"
       },
       "evidence": [
         {
-          "path": "services/order-api/repository/order.go",
+          "path": "internal/order/repository/order.go",
           "line": 42,
           "end_line": 48,
           "description": "orders 테이블 INSERT 실행"
         }
       ]
+    },
+    {
+      "id": "place-order-calls-payment-client",
+      "source": "place-order",
+      "target": "payment-client",
+      "kind": "code-call",
+      "label": "결제 승인 위임",
+      "details": {"function": "Authorize"},
+      "evidence": [
+        {
+          "path": "internal/order/usecase/place_order.go",
+          "line": 44,
+          "description": "PaymentClient.Authorize 호출"
+        }
+      ]
+    },
+    {
+      "id": "payment-client-calls-payment-gateway",
+      "source": "payment-client",
+      "target": "payment-gateway",
+      "kind": "external-api",
+      "label": "카드 결제 승인",
+      "api": "pg-authorize",
+      "details": {"provider": "pg-provider", "endpoint": "POST /v1/payments"},
+      "load": {"fan_out": 1, "sync": true, "crypto": "mtls"},
+      "evidence": [
+        {
+          "path": "internal/payment/client/gateway.go",
+          "line": 48,
+          "end_line": 55,
+          "description": "결제 승인 요청 전송"
+        }
+      ]
+    },
+    {
+      "id": "place-order-publishes-order-created",
+      "source": "place-order",
+      "target": "order-events",
+      "kind": "event-publish",
+      "label": "주문 확정 알림",
+      "details": {"broker": "kafka", "topic": "order-created"},
+      "evidence": [
+        {
+          "path": "internal/order/usecase/place_order.go",
+          "line": 66,
+          "description": "order-created 이벤트 발행"
+        }
+      ]
     }
-  ]
+  ],
+  "layout": {}
 }
