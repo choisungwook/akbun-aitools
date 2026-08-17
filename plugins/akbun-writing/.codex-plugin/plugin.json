@@ -1,6 +1,6 @@
 {
   "name": "akbun-writing",
-  "version": "1.0.44",
+  "version": "1.0.45",
   "description": "Writing, review, and blog support skills by akbun",
   "author": {
     "name": "akbun",
@@ -35,7 +35,8 @@
       "Write an akbun-style post in 설득식/persuasive form (악분설득스타일)",
       "Review this draft against akbun's writing rules",
       "Convert this Obsidian markdown post for publishing",
-      "Generate click-worthy Korean headline candidates for this draft"
+      "Generate click-worthy Korean headline candidates for this draft",
+      "Write an onboarding doc for someone with zero context on this system"
     ],
     "brandColor": "#0F766E",
     "screenshots": []
