@@ -217,7 +217,6 @@ class AnalysisCodeTest(unittest.TestCase):
           ],
         },
       ],
-      "layout": {},
     }
 
   def run_script(self, name: str, *args: str) -> subprocess.CompletedProcess[str]:
@@ -289,6 +288,12 @@ class AnalysisCodeTest(unittest.TestCase):
     receipt = validate_analysis(data, self.repo)
     self.assertFalse(receipt["ok"])
     self.assertTrue(any("not yet reached" in error["message"] for error in receipt["errors"]))
+
+    data = self.analysis()
+    data["businesses"][0]["flows"][0]["trigger"] = 42
+    receipt = validate_analysis(data, self.repo)
+    self.assertFalse(receipt["ok"])
+    self.assertTrue(any(error["subject"].endswith(".trigger") for error in receipt["errors"]))
 
     data = self.analysis()
     data["components"][1]["layer"] = "nowhere"
@@ -465,12 +470,23 @@ class AnalysisCodeTest(unittest.TestCase):
     result = self.run_script("commit_analysis.py", str(self.repo), str(candidate))
     self.assertEqual(result.returncode, 0, result.stderr or result.stdout)
 
-    # 증분 갱신에서 layout 을 비운 candidate 를 넘겨도 저장된 배치는 남는다.
-    candidate.write_text(json.dumps(self.analysis(), ensure_ascii=False), encoding="utf-8")
+    # 증분 갱신은 layout 을 아예 넘기지 않는다. 이때 저장된 배치는 남아야 한다.
+    incremental = self.analysis()
+    self.assertNotIn("layout", incremental)
+    candidate.write_text(json.dumps(incremental, ensure_ascii=False), encoding="utf-8")
     result = self.run_script("commit_analysis.py", str(self.repo), str(candidate))
     self.assertEqual(result.returncode, 0, result.stderr or result.stdout)
     stored = json.loads(project_paths(self.repo)["analysis"].read_text(encoding="utf-8"))
     self.assertEqual(stored["layout"], {"service": {"order-api": {"x": 400, "y": 120}}})
+
+    # 빈 layout 을 직접 넣은 candidate 는 배치를 지우겠다는 뜻이므로 되살리지 않는다.
+    reset = self.analysis()
+    reset["layout"] = {}
+    candidate.write_text(json.dumps(reset, ensure_ascii=False), encoding="utf-8")
+    result = self.run_script("commit_analysis.py", str(self.repo), str(candidate))
+    self.assertEqual(result.returncode, 0, result.stderr or result.stdout)
+    stored = json.loads(project_paths(self.repo)["analysis"].read_text(encoding="utf-8"))
+    self.assertEqual(stored["layout"], {})
 
   def test_outdated_schema_forces_full_reanalysis(self) -> None:
     candidate = self.base / "candidate.json"

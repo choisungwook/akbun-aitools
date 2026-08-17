@@ -110,11 +110,11 @@ akbun 발표자료 스타일 skill 모음.
 
 ### akbun-analysis
 
-코드베이스 분석 skill 모음. 서비스·컴포넌트의 호출 관계를 file:line 근거가 있는 JSON으로 저장하고, 인터랙티브 HTML과 선택적 draw.io 관계도를 생성·증분 갱신한다.
+코드베이스 분석 skill 모음. 어떤 비즈니스를 위해 코드가 쓰였는지를 file:line 근거가 있는 JSON으로 저장하고, 인터랙티브 HTML과 선택적 draw.io 관계도를 생성·증분 갱신한다.
 
 | skill | 설명 |
 |---|---|
-| [akbun-analysiscode](./plugins/akbun-analysis/skills/akbun-analysiscode/) | 비즈니스 흐름과 그 흐름에 쓰인 코드를 근거 기반 JSON으로 분석하고 비즈니스·서비스 두 화면의 인터랙티브 HTML·draw.io로 시각화·증분 갱신 |
+| [akbun-analysiscode](./plugins/akbun-analysis/skills/akbun-analysiscode/) | 비즈니스 흐름·API·서비스 관계를 근거 기반 JSON으로 분석하고, 비즈니스·서비스·API 관계도와 fan-out 기반 부하 전파 화면을 가진 인터랙티브 HTML·draw.io로 시각화·증분 갱신 |
 
 ## skill 연관관계
 

@@ -382,13 +382,14 @@ def build_api_view(
   """API 로만 본 관계도. 어떤 컴포넌트가 어떤 주소를 부르고 누가 그 주소를 제공하는지만 남긴다."""
   edges: list[dict[str, Any]] = []
   node_uids: set[str] = set()
+  api_by_uid = {item["uid"]: item for item in apis}
   for api in apis:
     if api["provider_uid"] in component_by_uid:
       node_uids.add(api["provider_uid"])
   for relationship in relationships:
     api = None
     if relationship.get("api_uid"):
-      api = next((item for item in apis if item["uid"] == relationship["api_uid"]), None)
+      api = api_by_uid.get(relationship["api_uid"])
     elif relationship["kind"] not in {"http", "grpc", "external-api"}:
       continue
     source = relationship["source_uid"]

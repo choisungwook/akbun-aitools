@@ -562,6 +562,9 @@ def validate_businesses(
       for field in ("name", "description"):
         if not isinstance(flow.get(field), str) or not flow.get(field, "").strip():
           errors.append({"subject": f"{flow_subject}.{field}", "message": "non-empty string required"})
+      trigger = flow.get("trigger")
+      if trigger is not None and (not isinstance(trigger, str) or not trigger.strip()):
+        errors.append({"subject": f"{flow_subject}.trigger", "message": "must be a non-empty string"})
       entry = flow.get("entry")
       if entry not in component_ids:
         errors.append({"subject": f"{flow_subject}.entry", "message": "entry component not found"})
