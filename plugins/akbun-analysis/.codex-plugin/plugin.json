@@ -1,6 +1,6 @@
 {
   "name": "akbun-analysis",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Codebase analysis skills — evidence-backed service/component relationships in JSON with interactive HTML, optional draw.io, and incremental updates",
   "author": {
     "name": "akbun",
@@ -38,7 +38,9 @@
       "이 저장소의 서비스·컴포넌트 호출 관계를 분석해서 인터랙티브 HTML로 시각화해줘",
       "Analyze this codebase and create an evidence-backed service relationship JSON and HTML map",
       "저장된 분석을 증분 갱신하고 이 변경의 영향 가능 컴포넌트를 알려줘",
-      "분석된 관계도를 편집 가능한 draw.io 파일로 내보내줘"
+      "분석된 관계도를 편집 가능한 draw.io 파일로 내보내줘",
+      "agent가 필요한 기억만 꺼내 쓰도록 디렉터리 구조와 AGENTS.md를 만들어줘",
+      "여러 세션에 걸쳐 장애를 조사하도록 incident 구조와 트러블슈팅 규칙을 만들어줘"
     ],
     "brandColor": "#0F766E",
     "screenshots": []
