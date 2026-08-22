@@ -43,20 +43,16 @@ akbun tools for both Claude Code and Codex plugin workflows.
 | [akbun-draw-cartoon-b](./plugins/akbun-draw/skills/akbun-draw-cartoon-b/) | 아무 상황을 회색 그라데이션+베이지 테두리+낙서풍 고래 캐릭터+올리브 포인트 하나의 이슈 카드뉴스 스타일로 그리는 이미지 생성 프롬프트와 Figma/Canva용 SVG 작성 |
 | [akbun-draw-cardnews-cream](./plugins/akbun-draw/skills/akbun-draw-cardnews-cream/) | 아무 개념을 크림 배경+손글씨 제목·본문+낙서 다이어그램+파란 빗금 포인트 하나의 설명형 카드뉴스 스타일로 그리는 이미지 생성 프롬프트와 Figma/Canva용 SVG 작성 |
 | [akbun-mascot-whale](./plugins/akbun-draw/skills/akbun-mascot-whale/) | akbun 마스코트 고래 캐릭터의 표준 외형 스펙(다른 그리기 skill이 참조) |
-| [akbun-draw-electronicon](./plugins/akbun-draw/skills/akbun-draw-electronicon/) | 인터뷰로 앱 핵심 기능을 확인해 고래 마스코트 Electron 앱 아이콘의 이미지 생성 프롬프트 작성 + KB 압축·적용 안내 |
+| [akbun-draw-electronicon](./plugins/akbun-draw/skills/akbun-draw-electronicon/) | 인터뷰로 앱 핵심 기능을 확인해 마스코트 캐릭터 Electron 앱 아이콘의 이미지 생성 프롬프트 작성 + KB 압축·적용 안내 |
 
 아래는 각 skill로 만든 예시다.
 
 | skill | 이미지 |
 |---|---|
 | `akbun-mascot-whale` | <img src="./imgs/akbun-mascot-whale.png" alt="akbun-mascot-whale" width="320"> |
-| `akbun-draw-cardnews-cream` | <img src="./imgs/akbun-draw-cardnews-cream.png" alt="akbun-draw-cardnews-cream" width="320"> |
-| `akbun-draw-storytellingimage` | <img src="./imgs/akbun-draw-storytellingimage.png" alt="akbun-draw-storytellingimage" width="320"> |
 | `akbun-draw-webtoon-a` | <img src="./imgs/akbun-draw-webtoon.png" alt="akbun-draw-webtoon-a" width="320"> |
-| `akbun-draw-webtoon-b` | <img src="./imgs/akbun-draw-webtoon-b.png" alt="akbun-draw-webtoon-b" width="320"> |
 | `akbun-draw-webtoon-c` | <img src="./imgs/akbun-draw-webtoon-c.png" alt="akbun-draw-webtoon-c" width="320"> |
 | `akbun-draw-cartoon-b` | <img src="./imgs/akbun-draw-cartoon-b.png" alt="akbun-draw-cartoon-b" width="320"> |
-| `akbun-draw-sketchbook-card` | <img src="./imgs/akbun-draw-sketchbook-card.png" alt="연필 스케치북 카드 예시" width="320"> |
 
 ### akbun-draw-architecture
 
@@ -113,8 +109,7 @@ akbun 발표자료 스타일 skill 모음.
 일부 skill은 다른 skill의 정의를 참조한다. 참조 대상 skill을 바꾸면 참조하는 skill의 결과물도 함께 바뀐다.
 
 - `akbun-mascot-whale`(akbun-draw): akbun 마스코트 고래의 표준 외형을 정의하는 기준 skill. 캐릭터를 그리는 아래 skill들이 이 스펙을 참조한다.
-  - 캐릭터로 직접 사용: `akbun-draw-cartoon-b`, `akbun-draw-webtoon-b`, `akbun-draw-webtoon-c`, `akbun-draw-storytellingimage`
-  - 인물이 필요할 때 사용: `akbun-draw-book-illustration`, `akbun-draw-poster-monogray`, `akbun-draw-sketchbook-card`
+  - 캐릭터로 직접 사용: `akbun-draw-cartoon-b`, `akbun-draw-webtoon-c`
 
 ## 설치 방법
 

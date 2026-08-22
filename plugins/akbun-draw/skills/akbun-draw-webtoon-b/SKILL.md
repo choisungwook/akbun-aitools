@@ -24,14 +24,14 @@ akbun-draw-webtoon-a(xkcd풍 흑백 스틱피겨)와 다른 skill이다. 이 ski
 
 ### 주인공 캐릭터
 
-이야기의 화자("나")를 그리는 캐릭터. **akbun 마스코트 고래의 치비 버전**이다. 기본 외형(콩 모양 통통한 몸, 흰 배, 밝은 회색 등, 작은 옆지느러미 2개, 납작한 꼬리, 까만 점 눈, 작은 곡선 입)은 `akbun-mascot-whale` skill의 캐릭터 스펙을 따르고, 이 skill에서는 파스텔 수채 치비로 렌더링하며 발그레한 볼터치와 뮤트 그레이블루 후드티를 더한다.
+이야기의 화자("나")를 그리는 캐릭터. 치비 고양이 — 부드러운 밝은 회색 털, 크림빛 흰 배, 작고 둥근 귀 2개, 짧은 꼬리, 까만 점 눈, 작은 곡선 입에 파스텔 수채 치비로 렌더링하고, 발그레한 볼터치와 뮤트 그레이블루 후드티를 더한다.
 
 주인공의 영어 CHARACTER 문장:
 
 ```text
-a chibi whale character (the akbun whale mascot): a chubby bean-shaped body with a soft
-light-gray back and cream-white belly, two tiny side fins, a small flat tail, two black dot
-eyes, a small curved smile, blushing cheeks, wearing a muted gray-blue hoodie
+a chibi cat character with a chubby rounded body, soft light-gray fur and a cream-white
+belly, two small round ears, a short tail, two black dot eyes, a small curved smile,
+blushing cheeks, wearing a muted gray-blue hoodie
 ```
 
 ### 상대 캐릭터

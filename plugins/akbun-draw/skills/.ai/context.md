@@ -2,7 +2,7 @@
 
 ## 작업 맥락
 
-akbun-draw는 소재·글·코드를 akbun 고정 스타일의 이미지 생성 프롬프트와 Figma/Canva 편집용 SVG로 만드는 이미지 그리기 skill 모음이다. akbun-writing에서 분리했다. 각 skill은 그림체·색감(스타일)을 고정하고 소재·구도는 입력에 맞춰 자유롭게 정한다. 캐릭터가 필요한 skill은 `akbun-mascot-whale`의 표준 외형 스펙을 참조한다.
+akbun-draw는 소재·글·코드를 akbun 고정 스타일의 이미지 생성 프롬프트와 Figma/Canva 편집용 SVG로 만드는 이미지 그리기 skill 모음이다. akbun-writing에서 분리했다. 각 skill은 그림체·색감(스타일)을 고정하고 소재·구도는 입력에 맞춰 자유롭게 정한다. `akbun-draw-webtoon-c`와 `akbun-draw-cartoon-b`만 `akbun-mascot-whale`의 표준 외형 스펙을 참조하고, 나머지 skill은 캐릭터를 소재에 맞춰 정한다.
 
 ## 용어 정리
 
