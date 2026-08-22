@@ -34,6 +34,7 @@ akbun tools for both Claude Code and Codex plugin workflows.
 | [akbun-draw-webtoon-d](./plugins/akbun-draw/skills/akbun-draw-webtoon-d/) | 실제 경험담을 인스타 세로형(3:4) 흑백 다큐툰(거친 잉크 낙서선+하단 자막 내레이션+얼굴 없는 실루엣 군중)의 장면별 이미지 생성 프롬프트로 작성 |
 | [akbun-generate-sketch-text](./plugins/akbun-draw/skills/akbun-generate-sketch-text/) | 문구를 린넨 원단 자수 텍스트 + 형광펜 강조 스타일의 이미지 생성 프롬프트로 작성 |
 | [akbun-draw-sketchbook-card](./plugins/akbun-draw/skills/akbun-draw-sketchbook-card/) | 개념을 연필 스케치북 카드(손글씨 제목·체크리스트+일러스트)로 그리는 이미지 생성 프롬프트 작성 |
+| [akbun-draw-storytellingimage](./plugins/akbun-draw/skills/akbun-draw-storytellingimage/) | 이야기를 장면별 손그림 마커 스케치 삽화의 이미지 생성 프롬프트로 작성 |
 | [akbun-draw-quiet-pencil](./plugins/akbun-draw/skills/akbun-draw-quiet-pencil/) | 아무 순간을 크림 배경+넓은 여백+회색 연필 소재+틸 소품 하나의 조용한 연필 스케치 장면 스타일로 그리는 이미지 생성 프롬프트 작성 |
 | [akbun-draw-poster-monogray](./plugins/akbun-draw/skills/akbun-draw-poster-monogray/) | 아무 소재를 손그림 진회색 잉크+플랫 회색+오렌지 포인트 하나의 테크북 삽화 스타일로 그리는 이미지 생성 프롬프트와 Figma/Canva용 SVG 작성 |
 | [akbun-draw-book-illustration](./plugins/akbun-draw/skills/akbun-draw-book-illustration/) | 소재·문구를 monogray 삽화 스타일 + 고정 레이아웃 5종(아이콘 스트립·확대·대화·흐름·포스터)과 상하좌우 간격으로 배치한 이미지 생성 프롬프트와 Figma/Canva용 SVG 작성 |
@@ -48,6 +49,7 @@ akbun tools for both Claude Code and Codex plugin workflows.
 |---|---|
 | `akbun-mascot-whale` | <img src="./imgs/akbun-mascot-whale.png" alt="akbun-mascot-whale" width="320"> |
 | `akbun-draw-cardnews-cream` | <img src="./imgs/akbun-draw-cardnews-cream.png" alt="akbun-draw-cardnews-cream" width="320"> |
+| `akbun-draw-storytellingimage` | <img src="./imgs/akbun-draw-storytellingimage.png" alt="akbun-draw-storytellingimage" width="320"> |
 | `akbun-draw-webtoon-a` | <img src="./imgs/akbun-draw-webtoon.png" alt="akbun-draw-webtoon-a" width="320"> |
 | `akbun-draw-webtoon-b` | <img src="./imgs/akbun-draw-webtoon-b.png" alt="akbun-draw-webtoon-b" width="320"> |
 | `akbun-draw-webtoon-c` | <img src="./imgs/akbun-draw-webtoon-c.png" alt="akbun-draw-webtoon-c" width="320"> |
@@ -109,7 +111,7 @@ akbun 발표자료 스타일 skill 모음.
 일부 skill은 다른 skill의 정의를 참조한다. 참조 대상 skill을 바꾸면 참조하는 skill의 결과물도 함께 바뀐다.
 
 - `akbun-mascot-whale`(akbun-draw): akbun 마스코트 고래의 표준 외형을 정의하는 기준 skill. 캐릭터를 그리는 아래 skill들이 이 스펙을 참조한다.
-  - 캐릭터로 직접 사용: `akbun-draw-cartoon-b`, `akbun-draw-webtoon-b`, `akbun-draw-webtoon-c`
+  - 캐릭터로 직접 사용: `akbun-draw-cartoon-b`, `akbun-draw-webtoon-b`, `akbun-draw-webtoon-c`, `akbun-draw-storytellingimage`
   - 인물이 필요할 때 사용: `akbun-draw-book-illustration`, `akbun-draw-poster-monogray`, `akbun-draw-sketchbook-card`
 
 ## 설치 방법
