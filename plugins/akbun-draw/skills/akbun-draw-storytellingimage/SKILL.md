@@ -28,8 +28,8 @@ description: >
 - **선**: 진한 네이비/검정 잉크의 손그림 외곽선. 굵고 살짝 흔들리는 스케치 느낌.
 - **채색**: 마커로 낙서하듯 그은 빗금 채색. 면을 꽉 채우지 않고 획이 보이며 외곽선을 살짝 삐져나온다.
 - **팔레트**: 밝은 원색(파랑, 노랑, 주황, 초록, 빨강) 중 한 장면에 3~5색. 갈색은 나무·흙·머리카락 보조색.
-- **주인공**: `akbun-mascot-whale` 스펙을 따른 마스코트 고래를 마커 낙서로 그리고, 표정·몸짓을 과장한다.
-- **군중**: 채색 없는 단순한 흰 미니 고래 실루엣(이목구비 없음)으로 주인공과 구분한다.
+- **주인공**: 이야기에 맞는 캐릭터를 하나 정해 마커 낙서로 그리고, 표정·몸짓을 과장한다.
+- **군중**: 채색 없는 단순한 흰 미니 실루엣(이목구비 없음)으로 주인공과 구분한다.
 - **연출**: 움직임 곡선, 땀방울, 강조 화살표(빨강/주황), 짧은 라벨 같은 만화 기호를 아껴 쓴다.
 - **소품**: 산, 바위, 깃발, 씨앗, 사다리처럼 이야기의 비유를 그대로 그린 큼직한 소품이 어울린다.
 - **여백**: 대상 하나가 가운데를 차지하고 주변은 넉넉히 비운다. 배경 디테일을 그리지 않는다.
@@ -74,15 +74,15 @@ hand-drawn feel. Colored with loose marker scribble strokes that leave visible h
 slightly overshoot the outlines — not flat fills. Bright palette of <3-5 colors, e.g. blue,
 yellow, orange, green>.
 
-CHARACTER: the akbun whale mascot — a chubby bean-shaped whale with a white belly, a light gray
-back, two tiny side fins, a small flat tail, black dot eyes and a simple curved-line smile,
+CHARACTER: <one sentence defining the main character — body shape, colors, face, clothing,
+e.g. "a round chibi character with a big head, black dot eyes and a simple curved-line smile">,
 colored in loose marker scribbles. (Reuse this exact sentence in every scene of the series.)
 
 SCENE: <the character's action, posture and emotion, plus the one or two props that matter,
-e.g. "the whale holds a tiny green sprout in a clay pot, leaning in close with a proud smile,
-small motion swooshes around the sprout">.
+e.g. "the character holds a tiny green sprout in a clay pot, leaning in close with a proud
+smile, small motion swooshes around the sprout">.
 
-<Optional CROWD: small simple white doodle whale figures with plain rounded bodies, no facial
+<Optional CROWD: small simple white doodle figures with plain rounded bodies, no facial
 features, no color, doing <action> in the background.>
 
 <Optional LABEL: one short handwritten label reading exactly: "<...>", with a small <red|orange>
@@ -102,11 +102,11 @@ text beyond the label, no watermarks, no panel borders.
 템플릿에 넣어 3개의 독립된 영어 프롬프트로 출력한다.
 
 ```text
-Scene 1 — 결심: the whale mascot stands proudly with its fins on its hips next to a huge to-do
+Scene 1 — 결심: the main character stands proudly with hands on hips next to a huge to-do
 list covered in red marker scribbles, a small red flag planted beside it.
-Scene 2 — 포기: the same whale (identical CHARACTER sentence) slumps on the floor with sweat
+Scene 2 — 포기: the same character (identical CHARACTER sentence) slumps on the floor with sweat
 drops, the giant to-do list toppling over it like a falling wall.
-Scene 3 — 아주 작은 습관: the same whale does one tiny push-up on its fins with a big smile,
+Scene 3 — 아주 작은 습관: the same character does one tiny push-up with a big smile,
 next to a small calendar where three days are checked with green marker.
 ```
 
