@@ -1,6 +1,6 @@
 {
   "name": "akbun-draw",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Image drawing skills by akbun — image-generation prompts and editable SVGs in fixed akbun styles",
   "author": {
     "name": "akbun",
@@ -44,6 +44,7 @@
       "Make a book-figure image prompt and an editable SVG using a fixed layout (icon strip, zoom, dialog, flow, or poster card)",
       "Make a naive-doodle safety issue card-news with whale characters (image prompt + Figma/Canva SVG) from this situation",
       "Make a cream handwritten explainer card-news (image prompt + Figma/Canva SVG) for this concept",
+      "Make hand-drawn marker sketch illustration prompts for each scene of this story",
       "Make a quiet cream pencil-sketch scene image prompt with one teal accent from this moment",
       "Describe the akbun whale mascot character spec for use in another drawing skill",
       "Make a whale-mascot Electron app icon image prompt for my desktop app"
