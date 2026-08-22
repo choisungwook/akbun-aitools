@@ -1,6 +1,6 @@
 {
   "name": "akbun-writing",
-  "version": "1.0.46",
+  "version": "1.0.47",
   "description": "Writing, review, and blog support skills by akbun",
   "author": {
     "name": "akbun",
@@ -36,7 +36,9 @@
       "Review this draft against akbun's writing rules",
       "Convert this Obsidian markdown post for publishing",
       "Generate click-worthy Korean headline candidates for this draft",
-      "Write an onboarding doc for someone with zero context on this system"
+      "Write an onboarding doc for someone with zero context on this system",
+      "Structure this post in 이정표식/signposted form (akbun-writing-structure-signposted)",
+      "Write this in 다정한 말투/warm form (akbun-writing-style-warm)"
     ],
     "brandColor": "#0F766E",
     "screenshots": []
