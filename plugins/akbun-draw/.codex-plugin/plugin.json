@@ -1,6 +1,6 @@
 {
   "name": "akbun-draw",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Image drawing skills by akbun — image-generation prompts and editable SVGs in fixed akbun styles",
   "author": {
     "name": "akbun",
@@ -47,7 +47,8 @@
       "Make hand-drawn marker sketch illustration prompts for each scene of this story",
       "Make a quiet cream pencil-sketch scene image prompt with one teal accent from this moment",
       "Describe the akbun whale mascot character spec for use in another drawing skill",
-      "Make a mascot-character Electron app icon image prompt for my desktop app"
+      "Make a mascot-character Electron app icon image prompt for my desktop app",
+      "Draw a dark presentation-style system architecture image or editable PowerPoint slide from this system description"
     ],
     "brandColor": "#0F766E",
     "screenshots": []
