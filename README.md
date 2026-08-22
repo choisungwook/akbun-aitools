@@ -44,6 +44,7 @@ akbun tools for both Claude Code and Codex plugin workflows.
 | [akbun-draw-cardnews-cream](./plugins/akbun-draw/skills/akbun-draw-cardnews-cream/) | 아무 개념을 크림 배경+손글씨 제목·본문+낙서 다이어그램+파란 빗금 포인트 하나의 설명형 카드뉴스 스타일로 그리는 이미지 생성 프롬프트와 Figma/Canva용 SVG 작성 |
 | [akbun-mascot-whale](./plugins/akbun-draw/skills/akbun-mascot-whale/) | akbun 마스코트 고래 캐릭터의 표준 외형 스펙(다른 그리기 skill이 참조) |
 | [akbun-draw-electronicon](./plugins/akbun-draw/skills/akbun-draw-electronicon/) | 인터뷰로 앱 핵심 기능을 확인해 마스코트 캐릭터 Electron 앱 아이콘의 이미지 생성 프롬프트 작성 + KB 압축·적용 안내 |
+| [akbun-draw-system-architecture](./plugins/akbun-draw/skills/akbun-draw-system-architecture/) | 시스템 설명·코드·문서를 진회색 프레젠테이션 스타일의 시스템 아키텍처 이미지·생성 프롬프트·편집 가능한 PPTX로 변환 |
 
 아래는 각 skill로 만든 예시다.
 

@@ -2,12 +2,13 @@
 
 ## 작업 맥락
 
-akbun-draw는 소재·글·코드를 akbun 고정 스타일의 이미지 생성 프롬프트와 Figma/Canva 편집용 SVG로 만드는 이미지 그리기 skill 모음이다. akbun-writing에서 분리했다. 각 skill은 그림체·색감(스타일)을 고정하고 소재·구도는 입력에 맞춰 자유롭게 정한다. `akbun-draw-webtoon-c`와 `akbun-draw-cartoon-b`만 `akbun-mascot-whale`의 표준 외형 스펙을 참조하고, 나머지 skill은 캐릭터를 소재에 맞춰 정한다.
+akbun-draw는 소재·글·코드를 고정 스타일의 이미지 생성 프롬프트와 Figma/Canva용 SVG로 만드는 skill 모음이다. 각 skill은 그림체·색감만 고정하고 소재·구도는 입력에 맞춘다. `akbun-draw-webtoon-c`와 `akbun-draw-cartoon-b`만 표준 고래 마스코트를 참조한다.
 
 ## 용어 정리
 
-- reference image: 그대로 복제할 대상이 아니라 레이아웃, 스타일, 구조를 판단하는 참고 이미지이다.
-- book illustration layout(책 삽화 레이아웃): `akbun-draw-poster-monogray`와 같은 팔레트(진회색 잉크+플랫 회색+오렌지 포인트 하나+off-white)를 쓰되, 구도를 자유롭게 두지 않고 참고 이미지에서 뽑은 고정 레이아웃 5종(flow-stack, zoom-detail, poster-card, dialog-scene, icon-strip)과 상하좌우 간격에 맞춰 배치한다. `akbun-draw-book-illustration`이 담당하며, 산출물은 이미지 프롬프트와 편집 가능한 SVG 두 가지다. 스타일만 필요하고 구도가 자유로우면 monogray, 정해진 레이아웃·간격이 필요하면 이 skill을 쓴다.
-- essay-toon(에세이툰): 가로형(16:10) 1컷 페이지 형식으로, 상단의 굵은 손글씨 내레이션이 이야기를 끌고 그림은 감정 한 장면만 보여준다. 주인공은 플랫 채색한 akbun 고래 마스코트, 배경 인물은 채색 없는 선화 실루엣이다. `akbun-draw-webtoon-c`가 담당한다(a: 3~4컷 스틱피겨, b: 세로형 파스텔 치비와 구분).
-- storytelling illustration(스토리텔링 삽화): 발표·블로그·영상에서 이야기를 말로 풀 때 각 대목을 받쳐주는 삽화다. 한 장짜리 웹툰이 아니라 장면당 메시지 하나만 담고, 크림색 종이 배경 + 진한 잉크 외곽선 + 마커 낙서 채색으로 그린다. 시리즈 일관성은 모든 장면 프롬프트에 CHARACTER 문장을 글자 그대로 재사용해 유지한다. `akbun-draw-storytellingimage`가 담당한다.
-- documentary-toon(다큐툰): 인스타그램 세로형 3:4 흑백 프레임 형식으로, 거친 잉크 낙서선과 하단 영상 자막 스타일 내레이션 바가 실화 회상을 서술한다. 주인공급 얼굴은 최대 4명, 주변 인물은 얼굴 없는 회색 실루엣이다. 스타일은 skill 디렉터리의 `design.md`에 정의하고, 소재가 없으면 그리지 않고 인터뷰한다. `akbun-draw-webtoon-d`가 담당한다.
+- reference image: 피사체를 복제하지 않고 레이아웃·스타일·구조만 판단하는 참고 이미지다.
+- book illustration layout: monogray 팔레트와 고정 레이아웃 5종을 쓰는 삽화다. `akbun-draw-book-illustration`이 프롬프트와 SVG를 만든다.
+- essay-toon: 상단 내레이션과 고래 마스코트의 감정 장면 하나로 구성한 가로형 1컷이다. `akbun-draw-webtoon-c`가 담당한다.
+- storytelling illustration: 크림 종이·잉크 외곽선·마커 채색으로 장면당 메시지 하나를 그리는 삽화다. `akbun-draw-storytellingimage`가 담당한다.
+- documentary-toon: 거친 흑백 잉크선과 하단 자막으로 실화를 서술하는 3:4 프레임이다. `akbun-draw-webtoon-d`가 담당한다.
+- presentation architecture: 16:9 차콜 캔버스에 흰색 구조선과 제한된 노랑·빨강 강조를 쓰는 시스템 구성도다. `akbun-draw-system-architecture`가 이미지·생성 프롬프트를 만들며, 요청 시 편집 가능한 PPTX로 제공한다.
