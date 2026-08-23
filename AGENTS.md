@@ -33,6 +33,9 @@ plugin의 버전을 올린다. 사용자에게 버전 업데이트 여부를 묻
   이면 이번 작업은 몇 번을 수정하든 `1.0.21`). 이미 이번 작업에서 올려둔 상태로 추가 수정이 생기면 번호를
   더 올리지 말고 그대로 둔다.
 - skill을 새로 추가하면, 해당 plugin manifest의 `interface.defaultPrompt`에 그 skill을 부르는 예시 한 줄을 추가한다.
+- skill을 새로 만들면 `SKILL.md` frontmatter에 `disable-model-invocation: true`를 기본으로 넣는다. 모델이
+  알아서 부르지 않고 사용자가 직접 호출할 때만 실행되게 한다. 다른 skill이 참조하는 기준 skill이거나
+  사용자가 자동 호출을 요청한 경우에만 뺀다.
 - plugin을 추가/삭제하거나 plugin 아래 skill을 추가/삭제하면 `README.md`의 `## plugin 목록` 섹션도 함께 갱신한다.
   plugin이 추가되면 해당 plugin의 `### <plugin-name>` 하위 섹션과 skill 표를 만들고, 삭제되면 그 섹션을 지운다.
   skill이 추가/삭제되면 해당 plugin 표에서 한 줄짜리 설명 행을 추가/삭제한다. `docs/` 같이 `SKILL.md`가 없는 디렉터리는 목록에 넣지 않는다.
