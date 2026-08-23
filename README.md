@@ -45,6 +45,7 @@ akbun tools for both Claude Code and Codex plugin workflows.
 | [akbun-mascot-whale](./plugins/akbun-draw/skills/akbun-mascot-whale/) | akbun 마스코트 고래 캐릭터의 표준 외형 스펙(다른 그리기 skill이 참조) |
 | [akbun-draw-electronicon](./plugins/akbun-draw/skills/akbun-draw-electronicon/) | 인터뷰로 앱 핵심 기능을 확인해 마스코트 캐릭터 Electron 앱 아이콘의 이미지 생성 프롬프트 작성 + KB 압축·적용 안내 |
 | [akbun-draw-system-architecture](./plugins/akbun-draw/skills/akbun-draw-system-architecture/) | 시스템 설명·코드·문서를 진회색 프레젠테이션 스타일의 시스템 아키텍처 이미지·생성 프롬프트·편집 가능한 PPTX로 변환 |
+| [akbun-draw-learning-mono](./plugins/akbun-draw/skills/akbun-draw-learning-mono/) | 논문·책·문서·개념을 흰 배경 흑백 미니멀 16:9 학습용 설명 이미지(주제별 분할 + 한국어 발표 대본)로 변환 |
 
 아래는 각 skill로 만든 예시다.
 
