@@ -22,6 +22,7 @@ akbun tools for both Claude Code and Codex plugin workflows.
 | [akbun-it-onboarding](./plugins/akbun-writing/skills/akbun-it-onboarding/) | 맥락 없는 사람이 첫날 읽는 IT 시스템 온보딩 문서 작성(1부 시스템 맥락 + 2부 코드 진입) |
 | [akbun-writing-structure-signposted](./plugins/akbun-writing/skills/akbun-writing-structure-signposted/) | 개수 예고 + 번호 블록 + 요약 마무리의 이정표식 글 구조 잡기 |
 | [akbun-writing-style-warm](./plugins/akbun-writing/skills/akbun-writing-style-warm/) | 겁먹은 초보 독자를 위한 해요체 경험 고백 말투로 쓰기 |
+| [akbun-writing-easy](./plugins/akbun-writing/skills/akbun-writing-easy/) | 원본 자료를 초보자용 기초 레이어 글로 바꾸는 개조식 쉬운 설명 작성 |
 
 ### akbun-draw
 
