@@ -2,14 +2,15 @@
 
 ## 작업 맥락
 
-akbun-writing은 한국어 기술 글쓰기, 문서 리뷰, 블로그 업로드, Notion 동기화를 돕는 skill 모음이다. 이미지 그리기 skill은 akbun-draw plugin으로, 아키텍처·다이어그램 skill은 akbun-draw-architecture plugin으로 분리했다. 새 skill이나 agent 설명은 실제 호출 의도와 산출물을 좁고 명확하게 적는다. 작업 이력은 changelog로 남기지 않고, 다음 agent에게 필요한 용어와 중요한 결정만 이 context와 `docs/decisions/`에 남긴다.
+akbun-writing은 한국어 글쓰기·리뷰·발행·Notion 동기화 skill 모음이다. 이미지와 아키텍처 작업은 각각 akbun-draw와 akbun-draw-architecture가 맡는다. 새 skill 설명은 호출 의도와 산출물을 좁게 적고, 작업 이력은 남기지 않는다.
 
 ## 용어 정리
 
-- trigger: skill이 자동으로 선택될 사용자 표현이다. 너무 넓게 잡지 않고, 명시적인 요청이나 좁은 의도에 맞춘다.
-- akbun style: 실제 글에서 추출한 판단 기준 기반의 한국어 기술 블로그 스타일이다. 입력에 없는 동기·경험·감정을 만들지 않고 `무엇 -> 원리 -> 헷갈리는 점 -> 실제 사용` 흐름을 따른다.
-- 확인 필요: 가정으로 처리하기 어렵거나 다음 작업자가 다시 확인해야 하는 불확실성을 표시하는 말이다.
-- Notion sync: Markdown to Notion은 CLI(`ntn`)를 우선하고 MCP를 fallback으로 둔다. `notion_sync`와 payload hash로 반복 업로드를 줄인다.
-- onboarding doc(온보딩 문서): 직무와 관계없이 서비스를 처음 접하는 사람이 전체 모습을 이해하기 위한 IT 시스템 소개 문서다. 고객 유형·사용 목적과 시스템의 가치를 함께 설명하고, 유관 부서는 별도 표로 정리한다. 사용자가 제공한 코드·문서에서 업무 흐름, 외부 의존성, 인프라, 배포를 확인한다. 유관 부서, 업무 규칙의 예외, 알려진 제약, 현재 방식의 이유와 기타 특이사항은 사용자 인터뷰로 보완하며 추정하지 않는다. 코드 진입·로컬 실행은 다루지 않고, 구조 분석은 `akbun-analysiscode` 산출물을 재사용한다. skill: `akbun-it-onboarding`.
-- question style(질문식): "질문이 글을 끌고 간다"는 골격으로 쓰는 akbun 공부 정리 글이다. `도입 훅(상황 + 관통 질문) -> 질문으로 여는 섹션 -> 마무리 종합` 흐름으로 궁금증을 유발해 끝까지 읽히게 한다. 인터뷰·대담이 아니라 글쓴이 한 명의 정리이며, 화자를 지어내지 않는다. 질문은 why·what-if로 잡는다. self-contained skill: `akbun-writing-with-question`(톤·포맷 규칙을 자체 포함).
-- 기초 레이어(basic layer): 원본 자료를 처음 보는 사람이 전체 그림을 잡도록 바꾼 글의 층위다. 요점이 원리가 아니라 `전체 그림 -> 구성 요소 -> 동작 순서 -> 헷갈리는 지점` 흐름이고, 독자는 개발 경험은 있지만 이 주제는 처음인 타 분야 엔지니어다. 산출물은 개조식(불릿은 명사형 종결, 설명 문장은 존댓말)으로 쓰고 글 앞머리에 용어 표를 둔다. 결론은 요약이 아니라 `다음에 파볼 것` 목록으로 닫아 심화 글로 연결한다. 심화(원리·디폴트 값·설계 의도)는 `akbun-writing`이 맡는다. skill: `akbun-writing-easy`.
+- trigger: skill이 선택될 사용자 표현이다. 명시적이고 좁은 의도에 맞춘다.
+- akbun style: 입력에 없는 경험을 만들지 않고 `무엇 -> 원리 -> 헷갈리는 점 -> 실제 사용`으로 쓰는 한국어 기술 블로그 스타일이다.
+- 문체 자연화: 한국어 원문의 사실·논지·장르·목소리·Markdown을 보존하며 맞춤법과 기계적인 문체만 국소 교정한다. 사용자 규칙은 삭제 목록이 아니라 AI스러운 조건과 사람다운 수정 방향을 합의해 누적한 커스텀 기준이다. skill: `akbun-writing-naturalize`.
+- 확인 필요: 의미를 추측하지 않고 원문을 유지한 불확실성을 표시한다.
+- Notion sync: CLI(`ntn`) 우선, MCP fallback으로 Markdown을 Notion에 동기화한다.
+- onboarding doc: 맥락 없는 사람이 시스템 전체를 이해하는 문서다. 코드·문서로 확인할 수 없는 업무 규칙과 제약은 인터뷰로 보완한다. skill: `akbun-it-onboarding`.
+- question style: 관통 질문과 질문형 섹션으로 전개하는 1인칭 공부 정리다. skill: `akbun-writing-with-question`.
+- 기초 레이어: 초보자가 `전체 그림 -> 구성 요소 -> 동작 순서 -> 헷갈리는 지점`을 잡는 개조식 글이다. skill: `akbun-writing-easy`.
