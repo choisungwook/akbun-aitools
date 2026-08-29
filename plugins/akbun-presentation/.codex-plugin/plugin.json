@@ -1,7 +1,7 @@
 {
   "name": "akbun-presentation",
-  "version": "1.0.1",
-  "description": "akbun presentation formats — light-sandwich decks and dark-step decks with consistent voice, layout, and diagram language (pptx/Google Slides)",
+  "version": "1.1.0",
+  "description": "akbun presentation deck (pptx) plus a per-slide speaker script (md), in a light-sandwich or dark-step style with consistent voice, layout, and diagram language",
   "author": {
     "name": "akbun",
     "url": "https://github.com/choisungwook"
@@ -15,14 +15,14 @@
     "pptx",
     "deck",
     "korean",
-    "dark-theme",
+    "speaker-script",
     "diagram"
   ],
   "skills": "./skills/",
   "interface": {
     "displayName": "akbun Presentation",
-    "shortDescription": "akbun presentation decks — light-sandwich or dark-step format (pptx / Google Slides)",
-    "longDescription": "Turns any topic, post, code, or incident story into a presentation deck in akbun's style, with two layouts. Light-sandwich: dark cover and section slides with a yellow accent bar sandwich white content slides carrying numbered section headers, square-bullet hierarchies, thin black-line diagrams with pale-yellow workload and pale-green resource fills, VS Code-style dark code panels, github/demo footers, and page numbers. Dark-step: all-dark charcoal slides, Gmarket Sans, one message per slide, unfilled white-outline diagrams. Both share a question-driven story flow with yellow point and red problem accents. Outputs a pptx file that can also be imported into Google Slides.",
+    "shortDescription": "akbun 발표 덱(pptx) + 슬라이드별 발표 대본(md) 생성",
+    "longDescription": "Turns a topic or a source document (post, paper, code, incident retro) into an akbun-style presentation deck plus a per-slide speaker script written for a presenter who is new to the subject. Takes settings for talk length, slide count, audience level, and language (slides in English, script in Korean by default) and sizes the deck and script to fit. Default light-sandwich style: dark cover and section slides with a yellow accent bar wrap white content slides carrying numbered section headers, square-bullet hierarchies, thin black-line diagrams with pale-yellow workload and pale-green resource fills, VS Code-style dark code panels, github/demo footers, and page numbers. A dark-step variant puts every slide on charcoal with one message per slide. Both follow a question-driven story flow with yellow point and red problem accents. Outputs a .pptx that can also be imported into Google Slides, and a .md speaker script.",
     "developerName": "akbun",
     "category": "Writing",
     "capabilities": [
@@ -33,8 +33,8 @@
     "privacyPolicyURL": "https://docs.github.com/site-policy/privacy-policies/github-general-privacy-statement",
     "termsOfServiceURL": "https://docs.github.com/en/site-policy/github-terms/github-terms-of-service",
     "defaultPrompt": [
-      "이 주제로 akbun 라이트 샌드위치 스타일 발표자료(pptx) 만들어줘",
-      "Make an akbun-style dark-step deck (pptx) about this topic",
+      "이 주제로 akbun 발표자료(pptx)랑 발표 대본 만들어줘",
+      "이 논문으로 15분짜리 발표자료랑 슬라이드별 대본 만들어줘",
       "이 블로그 글을 akbun 발표 스타일 슬라이드로 만들어줘",
       "이 장애 경험을 질문-여정-답 구조의 발표 덱으로 만들어줘"
     ],

@@ -1,7 +1,7 @@
-# pptxgenjs 스타일 키트 (라이트 샌드위치)
+# pptxgenjs 스타일 키트
 
-akbun 라이트 샌드위치 스타일의 실행본이다. 상수와 헬퍼를 그대로 복사해 시작한다(`npm i pptxgenjs`).
-실제 렌더링으로 검증된 코드다.
+akbun 발표자료 스타일의 실행본이다. 상수와 헬퍼를 그대로 복사해 시작한다(`npm i pptxgenjs`).
+실제 렌더링으로 검증된 코드다. 기본은 라이트 샌드위치이며, 다크 스텝 변형은 마지막 절을 본다.
 
 이 키트는 [../design.md](../design.md)의 스타일 스펙을 pptxgenjs로 구현한 것이다. 색·좌표·크기
 값은 design.md를 단일 기준으로 삼는다. design.md를 고치면 이 키트의 해당 상수·좌표도 맞춘다.
@@ -54,15 +54,15 @@ pres.defineSlideMaster({
   slideNumber: { x: 12.6, y: 7.05, w: 0.5, h: 0.3, color: L.text, fontFace: FONT, fontSize: 11 },
 });
 
-// 표지: 다크 + 제목(핵심 키워드만 노랑) + 우하단 발표자 정보
-function coverSlide(titleRuns, presenter, email) {
+// 표지: 다크 + 제목(핵심 키워드만 노랑) + 선택 부제. 발표자 정보는 넣지 않는다
+function coverSlide(titleRuns, subtitle) {
   const s = pres.addSlide({ masterName: "AKBUN_COVER" });
-  s.addText(titleRuns, { x: 0.9, y: 2.2, w: 11.5, h: 1.0, fontSize: 40, bold: true, fontFace: FONT, align: "center", margin: 0 });
-  s.addText(`발표자: ${presenter}\n${email}`, { x: 7.4, y: 5.4, w: 5.0, h: 0.9, fontSize: 18, bold: true, fontFace: FONT, color: L.white, align: "right", margin: 0 });
+  s.addText(titleRuns, { x: 0.9, y: 2.9, w: 11.5, h: 1.0, fontSize: 40, bold: true, fontFace: FONT, align: "center", margin: 0 });
+  if (subtitle) s.addText(subtitle, { x: 0.9, y: 3.95, w: 11.5, h: 0.5, fontSize: 20, fontFace: FONT, color: L.gray, align: "center", margin: 0 });
   return s;
 }
-// 사용 예: coverSlide([{ text: "Redis 캐시 스탬피드", options: { color: L.point } },
-//                     { text: " 대응기", options: { color: L.white } }], "이름", "email@example.com")
+// 사용 예: coverSlide([{ text: "Cache Stampede", options: { color: L.point } },
+//                     { text: " and How We Survived It", options: { color: L.white } }])
 
 // 섹션 표지: 다크 + 노란 세로 바 + 흰 bold 제목 (+부제)
 function sectionSlide(title, subtitle) {
@@ -141,6 +141,32 @@ function sourceCaption(s, text, x, y, w) {
 // ... 위 헬퍼로 슬라이드를 구성한 뒤:
 pres.writeFile({ fileName: "output.pptx" });
 ```
+
+## 다크 스텝 변형
+
+전 슬라이드 다크로 갈 때는 위 코드에서 아래만 바꾼다. 헬퍼 구조와 QA 절차는 그대로다.
+
+```javascript
+// 테마 상수 교체
+const L = {
+  dark: "252525", white: "252525", text: "EBEBEB", gray: "9A9A9A",
+  point: "FFC000", danger: "FF0000",
+  podFill: "252525", resFill: "252525", groupFill: "252525",
+  codeBg: "1E1E1E", codeText: "D4D4D4", codeKey: "569CD6", codeStr: "CE9178",
+};
+const FONT = "Gmarket Sans Medium";
+```
+
+추가로 바꾸는 것:
+
+- `AKBUN_LIGHT` 마스터 배경을 `L.dark`로 두고 페이지 번호를 뺀다.
+- `lbox`는 `fill: { type: "none" }` + 흰 1pt 테두리 + `L.text` 라벨로 바꾼다. 주인공 박스만
+  노랑 채움 + 검정 bold 라벨.
+- `lgroup`은 점선 흰 테두리(`dashType: "dash"`), 라벨은 경계선 바로 **위** 왼쪽에 둔다.
+- `larrow` 기본 색을 `FFFFFF`, 두께를 1.5로 올린다.
+- 서클 숫자 문자 대신 지름 0.3in 채움 원 + 숫자 텍스트를 쓴다(정상=노랑 원·검정 숫자,
+  문제=빨강 원·흰 숫자).
+- 내용 슬라이드 헤더는 28pt, 위치 (0.46, 0.39) 고정. 메시지는 16pt 불릿 한 줄 (0.75, 1.0).
 
 ## macOS에서 QA (렌더링 확인)
 
