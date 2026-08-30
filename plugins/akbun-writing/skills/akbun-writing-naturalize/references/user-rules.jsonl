@@ -1,0 +1,12 @@
+{"id":"trap","patterns":["함정","~의 함정"],"signals":["주의점·한계를 설명하지 않는 과장된 비유","제목과 본문의 반복"],"exceptions":["실제 함정","게임·보안 용어"],"rewrite":"원문에 드러난 위험·오류·한계를 직접 쓴다."}
+{"id":"actual","patterns":["실제","실제로"],"signals":["대비 없이 쓴 강조어·연결어"],"exceptions":["가상·예상·테스트와의 실제 대비"],"rewrite":"없어도 뜻이 같으면 덜고, 대비가 필요하면 대상과 상황을 밝힌다."}
+{"id":"bridge-metaphor","patterns":["A와 B를 잇는 다리","연결하는 다리"],"signals":["구체적인 관계를 대신한 추상 비유"],"exceptions":["실제 다리","정식 기술 용어"],"rewrite":"연결·전달·변환·중개처럼 원문에 드러난 역할을 직접 쓴다."}
+{"id":"nominalized-thing","patterns":["~하는 것","~하는 것이","~하는 것입니다"],"signals":["불필요한 명사화","가까운 문단의 반복"],"exceptions":["실제 대상·내용·사건","대조·초점"],"rewrite":"강조·조건·가능성·의무 강도를 보존하며 주어와 동사를 직접 연결한다."}
+{"id":"lose-meaning-ending","patterns":["의미를 잃습니다."],"signals":["무엇이 왜 무효인지 없는 추상적 결론"],"exceptions":["번역·인코딩·용어 해석에서 의미가 사라짐"],"rewrite":"원문에 있는 기준·기능·효과의 손실을 구체적으로 쓴다."}
+{"id":"comes-out-ending","patterns":["문장 끝의 나옵니다"],"signals":["결과·차이·문제를 포괄적 서술어로 반복"],"exceptions":["대상이 실제로 나옴"],"rewrite":"표시·발생·확인·계산처럼 사건에 맞는 동사를 쓴다."}
+{"id":"formal-question-ending","patterns":["쓰는가","-는가","-인가"],"signals":["직접 질문·제목을 딱딱하게 끝냄"],"exceptions":["간접의문문","문장 안의 선택 조건","의도한 격식체"],"rewrite":"질문 초점을 유지해 ~할까?·~일까?로 쓴다. 필요한 구성을 묻는 쓰는가 질문은 대상을 직접 묻는다.","example":{"before":"weight 말고 무엇이 VRAM을 쓰는가","after":"VRAM에 weight 말고 무엇이 더 필요할까?"}}
+{"id":"boundary","patterns":["경계"],"signals":["대상·동작을 추상적인 경계로 표현"],"exceptions":["실제 분리 지점","보안 경계"],"rewrite":"대상과 동작을 직접 쓴다."}
+{"id":"split","patterns":["갈립니다"],"signals":["차이의 대상·원인을 뭉뚱그림"],"exceptions":["선택·결과가 실제로 양분됨"],"rewrite":"차이의 대상과 원인을 직접 쓴다."}
+{"id":"here","patterns":["여기"],"signals":["앞 문맥을 막연히 가리킴"],"exceptions":["실제 장소"],"rewrite":"구체적인 주어·조건·단계·원인으로 바꾼다."}
+{"id":"axis","patterns":["축"],"signals":["추상적 기준·관점","실제 축을 구체적으로 밝히지 않음"],"exceptions":["x축·y축처럼 대상을 밝힌 실제 축"],"rewrite":"실제 축은 이름을 밝히고 비유는 구체적인 기준·대상으로 바꾼다."}
+{"id":"flip","patterns":["뒤집으면"],"signals":["단순 확인·변경을 반전처럼 표현"],"exceptions":["실제 반전·역변환"],"rewrite":"문맥에 따라 보면·바꾸면처럼 직접 쓴다."}
