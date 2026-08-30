@@ -21,6 +21,10 @@ plugins/<plugin-name>/skills/<skill-name>/
 
 wiki는 사람이 읽는 사용자 문서가 아니라 다음 agent가 skill을 유지보수하기 위한 맥락이다. 모든 wiki 문서는 간결한 영어로 작성한다. 실행 시 지침의 원본은 항상 `SKILL.md`이며, wiki가 실행 지침을 복제하거나 일반 사용자 요청에서 반드시 로드되도록 만들지 않는다.
 
+LLM Wiki는 관련 작업 디렉터리에서 가장 가까운 `.ai/context.md`에 둔다. 특정 skill에만 필요한 맥락은
+`plugins/<plugin-name>/skills/<skill-name>/.ai/context.md`에 기록한다. 둘 이상의 skill이 공유하는 맥락만
+공통 상위 디렉터리의 `.ai/context.md`로 올리며, 같은 내용을 여러 context에 중복하지 않는다.
+
 ## 플러그인 변경 규칙
 
 `plugins/<plugin-name>/` 아래에서 skill이나 agent를 추가, 수정, 삭제하면 사용자가 따로 말하지 않아도 해당
