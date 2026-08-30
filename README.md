@@ -89,6 +89,7 @@ akbun 발표자료 스타일 skill 모음.
 | skill | 설명 |
 |---|---|
 | [akbun-presentation](./plugins/akbun-presentation/skills/akbun-presentation/) | 주제·원본 자료를 akbun 스타일 pptx 덱 + 슬라이드별 상세 발표 대본(md)으로 생성 — 발표 시간·청중·언어 설정을 받아 분량을 맞추고, 라이트 샌드위치(기본)/다크 스텝 스타일과 질문 훅 스토리를 따름 |
+| [akbun-presentation-visual](./plugins/akbun-presentation/skills/akbun-presentation-visual/) | 발표 내용·슬라이드 브리프·원본 Figure를 akbun 스타일의 16:9 삽입용 시각자료 이미지로 생성 |
 
 아래는 skill로 만든 예시다.
 
@@ -110,6 +111,7 @@ akbun 발표자료 스타일 skill 모음.
 
 일부 skill은 다른 skill의 정의를 참조한다. 참조 대상 skill을 바꾸면 참조하는 skill의 결과물도 함께 바뀐다.
 
+- `akbun-presentation-visual`(akbun-presentation): `akbun-presentation`이 슬라이드에 삽입할 래스터 시각자료를 생성한다.
 - `akbun-mascot-whale`(akbun-draw): akbun 마스코트 고래의 표준 외형을 정의하는 기준 skill. 캐릭터를 그리는 아래 skill들이 이 스펙을 참조한다.
   - 캐릭터로 직접 사용: `akbun-draw-cartoon-b`, `akbun-draw-webtoon-c`
 
