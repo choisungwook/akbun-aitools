@@ -2,22 +2,24 @@
 
 ## 목적
 
-Agent는 작업을 수행하면서 다음 agent가 덜 헤매도록 용어와 중요한 결정만 최소한으로 남긴다.
+Agent는 skill을 수정하면서 다음 agent가 덜 헤매도록 각 skill의 LLM wiki에 안정적인 맥락과 중요한 결정만 최소한으로 남긴다.
 
 ## 파일 구조
 
-고정 디렉터리 구조를 가정하지 않는다. 작업 디렉터리에 AI 맥락이 필요하면 `.ai/context.md`를 둔다.
+각 skill은 자체 LLM wiki를 둔다. 새 wiki는 `templates/llm-wiki/`를 기준으로 만든다.
 
 ```text
-{workdir}/
-  .ai/
-    context.md
-docs/
-  decisions/
-    0001-slug.md
+plugins/<plugin-name>/skills/<skill-name>/
+  SKILL.md
+  wiki/
+    index.md
+    architecture.md
+    development.md
+    adr/                 # 조건을 충족하는 결정이 있을 때만 생성
+      0001-slug.md
 ```
 
-`.ai/context.md`는 작업 맥락과 용어 정리를 위한 파일이다. 스펙, 작업 로그, 구현 세부사항, 임시 메모로 사용하지 않는다.
+wiki는 사람이 읽는 사용자 문서가 아니라 다음 agent가 skill을 유지보수하기 위한 맥락이다. 모든 wiki 문서는 간결한 영어로 작성한다. 실행 시 지침의 원본은 항상 `SKILL.md`이며, wiki가 실행 지침을 복제하거나 일반 사용자 요청에서 반드시 로드되도록 만들지 않는다.
 
 ## 플러그인 변경 규칙
 
@@ -61,27 +63,31 @@ plugin의 버전을 올린다. 사용자에게 버전 업데이트 여부를 묻
 ## Pull Request 작성 규칙
 
 - PR 설명은 한국어로 쓴다.
-- `.github/pull_request_template.md`의 섹션 구조(`## 요약`, `## 주요 변경`)를 따른다.
-- 불필요한 내용(파일별 세부 나열, 구현 로그, 자명한 설명)은 넣지 않는다. 핵심만 간단히 남긴다.
+- `.github/pull_request_template.md`의 H1 구조(`# 구현`, `# 어려웠던 점`, `# 리스크`)를 따른다.
+- 개조식으로 쓰고 문장은 명사 또는 `-음`, `-함`으로 끝낸다.
+- `구현`과 기록용 Issue 링크는 항상 남긴다. 내용이 없는 `어려웠던 점`과 `리스크`는 헤더째 삭제한다.
+- 목표와 의사결정은 기록용 Issue에 두고 PR에는 링크만 남긴다. PR에는 실제 구현에서 겪은 어려움과 감수하는 리스크만 적는다.
+- 각 섹션은 요약 한 줄과 필요한 경우 근거 목록 하나까지만 사용한다.
 
 ## 시작 절차
 
-작업 시작 시 관련 디렉터리에서 가장 가까운 `.ai/context.md`를 찾는다.
+skill 작업을 시작할 때 해당 skill의 `wiki/index.md`를 먼저 읽는다.
 
 읽는 순서:
 
 1. `/AGENTS.md`
-2. `/ai-context.md`, 있으면
-3. `<workdir>/.ai/context.md`, 있으면
-4. 관련 결정 기록, 필요할 때만
+2. `plugins/<plugin-name>/skills/<skill-name>/wiki/index.md`
+3. `index.md`가 안내하는 `architecture.md`, `development.md`
+4. 관련 결정 기록과 domain 문서, 변경에 필요할 때만
+5. `SKILL.md`와 변경 대상 supporting resource
 
-`.ai/context.md`가 없으면 repo와 코드만 근거로 작업한다. 정리할 용어가 처음 생겼을 때만 `.ai/context.md`를 만든다.
+`wiki/index.md`가 없는 기존 skill은 `templates/llm-wiki/`로 wiki를 만든 뒤 작업한다. wiki 전체를 무조건 읽지 않고 `index.md`의 read order와 현재 변경 범위에 따라 필요한 문서만 읽는다.
 
 ## 세션 중 원칙
 
 ### 용어 충돌 확인
 
-사용자 표현이 `.ai/context.md`의 용어와 충돌하면 즉시 지적한다. 질문하지 말고 충돌 내용을 명확히 적고, repo 기준의 권장 용어를 제시한다.
+사용자 표현이 skill wiki의 용어와 충돌하면 즉시 지적한다. 질문하지 말고 충돌 내용을 명확히 적고, repo 기준의 권장 용어를 제시한다.
 
 예:
 
@@ -91,7 +97,7 @@ plugin의 버전을 올린다. 사용자에게 버전 업데이트 여부를 묻
 
 ### 모호한 용어 정리
 
-사용자가 모호하거나 여러 의미로 쓰이는 단어를 사용하면 표준 용어를 제안한다. 확정 가능한 경우 `.ai/context.md`에 바로 반영한다.
+사용자가 모호하거나 여러 의미로 쓰이는 단어를 사용하면 표준 용어를 제안한다. 확정 가능한 경우 해당 skill의 `wiki/architecture.md` 또는 별도 domain 문서에 바로 반영한다.
 
 예:
 
@@ -136,30 +142,27 @@ self-improving 목적에서는 질문보다 repo 근거, 코드 확인, 가정 �
 - 선택에 따라 결과가 크게 달라짐
 - repo와 사용자 요구가 충돌하고 임의 선택이 위험함
 
-## `.ai/context.md` 형식
+## LLM wiki 작성 규칙
 
-```md
-# AI Context
+기본 문서 역할:
 
-## 작업 맥락
-{이 디렉터리의 목적과 현재 목표를 3~5문장으로 작성}
-
-## 용어 정리
-- {용어}: {짧은 정의}
-```
+- `index.md`: wiki 목적, 읽는 순서, 문서 색인
+- `architecture.md`: skill 책임, 경계, 안정적인 흐름, resource 소유 관계, 확정된 용어
+- `development.md`: 수정 순서, 검증 방법, wiki 갱신 조건
+- 추가 domain 문서: `architecture.md`가 과도하게 길어질 때만 생성
+- `adr/`: 결정 기록 조건을 모두 충족할 때만 생성
 
 규칙:
 
-- 확정된 용어만 기록한다.
-- 한 용어는 1~2문장 이내로 작성한다.
-- 구현 세부사항을 넣지 않는다.
-- 명령어, 변수명, 파일 설명을 넣지 않는다.
-- 작업 로그를 넣지 않는다.
-- 전체 1000자 초과 시 압축한다.
+- 영어로 작성한다.
+- 확정된 책임, 경계, 용어, resource 관계와 장기 caveat만 기록한다.
+- `SKILL.md`, `references/`, `design.md`, `README.md` 내용을 복제하지 않고 링크한다.
+- 스펙, 작업 로그, 구현 세부사항, 임시 메모, 일반 지식은 넣지 않는다.
+- runtime behavior가 바뀌면 `SKILL.md`를 먼저 수정하고 wiki가 그 변경과 충돌하지 않게 갱신한다.
 
 ## 결정 기록 규칙
 
-중요한 결정은 `docs/decisions/`에 둔다. 첫 결정 기록이 필요할 때만 디렉터리를 만든다.
+중요한 결정은 관련 skill의 `wiki/adr/`에 둔다. 첫 결정 기록이 필요할 때만 디렉터리를 만든다.
 
 파일명:
 
@@ -181,20 +184,27 @@ self-improving 목적에서는 질문보다 repo 근거, 코드 확인, 가정 �
 ```md
 # {결정 제목}
 
-{상황, 결정, 이유를 1~3문장으로 작성}
+## Decision
+
+{결정을 간결한 영어로 작성}
+
+## Reason
+
+{이유와 실제 trade-off를 간결한 영어로 작성}
 ```
 
 ## Self-Improving 규칙
 
 작업 중 또는 작업 종료 시 다음을 판단한다.
 
-`.ai/context.md` 갱신 조건:
+skill wiki 갱신 조건:
 
 - 새 용어 확정
 - 기존 용어 의미 변경
 - 사용자 표현과 repo 용어 충돌 발견
 - 다음 agent가 헷갈릴 가능성이 높은 용어 발견
-- 작업 맥락이 바뀌어 다음 작업에 영향 있음
+- skill 책임, 경계, 안정적인 흐름, resource 소유 관계가 변경
+- 다음 작업에도 남는 caveat가 발생
 
 결정 기록 생성 조건:
 
@@ -212,22 +222,25 @@ self-improving 목적에서는 질문보다 repo 근거, 코드 확인, 가정 �
 
 ## 압축 규칙
 
-`.ai/context.md` 압축 조건:
+wiki 압축 조건:
 
 - 용어 정리 20개 초과
 - 오래된 용어 포함
 - 중복 정의 포함
+- `SKILL.md`나 supporting resource 설명을 반복
 
 압축 방법:
 
 1. 현재 유효한 용어만 유지
 2. 중복 용어 병합
 3. 구현 세부사항 삭제
-4. 중요한 결정은 조건 충족 시 `docs/decisions/`로 분리
+4. 실행 지침은 `SKILL.md`로, 상세 규칙은 기존 supporting resource로 연결
+5. 중요한 결정은 조건 충족 시 `wiki/adr/`로 분리
 
 ## 완료 전 확인
 
 - 모호한 용어를 그대로 넘기지 않았는가?
 - 코드와 사용자 설명의 충돌을 확인했는가?
-- 확정된 용어를 `.ai/context.md`에 반영했는가?
+- 확정된 용어와 바뀐 경계를 해당 skill wiki에 반영했는가?
+- `SKILL.md`와 wiki가 충돌하지 않는가?
 - 결정 기록은 세 조건을 모두 만족할 때만 만들었는가?

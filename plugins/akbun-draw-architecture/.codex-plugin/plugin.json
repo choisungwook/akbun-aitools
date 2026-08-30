@@ -1,6 +1,6 @@
 {
   "name": "akbun-draw-architecture",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Architecture drawing skills by akbun — AWS/Kubernetes draw.io diagrams and architecture/network flow figure prompts",
   "author": {
     "name": "akbun",
