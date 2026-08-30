@@ -16,6 +16,8 @@ Run the repository's skill validator from the repository root:
 uv run --python 3.12 --with pyyaml python "${CODEX_HOME:-$HOME/.codex}/skills/.system/skill-creator/scripts/quick_validate.py" plugins/akbun-writing/skills/akbun-writing-naturalize
 ```
 
+The bundled validator may reject the repository-supported `disable-model-invocation` frontmatter key. Preserve that invocation policy and validate the remaining YAML, JSONL resources, and links separately when this compatibility limitation occurs.
+
 Check Markdown links, confirm that no placeholder text remains, and verify that both plugin manifests use the release version required by the root AGENTS.md.
 
 ## Do not record
