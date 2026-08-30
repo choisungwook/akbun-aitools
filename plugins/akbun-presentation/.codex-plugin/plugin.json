@@ -1,6 +1,6 @@
 {
   "name": "akbun-presentation",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "akbun presentation deck (pptx) plus a per-slide speaker script (md), in a light-sandwich or dark-step style with consistent voice, layout, and diagram language",
   "author": {
     "name": "akbun",

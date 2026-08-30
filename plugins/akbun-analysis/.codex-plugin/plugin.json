@@ -1,6 +1,6 @@
 {
   "name": "akbun-analysis",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "Codebase analysis skills — evidence-backed service/component relationships in JSON with interactive HTML, optional draw.io, and incremental updates",
   "author": {
     "name": "akbun",
