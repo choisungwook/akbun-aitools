@@ -1,6 +1,6 @@
 {
   "name": "akbun-draw",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "Image drawing skills by akbun — image-generation prompts and editable SVGs in fixed akbun styles",
   "author": {
     "name": "akbun",
@@ -40,7 +40,6 @@
       "Make a grayscale documentary-style webtoon with subtitle narration (per-scene image prompts) from my story",
       "Make a stitched-text image prompt for a motivational quote",
       "Make a pencil sketchbook concept-card image prompt for this topic",
-      "Draw this subject in the monogray flat-ink style (image prompt + Figma/Canva SVG)",
       "Make a book-figure image prompt and an editable SVG using a fixed layout (icon strip, zoom, dialog, flow, or poster card)",
       "Make a naive-doodle safety issue card-news with whale characters (image prompt + Figma/Canva SVG) from this situation",
       "Make a cream handwritten explainer card-news (image prompt + Figma/Canva SVG) for this concept",
