@@ -44,6 +44,19 @@ plugin의 버전을 올린다. 사용자에게 버전 업데이트 여부를 묻
 - marketplace의 description/category가 바뀐 경우에만 `.claude-plugin/marketplace.json`, `.agents/plugins/marketplace.json`도 함께 수정한다.
 - 배포 절차 상세는 `docs/guide_deploy_plugins.md`를 따른다.
 
+### LLM Wiki 동기화
+
+plugin 아래 skill이나 agent를 추가, 수정, 삭제하거나 이름을 바꾸면 사용자에게 묻지 않고 LLM Wiki도 함께
+갱신한다. LLM Wiki 저장소는 `/Users/choisungwook/Documents/obsidian/notes/remote`다.
+
+1. LLM Wiki의 `AGENTS.md`, `wiki/user.md`, `wiki/index.md`를 읽는다.
+2. 기존 미커밋 변경을 보존한 채 `git pull --rebase --autostash origin main`으로 동기화한다. 충돌이 생기면
+   양쪽 변경 의도를 확인해 해결하며, 기존 사용자 변경을 버리지 않는다.
+3. 사용자 선호와 작업 방식은 `wiki/user.md`, 재사용할 수 있는 안정적 지식은 적절한 `wiki/concepts/` 또는
+   `wiki/entities/` 문서에 반영한다. 일회성 작업 결과는 기록하지 않는다.
+4. 현재 작업에서 수정한 LLM Wiki 내용만 커밋하고 push한다. 기존 미커밋 파일이나 다른 작업의 변경은
+   stage하지 않는다.
+
 ## 이미지 작업 규칙
 
 사용자가 참고 이미지를 주며 그리기(프롬프트·SVG·일러스트 등)를 요청하면, 목표는 **원본을 따라 그리는 것이
