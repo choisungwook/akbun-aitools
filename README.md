@@ -15,7 +15,7 @@ akbun tools for both Claude Code and Codex plugin workflows.
 | [akbun-writing](./plugins/akbun-writing/skills/akbun-writing/) | akbun 스타일 한국어 기술 블로그 작성·확장 |
 | [akbun-writing-with-question](./plugins/akbun-writing/skills/akbun-writing-with-question/) | 질문 기반 akbun 스타일 학습형 블로그 작성 |
 | [akbun-writing-persuasive](./plugins/akbun-writing/skills/akbun-writing-persuasive/) | 독자가 끝까지 읽고 납득하도록 설득식 구조로 akbun 스타일 블로그 작성 |
-| [akbun-docs-reviewer](./plugins/akbun-writing/skills/akbun-docs-reviewer/) | 한국어 기술 문서 교정·용어 표기 표준화 리뷰 |
+| [akbun-docs-review](./plugins/akbun-writing/skills/akbun-docs-review/) | 원문 구조와 문체를 유지하는 한국어 기술 문서 오류·표기 교정 |
 | [akbun-writing-naturalize](./plugins/akbun-writing/skills/akbun-writing-naturalize/) | 원문 목소리와 구조를 보존하며 한국어 맞춤법과 기계적인 문체 교정 |
 | [akbun-markdown-to-html-pandoc](./plugins/akbun-writing/skills/akbun-markdown-to-html-pandoc/) | Obsidian markdown을 pandoc으로 HTML 변환(블로그 업로드) |
 | [akbun-md-to-notion](./plugins/akbun-writing/skills/akbun-md-to-notion/) | Obsidian markdown을 Notion Tasks DB로 전송 |

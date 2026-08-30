@@ -1,17 +1,17 @@
-# akbun-docs-reviewer Wiki
+# akbun-docs-review Wiki
 
 This is the maintenance context the next agent reads before changing this skill. Runtime behavior remains in [SKILL.md](../SKILL.md).
 
 ## Purpose
 
-Reviews an existing Korean technical document for readability and terminology consistency when explicitly requested.
+Maintains the Korean technical document correction skill without losing the source document's voice or layout.
 
 ## Read order
 
 1. Read [architecture.md](architecture.md) for boundaries, flow, and resource ownership.
 2. Read [development.md](development.md) before editing or validating the skill.
 3. Read [SKILL.md](../SKILL.md) and only the supporting resources needed for the requested change.
-
+4. Read ADR documents only when the change touches their decisions.
 
 ## Documents
 
