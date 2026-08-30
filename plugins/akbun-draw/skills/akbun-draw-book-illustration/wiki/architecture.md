@@ -6,7 +6,7 @@ Creates an image prompt and editable SVG in the monogray book-illustration style
 
 ## Boundary
 
-Keep the shared ink, gray, orange, and off-white style while selecting only icon strip, zoom, dialog, flow, or poster-card layout with its defined spacing.
+Keep the fixed ink, gray, orange, and off-white style while selecting only icon strip, zoom, dialog, flow, or poster-card layout with its defined spacing.
 
 The skill wiki records maintenance context. [SKILL.md](../SKILL.md) remains the executable instruction source and must not depend on an agent loading this wiki during an ordinary user request.
 

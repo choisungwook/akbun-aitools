@@ -8,7 +8,6 @@ description: >
   Trigger on: "책 삽화 레이아웃", "고정 레이아웃 삽화", "아이콘 스트립 삽화", "확대 삽화",
   "대화 삽화", "흐름도 삽화", "삽화 레이아웃 SVG", "book figure layout", "icon strip illustration",
   or any request to lay an idea out in one of these fixed book-figure layouts as a prompt plus SVG.
-  구도를 자유롭게 두고 스타일만 입히려면 akbun-draw-poster-monogray를 쓴다.
 ---
 
 # 책 삽화 레이아웃 이미지 프롬프트 + SVG 생성
@@ -24,11 +23,8 @@ description: >
 이 skill은 그림을 직접 렌더링하지 않는다. 프롬프트는 이미지 모델이 그리고, SVG는 사용자가
 디자인 툴에서 다듬는다.
 
-**`akbun-draw-poster-monogray`와의 관계.** 그림체·색감(진회색 잉크 + 플랫 회색 + 오렌지 포인트
-하나 + off-white 종이)은 monogray와 **같은 팔레트를 공유**한다. 다른 점은 딱 하나다.
-monogray는 구도를 소재에 맞춰 자유롭게 두지만, **이 skill은 참고 이미지에서 뽑은 고정 레이아웃
-5종과 상하좌우 간격에 맞춰 배치한다.** "스타일만 필요하고 구도는 자유"면 monogray를, "정해진
-책 삽화 레이아웃과 간격에 맞춰야" 하면 이 skill을 쓴다.
+이 skill은 진회색 잉크 + 플랫 회색 + 오렌지 포인트 하나 + off-white 종이의 monogray 팔레트를
+사용하고, **참고 이미지에서 뽑은 고정 레이아웃 5종과 상하좌우 간격에 맞춰 배치한다.**
 
 ## 결과물 형식
 
@@ -68,11 +64,9 @@ monogray는 구도를 소재에 맞춰 자유롭게 두지만, **이 skill은 �
 "한 문장을 각인"이면 `poster-card`, "묻고 답하기·오해"면 `dialog-scene`,
 "숫자 비교·나열"이면 `icon-strip`. 사용자가 레이아웃을 지정하면 그것을 따른다.
 
-## 비주얼 스타일 (고정 — monogray와 동일 팔레트)
+## 비주얼 스타일 (고정 monogray 팔레트)
 
-모든 산출물(프롬프트와 SVG)은 아래 스타일을 그대로 따른다. 바꾸지 않는다. 색은
-`akbun-draw-poster-monogray`와 **같은 팔레트**를 쓴다(플러그인 내 두 skill의 그림체가 하나로
-보이게 하기 위함).
+모든 산출물(프롬프트와 SVG)은 아래 스타일과 팔레트를 그대로 따른다. 바꾸지 않는다.
 
 - **배경**: 따뜻한 off-white 종이(`#F4F2ED`). 종이 질감이 은은하다.
 - **선**: 진회색(`#3A3A3A`) 잉크 아웃라인. 굵고 둥근 손그림 선이며 살짝 흔들린다(완벽한
@@ -89,8 +83,8 @@ monogray는 구도를 소재에 맞춰 자유롭게 두지만, **이 skill은 �
 ## 폰트 규칙 (저작권 무료)
 
 - SVG의 텍스트는 **SIL OFL 라이선스의 무료 폰트만** 지정한다.
-  기본은 `Gaegu`(한글 손글씨), 대안은 `Nanum Pen Script`, 라틴 대체는 `Patrick Hand`
-  (monogray와 동일 스택). 영어 세리프 제목이 필요하면 `Nanum Myeongjo`를 쓴다. 모두 Google
+  한글 손글씨 기본은 `Gaegu`, 대안은 `Nanum Pen Script`, 라틴 대체는 `Patrick Hand`를 쓴다.
+  영어 세리프 제목이 필요하면 `Nanum Myeongjo`를 쓴다. 모두 Google
   Fonts에서 무료로 쓸 수 있다.
 - 유료·상용 폰트나 라이선스 불명 폰트 이름을 지정하지 않는다.
 - Figma는 Google Fonts를 내장 지원하므로 그대로 열린다. Canva는 폰트가 없으면 대체되므로,
