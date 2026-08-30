@@ -5,6 +5,8 @@ akbun 발표자료 스타일의 실행본이다. 상수와 헬퍼를 그대로 �
 
 이 키트는 [../design.md](../design.md)의 스타일 스펙을 pptxgenjs로 구현한 것이다. 색·좌표·크기
 값은 design.md를 단일 기준으로 삼는다. design.md를 고치면 이 키트의 해당 상수·좌표도 맞춘다.
+삽입용 래스터 이미지는 [akbun-presentation-visual](../../akbun-presentation-visual/SKILL.md)이 만들고,
+이 키트의 도형 헬퍼는 사용자가 편집할 수 있어야 하는 다이어그램에만 쓴다.
 
 공통 주의사항: 색상 hex에 `#`를 붙이지 않는다. 불릿은 `bullet: true` 또는 접두 문자(■/-)로만
 쓴다. 텍스트를 도형과 정렬할 때는 항상 `margin: 0`. pptxgen 인스턴스 하나로 파일 하나만 만든다.

@@ -1,6 +1,6 @@
 {
   "name": "akbun-presentation",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "akbun presentation deck (pptx) plus a per-slide speaker script (md), in a light-sandwich or dark-step style with consistent voice, layout, and diagram language",
   "author": {
     "name": "akbun",
@@ -36,7 +36,8 @@
       "이 주제로 akbun 발표자료(pptx)랑 발표 대본 만들어줘",
       "이 논문으로 15분짜리 발표자료랑 슬라이드별 대본 만들어줘",
       "이 블로그 글을 akbun 발표 스타일 슬라이드로 만들어줘",
-      "이 장애 경험을 질문-여정-답 구조의 발표 덱으로 만들어줘"
+      "이 장애 경험을 질문-여정-답 구조의 발표 덱으로 만들어줘",
+      "이 내용을 akbun 발표 스타일의 16:9 시각자료 이미지로 그려줘"
     ],
     "brandColor": "#FFC000",
     "screenshots": []
