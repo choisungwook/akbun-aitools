@@ -1,0 +1,11 @@
+{
+  "name": "akbun-pulse",
+  "description": "Daily pulse skills — collect today's GitHub issues, discussions, merged and open/draft PRs across accessible repos into a Korean review digest delivered via Gmail, Apple Notes, Google Docs, or Markdown",
+  "version": "1.0.0",
+  "author": {
+    "name": "akbun"
+  },
+  "repository": "https://github.com/choisungwook/akbun-aitools",
+  "license": "MIT",
+  "keywords": ["github", "daily", "digest", "pulse", "issues", "pull-requests", "discussions", "gmail", "apple-notes", "korean"]
+}
