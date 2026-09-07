@@ -43,6 +43,12 @@
       "source": "./plugins/akbun-analysis",
       "description": "Codebase analysis skills — evidence-backed service/component relationship JSON with interactive HTML, optional draw.io, and incremental updates",
       "strict": true
+    },
+    {
+      "name": "akbun-pulse",
+      "source": "./plugins/akbun-pulse",
+      "description": "Daily pulse skills — today's GitHub issues, discussions, merged and open/draft PRs across accessible repos as a Korean review digest delivered via Gmail, Apple Notes, Google Docs, or Markdown",
+      "strict": true
     }
   ]
 }

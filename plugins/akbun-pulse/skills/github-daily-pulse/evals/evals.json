@@ -1,0 +1,23 @@
+{
+  "skill_name": "github-daily-pulse",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "오늘 내 GitHub 활동 정리해서 나한테 보내줘",
+      "expected_output": "Runs the collector for today 00:00 to now, writes the Korean digest with ## 시간 / ## 핵심작업 / ## 모든 작업, sends it by Gmail to the user's own address without asking, and echoes the digest plus a one-line delivery result.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "오늘 00시부터 지금까지 내가 접근 가능한 repo들의 issue, discussion, 머지된 PR, 열린 PR을 복습 문서로 만들어서 ~/notes/pulse.md 로 저장해줘",
+      "expected_output": "Same digest, but written to the given Markdown path instead of Gmail; no question about the output channel; every item link carries a state label and non-user authors are marked with (by login).",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "데일리 펄스 돌려줘. gmail mcp는 지금 연결 안 돼 있을 거야",
+      "expected_output": "Gmail send fails or is unavailable, so the digest is saved to Apple Notes via create_apple_note.py (or a Markdown file when not on macOS), and the chat ends with a one-line failure reason and fallback result.",
+      "files": []
+    }
+  ]
+}

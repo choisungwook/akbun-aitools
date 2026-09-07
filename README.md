@@ -107,6 +107,14 @@ akbun 발표자료 스타일 skill 모음.
 | [akbun-make-directorystruture-foragents](./plugins/akbun-analysis/skills/akbun-make-directorystruture-foragents/) | agent가 필요한 순간에 맞는 기억만 꺼내 쓰도록 기억 디렉터리 구조와 AGENTS.md·CLAUDE.md를 생성 |
 | [akbun-make-troubleshootingstruture-foragents](./plugins/akbun-analysis/skills/akbun-make-troubleshootingstruture-foragents/) | 장애 조사를 세션 넘어 이어가도록 incident 상태 디렉터리(CURRENT·HYPOTHESES·EVIDENCE·code-paths)와 AGENTS.md 트러블슈팅 규칙을 생성 |
 
+### akbun-pulse
+
+데일리 펄스 skill 모음. 오늘 GitHub에서 일어난 일을 복습 문서로 만들어 사용자 손에 바로 넣는다.
+
+| skill | 설명 |
+|---|---|
+| [github-daily-pulse](./plugins/akbun-pulse/skills/github-daily-pulse/) | 오늘 00:00부터 실행 시각까지 접근 가능한 모든 repo의 issue·discussion·merged PR·open/draft PR을 한글 복습 문서(시간·핵심작업·모든 작업)로 만들고 Gmail로 나에게 전송, 실패 시 Apple Notes 저장(Google Docs·md 파일 지정 가능) |
+
 ## skill 연관관계
 
 일부 skill은 다른 skill의 정의를 참조한다. 참조 대상 skill을 바꾸면 참조하는 skill의 결과물도 함께 바뀐다.
@@ -134,6 +142,7 @@ Claude Code marketplace metadata lives in:
 /plugin install akbun-learning@akbun-aitools
 /plugin install akbun-presentation@akbun-aitools
 /plugin install akbun-analysis@akbun-aitools
+/plugin install akbun-pulse@akbun-aitools
 /reload-plugins
 ```
 
@@ -149,6 +158,7 @@ codex plugin add akbun-draw@akbun-aitools --json
 codex plugin add akbun-draw-architecture@akbun-aitools --json
 codex plugin add akbun-presentation@akbun-aitools --json
 codex plugin add akbun-analysis@akbun-aitools --json
+codex plugin add akbun-pulse@akbun-aitools --json
 ```
 
 Codex plugin 업그레이드
@@ -168,6 +178,7 @@ codex plugin remove akbun-draw-architecture@akbun-aitools --json
 codex plugin remove akbun-learning@akbun-aitools --json
 codex plugin remove akbun-presentation@akbun-aitools --json
 codex plugin remove akbun-analysis@akbun-aitools --json
+codex plugin remove akbun-pulse@akbun-aitools --json
 
 rm -rf ~/.codex/plugins/cache/akbun-aitools
 rm -rf ~/.codex/.tmp/marketplaces/akbun-aitools
@@ -179,6 +190,7 @@ codex plugin add akbun-draw-architecture@akbun-aitools --json
 codex plugin add akbun-learning@akbun-aitools --json
 codex plugin add akbun-presentation@akbun-aitools --json
 codex plugin add akbun-analysis@akbun-aitools --json
+codex plugin add akbun-pulse@akbun-aitools --json
 
 codex plugin list --json
 ```

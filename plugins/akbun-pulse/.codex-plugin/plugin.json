@@ -1,0 +1,45 @@
+{
+  "name": "akbun-pulse",
+  "version": "1.0.0",
+  "description": "Daily pulse skills — collect today's GitHub issues, discussions, merged and open/draft PRs across accessible repos into a Korean review digest delivered via Gmail, Apple Notes, Google Docs, or Markdown",
+  "author": {
+    "name": "akbun",
+    "url": "https://github.com/choisungwook"
+  },
+  "homepage": "https://github.com/choisungwook/akbun-aitools",
+  "repository": "https://github.com/choisungwook/akbun-aitools",
+  "license": "MIT",
+  "keywords": [
+    "github",
+    "daily",
+    "digest",
+    "pulse",
+    "issues",
+    "pull-requests",
+    "discussions",
+    "gmail",
+    "apple-notes",
+    "korean"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "akbun Pulse",
+    "shortDescription": "Today's GitHub activity across your repos as a Korean review digest",
+    "longDescription": "Collects issues, discussions, merged pull requests, and open or draft pull requests updated since 00:00 today across every repository the authenticated GitHub account can access. Writes a Korean digest (time window, key work, all work with intent and decisions worth reviewing) and delivers it by Gmail to the user, falling back to Apple Notes, or to Google Docs or a Markdown file when requested.",
+    "developerName": "akbun",
+    "category": "Developer Tools",
+    "capabilities": [
+      "Interactive",
+      "Write"
+    ],
+    "websiteURL": "https://github.com/choisungwook/akbun-aitools",
+    "privacyPolicyURL": "https://docs.github.com/site-policy/privacy-policies/github-general-privacy-statement",
+    "termsOfServiceURL": "https://docs.github.com/en/site-policy/github-terms/github-terms-of-service",
+    "defaultPrompt": [
+      "오늘 내 GitHub 활동을 정리해서 github-daily-pulse로 나에게 보내줘",
+      "오늘 00시부터 지금까지 내 repo들의 issue, PR, discussion을 복습 문서로 만들어 md 파일로 저장해줘"
+    ],
+    "brandColor": "#7C3AED",
+    "screenshots": []
+  }
+}
