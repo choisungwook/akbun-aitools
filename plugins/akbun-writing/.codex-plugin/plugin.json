@@ -1,6 +1,6 @@
 {
   "name": "akbun-writing",
-  "version": "1.0.58",
+  "version": "1.0.59",
   "description": "Writing, review, and blog support skills by akbun",
   "author": {
     "name": "akbun",
@@ -40,7 +40,8 @@
       "Structure this post in 이정표식/signposted form (akbun-writing-structure-signposted)",
       "Write this in 다정한 말투/warm form (akbun-writing-style-warm)",
       "Turn this source material into an easy 기초 레이어 post (akbun-writing-easy)",
-      "Naturalize this Korean text while preserving the author's voice (akbun-writing-naturalize)"
+      "Naturalize this Korean text while preserving the author's voice (akbun-writing-naturalize)",
+      "Write this week's akbun newsletter issue from my agent work log and news links (akbun-writing-newsletter)"
     ],
     "brandColor": "#0F766E",
     "screenshots": []
