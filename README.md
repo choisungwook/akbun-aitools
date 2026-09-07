@@ -106,6 +106,7 @@ akbun 발표자료 스타일 skill 모음.
 | [akbun-analysiscode](./plugins/akbun-analysis/skills/akbun-analysiscode/) | 비즈니스 흐름·API·서비스 관계를 근거 기반 JSON으로 분석하고, 비즈니스·서비스·API 관계도를 가진 인터랙티브 HTML·draw.io로 시각화·증분 갱신 |
 | [akbun-make-directorystruture-foragents](./plugins/akbun-analysis/skills/akbun-make-directorystruture-foragents/) | agent가 필요한 순간에 맞는 기억만 꺼내 쓰도록 기억 디렉터리 구조와 AGENTS.md·CLAUDE.md를 생성 |
 | [akbun-make-troubleshootingstruture-foragents](./plugins/akbun-analysis/skills/akbun-make-troubleshootingstruture-foragents/) | 장애 조사를 세션 넘어 이어가도록 incident 상태 디렉터리(CURRENT·HYPOTHESES·EVIDENCE·code-paths)와 AGENTS.md 트러블슈팅 규칙을 생성 |
+| [akbun-analysis-bottleneck](./plugins/akbun-analysis/skills/akbun-analysis-bottleneck/) | 트래픽 증가 시 병목 후보를 file:line 근거로 예측하고 측정 항목·장애 시 확인 순서·해결책 선택지·개선 뒤 새 문제를 mermaid 아키텍처와 함께 문서화 |
 
 ### akbun-pulse
 
