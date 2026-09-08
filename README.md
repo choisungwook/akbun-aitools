@@ -25,6 +25,7 @@ akbun tools for both Claude Code and Codex plugin workflows.
 | [akbun-writing-style-warm](./plugins/akbun-writing/skills/akbun-writing-style-warm/) | 겁먹은 초보 독자를 위한 해요체 경험 고백 말투로 쓰기 |
 | [akbun-writing-easy](./plugins/akbun-writing/skills/akbun-writing-easy/) | 원본 자료를 초보자용 기초 레이어 글로 바꾸는 개조식 쉬운 설명 작성 |
 | [akbun-writing-newsletter](./plugins/akbun-writing/skills/akbun-writing-newsletter/) | 한 주 agent 작업 기록과 소식 링크를 후킹 헤더·숫자 성과 도입부·큐레이션 카드 3모듈 뉴스레터로 작성(페이월·CTA 제외) |
+| [akbun-it-dr-plan](./plugins/akbun-writing/skills/akbun-it-dr-plan/) | IT 시스템 DR 계획서 작성(BIA→DR 전략·검증 방식 추천→시나리오별 분석 시트→훈련 계획·탁상 훈련 대본) |
 
 ### akbun-draw
 
