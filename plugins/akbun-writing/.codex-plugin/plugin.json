@@ -43,7 +43,8 @@
       "Naturalize this Korean text while preserving the author's voice (akbun-writing-naturalize)",
       "Write this week's akbun newsletter issue from my agent work log and news links (akbun-writing-newsletter)",
       "Write a DR plan for this system with scenario analysis and a tabletop script (akbun-it-dr-plan)",
-      "Write a beginner-friendly step-by-step install manual for this product (akbun-it-install-manual)"
+      "Write a beginner-friendly step-by-step install manual for this product (akbun-it-install-manual)",
+      "Listen to my day by voice, write a diary, save it, and schedule study topics on the weekend (akbun-voice-diary)"
     ],
     "brandColor": "#0F766E",
     "screenshots": []

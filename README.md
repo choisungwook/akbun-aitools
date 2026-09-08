@@ -27,6 +27,7 @@ akbun tools for both Claude Code and Codex plugin workflows.
 | [akbun-writing-newsletter](./plugins/akbun-writing/skills/akbun-writing-newsletter/) | 한 주 agent 작업 기록과 소식 링크를 후킹 헤더·숫자 성과 도입부·큐레이션 카드 3모듈 뉴스레터로 작성(페이월·CTA 제외) |
 | [akbun-it-dr-plan](./plugins/akbun-writing/skills/akbun-it-dr-plan/) | IT 시스템 DR 계획서 작성(BIA→DR 전략·검증 방식 추천→시나리오별 분석 시트→훈련 계획·탁상 훈련 대본) |
 | [akbun-it-install-manual](./plugins/akbun-writing/skills/akbun-it-install-manual/) | 솔루션·오픈소스 설치 매뉴얼 작성(제품 소개→Mermaid 아키텍처·네트워크 구조→사전 준비→주의 사항→번호 순서 설치 단계→설치 확인→클린업, 비밀값 XXX 마스킹) |
+| [akbun-voice-diary](./plugins/akbun-writing/skills/akbun-voice-diary/) | 음성 채팅으로 말한 하루를 고정 규격 일기(한 줄·있었던 일·힘들었던 것·공부하면 좋은 것)로 저장(기본 ~/Downloads, Apple Notes·Google Docs 선택)하고 공부 주제를 이번 주 주말 Apple Calendar에 등록 |
 
 ### akbun-draw
 
