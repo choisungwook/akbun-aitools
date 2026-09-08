@@ -24,14 +24,17 @@ The skill wiki records maintenance context. [SKILL.md](../SKILL.md) remains the 
 
 ## Flow
 
-Listen until the end signal → write the diary → write `~/Downloads/YYYY-MM-DD.md` (or the user's path; append a `## 추가 (HH:MM)` section if the file exists) → mirror to Apple Notes / Google Docs only when requested → one calendar event per study topic via `create_calendar_event.py` → three-line spoken-style reply.
+Listen until the end signal → write the diary → naturalize in place → write `~/Downloads/YYYY-MM-DD.md` (or the user's path; append a `## 추가 (HH:MM)` section if the file exists) → mirror to Apple Notes / Google Docs only when requested → one calendar event per study topic via `create_calendar_event.py` → three-line spoken-style reply.
 
 ## Resources
 
 - [`SKILL.md`](../SKILL.md): invocation boundary and runtime instructions.
+- Related: `plugins/akbun-writing/skills/akbun-writing-naturalize/references/*.jsonl` are read during the naturalize pass; this skill does not modify them.
 - [`scripts/create_apple_note.py`](../scripts/create_apple_note.py): Markdown to Apple Notes HTML subset; macOS only. Copied from `plugins/akbun-pulse/skills/github-daily-pulse/scripts/` because plugins install independently; keep the two in sync when fixing bugs.
 - [`scripts/create_calendar_event.py`](../scripts/create_calendar_event.py): creates one Apple Calendar event with title, date, start, duration, calendar name, and notes; creates the calendar if missing; returns `exists` instead of duplicating a same-title event on the same day. macOS only.
 
 ## Caveat
+
+The naturalize pass runs between writing and saving, reusing `akbun-writing-naturalize` rules and procedure but overriding its output rule: one diary file, no `-v1` copy. It strips the assistant's own phrasing only; the user's spoken wording and endings are protected. Keep this override in `SKILL.md` if the naturalize skill's output rule changes.
 
 Both scripts exit 2 off macOS. The skill must degrade to the local Markdown file and report the failure in one line, never fail the whole run.

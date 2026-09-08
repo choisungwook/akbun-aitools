@@ -28,8 +28,15 @@ Explanation is minimized on purpose; the reader is expected to learn by executin
 
 Confirm product, version, environment, and install method with the user; gather official docs and user material; write chapters 1-4 (intro, diagrams, prerequisites, cautions); write install steps; write verification with expected output and a short failure table; write cleanup in reverse order with a final "everything gone" check; run the completion checklist.
 
+## Caveat
+
+Step prose (chapters 5-7) uses `-음`/`-함` clause endings on purpose, to read as a checklist rather than an instruction from above; only chapter 1 uses `합니다`.
+
+The final naturalize pass reuses `akbun-writing-naturalize` rules and procedure but overrides its output rule: the manual file is overwritten in place, no `-v1` copy is created, and the `-음` endings are preserved. Keep this override in `SKILL.md` if the naturalize skill's output rule changes.
+
 ## Resources
 
 - [`SKILL.md`](../SKILL.md): invocation boundary and runtime instructions.
 - This skill is instruction-only; `SKILL.md` contains its complete runtime behavior.
+- Related: `plugins/akbun-writing/skills/akbun-writing-naturalize/references/*.jsonl` are read during the final naturalize pass; this skill does not modify them.
 - Related: `plugins/akbun-writing/skills/akbun-it-onboarding/` covers understanding an existing system; this skill covers installing a product. They do not share resources.
