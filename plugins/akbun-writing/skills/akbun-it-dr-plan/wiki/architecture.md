@@ -24,10 +24,15 @@ DR strategy and verification method are two independent axes. A request that mix
 
 ## Flow
 
-Fill target scope and BIA from sources (an `akbun-it-onboarding` document is accepted as input), recommend strategy and verification method from RTO/RPO, stop for user confirmation, then list and prioritize scenarios, write one analysis sheet per scenario, and finish with the exercise plan and gaps.
+Fill target scope and BIA from sources (an `akbun-it-onboarding` document is accepted as input), recommend strategy and verification method from RTO/RPO, stop for user confirmation, then list and prioritize scenarios, write one analysis sheet per scenario, finish with the exercise plan and gaps, save the file, and run the naturalize pass over it.
+
+## Caveat
+
+The final naturalize pass reuses `akbun-writing-naturalize` rules and procedure but overrides its output rule: the DR plan file is overwritten in place, no `-v1` copy is created. Keep this override in `SKILL.md` if the naturalize skill's output rule changes.
 
 ## Resources
 
 - [`SKILL.md`](../SKILL.md): invocation boundary and runtime instructions.
 - This skill is instruction-only; `SKILL.md` contains its complete runtime behavior.
 - Related: `plugins/akbun-writing/skills/akbun-it-onboarding/` supplies optional input; this skill does not depend on it at runtime.
+- Related: `plugins/akbun-writing/skills/akbun-writing-naturalize/references/*.jsonl` are read during the final naturalize pass; this skill does not modify them.
