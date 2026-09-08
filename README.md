@@ -26,6 +26,8 @@ akbun tools for both Claude Code and Codex plugin workflows.
 | [akbun-writing-easy](./plugins/akbun-writing/skills/akbun-writing-easy/) | 원본 자료를 초보자용 기초 레이어 글로 바꾸는 개조식 쉬운 설명 작성 |
 | [akbun-writing-newsletter](./plugins/akbun-writing/skills/akbun-writing-newsletter/) | 한 주 agent 작업 기록과 소식 링크를 후킹 헤더·숫자 성과 도입부·큐레이션 카드 3모듈 뉴스레터로 작성(페이월·CTA 제외) |
 | [akbun-it-dr-plan](./plugins/akbun-writing/skills/akbun-it-dr-plan/) | IT 시스템 DR 계획서 작성(BIA→DR 전략·검증 방식 추천→시나리오별 분석 시트→훈련 계획·탁상 훈련 대본) |
+| [akbun-it-install-manual](./plugins/akbun-writing/skills/akbun-it-install-manual/) | 솔루션·오픈소스 설치 매뉴얼 작성(제품 소개→Mermaid 아키텍처·네트워크 구조→사전 준비→주의 사항→번호 순서 설치 단계→설치 확인→클린업, 비밀값 XXX 마스킹) |
+| [akbun-voice-diary](./plugins/akbun-writing/skills/akbun-voice-diary/) | 음성 채팅으로 말한 하루를 고정 규격 일기(한 줄·있었던 일·힘들었던 것·공부하면 좋은 것)로 저장(기본 ~/Downloads, Apple Notes·Google Docs 선택)하고 공부 주제를 이번 주 주말 Apple Calendar에 등록 |
 
 ### akbun-draw
 
@@ -109,6 +111,7 @@ akbun 발표자료 스타일 skill 모음.
 | [akbun-make-directorystruture-foragents](./plugins/akbun-analysis/skills/akbun-make-directorystruture-foragents/) | agent가 필요한 순간에 맞는 기억만 꺼내 쓰도록 기억 디렉터리 구조와 AGENTS.md·CLAUDE.md를 생성 |
 | [akbun-make-troubleshootingstruture-foragents](./plugins/akbun-analysis/skills/akbun-make-troubleshootingstruture-foragents/) | 장애 조사를 세션 넘어 이어가도록 incident 상태 디렉터리(CURRENT·HYPOTHESES·EVIDENCE·code-paths)와 AGENTS.md 트러블슈팅 규칙을 생성 |
 | [akbun-analysis-bottleneck](./plugins/akbun-analysis/skills/akbun-analysis-bottleneck/) | 트래픽 증가 시 병목 후보를 file:line 근거로 예측하고 측정 항목·장애 시 확인 순서·해결책 선택지·개선 뒤 새 문제를 mermaid 아키텍처와 함께 문서화 |
+| [akbun-analysis-architecture-review](./plugins/akbun-analysis/skills/akbun-analysis-architecture-review/) | 넘겨준 문맥과 인터뷰로 현재 아키텍처를 적대적으로 평가하고, 보안·운영 부담(toil) 관점 필수로 발견→대안→수치 효과 표→감수할 것→이행 순서를 mermaid 컴포넌트·시퀀스와 함께 제안 |
 
 ### akbun-pulse
 
