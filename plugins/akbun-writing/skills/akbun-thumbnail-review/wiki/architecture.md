@@ -2,11 +2,11 @@
 
 ## Responsibility
 
-Diagnoses a YouTube thumbnail with six fixed checks (TV-friendly 50% test, question/emotion, references and mechanism, clutter, main character, text variants) and produces improvement proposals, each paired with the reason it affects clicks.
+Diagnoses a YouTube thumbnail with six fixed checks (TV-friendly 50% test, question/emotion, references and mechanism, clutter, problem prominence, text variants) and produces improvement proposals, each paired with the reason it affects clicks.
 
 ## Boundary
 
-Every recommendation must carry a reason grounded in viewer behavior or interface layout; a bare "do this" is out of spec. Relevance alone never passes check 2. References are transferred by mechanism, never by copying composition or wording. Channel metrics come only from user input. The skill does not generate final thumbnail images; it stops at directions, element lists, and text candidates.
+Every recommendation must carry a reason grounded in viewer behavior or interface layout; a bare "do this" is out of spec. Relevance alone never passes check 2. The thumbnail's protagonist is the problem the video addresses, never a person; a face or logo that reads before the problem fails check 5. References are transferred by mechanism, never by copying composition or wording. Channel metrics come only from user input. The skill does not generate final thumbnail images; it stops at directions, element lists, and text candidates.
 
 The skill wiki records maintenance context. [SKILL.md](../SKILL.md) remains the executable instruction source and must not depend on an agent loading this wiki during an ordinary user request.
 
@@ -20,6 +20,7 @@ Parse the video topic and thumbnail elements, run the six checks with verdict/ev
 - **Mechanism**: the concrete device by which a reference creates a question or emotion; the transferable unit.
 - **Outlier**: a video that over-performs its own channel's average (internal = user's channel, external = other channels).
 - **Model channel**: same video format, different subject matter.
+- **Problem prominence**: check 5; the single problem phrase must be the first element a viewer perceives.
 
 ## Resources
 
