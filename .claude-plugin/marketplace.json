@@ -47,7 +47,7 @@
     {
       "name": "akbun-pulse",
       "source": "./plugins/akbun-pulse",
-      "description": "Daily pulse skills — today's GitHub issues, discussions, merged and open/draft PRs across accessible repos as a Korean review digest delivered via Gmail, Apple Notes, Google Docs, or Markdown",
+      "description": "Daily pulse skills — today's GitHub issues, discussions, merged and open/draft PRs as a Korean review digest, and yesterday's Readwise Reader documents and highlights as a Korean changelog/worth-reading mail draft delivered via Gmail, Apple Notes, Google Docs, or Markdown",
       "strict": true
     }
   ]

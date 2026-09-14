@@ -116,11 +116,12 @@ akbun 발표자료 스타일 skill 모음.
 
 ### akbun-pulse
 
-데일리 펄스 skill 모음. 오늘 GitHub에서 일어난 일을 복습 문서로 만들어 사용자 손에 바로 넣는다.
+데일리 펄스 skill 모음. 오늘 GitHub에서 일어난 일과 어제 Readwise에 들어온 글을 복습 문서로 만들어 사용자 손에 바로 넣는다.
 
 | skill | 설명 |
 |---|---|
 | [github-daily-pulse](./plugins/akbun-pulse/skills/github-daily-pulse/) | 오늘 00:00부터 실행 시각까지 접근 가능한 모든 repo의 issue·discussion·merged PR·open/draft PR을 한글 복습 문서(시간·핵심작업·모든 작업)로 만들고 Gmail로 나에게 전송, 실패 시 Apple Notes 저장(Google Docs·md 파일 지정 가능) |
+| [readwise-daily-pulse](./plugins/akbun-pulse/skills/readwise-daily-pulse/) | 어제 Readwise Reader에 저장된 문서(new·later·feed)·하이라이트를 changelog(유형 표시)·읽을 것·나머지로 분류한 한글 개조식 요약을 Gmail 초안으로 생성. 프로필·관심 주제·받는 주소·토큰은 변수로 받아 루틴에서는 변수명만 지정 |
 
 ## skill 연관관계
 

@@ -1,0 +1,23 @@
+{
+  "skill_name": "readwise-daily-pulse",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "readwise-daily-pulse 실행. PULSE_PROFILE, PULSE_INTERESTS, PULSE_TO는 환경 변수 값을 사용.",
+      "expected_output": "Resolves the variables from the environment without echoing them, computes the local-day window, paginates new/later/feed plus highlights with the client-side saved_at filter, writes the digest in the fixed section order with continuous numbering, passes check_draft.py, and creates a plain-text Gmail draft to PULSE_TO.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "어제 Readwise에 저장한 글 정리해서 메일 초안으로 만들어줘. 프로필은 백엔드 엔지니어, 관심 주제는 데이터베이스, 메시지 큐, 관측성.",
+      "expected_output": "Uses the profile and interests given in the call text, excludes unrelated documents from the top sections regardless of quality, puts confirmed product changes under ## changelog with one type suffix each, and reports counts plus which variables fell back to defaults.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "리더 데일리 펄스 돌려줘. Readwise MCP는 없고 READWISE_TOKEN만 환경 변수에 있어.",
+      "expected_output": "Falls back to PULSE_SOURCE=cli, runs collect_readwise.py with --with-content, never prints the token, and when there are no documents in the window creates a draft whose body is only '어제 들어온 항목 없음'.",
+      "files": []
+    }
+  ]
+}
