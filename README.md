@@ -124,6 +124,14 @@ akbun 발표자료 스타일 skill 모음.
 | [github-daily-pulse](./plugins/akbun-pulse/skills/github-daily-pulse/) | 오늘 00:00부터 실행 시각까지 접근 가능한 모든 repo의 issue·discussion·merged PR·open/draft PR을 한글 복습 문서(시간·핵심작업·모든 작업)로 만들고 Gmail로 나에게 전송, 실패 시 Apple Notes 저장(Google Docs·md 파일 지정 가능) |
 | [readwise-daily-pulse](./plugins/akbun-pulse/skills/readwise-daily-pulse/) | 어제 Readwise Reader에 저장된 문서(new·later·feed)·하이라이트를 changelog(유형 표시)·읽을 것·나머지로 분류한 한글 개조식 요약을 Gmail 초안으로 생성. 프로필·관심 주제·받는 주소·토큰은 변수로 받아 루틴에서는 변수명만 지정 |
 
+### akbun-refactoring
+
+리팩토링 skill 모음. 이미 사용 중인 코드·문서·설정·인프라 코드를 고칠 때 모든 변경을 자동 검증에 통과시키고, 사람이 판단할 변경만 골라 보고한다.
+
+| skill | 설명 |
+|---|---|
+| [akbun-refactoring-autoverify](./plugins/akbun-refactoring/skills/akbun-refactoring-autoverify/) | 이미 사용 중인 코드·문서·설정을 작은 단위로 고치며 매번 저장소의 자동 검증(테스트·린트·타입·빌드·문서 검사)을 통과시키고, 자동 판정이 불가능하거나 사람이 결정할 변경(동작·인터페이스 변경·삭제·보안·되돌림·기준선 실패)만 보고. 보고 채널은 시작 시 한 번 질문(stdout 기본, GitHub PR body, GitHub issue, 파일) |
+
 ## skill 연관관계
 
 일부 skill은 다른 skill의 정의를 참조한다. 참조 대상 skill을 바꾸면 참조하는 skill의 결과물도 함께 바뀐다.
@@ -152,6 +160,7 @@ Claude Code marketplace metadata lives in:
 /plugin install akbun-presentation@akbun-aitools
 /plugin install akbun-analysis@akbun-aitools
 /plugin install akbun-pulse@akbun-aitools
+/plugin install akbun-refactoring@akbun-aitools
 /reload-plugins
 ```
 
@@ -168,6 +177,7 @@ codex plugin add akbun-draw-architecture@akbun-aitools --json
 codex plugin add akbun-presentation@akbun-aitools --json
 codex plugin add akbun-analysis@akbun-aitools --json
 codex plugin add akbun-pulse@akbun-aitools --json
+codex plugin add akbun-refactoring@akbun-aitools --json
 ```
 
 Codex plugin 업그레이드
@@ -188,6 +198,7 @@ codex plugin remove akbun-learning@akbun-aitools --json
 codex plugin remove akbun-presentation@akbun-aitools --json
 codex plugin remove akbun-analysis@akbun-aitools --json
 codex plugin remove akbun-pulse@akbun-aitools --json
+codex plugin remove akbun-refactoring@akbun-aitools --json
 
 rm -rf ~/.codex/plugins/cache/akbun-aitools
 rm -rf ~/.codex/.tmp/marketplaces/akbun-aitools
@@ -200,6 +211,7 @@ codex plugin add akbun-learning@akbun-aitools --json
 codex plugin add akbun-presentation@akbun-aitools --json
 codex plugin add akbun-analysis@akbun-aitools --json
 codex plugin add akbun-pulse@akbun-aitools --json
+codex plugin add akbun-refactoring@akbun-aitools --json
 
 codex plugin list --json
 ```
