@@ -1,6 +1,6 @@
 {
   "name": "akbun-draw",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "description": "Image drawing skills by akbun — image-generation prompts and editable SVGs in fixed akbun styles",
   "author": {
     "name": "akbun",
@@ -34,7 +34,6 @@
     "termsOfServiceURL": "https://docs.github.com/en/site-policy/github-terms/github-terms-of-service",
     "defaultPrompt": [
       "Make an image prompt that explains this code as a blog figure",
-      "Make a 3 or 4 panel webtoon prompt from this story",
       "Make a pastel animal-character webtoon page (image prompts + Figma/Canva SVG) from these images and story",
       "Make a landscape one-cut essay-toon page with the whale mascot (image prompt + Figma/Canva SVG) from this story",
       "Make a grayscale documentary-style webtoon with subtitle narration (per-scene image prompts) from my story",
