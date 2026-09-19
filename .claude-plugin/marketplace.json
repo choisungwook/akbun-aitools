@@ -23,7 +23,7 @@
     {
       "name": "akbun-draw-architecture",
       "source": "./plugins/akbun-draw-architecture",
-      "description": "Architecture drawing skills — AWS/Kubernetes draw.io diagrams and architecture/network flow figure prompts",
+      "description": "Architecture drawing skills — AWS VPC and Kubernetes network draw.io diagrams",
       "strict": true
     },
     {

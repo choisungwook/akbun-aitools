@@ -1,6 +1,6 @@
 {
   "name": "akbun-pulse",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Daily pulse skills — today's GitHub issues, discussions, merged and open/draft PRs as a Korean review digest, and yesterday's Readwise Reader documents and highlights as a Korean changelog/worth-reading mail draft delivered via Gmail, Apple Notes, Google Docs, or Markdown",
   "author": {
     "name": "akbun",

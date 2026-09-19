@@ -1,7 +1,7 @@
 {
   "name": "akbun-draw-architecture",
-  "version": "1.0.2",
-  "description": "Architecture drawing skills by akbun — AWS/Kubernetes draw.io diagrams and architecture/network flow figure prompts",
+  "version": "1.0.3",
+  "description": "Architecture drawing skills by akbun — AWS VPC and Kubernetes network draw.io diagrams",
   "author": {
     "name": "akbun",
     "url": "https://github.com/choisungwook"
@@ -21,7 +21,7 @@
   "interface": {
     "displayName": "akbun Draw Architecture",
     "shortDescription": "Architecture and network diagram drawing skills",
-    "longDescription": "Architecture drawing skills — draw.io AWS VPC and Kubernetes network diagrams, plus image-generation prompts for high-level component architecture and network traffic flow figures.",
+    "longDescription": "Architecture drawing skills — draw.io AWS VPC and Kubernetes network diagrams generated from prose, images, YAML, or existing draw.io files, validated as XML and exported for visual inspection.",
     "developerName": "akbun",
     "category": "Writing",
     "capabilities": [
@@ -33,8 +33,7 @@
     "termsOfServiceURL": "https://docs.github.com/en/site-policy/github-terms/github-terms-of-service",
     "defaultPrompt": [
       "Create a draw.io AWS VPC architecture diagram",
-      "Draw a Kubernetes network diagram with draw.io",
-      "Draw a high-level component architecture diagram of this code"
+      "Draw a Kubernetes network diagram with draw.io"
     ],
     "brandColor": "#0F766E",
     "screenshots": []

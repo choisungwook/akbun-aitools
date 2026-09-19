@@ -54,13 +54,12 @@ akbun tools for both Claude Code and Codex plugin workflows.
 
 ### akbun-draw-architecture
 
-아키텍처 그리기 skill 모음. AWS/Kubernetes draw.io 다이어그램과 아키텍처·네트워크 흐름 그림 프롬프트를 만든다.
+아키텍처 그리기 skill 모음. AWS/Kubernetes draw.io 다이어그램을 만든다.
 
 | skill | 설명 |
 |---|---|
 | [akbun-drawio-aws-vpc](./plugins/akbun-draw-architecture/skills/akbun-drawio-aws-vpc/) | draw.io로 AWS VPC 기초 다이어그램 생성 |
 | [kubernets-network-drawio](./plugins/akbun-draw-architecture/skills/kubernets-network-drawio/) | draw.io로 Kubernetes 네트워크 다이어그램 생성 |
-| [akbun-draw-component](./plugins/akbun-draw-architecture/skills/akbun-draw-component/) | 코드·컴퍼넌트를 분석해 하이레벨 아키텍처/연관관계 그림의 이미지 생성 프롬프트 작성 |
 
 ### akbun-learning
 
