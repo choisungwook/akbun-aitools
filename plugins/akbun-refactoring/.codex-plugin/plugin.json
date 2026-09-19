@@ -1,0 +1,43 @@
+{
+  "name": "akbun-refactoring",
+  "version": "1.0.0",
+  "description": "Refactoring skills — change code, docs, and config already in use, gate every change behind automated verification, and report only what needs a human decision",
+  "author": {
+    "name": "akbun",
+    "url": "https://github.com/choisungwook"
+  },
+  "homepage": "https://github.com/choisungwook/akbun-aitools",
+  "repository": "https://github.com/choisungwook/akbun-aitools",
+  "license": "MIT",
+  "keywords": [
+    "refactoring",
+    "verification",
+    "tests",
+    "lint",
+    "human-review",
+    "github-pr",
+    "github-issue",
+    "stdout"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "akbun Refactoring",
+    "shortDescription": "Auto-verified refactoring that surfaces only human-decision items",
+    "longDescription": "Refactors things already in use — codebases, documents, configuration, infrastructure code — in small units. Every unit must pass the repository's own automated verification (tests, lint, type check, build, document checks) before it counts as done. Changes that pass are summarized in one line; only changes that cannot be verified automatically or that require a human judgment (behavior or interface change, deletion, security or permission change, reverted attempts, pre-existing failures) are reported to the operator. The report channel — stdout by default, a GitHub pull request body, a GitHub issue, or a file — is asked once at the start.",
+    "developerName": "akbun",
+    "category": "Developer Tools",
+    "capabilities": [
+      "Interactive",
+      "Write"
+    ],
+    "websiteURL": "https://github.com/choisungwook/akbun-aitools",
+    "privacyPolicyURL": "https://docs.github.com/site-policy/privacy-policies/github-general-privacy-statement",
+    "termsOfServiceURL": "https://docs.github.com/en/site-policy/github-terms/github-terms-of-service",
+    "defaultPrompt": [
+      "이 모듈을 리팩토링해줘. 모든 변경은 자동 검증을 통과시키고 사람이 판단할 것만 보고해",
+      "docs/ 문서를 정리해줘. 검증 통과한 건 요약만, 판단 필요한 건 GitHub PR body에 적어줘"
+    ],
+    "brandColor": "#B45309",
+    "screenshots": []
+  }
+}

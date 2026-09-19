@@ -49,6 +49,12 @@
       "source": "./plugins/akbun-pulse",
       "description": "Daily pulse skills — today's GitHub issues, discussions, merged and open/draft PRs as a Korean review digest, and yesterday's Readwise Reader documents and highlights as a Korean changelog/worth-reading mail draft delivered via Gmail, Apple Notes, Google Docs, or Markdown",
       "strict": true
+    },
+    {
+      "name": "akbun-refactoring",
+      "source": "./plugins/akbun-refactoring",
+      "description": "Refactoring skills — change code, docs, and config already in use, gate every change behind automated verification, and report only what needs a human decision (stdout, GitHub PR body, GitHub issue, or file)",
+      "strict": true
     }
   ]
 }

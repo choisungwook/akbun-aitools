@@ -1,0 +1,11 @@
+{
+  "name": "akbun-refactoring",
+  "description": "Refactoring skills — change code, docs, and config already in use, gate every change behind automated verification, and report only what needs a human decision",
+  "version": "1.0.0",
+  "author": {
+    "name": "akbun"
+  },
+  "repository": "https://github.com/choisungwook/akbun-aitools",
+  "license": "MIT",
+  "keywords": ["refactoring", "verification", "tests", "lint", "human-review", "github-pr", "github-issue", "stdout"]
+}
