@@ -19,14 +19,8 @@ akbun tools for both Claude Code and Codex plugin workflows.
 | [akbun-writing-naturalize](./plugins/akbun-writing/skills/akbun-writing-naturalize/) | 원문 목소리와 구조를 보존하며 한국어 맞춤법과 기계적인 문체 교정. 다른 skill이 호출 모드로 재사용 |
 | [akbun-markdown-to-html-pandoc](./plugins/akbun-writing/skills/akbun-markdown-to-html-pandoc/) | Obsidian markdown을 pandoc으로 HTML 변환(블로그 업로드) |
 | [akbun-md-to-notion](./plugins/akbun-writing/skills/akbun-md-to-notion/) | Obsidian markdown을 Notion Tasks DB로 전송 |
-| [akbun-generate-headline](./plugins/akbun-writing/skills/akbun-generate-headline/) | 넘긴 내용·파일을 분석해 클릭을 부르는 헤드라인(글 제목) 후보 생성 |
-| [akbun-it-onboarding](./plugins/akbun-writing/skills/akbun-it-onboarding/) | 맥락 없는 사람이 첫날 읽는 IT 시스템 온보딩 문서 작성(개요·업무 흐름·아키텍처·의존성·인프라·운영·권한·특이사항) |
-| [akbun-writing-structure-signposted](./plugins/akbun-writing/skills/akbun-writing-structure-signposted/) | 개수 예고 + 번호 블록 + 요약 마무리의 이정표식 글 구조 잡기 |
 | [akbun-writing-style-warm](./plugins/akbun-writing/skills/akbun-writing-style-warm/) | 겁먹은 초보 독자를 위한 해요체 경험 고백 말투로 쓰기 |
 | [akbun-writing-easy](./plugins/akbun-writing/skills/akbun-writing-easy/) | 원본 자료를 초보자용 기초 레이어 글로 바꾸는 개조식 쉬운 설명 작성 |
-| [akbun-writing-newsletter](./plugins/akbun-writing/skills/akbun-writing-newsletter/) | 한 주 agent 작업 기록과 소식 링크를 후킹 헤더·숫자 성과 도입부·큐레이션 카드 3모듈 뉴스레터로 작성(페이월·CTA 제외) |
-| [akbun-it-dr-plan](./plugins/akbun-writing/skills/akbun-it-dr-plan/) | IT 시스템 DR 계획서 작성(BIA→DR 전략·검증 방식 추천→시나리오별 분석 시트→훈련 계획·탁상 훈련 대본) |
-| [akbun-it-install-manual](./plugins/akbun-writing/skills/akbun-it-install-manual/) | 솔루션·오픈소스 설치 매뉴얼 작성(제품 소개→Mermaid 아키텍처·네트워크 구조→사전 준비→주의 사항→번호 순서 설치 단계→설치 확인→클린업, 비밀값 XXX 마스킹) |
 | [akbun-voice-diary](./plugins/akbun-writing/skills/akbun-voice-diary/) | 음성 채팅으로 말한 하루를 고정 규격 일기(한 줄·있었던 일·힘들었던 것·공부하면 좋은 것)로 저장(기본 ~/Downloads, Apple Notes·Google Docs 선택)하고 공부 주제를 이번 주 주말 Apple Calendar에 등록 |
 | [akbun-thumbnail-review](./plugins/akbun-writing/skills/akbun-thumbnail-review/) | 유튜브 썸네일을 6항목(TV 친화 50% 테스트·질문·감정 유발·레퍼런스 메커니즘·잡동사니 제거·문제 부각·문구 변주)으로 리뷰하고 제안마다 이유를 설명 |
 
@@ -37,7 +31,6 @@ akbun tools for both Claude Code and Codex plugin workflows.
 | skill | 설명 |
 |---|---|
 | [akbun-generateimage-code](./plugins/akbun-draw/skills/akbun-generateimage-code/) | 코드 설명용 블로그 figure의 이미지 생성 프롬프트 작성 |
-| [akbun-draw-webtoon-a](./plugins/akbun-draw/skills/akbun-draw-webtoon-a/) | 사용자 내용을 3~4컷 흑백 스틱피겨 웹툰의 이미지 생성 프롬프트로 작성 |
 | [akbun-draw-webtoon-b](./plugins/akbun-draw/skills/akbun-draw-webtoon-b/) | 이미지·글로 파스텔 치비 동물 캐릭터 웹툰 페이지의 이미지 생성 프롬프트 + Figma/Canva용 텍스트 SVG 작성 |
 | [akbun-draw-webtoon-c](./plugins/akbun-draw/skills/akbun-draw-webtoon-c/) | 글·이미지로 세로형 1컷 에세이툰(상단 내레이션+고래 마스코트 단일 장면) 페이지의 이미지 생성 프롬프트 + Figma/Canva용 텍스트 SVG 작성 |
 | [akbun-draw-webtoon-d](./plugins/akbun-draw/skills/akbun-draw-webtoon-d/) | 실제 경험담을 인스타 세로형(3:4) 흑백 다큐툰(거친 잉크 낙서선+하단 자막 내레이션+얼굴 없는 실루엣 군중)의 장면별 이미지 생성 프롬프트로 작성 |
@@ -56,7 +49,6 @@ akbun tools for both Claude Code and Codex plugin workflows.
 | skill | 이미지 |
 |---|---|
 | `akbun-mascot-whale` | <img src="./imgs/akbun-mascot-whale.png" alt="akbun-mascot-whale" width="320"> |
-| `akbun-draw-webtoon-a` | <img src="./imgs/akbun-draw-webtoon.png" alt="akbun-draw-webtoon-a" width="320"> |
 | `akbun-draw-webtoon-c` | <img src="./imgs/akbun-draw-webtoon-c.png" alt="akbun-draw-webtoon-c" width="320"> |
 | `akbun-draw-cartoon-b` | <img src="./imgs/akbun-draw-cartoon-b.png" alt="akbun-draw-cartoon-b" width="320"> |
 
