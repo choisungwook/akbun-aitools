@@ -55,7 +55,7 @@
 | 대상 | 검증 | 명령 예 |
 |---|---|---|
 | `plugins/*/.claude-plugin/plugin.json`, `.codex-plugin/plugin.json` | 파싱 · 두 파일 버전 일치 | JSON 파싱 후 `version` 비교 |
-| `plugins/*/skills/*/SKILL.md` | frontmatter `name`·`description` 존재 | 저장소 `docs/`·wiki가 안내하는 validator |
+| `plugins/*/skills/*/SKILL.md` | frontmatter `name`·`description` 존재 | 저장소 `docs/`가 안내하는 validator |
 | `*.md` | 코드 블록 언어 표기 | `.claude/hooks/check-codeblock-lang.sh`와 같은 awk 규칙 |
 
 ## 기준선 기록 규칙
