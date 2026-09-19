@@ -102,6 +102,8 @@ akbun 발표자료 스타일 skill 모음.
 | [akbun-analysis-architecture-review](./plugins/akbun-analysis/skills/akbun-analysis-architecture-review/) | 넘겨준 문맥과 인터뷰로 현재 아키텍처를 적대적으로 평가하고, 보안·운영 부담(toil) 관점 필수로 발견→대안→수치 효과 표→감수할 것→이행 순서를 mermaid 컴포넌트·시퀀스와 함께 제안 |
 | [akbun-analysis-token-credential](./plugins/akbun-analysis/skills/akbun-analysis-token-credential/) | 토큰·API 키 같은 자격 증명을 보안 관점에서 볼 때 발급 주체·읽는 주체·허용 범위를 묻는 질문 한 줄. 인증·인가 분석 의도를 AI에게 전달하는 용도 |
 | [akbun-analysis-adversarial-review](./plugins/akbun-analysis/skills/akbun-analysis-adversarial-review/) | 사용자가 구현한 코드·주장을 옹호하지 않고 숨은 가정과 예외를 의심해 깨지는 반례를 근거와 함께 드는 적대적 리뷰 지침 두 줄 |
+| [akbun-analysis-git-whyandhow](./plugins/akbun-analysis/skills/akbun-analysis-git-whyandhow/) | 코드·PR을 why → how 순서로 이해. git·gh CLI·저장소 문서만으로(MCP 미사용) 동기를 확신 등급·인용과 함께 조사하고, 그 제약(Preserve/Change/Avoid/Risk)을 안고 동작을 온보딩 수준으로 설명 |
+| [akbun-analysis-gitdiff-blast-radius](./plugins/akbun-analysis/skills/akbun-analysis-gitdiff-blast-radius/) | PR·diff를 머지하면 diff 밖 어디가 깨지고 내 다음 작업과 어디서 만나는지 찾고, 안전한 이유인 사실 하나를 실행 스크립트로 증명(확신 사다리 5단). 옵션으로 gh CLI로 PR 코멘트 |
 
 ### akbun-pulse
 
