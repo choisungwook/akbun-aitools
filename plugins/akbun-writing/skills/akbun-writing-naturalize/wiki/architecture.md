@@ -12,7 +12,7 @@ The skill wiki records maintenance context. [SKILL.md](../SKILL.md) remains the 
 
 ## Called mode
 
-Other skills may apply this skill's rules and procedure inside their own flow. In called mode the caller owns the output location (default: overwrite the caller's file, no `-v1` copy) and the comparison baseline is the text the caller hands over, not the user's original. Callers: `akbun-docs-review`, `akbun-voice-diary`. Direct invocation keeps the `-v1` output rule.
+Other skills may apply this skill's rules and procedure inside their own flow. In called mode the caller owns the output location (default: overwrite the caller's file, no `-v1` copy) and the comparison baseline is the text the caller hands over, not the user's original. Callers: `akbun-writing`, `akbun-docs-review`, `akbun-voice-diary`. Direct invocation keeps the `-v1` output rule.
 
 ## Flow
 
