@@ -32,7 +32,7 @@ Confirm product, version, environment, and install method with the user; gather 
 
 Step prose (chapters 5-7) uses `-음`/`-함` clause endings on purpose, to read as a checklist rather than an instruction from above; only chapter 1 uses `합니다`.
 
-The final naturalize pass reuses `akbun-writing-naturalize` rules and procedure but overrides its output rule: the manual file is overwritten in place, no `-v1` copy is created, and the `-음` endings are preserved. Keep this override in `SKILL.md` if the naturalize skill's output rule changes.
+The final naturalize pass applies `akbun-writing-naturalize` in its called mode: the manual file is overwritten in place, no `-v1` copy, and the `-음` endings are preserved. The called-mode defaults live in the naturalize skill; this skill only names its extra protected areas and endings.
 
 ## Resources
 

@@ -86,9 +86,9 @@ description: "사용자가 명시적으로 요청할 때만 실행한다. 사용
 
 ## 마무리: 자연화
 
-문서를 다 쓴 뒤 `akbun-writing-naturalize`의 규칙 파일(`references/common-rules.jsonl`, `references/user-rules.jsonl`)과 처리 절차(맞춤법 교정 → 국소 자연화 → 원문 대조)를 그대로 적용해 기계적인 표현을 다듬는다.
+문서를 다 쓴 뒤 `akbun-writing-naturalize`의 규칙 파일(`references/common-rules.jsonl`, `references/user-rules.jsonl`)과 처리 절차(맞춤법 교정 → 국소 자연화 → 원문 대조)를 호출 모드로 적용해 기계적인 표현을 다듬는다.
 
-- 결과는 **원본 DR 계획서 파일에 덮어쓴다**. naturalize의 `{stem}-v1.md` 같은 새 파일을 만들지 않는다.
+- 결과는 호출 모드 기본대로 **원본 DR 계획서 파일에 덮어쓴다**.
 - 표의 값, RTO/RPO 수치, 명령·도구 이름, `확인 필요` 표시는 보호 영역으로 두고 바꾸지 않는다.
 - 사용자가 확정한 전략·검증 방식과 그 근거의 의미가 달라지지 않았는지 대조한 뒤 저장한다.
 - 자연화 과정에서 원문을 유지한 곳이 있으면 문서에 넣지 않고 대화창에 `확인 필요`로만 보고한다.

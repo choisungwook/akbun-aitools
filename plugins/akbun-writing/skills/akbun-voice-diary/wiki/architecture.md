@@ -35,6 +35,6 @@ Listen until the end signal → write the diary → naturalize in place → writ
 
 ## Caveat
 
-The naturalize pass runs between writing and saving, reusing `akbun-writing-naturalize` rules and procedure but overriding its output rule: one diary file, no `-v1` copy. It strips the assistant's own phrasing only; the user's spoken wording and endings are protected. Keep this override in `SKILL.md` if the naturalize skill's output rule changes.
+The naturalize pass runs between writing and saving, applying `akbun-writing-naturalize` in its called mode: one diary file, no `-v1` copy. It strips the assistant's own phrasing only; the user's spoken wording and endings are protected. The called-mode defaults live in the naturalize skill.
 
 Both scripts exit 2 off macOS. The skill must degrade to the local Markdown file and report the failure in one line, never fail the whole run.

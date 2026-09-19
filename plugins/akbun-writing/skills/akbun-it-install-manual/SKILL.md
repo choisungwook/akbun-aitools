@@ -67,9 +67,9 @@ description: "사용자가 명시적으로 요청할 때만 실행한다. 솔루
 
 ## 마무리: 자연화
 
-문서를 파일로 저장한 뒤 `akbun-writing-naturalize`의 규칙 파일(`references/common-rules.jsonl`, `references/user-rules.jsonl`)과 처리 절차(맞춤법 교정 → 국소 자연화 → 원문 대조)를 그대로 적용해 AI가 쓴 듯한 표현을 걷어낸다.
+문서를 파일로 저장한 뒤 `akbun-writing-naturalize`의 규칙 파일(`references/common-rules.jsonl`, `references/user-rules.jsonl`)과 처리 절차(맞춤법 교정 → 국소 자연화 → 원문 대조)를 호출 모드로 적용해 AI가 쓴 듯한 표현을 걷어낸다.
 
-- 결과는 **원본 매뉴얼 파일에 덮어쓴다**. naturalize의 `{stem}-v1.md` 같은 새 파일을 만들지 않는다.
+- 결과는 호출 모드 기본대로 **원본 매뉴얼 파일에 덮어쓴다**.
 - 코드 블록, Mermaid 블록, 표 안의 명령·경로·포트·버전 값, `XXX`·`<자기-값>`·`확인 필요` 표시는 보호 영역으로 두고 바꾸지 않는다.
 - 단계 번호와 순서, 단계 수가 달라지지 않았는지 대조한 뒤 저장한다.
 - `-음` 종결 개조식은 유지한다. 자연화가 문장을 `합니다`체로 바꾸지 않게 한다.
