@@ -1,7 +1,7 @@
 {
   "name": "akbun-refactoring",
   "description": "Refactoring skills — change code, docs, and config already in use, gate every change behind automated verification, and report only what needs a human decision",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": {
     "name": "akbun"
   },

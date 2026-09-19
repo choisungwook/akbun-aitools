@@ -130,7 +130,7 @@ akbun 발표자료 스타일 skill 모음.
 
 | skill | 설명 |
 |---|---|
-| [akbun-refactoring-autoverify](./plugins/akbun-refactoring/skills/akbun-refactoring-autoverify/) | 이미 사용 중인 코드·문서·설정을 작은 단위로 고치며 매번 저장소의 자동 검증(테스트·린트·타입·빌드·문서 검사)을 통과시키고, 자동 판정이 불가능하거나 사람이 결정할 변경(동작·인터페이스 변경·삭제·보안·되돌림·기준선 실패)만 보고. 보고 채널은 시작 시 한 번 질문(stdout 기본, GitHub PR body, GitHub issue, 파일) |
+| [akbun-refactoring-autoverify](./plugins/akbun-refactoring/skills/akbun-refactoring-autoverify/) | 이미 사용 중인 코드·문서·설정을 무엇을 어떤 근거로 수정·삭제·생성할지 먼저 제안해 수락받고, 작은 단위로 고치며 매번 저장소의 자동 검증(테스트·린트·타입·빌드·문서 검사)을 통과시킨 뒤, 사람이 결정할 변경(동작·인터페이스 변경·삭제·보안·되돌림·기준선 실패)만 변경 전후·증거와 함께 보고. 보고 채널은 시작 시 한 번 질문(stdout 기본, GitHub PR body, GitHub issue, 파일) |
 
 ## skill 연관관계
 
