@@ -12,7 +12,7 @@ akbun tools for both Claude Code and Codex plugin workflows.
 
 | skill | 설명 |
 |---|---|
-| [akbun-writing](./plugins/akbun-writing/skills/akbun-writing/) | akbun 스타일 한국어 기술 블로그 작성·확장 |
+| [akbun-writing](./plugins/akbun-writing/skills/akbun-writing/) | akbun 스타일 한국어 기술 블로그 작성. 설명 모드 고정, 문장 규칙 4층(상위 규칙·독자 지향·한 문장 한 생각·오독 제거), naturalize 호출로 마무리 |
 | [akbun-writing-with-question](./plugins/akbun-writing/skills/akbun-writing-with-question/) | 질문 기반 akbun 스타일 학습형 블로그 작성 |
 | [akbun-writing-persuasive](./plugins/akbun-writing/skills/akbun-writing-persuasive/) | 독자가 끝까지 읽고 납득하도록 설득식 구조로 akbun 스타일 블로그 작성 |
 | [akbun-docs-review](./plugins/akbun-writing/skills/akbun-docs-review/) | 이미 쓴 한국어 기술 문서의 용어 표기 통일과 근거 있는 사실 교정. 맞춤법·문장은 naturalize를 호출해 처리하고 원본에 덮어씀 |
@@ -127,6 +127,7 @@ akbun 발표자료 스타일 skill 모음.
 
 일부 skill은 다른 skill의 정의를 참조한다. 참조 대상 skill을 바꾸면 참조하는 skill의 결과물도 함께 바뀐다.
 
+- `akbun-writing`(akbun-writing): 글쓰기 기준 skill. `akbun-writing-with-question`, `akbun-writing-persuasive`가 모든 기본 규칙을 참조로 상속하고 각자 한 축(질문 구조, 설득 장치)만 더한다. `akbun-writing-easy`는 tokenops 규칙을 참조한다. 마무리에 `akbun-writing-naturalize`를 호출 모드로 적용한다.
 - `akbun-presentation-visual`(akbun-presentation): `akbun-presentation`이 슬라이드에 삽입할 래스터 시각자료를 생성한다.
 - `akbun-mascot-whale`(akbun-draw): akbun 마스코트 고래의 표준 외형을 정의하는 기준 skill. 캐릭터를 그리는 아래 skill들이 이 스펙을 참조한다.
   - 캐릭터로 직접 사용: `akbun-draw-cartoon-b`, `akbun-draw-webtoon-c`

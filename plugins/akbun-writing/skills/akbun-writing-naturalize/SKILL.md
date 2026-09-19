@@ -124,4 +124,4 @@ disable-model-invocation: true
 - 호출 skill이 정한 보호 영역과 말투 규칙(개조식 종결 유지, 구어체 유지 등)을 이 skill의 보호 영역에 더한다.
 - `확인 필요` 항목은 결과 파일에 넣지 않고 호출 skill의 보고 형식으로 넘긴다.
 
-호출하는 skill: `akbun-docs-review`, `akbun-voice-diary`.
+호출하는 skill: `akbun-writing`, `akbun-docs-review`, `akbun-voice-diary`.
