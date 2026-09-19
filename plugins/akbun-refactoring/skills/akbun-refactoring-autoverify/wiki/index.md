@@ -4,7 +4,7 @@ This is the maintenance context the next agent reads before changing this skill.
 
 ## Purpose
 
-Refactors things already in use (code, docs, config, infrastructure code) in small units, gates every unit behind the repository's own automated verification, and reports only the changes a human must judge. The report channel is asked once at the start and defaults to stdout.
+Refactors things already in use (code, docs, config, infrastructure code) in small units: proposes modify/delete/create actions with evidence and waits for acceptance, gates every accepted unit behind the repository's own automated verification, and reports only the changes a human must judge, each with before/after and evidence. The report channel is asked once at the start and defaults to stdout.
 
 ## Read order
 
