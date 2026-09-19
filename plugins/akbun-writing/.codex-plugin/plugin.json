@@ -39,7 +39,8 @@
       "Turn this source material into an easy 기초 레이어 post (akbun-writing-easy)",
       "Naturalize this Korean text while preserving the author's voice (akbun-writing-naturalize)",
       "Listen to my day by voice, write a diary, save it, and schedule study topics on the weekend (akbun-voice-diary)",
-      "Review this YouTube thumbnail with the six click checks and explain why each fix matters (akbun-thumbnail-review)"
+      "Review this YouTube thumbnail with the six click checks and explain why each fix matters (akbun-thumbnail-review)",
+      "스테이징 끝난 이 인프라 변경을 운영에 적용하기 전에 개발자용 작업 공지 초안을 써줘 (akbun-it-infra-change-notice)"
     ],
     "brandColor": "#0F766E",
     "screenshots": []

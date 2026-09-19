@@ -23,6 +23,7 @@ akbun tools for both Claude Code and Codex plugin workflows.
 | [akbun-writing-easy](./plugins/akbun-writing/skills/akbun-writing-easy/) | 원본 자료를 초보자용 기초 레이어 글로 바꾸는 개조식 쉬운 설명 작성 |
 | [akbun-voice-diary](./plugins/akbun-writing/skills/akbun-voice-diary/) | 음성 채팅으로 말한 하루를 고정 규격 일기(한 줄·있었던 일·힘들었던 것·공부하면 좋은 것)로 저장(기본 ~/Downloads, Apple Notes·Google Docs 선택)하고 공부 주제를 이번 주 주말 Apple Calendar에 등록 |
 | [akbun-thumbnail-review](./plugins/akbun-writing/skills/akbun-thumbnail-review/) | 유튜브 썸네일을 6항목(TV 친화 50% 테스트·질문·감정 유발·레퍼런스 메커니즘·잡동사니 제거·문제 부각·문구 변주)으로 리뷰하고 제안마다 이유를 설명 |
+| [akbun-it-infra-change-notice](./plugins/akbun-writing/skills/akbun-it-infra-change-notice/) | 스테이징 검증이 끝난 인프라 변경을 운영에 적용하기 전 개발자용 작업 공지 초안(영향·해야 할 일 → 왜 → 변경 → 기대 효과 → 확인 항목 붙은 절차 → 시간 → 롤백과 불가 지점 → 비용 계산식 → 리스크 → 스테이징 증거). 수치는 측정/인용/추정 라벨, 없으면 확인 필요 |
 
 ### akbun-draw
 
