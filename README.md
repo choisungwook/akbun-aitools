@@ -129,7 +129,7 @@ agent 운영 skill 모음. 프로젝트의 기억 구조를 최초 1회 설계�
 |---|---|
 | [akbun-memory-setup](./plugins/akbun-agent-ops/skills/akbun-memory-setup/) | 프로젝트를 훑어 agent 기억 디렉터리(디렉터리마다 "언제 읽는가")와 AGENTS.md 읽기 순서·CLAUDE.md 포인터를 최초 1회 생성. 매 세션 쓰는 맥락은 AGENTS.md 인라인, 반복 지시는 스크립트로 |
 | [akbun-recall](./plugins/akbun-agent-ops/skills/akbun-recall/) | 세션 시작 때 AGENTS.md가 가리키는 기억, git·PR 상태, 이전 세션 transcript를 읽고 대조해 캡슐·상태 태그 스레드·반복 문제·다음 행동 1개의 브리프로 복원 |
-| [akbun-reflect](./plugins/akbun-agent-ops/skills/akbun-reflect/) | 세션 transcript를 리뷰어 3개(판단·도구·발산)가 읽고 학습을 코드베이스가 이미 가진 기억 구조(관련 SKILL.md, 프로젝트 wiki·결정 기록, AGENTS.md)의 맞는 자리에 수정 제안(Accepted/Rejected/Backlog)으로 라우팅, 사용자 승인 행만 적용. 새 구조는 만들지 않음 |
+| [akbun-reflect](./plugins/akbun-agent-ops/skills/akbun-reflect/) | 세션 transcript를 저비용 모델 리뷰어 3개(판단·도구·발산)가 읽고 학습을 코드베이스가 이미 가진 기억 구조(관련 SKILL.md, 프로젝트 wiki·결정 기록, AGENTS.md)의 맞는 자리에 수정 제안(Accepted/Rejected/Backlog)으로 라우팅, 사용자 승인 행만 적용. 새 구조는 만들지 않음 |
 
 ## skill 연관관계
 
