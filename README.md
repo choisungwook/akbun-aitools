@@ -129,13 +129,13 @@ agent 운영 skill 모음. 프로젝트의 기억 구조를 최초 1회 설계�
 |---|---|
 | [akbun-memory-setup](./plugins/akbun-agent-ops/skills/akbun-memory-setup/) | 프로젝트를 훑어 agent 기억 디렉터리(디렉터리마다 "언제 읽는가")와 AGENTS.md 읽기 순서·CLAUDE.md 포인터를 최초 1회 생성. 매 세션 쓰는 맥락은 AGENTS.md 인라인, 반복 지시는 스크립트로 |
 | [akbun-recall](./plugins/akbun-agent-ops/skills/akbun-recall/) | 세션 시작 때 AGENTS.md가 가리키는 기억, git·PR 상태, 이전 세션 transcript를 읽고 대조해 캡슐·상태 태그 스레드·반복 문제·다음 행동 1개의 브리프로 복원 |
-| [akbun-reflect](./plugins/akbun-agent-ops/skills/akbun-reflect/) | 세션 transcript를 리뷰어 3개(판단·도구·발산)가 읽고 학습을 기존 SKILL.md 수정 제안(Accepted/Rejected/Backlog)으로 라우팅, 사용자 승인 행만 적용. 디렉터리 구조는 정하지 않음 |
+| [akbun-reflect](./plugins/akbun-agent-ops/skills/akbun-reflect/) | 세션 transcript를 리뷰어 3개(판단·도구·발산)가 읽고 학습을 코드베이스가 이미 가진 기억 구조(관련 SKILL.md, 프로젝트 wiki·결정 기록, AGENTS.md)의 맞는 자리에 수정 제안(Accepted/Rejected/Backlog)으로 라우팅, 사용자 승인 행만 적용. 새 구조는 만들지 않음 |
 
 ## skill 연관관계
 
 일부 skill은 다른 skill의 정의를 참조한다. 참조 대상 skill을 바꾸면 참조하는 skill의 결과물도 함께 바뀐다.
 
-- `akbun-memory-setup`(akbun-agent-ops): AGENTS.md 읽기 순서를 만든다. `akbun-recall`이 그 순서를 따라 기억을 읽고, `akbun-reflect`는 구조를 건드리지 않고 SKILL.md만 고친다.
+- `akbun-memory-setup`(akbun-agent-ops): AGENTS.md 읽기 순서를 만든다. `akbun-recall`이 그 순서를 따라 기억을 읽고, `akbun-reflect`는 그 구조 안의 기존 문서(SKILL.md·wiki·AGENTS.md)에만 쓰고 구조를 바꾸지 않는다.
 - `akbun-writing`(akbun-writing): 글쓰기 기준 skill. `akbun-writing-with-question`, `akbun-writing-persuasive`가 모든 기본 규칙을 참조로 상속하고 각자 한 축(질문 구조, 설득 장치)만 더한다. `akbun-writing-easy`는 tokenops 규칙을 참조한다. 마무리에 `akbun-writing-naturalize`를 호출 모드로 적용한다.
 - `akbun-presentation-visual`(akbun-presentation): `akbun-presentation`이 슬라이드에 삽입할 래스터 시각자료를 생성한다.
 - `akbun-mascot-whale`(akbun-draw): akbun 마스코트 고래의 표준 외형을 정의하는 기준 skill. 캐릭터를 그리는 아래 skill들이 이 스펙을 참조한다.
