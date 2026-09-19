@@ -28,7 +28,7 @@ Fill target scope and BIA from sources (an `akbun-it-onboarding` document is acc
 
 ## Caveat
 
-The final naturalize pass reuses `akbun-writing-naturalize` rules and procedure but overrides its output rule: the DR plan file is overwritten in place, no `-v1` copy is created. Keep this override in `SKILL.md` if the naturalize skill's output rule changes.
+The final naturalize pass applies `akbun-writing-naturalize` in its called mode: the DR plan file is overwritten in place, no `-v1` copy. The called-mode defaults live in the naturalize skill; this skill only names its extra protected areas.
 
 ## Resources
 
