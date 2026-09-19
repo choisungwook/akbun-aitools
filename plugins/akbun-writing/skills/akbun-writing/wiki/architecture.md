@@ -14,12 +14,11 @@ The skill wiki records maintenance context. [SKILL.md](../SKILL.md) remains the 
 
 ## Flow
 
-Extract the core mechanisms first, build the body around definition, operation, exception, and judgment, write a short promise-driven introduction, close with one practical point, run naturalize in called mode, then walk the nine-item checklist at the end of `SKILL.md`.
+Write in explanation mode from supplied facts, apply the sentence layers as you draft, run naturalize in called mode, then walk the seven-item checklist at the end of `SKILL.md`. No fixed intro/body/conclusion template and no length target: structure follows the point.
 
 ## Resources
 
 - [`SKILL.md`](../SKILL.md): invocation boundary and runtime instructions.
-- [`references/structure-rhythms.md`](../references/structure-rhythms.md): paragraph rhythms and signpost headings, read before writing.
 - Related: `plugins/akbun-writing/skills/akbun-writing-naturalize/` rules are applied in called mode; this skill does not modify them.
 - Variants: `akbun-writing-with-question` and `akbun-writing-persuasive` inherit every rule here by reference and add one axis each; `akbun-writing-easy` reuses the `tokenops` rule. A base change changes their output.
 - Related: `plugins/akbun-writing/agents/akbun-style-reviewer.md reviews drafts against `SKILL.md` and defers to it on conflict.

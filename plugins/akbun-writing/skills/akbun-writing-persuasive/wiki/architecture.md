@@ -14,10 +14,9 @@ The skill wiki records maintenance context. [SKILL.md](../SKILL.md) remains the 
 
 ## Flow
 
-Define the reader's problem and supported promise, choose a truthful headline and hook, build evidence and trade-offs, anticipate the next objection, then close the argument.
+Choose a truthful symptom/why/trade-off headline, hook with one unexpected point, narrate history and why before mechanics top-down, pre-empt the reader's objection, then close the hook with recommendation, trade-offs, and labeled evidence. The skill has no supporting references; the rules fit in `SKILL.md`.
 
 ## Resources
 
 - [`SKILL.md`](../SKILL.md): invocation boundary and runtime instructions.
 - Related: `plugins/akbun-writing/skills/akbun-writing/SKILL.md` is the base; changing a base rule changes this skill's output.
-- [`references/`](../references/): supporting resources retained outside the maintenance wiki.

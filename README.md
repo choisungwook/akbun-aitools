@@ -12,7 +12,7 @@ akbun tools for both Claude Code and Codex plugin workflows.
 
 | skill | 설명 |
 |---|---|
-| [akbun-writing](./plugins/akbun-writing/skills/akbun-writing/) | akbun 스타일 한국어 기술 블로그 작성. 설명 모드 고정, 문장 규칙 4층(상위 규칙·독자 지향·한 문장 한 생각·오독 제거), naturalize 호출로 마무리 |
+| [akbun-writing](./plugins/akbun-writing/skills/akbun-writing/) | akbun 스타일 한국어 기술 글 작성. 설명 모드 고정, 문장 규칙 4층(상위 규칙·독자 지향·한 문장 한 생각·오독 제거), naturalize 호출로 마무리 |
 | [akbun-writing-with-question](./plugins/akbun-writing/skills/akbun-writing-with-question/) | 질문 기반 akbun 스타일 학습형 블로그 작성 |
 | [akbun-writing-persuasive](./plugins/akbun-writing/skills/akbun-writing-persuasive/) | 독자가 끝까지 읽고 납득하도록 설득식 구조로 akbun 스타일 블로그 작성 |
 | [akbun-docs-review](./plugins/akbun-writing/skills/akbun-docs-review/) | 이미 쓴 한국어 기술 문서의 용어 표기 통일과 근거 있는 사실 교정. 맞춤법·문장은 naturalize를 호출해 처리하고 원본에 덮어씀 |

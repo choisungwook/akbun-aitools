@@ -14,10 +14,9 @@ The skill wiki records maintenance context. [SKILL.md](../SKILL.md) remains the 
 
 ## Flow
 
-Choose the central why or what-if question, open sections with linked questions, answer each with technical depth, then return to and close the opening question.
+Open with one central why or what-if question, open each section with one question whose first sentence is the answer, then close the opening question. The skill has no supporting references; the rules fit in `SKILL.md`.
 
 ## Resources
 
 - [`SKILL.md`](../SKILL.md): invocation boundary and runtime instructions.
 - Related: `plugins/akbun-writing/skills/akbun-writing/SKILL.md` is the base; changing a base rule changes this skill's output.
-- [`references/`](../references/): supporting resources retained outside the maintenance wiki.
