@@ -1,0 +1,43 @@
+{
+  "name": "akbun-agent-ops",
+  "version": "1.0.0",
+  "description": "Agent operations skills — set up a project's memory layout once, rebuild working context at session start, and turn each session's lessons into approved SKILL.md edits",
+  "author": {
+    "name": "akbun",
+    "url": "https://github.com/choisungwook"
+  },
+  "homepage": "https://github.com/choisungwook/akbun-aitools",
+  "repository": "https://github.com/choisungwook/akbun-aitools",
+  "license": "MIT",
+  "keywords": [
+    "agent",
+    "memory",
+    "recall",
+    "reflect",
+    "self-improving",
+    "AGENTS.md",
+    "skills"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "akbun Agent Ops",
+    "shortDescription": "Memory setup, session recall, and reflect-into-skills for agents",
+    "longDescription": "Three skills for running agents across sessions in akbun's style. akbun-memory-setup inspects a project once and lays out its memory directories plus an AGENTS.md read order that says what to read when. akbun-recall rebuilds the current working context at session start from that memory, git and PR state, and prior session transcripts, returning a short brief with status-tagged threads and one next move. akbun-reflect reviews the session transcript through three lenses and routes durable lessons into SKILL.md edits that the user approves row by row; it never decides directory structure.",
+    "developerName": "akbun",
+    "category": "Developer Tools",
+    "capabilities": [
+      "Interactive",
+      "Write"
+    ],
+    "websiteURL": "https://github.com/choisungwook/akbun-aitools",
+    "privacyPolicyURL": "https://docs.github.com/site-policy/privacy-policies/github-general-privacy-statement",
+    "termsOfServiceURL": "https://docs.github.com/en/site-policy/github-terms/github-terms-of-service",
+    "defaultPrompt": [
+      "이 프로젝트에 agent 기억 디렉터리와 AGENTS.md 읽기 순서를 만들어줘 (akbun-memory-setup)",
+      "지난주에 내가 이 repo에서 뭘 하고 있었는지 복원해줘 (akbun-recall)",
+      "이 세션에서 배운 걸 skill 수정으로 정리해줘 (akbun-reflect)"
+    ],
+    "brandColor": "#1D4ED8",
+    "screenshots": []
+  }
+}

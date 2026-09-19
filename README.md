@@ -99,8 +99,6 @@ akbun 발표자료 스타일 skill 모음.
 | skill | 설명 |
 |---|---|
 | [akbun-analysiscode](./plugins/akbun-analysis/skills/akbun-analysiscode/) | 비즈니스 흐름·API·서비스 관계를 근거 기반 JSON으로 분석하고, 비즈니스·서비스·API 관계도를 가진 인터랙티브 HTML·draw.io로 시각화·증분 갱신 |
-| [akbun-make-directorystruture-foragents](./plugins/akbun-analysis/skills/akbun-make-directorystruture-foragents/) | agent가 필요한 순간에 맞는 기억만 꺼내 쓰도록 기억 디렉터리 구조와 AGENTS.md·CLAUDE.md를 생성 |
-| [akbun-make-troubleshootingstruture-foragents](./plugins/akbun-analysis/skills/akbun-make-troubleshootingstruture-foragents/) | 장애 조사를 세션 넘어 이어가도록 incident 상태 디렉터리(CURRENT·HYPOTHESES·EVIDENCE·code-paths)와 AGENTS.md 트러블슈팅 규칙을 생성 |
 | [akbun-analysis-bottleneck](./plugins/akbun-analysis/skills/akbun-analysis-bottleneck/) | 트래픽 증가 시 병목 후보를 file:line 근거로 예측하고 측정 항목·장애 시 확인 순서·해결책 선택지·개선 뒤 새 문제를 mermaid 아키텍처와 함께 문서화 |
 | [akbun-analysis-architecture-review](./plugins/akbun-analysis/skills/akbun-analysis-architecture-review/) | 넘겨준 문맥과 인터뷰로 현재 아키텍처를 적대적으로 평가하고, 보안·운영 부담(toil) 관점 필수로 발견→대안→수치 효과 표→감수할 것→이행 순서를 mermaid 컴포넌트·시퀀스와 함께 제안 |
 | [akbun-analysis-token-credential](./plugins/akbun-analysis/skills/akbun-analysis-token-credential/) | 토큰·API 키 같은 자격 증명을 보안 관점에서 볼 때 발급 주체·읽는 주체·허용 범위를 묻는 질문 한 줄. 인증·인가 분석 의도를 AI에게 전달하는 용도 |
@@ -123,10 +121,21 @@ akbun 발표자료 스타일 skill 모음.
 |---|---|
 | [akbun-refactoring-autoverify](./plugins/akbun-refactoring/skills/akbun-refactoring-autoverify/) | 이미 사용 중인 코드·문서·설정을 무엇을 어떤 근거로 수정·삭제·생성할지 먼저 제안해 수락받고, 작은 단위로 고치며 매번 저장소의 자동 검증(테스트·린트·타입·빌드·문서 검사)을 통과시킨 뒤, 사람이 결정할 변경(동작·인터페이스 변경·삭제·보안·되돌림·기준선 실패)만 변경 전후·증거와 함께 보고. 보고 채널은 시작 시 한 번 질문(stdout 기본, GitHub PR body, GitHub issue, 파일) |
 
+### akbun-agent-ops
+
+agent 운영 skill 모음. 프로젝트의 기억 구조를 최초 1회 설계하고, 세션 시작 때 작업 맥락을 복원하고, 세션에서 배운 것을 승인 뒤 SKILL.md에 남긴다.
+
+| skill | 설명 |
+|---|---|
+| [akbun-memory-setup](./plugins/akbun-agent-ops/skills/akbun-memory-setup/) | 프로젝트를 훑어 agent 기억 디렉터리(디렉터리마다 "언제 읽는가")와 AGENTS.md 읽기 순서·CLAUDE.md 포인터를 최초 1회 생성. 매 세션 쓰는 맥락은 AGENTS.md 인라인, 반복 지시는 스크립트로 |
+| [akbun-recall](./plugins/akbun-agent-ops/skills/akbun-recall/) | 세션 시작 때 AGENTS.md가 가리키는 기억, git·PR 상태, 이전 세션 transcript를 읽고 대조해 캡슐·상태 태그 스레드·반복 문제·다음 행동 1개의 브리프로 복원 |
+| [akbun-reflect](./plugins/akbun-agent-ops/skills/akbun-reflect/) | 세션 transcript를 리뷰어 3개(판단·도구·발산)가 읽고 학습을 기존 SKILL.md 수정 제안(Accepted/Rejected/Backlog)으로 라우팅, 사용자 승인 행만 적용. 디렉터리 구조는 정하지 않음 |
+
 ## skill 연관관계
 
 일부 skill은 다른 skill의 정의를 참조한다. 참조 대상 skill을 바꾸면 참조하는 skill의 결과물도 함께 바뀐다.
 
+- `akbun-memory-setup`(akbun-agent-ops): AGENTS.md 읽기 순서를 만든다. `akbun-recall`이 그 순서를 따라 기억을 읽고, `akbun-reflect`는 구조를 건드리지 않고 SKILL.md만 고친다.
 - `akbun-writing`(akbun-writing): 글쓰기 기준 skill. `akbun-writing-with-question`, `akbun-writing-persuasive`가 모든 기본 규칙을 참조로 상속하고 각자 한 축(질문 구조, 설득 장치)만 더한다. `akbun-writing-easy`는 tokenops 규칙을 참조한다. 마무리에 `akbun-writing-naturalize`를 호출 모드로 적용한다.
 - `akbun-presentation-visual`(akbun-presentation): `akbun-presentation`이 슬라이드에 삽입할 래스터 시각자료를 생성한다.
 - `akbun-mascot-whale`(akbun-draw): akbun 마스코트 고래의 표준 외형을 정의하는 기준 skill. 캐릭터를 그리는 아래 skill들이 이 스펙을 참조한다.
@@ -153,6 +162,7 @@ Claude Code marketplace metadata lives in:
 /plugin install akbun-analysis@akbun-aitools
 /plugin install akbun-pulse@akbun-aitools
 /plugin install akbun-refactoring@akbun-aitools
+/plugin install akbun-agent-ops@akbun-aitools
 /reload-plugins
 ```
 
@@ -170,6 +180,7 @@ codex plugin add akbun-presentation@akbun-aitools --json
 codex plugin add akbun-analysis@akbun-aitools --json
 codex plugin add akbun-pulse@akbun-aitools --json
 codex plugin add akbun-refactoring@akbun-aitools --json
+codex plugin add akbun-agent-ops@akbun-aitools --json
 ```
 
 Codex plugin 업그레이드
@@ -191,6 +202,7 @@ codex plugin remove akbun-presentation@akbun-aitools --json
 codex plugin remove akbun-analysis@akbun-aitools --json
 codex plugin remove akbun-pulse@akbun-aitools --json
 codex plugin remove akbun-refactoring@akbun-aitools --json
+codex plugin remove akbun-agent-ops@akbun-aitools --json
 
 rm -rf ~/.codex/plugins/cache/akbun-aitools
 rm -rf ~/.codex/.tmp/marketplaces/akbun-aitools
@@ -204,6 +216,7 @@ codex plugin add akbun-presentation@akbun-aitools --json
 codex plugin add akbun-analysis@akbun-aitools --json
 codex plugin add akbun-pulse@akbun-aitools --json
 codex plugin add akbun-refactoring@akbun-aitools --json
+codex plugin add akbun-agent-ops@akbun-aitools --json
 
 codex plugin list --json
 ```
