@@ -1,6 +1,40 @@
 # akbun-aitools
 
-akbun tools for both Claude Code and Codex plugin workflows.
+akbun(악분)이 매일 쓰는 AI agent skill을 Claude Code와 Codex plugin으로 묶은 저장소다. 글을 쓰고, 그림 프롬프트를 만들고, 코드를 이해하고, agent를 세션 넘어 운영하는 방식을 skill로 고정해 두었다. 모든 skill은 한국어로 답하고, 입력에 있는 사실만 쓰고, 확인하지 못한 것은 `확인 필요`로 남긴다.
+
+## 한눈에 보기
+
+plugin 9개, skill 50개. 하고 싶은 일에서 plugin을 찾고, 아래 `plugin 목록`에서 skill을 고른다.
+
+| 하고 싶은 일 | plugin | 대표 skill |
+|---|---|---|
+| 공부한 것을 akbun 스타일 한국어 기술 글로 쓰기, 문서 교정, 운영 작업 공지 | [akbun-writing](#akbun-writing) | `akbun-writing`, `akbun-docs-review`, `akbun-it-infra-change-notice` |
+| 고정 스타일의 이미지 생성 프롬프트와 Figma/Canva용 SVG(웹툰·카드뉴스·삽화·아키텍처 그림) | [akbun-draw](#akbun-draw) | `akbun-draw-webtoon-c`, `akbun-draw-cardnews-cream`, `akbun-draw-system-architecture` |
+| AWS VPC·Kubernetes 네트워크 draw.io 다이어그램 | [akbun-draw-architecture](#akbun-draw-architecture) | `akbun-drawio-aws-vpc`, `kubernets-network-drawio` |
+| akbun 스타일 pptx 덱과 발표 대본, 삽입 시각자료 | [akbun-presentation](#akbun-presentation) | `akbun-presentation` |
+| 알고리즘 과외, 영상 자막 대본, 발음 가이드, Anki, 학습지 | [akbun-learning](#akbun-learning) | `akbun-algorithm-tutor`, `akbun-studysheet` |
+| 코드베이스 관계 분석, 병목 예측, 아키텍처 적대 리뷰, PR의 왜와 어떻게, 머지 영향 범위 | [akbun-analysis](#akbun-analysis) | `akbun-analysiscode`, `akbun-analysis-git-whyandhow`, `akbun-analysis-gitdiff-blast-radius` |
+| 이미 쓰는 코드·문서를 자동 검증에 걸어 리팩토링, 사람이 판단할 것만 보고 | [akbun-refactoring](#akbun-refactoring) | `akbun-refactoring-autoverify` |
+| agent 기억 구조 설정, 세션 시작 때 맥락 복원, 세션에서 배운 것을 skill에 반영 | [akbun-agent-ops](#akbun-agent-ops) | `akbun-memory-setup`, `akbun-recall`, `akbun-reflect` |
+| 매일 GitHub·Readwise 활동을 복습 문서로 | [akbun-pulse](#akbun-pulse) | `github-daily-pulse`, `readwise-daily-pulse` |
+
+## 빠른 시작
+
+Claude Code에서 marketplace를 등록하고 plugin 하나를 설치한 뒤 skill 이름으로 호출한다. 전체 설치 명령과 Codex는 아래 `설치 방법`에 있다.
+
+```bash
+/plugin marketplace add choisungwook/akbun-aitools
+/plugin install akbun-writing@akbun-aitools
+/reload-plugins
+```
+
+설치 뒤 예시 요청:
+
+```text
+/akbun-writing 이 실습 노트를 블로그 글로 정리해줘
+```
+
+대부분의 skill은 사용자가 이름을 불러야 실행된다(`disable-model-invocation: true`). 모델이 알아서 끼어들지 않게 하려는 선택이다.
 
 ## plugin 목록
 
@@ -62,21 +96,6 @@ akbun tools for both Claude Code and Codex plugin workflows.
 | [akbun-drawio-aws-vpc](./plugins/akbun-draw-architecture/skills/akbun-drawio-aws-vpc/) | draw.io로 AWS VPC 기초 다이어그램 생성 |
 | [kubernets-network-drawio](./plugins/akbun-draw-architecture/skills/kubernets-network-drawio/) | draw.io로 Kubernetes 네트워크 다이어그램 생성 |
 
-### akbun-learning
-
-언어·학습 보조 skill 모음.
-
-| skill | 설명 |
-|---|---|
-| [akbun-algorithm-tutor](./plugins/akbun-learning/skills/akbun-algorithm-tutor/) | 학습자 눈높이에 맞춘 알고리즘 문제 풀이·복잡도 과외 |
-| [akbun-describe-twitter-transcript](./plugins/akbun-learning/skills/akbun-describe-twitter-transcript/) | x.com post 영상을 한국어 Markdown 대본으로 정리 |
-| [akbun-describe-youtube-transcript](./plugins/akbun-learning/skills/akbun-describe-youtube-transcript/) | 유튜브 자막을 한국어 보고서로 정리 |
-| [akbun-driven-learning](./plugins/akbun-learning/skills/akbun-driven-learning/) | 가설 검증형 학습자를 위한 기술 개념 설명 스타일(판정 우선·구조 시각화·연쇄 질문 대응) |
-| [akbun-learning-english](./plugins/akbun-learning/skills/akbun-learning-english/) | 한국어 학습자용 영어 발음·읽기 가이드 |
-| [akbun-learning-japanese](./plugins/akbun-learning/skills/akbun-learning-japanese/) | 한국어 학습자용 일본어 발음·읽기 가이드 |
-| [akbun-make-anki-japanese](./plugins/akbun-learning/skills/akbun-make-anki-japanese/) | 일본어 교재 이미지/PDF를 Anki 덱으로 변환 |
-| [akbun-studysheet](./plugins/akbun-learning/skills/akbun-studysheet/) | 주제·글·코드를 문제 상황 → 원리 → 구조 이해 → 핸즈온 흐름의 인터랙티브 HTML 학습지(20장 미만, 전체 light theme akbun 라이트 스타일)로 생성 |
-
 ### akbun-presentation
 
 akbun 발표자료 스타일 skill 모음.
@@ -92,6 +111,21 @@ akbun 발표자료 스타일 skill 모음.
 |---|---|
 | `akbun-presentation` | <img src="./imgs/akbun-presentation.png" alt="akbun-presentation 예시 슬라이드" width="480"> |
 
+### akbun-learning
+
+언어·학습 보조 skill 모음.
+
+| skill | 설명 |
+|---|---|
+| [akbun-algorithm-tutor](./plugins/akbun-learning/skills/akbun-algorithm-tutor/) | 학습자 눈높이에 맞춘 알고리즘 문제 풀이·복잡도 과외 |
+| [akbun-describe-twitter-transcript](./plugins/akbun-learning/skills/akbun-describe-twitter-transcript/) | x.com post 영상을 한국어 Markdown 대본으로 정리 |
+| [akbun-describe-youtube-transcript](./plugins/akbun-learning/skills/akbun-describe-youtube-transcript/) | 유튜브 자막을 한국어 보고서로 정리 |
+| [akbun-driven-learning](./plugins/akbun-learning/skills/akbun-driven-learning/) | 가설 검증형 학습자를 위한 기술 개념 설명 스타일(판정 우선·구조 시각화·연쇄 질문 대응) |
+| [akbun-learning-english](./plugins/akbun-learning/skills/akbun-learning-english/) | 한국어 학습자용 영어 발음·읽기 가이드 |
+| [akbun-learning-japanese](./plugins/akbun-learning/skills/akbun-learning-japanese/) | 한국어 학습자용 일본어 발음·읽기 가이드 |
+| [akbun-make-anki-japanese](./plugins/akbun-learning/skills/akbun-make-anki-japanese/) | 일본어 교재 이미지/PDF를 Anki 덱으로 변환 |
+| [akbun-studysheet](./plugins/akbun-learning/skills/akbun-studysheet/) | 주제·글·코드를 문제 상황 → 원리 → 구조 이해 → 핸즈온 흐름의 인터랙티브 HTML 학습지(20장 미만, 전체 light theme akbun 라이트 스타일)로 생성 |
+
 ### akbun-analysis
 
 코드베이스 분석 skill 모음. 어떤 비즈니스를 위해 코드가 쓰였는지를 file:line 근거가 있는 JSON으로 저장하고, 인터랙티브 HTML과 선택적 draw.io 관계도를 생성·증분 갱신한다.
@@ -105,15 +139,6 @@ akbun 발표자료 스타일 skill 모음.
 | [akbun-analysis-adversarial-review](./plugins/akbun-analysis/skills/akbun-analysis-adversarial-review/) | 사용자가 구현한 코드·주장을 옹호하지 않고 숨은 가정과 예외를 의심해 깨지는 반례를 근거와 함께 드는 적대적 리뷰 지침 두 줄 |
 | [akbun-analysis-git-whyandhow](./plugins/akbun-analysis/skills/akbun-analysis-git-whyandhow/) | 코드·PR을 why → how 순서로 이해. git·gh CLI·저장소 문서만으로(MCP 미사용) 동기를 확신 등급·인용과 함께 조사하고, 그 제약(Preserve/Change/Avoid/Risk)을 안고 동작을 온보딩 수준으로 설명 |
 | [akbun-analysis-gitdiff-blast-radius](./plugins/akbun-analysis/skills/akbun-analysis-gitdiff-blast-radius/) | PR·diff를 머지하면 diff 밖 어디가 깨지고 내 다음 작업과 어디서 만나는지 찾고, 안전한 이유인 사실 하나를 실행 스크립트로 증명(확신 사다리 5단). 옵션으로 gh CLI로 PR 코멘트 |
-
-### akbun-pulse
-
-데일리 펄스 skill 모음. 오늘 GitHub에서 일어난 일과 어제 Readwise에 들어온 글을 복습 문서로 만들어 사용자 손에 바로 넣는다.
-
-| skill | 설명 |
-|---|---|
-| [github-daily-pulse](./plugins/akbun-pulse/skills/github-daily-pulse/) | 오늘 00:00부터 실행 시각까지 접근 가능한 모든 repo의 issue·discussion·merged PR·open/draft PR을 한글 복습 문서(시간·핵심작업·모든 작업)로 만들고 Gmail로 나에게 전송, 실패 시 Apple Notes 저장(Google Docs·md 파일 지정 가능) |
-| [readwise-daily-pulse](./plugins/akbun-pulse/skills/readwise-daily-pulse/) | 어제 Readwise Reader에 저장된 문서(new·later·feed)·하이라이트를 changelog(유형 표시)·읽을 것·나머지로 분류한 한글 개조식 요약을 Gmail 초안으로 생성. 프로필·관심 주제·받는 주소·토큰은 변수로 받아 루틴에서는 변수명만 지정 |
 
 ### akbun-refactoring
 
@@ -133,6 +158,15 @@ agent 운영 skill 모음. 프로젝트의 기억 구조를 최초 1회 설계�
 | [akbun-recall](./plugins/akbun-agent-ops/skills/akbun-recall/) | 세션 시작 때 AGENTS.md가 가리키는 기억, git·PR 상태, 이전 세션 transcript를 읽고 대조해 캡슐·상태 태그 스레드·반복 문제·다음 행동 1개의 브리프로 복원 |
 | [akbun-reflect](./plugins/akbun-agent-ops/skills/akbun-reflect/) | 세션 transcript를 저비용 모델 리뷰어 3개(판단·도구·발산)가 읽고 학습을 코드베이스가 이미 가진 기억 구조(관련 SKILL.md, 프로젝트 wiki·결정 기록, AGENTS.md)의 맞는 자리에 수정 제안(Accepted/Rejected/Backlog)으로 라우팅, 사용자 승인 행만 적용. 새 구조는 만들지 않음 |
 
+### akbun-pulse
+
+데일리 펄스 skill 모음. 오늘 GitHub에서 일어난 일과 어제 Readwise에 들어온 글을 복습 문서로 만들어 사용자 손에 바로 넣는다.
+
+| skill | 설명 |
+|---|---|
+| [github-daily-pulse](./plugins/akbun-pulse/skills/github-daily-pulse/) | 오늘 00:00부터 실행 시각까지 접근 가능한 모든 repo의 issue·discussion·merged PR·open/draft PR을 한글 복습 문서(시간·핵심작업·모든 작업)로 만들고 Gmail로 나에게 전송, 실패 시 Apple Notes 저장(Google Docs·md 파일 지정 가능) |
+| [readwise-daily-pulse](./plugins/akbun-pulse/skills/readwise-daily-pulse/) | 어제 Readwise Reader에 저장된 문서(new·later·feed)·하이라이트를 changelog(유형 표시)·읽을 것·나머지로 분류한 한글 개조식 요약을 Gmail 초안으로 생성. 프로필·관심 주제·받는 주소·토큰은 변수로 받아 루틴에서는 변수명만 지정 |
+
 ## skill 연관관계
 
 일부 skill은 다른 skill의 정의를 참조한다. 참조 대상 skill을 바꾸면 참조하는 skill의 결과물도 함께 바뀐다.
@@ -147,12 +181,7 @@ agent 운영 skill 모음. 프로젝트의 기억 구조를 최초 1회 설계�
 
 ### Claude Code
 
-Claude Code marketplace metadata lives in:
-
-- `.claude-plugin/marketplace.json`
-- `plugins/<plugin-name>/.claude-plugin/plugin.json`
-
-기존 설치 방식은 그대로 유지한다.
+Claude Code에서 아래를 차례로 실행한다. 필요한 plugin만 골라 설치해도 된다.
 
 ```bash
 /plugin marketplace add choisungwook/akbun-aitools
@@ -170,7 +199,7 @@ Claude Code marketplace metadata lives in:
 
 ### Codex
 
-Codex plugin 설치 명령어
+Codex에서 아래를 차례로 실행한다.
 
 ```bash
 codex plugin marketplace add choisungwook/akbun-aitools --json
@@ -185,15 +214,15 @@ codex plugin add akbun-refactoring@akbun-aitools --json
 codex plugin add akbun-agent-ops@akbun-aitools --json
 ```
 
-Codex plugin 업그레이드
+#### Codex 업그레이드 (hard reset)
 
-Codex에게 요청할 프롬프트
+third-party marketplace는 자동 갱신되지 않는다. 업그레이드는 제거 후 재설치(hard reset)로 한다. Codex에게 아래처럼 요청하면 된다.
 
 ```text
 akbun-aitools Codex plugin을 hard reset하세요.
 ```
 
-Hard reset 명령어
+직접 실행할 때의 hard reset 명령어
 
 ```bash
 codex plugin remove akbun-writing@akbun-aitools --json
@@ -223,7 +252,11 @@ codex plugin add akbun-agent-ops@akbun-aitools --json
 codex plugin list --json
 ```
 
-Codex plugin metadata lives in:
+## 저장소 구조와 기여
 
-- `.agents/plugins/marketplace.json`
-- `plugins/<plugin-name>/.codex-plugin/plugin.json`
+- `plugins/<plugin-name>/skills/<skill-name>/SKILL.md`: skill의 실행 지침. 이 파일이 원본이다.
+- `plugins/<plugin-name>/.claude-plugin/plugin.json`, `plugins/<plugin-name>/.codex-plugin/plugin.json`: plugin manifest. 두 파일의 `version`은 항상 같다.
+- `.claude-plugin/marketplace.json`, `.agents/plugins/marketplace.json`: Claude Code·Codex marketplace 목록.
+- `AGENTS.md`: agent가 이 저장소에서 일할 때 따르는 규칙(읽는 순서, 버전 규칙, PR 형식).
+- `docs/guide_deploy_plugins.md`: plugin 생성·배포 절차.
+- `docs/adr/`: 되돌리기 어려운 설계 결정 기록.
