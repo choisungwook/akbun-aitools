@@ -5,7 +5,7 @@
   },
   "metadata": {
     "description": "Claude Code plugin marketplace for akbun tools",
-    "version": "1.4.0"
+    "version": "1.5.0"
   },
   "plugins": [
     {
@@ -23,7 +23,7 @@
     {
       "name": "akbun-draw-architecture",
       "source": "./plugins/akbun-draw-architecture",
-      "description": "Architecture drawing skills — AWS/Kubernetes draw.io diagrams and architecture/network flow figure prompts",
+      "description": "Architecture drawing skills — AWS VPC and Kubernetes network draw.io diagrams",
       "strict": true
     },
     {
@@ -54,6 +54,12 @@
       "name": "akbun-refactoring",
       "source": "./plugins/akbun-refactoring",
       "description": "Refactoring skills — change code, docs, and config already in use, gate every change behind automated verification, and report only what needs a human decision (stdout, GitHub PR body, GitHub issue, or file)",
+      "strict": true
+    },
+    {
+      "name": "akbun-agent-ops",
+      "source": "./plugins/akbun-agent-ops",
+      "description": "Agent operations skills — set up a project's memory layout once, rebuild working context at session start, and turn each session's lessons into approved edits to the memory structure the codebase already has",
       "strict": true
     }
   ]

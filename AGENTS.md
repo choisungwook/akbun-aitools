@@ -2,24 +2,22 @@
 
 ## 목적
 
-Agent는 skill을 수정하면서 다음 agent가 덜 헤매도록 각 skill의 LLM wiki에 안정적인 맥락과 중요한 결정만 최소한으로 남긴다.
+Agent는 이 저장소의 plugin skill을 만들고 유지보수한다. 실행 지침의 원본은 항상 각 skill의 `SKILL.md`다. 세션에서 배운 것은 별도 문서가 아니라 실행 경로에 있는 문서, 즉 관련 `SKILL.md`와 이 파일에 남긴다. 실행 경로에 없는 문서는 읽히지 않고, 읽히지 않는 문서는 갱신되지 않는다.
 
-## 파일 구조
+## 읽는 순서
 
-각 skill은 자체 LLM wiki를 둔다. 새 wiki는 `templates/llm-wiki/`를 기준으로 만든다.
+1. 이 파일 전체.
+2. 작업 대상 skill의 `SKILL.md`와 그것이 참조하는 `references/`, `scripts/`.
+3. plugin을 추가·배포하거나 manifest를 만질 때 `docs/guide_deploy_plugins.md`.
+4. 설계 결정을 바꾸기 전에 `docs/adr/`.
 
-```text
-plugins/<plugin-name>/skills/<skill-name>/
-  SKILL.md
-  wiki/
-    index.md
-    architecture.md
-    development.md
-    adr/                 # 조건을 충족하는 결정이 있을 때만 생성
-      0001-slug.md
-```
+`README.md`의 `## plugin 목록`은 사람용 색인이다. 규칙의 원본이 아니다.
 
-wiki는 사람이 읽는 사용자 문서가 아니라 다음 agent가 skill을 유지보수하기 위한 맥락이다. 모든 wiki 문서는 간결한 영어로 작성한다. 실행 시 지침의 원본은 항상 `SKILL.md`이며, wiki가 실행 지침을 복제하거나 일반 사용자 요청에서 반드시 로드되도록 만들지 않는다.
+## 세션 시작과 끝
+
+- 이전 작업을 이어갈 때는 `akbun-recall`(akbun-agent-ops)로 맥락을 복원한다. 설치돼 있지 않으면 git 로그와 열린 PR로 직접 복원한다.
+- 세션을 끝내기 전에 남길 학습이 있으면 `akbun-reflect`(akbun-agent-ops)를 부른다. 학습의 자리는 셋이다. skill을 쓰다 드러난 빈틈은 그 `SKILL.md`, 매 세션 지켜야 할 규칙은 이 파일, 되돌리기 어려운 결정은 `docs/adr/`. 새 디렉터리나 새 문서를 만들어 남기지 않는다.
+- 같은 지시를 두 번째로 쓰고 있다면 그 지시는 텍스트가 아니라 스크립트·검사로 갈 신호다. 규칙을 추가하기 전에 자동 검증으로 바꿀 수 있는지 먼저 본다.
 
 ## 플러그인 변경 규칙
 
@@ -69,25 +67,11 @@ plugin의 버전을 올린다. 사용자에게 버전 업데이트 여부를 묻
 - 목표와 의사결정은 기록용 Issue에 두고 PR에는 링크만 남긴다. PR에는 실제 구현에서 겪은 어려움과 감수하는 리스크만 적는다.
 - 각 섹션은 요약 한 줄과 필요한 경우 근거 목록 하나까지만 사용한다.
 
-## 시작 절차
-
-skill 작업을 시작할 때 해당 skill의 `wiki/index.md`를 먼저 읽는다.
-
-읽는 순서:
-
-1. `/AGENTS.md`
-2. `plugins/<plugin-name>/skills/<skill-name>/wiki/index.md`
-3. `index.md`가 안내하는 `architecture.md`, `development.md`
-4. 관련 결정 기록과 domain 문서, 변경에 필요할 때만
-5. `SKILL.md`와 변경 대상 supporting resource
-
-`wiki/index.md`가 없는 기존 skill은 `templates/llm-wiki/`로 wiki를 만든 뒤 작업한다. wiki 전체를 무조건 읽지 않고 `index.md`의 read order와 현재 변경 범위에 따라 필요한 문서만 읽는다.
-
 ## 세션 중 원칙
 
 ### 용어 충돌 확인
 
-사용자 표현이 skill wiki의 용어와 충돌하면 즉시 지적한다. 질문하지 말고 충돌 내용을 명확히 적고, repo 기준의 권장 용어를 제시한다.
+사용자 표현이 해당 skill `SKILL.md`의 용어와 충돌하면 즉시 지적한다. 질문하지 말고 충돌 내용을 명확히 적고, repo 기준의 권장 용어를 제시한다.
 
 예:
 
@@ -97,7 +81,7 @@ skill 작업을 시작할 때 해당 skill의 `wiki/index.md`를 먼저 읽는�
 
 ### 모호한 용어 정리
 
-사용자가 모호하거나 여러 의미로 쓰이는 단어를 사용하면 표준 용어를 제안한다. 확정 가능한 경우 해당 skill의 `wiki/architecture.md` 또는 별도 domain 문서에 바로 반영한다.
+사용자가 모호하거나 여러 의미로 쓰이는 단어를 사용하면 표준 용어를 제안한다. 확정 가능한 경우 해당 skill의 `SKILL.md`(용어 절이 없으면 새 절)에 바로 반영한다.
 
 예:
 
@@ -127,7 +111,7 @@ account는 의미가 모호하다. 결제 주체는 Customer, 로그인 주체�
 
 ### 질문 최소화
 
-self-improving 목적에서는 질문보다 repo 근거, 코드 확인, 가정 명시를 우선한다.
+질문보다 repo 근거, 코드 확인, 가정 명시를 우선한다.
 
 질문하지 않는 경우:
 
@@ -142,34 +126,9 @@ self-improving 목적에서는 질문보다 repo 근거, 코드 확인, 가정 �
 - 선택에 따라 결과가 크게 달라짐
 - repo와 사용자 요구가 충돌하고 임의 선택이 위험함
 
-## LLM wiki 작성 규칙
-
-기본 문서 역할:
-
-- `index.md`: wiki 목적, 읽는 순서, 문서 색인
-- `architecture.md`: skill 책임, 경계, 안정적인 흐름, resource 소유 관계, 확정된 용어
-- `development.md`: 수정 순서, 검증 방법, wiki 갱신 조건
-- 추가 domain 문서: `architecture.md`가 과도하게 길어질 때만 생성
-- `adr/`: 결정 기록 조건을 모두 충족할 때만 생성
-
-규칙:
-
-- 영어로 작성한다.
-- 확정된 책임, 경계, 용어, resource 관계와 장기 caveat만 기록한다.
-- `SKILL.md`, `references/`, `design.md`, `README.md` 내용을 복제하지 않고 링크한다.
-- 스펙, 작업 로그, 구현 세부사항, 임시 메모, 일반 지식은 넣지 않는다.
-- runtime behavior가 바뀌면 `SKILL.md`를 먼저 수정하고 wiki가 그 변경과 충돌하지 않게 갱신한다.
-
 ## 결정 기록 규칙
 
-중요한 결정은 관련 skill의 `wiki/adr/`에 둔다. 첫 결정 기록이 필요할 때만 디렉터리를 만든다.
-
-파일명:
-
-```text
-0001-slug.md
-0002-slug.md
-```
+되돌리기 어려운 결정은 `docs/adr/NNNN-slug.md`에 둔다. 번호는 기존 최대값 +1이고, `docs/adr/README.md` 표에 한 줄을 추가한다.
 
 결정 기록은 아래 3개가 모두 참일 때만 만든다.
 
@@ -177,70 +136,26 @@ self-improving 목적에서는 질문보다 repo 근거, 코드 확인, 가정 �
 2. 맥락 없이는 이상해 보인다.
 3. 실제 트레이드오프가 있었다.
 
-하나라도 아니면 결정 기록을 만들지 않는다.
-
-결정 기록 형식:
+하나라도 아니면 만들지 않는다. 형식:
 
 ```md
 # {결정 제목}
 
+Scope: {plugin / skill, 저장소 전체면 repo}
+
 ## Decision
 
-{결정을 간결한 영어로 작성}
+{결정을 간결하게}
 
 ## Reason
 
-{이유와 실제 trade-off를 간결한 영어로 작성}
+{이유와 실제 trade-off}
 ```
-
-## Self-Improving 규칙
-
-작업 중 또는 작업 종료 시 다음을 판단한다.
-
-skill wiki 갱신 조건:
-
-- 새 용어 확정
-- 기존 용어 의미 변경
-- 사용자 표현과 repo 용어 충돌 발견
-- 다음 agent가 헷갈릴 가능성이 높은 용어 발견
-- skill 책임, 경계, 안정적인 흐름, resource 소유 관계가 변경
-- 다음 작업에도 남는 caveat가 발생
-
-결정 기록 생성 조건:
-
-- 되돌리기 어려움
-- 맥락 없이는 이상해 보임
-- 실제 트레이드오프 존재
-
-갱신하지 않는 조건:
-
-- 일회성 작업
-- 단순 문구 수정
-- 구현 세부사항
-- 임시 디버깅 기록
-- 다음 작업에 영향 없는 사실
-
-## 압축 규칙
-
-wiki 압축 조건:
-
-- 용어 정리 20개 초과
-- 오래된 용어 포함
-- 중복 정의 포함
-- `SKILL.md`나 supporting resource 설명을 반복
-
-압축 방법:
-
-1. 현재 유효한 용어만 유지
-2. 중복 용어 병합
-3. 구현 세부사항 삭제
-4. 실행 지침은 `SKILL.md`로, 상세 규칙은 기존 supporting resource로 연결
-5. 중요한 결정은 조건 충족 시 `wiki/adr/`로 분리
 
 ## 완료 전 확인
 
 - 모호한 용어를 그대로 넘기지 않았는가?
 - 코드와 사용자 설명의 충돌을 확인했는가?
-- 확정된 용어와 바뀐 경계를 해당 skill wiki에 반영했는가?
-- `SKILL.md`와 wiki가 충돌하지 않는가?
+- 바뀐 동작이 `SKILL.md`에 있고, `references/`와 충돌하지 않는가?
+- plugin manifest 두 파일의 버전을 올렸고 `README.md` 표를 갱신했는가?
 - 결정 기록은 세 조건을 모두 만족할 때만 만들었는가?
