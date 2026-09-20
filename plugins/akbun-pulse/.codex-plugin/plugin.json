@@ -1,6 +1,6 @@
 {
   "name": "akbun-pulse",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Daily pulse skills — today's GitHub issues, discussions, merged and open/draft PRs as a Korean review digest, and yesterday's Readwise Reader documents and highlights as a Korean changelog/worth-reading mail draft delivered via Gmail, Apple Notes, Google Docs, or Markdown",
   "author": {
     "name": "akbun",
@@ -41,6 +41,7 @@
     "defaultPrompt": [
       "오늘 내 GitHub 활동을 정리해서 github-daily-pulse로 나에게 보내줘",
       "오늘 00시부터 지금까지 내 repo들의 issue, PR, discussion을 복습 문서로 만들어 md 파일로 저장해줘",
+      "이번 주 내가 GitHub에서 끝낸 일을 주간회의 보고용으로 정리해줘 (github-period-pulse)",
       "readwise-daily-pulse 실행. PULSE_PROFILE, PULSE_INTERESTS, PULSE_TO는 환경 변수 값을 사용."
     ],
     "brandColor": "#7C3AED",
