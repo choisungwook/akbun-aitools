@@ -4,7 +4,7 @@ akbun(악분)이 매일 쓰는 AI agent skill을 Claude Code와 Codex plugin으�
 
 ## 한눈에 보기
 
-plugin 9개, skill 50개. 하고 싶은 일에서 plugin을 찾고, 아래 `plugin 목록`에서 skill을 고른다.
+plugin 9개, skill 51개. 하고 싶은 일에서 plugin을 찾고, 아래 `plugin 목록`에서 skill을 고른다.
 
 | 하고 싶은 일 | plugin | 대표 skill |
 |---|---|---|
@@ -16,7 +16,7 @@ plugin 9개, skill 50개. 하고 싶은 일에서 plugin을 찾고, 아래 `plug
 | 코드베이스 관계 분석, 병목 예측, 아키텍처 적대 리뷰, PR의 왜와 어떻게, 머지 영향 범위 | [akbun-analysis](#akbun-analysis) | `akbun-analysiscode`, `akbun-analysis-git-whyandhow`, `akbun-analysis-gitdiff-blast-radius` |
 | 이미 쓰는 코드·문서를 자동 검증에 걸어 리팩토링, 사람이 판단할 것만 보고 | [akbun-refactoring](#akbun-refactoring) | `akbun-refactoring-autoverify` |
 | agent 기억 구조 설정, 세션 시작 때 맥락 복원, 세션에서 배운 것을 skill에 반영 | [akbun-agent-ops](#akbun-agent-ops) | `akbun-memory-setup`, `akbun-recall`, `akbun-reflect` |
-| 매일 GitHub·Readwise 활동을 복습 문서로 | [akbun-pulse](#akbun-pulse) | `github-daily-pulse`, `readwise-daily-pulse` |
+| 매일 GitHub·Readwise 활동을 복습 문서로, 기간별 결과를 주간회의 브리프로 | [akbun-pulse](#akbun-pulse) | `github-daily-pulse`, `github-period-pulse`, `readwise-daily-pulse` |
 
 ## 빠른 시작
 
@@ -160,12 +160,13 @@ agent 운영 skill 모음. 프로젝트의 기억 구조를 최초 1회 설계�
 
 ### akbun-pulse
 
-데일리 펄스 skill 모음. 오늘 GitHub에서 일어난 일과 어제 Readwise에 들어온 글을 복습 문서로 만들어 사용자 손에 바로 넣는다.
+펄스 skill 모음. 오늘 GitHub에서 일어난 일과 어제 Readwise에 들어온 글을 복습 문서로, 기간 동안 끝낸 일을 주간회의 브리프로 만들어 사용자 손에 바로 넣는다.
 
 | skill | 설명 |
 |---|---|
 | [github-daily-pulse](./plugins/akbun-pulse/skills/github-daily-pulse/) | 오늘 00:00부터 실행 시각까지 접근 가능한 모든 repo의 issue·discussion·merged PR·open/draft PR을 한글 복습 문서(시간·핵심작업·모든 작업)로 만들고 Gmail로 나에게 전송, 실패 시 Apple Notes 저장(Google Docs·md 파일 지정 가능) |
 | [readwise-daily-pulse](./plugins/akbun-pulse/skills/readwise-daily-pulse/) | 어제 Readwise Reader에 저장된 문서(new·later·feed)·하이라이트를 changelog(유형 표시)·읽을 것·나머지로 분류한 한글 개조식 요약을 Gmail 초안으로 생성. 프로필·관심 주제·받는 주소·토큰은 변수로 받아 루틴에서는 변수명만 지정 |
+| [github-period-pulse](./plugins/akbun-pulse/skills/github-period-pulse/) | 하루·1주·날짜 범위 동안 내가 GitHub에서 끝낸 것을 주간회의 보고용 브리프로. gh CLI만 사용, 결과(사용자에게 달라진 것, PR body 구현 첫 줄 재사용)·진행 중·막힌 것·다음 기간·수치 한 줄, 항목마다 PR·issue 링크 |
 
 ## skill 연관관계
 
