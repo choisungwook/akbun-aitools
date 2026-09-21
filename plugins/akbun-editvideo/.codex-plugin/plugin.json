@@ -1,0 +1,48 @@
+{
+  "name": "akbun-editvideo",
+  "version": "1.0.0",
+  "description": "Video editing skills — plan and run DaVinci Resolve travel-vlog edits: cut/stabilize, exposure/white balance, face mosaic, Korean subtitles, audio mix, and YouTube 4K delivery",
+  "author": {
+    "name": "akbun",
+    "url": "https://github.com/choisungwook"
+  },
+  "homepage": "https://github.com/choisungwook/akbun-aitools",
+  "repository": "https://github.com/choisungwook/akbun-aitools",
+  "license": "MIT",
+  "keywords": [
+    "video",
+    "davinci-resolve",
+    "editing",
+    "color",
+    "subtitle",
+    "mosaic",
+    "audio",
+    "youtube",
+    "4k"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "akbun Edit Video",
+    "shortDescription": "DaVinci Resolve travel-vlog editing: cut, color, mosaic, subtitles, audio, 4K delivery",
+    "longDescription": "Plans and runs a full DaVinci Resolve edit for speech-free travel vlogs shot on iPhone and Insta360 Luna Ultra. The orchestrator duplicates the timeline first, then runs the specialist skills in order: cut editing and stabilization (travelflow style), scope-based exposure and white balance, soft wide face mosaic with markers for later review, Gmarket Sans Korean subtitles (travelnote style), location/ambience/SFX/BGM mixing, and a validated YouTube 4K render. Every change is logged with clip file name and timecode; original timeline and media are never modified. Cut and subtitle styles are separate skills so other styles can be added later.",
+    "developerName": "akbun",
+    "category": "Productivity",
+    "capabilities": [
+      "Interactive",
+      "Write"
+    ],
+    "websiteURL": "https://github.com/choisungwook/akbun-aitools",
+    "privacyPolicyURL": "https://docs.github.com/site-policy/privacy-policies/github-general-privacy-statement",
+    "termsOfServiceURL": "https://docs.github.com/en/site-policy/github-terms/github-terms-of-service",
+    "defaultPrompt": [
+      "이 여행 영상 프로젝트를 DaVinci Resolve에서 처음부터 끝까지 편집 계획 세우고 실행해줘 (davinciresolve-video-editor)",
+      "iPhone 클립 앞부분 흰 화면 잘라내고 흔들리는 클립만 안정화해줘 (davinciresolve-cut-travelflow)",
+      "스코프 보고 클립 사이 노출과 화이트밸런스 맞춰줘 (davinciresolve-exposure-whitebalance)",
+      "얼굴 나오는 장면에 약한 모자이크 넣고 내가 나중에 찾을 수 있게 마커 남겨줘 (davinciresolve-face-privacy)",
+      "Gmarket Sans로 장소·시간 전달하는 한글 자막과 챕터 마커 넣어줘 (davinciresolve-subtitle-travelnote)",
+      "현장음·효과음·BGM 믹싱하고 YouTube용 4K로 렌더링해서 검증해줘 (davinciresolve-audio-delivery)"
+    ],
+    "brandColor": "#7C3AED",
+    "screenshots": []
+  }
+}

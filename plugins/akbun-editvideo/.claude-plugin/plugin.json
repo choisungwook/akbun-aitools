@@ -1,0 +1,11 @@
+{
+  "name": "akbun-editvideo",
+  "description": "Video editing skills — plan and run DaVinci Resolve travel-vlog edits: cut/stabilize, exposure/white balance, face mosaic, Korean subtitles, audio mix, and YouTube 4K delivery",
+  "version": "1.0.0",
+  "author": {
+    "name": "akbun"
+  },
+  "repository": "https://github.com/choisungwook/akbun-aitools",
+  "license": "MIT",
+  "keywords": ["video", "davinci-resolve", "editing", "color", "subtitle", "mosaic", "audio", "youtube", "4k"]
+}
