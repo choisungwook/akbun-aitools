@@ -5,7 +5,7 @@
   },
   "metadata": {
     "description": "Claude Code plugin marketplace for akbun tools",
-    "version": "1.5.0"
+    "version": "1.6.0"
   },
   "plugins": [
     {
@@ -60,6 +60,12 @@
       "name": "akbun-agent-ops",
       "source": "./plugins/akbun-agent-ops",
       "description": "Agent operations skills — set up a project's memory layout once, rebuild working context at session start, and turn each session's lessons into approved edits to the memory structure the codebase already has",
+      "strict": true
+    },
+    {
+      "name": "akbun-editvideo",
+      "source": "./plugins/akbun-editvideo",
+      "description": "Video editing skills — DaVinci Resolve travel-vlog edits: cut/stabilize, exposure/white balance, face mosaic with review markers, Gmarket Sans Korean subtitles, audio mix, and validated YouTube 4K delivery",
       "strict": true
     }
   ]

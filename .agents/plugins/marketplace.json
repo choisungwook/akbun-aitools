@@ -111,6 +111,18 @@
         "authentication": "ON_INSTALL"
       },
       "category": "Developer Tools"
+    },
+    {
+      "name": "akbun-editvideo",
+      "source": {
+        "source": "local",
+        "path": "./plugins/akbun-editvideo"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
     }
   ]
 }

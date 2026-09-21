@@ -4,7 +4,7 @@ akbun(악분)이 매일 쓰는 AI agent skill을 Claude Code와 Codex plugin으�
 
 ## 한눈에 보기
 
-plugin 9개, skill 51개. 하고 싶은 일에서 plugin을 찾고, 아래 `plugin 목록`에서 skill을 고른다.
+plugin 10개, skill 57개. 하고 싶은 일에서 plugin을 찾고, 아래 `plugin 목록`에서 skill을 고른다.
 
 | 하고 싶은 일 | plugin | 대표 skill |
 |---|---|---|
@@ -17,6 +17,7 @@ plugin 9개, skill 51개. 하고 싶은 일에서 plugin을 찾고, 아래 `plug
 | 이미 쓰는 코드·문서를 자동 검증에 걸어 리팩토링, 사람이 판단할 것만 보고 | [akbun-refactoring](#akbun-refactoring) | `akbun-refactoring-autoverify` |
 | agent 기억 구조 설정, 세션 시작 때 맥락 복원, 세션에서 배운 것을 skill에 반영 | [akbun-agent-ops](#akbun-agent-ops) | `akbun-memory-setup`, `akbun-recall`, `akbun-reflect` |
 | 매일 GitHub·Readwise 활동을 복습 문서로, 기간별 결과를 주간회의 브리프로 | [akbun-pulse](#akbun-pulse) | `github-daily-pulse`, `github-period-pulse`, `readwise-daily-pulse` |
+| DaVinci Resolve 여행 브이로그 편집(컷·안정화, 노출·화이트밸런스, 얼굴 모자이크, 한글 자막, 오디오 믹싱, 4K 출력) | [akbun-editvideo](#akbun-editvideo) | `davinciresolve-video-editor`, `davinciresolve-cut-travelflow`, `davinciresolve-subtitle-travelnote` |
 
 ## 빠른 시작
 
@@ -168,12 +169,26 @@ agent 운영 skill 모음. 프로젝트의 기억 구조를 최초 1회 설계�
 | [readwise-daily-pulse](./plugins/akbun-pulse/skills/readwise-daily-pulse/) | 어제 Readwise Reader에 저장된 문서(new·later·feed)·하이라이트를 changelog(유형 표시)·읽을 것·나머지로 분류한 한글 개조식 요약을 Gmail 초안으로 생성. 프로필·관심 주제·받는 주소·토큰은 변수로 받아 루틴에서는 변수명만 지정 |
 | [github-period-pulse](./plugins/akbun-pulse/skills/github-period-pulse/) | 하루·1주·날짜 범위 동안 내가 GitHub에서 끝낸 것을 주간회의 보고용 브리프로. gh CLI만 사용, 결과(사용자에게 달라진 것, PR body 구현 첫 줄 재사용)·진행 중·막힌 것·다음 기간·수치 한 줄, 항목마다 PR·issue 링크 |
 
+### akbun-editvideo
+
+영상 편집 skill 모음. iPhone·Insta360 Luna Ultra로 찍은 말소리 없는 여행 브이로그를 DaVinci Resolve에서 편집한다. 원본 타임라인은 건드리지 않고 복제본에서 작업하며, 모든 변경을 파일명·타임코드 기준 작업 로그에 남긴다. 컷 편집과 자막은 스타일별 skill로 나눠 다른 스타일을 나중에 추가할 수 있다.
+
+| skill | 설명 |
+|---|---|
+| [davinciresolve-video-editor](./plugins/akbun-editvideo/skills/davinciresolve-video-editor/) | 편집 오케스트레이터. 타임라인 복제 → 메타데이터·시계 오프셋·시간순 확인 → 아래 skill의 SKILL.md를 컷·색·모자이크·자막·오디오·렌더 순서로 읽어 수행하고 마커 등록표·단계별 완료 조건·검증·작업 로그를 관리. Resolve 스크립팅 API 대응표와 없는 기능(프레임 이상 탐지·스코프 수치·얼굴 범위 검증·전후 프리뷰·롤백)의 대체 방법 표 포함 |
+| [davinciresolve-cut-travelflow](./plugins/akbun-editvideo/skills/davinciresolve-cut-travelflow/) | 컷 편집 스타일 travelflow. 영상 흐름·자연음 중심, iPhone 앞부분 흰 화면·초점 이탈만 근거 기준으로 제거, 흔들림 감지된 iPhone 클립만 안정화, Insta360은 손대지 않음, 삭제 전 검토 마커 |
+| [davinciresolve-exposure-whitebalance](./plugins/akbun-editvideo/skills/davinciresolve-exposure-whitebalance/) | Waveform·RGB Parade 수치 기준으로 노출·화이트밸런스 통일. 고정 노드 구조(INPUT→EXPOSURE→WB→LUT), 낮·저녁·드론쇼 목표값 표, 인접 클립 연속성 기준 |
+| [davinciresolve-face-privacy](./plugins/akbun-editvideo/skills/davinciresolve-face-privacy/) | 얼굴·개인정보에 넓고 부드러운 약한 Mosaic Blur. `PRIVACY_MOSAIC` 노드 + Purple 클립 마커 + 작업 로그 표로 사용자가 나중에 위치를 찾아 수정 가능, 판정 불가는 `PRIVACY_CHECK` Pink 클립 마커 |
+| [davinciresolve-subtitle-travelnote](./plugins/akbun-editvideo/skills/davinciresolve-subtitle-travelnote/) | 자막 스타일 travelnote. Gmarket Sans, 장소·시간·분위기 한 줄, 큰 글자(Text+ Size 0.12, 기본값 1.5배)를 스틸로 측정해 안전 영역에 맞춤, 통일 자간·행간, 컷 변경 뒤 재타이밍, 장소 변경 지점 YouTube 챕터 마커(3개 이상) |
+| [davinciresolve-audio-delivery](./plugins/akbun-editvideo/skills/davinciresolve-audio-delivery/) | A1 현장음·A2 환경음·A3 효과음·A4 BGM을 현장음 기준 상대 레벨로 믹싱하고 마스터 -14 LUFS, YouTube 4K(3840×2160, 타임라인 fps, H.264/H.265 + AAC) 렌더와 ffprobe 검증, 곡 출처 기록, 업로드 기본 비공개 |
+
 ## skill 연관관계
 
 일부 skill은 다른 skill의 정의를 참조한다. 참조 대상 skill을 바꾸면 참조하는 skill의 결과물도 함께 바뀐다.
 
 - `akbun-memory-setup`(akbun-agent-ops): AGENTS.md 읽기 순서를 만든다. `akbun-recall`이 그 순서를 따라 기억을 읽고, `akbun-reflect`는 그 구조 안의 기존 문서(SKILL.md·wiki·AGENTS.md)에만 쓰고 구조를 바꾸지 않는다.
 - `akbun-writing`(akbun-writing): 글쓰기 기준 skill. `akbun-writing-with-question`, `akbun-writing-persuasive`가 모든 기본 규칙을 참조로 상속하고 각자 한 축(질문 구조, 설득 장치)만 더한다. `akbun-writing-easy`는 tokenops 규칙을 참조한다. 마무리에 `akbun-writing-naturalize`를 호출 모드로 적용한다.
+- `davinciresolve-video-editor`(akbun-editvideo): 편집 순서와 검증·작업 로그를 정하는 오케스트레이터. `davinciresolve-cut-travelflow`, `davinciresolve-exposure-whitebalance`, `davinciresolve-face-privacy`, `davinciresolve-subtitle-travelnote`, `davinciresolve-audio-delivery`가 그 기본 원칙과 `references/agent-api.md`의 대체 방법 표를 참조한다. 컷이 바뀌면 자막·오디오 skill이 바뀐 구간 목록을 받아 위치를 다시 맞춘다.
 - `akbun-presentation-visual`(akbun-presentation): `akbun-presentation`이 슬라이드에 삽입할 래스터 시각자료를 생성한다.
 - `akbun-mascot-whale`(akbun-draw): akbun 마스코트 고래의 표준 외형을 정의하는 기준 skill. 캐릭터를 그리는 아래 skill들이 이 스펙을 참조한다.
   - 캐릭터로 직접 사용: `akbun-draw-cartoon-b`, `akbun-draw-webtoon-c`
@@ -195,6 +210,7 @@ Claude Code에서 아래를 차례로 실행한다. 필요한 plugin만 골라 �
 /plugin install akbun-pulse@akbun-aitools
 /plugin install akbun-refactoring@akbun-aitools
 /plugin install akbun-agent-ops@akbun-aitools
+/plugin install akbun-editvideo@akbun-aitools
 /reload-plugins
 ```
 
@@ -213,6 +229,7 @@ codex plugin add akbun-analysis@akbun-aitools --json
 codex plugin add akbun-pulse@akbun-aitools --json
 codex plugin add akbun-refactoring@akbun-aitools --json
 codex plugin add akbun-agent-ops@akbun-aitools --json
+codex plugin add akbun-editvideo@akbun-aitools --json
 ```
 
 #### Codex 업그레이드 (hard reset)
@@ -235,6 +252,7 @@ codex plugin remove akbun-analysis@akbun-aitools --json
 codex plugin remove akbun-pulse@akbun-aitools --json
 codex plugin remove akbun-refactoring@akbun-aitools --json
 codex plugin remove akbun-agent-ops@akbun-aitools --json
+codex plugin remove akbun-editvideo@akbun-aitools --json
 
 rm -rf ~/.codex/plugins/cache/akbun-aitools
 rm -rf ~/.codex/.tmp/marketplaces/akbun-aitools
@@ -249,6 +267,7 @@ codex plugin add akbun-analysis@akbun-aitools --json
 codex plugin add akbun-pulse@akbun-aitools --json
 codex plugin add akbun-refactoring@akbun-aitools --json
 codex plugin add akbun-agent-ops@akbun-aitools --json
+codex plugin add akbun-editvideo@akbun-aitools --json
 
 codex plugin list --json
 ```
