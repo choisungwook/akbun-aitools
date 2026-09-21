@@ -1,20 +1,38 @@
 ---
 name: davinciresolve-video-editor
-description: 사용자의 편집 취향에 맞춰 DaVinci Resolve 여행 브이로그 편집 작업 전체를 계획하고 실행하는 오케스트레이터. 타임라인을 복제한 뒤 컷·안정화(davinciresolve-cut-travelflow), 노출·화이트밸런스(davinciresolve-exposure-whitebalance), 얼굴 모자이크(davinciresolve-face-privacy), 한글 자막·챕터(davinciresolve-subtitle-travelnote), 오디오 믹싱·4K 출력(davinciresolve-audio-delivery)을 순서대로 호출하고 단계마다 검증과 작업 로그를 남긴다. "이 프로젝트 편집 계획 세워서 끝까지 해줘", "타임라인 정리부터 렌더까지" 요청에 사용한다. 사용자가 직접 호출할 때만 실행한다.
+description: 사용자의 편집 취향에 맞춰 DaVinci Resolve 여행 브이로그 편집 작업 전체를 계획하고 실행하는 오케스트레이터. 타임라인을 복제한 뒤 컷·안정화(davinciresolve-cut-travelflow), 노출·화이트밸런스(davinciresolve-exposure-whitebalance), 얼굴 모자이크(davinciresolve-face-privacy), 한글 자막·챕터(davinciresolve-subtitle-travelnote), 오디오 믹싱·4K 출력(davinciresolve-audio-delivery)의 SKILL.md를 순서대로 읽어 직접 수행하고 단계마다 검증과 작업 로그를 남긴다. "이 프로젝트 편집 계획 세워서 끝까지 해줘", "타임라인 정리부터 렌더까지" 요청에 사용한다. 사용자가 직접 호출할 때만 실행한다.
 disable-model-invocation: true
 ---
 
 # davinciresolve-video-editor
 
-말소리 없는 여행 브이로그(iPhone + Insta360 Luna Ultra 촬영)를 DaVinci Resolve에서 편집하는 전체 흐름을 잡고, 단계별 전문 skill을 순서대로 부른다. 이 skill은 순서·검증·기록을 책임지고, 각 단계의 세부 규칙은 해당 skill의 `SKILL.md`가 원본이다.
+말소리 없는 여행 브이로그(iPhone + Insta360 Luna Ultra 촬영)를 DaVinci Resolve에서 편집하는 전체 흐름을 잡는다. 이 skill은 순서·검증·기록을 책임지고, 각 단계의 세부 규칙은 해당 skill의 `SKILL.md`가 원본이다.
+
+하위 skill은 모두 사용자 직접 호출 전용(`disable-model-invocation: true`)이라 Skill 도구로 부를 수 없다. 이 skill은 각 단계에서 해당 `SKILL.md`를 읽고 그 절차를 직접 수행한다. 하위 skill 경로는 이 파일과 같은 `skills/` 아래다.
 
 ## 용어
 
 - 원본 타임라인: 사용자가 만든, 이 skill이 손대지 않는 타임라인
-- 작업 타임라인: 원본을 복제해 이번 편집을 적용하는 타임라인. 이름은 `<원본 이름>_edit_<YYYYMMDD>`
-- 클립 식별자: 클립 번호가 아니라 `파일명 + 타임라인 시작 타임코드`. 클립 번호는 컷이 바뀌면 밀리므로 쓰지 않는다
-- 작업 로그: 이번 편집에서 바꾼 모든 것을 기록한 Markdown 파일. 프로젝트 폴더의 `edit-log_<YYYYMMDD>.md`
-- 검토 마커: 사람이 봐야 할 지점에 찍는 타임라인 마커. 색과 이름 규칙은 각 skill이 정한다
+- 작업 타임라인: 원본을 복제해 이번 편집을 적용하는 타임라인. 이름은 `<원본 이름>_edit_<YYYYMMDD_HHMM>`. 같은 이름이 있으면 분 단위가 다르므로 겹치지 않는다
+- 클립 식별자: 클립 번호가 아니라 `파일명 + 작업 타임라인 시작 타임코드`. 클립 번호는 컷이 바뀌면 밀리므로 쓰지 않는다
+- 출력 폴더: 사용자가 시작 시 지정한 폴더. 지정이 없으면 미디어가 있는 폴더 옆의 `<프로젝트 이름>_edit/`. Resolve 프로젝트는 데이터베이스에 저장되므로 "프로젝트 폴더"라는 경로는 없다
+- 작업 로그: 이번 편집에서 바꾼 모든 것을 기록한 Markdown 파일. `<출력 폴더>/edit-log_<YYYYMMDD_HHMM>.md`. 실행마다 새 파일이고 덮어쓰지 않는다
+- 타임라인 마커: 타임라인 자체에 찍는 마커. 클립을 옮겨도 따라가지 않는다. 챕터에만 쓴다
+- 클립 마커: 클립(TimelineItem)에 찍는 마커. 클립과 함께 이동한다. 컷·모자이크 표시에 쓴다
+
+## 마커 등록표
+
+Resolve는 한 프레임에 마커 1개만 허용한다. 종류마다 색·대상·프레임 오프셋을 여기서 고정하고 하위 skill은 이 표를 따른다. 오프셋은 클립 마커면 클립 첫 프레임 기준, 타임라인 마커면 해당 지점 기준이다.
+
+| 색 | 이름 | 대상 | 오프셋 | 찍는 skill |
+|---|---|---|---|---|
+| Blue | `CHAPTER <장소명·행사명>` | 타임라인 마커 | 장면 시작 프레임 | `davinciresolve-subtitle-travelnote` |
+| Purple | `PRIVACY_MOSAIC <파일명> <창 개수>개` | 클립 마커 | +0 | `davinciresolve-face-privacy` |
+| Pink | `PRIVACY_CHECK <파일명> <사유>` | 클립 마커 | +1 | `davinciresolve-face-privacy` |
+| Red | `CUT_DONE <사유>` | 클립 마커 | +2 | `davinciresolve-cut-travelflow` |
+| Yellow | `CUT_REVIEW <사유>` | 클립 마커 | +3 | `davinciresolve-cut-travelflow` |
+
+클립 길이가 4프레임 미만이면 오프셋을 줄이지 않고 그 클립의 마커를 작업 로그 `확인 필요`에만 적는다.
 
 ## 기본 원칙
 
@@ -28,40 +46,53 @@ disable-model-invocation: true
 
 ## 실행 환경 확인
 
-시작할 때 무엇으로 Resolve를 조작할 수 있는지 먼저 확인하고 작업 로그 첫 줄에 적는다.
+시작할 때 무엇으로 Resolve를 조작할 수 있는지 확인하고 작업 로그 `환경` 절에 적는다.
 
 | 수단 | 확인 방법 | 가능한 작업 |
 |---|---|---|
-| Resolve 스크립팅 API(Python `DaVinciResolveScript`) | 아래 명령이 프로젝트 이름을 출력 | 타임라인 복제, 클립 목록·메타데이터, 마커, 렌더 설정·실행 |
-| 화면 조작(computer use) | Resolve 창이 보임 | 스크립팅 API가 못 하는 Color 페이지 노드·Power Window·Text+ 설정 |
+| 외부 스크립팅 API(Python `DaVinciResolveScript`) | 아래 명령이 프로젝트 이름을 출력 | 타임라인 복제·생성, 클립 목록·메타데이터, 클립·타임라인 마커, Fusion Text+ 속성, 렌더 설정·실행 |
+| 화면 조작(computer use) | Resolve 창이 보임 | Color 페이지 노드·Power Window·Stabilizer 파라미터, 내부 Console에 스크립트 입력 |
+| API만 있음(headless) | API 성공, 화면 없음 | 컷·마커·자막·렌더는 실행하고, 색·모자이크·안정화 파라미터는 사람이 따라 할 절차서로 작성 |
 | 둘 다 없음 | 위 둘 다 실패 | 사람이 따라 할 수 있는 단계별 절차와 체크리스트만 작성 |
 
-스크립팅 API 확인 명령이다. 실패하면 Resolve 실행 여부와 환경변수(`RESOLVE_SCRIPT_API`, `RESOLVE_SCRIPT_LIB`, `PYTHONPATH`)를 알리고 화면 조작 또는 절차 작성으로 넘어간다.
+외부 스크립팅은 Resolve Studio 전용이고 Preferences → System → General → External scripting using이 `Local`이어야 한다. 무료판은 Resolve 안의 Console(Workspace → Console)에서만 스크립트가 돈다. 아래 명령이 실패하면 순서대로 확인한다. Resolve 실행 여부 → Studio 여부 → External scripting 설정 → 환경변수(`RESOLVE_SCRIPT_API`, `RESOLVE_SCRIPT_LIB`, `PYTHONPATH`). 무료판이면 화면 조작으로 Console에 같은 스크립트를 붙여 넣는다.
 
 ```bash
 python3 -c "import DaVinciResolveScript as dvr; r = dvr.scriptapp('Resolve'); print(r.GetProjectManager().GetCurrentProject().GetName())"
 ```
 
-스크립팅 API가 제공하지 않는 기능(프레임별 초점·노출 이상 탐지, 스코프 수치, 얼굴 범위 검증, 색보정 전후 프리뷰, 트랜잭션 롤백)은 [`references/agent-api.md`](references/agent-api.md)의 대체 방법 표를 따른다. 대체 방법으로도 판정할 수 없으면 추측하지 않고 검토 마커를 찍고 작업 로그에 `확인 필요`로 남긴다.
+API가 있어도 없는 기능이 있다. 기능별 API 유무·버전 조건·대체 방법은 [`references/agent-api.md`](references/agent-api.md)를 따른다. 대체 방법으로도 판정할 수 없으면 추측하지 않고 마커를 찍고 작업 로그에 `확인 필요`로 남긴다.
 
 ## 기본 작업 순서
 
-각 단계는 "부르는 skill → 이 단계의 완료 조건"이다. 완료 조건을 못 채우면 다음 단계로 넘어가지 않고 사용자에게 알린다.
+각 단계는 "읽는 skill → 완료 조건"이다. 완료 조건을 못 채우면 다음 단계로 넘어가지 않고 사용자에게 알린다.
 
-| 순서 | 작업 | 부르는 skill | 완료 조건 |
+| 순서 | 작업 | 읽는 skill | 완료 조건 |
 |---|---|---|---|
-| 1 | 미디어 메타데이터(파일명, 촬영 시간, 카메라, 해상도, 프레임레이트)를 읽는다 | 이 skill | 클립 전부가 표로 정리되고 촬영 시간이 없는 클립은 `확인 필요` 표시 |
-| 2 | 작업 타임라인을 만들고 영상을 촬영 시간순으로 배치한다 | 이 skill | 원본 타임라인 그대로 남아 있고 작업 타임라인 클립 순서가 촬영 시간순 |
+| 1 | 미디어 메타데이터(파일명, 촬영 시간, 카메라, 해상도, 프레임레이트, 색공간·감마)를 읽고 카메라별 시계 오프셋과 타임라인 프레임레이트를 정한다 | 이 skill | 클립 전부가 표로 정리, 촬영 시간 없음·시계 오프셋 미확인은 `확인 필요` |
+| 2 | 작업 타임라인을 만들고 촬영 시간순인지 확인한다 | 이 skill | 원본 타임라인 그대로 남아 있고 작업 타임라인 순서가 촬영 시간순이거나 사용자가 정한 순서 |
 | 3 | 컷 편집과 흔들림 보정 | `davinciresolve-cut-travelflow` | 불량 구간 제거·안정화 결과가 작업 로그에 클립별로 기록 |
-| 4 | 노출과 화이트밸런스 | `davinciresolve-exposure-whitebalance` | 인접 클립 사이 밝기·색온도 급변 없음 |
-| 5 | LUT와 영상 스타일 | 이 skill | 사용자가 LUT 파일이나 스타일을 지정했을 때만 마지막 노드에 적용. 지정이 없으면 건너뛰고 로그에 "LUT 없음" |
-| 6 | 얼굴과 개인정보 모자이크 | `davinciresolve-face-privacy` | 모자이크 클립마다 `PRIVACY_MOSAIC` 마커와 노드 존재 |
+| 4 | 노출과 화이트밸런스 | `davinciresolve-exposure-whitebalance` | 같은 장면 안의 인접 클립 사이 밝기·색온도 급변 없음 |
+| 5 | LUT와 영상 스타일 | 이 skill | 사용자가 LUT 파일이나 스타일을 지정했을 때만 `LUT` 노드에 적용. 지정이 없으면 건너뛰고 로그에 "LUT 없음" |
+| 6 | 얼굴과 개인정보 모자이크 | `davinciresolve-face-privacy` | 모자이크 클립마다 `PRIVACY_MOSAIC` 클립 마커와 노드 존재 |
 | 7 | Gmarket Sans 한글 자막과 챕터 마커 | `davinciresolve-subtitle-travelnote` | 자막이 안전 영역 안에 있고 챕터 마커가 장소 변경 지점마다 존재 |
-| 8 | 현장음·효과음·BGM 믹싱 | `davinciresolve-audio-delivery` (믹싱 절) | 음량 급변·피크 없음, 사용한 곡 목록 기록 |
-| 9 | YouTube 챕터 마커 최종 정리 | 이 skill | 마커 이름이 장소명·행사명이고 첫 마커가 00:00 |
+| 8 | 현장음·효과음·BGM 믹싱 | `davinciresolve-audio-delivery` (믹싱 절) | 라우드니스·피크 기준 통과, 사용한 곡 목록 기록 |
+| 9 | YouTube 챕터 마커 최종 정리 | 이 skill | 마커 이름이 장소명·행사명이고 첫 마커가 타임라인 첫 프레임(frameId 0)에 있고 3개 이상 |
 | 10 | 4K 렌더링과 검증 | `davinciresolve-audio-delivery` (출력 절) | 렌더 파일의 해상도·프레임레이트·길이·오디오 스트림이 타임라인과 일치 |
 
-컷이 바뀌면(3단계 이후 재편집 포함) 자막·효과음·전환 위치를 다시 맞춘다. 순서를 건너뛰거나 바꾸려면 이유를 작업 로그에 적는다.
+1단계 세부 규칙이다.
+
+- 타임라인 프레임레이트는 클립 수가 가장 많은 프레임레이트로 하고, 사용자가 지정하면 그 값을 쓴다. 혼합(예: iPhone 60fps + Insta360 30fps)이면 정한 값과 이유를 로그에 적는다.
+- 카메라별 시계 오프셋은 두 카메라로 같은 장면을 찍은 클립 1쌍(사용자가 알려주거나 추출 프레임이 같은 장소인 쌍)의 촬영 시간 차이로 구한다. 쌍이 없으면 오프셋 0으로 두고 `확인 필요`로 남긴다. Insta360 촬영 시간이 2000년대 초 같은 기본값이면 시계 미설정으로 보고 파일 생성 시간을 대신 쓴다.
+- 색공간·감마가 클립마다 다르면(예: iPhone HLG, Insta360 Rec.709) 4단계 `INPUT` 노드에서 변환한다. 목록을 로그에 적는다.
+
+2단계 세부 규칙이다.
+
+- 복제본의 클립 순서가 이미 촬영 시간순이면 그대로 쓴다.
+- 순서가 다르고 사용자가 "원본 순서 유지"를 말하지 않았으면, 스크립팅 API에는 클립 이동 함수가 없으므로 미디어 풀 클립을 촬영 시간순으로 넣은 새 타임라인(`CreateTimelineFromClips`)을 작업 타임라인으로 만든다. 복제본은 되돌리기용으로 남긴다.
+- 사용자가 원본 순서를 의도했다고 하면 재배치하지 않고 로그에 "사용자 지정 순서"라고 적는다.
+
+컷이 바뀌면(3단계 이후 재편집 포함) 자막·효과음·전환·챕터 타임라인 마커 위치를 다시 맞춘다. 클립 마커는 클립과 함께 움직이므로 다시 찍지 않는다. 순서를 건너뛰거나 바꾸려면 이유를 작업 로그에 적는다.
 
 ## 검증
 
@@ -69,12 +100,12 @@ python3 -c "import DaVinciResolveScript as dvr; r = dvr.scriptapp('Resolve'); pr
 
 | 항목 | 확인 방법 | 통과 기준 |
 |---|---|---|
-| 타임라인 해상도·프레임레이트 | 타임라인 설정 | 3840×2160, 원본 클립 프레임레이트와 동일 |
+| 타임라인 해상도·프레임레이트 | 타임라인 설정 | 3840×2160, 1단계에서 정한 프레임레이트 |
 | 오프라인 미디어·검은 프레임 | 미디어 풀 오프라인 표시, 타임라인 빈 구간 | 0개 |
-| 음량 급변·피크 | 라우드니스 미터, 클립 경계 전후 비교 | True Peak -1 dBTP 이하, 인접 클립 차이 6 dB 이내 |
+| 음량 급변·피크 | 라우드니스 미터, 클립 경계 전후 비교 | True Peak -1 dBTP 이하, 같은 장면 안 인접 클립 차이 6 dB 이내. 장면 전환(장소·행사 변경)은 예외로 두고 로그에 적는다 |
 | 노출·화이트밸런스 급변 | 인접 클립 스코프 비교 | `davinciresolve-exposure-whitebalance`의 연속성 기준 |
-| 얼굴 모자이크 누락 | `PRIVACY_MOSAIC` 마커 목록과 얼굴 탐지 결과 대조 | 얼굴이 식별되는 클립 전부에 마커·노드 존재 |
-| 자막 화면 밖 잘림 | 자막 클립마다 시작·끝 프레임 | 텍스트 전체가 안전 영역 안 |
+| 얼굴 모자이크 누락 | `PRIVACY_MOSAIC` 클립 마커 목록과 얼굴 탐지 결과 대조 | 얼굴이 식별되는 클립 전부에 마커·노드 존재. 탐지 실패 클립은 `PRIVACY_CHECK` 존재 |
+| 자막 화면 밖 잘림 | 자막 클립마다 시작·끝 프레임 스틸 | 텍스트 전체가 안전 영역 안 |
 | 렌더 파일 재생·길이 | `ffprobe` 또는 Resolve 미디어 풀 재가져오기 | 재생되고 길이가 타임라인과 1프레임 이내 |
 
 ## 작업 로그 형식
@@ -82,16 +113,19 @@ python3 -c "import DaVinciResolveScript as dvr; r = dvr.scriptapp('Resolve'); pr
 작업 로그는 아래 구조를 따른다. 각 skill이 자기 절을 채운다.
 
 ```markdown
-# 편집 작업 로그 <YYYYMMDD>
+# 편집 작업 로그 <YYYYMMDD_HHMM>
 
 ## 환경
-- 조작 수단: 스크립팅 API / 화면 조작 / 절차만
+- 조작 수단: 외부 API / 화면 조작 / API만 / 절차만
+- Resolve 에디션·버전:
 - 원본 타임라인: <이름>
 - 작업 타임라인: <이름>
+- 타임라인 프레임레이트: <값>(이유)
+- 카메라 시계 오프셋: <카메라> <초>(근거)
 
 ## 클립 목록
-| 파일명 | 촬영 시간 | 카메라 | 해상도 | 프레임레이트 | 타임라인 시작 TC |
-|---|---|---|---|---|---|
+| 파일명 | 촬영 시간(보정 후) | 카메라 | 해상도 | 프레임레이트 | 색공간/감마 | 타임라인 시작 TC |
+|---|---|---|---|---|---|---|
 
 ## 3. 컷·안정화
 ## 4. 노출·화이트밸런스
@@ -110,3 +144,4 @@ python3 -c "import DaVinciResolveScript as dvr; r = dvr.scriptapp('Resolve'); pr
 - 사용자 확인 없는 삭제, 렌더 파일 덮어쓰기, YouTube 업로드(업로드 시 기본 공개 상태는 비공개)
 - 스코프·얼굴 탐지 결과 없이 "문제없음" 판정. 판정 근거가 없으면 `확인 필요`로 남긴다
 - 사용자가 지정하지 않은 LUT·스타일 적용
+- 마커 등록표 밖의 색·이름·오프셋 사용

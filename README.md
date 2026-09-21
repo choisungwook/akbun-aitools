@@ -175,12 +175,12 @@ agent 운영 skill 모음. 프로젝트의 기억 구조를 최초 1회 설계�
 
 | skill | 설명 |
 |---|---|
-| [davinciresolve-video-editor](./plugins/akbun-editvideo/skills/davinciresolve-video-editor/) | 편집 오케스트레이터. 타임라인 복제 → 메타데이터·시간순 배치 → 아래 skill을 컷·색·모자이크·자막·오디오·렌더 순서로 호출하고 단계별 완료 조건·검증·작업 로그를 관리. Resolve 스크립팅 API에 없는 기능(프레임 이상 탐지·스코프 수치·얼굴 범위 검증·전후 프리뷰·롤백)의 대체 방법 표 포함 |
+| [davinciresolve-video-editor](./plugins/akbun-editvideo/skills/davinciresolve-video-editor/) | 편집 오케스트레이터. 타임라인 복제 → 메타데이터·시계 오프셋·시간순 확인 → 아래 skill의 SKILL.md를 컷·색·모자이크·자막·오디오·렌더 순서로 읽어 수행하고 마커 등록표·단계별 완료 조건·검증·작업 로그를 관리. Resolve 스크립팅 API 대응표와 없는 기능(프레임 이상 탐지·스코프 수치·얼굴 범위 검증·전후 프리뷰·롤백)의 대체 방법 표 포함 |
 | [davinciresolve-cut-travelflow](./plugins/akbun-editvideo/skills/davinciresolve-cut-travelflow/) | 컷 편집 스타일 travelflow. 영상 흐름·자연음 중심, iPhone 앞부분 흰 화면·초점 이탈만 근거 기준으로 제거, 흔들림 감지된 iPhone 클립만 안정화, Insta360은 손대지 않음, 삭제 전 검토 마커 |
 | [davinciresolve-exposure-whitebalance](./plugins/akbun-editvideo/skills/davinciresolve-exposure-whitebalance/) | Waveform·RGB Parade 수치 기준으로 노출·화이트밸런스 통일. 고정 노드 구조(INPUT→EXPOSURE→WB→LUT), 낮·저녁·드론쇼 목표값 표, 인접 클립 연속성 기준 |
-| [davinciresolve-face-privacy](./plugins/akbun-editvideo/skills/davinciresolve-face-privacy/) | 얼굴·개인정보에 넓고 부드러운 약한 Mosaic Blur. `PRIVACY_MOSAIC` 노드 + Purple 마커 + 작업 로그 표로 사용자가 나중에 위치를 찾아 수정 가능, 판정 불가는 `PRIVACY_CHECK` Red 마커 |
-| [davinciresolve-subtitle-travelnote](./plugins/akbun-editvideo/skills/davinciresolve-subtitle-travelnote/) | 자막 스타일 travelnote. Gmarket Sans, 장소·시간·분위기 한 줄, 4K 기준 큰 글자(Text+ Size 0.12, 기본값 1.5배), 안전 영역·통일 자간·행간, 컷 변경 뒤 재타이밍, 장소 변경 지점 YouTube 챕터 마커 |
-| [davinciresolve-audio-delivery](./plugins/akbun-editvideo/skills/davinciresolve-audio-delivery/) | A1 현장음·A2 환경음·A3 효과음·A4 BGM 트랙 믹싱(-14 LUFS, 현장음 우선), YouTube 4K(3840×2160, 원본 fps, H.264/H.265 + AAC) 렌더와 ffprobe 검증, 곡 출처 기록, 업로드 기본 비공개 |
+| [davinciresolve-face-privacy](./plugins/akbun-editvideo/skills/davinciresolve-face-privacy/) | 얼굴·개인정보에 넓고 부드러운 약한 Mosaic Blur. `PRIVACY_MOSAIC` 노드 + Purple 클립 마커 + 작업 로그 표로 사용자가 나중에 위치를 찾아 수정 가능, 판정 불가는 `PRIVACY_CHECK` Pink 클립 마커 |
+| [davinciresolve-subtitle-travelnote](./plugins/akbun-editvideo/skills/davinciresolve-subtitle-travelnote/) | 자막 스타일 travelnote. Gmarket Sans, 장소·시간·분위기 한 줄, 큰 글자(Text+ Size 0.12, 기본값 1.5배)를 스틸로 측정해 안전 영역에 맞춤, 통일 자간·행간, 컷 변경 뒤 재타이밍, 장소 변경 지점 YouTube 챕터 마커(3개 이상) |
+| [davinciresolve-audio-delivery](./plugins/akbun-editvideo/skills/davinciresolve-audio-delivery/) | A1 현장음·A2 환경음·A3 효과음·A4 BGM을 현장음 기준 상대 레벨로 믹싱하고 마스터 -14 LUFS, YouTube 4K(3840×2160, 타임라인 fps, H.264/H.265 + AAC) 렌더와 ffprobe 검증, 곡 출처 기록, 업로드 기본 비공개 |
 
 ## skill 연관관계
 
