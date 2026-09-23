@@ -1,7 +1,7 @@
 {
   "name": "akbun-draw-architecture",
-  "description": "Architecture drawing skills by akbun — AWS VPC and Kubernetes network draw.io diagrams",
-  "version": "1.0.3",
+  "description": "Architecture drawing skills by akbun — AWS VPC draw.io diagrams and flat boundary architecture SVGs",
+  "version": "1.0.4",
   "author": {
     "name": "akbun"
   },
@@ -12,7 +12,7 @@
     "diagram",
     "drawio",
     "aws",
-    "kubernetes",
-    "network"
+    "network",
+    "svg"
   ]
 }

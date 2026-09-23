@@ -1,6 +1,6 @@
 {
   "name": "akbun-draw",
-  "version": "1.0.13",
+  "version": "1.0.14",
   "description": "Image drawing skills by akbun — image-generation prompts and editable SVGs in fixed akbun styles",
   "author": {
     "name": "akbun",
@@ -44,7 +44,6 @@
       "Make hand-drawn marker sketch illustration prompts for each scene of this story",
       "Make a quiet cream pencil-sketch scene image prompt with one teal accent from this moment",
       "Describe the akbun whale mascot character spec for use in another drawing skill",
-      "Draw a dark presentation-style system architecture image or editable PowerPoint slide from this system description",
       "Turn this paper or study material into minimal black-and-white 16:9 explainer images with Korean talk-track"
     ],
     "brandColor": "#0F766E",
