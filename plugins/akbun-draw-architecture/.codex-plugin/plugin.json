@@ -1,7 +1,7 @@
 {
   "name": "akbun-draw-architecture",
   "version": "1.0.4",
-  "description": "Architecture drawing skills by akbun — AWS VPC draw.io diagrams",
+  "description": "Architecture drawing skills by akbun — AWS VPC draw.io diagrams and flat boundary architecture SVGs",
   "author": {
     "name": "akbun",
     "url": "https://github.com/choisungwook"
@@ -14,13 +14,14 @@
     "diagram",
     "drawio",
     "aws",
-    "network"
+    "network",
+    "svg"
   ],
   "skills": "./skills/",
   "interface": {
     "displayName": "akbun Draw Architecture",
     "shortDescription": "Architecture and network diagram drawing skills",
-    "longDescription": "Architecture drawing skills — draw.io AWS VPC diagrams generated from prose, images, YAML, or existing draw.io files, validated as XML and exported for visual inspection.",
+    "longDescription": "Architecture drawing skills — draw.io AWS VPC diagrams validated as XML and exported for visual inspection, and flat SVG architecture diagrams with dashed boundaries, role-colored components, and solid write / dashed read paths.",
     "developerName": "akbun",
     "category": "Writing",
     "capabilities": [
@@ -31,7 +32,8 @@
     "privacyPolicyURL": "https://docs.github.com/site-policy/privacy-policies/github-general-privacy-statement",
     "termsOfServiceURL": "https://docs.github.com/en/site-policy/github-terms/github-terms-of-service",
     "defaultPrompt": [
-      "Create a draw.io AWS VPC architecture diagram"
+      "Create a draw.io AWS VPC architecture diagram",
+      "Draw a flat boundary architecture SVG (dashed boundaries, role-colored components, solid write / dashed read paths) from this system description"
     ],
     "brandColor": "#0F766E",
     "screenshots": []
