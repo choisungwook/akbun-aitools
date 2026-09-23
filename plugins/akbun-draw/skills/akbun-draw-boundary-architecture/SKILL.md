@@ -135,7 +135,31 @@ disable-model-invocation: true
 6. 제품명, 벤더명이 사용자 요청 없이 들어가 있지 않다
 7. 다크 모드에서 모든 글자가 읽힌다
 
+## PPT 편집용 출력 (선택)
+
+사용자가 PowerPoint에서 개체를 하나씩 고치겠다고 요청할 때만 만든다. 요청이 없으면 만들지 않는다. 기본 SVG는 그대로 두고 `<주제>-ppt.svg`를 따로 만든다.
+
+PowerPoint의 "도형으로 변환"은 CSS class, media query, marker를 제대로 옮기지 못한다. 그래서 아래처럼 바꾼다.
+
+- `<style>`을 쓰지 않는다. 색은 각 `<rect>`, `<text>`, `<line>`에 `fill`, `stroke` 속성으로 직접 쓴다. 값은 색 표의 라이트 열을 쓴다
+- 다크 모드는 넣지 않는다
+- 글자는 `font-family`, `font-size`, `font-weight` 속성으로 직접 쓴다. 폰트는 PowerPoint에 설치된 OFL 폰트 이름을 쓴다(예: `Pretendard`, `Noto Sans KR`)
+- 화살촉은 `<marker>` 대신 선 끝에 삼각형 `<path>`를 따로 그린다. 선은 삼각형 밑변에서 멈춘다
+- 컴포넌트는 `<g>`로 묶어 변환 후에도 박스와 글자가 함께 움직이게 한다
+- 좌표, 크기, 레이아웃은 기본 SVG와 같게 둔다
+
+아래는 PPT 편집용 컴포넌트 1개와 화살표 1개의 예시다.
+
+```svg
+<g><rect x="224" y="66" width="150" height="60" rx="4" fill="#E1F5EE" stroke="#0F6E56"/>
+<text x="299" y="90" text-anchor="middle" font-family="Pretendard" font-size="14" font-weight="500" fill="#085041">수집기</text>
+<text x="299" y="110" text-anchor="middle" font-family="Pretendard" font-size="12" fill="#0F6E56">직접 운영</text></g>
+<line x1="374" y1="96" x2="461" y2="96" stroke="#888780"/>
+<path d="M461,92 L468,96 L461,100 z" fill="#888780"/>
+```
+
 ## 산출물
 
 - `<주제>.svg` 파일 하나. 요청하면 같은 내용의 HTML 한 장에 SVG를 inline으로 넣는다
+- PPT 편집용을 요청하면 `<주제>-ppt.svg`를 추가로 만든다
 - 본문에는 그림이 답하는 질문 한 줄과, 그림으로 못 담은 주의사항만 쓴다
