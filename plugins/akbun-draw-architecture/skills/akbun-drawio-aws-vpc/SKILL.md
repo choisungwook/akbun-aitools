@@ -7,6 +7,7 @@ description: >
   ALB/NLB, workload, VPC Endpoint, Route 53, Direct Connect, on-premises network, managed service는 다른 skill의 책임이다.
   Trigger on: "draw.io AWS VPC", "drawio aws vpc", "AWS VPC 기초 그려줘", "AWS VPC subnet 그려줘",
   "VPC subnet diagram", "public subnet private subnet", "AZ dashed container", "IGW NAT Gateway".
+disable-model-invocation: true
 ---
 
 # draw.io CLI로 AWS VPC Subnet 다이어그램 생성

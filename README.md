@@ -4,13 +4,13 @@ akbun(악분)이 매일 쓰는 AI agent skill을 Claude Code와 Codex plugin으�
 
 ## 한눈에 보기
 
-plugin 10개, skill 57개. 하고 싶은 일에서 plugin을 찾고, 아래 `plugin 목록`에서 skill을 고른다.
+plugin 10개, skill 56개. 하고 싶은 일에서 plugin을 찾고, 아래 `plugin 목록`에서 skill을 고른다.
 
 | 하고 싶은 일 | plugin | 대표 skill |
 |---|---|---|
 | 공부한 것을 akbun 스타일 한국어 기술 글로 쓰기, 문서 교정, 운영 작업 공지 | [akbun-writing](#akbun-writing) | `akbun-writing`, `akbun-docs-review`, `akbun-it-infra-change-notice` |
-| 고정 스타일의 이미지 생성 프롬프트와 Figma/Canva용 SVG(웹툰·카드뉴스·삽화·아키텍처 그림) | [akbun-draw](#akbun-draw) | `akbun-draw-webtoon-c`, `akbun-draw-cardnews-cream`, `akbun-draw-boundary-architecture` |
-| AWS VPC·Kubernetes 네트워크 draw.io 다이어그램 | [akbun-draw-architecture](#akbun-draw-architecture) | `akbun-drawio-aws-vpc`, `kubernets-network-drawio` |
+| 고정 스타일의 이미지 생성 프롬프트와 Figma/Canva용 SVG(웹툰·카드뉴스·삽화·아키텍처 그림) | [akbun-draw](#akbun-draw) | `akbun-draw-webtoon-c`, `akbun-draw-cardnews-cream`, `akbun-draw-architecture` |
+| AWS VPC draw.io 다이어그램 | [akbun-draw-architecture](#akbun-draw-architecture) | `akbun-drawio-aws-vpc` |
 | akbun 스타일 pptx 덱과 발표 대본, 삽입 시각자료 | [akbun-presentation](#akbun-presentation) | `akbun-presentation` |
 | 알고리즘 과외, 영상 자막 대본, 발음 가이드, Anki, 학습지 | [akbun-learning](#akbun-learning) | `akbun-algorithm-tutor`, `akbun-studysheet` |
 | 코드베이스 관계 분석, 병목 예측, 아키텍처 적대 리뷰, PR의 왜와 어떻게, 머지 영향 범위 | [akbun-analysis](#akbun-analysis) | `akbun-analysiscode`, `akbun-analysis-git-whyandhow`, `akbun-analysis-gitdiff-blast-radius` |
@@ -77,7 +77,7 @@ Claude Code에서 marketplace를 등록하고 plugin 하나를 설치한 뒤 ski
 | [akbun-draw-cartoon-b](./plugins/akbun-draw/skills/akbun-draw-cartoon-b/) | 아무 상황을 회색 그라데이션+베이지 테두리+낙서풍 고래 캐릭터+올리브 포인트 하나의 이슈 카드뉴스 스타일로 그리는 이미지 생성 프롬프트와 Figma/Canva용 SVG 작성 |
 | [akbun-draw-cardnews-cream](./plugins/akbun-draw/skills/akbun-draw-cardnews-cream/) | 아무 개념을 크림 배경+손글씨 제목·본문+낙서 다이어그램+파란 빗금 포인트 하나의 설명형 카드뉴스 스타일로 그리는 이미지 생성 프롬프트와 Figma/Canva용 SVG 작성 |
 | [akbun-mascot-whale](./plugins/akbun-draw/skills/akbun-mascot-whale/) | akbun 마스코트 고래 캐릭터의 표준 외형 스펙(다른 그리기 skill이 참조) |
-| [akbun-draw-boundary-architecture](./plugins/akbun-draw/skills/akbun-draw-boundary-architecture/) | 시스템 구조·데이터 흐름을 점선 경계 박스+역할별 색 컴포넌트+실선 저장/점선 조회 경로의 flat SVG(다크 모드 대응)로 작성 |
+| [akbun-draw-architecture](./plugins/akbun-draw/skills/akbun-draw-architecture/) | 시스템 구조·데이터 흐름을 점선 경계 박스+역할별 색 컴포넌트+실선 저장/점선 조회 경로의 flat SVG(다크 모드 대응)로 작성 |
 | [akbun-draw-learning-mono](./plugins/akbun-draw/skills/akbun-draw-learning-mono/) | 논문·책·문서·개념을 흰 배경 흑백 미니멀 16:9 학습용 설명 이미지(주제별 분할 + 한국어 발표 대본)로 변환 |
 
 아래는 각 skill로 만든 예시다.
@@ -90,12 +90,11 @@ Claude Code에서 marketplace를 등록하고 plugin 하나를 설치한 뒤 ski
 
 ### akbun-draw-architecture
 
-아키텍처 그리기 skill 모음. AWS/Kubernetes draw.io 다이어그램을 만든다.
+draw.io 다이어그램 skill 모음. AWS VPC draw.io 다이어그램을 만든다.
 
 | skill | 설명 |
 |---|---|
 | [akbun-drawio-aws-vpc](./plugins/akbun-draw-architecture/skills/akbun-drawio-aws-vpc/) | draw.io로 AWS VPC 기초 다이어그램 생성 |
-| [kubernets-network-drawio](./plugins/akbun-draw-architecture/skills/kubernets-network-drawio/) | draw.io로 Kubernetes 네트워크 다이어그램 생성 |
 
 ### akbun-presentation
 
