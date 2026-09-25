@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Bootstrap yt-dlp inside a managed venv, then fetch a YouTube video's
+# Use the installed yt-dlp (or bootstrap one in a managed venv), then fetch a YouTube video's
 # subtitles + metadata to a temp directory. Prints JSON paths on stdout
 # so the caller can read them with the Read tool.
 #
@@ -19,8 +19,12 @@ esac
 WORKDIR="${TMP_BASE}/akbun-youtube-summary/$(date +%Y%m%d-%H%M%S)-$$"
 mkdir -p "$WORKDIR"
 
+# Prefer a yt-dlp already on PATH (brew, pipx, ...). Fall back to a managed venv.
 VENV="$HOME/.cache/akbun-youtube-summary/venv"
-if [ ! -x "$VENV/bin/yt-dlp" ]; then
+if command -v yt-dlp >/dev/null 2>&1; then
+  YTDLP="$(command -v yt-dlp)"
+  PYRUN="$(command -v python3 || command -v python)"
+elif [ ! -x "$VENV/bin/yt-dlp" ]; then
   PYBIN="$(command -v python3 || command -v python)"
   if [ -z "${PYBIN:-}" ]; then
     echo "python3 not found; install python first" >&2
@@ -30,7 +34,8 @@ if [ ! -x "$VENV/bin/yt-dlp" ]; then
   "$VENV/bin/pip" install --quiet --upgrade pip >/dev/null
   "$VENV/bin/pip" install --quiet yt-dlp >/dev/null
 fi
-YTDLP="$VENV/bin/yt-dlp"
+YTDLP="${YTDLP:-$VENV/bin/yt-dlp}"
+PYRUN="${PYRUN:-$VENV/bin/python}"
 
 # 1) Write metadata JSON (title, uploader, upload_date, chapters, categories, tags, language).
 "$YTDLP" --skip-download --write-info-json --no-write-comments \
@@ -84,7 +89,7 @@ CLEANED=""
 if [ -n "$SUB_FILE" ]; then
   CLEANED="${SUB_FILE%.vtt}.cleaned.txt"
   SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-  "$VENV/bin/python" "$SCRIPT_DIR/clean_vtt.py" "$SUB_FILE" "$CLEANED" 2>/dev/null || CLEANED=""
+  "$PYRUN" "$SCRIPT_DIR/clean_vtt.py" "$SUB_FILE" "$CLEANED" 2>/dev/null || CLEANED=""
 fi
 
 printf '{"workdir":"%s","info_json":"%s","subtitles":"%s","cleaned":"%s"}\n' \

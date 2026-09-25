@@ -12,6 +12,7 @@ model: sonnet
 
 1. 자막과 메타데이터를 가져온다.
 - 실행: `bash scripts/fetch_transcript.sh "<VIDEO_URL>" "ko,en,ja"`
+- 스크립트는 PC에 설치된 `yt-dlp`(`command -v yt-dlp`)를 그대로 쓰고, 없을 때만 venv에 설치한다. 따로 설치하거나 venv를 만들지 않는다.
 - `info_json`: 영상 제목, URL, 채널, 언어, 게시일, 카테고리, 태그, 챕터
 - `cleaned`: 우선 읽을 평탄화 transcript
 - `subtitles`: `cleaned`가 비어 있을 때만 읽을 원본 VTT
