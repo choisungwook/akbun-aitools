@@ -1,7 +1,7 @@
 {
   "name": "akbun-editvideo",
-  "version": "1.0.0",
-  "description": "Video editing skills — plan and run DaVinci Resolve travel-vlog edits: cut/stabilize, exposure/white balance, face mosaic with review markers, Gmarket Sans Korean subtitles, audio mix, and validated YouTube 4K delivery",
+  "version": "1.0.1",
+  "description": "Video editing skills — plan and run DaVinci Resolve vlog edits: speech-free travel vlogs (cut/stabilize, exposure/white balance, face mosaic, Gmarket Sans subtitles, audio mix, 4K delivery) and faceless talking developer vlogs (transcript-driven storytelling, beat-ordered assembly, sentence-level cuts, dialogue/keyword subtitles, HyperFrames graphic cards, Epidemic Sound SFX and BGM selection in essay/project/reflection styles, plus a pre-shoot guide, shot sketches and a storyboard with OBS screen-recording list)",
   "author": {
     "name": "akbun",
     "url": "https://github.com/choisungwook"
@@ -18,13 +18,17 @@
     "mosaic",
     "audio",
     "youtube",
-    "4k"
+    "4k",
+    "vlog",
+    "storytelling",
+    "transcript",
+    "hyperframes"
   ],
   "skills": "./skills/",
   "interface": {
     "displayName": "akbun Edit Video",
-    "shortDescription": "DaVinci Resolve travel-vlog editing: cut, color, mosaic, subtitles, audio, 4K delivery",
-    "longDescription": "Plans and runs a full DaVinci Resolve edit for speech-free travel vlogs shot on iPhone and Insta360 Luna Ultra. The orchestrator duplicates the timeline first, then runs the specialist skills in order: cut editing and stabilization (travelflow style), scope-based exposure and white balance, soft wide face mosaic with markers for later review, Gmarket Sans Korean subtitles (travelnote style), location/ambience/SFX/BGM mixing, and a validated YouTube 4K render. Every change is logged with clip file name and timecode; original timeline and media are never modified. Cut and subtitle styles are separate skills so other styles can be added later.",
+    "shortDescription": "DaVinci Resolve vlog editing: travel cut/color/mosaic/subtitles/audio/4K, and talking-dev-vlog storytelling/cut/subtitle/graphic cards",
+    "longDescription": "Plans and runs a full DaVinci Resolve edit for speech-free travel vlogs shot on iPhone and Insta360 Luna Ultra. The orchestrator duplicates the timeline first, then runs the specialist skills in order: cut editing and stabilization (travelflow style), scope-based exposure and white balance, soft wide face mosaic with markers for later review, Gmarket Sans Korean subtitles (travelnote style), location/ambience/SFX/BGM mixing, and a validated YouTube 4K render. Every change is logged with clip file name and timecode; original timeline and media are never modified. Cut and subtitle styles are separate skills so other styles can be added later. For talking developer vlogs, davinciresolve-story-devtalk is a workflow that reads davinciresolve-beats-devtalk (transcribe, beat sheet for user approval, beat-ordered assembly), davinciresolve-cut-devtalk (sentence-level cuts: silence, retakes, fillers), davinciresolve-subtitle-devtalk (SIL OFL Pretendard subtitles with a minimum on-screen size) davinciresolve-gfx-hyperframes (full-frame graphic cards), davinciresolve-sfx-epidemicsound (event-based sound effects) and davinciresolve-bgm-epidemicsound (BGM candidates, one chosen and reported) in order, following one of three editing-style skills (essay, project, reflection); each step skill can also be called on its own. Without footage it stops; akbun-vlog-shootplan asks about the topic and writes a shoot plan with camera/mic roles and face-free framing. akbun-vlog-shotsketch draws one storyboard frame per camera shot (camera position, posture, frame edge that hides the face) and akbun-vlog-storyboard draws one frame per beat with voice, B-roll, screen-recording content and duration plus an OBS recording list; both return image prompts when no image tool is available.",
     "developerName": "akbun",
     "category": "Productivity",
     "capabilities": [
@@ -40,7 +44,20 @@
       "스코프 보고 클립 사이 노출과 화이트밸런스 맞춰줘 (davinciresolve-exposure-whitebalance)",
       "얼굴 나오는 장면에 약한 모자이크 넣고 내가 나중에 찾을 수 있게 마커 남겨줘 (davinciresolve-face-privacy)",
       "Gmarket Sans로 장소·시간 전달하는 한글 자막과 챕터 마커 넣어줘 (davinciresolve-subtitle-travelnote)",
-      "현장음·효과음·BGM 믹싱하고 YouTube용 4K로 렌더링해서 검증해줘 (davinciresolve-audio-delivery)"
+      "현장음·효과음·BGM 믹싱하고 YouTube용 4K로 렌더링해서 검증해줘 (davinciresolve-audio-delivery)",
+      "촬영한 클립으로 스토리부터 컷·자막·그래픽 카드까지 workflow대로 끝까지 편집해줘 (davinciresolve-story-devtalk)",
+      "클립 전사해서 인벤토리 만들고 스토리 비트 시트 제안한 뒤 비트 순서로 타임라인에 나열해줘 (davinciresolve-beats-devtalk)",
+      "말 끊기는 침묵·재녹음·필러 잘라내고 스타일 컷 리듬에 맞춰줘 (davinciresolve-cut-devtalk)",
+      "Pretendard로 대사 자막·키워드 강조 넣어줘, 폰에서도 읽히게 크게 (davinciresolve-subtitle-devtalk)",
+      "GFX 마커 자리에 챕터 제목·전후 비교표 카드를 HyperFrames로 만들어 넣어줘 (davinciresolve-gfx-hyperframes)",
+      "카드·키워드·전환 나올 때 Epidemic Sound 효과음 골라서 A3에 놓아줘 (davinciresolve-sfx-epidemicsound)",
+      "Epidemic Sound에서 이 영상 분위기에 맞는 BGM 후보 뽑고 하나 골라서 왜 골랐는지 말해줘 (davinciresolve-bgm-epidemicsound)",
+      "아직 촬영 전인데 주제 물어보고 얼굴 안 나오는 촬영·말하기 계획 세워줘 (akbun-vlog-shootplan)",
+      "이 장면 카메라 어디 두고 어떻게 앉아서 찍어야 하는지 스케치해줘 (akbun-vlog-shotsketch)",
+      "이 주제로 뭘 말하고 뭘 찍고 OBS로 뭘 녹화할지 컷별 스토리보드 그려줘 (akbun-vlog-storyboard)",
+      "기술 원리 설명 영상이니까 essay 스타일 컷 리듬·카드 규칙으로 편집해줘 (davinciresolve-style-essay)",
+      "내 프로젝트 만드는 과정 영상이니까 project 스타일로 편집해줘 (davinciresolve-style-project)",
+      "회고 영상이니까 reflection 스타일 콜드 오픈·대사 자막으로 편집해줘 (davinciresolve-style-reflection)"
     ],
     "brandColor": "#7C3AED",
     "screenshots": []

@@ -1,7 +1,7 @@
 {
   "name": "akbun-editvideo",
-  "description": "Video editing skills — plan and run DaVinci Resolve travel-vlog edits: cut/stabilize, exposure/white balance, face mosaic with review markers, Gmarket Sans Korean subtitles, audio mix, and validated YouTube 4K delivery",
-  "version": "1.0.0",
+  "description": "Video editing skills — plan and run DaVinci Resolve vlog edits: speech-free travel vlogs (cut/stabilize, exposure/white balance, face mosaic, Gmarket Sans subtitles, audio mix, 4K delivery) and faceless talking developer vlogs (transcript-driven storytelling, beat-ordered assembly, sentence-level cuts, dialogue/keyword subtitles, HyperFrames graphic cards, Epidemic Sound SFX and BGM selection in essay/project/reflection styles, plus a pre-shoot guide, shot sketches and a storyboard with OBS screen-recording list)",
+  "version": "1.0.1",
   "author": {
     "name": "akbun"
   },
@@ -16,6 +16,10 @@
     "mosaic",
     "audio",
     "youtube",
-    "4k"
+    "4k",
+    "vlog",
+    "storytelling",
+    "transcript",
+    "hyperframes"
   ]
 }

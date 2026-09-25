@@ -26,13 +26,15 @@ Resolve는 한 프레임에 마커 1개만 허용한다. 종류마다 색·대�
 
 | 색 | 이름 | 대상 | 오프셋 | 찍는 skill |
 |---|---|---|---|---|
-| Blue | `CHAPTER <장소명·행사명>` | 타임라인 마커 | 장면 시작 프레임 | `davinciresolve-subtitle-travelnote` |
+| Blue | `CHAPTER <장소명·행사명 또는 비트 이름>` | 타임라인 마커 | 장면·비트 시작 프레임 | `davinciresolve-subtitle-travelnote`, `davinciresolve-beats-devtalk` |
 | Purple | `PRIVACY_MOSAIC <파일명> <창 개수>개` | 클립 마커 | +0 | `davinciresolve-face-privacy` |
 | Pink | `PRIVACY_CHECK <파일명> <사유>` | 클립 마커 | +1 | `davinciresolve-face-privacy` |
 | Red | `CUT_DONE <사유>` | 클립 마커 | +2 | `davinciresolve-cut-travelflow` |
 | Yellow | `CUT_REVIEW <사유>` | 클립 마커 | +3 | `davinciresolve-cut-travelflow` |
+| Green | `TALK_REVIEW <사유>` | 클립 마커 | +4 | `davinciresolve-cut-devtalk` |
+| Cyan | `GFX <카드 종류> <제목>` | 타임라인 마커 | 카드 시작 프레임 | `davinciresolve-beats-devtalk` |
 
-클립 길이가 4프레임 미만이면 오프셋을 줄이지 않고 그 클립의 마커를 작업 로그 `확인 필요`에만 적는다.
+클립 길이가 오프셋보다 짧으면 오프셋을 줄이지 않고 그 클립의 마커를 작업 로그 `확인 필요`에만 적는다.
 
 ## 기본 원칙
 
