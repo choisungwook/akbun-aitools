@@ -6,36 +6,11 @@ disable-model-invocation: true
 
 # davinciresolve-gfx-hyperframes
 
-전체 화면을 대신하는 그래픽 카드를 만든다. 화면 클립 위에 얹는 글자는 카드가 아니라 `davinciresolve-subtitle-devtalk`의 Text+다. HTML 작성·렌더·삽입 절차의 원본은 [`references/hyperframes.md`](references/hyperframes.md)다.
+`GFX` 마커마다 HyperFrames 컴포지션 HTML 한 파일을 `<출력 폴더>/gfx/compositions/<카드 종류>-<비트 번호>.html`에 쓰되, 루트의 `data-width`·`data-height`·`data-fps`는 타임라인과 같게 하고 글꼴은 `@font-face`로 Pretendard 파일을 지정하며, 색·크기·길이는 style skill의 글자 표에서, 제목·항목·표 값은 비트 시트와 전사에서만 가져온다. 아래 명령으로 검사·렌더한 뒤 `MediaPool.ImportMedia`로 가져와 `AppendToTimeline`에 `trackIndex: 2`와 `recordFrame`(마커 프레임)을 주어 V2(`davinciresolve-story-devtalk` 트랙 배치)에 놓고, `ffprobe`로 해상도·fps가 타임라인과 같은지 확인해 작업 로그 `그래픽 카드` 절에 마커 TC·종류·내용·파일·길이를 남긴다. 화면 클립 위에 얹는 번호 제목·키워드는 카드가 아니라 `davinciresolve-subtitle-devtalk`의 Text+이고, `npx hyperframes --help`가 실패하면(Node 22 이상, ffmpeg 필요) 카드를 만들지 않고 `GFX` 마커와 카드 내용 표만 로그에 남긴다.
 
-`davinciresolve-video-editor`의 기본 원칙(작업 타임라인, 작업 로그)을 따른다. 카드 종류·색·크기·길이는 `davinciresolve-story-devtalk`이 정한 style skill의 글자 표가 원본이고, 카드 위치는 `davinciresolve-beats-devtalk`이 찍은 Cyan `GFX` 타임라인 마커다.
+처음 한 번 프로젝트를 만들고, 카드마다 검사 뒤 렌더하는 명령이다.
 
-## 실행 조건
-
-- `npx hyperframes --help`가 명령 목록을 출력해야 한다(Node 22 이상, ffmpeg). 안 되면 카드를 만들지 않고 `GFX` 마커와 카드 내용 표를 로그에 남긴다.
-- style skill이 카드를 쓰지 않으면 이 skill은 할 일이 없다. 로그에 "카드 없음"이라고 적는다.
-
-## 절차
-
-[`references/hyperframes.md`](references/hyperframes.md)의 순서(준비 → 컴포지션 작성 → 검사·렌더 → Resolve에 넣기)를 그대로 따른다. 카드 내용(제목·항목·표 값)은 비트 시트와 전사에서만 가져오고, 카드는 V2(`davinciresolve-story-devtalk` 트랙 배치)에 놓으며 A1 음성은 카드 동안 그대로 흐른다.
-
-## 컷 변경 반영
-
-`davinciresolve-cut-devtalk`이 넘긴 바뀐 구간 목록을 받으면 `GFX` 마커를 새 시작 TC로 다시 찍고 카드 클립을 새 `recordFrame`에 다시 삽입한 뒤 옛것을 삭제한다.
-
-## 작업 로그
-
-`그래픽 카드` 절에 채운다.
-
-```markdown
-| 마커 TC | 카드 종류 | 제목·내용 | 파일 | 길이 | 확인 |
-|---|---|---|---|---|---|
-| 00:00:15:00 | 챕터 제목 | 왜 이 얘기를 하나 | gfx/renders/title-02.mp4 | 3.5초 | 3840×2160 30fps |
+```bash
+npx hyperframes init gfx
+cd gfx && npx hyperframes check && npx hyperframes render -c compositions/title-02.html -o renders/title-02.mp4 --fps 30 --quality delivery
 ```
-
-## 하지 않는 것
-
-- 전사·비트 시트에 없는 내용의 카드
-- 카드를 화면 클립 일부에만 겹치기(카드는 화면 전체를 대신한다)
-- style skill 글자 표 밖의 색·크기·길이
-- 렌더 실패를 "카드 완료"로 적는 것
