@@ -296,6 +296,6 @@ codex plugin list --json
 - `plugins/<plugin-name>/skills/<skill-name>/SKILL.md`: skill의 실행 지침. 이 파일이 원본이다.
 - `plugins/<plugin-name>/.claude-plugin/plugin.json`, `plugins/<plugin-name>/.codex-plugin/plugin.json`: plugin manifest. 두 파일의 `version`은 항상 같다.
 - `.claude-plugin/marketplace.json`, `.agents/plugins/marketplace.json`: Claude Code·Codex marketplace 목록.
-- `AGENTS.md`: agent가 이 저장소에서 일할 때 따르는 규칙(읽는 순서, 버전 규칙, PR 형식).
+- `AGENTS.md`: agent가 이 저장소에서 일할 때 따르는 규칙(읽는 순서, 버전 규칙, Discussion·Issue·PR 흐름, PR 형식).
 - `docs/guide_deploy_plugins.md`: plugin 생성·배포 절차.
 - `docs/adr/`: 되돌리기 어려운 설계 결정 기록.
