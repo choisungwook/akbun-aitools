@@ -1,6 +1,6 @@
 ---
 name: davinciresolve-video-editor
-description: 사용자의 편집 취향에 맞춰 DaVinci Resolve 여행 브이로그 편집 작업 전체를 계획하고 실행하는 오케스트레이터. 타임라인을 복제한 뒤 컷·안정화(davinciresolve-cut-travelflow), 노출·화이트밸런스(davinciresolve-exposure-whitebalance), 얼굴 모자이크(davinciresolve-face-privacy), 한글 자막·챕터(davinciresolve-subtitle-travelnote), 오디오 믹싱·4K 출력(davinciresolve-audio-delivery)의 SKILL.md를 순서대로 읽어 직접 수행하고 단계마다 검증과 작업 로그를 남긴다. "이 프로젝트 편집 계획 세워서 끝까지 해줘", "타임라인 정리부터 렌더까지" 요청에 사용한다. 사용자가 직접 호출할 때만 실행한다.
+description: 사용자의 편집 취향에 맞춰 DaVinci Resolve 여행 브이로그 편집 작업 전체를 계획하고 실행하는 오케스트레이터. 타임라인을 복제한 뒤 컷·안정화(davinciresolve-cut-travelflow), 색보정 workflow(akbun-davinciresolve-workflow: LUT·밝기·화이트밸런스·대비·채도·하늘), 얼굴 모자이크(davinciresolve-face-privacy), 한글 자막·챕터(davinciresolve-subtitle-travelnote), 오디오 믹싱·4K 출력(davinciresolve-audio-delivery)의 SKILL.md를 순서대로 읽어 직접 수행하고 단계마다 검증과 작업 로그를 남긴다. "이 프로젝트 편집 계획 세워서 끝까지 해줘", "타임라인 정리부터 렌더까지" 요청에 사용한다. 사용자가 직접 호출할 때만 실행한다.
 disable-model-invocation: true
 ---
 
@@ -33,6 +33,8 @@ Resolve는 한 프레임에 마커 1개만 허용한다. 종류마다 색·대�
 | Yellow | `CUT_REVIEW <사유>` | 클립 마커 | +3 | `davinciresolve-cut-travelflow` |
 | Green | `TALK_REVIEW <사유>` | 클립 마커 | +4 | `davinciresolve-cut-devtalk` |
 | Cyan | `GFX <카드 종류> <제목>` | 타임라인 마커 | 카드 시작 프레임 | `davinciresolve-beats-devtalk` |
+| Lemon | `EXPOSURE_CHECK <파일명> <사유>` | 클립 마커 | +5 | `akbun-davinciresolve-exposure` |
+| Sky | `WB_CHECK <파일명> <사유>` | 클립 마커 | +6 | `akbun-davinciresolve-whitebalance` |
 
 클립 길이가 오프셋보다 짧으면 오프셋을 줄이지 않고 그 클립의 마커를 작업 로그 `확인 필요`에만 적는다.
 
@@ -72,10 +74,10 @@ API가 있어도 없는 기능이 있다. 기능별 API 유무·버전 조건·�
 | 순서 | 작업 | 읽는 skill | 완료 조건 |
 |---|---|---|---|
 | 1 | 미디어 메타데이터(파일명, 촬영 시간, 카메라, 해상도, 프레임레이트, 색공간·감마)를 읽고 카메라별 시계 오프셋과 타임라인 프레임레이트를 정한다 | 이 skill | 클립 전부가 표로 정리, 촬영 시간 없음·시계 오프셋 미확인은 `확인 필요` |
-| 2 | 작업 타임라인을 만들고 촬영 시간순인지 확인한다 | 이 skill | 원본 타임라인 그대로 남아 있고 작업 타임라인 순서가 촬영 시간순이거나 사용자가 정한 순서 |
+| 2 | 작업 타임라인을 만들고 촬영 시간순인지 확인한다 | `akbun-davinciresolve-timeline-chrono`(순서가 다를 때), 이 skill | 원본 타임라인 그대로 남아 있고 작업 타임라인 순서가 촬영 시간순이거나 사용자가 정한 순서 |
 | 3 | 컷 편집과 흔들림 보정 | `davinciresolve-cut-travelflow` | 불량 구간 제거·안정화 결과가 작업 로그에 클립별로 기록 |
-| 4 | 노출과 화이트밸런스 | `davinciresolve-exposure-whitebalance` | 같은 장면 안의 인접 클립 사이 밝기·색온도 급변 없음 |
-| 5 | LUT와 영상 스타일 | 이 skill | 사용자가 LUT 파일이나 스타일을 지정했을 때만 `LUT` 노드에 적용. 지정이 없으면 건너뛰고 로그에 "LUT 없음" |
+| 4 | 색보정(Log LUT → 밝기 → 화이트밸런스 → 대비 → 채도 → 하늘) | `akbun-davinciresolve-workflow`의 3~11단계(타임라인 생성·복제는 이미 했으므로 건너뜀) | 각 단계 표에 남은 `확인 필요`·`EXPOSURE_CHECK`·`WB_CHECK`를 사용자에게 보고 |
+| 5 | 사용자 지정 룩 LUT | 이 skill | 사용자가 별도 룩 LUT를 지정했을 때만 마지막 `LOOK` 라벨 노드에 `Graph.SetLUT`로 적용. 강도(Key Output Gain)는 API가 없어 화면에서 0.2 안팎. 지정이 없으면 건너뛰고 로그에 "LOOK 없음" |
 | 6 | 얼굴과 개인정보 모자이크 | `davinciresolve-face-privacy` | 모자이크 클립마다 `PRIVACY_MOSAIC` 클립 마커와 노드 존재 |
 | 7 | Gmarket Sans 한글 자막과 챕터 마커 | `davinciresolve-subtitle-travelnote` | 자막이 안전 영역 안에 있고 챕터 마커가 장소 변경 지점마다 존재 |
 | 8 | 현장음·효과음·BGM 믹싱 | `davinciresolve-audio-delivery` (믹싱 절) | 라우드니스·피크 기준 통과, 사용한 곡 목록 기록 |
@@ -86,12 +88,12 @@ API가 있어도 없는 기능이 있다. 기능별 API 유무·버전 조건·�
 
 - 타임라인 프레임레이트는 클립 수가 가장 많은 프레임레이트로 하고, 사용자가 지정하면 그 값을 쓴다. 혼합(예: iPhone 60fps + Insta360 30fps)이면 정한 값과 이유를 로그에 적는다.
 - 카메라별 시계 오프셋은 두 카메라로 같은 장면을 찍은 클립 1쌍(사용자가 알려주거나 추출 프레임이 같은 장소인 쌍)의 촬영 시간 차이로 구한다. 쌍이 없으면 오프셋 0으로 두고 `확인 필요`로 남긴다. Insta360 촬영 시간이 2000년대 초 같은 기본값이면 시계 미설정으로 보고 파일 생성 시간을 대신 쓴다.
-- 색공간·감마가 클립마다 다르면(예: iPhone HLG, Insta360 Rec.709) 4단계 `INPUT` 노드에서 변환한다. 목록을 로그에 적는다.
+- 색공간·감마가 클립마다 다르면(예: iPhone Apple Log, Insta360 I-Log) 4단계의 `akbun-davinciresolve-logconvert`가 Log 판정과 LUT를 맡는다. 판정 표를 로그에 적는다.
 
 2단계 세부 규칙이다.
 
 - 복제본의 클립 순서가 이미 촬영 시간순이면 그대로 쓴다.
-- 순서가 다르고 사용자가 "원본 순서 유지"를 말하지 않았으면, 스크립팅 API에는 클립 이동 함수가 없으므로 미디어 풀 클립을 촬영 시간순으로 넣은 새 타임라인(`CreateTimelineFromClips`)을 작업 타임라인으로 만든다. 복제본은 되돌리기용으로 남긴다.
+- 순서가 다르고 사용자가 "원본 순서 유지"를 말하지 않았으면, 스크립팅 API에는 클립 이동 함수가 없으므로 `akbun-davinciresolve-timeline-chrono`로 촬영 시간순 새 타임라인을 만들어 작업 타임라인으로 쓴다. 복제본은 되돌리기용으로 남긴다.
 - 사용자가 원본 순서를 의도했다고 하면 재배치하지 않고 로그에 "사용자 지정 순서"라고 적는다.
 
 컷이 바뀌면(3단계 이후 재편집 포함) 자막·효과음·전환·챕터 타임라인 마커 위치를 다시 맞춘다. 클립 마커는 클립과 함께 움직이므로 다시 찍지 않는다. 순서를 건너뛰거나 바꾸려면 이유를 작업 로그에 적는다.
@@ -105,7 +107,7 @@ API가 있어도 없는 기능이 있다. 기능별 API 유무·버전 조건·�
 | 타임라인 해상도·프레임레이트 | 타임라인 설정 | 3840×2160, 1단계에서 정한 프레임레이트 |
 | 오프라인 미디어·검은 프레임 | 미디어 풀 오프라인 표시, 타임라인 빈 구간 | 0개 |
 | 음량 급변·피크 | 라우드니스 미터, 클립 경계 전후 비교 | True Peak -1 dBTP 이하, 같은 장면 안 인접 클립 차이 6 dB 이내. 장면 전환(장소·행사 변경)은 예외로 두고 로그에 적는다 |
-| 노출·화이트밸런스 급변 | 인접 클립 스코프 비교 | `davinciresolve-exposure-whitebalance`의 연속성 기준 |
+| 밝기·색 급변 | 인접 컷 tail→head 스코프값·중립 R/G/B 비교 | `akbun-davinciresolve-exposure`의 전환 피로 기준, `akbun-davinciresolve-whitebalance`의 채널 차이 20 |
 | 얼굴 모자이크 누락 | `PRIVACY_MOSAIC` 클립 마커 목록과 얼굴 탐지 결과 대조 | 얼굴이 식별되는 클립 전부에 마커·노드 존재. 탐지 실패 클립은 `PRIVACY_CHECK` 존재 |
 | 자막 화면 밖 잘림 | 자막 클립마다 시작·끝 프레임 스틸 | 텍스트 전체가 안전 영역 안 |
 | 렌더 파일 재생·길이 | `ffprobe` 또는 Resolve 미디어 풀 재가져오기 | 재생되고 길이가 타임라인과 1프레임 이내 |
@@ -130,8 +132,8 @@ API가 있어도 없는 기능이 있다. 기능별 API 유무·버전 조건·�
 |---|---|---|---|---|---|---|
 
 ## 3. 컷·안정화
-## 4. 노출·화이트밸런스
-## 5. LUT
+## 4. 색보정(workflow 로그: 5. LUT → 4. 노출 → 4b. 화이트밸런스 → 4c. 대비 → 4d. 채도 → 4e. 하늘)
+## 5. LOOK
 ## 6. 모자이크
 ## 7. 자막·챕터
 ## 8. 오디오

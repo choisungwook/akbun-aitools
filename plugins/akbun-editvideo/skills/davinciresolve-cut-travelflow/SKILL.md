@@ -10,6 +10,8 @@ disable-model-invocation: true
 
 `davinciresolve-video-editor`의 기본 원칙(작업 타임라인에서만 편집, 클립은 파일명 + 시작 타임코드로 지정, 대표 클립 1개 선적용, 작업 로그 기록)과 마커 등록표(색·오프셋)를 그대로 따른다. 분석 수단은 같은 skill의 `references/agent-api.md` 대응표를 따르고, 트림·삭제·Stabilizer 파라미터는 API가 없으므로 화면 조작이나 절차서로 한다.
 
+이 skill이 맡는 것은 컷과 안정화, 그 결과를 자막·오디오 skill에 넘기는 것까지다. 색보정(Log 변환·밝기·화이트밸런스·대비·채도·하늘)은 `akbun-davinciresolve-workflow`가 맡는다. 이 skill의 노출·초점 분석은 어느 구간을 자를지 정하는 근거일 뿐이고 색을 바꾸지 않는다.
+
 ## 장비별 기본값
 
 클립의 카메라는 메타데이터(`Camera Type`, `Camera Manufacturer`)에서 읽는다. 메타데이터에 없으면 파일명 패턴으로 추정하고 작업 로그에 `추정`이라고 적는다. 패턴은 흔한 예일 뿐이며 내보내기·이름 변경으로 달라질 수 있다.
@@ -68,6 +70,7 @@ disable-model-invocation: true
 
 ## 하지 않는 것
 
+- 색보정(밝기·화이트밸런스·LUT·대비·채도). `akbun-davinciresolve-workflow`의 일이다
 - 사용자 확인 없는 클립 삭제
 - Insta360 Luna Ultra·미확정 장비 클립의 트림·안정화(사용자 지정 예외 제외)
 - 근거 없는 안정화 적용

@@ -1,7 +1,7 @@
 {
   "name": "akbun-editvideo",
-  "version": "1.0.1",
-  "description": "Video editing skills — plan and run DaVinci Resolve vlog edits: speech-free travel vlogs (cut/stabilize, exposure/white balance, face mosaic, Gmarket Sans subtitles, audio mix, 4K delivery) and faceless talking developer vlogs (transcript-driven storytelling, beat-ordered assembly, sentence-level cuts, dialogue/keyword subtitles, HyperFrames graphic cards, Epidemic Sound SFX and BGM selection in essay/project/reflection styles, plus a pre-shoot guide, shot sketches and a storyboard with OBS screen-recording list)",
+  "version": "1.0.2",
+  "description": "Video editing skills — plan and run DaVinci Resolve vlog edits: speech-free travel vlogs (cut/stabilize, chronological timeline, color-grading workflow (Log LUT, exposure, white balance, contrast, saturation, sky on labeled nodes), face mosaic, Gmarket Sans subtitles, audio mix, 4K delivery) and faceless talking developer vlogs (transcript-driven storytelling, beat-ordered assembly, sentence-level cuts, dialogue/keyword subtitles, HyperFrames graphic cards, Epidemic Sound SFX and BGM selection in essay/project/reflection styles, plus a pre-shoot guide, shot sketches and a storyboard with OBS screen-recording list)",
   "author": {
     "name": "akbun",
     "url": "https://github.com/choisungwook"
@@ -28,7 +28,7 @@
   "interface": {
     "displayName": "akbun Edit Video",
     "shortDescription": "DaVinci Resolve vlog editing: travel cut/color/mosaic/subtitles/audio/4K, and talking-dev-vlog storytelling/cut/subtitle/graphic cards",
-    "longDescription": "Plans and runs a full DaVinci Resolve edit for speech-free travel vlogs shot on iPhone and Insta360 Luna Ultra. The orchestrator duplicates the timeline first, then runs the specialist skills in order: cut editing and stabilization (travelflow style), scope-based exposure and white balance, soft wide face mosaic with markers for later review, Gmarket Sans Korean subtitles (travelnote style), location/ambience/SFX/BGM mixing, and a validated YouTube 4K render. Every change is logged with clip file name and timecode; original timeline and media are never modified. Cut and subtitle styles are separate skills so other styles can be added later. For talking developer vlogs, davinciresolve-story-devtalk is a workflow that reads davinciresolve-beats-devtalk (transcribe, beat sheet for user approval, beat-ordered assembly), davinciresolve-cut-devtalk (sentence-level cuts: silence, retakes, fillers), davinciresolve-subtitle-devtalk (SIL OFL Pretendard subtitles with a minimum on-screen size) davinciresolve-gfx-hyperframes (full-frame graphic cards), davinciresolve-sfx-epidemicsound (event-based sound effects) and davinciresolve-bgm-epidemicsound (BGM candidates, one chosen and reported) in order, following one of three editing-style skills (essay, project, reflection); each step skill can also be called on its own. Without footage it stops; akbun-vlog-shootplan asks about the topic and writes a shoot plan with camera/mic roles and face-free framing. akbun-vlog-shotsketch draws one storyboard frame per camera shot (camera position, posture, frame edge that hides the face) and akbun-vlog-storyboard draws one frame per beat with voice, B-roll, screen-recording content and duration plus an OBS recording list; both return image prompts when no image tool is available.",
+    "longDescription": "Plans and runs a full DaVinci Resolve edit for speech-free travel vlogs shot on iPhone and Insta360 Luna Ultra. The orchestrator duplicates the timeline first, then runs the specialist skills in order: cut editing and stabilization (travelflow style), a color-grading workflow (akbun-davinciresolve-workflow: chronological timeline, duplicate, labeled nodes EXPOSURE/WB/CST/CONTRAST/SAT/SKY, then Log LUT, scope-based exposure with time-of-day targets and cut-transition limits, neutral-pixel white balance, pivot contrast, saturation top-up, sky DCTL), soft wide face mosaic with markers for later review, Gmarket Sans Korean subtitles (travelnote style), location/ambience/SFX/BGM mixing, and a validated YouTube 4K render. Every change is logged with clip file name and timecode; original timeline and media are never modified. Cut and subtitle styles are separate skills so other styles can be added later. For talking developer vlogs, davinciresolve-story-devtalk is a workflow that reads davinciresolve-beats-devtalk (transcribe, beat sheet for user approval, beat-ordered assembly), davinciresolve-cut-devtalk (sentence-level cuts: silence, retakes, fillers), davinciresolve-subtitle-devtalk (SIL OFL Pretendard subtitles with a minimum on-screen size) davinciresolve-gfx-hyperframes (full-frame graphic cards), davinciresolve-sfx-epidemicsound (event-based sound effects) and davinciresolve-bgm-epidemicsound (BGM candidates, one chosen and reported) in order, following one of three editing-style skills (essay, project, reflection); each step skill can also be called on its own. Without footage it stops; akbun-vlog-shootplan asks about the topic and writes a shoot plan with camera/mic roles and face-free framing. akbun-vlog-shotsketch draws one storyboard frame per camera shot (camera position, posture, frame edge that hides the face) and akbun-vlog-storyboard draws one frame per beat with voice, B-roll, screen-recording content and duration plus an OBS recording list; both return image prompts when no image tool is available.",
     "developerName": "akbun",
     "category": "Productivity",
     "capabilities": [
@@ -41,7 +41,14 @@
     "defaultPrompt": [
       "이 여행 영상 프로젝트를 DaVinci Resolve에서 처음부터 끝까지 편집 계획 세우고 실행해줘 (davinciresolve-video-editor)",
       "iPhone 클립 앞부분 흰 화면 잘라내고 흔들리는 클립만 안정화해줘 (davinciresolve-cut-travelflow)",
-      "스코프 보고 클립 사이 노출과 화이트밸런스 맞춰줘 (davinciresolve-exposure-whitebalance)",
+      "스코프 재서 시간대별 밝기 맞추고 컷 넘어갈 때 눈 안 피곤하게 해줘 (akbun-davinciresolve-exposure)",
+      "미디어 풀 영상 전부 촬영 시간순으로 새 타임라인에 나열해줘 (akbun-davinciresolve-timeline-chrono)",
+      "중립 픽셀 기준으로 클립마다 화이트밸런스 맞춰줘, 노을은 따뜻하게 남기고 (akbun-davinciresolve-whitebalance)",
+      "Log로 찍은 클립만 판정해서 CST 노드에 LUT 걸어줘 (akbun-davinciresolve-logconvert)",
+      "변환 뒤 CONTRAST 노드에 피벗 기준 대비 주고 클리핑 없는지 확인해줘 (akbun-davinciresolve-contrast)",
+      "채도 부족한 클립만 보충하고 섀도·하이라이트는 롤오프 해줘 (akbun-davinciresolve-saturation)",
+      "하늘만 진하게 해줘, 하늘 없는 클립은 건너뛰고 (akbun-davinciresolve-sky)",
+      "영상 전부 시간순으로 놓고 복제본에서 LUT·밝기·화이트밸런스·대비·채도까지 색보정 workflow 돌려줘 (akbun-davinciresolve-workflow)",
       "얼굴 나오는 장면에 약한 모자이크 넣고 내가 나중에 찾을 수 있게 마커 남겨줘 (davinciresolve-face-privacy)",
       "Gmarket Sans로 장소·시간 전달하는 한글 자막과 챕터 마커 넣어줘 (davinciresolve-subtitle-travelnote)",
       "현장음·효과음·BGM 믹싱하고 YouTube용 4K로 렌더링해서 검증해줘 (davinciresolve-audio-delivery)",
