@@ -8,7 +8,7 @@ disable-model-invocation: true
 
 얼굴과 개인정보(차량 번호판, 이름표, 화면에 뜬 개인 정보)를 약한 모자이크로 가린다. 영상 분위기를 해치지 않을 만큼 약하게, 대신 범위는 넓고 경계는 부드럽게 한다. 편집이 끝나면 사용자가 무엇을 어디에 가렸는지 타임라인에서 바로 찾을 수 있어야 한다.
 
-`davinciresolve-video-editor`의 기본 원칙(작업 타임라인, 클립은 파일명 + 시작 타임코드, 대표 클립 선적용, 작업 로그)과 마커 등록표를 따른다. Power Window·Mosaic Blur는 API가 없으므로 화면 조작이나 절차서로 한다.
+`akbun-davinciresolve-workflow`의 기본 원칙(작업 타임라인, 클립은 파일명 + 시작 타임코드, 대표 클립 선적용, 작업 로그)과 마커 등록표를 따른다. Power Window·Mosaic Blur는 API가 없으므로 화면 조작이나 절차서로 한다.
 
 ## 사용자 본인 처리
 

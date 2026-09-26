@@ -8,7 +8,7 @@ disable-model-invocation: true
 
 미디어 풀의 영상 클립을 촬영 시각순으로 넣은 새 타임라인을 만든다. 기존 타임라인·클립은 수정하지 않는다. 실행 수단은 [`scripts/chrono_timeline.py`](scripts/chrono_timeline.py) 하나다.
 
-`davinciresolve-video-editor`의 2단계(작업 타임라인, 촬영 시간순)를 이 skill이 맡는다.
+`akbun-davinciresolve-workflow`의 1단계(촬영 시간순 타임라인 A, 편집의 첫 단계)를 이 skill이 맡는다.
 
 ## 시각을 읽는 순서
 
@@ -18,7 +18,7 @@ disable-model-invocation: true
 | 2 | 클립 속성 `Date Created` | `Sat Sep 26 2026 18:01:54` | Insta360, iPhone 기본 카메라 클립. 파일 생성 시각이라 복사 방식에 따라 어긋날 수 있다 |
 | 없음 | - | - | 맨 뒤에 이름순으로 붙이고 `확인 필요` |
 
-카메라 시계가 어긋나면 `--offset 접두어=초`로 보정한다. 예: Insta360이 37초 빠르면 `--offset VID_=-37`. 오프셋 값은 `davinciresolve-video-editor` 1단계(같은 장면을 두 카메라로 찍은 쌍)에서 구한다. 접두어가 여러 개 맞으면 긴 것이 이긴다.
+카메라 시계가 어긋나면 `--offset 접두어=초`로 보정한다. 예: Insta360이 37초 빠르면 `--offset VID_=-37`. 오프셋 값은 `akbun-davinciresolve-workflow` 1단계 세부 규칙(같은 장면을 두 카메라로 찍은 쌍)에서 구한다. 접두어가 여러 개 맞으면 긴 것이 이긴다.
 
 ## 실행 순서
 

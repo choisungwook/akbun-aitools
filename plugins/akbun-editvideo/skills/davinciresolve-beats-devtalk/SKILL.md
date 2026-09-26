@@ -6,7 +6,7 @@ disable-model-invocation: true
 
 # davinciresolve-beats-devtalk
 
-스토리를 정하고 그 순서로 클립을 놓는 단계다. 전사가 근거이고, 비트 시트는 사용자가 확정한다. `davinciresolve-video-editor`의 기본 원칙(작업 타임라인, 클립은 파일명 + 시작 타임코드, 작업 로그)과 마커 등록표를 따르고, 구조 표는 `davinciresolve-story-devtalk`이 정한 style skill의 `SKILL.md`에서 읽는다. 스타일이 정해지지 않은 채 단독 호출되면 그 skill의 스타일 선택 표로 먼저 정하고 로그에 이유를 적는다.
+스토리를 정하고 그 순서로 클립을 놓는 단계다. 전사가 근거이고, 비트 시트는 사용자가 확정한다. `akbun-davinciresolve-workflow`의 기본 원칙(작업 타임라인, 클립은 파일명 + 시작 타임코드, 작업 로그)과 마커 등록표를 따르고, 구조 표는 `davinciresolve-story-devtalk`이 정한 style skill의 `SKILL.md`에서 읽는다. 스타일이 정해지지 않은 채 단독 호출되면 그 skill의 스타일 선택 표로 먼저 정하고 로그에 이유를 적는다.
 
 ## 용어
 
@@ -33,9 +33,9 @@ python3 -m venv .venv && .venv/bin/pip install -q mlx-whisper
 
 ## 1. 소재 인벤토리
 
-- 클립 메타데이터(파일명, 촬영 시간, 카메라, 길이, 해상도, 프레임레이트)를 읽는다. 카메라 판별과 시계 오프셋은 `davinciresolve-video-editor` 1단계 규칙을 따른다.
+- 클립 메타데이터(파일명, 촬영 시간, 카메라, 길이, 해상도, 프레임레이트)를 읽는다. 카메라 판별과 시계 오프셋은 `akbun-davinciresolve-workflow` 1단계 규칙을 따른다.
 - 말소리가 클립 길이의 절반 이상이면 음성 클립, 아니면 화면 클립, 화면 녹화 파일(모니터 비율, 카메라 메타데이터 없음)은 `화면 녹화`. 한 클립이 음성이면서 화면으로도 쓸 수 있다(손·화면을 찍으며 말한 클립).
-- 클립마다 시작·중간·끝 프레임과 1초 간격 프레임을 `ffmpeg`로 뽑아 얼굴 탐지기(`davinciresolve-video-editor` `references/agent-api.md`의 대체 방법)에 넣는다. 화자 얼굴이 한 프레임이라도 식별되면 `face`로 표시하고 화면 클립 후보에서 뺀다. 파일명이 `_face`로 끝나는 클립은 탐지 없이 `face`다. 탐지기가 없으면 전 클립을 `face 확인 필요`로 두고 사용자에게 얼굴 없는 클립을 지정받는다.
+- 클립마다 시작·중간·끝 프레임과 1초 간격 프레임을 `ffmpeg`로 뽑아 얼굴 탐지기(`akbun-davinciresolve-workflow` `references/agent-api.md`의 대체 방법)에 넣는다. 화자 얼굴이 한 프레임이라도 식별되면 `face`로 표시하고 화면 클립 후보에서 뺀다. 파일명이 `_face`로 끝나는 클립은 탐지 없이 `face`다. 탐지기가 없으면 전 클립을 `face 확인 필요`로 두고 사용자에게 얼굴 없는 클립을 지정받는다.
 - 음성 클립 전부를 전사하고 문장마다 시작·끝 타임코드와 텍스트를 붙인다.
 - 재녹음(`retake`)은 문장 앞 10글자가 같고 시작 시각이 60초 이내인 세그먼트 묶음으로 찾아 표시한다.
 
@@ -72,7 +72,7 @@ python3 -m venv .venv && .venv/bin/pip install -q mlx-whisper
 
 ## 3. 비트 순서로 클립 나열
 
-- 새 작업 타임라인 `<프로젝트 이름>_story_<YYYYMMDD_HHMM>`을 만든다. 복제본이 아니라 미디어 풀에서 새로 만드는 타임라인이라 `davinciresolve-video-editor`의 `_edit_` 이름과 구분한다. 사용자가 만든 타임라인이 있으면 그 skill대로 복제해서 쓴다.
+- 새 작업 타임라인 `<프로젝트 이름>_story_<YYYYMMDD_HHMM>`을 만든다. 복제본이 아니라 미디어 풀에서 새로 만드는 타임라인이라 `akbun-davinciresolve-workflow`의 `_edit_` 이름과 구분한다. 사용자가 만든 타임라인이 있으면 그 skill대로 복제해서 쓴다.
 - 트림·이동 API가 없으므로 `MediaPool.CreateTimelineFromClips` 또는 `AppendToTimeline`에 `mediaPoolItem`, `startFrame`, `endFrame`을 준 구간 목록으로 만든다. 비트 시트의 클립 구간 하나가 목록 항목 하나다. 소스 프레임은 전사 타임코드를 클립 프레임레이트로 환산한다.
 - 트랙은 `davinciresolve-story-devtalk`의 트랙 배치대로 음성 구간은 A1에 소리만(`mediaType: 2`), 화면 클립은 V1에 영상만(`mediaType: 1`). 같은 `recordFrame`으로 넣어 음성 문장과 화면이 맞물리게 한다. 화면 클립의 현장음이 필요하면(타자 소리, 물건 소리) 같은 구간을 A2에 한 번 더 넣는다.
 - `face` 클립은 A1에만 들어간다. V1에 넣지 않는다.

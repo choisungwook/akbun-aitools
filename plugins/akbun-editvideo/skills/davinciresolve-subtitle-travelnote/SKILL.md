@@ -8,7 +8,7 @@ disable-model-invocation: true
 
 자막 스타일 중 하나다. 이름의 travelnote는 "여행 노트처럼 장소·시간·분위기를 한 줄로 적는 담백한 자막"이라는 뜻이다. 다른 스타일(예: 대사 자막, 예능형 강조 자막)은 이 skill을 고치지 않고 `davinciresolve-subtitle-<스타일>`로 따로 만든다.
 
-`davinciresolve-video-editor`의 기본 원칙(작업 타임라인, 클립은 파일명 + 시작 타임코드, 대표 자막 1개 선적용, 작업 로그)과 마커 등록표를 따른다. 자막은 Fusion Text+로 만들고, 스크립팅 API가 있으면 `InsertFusionTitleIntoTimeline("Text+")` 뒤 `GetFusionCompByIndex(1)`로 Text+ 툴의 `StyledText`·`Font`·`Style`·`Size` 입력을 설정한다.
+`akbun-davinciresolve-workflow`의 기본 원칙(작업 타임라인, 클립은 파일명 + 시작 타임코드, 대표 자막 1개 선적용, 작업 로그)과 마커 등록표를 따른다. 자막은 Fusion Text+로 만들고, 스크립팅 API가 있으면 `InsertFusionTitleIntoTimeline("Text+")` 뒤 `GetFusionCompByIndex(1)`로 Text+ 툴의 `StyledText`·`Font`·`Style`·`Size` 입력을 설정한다.
 
 ## 글꼴
 

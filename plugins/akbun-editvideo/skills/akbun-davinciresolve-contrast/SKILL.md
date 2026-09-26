@@ -8,7 +8,7 @@ disable-model-invocation: true
 
 변환 뒤 밋밋한 영상에 피벗 기준 대비를 준다. 실행 수단은 [`scripts/contrast.py`](scripts/contrast.py)다. 측정·세션·노드 규칙은 `akbun-davinciresolve-exposure`의 `exposure_scope.py`를 가져다 쓴다.
 
-색 작업 순서에서 이 skill은 `CST`(변환) 다음, `SAT`·`SKY` 앞이다.
+색 작업 순서에서 이 skill은 `CST`(변환) 다음, `SAT` 앞이다.
 
 ## 방식
 
