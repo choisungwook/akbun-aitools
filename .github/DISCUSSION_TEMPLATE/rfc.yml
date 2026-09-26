@@ -1,0 +1,36 @@
+title: "[RFC] "
+labels: ["rfc"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: 문제
+      description: 지금 무엇이 문제인지 한 줄, 근거(수치·장애·불편) 한 줄
+    validations:
+      required: true
+  - type: textarea
+    id: options
+    attributes:
+      label: 대안
+      description: 구조가 다른 대안 2개 이상. 대안마다 얻는 것, 잃는 것, 되돌리기 쉬운지
+      value: |
+        1. 대안 A
+           - 얻는 것:
+           - 잃는 것:
+           - 되돌리기:
+        2. 대안 B
+           - 얻는 것:
+           - 잃는 것:
+           - 되돌리기:
+    validations:
+      required: true
+  - type: textarea
+    id: criteria
+    attributes:
+      label: 판단 기준
+      description: 무엇으로 고를지. 지켜야 할 것(가용성, 비용 상한, 일정)과 우선순위
+  - type: textarea
+    id: open
+    attributes:
+      label: 모르는 것
+      description: 결정 전에 확인해야 할 것. 실험으로 알 수 있는 것은 실험 계획까지
