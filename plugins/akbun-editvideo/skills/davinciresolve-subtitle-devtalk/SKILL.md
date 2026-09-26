@@ -8,7 +8,7 @@ disable-model-invocation: true
 
 자막 스타일 중 하나다. 이름의 devtalk은 "화자가 말한 것만 글자로 얹는다"는 뜻이다. 장소·시간을 적는 여행 자막은 `davinciresolve-subtitle-travelnote`가 맡는다.
 
-`davinciresolve-video-editor`의 기본 원칙(대표 자막 1개 선적용, 작업 로그)을 따른다. 어떤 자막을 어디에 넣는지는 `davinciresolve-story-devtalk`이 정한 style skill의 글자 표가 원본이다. 스타일이 없으면 그 skill의 스타일 선택 표로 먼저 정한다. 글꼴과 최소 크기는 style skill보다 이 문서가 우선한다.
+`akbun-davinciresolve-workflow`의 기본 원칙(대표 자막 1개 선적용, 작업 로그)을 따른다. 어떤 자막을 어디에 넣는지는 `davinciresolve-story-devtalk`이 정한 style skill의 글자 표가 원본이다. 스타일이 없으면 그 skill의 스타일 선택 표로 먼저 정한다. 글꼴과 최소 크기는 style skill보다 이 문서가 우선한다.
 
 ## 글꼴
 

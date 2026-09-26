@@ -8,3 +8,4 @@
 | [0002](0002-drawio-aws-vpc-reference-image-is-not-pixel-target.md) | akbun-drawio-aws-vpc | 참고 이미지는 스타일 출처이고 픽셀 목표가 아님 |
 | [0004](0004-md-to-notion-sync-prefers-cli-with-mcp-fallback.md) | akbun-md-to-notion | Notion 동기화는 CLI 우선, MCP는 대체 |
 | [0005](0005-describe-youtube-transcript-output-is-transcript-grounded.md) | akbun-describe-youtube-transcript | 출력은 자막에 근거한 시간순 대본 |
+| [0006](0006-travel-vlog-orchestrator-is-the-color-workflow-skill.md) | akbun-editvideo / akbun-davinciresolve-workflow | 여행 브이로그 오케스트레이터는 색보정 workflow skill 하나. 촬영 시간순 타임라인이 항상 첫 단계, 하늘은 workflow 밖 |

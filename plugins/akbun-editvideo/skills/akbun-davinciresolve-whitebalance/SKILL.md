@@ -8,7 +8,7 @@ disable-model-invocation: true
 
 인접 클립 사이에 색온도가 튀지 않게 화이트밸런스를 맞춘다. 판단 근거는 눈이 아니라 중립 픽셀의 R·G·B 수치다. 밝기는 `akbun-davinciresolve-exposure`가 맡고 이 skill은 색만 다룬다.
 
-`davinciresolve-video-editor`의 기본 원칙과 `akbun-davinciresolve-exposure`의 노드 규칙(새 노드 + 라벨, 라벨 없는 노드에는 쓰지 않음)을 그대로 따른다. 실행 수단은 [`scripts/whitebalance.py`](scripts/whitebalance.py)다. 측정·세션 코드는 exposure skill의 `exposure_scope.py`를 가져다 쓴다.
+`akbun-davinciresolve-workflow`의 기본 원칙과 `akbun-davinciresolve-exposure`의 노드 규칙(새 노드 + 라벨, 라벨 없는 노드에는 쓰지 않음)을 그대로 따른다. 실행 수단은 [`scripts/whitebalance.py`](scripts/whitebalance.py)다. 측정·세션 코드는 exposure skill의 `exposure_scope.py`를 가져다 쓴다.
 
 ## 용어
 

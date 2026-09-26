@@ -8,7 +8,7 @@ disable-model-invocation: true
 
 말소리가 있는 개발자 브이로그 편집의 순서·완료 조건·검증·기록을 선언한다. 화자는 얼굴을 드러내지 않는다. 화면에는 얼굴이 없는 화면 클립·화면 녹화·그래픽 카드만 나가고 말소리는 그 위에 흐른다. 화면 클립의 종류는 제한하지 않는다. 이 전제는 모든 단계 skill에 적용된다. 각 단계의 규칙은 그 단계 skill의 `SKILL.md`가 원본이고, 이 skill은 그것을 순서대로 읽어 수행할 뿐 규칙을 다시 적지 않는다. 단계 skill은 모두 사용자 직접 호출 전용(`disable-model-invocation: true`)이므로 Skill 도구로 부르지 않고 `SKILL.md`를 읽어 직접 수행한다. 경로는 이 파일과 같은 `skills/` 아래다. 사용자는 어느 단계 skill이든 단독으로 부를 수 있다.
 
-`davinciresolve-video-editor`의 기본 원칙(작업 타임라인에서만 편집, 클립은 파일명 + 시작 타임코드, 대표 1개 선적용, 작업 로그, 되돌릴 수 없는 작업은 확인)과 마커 등록표를 그대로 따른다. 말소리 없는 여행 영상은 그 skill이 맡는다.
+`akbun-davinciresolve-workflow`의 기본 원칙(작업 타임라인에서만 편집, 클립은 파일명 + 시작 타임코드, 대표 1개 선적용, 작업 로그, 되돌릴 수 없는 작업은 확인)과 마커 등록표를 그대로 따른다. 말소리 없는 여행 영상은 그 skill이 맡는다.
 
 ## 시작 조건
 
@@ -45,7 +45,7 @@ disable-model-invocation: true
 
 ## 실행 환경 확인
 
-시작할 때 확인하고 작업 로그 `환경` 절에 적는다. Resolve 조작 수단은 `davinciresolve-video-editor`의 표를 따르되, Resolve MCP(`get_resolve_status`, `run_script`)가 있으면 그것을 1순위로 쓴다. 전사 수단은 `davinciresolve-beats-devtalk`, HyperFrames는 `davinciresolve-gfx-hyperframes`, 글꼴은 `davinciresolve-subtitle-devtalk`, Epidemic Sound 플러그인은 `davinciresolve-bgm-epidemicsound`의 확인 방법을 따른다.
+시작할 때 확인하고 작업 로그 `환경` 절에 적는다. Resolve 조작 수단은 `akbun-davinciresolve-workflow`의 표를 따르되, Resolve MCP(`get_resolve_status`, `run_script`)가 있으면 그것을 1순위로 쓴다. 전사 수단은 `davinciresolve-beats-devtalk`, HyperFrames는 `davinciresolve-gfx-hyperframes`, 글꼴은 `davinciresolve-subtitle-devtalk`, Epidemic Sound 플러그인은 `davinciresolve-bgm-epidemicsound`의 확인 방법을 따른다.
 
 ## 작업 순서
 
@@ -61,7 +61,7 @@ disable-model-invocation: true
 | 6 | 그래픽 카드 | `davinciresolve-gfx-hyperframes` | `GFX` 마커마다 V2에 카드 클립이 있다(style skill이 카드를 쓰는 경우) |
 | 7 | 효과음 | `davinciresolve-sfx-epidemicsound` | 이벤트 표의 위치에 A3 효과음이 있고 밀도 제한 안 |
 | 8 | 배경음악 | `davinciresolve-bgm-epidemicsound` | 후보 표와 선택 이유를 사용자에게 말했고 A4에 곡이 있다 |
-| 9 | 노출·색, 타인 얼굴 모자이크, 오디오 믹싱, 렌더 | `davinciresolve-video-editor` 4·6·8·10단계 | 그 skill의 완료 조건 |
+| 9 | 노출·색, 타인 얼굴 모자이크, 오디오 믹싱, 렌더 | `akbun-davinciresolve-workflow` 4~10·12·14·16단계 | 그 skill의 완료 조건 |
 
 5단계 뒤에 컷을 다시 고치면 `davinciresolve-cut-devtalk`이 바뀐 구간 목록을 넘기고 5~8단계 skill이 위치를 다시 맞춘다. 단계를 건너뛰거나 바꾸면 이유를 로그에 적는다.
 
@@ -77,7 +77,7 @@ disable-model-invocation: true
 | 리듬 | 평균 샷 길이, 첫 60초 컷 수 | style skill 컷 리듬 표 범위 안 |
 | 자막 | 대사 자막 수와 음성 문장 수, 대표 자막 스틸 | style skill이 대사 자막을 쓰면 문장마다 존재, `davinciresolve-subtitle-devtalk`의 최소 크기·안전 영역 안 |
 | 카드 | `GFX` 마커 수와 V2 카드 클립 수 | 같다, 해상도·fps가 타임라인과 같다 |
-| 화자 얼굴 | 타임라인 렌더 프리뷰 또는 V1 구간 원본을 1초 간격 프레임으로 뽑아 얼굴 탐지(`davinciresolve-video-editor` `references/agent-api.md`의 대체 방법) | 화자 얼굴이 식별되는 프레임 0개. 탐지기가 없으면 `확인 필요`로 남기고 렌더하지 않는다 |
+| 화자 얼굴 | 타임라인 렌더 프리뷰 또는 V1 구간 원본을 1초 간격 프레임으로 뽑아 얼굴 탐지(`akbun-davinciresolve-workflow` `references/agent-api.md`의 대체 방법) | 화자 얼굴이 식별되는 프레임 0개. 탐지기가 없으면 `확인 필요`로 남기고 렌더하지 않는다 |
 | 챕터 | `CHAPTER` 마커 | 3개 이상, 간격 10초 이상 |
 | 효과음 | A3 클립 수와 위치 | 분당 6개 이하, 음성 문장 중간에 없음 |
 | 배경음악 | 작업 로그 `오디오` 절 | 후보 표·선택 이유·곡명·아티스트가 있다 |

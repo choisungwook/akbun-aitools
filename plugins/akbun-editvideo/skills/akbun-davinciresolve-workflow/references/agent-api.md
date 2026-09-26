@@ -1,10 +1,10 @@
 # 전용 영상 편집기에 필요한 Agent API
 
-`davinciresolve-video-editor`와 하위 skill이 기대하는 조작 단위를 인터페이스로 적어 둔 것이다. 현재 DaVinci Resolve 스크립팅 API가 제공하는 것과 제공하지 않는 것을 구분하고, 없는 기능은 무엇으로 대신하는지 정한다.
+`akbun-davinciresolve-workflow`와 하위 skill이 기대하는 조작 단위를 인터페이스로 적어 둔 것이다. 현재 DaVinci Resolve 스크립팅 API가 제공하는 것과 제공하지 않는 것을 구분하고, 없는 기능은 무엇으로 대신하는지 정한다.
 
 ## 인터페이스
 
-각 skill의 절차를 이 인터페이스의 호출로 옮길 수 있어야 한다. 실제 구현 수단(스크립팅 API, 화면 조작, 사람 절차)은 `davinciresolve-video-editor`의 실행 환경 확인 결과와 아래 대응표에 따른다.
+각 skill의 절차를 이 인터페이스의 호출로 옮길 수 있어야 한다. 실제 구현 수단(스크립팅 API, 화면 조작, 사람 절차)은 `akbun-davinciresolve-workflow`의 실행 환경 확인 결과와 아래 대응표에 따른다.
 
 ```typescript
 interface VideoEditorAgentAPI {

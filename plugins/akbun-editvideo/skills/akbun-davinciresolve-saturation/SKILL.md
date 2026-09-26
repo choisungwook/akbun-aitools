@@ -8,7 +8,7 @@ disable-model-invocation: true
 
 대비를 준 뒤 부족한 채도만 보충한다. 실행 수단은 [`scripts/saturation.py`](scripts/saturation.py)다. 측정·세션·노드 규칙·시간대 구분은 `akbun-davinciresolve-exposure`의 `exposure_scope.py`를 가져다 쓴다.
 
-색 작업 순서에서 이 skill은 `CONTRAST` 다음, `SKY` 앞이다.
+색 작업 순서에서 이 skill은 `CONTRAST` 다음, 마지막이다. 하늘만 따로 만지려면 이 뒤에 `akbun-davinciresolve-sky`를 단독으로 부른다.
 
 ## 측정과 대역
 

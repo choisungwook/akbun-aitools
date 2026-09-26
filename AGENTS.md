@@ -8,14 +8,14 @@ Agent는 이 저장소의 plugin skill을 만들고 유지보수한다. 실행 �
 
 1. 이 파일 전체.
 2. 작업 대상 skill의 `SKILL.md`와 그것이 참조하는 `references/`, `scripts/`.
-3. plugin을 추가·배포하거나 manifest를 만질 때 `docs/guide_deploy_plugins.md`.
-4. 설계 결정을 바꾸기 전에 `docs/adr/`.
+3. `docs/adr/README.md`의 결정 표. 작업 대상 plugin·skill에 해당하는 결정이 있으면 그 파일까지 읽는다. 결정을 뒤집는 변경은 새 결정 기록 없이 하지 않는다.
+4. plugin을 추가·배포하거나 manifest를 만질 때 `docs/guide_deploy_plugins.md`.
 
 `README.md`의 `## plugin 목록`은 사람용 색인이다. 규칙의 원본이 아니다.
 
 ## 세션 시작과 끝
 
-- 이전 작업을 이어갈 때는 `akbun-recall`(akbun-agent-ops)로 맥락을 복원한다. 설치돼 있지 않으면 git 로그와 열린 PR로 직접 복원한다.
+- 세션 시작 시 `docs/adr/README.md`를 읽어 이번 작업이 기존 결정과 충돌하는지 확인한다. 이전 작업을 이어갈 때는 `akbun-recall`(akbun-agent-ops)로 맥락을 복원한다. 설치돼 있지 않으면 git 로그와 열린 PR로 직접 복원한다.
 - 세션을 끝내기 전에 남길 학습이 있으면 `akbun-reflect`(akbun-agent-ops)를 부른다. 학습의 자리는 셋이다. skill을 쓰다 드러난 빈틈은 그 `SKILL.md`, 매 세션 지켜야 할 규칙은 이 파일, 되돌리기 어려운 결정은 `docs/adr/`. 새 디렉터리나 새 문서를 만들어 남기지 않는다.
 - 같은 지시를 두 번째로 쓰고 있다면 그 지시는 텍스트가 아니라 스크립트·검사로 갈 신호다. 규칙을 추가하기 전에 자동 검증으로 바꿀 수 있는지 먼저 본다.
 

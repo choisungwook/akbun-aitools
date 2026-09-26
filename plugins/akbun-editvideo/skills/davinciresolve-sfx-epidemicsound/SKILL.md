@@ -8,7 +8,7 @@ disable-model-invocation: true
 
 효과음을 고르고 놓는 단계다. 화자 얼굴이 없는 영상에서는 카드·키워드·전환이 시청자의 시선을 끌어야 하므로, 그 순간에만 짧은 효과음을 붙인다. 검색과 배치는 이 skill이 하고, 레벨은 `davinciresolve-audio-delivery`가 한다.
 
-`davinciresolve-video-editor`의 기본 원칙(작업 타임라인, 작업 로그, 되돌릴 수 없는 작업은 확인)을 따른다. 트랙은 `davinciresolve-story-devtalk`의 트랙 배치대로 A3 `SFX`이다. 실행 조건(플러그인·로그인·화면 조작)은 `davinciresolve-bgm-epidemicsound`와 같다.
+`akbun-davinciresolve-workflow`의 기본 원칙(작업 타임라인, 작업 로그, 되돌릴 수 없는 작업은 확인)을 따른다. 트랙은 `davinciresolve-story-devtalk`의 트랙 배치대로 A3 `SFX`이다. 실행 조건(플러그인·로그인·화면 조작)은 `davinciresolve-bgm-epidemicsound`와 같다.
 
 ## 이벤트와 효과음
 

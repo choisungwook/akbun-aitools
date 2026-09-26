@@ -8,7 +8,7 @@ disable-model-invocation: true
 
 컷이 바뀔 때 보는 사람이 밝기 변화로 피로를 느끼지 않게, 클립마다 스코프 수치를 재서 밝기를 맞춘다. 판단 근거는 눈이 아니라 수치다. 밝기만 다루고 화이트밸런스·색은 건드리지 않는다.
 
-`davinciresolve-video-editor`의 기본 원칙(작업 타임라인에서만, 클립은 파일명 + 시작 타임코드, 작업 로그)을 따른다. 실행 수단은 [`scripts/exposure_scope.py`](scripts/exposure_scope.py) 하나다. 측정·계획·적용·검증·로그를 모두 이 스크립트가 하고, Agent는 실행 전후에 노드 준비와 결과 확인만 한다.
+`akbun-davinciresolve-workflow`의 기본 원칙(작업 타임라인에서만, 클립은 파일명 + 시작 타임코드, 작업 로그)을 따른다. 실행 수단은 [`scripts/exposure_scope.py`](scripts/exposure_scope.py) 하나다. 측정·계획·적용·검증·로그를 모두 이 스크립트가 하고, Agent는 실행 전후에 노드 준비와 결과 확인만 한다.
 
 ## 용어
 
@@ -62,8 +62,8 @@ disable-model-invocation: true
 
 ## 실행 순서
 
-1. 실행 환경 확인. 외부 스크립팅(`DaVinciResolveScript`)이 되어야 한다. `davinciresolve-video-editor`의 실행 환경 확인 절을 따른다. Pillow가 필요하다(`pip install pillow`).
-2. 작업 타임라인 이름을 정하고 `--dry-run`으로 측정과 계획만 본다. 이 결과가 `davinciresolve-video-editor` 기본 원칙 4(대표 클립 선적용)를 대신한다. 노드가 없는 클립 목록도 이때 나온다.
+1. 실행 환경 확인. 외부 스크립팅(`DaVinciResolveScript`)이 되어야 한다. `akbun-davinciresolve-workflow`의 실행 환경 확인 절을 따른다. Pillow가 필요하다(`pip install pillow`).
+2. 작업 타임라인 이름을 정하고 `--dry-run`으로 측정과 계획만 본다. 이 결과가 `akbun-davinciresolve-workflow` 기본 원칙 4(대표 클립 선적용)를 대신한다. 노드가 없는 클립 목록도 이때 나온다.
 3. 노드 규칙대로 `EXPOSURE` 노드를 준비한다.
 4. 적용한다. 스크립트가 클립마다 측정 → CDL 적용 → 재측정(최대 3회 secant)으로 목표에 맞추고, 끝나면 전 클립을 다시 재서 전환 표를 만든다.
 5. 로그의 `확인 필요`와 `EXPOSURE_CHECK` 마커를 사용자에게 보고한다.

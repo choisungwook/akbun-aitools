@@ -3,9 +3,9 @@
 색보정 자체는 각 skill의 스크립트가 한다. 측정·세션·노드 규칙은 exposure_scope.py를 가져다 쓴다.
 
   python3 workflow.py duplicate --src "<타임라인 A>" [--name "<작업 타임라인>"]
-  python3 workflow.py nodes --timeline "<작업 타임라인>" [--profile "VID_=Insta360 I-Log"] [--sky] [--out DIR]
+  python3 workflow.py nodes --timeline "<작업 타임라인>" [--profile "VID_=Insta360 I-Log"] [--out DIR]
 
-nodes: 클립마다 필요한 라벨(EXPOSURE, WB, CST(Log만), CONTRAST, SAT, SKY(--sky))과 현재 라벨을 비교해 빠진 것을 표로 낸다.
+nodes: 클립마다 필요한 라벨(EXPOSURE, WB, CST(Log만), CONTRAST, SAT)과 현재 라벨을 비교해 빠진 것을 표로 낸다.
 """
 import argparse
 import datetime as dt
@@ -18,12 +18,12 @@ sys.path.insert(0, os.path.join(HERE, "..", "..", "akbun-davinciresolve-logconve
 import exposure_scope as X  # noqa: E402
 import logconvert as LC  # noqa: E402
 
-ORDER = [("EXPOSURE", ("exposure",)), ("WB", ("wb", "white")), ("CST", ("cst", "lut")), ("CONTRAST", ("contrast",)), ("SAT", ("sat",)), ("SKY", ("sky",))]
+ORDER = [("EXPOSURE", ("exposure",)), ("WB", ("wb", "white")), ("CST", ("cst", "lut")), ("CONTRAST", ("contrast",)), ("SAT", ("sat",))]
 
 
-def required(verdict, sky):
-    """클립의 Log 판정과 --sky에 따라 필요한 라벨 순서."""
-    return [name for name, _ in ORDER if (name != "CST" or verdict == "Log") and (name != "SKY" or sky)]
+def required(verdict):
+    """클립의 Log 판정에 따라 필요한 라벨 순서."""
+    return [name for name, _ in ORDER if name != "CST" or verdict == "Log"]
 
 
 def missing(labels, need):
@@ -46,7 +46,7 @@ def order_ok(labels, need):
 def cmd_duplicate(a):
     resolve, project = X.connect()
     src = X.pick_timeline(project, a.src)
-    name = a.name or "%s_grade_%s" % (a.src, dt.datetime.now().strftime("%Y%m%d_%H%M"))
+    name = a.name or "%s_edit_%s" % (a.src, dt.datetime.now().strftime("%Y%m%d_%H%M"))
     for i in range(1, project.GetTimelineCount() + 1):
         if project.GetTimelineByIndex(i).GetName() == name:
             sys.exit("같은 이름의 타임라인이 이미 있음: " + name)
@@ -72,7 +72,7 @@ def cmd_nodes(a):
         verdict = LC.detect(it.GetName(), props, LC.ffprobe_video(props.get("File Path")), declared)[0]
         g = it.GetNodeGraph()
         labels = [(g.GetNodeLabel(i) or "") for i in range(1, g.GetNumNodes() + 1)]
-        need = required(verdict, a.sky)
+        need = required(verdict)
         miss = missing([l.lower() for l in labels], need)
         ok = order_ok([l.lower() for l in labels], need)
         lack += bool(miss) or not ok
@@ -94,7 +94,7 @@ def main():
     sp = ap.add_subparsers(dest="cmd", required=True)
     d = sp.add_parser("duplicate"); d.add_argument("--src", required=True); d.add_argument("--name")
     n = sp.add_parser("nodes"); n.add_argument("--timeline"); n.add_argument("--track", type=int, default=1)
-    n.add_argument("--profile", action="append"); n.add_argument("--sky", action="store_true"); n.add_argument("--out")
+    n.add_argument("--profile", action="append"); n.add_argument("--out")
     s = sp.add_parser("selftest")
     a = ap.parse_args()
     if a.cmd == "selftest":
@@ -103,12 +103,12 @@ def main():
 
 
 def selftest():
-    assert required("Log", False) == ["EXPOSURE", "WB", "CST", "CONTRAST", "SAT"]
-    assert required("비Log", True) == ["EXPOSURE", "WB", "CONTRAST", "SAT", "SKY"]
-    assert missing(["exposure", "wb", "03_cst"], required("Log", False)) == ["CONTRAST", "SAT"]
-    assert order_ok(["exposure", "wb", "cst", "contrast", "sat"], required("Log", False))
-    assert not order_ok(["cst", "exposure", "wb"], required("Log", False))
-    assert order_ok(["", "wb"], required("미확인", False))  # 빠진 건 순서 판정에서 무시
+    assert required("Log") == ["EXPOSURE", "WB", "CST", "CONTRAST", "SAT"]
+    assert required("비Log") == ["EXPOSURE", "WB", "CONTRAST", "SAT"]
+    assert missing(["exposure", "wb", "03_cst"], required("Log")) == ["CONTRAST", "SAT"]
+    assert order_ok(["exposure", "wb", "cst", "contrast", "sat"], required("Log"))
+    assert not order_ok(["cst", "exposure", "wb"], required("Log"))
+    assert order_ok(["", "wb"], required("미확인"))  # 빠진 건 순서 판정에서 무시
     print("selftest ok")
 
 

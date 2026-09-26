@@ -8,7 +8,7 @@ disable-model-invocation: true
 
 오디오 믹싱과 최종 출력을 맡는다. 현장음을 살리고 효과음과 음악은 그 뒤에 두는 것이 기준이다. 렌더 결과는 파일을 직접 검사해 확인하고, "렌더 완료"만으로 끝내지 않는다.
 
-`davinciresolve-video-editor`의 기본 원칙(작업 타임라인, 클립은 파일명 + 시작 타임코드, 대표 클립 선적용, 작업 로그)을 따른다. 게인·페이드·덕킹은 API가 없으므로 Fairlight 화면 조작이나 절차서로 하고, 렌더는 API로 한다.
+`akbun-davinciresolve-workflow`의 기본 원칙(작업 타임라인, 클립은 파일명 + 시작 타임코드, 대표 클립 선적용, 작업 로그)을 따른다. 게인·페이드·덕킹은 API가 없으므로 Fairlight 화면 조작이나 절차서로 하고, 렌더는 API로 한다.
 
 ## 오디오 트랙
 
@@ -60,7 +60,7 @@ python3 -c "import DaVinciResolveScript as dvr; p = dvr.scriptapp('Resolve').Get
 | 항목 | 값 | 없을 때 |
 |---|---|---|
 | 해상도 | 3840×2160 | - |
-| 프레임레이트 | 타임라인 프레임레이트(`davinciresolve-video-editor` 1단계에서 확정) | - |
+| 프레임레이트 | 타임라인 프레임레이트(`akbun-davinciresolve-workflow` 1단계에서 확정) | - |
 | 비디오 코덱 | H.264(기본) 또는 H.265(사용자 지정) | H.265 없으면 H.264로 바꾸고 로그에 적음 |
 | 비트레이트 | 30fps 이하: H.264 45 Mbps, H.265 30 Mbps. 60fps: H.264 68 Mbps, H.265 45 Mbps(YouTube 4K 권장) | - |
 | 오디오 | AAC, 48 kHz, 320 kbps, 스테레오 | AAC 없으면 Linear PCM으로 렌더한 뒤 `ffmpeg -c:v copy -c:a aac -b:a 320k`로 변환하고 로그에 적음 |

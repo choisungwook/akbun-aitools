@@ -8,7 +8,7 @@ disable-model-invocation: true
 
 컷 편집 스타일 중 하나다. 이름의 devtalk은 "말(전사)이 컷의 기준"이라는 뜻이다. 말소리 없는 여행 영상은 `davinciresolve-cut-travelflow`가 맡는다.
 
-`davinciresolve-video-editor`의 기본 원칙과 마커 등록표를 따른다. 입력은 `davinciresolve-beats-devtalk`이 남긴 구간 목록과 전사이고, 리듬 기준은 `davinciresolve-story-devtalk`이 정한 style skill의 컷 리듬 표다. 단독 호출로 구간 목록이 없으면 현재 작업 타임라인의 클립을 구간 목록으로 읽고, 전사가 없으면 `davinciresolve-beats-devtalk`의 전사 수단으로 먼저 전사한다.
+`akbun-davinciresolve-workflow`의 기본 원칙과 마커 등록표를 따른다. 입력은 `davinciresolve-beats-devtalk`이 남긴 구간 목록과 전사이고, 리듬 기준은 `davinciresolve-story-devtalk`이 정한 style skill의 컷 리듬 표다. 단독 호출로 구간 목록이 없으면 현재 작업 타임라인의 클립을 구간 목록으로 읽고, 전사가 없으면 `davinciresolve-beats-devtalk`의 전사 수단으로 먼저 전사한다.
 
 ## 컷 규칙
 

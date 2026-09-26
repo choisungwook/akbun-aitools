@@ -8,7 +8,7 @@ disable-model-invocation: true
 
 Log로 찍은 클립만 골라 Rec.709로 변환한다. 변환은 Log로 **확인된** 클립에만 하고, 확인 못 한 클립은 건드리지 않는다. 실행 수단은 [`scripts/logconvert.py`](scripts/logconvert.py)다. 측정·세션·노드 규칙은 `akbun-davinciresolve-exposure`의 `exposure_scope.py`를 가져다 쓴다.
 
-색 작업 순서에서 이 skill은 `EXPOSURE`·`WB`(변환 앞) 다음, `CONTRAST`·`SAT`·`SKY`(변환 뒤) 앞이다.
+색 작업 순서에서 이 skill은 `EXPOSURE`·`WB`(변환 앞) 다음, `CONTRAST`·`SAT`(변환 뒤) 앞이다.
 
 ## Log 판정 규칙
 
