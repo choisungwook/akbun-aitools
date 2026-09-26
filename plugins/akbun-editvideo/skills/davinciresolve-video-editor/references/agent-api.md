@@ -156,11 +156,14 @@ interface VideoEditorAgentAPI {
 | `media.getMetadata` | 있음 | `MediaPoolItem.GetMetadata`, `GetClipProperty`(촬영 시간은 `Date Recorded`, 색공간은 `Input Color Space`) |
 | `media.extractFrames` | 화면 | 미디어 파일에서 `ffmpeg`로 추출(원본 프레임). 그레이드 뒤 프레임은 Gallery still 내보내기 |
 | `media.detectBadFrames` | 없음 | 아래 "없는 기능" 표 |
-| `scopes.*` | 없음 | 아래 "없는 기능" 표 |
-| `color.listNodes`, `addSerialNode`, `setNodeOrder`, `setExposure`, `setWhiteBalance` | 화면 | 노드 편집 API 없음. `TimelineItem.SetLUT(nodeIndex, path)`만 있음 |
+| `scopes.analyze`, `scopes.compare` | 있음(스틸 기반) | `Timeline.SetCurrentTimecode` 뒤 `Project.ExportCurrentFrameAsStill(path)`로 그레이드 적용 뒤 프레임을 저장하고 휘도 히스토그램을 계산. `akbun-davinciresolve-exposure`의 `scripts/exposure_scope.py`가 구현 |
+| `color.listNodes` | 있음 | `TimelineItem.GetNodeGraph()` → `Graph.GetNumNodes`, `GetNodeLabel`, `GetToolsInNode`, `SetNodeEnabled` |
+| `color.addSerialNode`, `setNodeOrder` | 화면 | 노드 추가·이동 API 없음. Color 페이지에서 클립 전체 선택(Cmd+A) 뒤 Alt+S |
+| `color.setExposure` | 있음 | `TimelineItem.SetCDL({NodeIndex, Slope, Offset, Power, Saturation})`. 값을 읽는 함수는 없으므로 이 skill이 만든 노드에만 쓴다 |
+| `color.setWhiteBalance` | 화면 | Temperature·Tint API 없음 |
 | `color.applyLUT` | 있음 | `TimelineItem.SetLUT(nodeIndex, lutPath)` |
 | `color.copyGrade` | 있음 | `Timeline.ApplyGradeFromDRX` 또는 `TimelineItem.CopyGrades(targets)`(19 이상) |
-| `color.bypassNode`, `getBeforeAfterFrame` | 화면 | 노드 bypass 전후 Gallery still |
+| `color.bypassNode`, `getBeforeAfterFrame` | 있음 | `Graph.SetNodeEnabled(idx, False/True)` 전후로 `ExportCurrentFrameAsStill` |
 | `privacy.detectFaces`, `validateCoverage` | 없음 | 아래 "없는 기능" 표 |
 | `privacy.createPowerWindow`, `setWindowSoftness`, `applyMosaic` | 화면 | Color 페이지 Window·OpenFX 패널 |
 | `stabilization.apply` | 있음(파라미터 없음) | `TimelineItem.Stabilize()`는 현재 Inspector 값으로 실행. Mode·Cropping Ratio·Smooth는 화면 |
@@ -183,9 +186,7 @@ interface VideoEditorAgentAPI {
 | 부족한 기능 | 인터페이스 | 대체 방법 | 대체의 한계 |
 |---|---|---|---|
 | 프레임별 초점·노출 이상 탐지 | `media.detectBadFrames` | 클립 앞 5초를 0.25초 간격, 나머지는 시작·중간·끝으로 `ffmpeg`로 프레임 추출해 밝기 평균(8비트 0~255)과 라플라시안 분산으로 흰 화면·초점 이탈 후보를 계산 | 샘플 사이의 짧은 이상은 놓칠 수 있음. 컷 위치는 사람이 마커에서 확인 |
-| 스코프의 수치화된 결과 | `scopes.analyze`, `scopes.compare` | 원본 프레임은 `ffmpeg` 추출, 그레이드 뒤 프레임은 Gallery still(또는 화면 캡처)로 얻어 휘도 히스토그램·RGB 채널 평균·상하위 1% 값을 계산. 8비트 값에 4를 곱해 10비트 스코프 스케일로 적는다 | Resolve 내부 색공간 변환 뒤 값과 다를 수 있음. 최종 판정은 Resolve 스코프 화면으로 확인 |
 | 얼굴 범위 검증 | `privacy.detectFaces`, `privacy.validateCoverage` | 추출 프레임을 축소하지 않고 원본 해상도로 OpenCV YuNet(`cv2.FaceDetectorYN`) 같은 탐지기에 넣어 좌표를 얻고 Power Window 좌표와 겹치는지 계산 | 트래킹 중간 프레임은 검증하지 못함. 샘플 프레임만 보장. 탐지기가 없으면 전 클립 `PRIVACY_CHECK` |
-| 색보정 전후 프리뷰 | `color.getBeforeAfterFrame` | 노드 bypass 전후로 같은 프레임을 Gallery still로 저장해 나란히 비교 | 스틸 저장은 Color 페이지 화면 조작이 필요 |
 | 안정화 분석·프리뷰 | `stabilization.analyze`, `preview` | 추출 프레임 사이 광학 흐름(`cv2.calcOpticalFlowFarneback`)의 평균 이동량 표준편차로 흔들림 점수를 내고, 적용 전후 스틸에서 같은 물체의 폭 비율로 크롭을 산출 | Resolve는 크롭 비율을 표시하지 않음. 스틸 비교값이 유일한 근거 |
 | 전체 작업의 트랜잭션 롤백 | `review.beginTransaction`, `review.rollbackTransaction` | 단계 시작 전 작업 타임라인을 한 번 더 복제해 `<작업 타임라인>_before_<단계>`로 두고, 실패하면 그 복제본으로 돌아감 | 타임라인 수가 늘어남. 단계 완료 뒤 사용자 확인을 받고 복제본을 지움 |
 

@@ -24,7 +24,7 @@ disable-model-invocation: true
 
 ## 적용 방식
 
-1. Color 페이지에서 새 Serial Node를 추가하고 이름을 `PRIVACY_MOSAIC`으로 지정한다. 위치는 `WB` 노드 뒤, `LUT` 노드 앞이다. `davinciresolve-exposure-whitebalance`를 거치지 않아 `WB`·`LUT`가 없으면 마지막 노드 뒤에 추가하고 로그에 "노드 구조 없음, 마지막에 추가"라고 적는다.
+1. Color 페이지에서 새 Serial Node를 추가하고 이름을 `PRIVACY_MOSAIC`으로 지정한다. 위치는 `EXPOSURE` 노드 뒤, `LUT` 노드가 있으면 그 앞이다. `akbun-davinciresolve-exposure`를 거치지 않아 `EXPOSURE`가 없으면 마지막 노드 뒤에 추가하고 로그에 "노드 구조 없음, 마지막에 추가"라고 적는다.
 2. 얼굴 하나하나가 아니라 얼굴이 지나가는 범위 전체, 관중석이면 관중석 전체를 포함하는 Power Window(Circle 또는 Rectangle)를 만든다. 탐지된 좌표 범위보다 상하좌우 15% 이상 넓게 잡는다.
 3. 경계가 눈에 띄지 않도록 Softness를 높인다. 기본 Softness는 창 크기의 30% 이상이다.
 4. Resolve FX `Mosaic Blur`를 적용한다.
