@@ -119,6 +119,80 @@
 | GFX | 그래픽을 놓을 위치를 표시하는 타임라인 마커 이름으로 이 플러그인에서 사용한다. |
 | 챕터 (chapter) | 영상의 주제를 나누는 구간 제목. 타임라인 마커와 게시 플랫폼의 챕터 정보로 만들 수 있다. |
 
+## 브이로그 사운드 검색 용어
+
+Epidemic Sound에서 효과음·BGM 후보를 찾을 때 사용할 **영문 검색 표현**이다. 실제 곡명이나 공식 카테고리·필터 이름을 보장하는 목록은 아니다. 아래 조합을 그대로 넣어 결과가 적으면 핵심 단어부터 검색하고 하나씩 좁힌다. 장면에 적용하는 방법은 [매뉴얼의 사운드 효과 시나리오](manual_editvideo.md#장면별-사운드-효과-시나리오)를 참고한다.
+
+### 환경음과 일상 동작 검색
+
+| 검색 용어 | 뜻·찾는 소리 | 조합 예시와 확인점 |
+|---|---|---|
+| `ambience`, `ambient sound`, `background` | 장소를 채우는 지속적인 배경 소리 | `city ambience distant`. 음악 검색의 `ambient`와 구분하려 효과음 영역에서 검색 |
+| `room tone`, `room ambience` | 조용한 실내의 바닥 소리 | `room tone quiet`, `small room ambience`. 음성 녹음 공간과 어울리는지 확인 |
+| `city`, `traffic`, `street` | 도시·차량·거리 소리 | `traffic distant`, `quiet street`. 차가 많은 도로와 조용한 골목을 구분 |
+| `cafe`, `crowd`, `chatter` | 카페·군중·웅성거림 | `cafe ambience`, `crowd murmur`. 또렷한 타인의 대사가 내레이션을 방해하지 않는지 확인 |
+| `wind`, `leaves`, `birds` | 바람·나뭇잎·새소리 | `wind trees gentle`, `leaves rustle`. 실제 계절·장소와 맞는지 확인 |
+| `rain`, `water`, `ocean waves` | 비·물·파도 | `rain window`, `water stream`, `ocean waves gentle`. 소리의 크기와 촬영 거리를 비교 |
+| `footsteps`, `walking` | 걷는 발소리 | `footsteps pavement`, `footsteps gravel`, `footsteps wood`. 신발·바닥 재질과 걸음 싱크 확인 |
+| `keyboard`, `typing`, `mouse click` | 키보드·마우스 동작음 | `keyboard typing soft`, `mouse click single`. 실제 동작보다 크거나 빠르지 않게 선택 |
+| `coffee pour`, `cup`, `kettle` | 커피·컵·주전자 소리 | `coffee pour`, `cup ceramic`, `kettle boil`. 준비·따르기·내려놓기를 나눠 검색 |
+| `page turn`, `pen`, `cloth`, `zipper`, `door` | 책·필기·옷·가방·문 등 생활 동작 | `page turn slow`, `pen writing`, `cloth rustle`, `zipper bag`, `door close soft` |
+| `train interior`, `subway`, `car interior` | 이동 수단 안의 환경음 | `train interior steady`, `car interior rain`. 실내/외부 시점이 다른 소리를 구분 |
+
+### 전환·강조·음악적 효과음 검색
+
+| 검색 용어 | 뜻·잘 맞는 역할 | 조합 예시와 확인점 |
+|---|---|---|
+| `whoosh`, `swoosh`, `swish` | 공기나 물체가 스치는 움직임 | `soft whoosh`, `short swish`. 이름은 겹쳐 쓰이므로 실제 소리를 비교 |
+| `click`, `tick`, `tap` | 작은 클릭·딱 소리·두드림 | `soft click`, `wood tap`. UI 변화나 작은 동작에 사용 |
+| `pop`, `bubble` | 가볍게 튀는 소리 | `soft pop`, `bubble pop`. 카드·키워드 등장에 쓰되 반복 피로 확인 |
+| `ding`, `chime`, `bell` | 짧은 음높이가 있는 울림 | `notification chime`, `soft bell`. 결과 강조에 쓰며 BGM과 음정 충돌 확인 |
+| `hit`, `impact`, `thump`, `boom` | 순간적인 타격·무게감 | `soft impact`, `low thump`. 일상 영상에서는 거대한 충격음보다 작은 후보부터 비교 |
+| `riser`, `build up` | 점차 높아지거나 강해져 변화를 예고하는 소리 | `short riser`, `subtle riser`. 도착점을 화면 변화·음악 강박과 비교 |
+| `swell`, `reverse`, `suckback` | 부풀거나 역방향으로 빨려 들어가는 인상 | `gentle swell`, `reverse cymbal`, `short suckback`. `reverse`는 재생 방향/가공 방식이며 항상 음악적 소리는 아님 |
+| `downlifter`, `fall`, `decay` | 고조 이후 내려앉거나 사라지는 소리 | `soft downlifter`, `long decay`. `decay`는 감쇠 특성으로도 쓰이므로 다른 명사와 조합 |
+| `glitch`, `digital`, `static` | 디지털 끊김·전자적 잡음 | `short digital glitch`, `soft static`. 버그·화면 변화를 과장할 때의 선택지이며 개발자 영상의 필수 효과는 아님 |
+| `stinger`, `sting` | 짧게 마침표를 찍는 음악적 악센트 | `short stinger`, `soft musical sting`. 말·결과 화면보다 앞서 주목을 빼앗지 않는지 확인 |
+| `tonal hit`, `tonal riser`, `texture` | 음높이가 있는 타격·고조 또는 소리의 질감 | `soft tonal hit`, `airy texture`. `texture`만으로 음높이 유무를 단정하지 않음 |
+| `pad`, `drone`, `pulse` | 지속적인 화성·지속음·반복 맥동 | `warm pad`, `subtle drone`, `soft pulse`. 곡 사이 여백·집중·긴장에 사용하며 tonal 여부와 반복 리듬 확인 |
+
+### BGM의 분위기·스타일·악기 검색
+
+| 검색 용어 | 의미·어울리는 출발 상황 | 검색 조합 예시 |
+|---|---|---|
+| `warm`, `cozy`, `gentle` | 따뜻하고 편안한 인상. 아침·책상·일상 | `warm acoustic`, `gentle piano` |
+| `calm`, `relaxed`, `laid back`, `mellow` | 차분하고 여유로운 흐름. 산책·작업 과정 | `laid back electronic`, `mellow instrumental` |
+| `reflective`, `introspective`, `nostalgic` | 되돌아봄·내면적 분위기·그리움. 회고·주차 diary | `reflective piano`, `nostalgic acoustic` |
+| `dreamy`, `atmospheric`, `ambient` | 몽환적·공간감 중심의 분위기. 풍경·여백 | `dreamy ambient`, `atmospheric instrumental` |
+| `curious`, `playful`, `quirky` | 호기심·장난기·독특함. 발견·작은 시행착오 | `curious pizzicato`, `playful light percussion`. pizzicato는 현을 손가락으로 뜯는 주법 |
+| `tension`, `suspense`, `dark` | 긴장·기다림·어두운 인상. 막힘·다음 결과의 예고 | `minimal tension`, `subtle suspense`. 같은 태그라도 공포·액션처럼 과할 수 있음 |
+| `hopeful`, `uplifting`, `optimistic` | 기대·고양감·긍정적 변화. 해결·다음 계획 | `gentle uplifting`, `hopeful instrumental` |
+| `lo-fi`, `lofi`, `chillhop`, `downtempo` | 거친 녹음 질감을 활용한 스타일·느긋한 힙합 계열·느린 전자음악 계열 | `lofi instrumental`, `chillhop mellow`, `downtempo minimal`. 말 없는 곡이라는 보장은 없음 |
+| `acoustic`, `indie folk`, `piano`, `felt piano` | 어쿠스틱 악기·포크 계열·피아노·펠트로 부드럽게 만든 피아노 음색 | `acoustic guitar gentle`, `felt piano sparse` |
+| `electronic`, `synth`, `light percussion` | 전자음악·신시사이저·가벼운 타악기 | `minimal synth`, `light percussion steady`. 기술 영상이라고 강한 전자음을 강제하지 않음 |
+| `cinematic`, `underscore` | 영화적인 전개·대사나 장면을 받치는 음악 | `minimal cinematic underscore`. `cinematic`만 검색하면 큰 오케스트라·트레일러 곡도 나오므로 의도로 좁힘 |
+| `instrumental`, `no vocals`, `sparse`, `minimal` | 보컬 없는 곡·성긴 편성·적은 요소를 원하는 표현 | `reflective piano instrumental`, `ambient sparse`. 합창·보컬 질감이나 강한 멜로디가 남는지 미리듣기 |
+
+분위기 단어는 감정을 강제로 지정하는 정답이 아니다. 같은 `uplifting`도 조용한 기대부터 큰 축하까지 다르므로 실제 말·화면과 비교한다. `instrumental`은 음성 간섭을 줄이는 출발점이며 반주가 성기다는 뜻은 아니다.
+
+### 검색을 좁히는 수식어와 방법
+
+| 표현 | 뜻·선택 목적 | 예시 |
+|---|---|---|
+| `soft`, `subtle`, `gentle` / `hard`, `heavy` | 부드러운·눈에 덜 띄는 / 강한·무거운 인상 | `soft impact`와 `heavy impact`를 대비해서 듣기 |
+| `close`, `distant` / `interior`, `exterior` | 가까운·먼 거리 / 실내·실외 관점 | `distant traffic`, `train interior` |
+| `dry`, `reverberant`, `airy`, `warm` | 잔향이 적은·울리는·공기감 있는·따뜻한 음색 | `dry click`, `airy whoosh`. warm은 음량·음정의 수치가 아님 |
+| `short`, `long`, `single`, `loop` | 길이·한 번의 사건·반복 가능한 구간을 원하는 표현 | `single click`, `rain loop`. loop라는 이름이어도 실제 접합부 검청 |
+| `slow`, `fast`, `steady`, `pulsing` | 속도·일정함·맥동하는 흐름 | `footsteps slow`, `steady pulse` |
+| `wood`, `metal`, `glass`, `ceramic`, `gravel` | 나무·금속·유리·도자기·자갈 재질 | `wood tap`, `metal click`, `footsteps gravel` |
+
+1. **효과음:** 소리의 명사부터 찾고 재질·동작·거리 중 필요한 조건을 더한다. `footsteps` → `footsteps gravel` → `footsteps gravel slow`. 결과가 없으면 마지막 조건을 빼거나 동의어를 바꾼다.
+2. **BGM:** 감정 + 스타일/악기부터 찾고 보컬 유무·밀도·길이·BPM을 조정한다. 예: `reflective piano`를 듣고 보컬이 있으면 instrumental 후보로 좁힌다. 느린 BPM도 편성이 빽빽할 수 있으므로 템포만으로 말 가림을 판단하지 않는다.
+3. **음악 연결:** `stem`은 악기군별 하위 믹스, `key`는 조성, `BPM`은 분당 박 수, `build`·`breakdown`은 고조·편성 축소 구간을 찾을 때의 표현이다. 곡 설명·제공 스템을 확인하고 실제 phrase와 코드를 들어 연결한다. `stem`을 검색했다고 스템 파일을 얻는 것은 아니다.
+4. **AI 요청:** “내레이션 아래에서 멜로디가 적고 따뜻한 피아노, 중간에 드럼을 뺄 수 있는 후보”처럼 목적을 먼저 설명해도 된다. 키워드는 대안을 찾는 수단이다.
+
+위 문자열은 검색 표현이며 따옴표 검색·제외 연산자 같은 특수 문법을 전제하지 않는다. UI나 MCP에 지원되는 필터가 있으면 그 필드로 조건을 전달한다. Epidemic Sound의 공식 MCP는 음악의 분위기·악기·BPM·보컬 등과 SFX의 검색어·길이·태그를 지원하며, 정확한 필드는 현재 연결의 도구 스키마를 확인한다. [공식 MCP 검색 문서](https://developers.epidemicsound.com/docs/mcp/)
+
 ## 용어를 읽을 때 참고
 
 - 사람마다 `look`, `color grading`, `color correction`을 넓거나 좁은 뜻으로 쓸 수 있다. 요청이 모호하면 기술적 균형 조정과 창의적 스타일 변경 중 무엇을 원하는지 먼저 구분한다.
