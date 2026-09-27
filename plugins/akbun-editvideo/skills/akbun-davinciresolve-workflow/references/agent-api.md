@@ -158,7 +158,7 @@ interface VideoEditorAgentAPI {
 | `media.detectBadFrames` | 없음 | 아래 "없는 기능" 표 |
 | `scopes.analyze`, `scopes.compare` | 있음(스틸 기반) | `Timeline.SetCurrentTimecode` 뒤 `Project.ExportCurrentFrameAsStill(path)`로 그레이드 적용 뒤 프레임을 저장하고 휘도 히스토그램을 계산. `akbun-davinciresolve-exposure`의 `scripts/exposure_scope.py`가 구현 |
 | `color.listNodes` | 있음 | `TimelineItem.GetNodeGraph()` → `Graph.GetNumNodes`, `GetNodeLabel`, `GetToolsInNode`, `SetNodeEnabled` |
-| `color.addSerialNode`, `setNodeOrder` | 화면 | 노드 추가·이동 API 없음. Color 페이지에서 클립 전체 선택(Cmd+A) 뒤 Alt+S |
+| `color.addSerialNode`, `setNodeOrder` | 화면 | 노드 추가·이동 API 없음. 확인된 AI Assistant 기능 또는 Color 페이지에서 클립마다 Append a Node·라벨 지정. Cmd+A 뒤 Alt+S가 전체 클립에 적용된다고 가정하지 않음 |
 | `color.setExposure` | 있음 | `TimelineItem.SetCDL({NodeIndex, Slope, Offset, Power, Saturation})`. 값을 읽는 함수는 없으므로 이 skill이 만든 노드에만 쓴다 |
 | `color.setWhiteBalance` | 화면 | Temperature·Tint API 없음 |
 | `color.applyLUT` | 있음 | `TimelineItem.SetLUT(nodeIndex, lutPath)` |
@@ -190,4 +190,4 @@ interface VideoEditorAgentAPI {
 | 안정화 분석·프리뷰 | `stabilization.analyze`, `preview` | 추출 프레임 사이 광학 흐름(`cv2.calcOpticalFlowFarneback`)의 평균 이동량 표준편차로 흔들림 점수를 내고, 적용 전후 스틸에서 같은 물체의 폭 비율로 크롭을 산출 | Resolve는 크롭 비율을 표시하지 않음. 스틸 비교값이 유일한 근거 |
 | 전체 작업의 트랜잭션 롤백 | `review.beginTransaction`, `review.rollbackTransaction` | 단계 시작 전 작업 타임라인을 한 번 더 복제해 `<작업 타임라인>_before_<단계>`로 두고, 실패하면 그 복제본으로 돌아감 | 타임라인 수가 늘어남. 단계 완료 뒤 사용자 확인을 받고 복제본을 지움 |
 
-스크립팅 API가 제공하는 것은 그대로 쓴다. 화면 조작은 대응표에서 "화면"인 항목에만 쓴다.
+이 표는 현재 저장소 구현의 대응표이며 미래 버전의 기능 부재를 보장하지 않는다. 설치 버전의 스크립팅 문서와 노출된 AI Assistant 기능을 먼저 확인하고, 검증된 API가 있으면 우선 사용한다. 없거나 호출을 검증할 수 없으면 화면 조작으로 진행한다.

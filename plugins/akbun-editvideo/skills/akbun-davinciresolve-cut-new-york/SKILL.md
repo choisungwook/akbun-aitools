@@ -1,12 +1,12 @@
 ---
-name: davinciresolve-cut-citymontage
+name: akbun-davinciresolve-cut-new-york
 description: DaVinci Resolve 21.1 AI assistant 기준의 도시 여행 컷 편집 스타일. 도입부 타이틀, 장소 와이드 샷과 건축·교통·음식 같은 디테일, 음악과 움직임에 맞춘 도시 몽타주를 자연어로 설명하며 장면 의미와 현장감을 우선한다. 자동으로 클립을 삭제하지 않고 컷 제안은 사용자가 확인한다. 사용자가 직접 호출할 때만 실행한다.
 disable-model-invocation: true
 ---
 
-# davinciresolve-cut-citymontage
+# akbun-davinciresolve-cut-new-york
 
-DaVinci Resolve 21.1 AI assistant에 자연어로 요청하는 도시 여행 영상의 컷 리듬 가이드다. 2026년 9월 공개된 Resolve AI assistant 연동을 기준으로 한다. 빠른 도시 몽타주를 만들되 건물·거리·교통·빛·간판·음식 등 장소가 주인공이 되게 한다. 사람은 영상에 실제로 등장할 때만 규모나 움직임을 전하는 보조 요소로 두며, 사람을 추가하거나 사람 중심 샷을 요구하지 않는다. 왜 그 샷을 보고 싶은지 AI assistant가 설명하게 한다.
+DaVinci Resolve 21.1 AI assistant에 자연어로 요청하는 뉴욕 도시 몽타주에서 추출한 컷 리듬 가이드다. 이전 이름은 `davinciresolve-cut-citymontage`이며 이제 `akbun-davinciresolve-cut-new-york`로 호출한다. 도시 이름은 스타일 식별자이며 다른 도시·장소에도 적용할 수 있다. 2026년 9월 공개된 Resolve AI assistant 연동을 기준으로 한다. 빠른 도시 몽타주를 만들되 건물·거리·교통·빛·간판·음식 등 장소가 주인공이 되게 한다. 사람은 영상에 실제로 등장할 때만 규모나 움직임을 전하는 보조 요소로 두며, 사람을 추가하거나 사람 중심 샷을 요구하지 않는다. 왜 그 샷을 보고 싶은지 AI assistant가 설명하게 한다.
 
 ## 리듬과 샷 선택
 

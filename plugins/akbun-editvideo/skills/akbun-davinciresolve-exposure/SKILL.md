@@ -6,9 +6,9 @@ disable-model-invocation: true
 
 # akbun-davinciresolve-exposure
 
-컷이 바뀔 때 보는 사람이 밝기 변화로 피로를 느끼지 않게, 클립마다 스코프 수치를 재서 밝기를 맞춘다. 판단 근거는 눈이 아니라 수치다. 밝기만 다루고 화이트밸런스·색은 건드리지 않는다.
+컷이 바뀔 때 보는 사람이 밝기 변화로 피로를 느끼지 않게, 클립마다 스코프 수치를 재서 밝기를 맞춘다. 수치와 장면 의도, 실제 재생 화면을 함께 판단 근거로 쓴다. 밝기를 조정 목표로 삼고 의도적인 화이트밸런스·색조 조정은 별도 단계에 둔다.
 
-`akbun-davinciresolve-workflow`의 기본 원칙(작업 타임라인에서만, 클립은 파일명 + 시작 타임코드, 작업 로그)을 따른다. 실행 수단은 [`scripts/exposure_scope.py`](scripts/exposure_scope.py) 하나다. 측정·계획·적용·검증·로그를 모두 이 스크립트가 하고, Agent는 실행 전후에 노드 준비와 결과 확인만 한다.
+`akbun-davinciresolve-workflow`의 기본 원칙(작업 타임라인에서만, 클립은 파일명 + 시작 타임코드, 작업 로그)을 따른다. 지원되는 단일 LUT 경로의 자동 실행 수단은 [`scripts/exposure_scope.py`](scripts/exposure_scope.py)다. AI Assistant는 먼저 색관리·새 노드·대표 화면을 확인하고, 스크립트 범위 밖 조정은 확인된 UI/API 기능으로 수행한다.
 
 Resolve 21.1과 2026년 9월 공개된 DaVinci Resolve AI Assistant를 대상으로 한다. AI Assistant가 색관리 경로나 밝기 값을 제안해도 활성 타임라인·노드 입력 공간·스코프를 확인한 다음 적용한다.
 
@@ -16,7 +16,7 @@ Resolve 21.1과 2026년 9월 공개된 DaVinci Resolve AI Assistant를 대상으
 
 ## 용어
 
-- 스코프값: Resolve가 내보낸 현재 프레임 스틸(그레이드·색관리 적용 뒤)의 휘도 중앙값. 10비트(0~1023) 스케일로 적는다. Resolve Waveform 눈금과 같다
+- 스코프값: Resolve가 내보낸 현재 프레임 JPEG(그레이드·색관리 적용 뒤)를 Pillow `convert("L")`로 회색 변환한 중앙값 × 4. 0~1020 범위의 10비트 근사 스케일이며 Rec.709 Y′나 Resolve Waveform/IRE 실측값과 같지 않다. 아래 대역·전환 기준은 이 근사치에만 적용한다
 - head / tail: 클립 시작·끝에서 길이의 10% 안쪽 프레임의 스코프값. 컷 전환 비교는 앞 클립 tail과 뒤 클립 head로 한다
 - 시간대: 촬영 시각을 일출·일몰 기준으로 나눈 구간. 목표 대역이 시간대마다 다르다
 - `EXPOSURE` 노드: 이 skill이 CDL을 쓰는 유일한 노드. Color 페이지에서 새로 만든 노드여야 한다
@@ -26,15 +26,15 @@ Resolve 21.1과 2026년 9월 공개된 DaVinci Resolve AI Assistant를 대상으
 **Color 페이지에서 새 Serial 노드를 만들고 그 노드에서만 작업한다.** 기존 노드(LUT·CST·사용자 그레이드가 있는 노드)는 수정하지 않는다. 스크립팅 API에는 노드를 만드는 함수가 없으므로 노드 추가는 Color 페이지에서 한다.
 
 1. 작업 타임라인을 열고 Color 페이지로 간다. 클립 스트립(`Clips`)을 켠다.
-2. 클립마다 마지막에 빈 Serial 노드를 붙인다. 메뉴 `Color → Nodes → Append a Node`(현재 클립의 마지막에 붙는다). 스크립트는 라벨이 없으면 "마지막 노드가 비어 있을 때" 그 노드를 쓴다. 그레이드가 전혀 없는 클립은 기본 노드 1개가 그 노드라 붙이지 않아도 된다.
+2. 아래 3번의 변환 앞 배치가 필요한 경우에는 3번 방식으로만 만들고 중복 추가하지 않는다. 그 밖에는 클립마다 새 빈 Serial 노드를 붙이고 `EXPOSURE` 라벨을 단다. 메뉴 `Color → Nodes → Append a Node`는 현재 클립의 마지막에 붙는다. 기본 빈 노드가 있어도 이번 작업용 노드는 새로 만든다. 코드의 `node_for()`는 exposure 라벨만 선택하며 라벨 없는 빈 노드는 사용하지 않는다.
    - 실측(21.1): 클립 전체 선택(Cmd+A) 뒤 Alt+S·메뉴는 **현재 클립 하나에만** 적용된다. `Add Serial Node`(Alt+S)는 현재 선택된 노드 뒤에 끼워 넣어 마지막이 아닐 수 있다. 그래서 `Append a Node`를 클립마다 쓴다.
    - Agent가 화면 조작 권한이 있으면 API `Timeline.SetCurrentTimecode(클립 중간)`으로 현재 클립을 옮기고 메뉴를 누르는 것을 노드가 없는 클립 수만큼 반복한다. 백그라운드 키 입력(Alt+S)은 Resolve에 전달되지 않으므로 메뉴로 한다.
-3. 단일 Log→Rec.709 LUT 경로에서 Log 소스(Apple Log, Insta360 I-Log 등)로 1번 노드에 변환이 있는 클립은 변환 앞에 둔다. 1번 노드를 선택하고 `Add Serial Before Current`(Shift+S)로 앞에 넣은 뒤 라벨을 `EXPOSURE`로 바꾼다(라벨은 `01_Exposure`처럼 `exposure`를 포함하면 인식). Log 상태에서 밝기를 맞춰야 변환 뒤 암부 노이즈가 적다. 마지막에 둬도 동작은 하며 그때는 `Power`로 맞춘다.
-4. 이미 `EXPOSURE` 라벨 노드가 있으면 그대로 쓴다. 두 번째 실행은 같은 노드의 CDL을 덮어쓴다.
+3. 단일 Log→Rec.709 LUT 경로에서 Log 소스(Apple Log, Insta360 I-Log 등)로 1번 노드에 변환이 있는 클립은 변환 앞에 둔다. 1번 노드를 선택하고 `Add Serial Before Current`(Shift+S)로 앞에 넣은 뒤 라벨을 `EXPOSURE`로 바꾼다(라벨은 `01_Exposure`처럼 `exposure`를 포함하면 인식). 변환 전에 조정하면 LUT 입력의 노출을 다룰 수 있지만, 원본에 없는 암부 정보나 노이즈를 복구하는 것은 아니다. 마지막에 둬도 동작은 하며 그때는 `Power`로 맞춘다.
+4. 이번 작업에서 새로 만든 `EXPOSURE` 노드는 재측정·미세 조정에 재사용할 수 있다. 기존 라벨만 보고 소유권을 추정하지 않는다. 과거 사용자 그레이드와 라벨이 겹치면 복제한 색 버전에서 구분한 뒤 새 노드를 준비한다. 스크립트는 첫 일치 라벨의 CDL을 덮어쓰므로 실행 전에 유일한 대상인지 확인한다.
 
 스크립트는 조건에 맞는 노드가 없는 클립이 하나라도 있으면 적용하지 않고 그 클립 목록과 위 절차를 출력한다. 화면 조작 권한이 있으면 Agent가 위 절차를 대신 하고, 없으면 사용자에게 요청한다. 대체 방법으로 사용자가 만든 빈 노드 트리 DRX를 `Graph.ApplyGradeFromDRX`로 넣을 수 있지만 그레이드 전체를 덮어쓰므로 그레이드가 없는 클립에만 쓴다.
 
-밝기 파라미터는 스크립트가 노드 위치로 정한다. Log 소스이고 변환(LUT·CST) 노드가 `EXPOSURE` 뒤에 있으면 CDL `Offset`(로그 노출 이동, 카메라 노출 보정과 같은 효과), 아니면 `Power`(감마, 블랙·화이트 고정). 변환 뒤에서 Offset을 쓰면 블랙이 회색으로 뜨므로 쓰지 않는다. 둘 다 R=G=B 같은 값이라 색은 바뀌지 않는다. 적용 전 각 클립의 현재 색 버전 이름을 JSON 로그 `snapshot`에 남긴다.
+밝기 파라미터는 스크립트가 노드 위치로 정한다. Log 소스이고 변환(LUT·CST) 노드가 `EXPOSURE` 뒤에 있으면 CDL `Offset`(Log 신호 이동, 카메라별 스톱 환산은 별도 확인 필요), 아니면 `Power`(감마, 블랙·화이트 고정). 변환 뒤에서 Offset을 쓰면 블랙이 회색으로 뜨므로 쓰지 않는다. 둘 다 R=G=B로 의도적인 채널 편향은 주지 않지만 비선형 변환과 클리핑으로 색·채도도 달라질 수 있어 전후를 확인한다. 적용 전 각 클립의 현재 색 버전 이름을 JSON 로그 `snapshot`에 남긴다.
 
 ## 시간대와 목표 대역
 
@@ -49,11 +49,15 @@ Resolve 21.1과 2026년 9월 공개된 DaVinci Resolve AI Assistant를 대상으
 | 저녁(블루아워) | 일몰 30분 뒤 ~ 일몰 1.5시간 뒤 | 310~485 |
 | 미상 | 촬영 시각 없음 | 120~560(대역은 사실상 없음, 전환 한계만 적용) |
 
-대역은 "이 시간대라면 자연스러운 밝기"의 시작점이다. 이번 영상에서 노을 장면이 어둡게 느껴져 Rec.709 신호 기준 약 +0.5스톱으로 환산해 골든아워를 440~600, 블루아워를 310~485로 높였다(기존 360~500, 250~400). 낮·밤은 바꾸지 않아 저무는 분위기를 유지한다. 대역 안의 클립은 전환 문제가 없으면 손대지 않고, 하이라이트 클리핑이나 장면 의도가 있으면 스코프와 화면을 보고 무리하게 목표에 맞추지 않는다.
+대역은 "이 시간대라면 자연스러운 밝기"의 시작점이다. 이번 영상에서 노을 장면이 어둡게 느껴져 해당 촬영본의 밝기 근사치를 기준으로 골든아워를 440~600, 블루아워를 310~485로 높였다(기존 360~500, 250~400). 낮·밤은 바꾸지 않아 저무는 분위기를 유지한다. 대역 안의 클립은 전환 문제가 없으면 손대지 않고, 하이라이트 클리핑이나 장면 의도가 있으면 스코프와 화면을 보고 무리하게 목표에 맞추지 않는다.
 
 ## 실제 화면 밝기 확인
 
+먼저 입력·출력 변환 중복, 데이터 레벨, HDR/SDR 해석, 뷰어와 실제 재생 앱의 감마·디스플레이 설정 차이를 확인한다. 같은 출력 파일도 보기 환경 때문에 다르게 보일 수 있으므로 1–2스톱 경험만으로 촬영 노출 부족을 단정하지 않는다.
+
 스코프 목표는 일관성을 위한 출발점이지 사용자의 화면 밝기 선호를 대신하지 않는다. 대표 장면의 현재 화면과 `+1 stop`, `+2 stop`으로 올린 비교본을 Resolve viewer 또는 실제 재생 화면에서 확인한다. 풍경·도시 장면은 하늘·광원 질감, 건물과 자연의 밝은 면, 어두운 디테일이 함께 살아 있는 쪽을 사용자 기준으로 삼아 작업 로그에 선택을 적는다. 이는 현재 사용자의 시청 환경에서 관찰된 선호를 반영하는 확인 절차이며 모든 영상에 적용되는 보정 원칙은 아니다.
+
++1/+2스톱은 작업 공간을 올바르게 인식하는 HDR Global Exposure처럼 스톱 단위 컨트롤로 비교하거나 scene-linear 빛에 2배/4배를 적용한 뒤 원래 출력 변환을 거친다. CDL Offset·Power 값 또는 출력 신호 +120을 스톱으로 부르지 않는다. 정확한 스톱 비교가 불가능하면 상대 밝기 비교로 기록한다. 차이가 작으면 중간값이나 무조정도 선택한다.
 
 참고 영상은 DWG/Intermediate 안에서 Contrast/Pivot을 먼저 조정해 톤을 살펴본 뒤 HDR Global Exposure로 노출을 다듬는다. 이 자동 스킬은 Rec.709 출력 스틸의 중앙값·하이라이트 여유·컷 연결성을 함께 맞추는 Offset/Power CDL 방식이다. 영상의 pivot `0.336`이나 HDR Exposure 컨트롤의 수치를 이 스크립트에 옮기지 않는다. 360 카메라·휴대전화 영상은 이미 대비·채도가 강하게 들어갈 수 있으므로, 대비를 더하기 전에 밝은 영역과 그림자 질감을 확인한다.
 
@@ -65,16 +69,16 @@ Resolve 21.1과 2026년 9월 공개된 DaVinci Resolve AI Assistant를 대상으
 |---|---|---|
 | 같은 시간대 인접 컷의 tail→head 차이 | 60 | 두 클립이 절반씩 다가간다 |
 | 다른 시간대 인접 컷의 tail→head 차이 | 120 | 두 클립이 절반씩 다가간다 |
-| 클립 하나의 변화량 | ±120(약 0.5 stop, `--max-shift`) | 그 이상 움직이지 않고 `확인 필요` |
+| 클립 하나의 변화량 | ±120(밝기 근사 스케일, `--max-shift`) | 그 이상 움직이지 않고 `확인 필요` |
 | 대역 밖으로 나가는 여유 | 40 | 전환을 맞추기 위해서만 허용 |
-| 하이라이트 클리핑(p99 이상 1016 초과 비율) | 0.5% | 목표를 40 낮춰 한 번 다시 맞춘다 |
+| 고휘도 후보(8비트 회색값 254 이상 비율; 실제 클리핑은 별도 확인) | 0.5% | 목표를 40 낮춰 한 번 다시 맞춘다 |
 | 블랙 뜸(p1 > 120) | 120 | 조정하지 않고 `확인 필요`. 검은색이 회색으로 뜬 것이라 Offset·Power로는 못 고치고 Lift(화면)나 대비로 내린다 |
 
 목표 계산은 "대역으로 자르기 → 인접 컷 차이 완화 20회 → 변화량·대역 여유로 다시 자르기"다. 한 클립을 크게 바꾸는 대신 여러 클립이 조금씩 움직이는 쪽을 택한다. 완화로도 한계를 못 맞춘 컷은 뒤 클립에 `EXPOSURE_CHECK` 클립 마커(Lemon, +5)를 찍고 로그에 `확인 필요`로 남긴다. 사용자가 판단해 `--max-shift`를 올려 다시 돌리거나 그대로 둔다.
 
 ## 실행 순서
 
-1. 실행 환경 확인. 외부 스크립팅(`DaVinciResolveScript`)이 되어야 한다. `akbun-davinciresolve-workflow`의 실행 환경 확인 절을 따른다. Pillow가 필요하다(`pip install pillow`).
+1. 실행 환경 확인. 외부 스크립팅(`DaVinciResolveScript`)이 되어야 한다. `akbun-davinciresolve-workflow`의 실행 환경 확인 절을 따른다. Pillow가 필요하다. 아래 명령은 `uv run --python 3.12 --with pillow python`으로 실행한다.
 2. 작업 타임라인 이름을 정하고 `--dry-run`으로 측정과 계획만 본다. 이 결과가 `akbun-davinciresolve-workflow` 기본 원칙 4(대표 클립 선적용)를 대신한다. 노드가 없는 클립 목록도 이때 나온다.
 3. 노드 규칙대로 `EXPOSURE` 노드를 준비한다.
 4. 적용한다. 스크립트가 클립마다 측정 → CDL 적용 → 재측정(최대 3회 secant)으로 목표에 맞추고, 끝나면 전 클립을 다시 재서 전환 표를 만든다.
@@ -83,25 +87,25 @@ Resolve 21.1과 2026년 9월 공개된 DaVinci Resolve AI Assistant를 대상으
 dry-run 명령이다. 출력 폴더는 작업 로그와 같은 폴더를 쓴다.
 
 ```bash
-python3 scripts/exposure_scope.py --out "<출력 폴더>" --timeline "<작업 타임라인>" --sunrise 06:20 --sunset 18:20 --dry-run
+uv run --python 3.12 --with pillow python scripts/exposure_scope.py --out "<출력 폴더>" --timeline "<작업 타임라인>" --sunrise 06:20 --sunset 18:20 --dry-run
 ```
 
 적용 명령이다. `--dry-run`만 뺀다.
 
 ```bash
-python3 scripts/exposure_scope.py --out "<출력 폴더>" --timeline "<작업 타임라인>" --sunrise 06:20 --sunset 18:20
+uv run --python 3.12 --with pillow python scripts/exposure_scope.py --out "<출력 폴더>" --timeline "<작업 타임라인>" --sunrise 06:20 --sunset 18:20
 ```
 
 되돌리기 명령이다. `EXPOSURE` 노드의 CDL을 identity로 돌린다. 다른 노드는 건드리지 않았으므로 되돌릴 것이 없다.
 
 ```bash
-python3 scripts/exposure_scope.py --out "<출력 폴더>" --timeline "<작업 타임라인>" --reset
+uv run --python 3.12 --with pillow python scripts/exposure_scope.py --out "<출력 폴더>" --timeline "<작업 타임라인>" --reset
 ```
 
 스크립트 논리만 검사하는 명령이다.
 
 ```bash
-python3 scripts/exposure_scope.py --selftest
+uv run --python 3.12 --with pillow python scripts/exposure_scope.py --selftest
 ```
 
 ## 작업 로그
@@ -126,7 +130,7 @@ python3 scripts/exposure_scope.py --selftest
 ## 하지 않는 것
 
 - LUT·CST·사용자 그레이드가 있는 기존 노드에 CDL 쓰기, 변환 뒤 노드에서 Offset 쓰기
-- 스코프값 없이 눈으로 조정
+- 측정 근거와 실제 화면 확인 없이 자동 보정량을 확정
 - 밤·저녁 클립을 낮 대역으로 밝히기, 클립 하나를 ±120 넘게 움직이기
 - 화이트밸런스·채도·색 조정(CDL은 항상 R=G=B, Saturation 1.0)
 - 사용자 확인 없이 `EXPOSURE_CHECK`가 남은 상태로 다음 단계 진행

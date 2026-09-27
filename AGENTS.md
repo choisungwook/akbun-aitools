@@ -40,6 +40,7 @@ plugin의 버전을 올린다. 사용자에게 버전 업데이트 여부를 묻
   plugin이 추가되면 해당 plugin의 `### <plugin-name>` 하위 섹션과 skill 표를 만들고, 삭제되면 그 섹션을 지운다.
   skill이 추가/삭제되면 해당 plugin 표에서 한 줄짜리 설명 행을 추가/삭제한다. `docs/` 같이 `SKILL.md`가 없는 디렉터리는 목록에 넣지 않는다.
 - `akbun-editvideo` skill을 추가·수정·삭제하거나 스킬의 사용 흐름을 바꾸면 `docs/manual_editvideo.md`와 `docs/terms_editvideo.md`를 같은 변경에서 함께 갱신한다. 매뉴얼은 상황별 안내·해결하는 문제·동작 요약·스킬 링크를, 용어사전은 관련 용어와 정의를 실제 `SKILL.md`와 일치시킨다.
+- `akbun-editvideo` 변경은 `uv run --python 3.12 scripts/validate_editvideo.py`로 frontmatter·문서 목록·링크·manifest·prompt를 검사한다. 공용 `quick_validate.py`가 `disable-model-invocation`을 거부하더라도 필수 키를 삭제하지 않는다.
 - marketplace의 description/category가 바뀐 경우에만 `.claude-plugin/marketplace.json`, `.agents/plugins/marketplace.json`도 함께 수정한다.
 - 배포 절차 상세는 `docs/guide_deploy_plugins.md`를 따른다.
 

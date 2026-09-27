@@ -51,7 +51,7 @@ Resolve는 한 프레임에 마커 1개만 허용한다. 종류마다 색·대�
 
 ## 실행 환경 확인
 
-시작할 때 무엇으로 Resolve를 조작할 수 있는지 확인하고 작업 로그 `환경` 절에 적는다. 색보정 스크립트는 Pillow도 필요하다(`pip install pillow`).
+시작할 때 무엇으로 Resolve를 조작할 수 있는지 확인하고 작업 로그 `환경` 절에 적는다. 색보정 스크립트는 `uv run --python 3.12 --with pillow python`으로 실행한다. AI Assistant 연동은 [공식 21.1 발표](https://www.blackmagicdesign.com/media/partial/release/20260908-03)를 기준으로 하되, 실제 설치 버전과 노출된 API·UI 기능을 확인한다. 자연어 요청만으로 특정 색 컨트롤·노드 생성 기능이 보장된다고 가정하지 않는다.
 
 | 수단 | 확인 방법 | 가능한 작업 |
 |---|---|---|
@@ -78,7 +78,7 @@ API가 있어도 없는 기능이 있다. 기능별 API 유무·버전 조건·�
 | DWG/Intermediate 노드 경로 | 원본별 Input CST가 DWG/Intermediate로 변환하고, 기술 보정 뒤 Output CST가 있음 | 현재 exposure·whitebalance·contrast 스크립트를 실행하지 않는다. 이중 CST가 단일 LUT 변환으로 오인될 수 있다. Resolve UI 또는 2026.9 AI Assistant로 노드를 확인해 수동 절차를 따른다 |
 | Project/Timeline Color Managed 자동 변환 | 색공간 변환이 Project/Timeline 설정에서 자동 적용되고 같은 노드 안에 명시적 CST 쌍이 없음 | 현재 스크립트가 지원하지 않는다. 입력·타임라인·출력 색공간을 먼저 확인하고, 자동 보정 스크립트는 사용하지 않는다 |
 
-참고 영상([I Made Color Grading QUICK and SIMPLE](https://youtu.be/RPDqklqWGSs))의 수동 노드 예시는 **Input CST(각 카메라 Log→DWG/Intermediate) → Contrast/Pivot → HDR Global Exposure → HDR Global WB(X 따뜻함/차가움, Y 녹색/마젠타) → 필요할 때 Color Slice 채도·선택 보정 → Output CST → 창작 LOOK/LUT** 순서다. 영상은 Contrast 1.3과 Pivot 0.336을 시작 예로 들지만 고정값으로 복사하지 않는다. `0.336`은 그 Contrast 노드 입력이 DaVinci Intermediate일 때만 맞는 기준이고, 대비·노출량은 샷과 카메라별로 판단한다. 휴대전화·360 카메라는 이미 대비와 채도가 강할 수 있으므로 더 약한 보정이 필요할 수 있다. 인물 없이도 가능하며, WB는 실제로 중립이라고 판단할 수 있는 풍경 표본만 기준으로 삼는다. 여러 카메라를 같은 장면에 썼다면 중립 표본과 Waveform의 흰 점·블랙 여유를 비교해 카메라 간 차이를 확인한다.
+참고 영상([I Made Color Grading QUICK and SIMPLE](https://youtu.be/RPDqklqWGSs))의 수동 노드 예시는 **Input CST(1) → HDR Global Exposure(2) → HDR Global WB(3) → Contrast/Pivot(4) → Color Slice 채도(5) → 필요한 선택 보정(6) → Output CST(7) → 창작 LOOK/LUT(8)** 순서다. 노드 연결과 조정 순서는 다르다. 설명자는 4번 Contrast/Pivot을 먼저 조정해 화면을 살핀 뒤 2번 Exposure와 3번 WB로 돌아간다. WB의 X는 따뜻함/차가움, Y는 녹색/마젠타 조정이다. 영상은 Contrast 1.3과 Pivot 0.336을 시작 예로 들지만 고정값으로 복사하지 않는다. `0.336`은 그 Contrast 노드 입력이 DaVinci Intermediate일 때만 맞는 기준이고, 대비·노출량은 샷과 카메라별로 판단한다. 휴대전화·360 카메라는 이미 대비와 채도가 강할 수 있으므로 더 약한 보정이 필요할 수 있다. 인물 없이도 가능하며, WB는 실제로 중립이라고 판단할 수 있는 풍경 표본만 기준으로 삼는다. 여러 카메라를 같은 장면에 썼다면 중립 표본과 Waveform의 흰 점·블랙 여유를 비교해 카메라 간 차이를 확인한다.
 
 이 수동 경로에서 LUT를 쓸 때는 Project Settings의 3D LUT interpolation을 확인한다. [Blackmagic의 Resolve 20 Colorist Guide](https://documents.blackmagicdesign.com/UserManuals/DaVinci-Resolve-20-Colorist-Guide.pdf)는 낮은 bit-depth LUT를 고 bit-depth 소스에 적용할 때 생길 수 있는 banding을 줄이는 방법으로 Tetrahedral을 권한다. 기존 프로젝트나 다른 앱에서 만든 LUT의 호환성·기존 결과를 유지해야 하면 설정을 바꾸기 전에 대표 샷을 비교한다. LUT interpolation이나 출력 감마를 앱 기본값으로 저장하지 않는다. 튜토리얼의 Mac `Rec.709 Scene` 출력도 개인 모니터링 선택이므로 YouTube 납품 설정으로 그대로 복사하지 말고 활성 타임라인과 납품 대상을 확인한다.
 
@@ -121,7 +121,9 @@ API가 있어도 없는 기능이 있다. 기능별 API 유무·버전 조건·�
 
 다음 노드 표와 순서는 **현재 저장소의 단일 Log→Rec.709 LUT 자동 경로**에만 적용한다. 노드는 신호 흐름 순서, 실행은 측정이 가능한 순서다. LUT를 먼저 걸어야 그 뒤 스코프값이 Rec.709 기준이 되고, 밝기·화이트밸런스 노드는 LUT **앞**에 있어도 측정은 LUT를 거친 출력으로 한다. DWG/Intermediate 경로는 위 수동 경로를 따른다.
 
-색보정 순서는 look 취향만으로 정하지 않는다. 입력 Log를 어떤 작업 색공간으로 변환하는지에 따라 노출·대비·화이트밸런스의 적절한 위치가 달라질 수 있다. 참고 영상은 DaVinci YRGB, DWG/Intermediate 타임라인, 입력·출력 CST와 중간 보정 노드를 사용한다. 여기의 자동 경로는 카메라별 Log→Rec.709 LUT를 쓰므로 노드 순서를 그대로 섞지 않는다. 두 경로를 연결하는 자동화는 입력·출력 transform과 HDR wheel 처리를 별도로 구현하기 전까지 지원되지 않는다.
+색보정 순서는 look 취향만으로 정하지 않는다. 입력 Log를 어떤 작업 색공간으로 변환하는지에 따라 노출·대비·화이트밸런스의 적절한 위치가 달라질 수 있다. 다른 참고 영상 [Create Your Film Grade](https://youtu.be/1-5mXPEsm3k)는 노출→대비→WB의 조정 순서를 설명하고, [Only 3 Nodes](https://youtu.be/eMxGU2IRoko)는 수동 곡선과 색 관계 탐색을 보여준다. 어느 예시도 모든 소스에 같은 순서·값을 강제하는 근거가 아니다. 수동 곡선으로 대비를 넓히는 것은 검증된 카메라 Log 색공간 변환의 대체가 아니다.
+
+pivot 참고 영상(RPDqklqWGSs)은 DaVinci YRGB, DWG/Intermediate 타임라인, 입력·출력 CST와 중간 보정 노드를 사용한다. 여기의 자동 경로는 카메라별 Log→Rec.709 LUT를 쓰므로 노드 순서를 그대로 섞지 않는다. 두 경로를 연결하는 자동화는 입력·출력 transform과 HDR wheel 처리를 별도로 구현하기 전까지 지원되지 않는다.
 
 | 노드 순서 | 라벨 | skill | 실행 순서(작업 단계) | 위치 |
 |---|---|---|---|---|
@@ -147,13 +149,17 @@ API가 있어도 없는 기능이 있다. 기능별 API 유무·버전 조건·�
 
 이 skill은 2026년 9월에 공개된 DaVinci Resolve AI Assistant를 포함한 Resolve 작업을 대상으로 한다. AI Assistant가 색관리 설정이나 노드 연결을 제안해도 현재 프로젝트의 실제 입력·출력 색공간과 스코프로 확인한 뒤 적용한다.
 
+## Look 측정
+
+네 look은 [공통 스코프 측정 규약](references/look-scopes.md)을 공유한다. 측정 영역·신호·색 ROI를 고정하고 룩별 허용 폭을 사용한다. 고휘도 픽셀과 채널 클리핑을 구분하며 자동 노출 스크립트의 밝기 근사치를 Look IRE로 대신 쓰지 않는다.
+
 ## 노드 준비
 
 스크립팅 API에는 노드 추가·라벨 함수가 없다. Color 페이지 메뉴로 한다. 실측(21.1)으로 확인된 절차다.
 
 1. 작업 타임라인 B를 열고 Color 페이지, `Clips` 스트립을 켠다.
-2. 클립마다: API `Timeline.SetCurrentTimecode(클립 중간)`으로 현재 클립을 옮긴다 → 기본 노드 1개가 비어 있으면 `Color → Nodes → Label Selected Node`로 `EXPOSURE` → 이어서 필요한 라벨마다 `Color → Nodes → Append a Node` → `Label Selected Node` → 라벨 입력 → Return.
-3. 기존 그레이드(LUT·CST·휠)가 있는 클립은 그 노드를 두고 뒤에 붙인다. 이미 LUT가 1번 노드에 있으면 그 노드 라벨을 `CST`로 바꾸고, `EXPOSURE`·`WB`는 `Add Serial Before Current`로 앞에 넣는다.
+2. 클립마다: API `Timeline.SetCurrentTimecode(클립 중간)`으로 현재 클립을 옮긴다 → 기본 빈 노드가 있어도 `Color → Nodes → Append a Node`로 새 노드를 만들고 `Label Selected Node`로 `EXPOSURE` → 이어서 필요한 라벨마다 `Color → Nodes → Append a Node` → `Label Selected Node` → 라벨 입력 → Return.
+3. 기존 그레이드(LUT·CST·휠)가 있는 클립은 그 노드를 두고 뒤에 붙인다. 이미 기술 변환 LUT가 있으면 입력·출력 공간을 확인하고 보존한다. 그 클립은 logconvert 재적용을 건너뛰며, `EXPOSURE`·`WB`는 `Add Serial Before Current`로 변환 앞에 새로 넣는다. 기존 변환의 검사 라벨 정리 외에 기존 그레이드 값을 덮어쓰지 않는다. 같은 용도의 새 노드를 뒤와 앞에 중복 생성하지 않는다.
 4. `scripts/workflow.py nodes`로 클립별 필요 라벨·현재 라벨·빠진 라벨·순서를 표로 확인한다. 빠진 것이 0개일 때 6단계로 간다.
 
 주의(실측): 클립 전체 선택 뒤 Alt+S·메뉴는 현재 클립 하나에만 적용된다. `Add Serial Node`는 선택된 노드 뒤에 끼워 마지막이 아닐 수 있으므로 `Append a Node`를 쓴다. 백그라운드 키 입력(Alt+S)은 전달되지 않으므로 메뉴로 한다. `Next Node`·`Previous Node`로 선택 노드를 옮길 수 있고, 라벨은 선택된 노드에 붙는다. `Label Selected Node` 뒤 Cmd+A → Backspace → Return으로 라벨을 지운다.

@@ -14,7 +14,7 @@ disable-model-invocation: true
 
 ## 스타일 선택
 
-질문표 4번 답을 `davinciresolve-story-devtalk`의 스타일 선택 표에 넣어 style skill을 정하고 계획서에 이유를 적는다. 구조 표(비트·길이·화면)의 원본은 그 style skill의 `SKILL.md`이며 경로는 이 파일과 같은 `skills/` 아래다.
+확정된 준비 문서의 스타일을 우선하고, 없는 경우에만 아래 질문표의 미답 항목을 한 번에 하나씩 묻는다. 질문표 4번 답을 `davinciresolve-story-devtalk`의 스타일 선택 표에 넣어 style skill을 정하고 계획서에 이유를 적는다. 구조 표(비트·길이·화면)의 원본은 그 style skill의 `SKILL.md`이며 경로는 이 파일과 같은 `skills/` 아래다.
 
 ## 질문표
 
@@ -121,7 +121,7 @@ essay(이유), 목표 6분, 대본 약 1,800자
 
 ## 말하기 체크
 - 문장 사이 1초
-- 주장 문장 2번
+- 핵심 문장은 자연스럽게 한 번, 오류가 있거나 본인이 원할 때만 재녹음
 - 번호는 소리로
 - 얼굴이 들어간 클립은 `_face`
 ```
