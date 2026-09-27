@@ -1,6 +1,6 @@
 ---
 name: akbun-davinciresolve-workflow
-description: 말소리 없는 여행 브이로그를 DaVinci Resolve 21.1에서 처음부터 끝까지 편집하는 workflow 오케스트레이터. 미디어 풀 영상 전부를 촬영 시간순 타임라인으로 만드는 것(akbun-davinciresolve-timeline-chrono)이 항상 첫 단계이고, 그 복제본에서 컷·안정화(davinciresolve-cut-travelflow) → 라벨 노드(EXPOSURE→WB→CST→CONTRAST→SAT) 기본 색보정(logconvert → exposure → whitebalance → contrast → saturation) → 요청된 look skill과 새 LOOK 노드 → 얼굴 모자이크(davinciresolve-face-privacy) → 한글 자막·챕터(davinciresolve-subtitle-travelnote) → 사운드 디자인(davinciresolve-sfx-epidemicsound)·4K 출력(davinciresolve-audio-delivery) 순서로 각 skill의 SKILL.md를 읽어 직접 수행하고 마커 등록표·단계별 완료 조건·검증·작업 로그를 관리한다. "이 프로젝트 편집 계획 세워서 끝까지 해줘", "영상 전부 시간순으로 놓고 색보정까지 해줘", "타임라인 정리부터 렌더까지" 요청에 사용한다. 사용자가 직접 호출할 때만 실행한다.
+description: 말소리 없는 여행 브이로그를 DaVinci Resolve 21.1에서 처음부터 끝까지 편집하는 workflow 오케스트레이터. 미디어 풀 영상 전부를 촬영 시간순 타임라인으로 만드는 것(akbun-davinciresolve-timeline-chrono)이 항상 첫 단계이고, 그 복제본에 비디오·오디오 트랙을 4개씩 준비한 뒤 컷·안정화(davinciresolve-cut-travelflow) → 라벨 노드(EXPOSURE→WB→CST→CONTRAST→SAT) 기본 색보정(logconvert → exposure → whitebalance → contrast → saturation) → 요청된 look skill과 새 LOOK 노드 → 얼굴 모자이크(davinciresolve-face-privacy) → 한글 자막·챕터(davinciresolve-subtitle-travelnote) → 사운드 디자인(davinciresolve-sfx-epidemicsound)·4K 출력(davinciresolve-audio-delivery) 순서로 각 skill의 SKILL.md를 읽어 직접 수행하고 마커 등록표·단계별 완료 조건·검증·작업 로그를 관리한다. "이 프로젝트 편집 계획 세워서 끝까지 해줘", "영상 전부 시간순으로 놓고 색보정까지 해줘", "타임라인 정리부터 렌더까지" 요청에 사용한다. 사용자가 직접 호출할 때만 실행한다.
 disable-model-invocation: true
 ---
 
@@ -37,6 +37,7 @@ Resolve는 한 프레임에 마커 1개만 허용한다. 종류마다 색·대�
 | Lemon | `EXPOSURE_CHECK <파일명> <사유>` | 클립 마커 | +5 | `akbun-davinciresolve-exposure` |
 | Sky | `WB_CHECK <파일명> <사유>` | 클립 마커 | +6 | `akbun-davinciresolve-whitebalance` |
 | Sand | `AUDIO_REVIEW <cue ID> <사유>` | 타임라인 마커 | 검토 구간 시작. 충돌 시 구간 안 가장 가까운 빈 프레임 | `davinciresolve-sfx-epidemicsound` (BGM·출력의 오디오 작업 포함) |
+| Mint | `HOOK <구간 이름>`, `HOOK_BGM <트랙>` | 타임라인 마커 | `HOOK`은 훅 타임라인의 훅 구간 시작, `HOOK_BGM`은 길이 보정이 필요한 BGM 클립의 끝. 충돌 시 가장 가까운 빈 프레임 | `akbun-davinciresolve-searchhook` |
 
 마커 색은 Resolve가 받는 16색(Blue, Cyan, Green, Yellow, Red, Pink, Purple, Fuchsia, Rose, Lavender, Sky, Mint, Lemon, Sand, Cocoa, Cream)에서만 고른다. Orange처럼 클립 색에만 있는 이름을 넘기면 `AddMarker`가 False를 반환하고 마커가 찍히지 않는다.
 
@@ -96,31 +97,53 @@ API가 있어도 없는 기능이 있다. 기능별 API 유무·버전 조건·�
 | 0 | 실행 환경 확인 | 이 skill의 실행 환경 확인 절 | 로그 `환경` 절 기록 |
 | 1 | 미디어 풀 영상 전부를 촬영 시간순 타임라인 A로. dry-run 표로 메타데이터(파일명, 촬영 시간, 카메라, 해상도, 프레임레이트, 색공간·감마)를 정리하고 카메라별 시계 오프셋과 타임라인 프레임레이트를 정한 뒤 만든다 | `akbun-davinciresolve-timeline-chrono` | 클립 전부가 표로 정리, V1 순서 검증 일치. 촬영 시간 없음·시계 오프셋 미확인은 `확인 필요` |
 | 2 | A를 복제해 작업 타임라인 B | `scripts/workflow.py duplicate` | B가 현재 타임라인, A는 그대로 |
-| 3 | 컷 편집과 흔들림 보정 | `davinciresolve-cut-travelflow` | 불량 구간 제거·안정화 결과가 작업 로그에 클립별로 기록 |
-| 4 | Log 판정 dry-run으로 클립별 `Log`·`비Log`·`미확인` 확정. `미확인`은 사용자에게 물어 `--profile`로 | `akbun-davinciresolve-logconvert --dry-run` | 판정 표 |
-| 5 | 클립마다 라벨 노드 준비 | 아래 "노드 준비" | `scripts/workflow.py nodes`가 빠진 라벨 0개 |
-| 6 | LUT 적용 | `akbun-davinciresolve-logconvert` | Log 클립 전부 `적용` |
-| 7 | 밝기 | `akbun-davinciresolve-exposure` | 전환 표에서 `확인 필요`·`EXPOSURE_CHECK` 사용자 보고 |
-| 8 | 화이트밸런스 | `akbun-davinciresolve-whitebalance` | `WB_CHECK` 사용자 보고 |
-| 9 | 대비 | `akbun-davinciresolve-contrast` | 클리핑 없음 |
-| 10 | 채도 | `akbun-davinciresolve-saturation` | 대역 미달 없음 |
-| 11 | 창작 look | 사용자가 고른 `akbun-davinciresolve-look-*` skill | 기본 보정이 끝난 뒤 해당 style skill을 읽는다. Color 페이지에서 새 Serial 노드를 추가해 `LOOK`으로 라벨하고 이 노드에만 창작 조정을 한다. 룩 LUT를 지정하지 않아도 노드는 새로 만든다. Look을 요청하지 않았으면 적용하지 않는다 |
-| 12 | 얼굴과 개인정보 모자이크 | `davinciresolve-face-privacy` | 모자이크 클립마다 `PRIVACY_MOSAIC` 클립 마커와 노드 존재 |
-| 13 | Gmarket Sans 한글 자막과 챕터 마커 | `davinciresolve-subtitle-travelnote` | 자막이 안전 영역 안에 있고 챕터 마커가 장소 변경 지점마다 존재 |
-| 14 | 현장음·효과음·여러 BGM 사운드 디자인 | `davinciresolve-sfx-epidemicsound` | 오디오 직전 타임라인 복제, 큐시트·검청·`AUDIO_REVIEW` 기록. 새 작업본 ID를 15–16단계에 인계 |
-| 15 | YouTube 챕터 마커 최종 정리 | 이 skill | 마커 이름이 장소명·행사명이고 첫 `CHAPTER`가 타임라인 시작(마커 상대 프레임 0)에 있고 `00:00`부터 시간과 장소명이 표시되며 3개 이상 |
-| 16 | 썸네일 후보·YouTube 설정·4K 렌더와 검증 | `davinciresolve-audio-delivery` (YouTube 업로드·출력 절) | 요청된 썸네일·제목·설명·카테고리·공개 상태 적용, 렌더 파일의 해상도·프레임레이트·길이·오디오 스트림이 타임라인과 일치 |
+| 3 | B에 비디오 트랙 4개와 오디오 트랙 4개를 더하고 역할 이름을 붙인다 | `scripts/workflow.py tracks`, 아래 "트랙 준비" | 트랙 표의 이름 8개가 모두 있고 빠진 트랙 0개 |
+| 4 | 컷 편집과 흔들림 보정 | `davinciresolve-cut-travelflow` | 불량 구간 제거·안정화 결과가 작업 로그에 클립별로 기록 |
+| 5 | Log 판정 dry-run으로 클립별 `Log`·`비Log`·`미확인` 확정. `미확인`은 사용자에게 물어 `--profile`로 | `akbun-davinciresolve-logconvert --dry-run` | 판정 표 |
+| 6 | 클립마다 라벨 노드 준비 | 아래 "노드 준비" | `scripts/workflow.py nodes`가 빠진 라벨 0개 |
+| 7 | LUT 적용 | `akbun-davinciresolve-logconvert` | Log 클립 전부 `적용` |
+| 8 | 밝기 | `akbun-davinciresolve-exposure` | 전환 표에서 `확인 필요`·`EXPOSURE_CHECK` 사용자 보고 |
+| 9 | 화이트밸런스 | `akbun-davinciresolve-whitebalance` | `WB_CHECK` 사용자 보고 |
+| 10 | 대비 | `akbun-davinciresolve-contrast` | 클리핑 없음 |
+| 11 | 채도 | `akbun-davinciresolve-saturation` | 대역 미달 없음 |
+| 12 | 창작 look | 사용자가 고른 `akbun-davinciresolve-look-*` skill | 기본 보정이 끝난 뒤 해당 style skill을 읽는다. Color 페이지에서 새 Serial 노드를 추가해 `LOOK`으로 라벨하고 이 노드에만 창작 조정을 한다. 룩 LUT를 지정하지 않아도 노드는 새로 만든다. Look을 요청하지 않았으면 적용하지 않는다 |
+| 13 | 얼굴과 개인정보 모자이크 | `davinciresolve-face-privacy` | 모자이크 클립마다 `PRIVACY_MOSAIC` 클립 마커와 노드 존재 |
+| 14 | Gmarket Sans 한글 자막과 챕터 마커 | `davinciresolve-subtitle-travelnote` | 자막이 안전 영역 안에 있고 챕터 마커가 장소 변경 지점마다 존재 |
+| 15 | 현장음·효과음·여러 BGM 사운드 디자인 | `davinciresolve-sfx-epidemicsound` | 오디오 직전 타임라인 복제, 큐시트·검청·`AUDIO_REVIEW` 기록. 새 작업본 ID를 16–17단계에 인계 |
+| 16 | YouTube 챕터 마커 최종 정리 | 이 skill | 마커 이름이 장소명·행사명이고 첫 `CHAPTER`가 타임라인 시작(마커 상대 프레임 0)에 있고 `00:00`부터 시간과 장소명이 표시되며 3개 이상 |
+| 17 | 썸네일 후보·YouTube 설정·4K 렌더와 검증 | `davinciresolve-audio-delivery` (YouTube 업로드·출력 절) | 요청된 썸네일·제목·설명·카테고리·공개 상태 적용, 렌더 파일의 해상도·프레임레이트·길이·오디오 스트림이 타임라인과 일치 |
 
 1단계 세부 규칙이다.
 
 - 타임라인 프레임레이트는 클립 수가 가장 많은 프레임레이트로 하고, 사용자가 지정하면 그 값을 쓴다. 혼합(예: iPhone 60fps + Insta360 30fps)이면 정한 값과 이유를 로그에 적는다.
 - 카메라별 시계 오프셋은 두 카메라로 같은 장면을 찍은 클립 1쌍(사용자가 알려주거나 추출 프레임이 같은 장소인 쌍)의 촬영 시간 차이로 구하고 `--offset 접두어=초`로 넘긴다. 쌍이 없으면 오프셋 0으로 두고 `확인 필요`로 남긴다. Insta360 촬영 시간이 2000년대 초 같은 기본값이면 시계 미설정으로 보고 파일 생성 시간을 대신 쓴다.
 - 사용자가 원본 타임라인의 순서를 의도했다고 하면 A를 만들지 않고 원본 타임라인을 A로 쓴다. 로그에 "사용자 지정 순서"라고 적는다.
-- 색공간·감마가 클립마다 다르면(예: iPhone Apple Log, Insta360 I-Log) 4단계의 `akbun-davinciresolve-logconvert`가 Log 판정과 LUT를 맡는다. 판정 표를 로그에 적는다.
+- 색공간·감마가 클립마다 다르면(예: iPhone Apple Log, Insta360 I-Log) 5단계의 `akbun-davinciresolve-logconvert`가 Log 판정과 LUT를 맡는다. 판정 표를 로그에 적는다.
 
-4~10단계(색보정)는 한 단계의 `확인 필요`가 다음 단계를 막지 않지만 마지막 보고에 모두 모은다. 되돌리기는 각 skill의 `--reset`이고, 전체 되돌리기는 B를 버리고 A를 다시 복제하는 것이다.
+5~11단계(색보정)는 한 단계의 `확인 필요`가 다음 단계를 막지 않지만 마지막 보고에 모두 모은다. 되돌리기는 각 skill의 `--reset`이고, 전체 되돌리기는 B를 버리고 A를 다시 복제하는 것이다.
 
-컷이 바뀌면(3단계 이후 재편집 포함) 자막·효과음·전환·챕터·사운드 검토 타임라인 마커 위치를 다시 맞춘다. 클립 마커는 클립과 함께 움직이므로 다시 찍지 않는다. 순서를 건너뛰거나 바꾸려면 이유를 작업 로그에 적는다.
+컷이 바뀌면(4단계 이후 재편집 포함) 자막·효과음·전환·챕터·사운드 검토 타임라인 마커 위치를 다시 맞춘다. 클립 마커는 클립과 함께 움직이므로 다시 찍지 않는다. 순서를 건너뛰거나 바꾸려면 이유를 작업 로그에 적는다.
+
+## 트랙 준비
+
+3단계에서 작업 타임라인 B에 비디오 트랙 4개와 오디오 트랙 4개를 더한다. 뒤 단계의 skill이 넣는 것이 본편(V1·A1)에 섞이지 않게 자리를 먼저 만들어 두는 것이다. 트랙은 번호가 아니라 이름으로 찾는다. 기존 트랙이 몇 개냐에 따라 번호가 달라지기 때문이다.
+
+| 종류 | 이름 | 놓는 것 | 쓰는 skill |
+|---|---|---|---|
+| 비디오 | `OVERLAY` | 본편 위에 겹치는 영상 | 컷 skill |
+| 비디오 | `GFX` | 그래픽 카드 | `davinciresolve-gfx-hyperframes` |
+| 비디오 | `SUBTITLE` | 자막·챕터 제목 Text+ | `davinciresolve-subtitle-travelnote` |
+| 비디오 | `HOOK_TEXT` | 훅의 화면 텍스트. 맨 위 트랙 | `akbun-davinciresolve-searchhook` |
+| 오디오 | `AMBIENCE` | 환경음 | `davinciresolve-sfx-epidemicsound` |
+| 오디오 | `SFX` | 효과음 | `davinciresolve-sfx-epidemicsound` |
+| 오디오 | `MUSIC` | BGM | `davinciresolve-sfx-epidemicsound`, `davinciresolve-bgm-epidemicsound` |
+| 오디오 | `HOOK` | 훅 구간의 소리 | `akbun-davinciresolve-searchhook` |
+
+- 비디오 트랙은 표의 순서대로 아래에서 위로 쌓인다. 글자가 영상·그래픽을 덮고 훅 글자가 맨 위에 온다.
+- 기존 트랙의 이름과 내용은 바꾸지 않는다. 클립의 소리가 있는 A1은 현장음 트랙으로 그대로 둔다.
+- 같은 이름의 트랙이 이미 있으면 더하지 않는다. 다시 실행해도 트랙이 늘지 않는다.
+- `HOOK`·`HOOK_TEXT` 트랙은 workflow 동안 비워 둔다. 편집이 끝난 뒤 `akbun-davinciresolve-searchhook`이 B를 복제한 훅 타임라인에서 이 두 트랙을 쓴다.
+- 사운드 skill이 트랙을 더 필요로 하면 그 skill의 트랙 규칙대로 더한다.
 
 ## 색보정 노드 순서와 실행 순서
 
@@ -132,12 +155,12 @@ pivot 참고 영상(RPDqklqWGSs)은 DaVinci YRGB, DWG/Intermediate 타임라인,
 
 | 노드 순서 | 라벨 | skill | 실행 순서(작업 단계) | 위치 |
 |---|---|---|---|---|
-| 1 | `EXPOSURE` | `akbun-davinciresolve-exposure` | 2 (7단계) | 변환 앞(Log는 Offset) |
-| 2 | `WB` | `akbun-davinciresolve-whitebalance` | 3 (8단계) | 변환 앞(Log는 채널 Offset) |
-| 3 | `CST` | `akbun-davinciresolve-logconvert` | **1** (6단계) | Log 클립만. LUT를 건다 |
-| 4 | `CONTRAST` | `akbun-davinciresolve-contrast` | 4 (9단계) | 변환 뒤 |
-| 5 | `SAT` | `akbun-davinciresolve-saturation` | 5 (10단계) | 변환 뒤 |
-| 6 (선택) | `LOOK` | 사용자가 고른 look skill | 6 (11단계) | 보정 노드 뒤 새 Serial 노드 |
+| 1 | `EXPOSURE` | `akbun-davinciresolve-exposure` | 2 (8단계) | 변환 앞(Log는 Offset) |
+| 2 | `WB` | `akbun-davinciresolve-whitebalance` | 3 (9단계) | 변환 앞(Log는 채널 Offset) |
+| 3 | `CST` | `akbun-davinciresolve-logconvert` | **1** (7단계) | Log 클립만. LUT를 건다 |
+| 4 | `CONTRAST` | `akbun-davinciresolve-contrast` | 4 (10단계) | 변환 뒤 |
+| 5 | `SAT` | `akbun-davinciresolve-saturation` | 5 (11단계) | 변환 뒤 |
+| 6 (선택) | `LOOK` | 사용자가 고른 look skill | 6 (12단계) | 보정 노드 뒤 새 Serial 노드 |
 
 비Log 클립은 `CST`가 없고 나머지는 같다. 이 순서는 실무 튜토리얼 세 편(Declan Jenkinson "Colour Grading For BEGINNERS", Dunna Did It "My Davinci Resolve Color Grading Process", KC ian "The Highest Level of Color Grading")의 공통점에서 왔다.
 
@@ -165,7 +188,7 @@ pivot 참고 영상(RPDqklqWGSs)은 DaVinci YRGB, DWG/Intermediate 타임라인,
 1. 작업 타임라인 B를 열고 Color 페이지, `Clips` 스트립을 켠다.
 2. 클립마다: API `Timeline.SetCurrentTimecode(클립 중간)`으로 현재 클립을 옮긴다 → 기본 빈 노드가 있어도 `Color → Nodes → Append a Node`로 새 노드를 만들고 `Label Selected Node`로 `EXPOSURE` → 이어서 필요한 라벨마다 `Color → Nodes → Append a Node` → `Label Selected Node` → 라벨 입력 → Return.
 3. 기존 그레이드(LUT·CST·휠)가 있는 클립은 그 노드를 두고 뒤에 붙인다. 이미 기술 변환 LUT가 있으면 입력·출력 공간을 확인하고 보존한다. 그 클립은 logconvert 재적용을 건너뛰며, `EXPOSURE`·`WB`는 `Add Serial Before Current`로 변환 앞에 새로 넣는다. 기존 변환의 검사 라벨 정리 외에 기존 그레이드 값을 덮어쓰지 않는다. 같은 용도의 새 노드를 뒤와 앞에 중복 생성하지 않는다.
-4. `scripts/workflow.py nodes`로 클립별 필요 라벨·현재 라벨·빠진 라벨·순서를 표로 확인한다. 빠진 것이 0개일 때 6단계로 간다.
+4. `scripts/workflow.py nodes`로 클립별 필요 라벨·현재 라벨·빠진 라벨·순서를 표로 확인한다. 빠진 것이 0개일 때 7단계로 간다.
 
 주의(실측): 클립 전체 선택 뒤 Alt+S·메뉴는 현재 클립 하나에만 적용된다. `Add Serial Node`는 선택된 노드 뒤에 끼워 마지막이 아닐 수 있으므로 `Append a Node`를 쓴다. 백그라운드 키 입력(Alt+S)은 전달되지 않으므로 메뉴로 한다. `Next Node`·`Previous Node`로 선택 노드를 옮길 수 있고, 라벨은 선택된 노드에 붙는다. `Label Selected Node` 뒤 Cmd+A → Backspace → Return으로 라벨을 지운다.
 
@@ -177,6 +200,12 @@ pivot 참고 영상(RPDqklqWGSs)은 DaVinci YRGB, DWG/Intermediate 타임라인,
 
 ```bash
 python3 scripts/workflow.py duplicate --src "<타임라인 A>" --name "<A>_edit_<YYYYMMDD_HHMM>"
+```
+
+트랙 준비다. 빠진 트랙이 있으면 종료 코드 1이다.
+
+```bash
+python3 scripts/workflow.py tracks --timeline "<작업 타임라인>" --out "<출력 폴더>"
 ```
 
 노드 준비 상태 점검이다. 빠진 라벨이 있으면 종료 코드 1이다.
@@ -221,6 +250,7 @@ python3 scripts/workflow.py nodes --timeline "<작업 타임라인>" --profile "
 - 카메라 시계 오프셋: <카메라> <초>(근거)
 
 ## 2. 작업 타임라인(촬영 시간순)      ← timeline-chrono(클립 목록 표 포함)
+## 트랙 준비                          ← workflow.py tracks
 ## 3. 컷·안정화                       ← cut-travelflow
 ## 노드 준비 상태                     ← workflow.py nodes
 ## 5. LUT(Log 변환)                   ← logconvert
@@ -249,4 +279,5 @@ python3 scripts/workflow.py nodes --timeline "<작업 타임라인>" --profile "
 - 사용자 확인 없는 삭제, 렌더 파일 덮어쓰기, YouTube 업로드(업로드 시 기본 공개 상태는 비공개)
 - 스코프·얼굴 탐지 결과 없이 "문제없음" 판정. 판정 근거가 없으면 `확인 필요`로 남긴다
 - 사용자가 지정하지 않은 LUT·스타일 적용
+- 훅·인트로 제작. 편집이 끝난 뒤 `akbun-davinciresolve-searchhook`을 따로 호출한다
 - 마커 등록표 밖의 색·이름·오프셋 사용
