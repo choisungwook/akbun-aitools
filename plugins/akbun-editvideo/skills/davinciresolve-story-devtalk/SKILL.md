@@ -1,18 +1,18 @@
 ---
 name: davinciresolve-story-devtalk
-description: 개발자가 얼굴 없이 목소리로 말하는 브이로그(기술 원리·트레이드오프 설명, 내 프로젝트 과정, 회고·개인 생각)를 DaVinci Resolve에서 편집하는 workflow 선언. 편집 스타일(davinciresolve-style-essay·project·reflection)을 고른 뒤 davinciresolve-beats-devtalk(전사·비트·나열) → davinciresolve-cut-devtalk(문장 단위 컷) → davinciresolve-subtitle-devtalk(자막) → davinciresolve-gfx-hyperframes(그래픽 카드) → davinciresolve-sfx-epidemicsound(효과음) → davinciresolve-bgm-epidemicsound(배경음악 후보·선택 보고) 순서로 각 SKILL.md를 읽어 수행하고 단계별 완료 조건·검증·작업 로그를 관리한다. 영상 클립이 없으면 중단하고 akbun-vlog-shootplan을 안내한다. "이 영상 스토리 잡아서 끝까지 편집해줘" 요청에 사용한다. 사용자가 직접 호출할 때만 실행한다.
+description: 개발자의 얼굴 비노출 말하기 영상(기술 설명·프로젝트·일상·주차 diary·회고)을 DaVinci Resolve에서 편집하는 workflow. story arc와 5–7분 기본 길이를 적용하고 전사·비트·컷·화면·자막·그래픽·오디오 단계를 관리한다. 촬영 전 기획은 akbun-vlog-prepared-devtalk으로 연결한다. 사용자가 직접 호출할 때만 실행한다.
 disable-model-invocation: true
 ---
 
 # davinciresolve-story-devtalk
 
-말소리가 있는 개발자 브이로그 편집의 순서·완료 조건·검증·기록을 선언한다. 화자는 얼굴을 드러내지 않는다. 화면에는 얼굴이 없는 화면 클립·화면 녹화·그래픽 카드만 나가고 말소리는 그 위에 흐른다. 화면 클립의 종류는 제한하지 않는다. 이 전제는 모든 단계 skill에 적용된다. 각 단계의 규칙은 그 단계 skill의 `SKILL.md`가 원본이고, 이 skill은 그것을 순서대로 읽어 수행할 뿐 규칙을 다시 적지 않는다. 단계 skill은 모두 사용자 직접 호출 전용(`disable-model-invocation: true`)이므로 Skill 도구로 부르지 않고 `SKILL.md`를 읽어 직접 수행한다. 경로는 이 파일과 같은 `skills/` 아래다. 사용자는 어느 단계 skill이든 단독으로 부를 수 있다.
+말소리가 있는 개발자 브이로그 편집의 순서·완료 조건·검증·기록을 선언한다. 화자는 얼굴을 드러내지 않는다. 화면에는 얼굴 없는 화면 클립·화면 녹화·필요한 그래픽만 나가고 말소리는 그 위에 흐른다. 개인 경험은 시청자 맥락과 실제 사건을 잇는 이야기의 중심을 이루며, 하루·주차의 작업 목록만 나열하지 않는다. 기본 길이는 5–7분, 최대 10분 미만이다. 화면 클립은 이야기 역할을 기록한다. 각 단계 규칙의 원본은 그 단계 `SKILL.md`이며, 이 skill은 그것을 순서대로 읽는다. 모든 단계 skill이 직접 호출 전용이므로 Skill 도구로 부르지 않고 문서를 읽어 수행한다. 사용자는 단계 skill을 단독으로 부를 수 있다.
 
 `akbun-davinciresolve-workflow`의 기본 원칙(작업 타임라인에서만 편집, 클립은 파일명 + 시작 타임코드, 대표 1개 선적용, 작업 로그, 되돌릴 수 없는 작업은 확인)과 마커 등록표를 그대로 따른다. 말소리 없는 여행 영상은 그 skill이 맡는다.
 
 ## 시작 조건
 
-미디어 풀 또는 사용자가 준 폴더에 영상 클립이 1개 이상 있어야 한다. 클립이 없거나 사용자가 "촬영 전"이라고 하면 여기서 중단하고, 촬영 방향은 `akbun-vlog-shootplan`이 맡는다고 한 줄로 안내한다. 클립 없이 스토리·촬영 계획을 만들지 않는다.
+미디어 풀 또는 사용자가 준 폴더에 영상 클립이 1개 이상 있어야 한다. 클립이 없거나 사용자가 "촬영 전"이라고 하면 편집은 시작하지 않는다. 이야기·스토리보드·스케치·촬영 계획을 만들려면 `akbun-vlog-prepared-devtalk`을, 이야기가 정해져 있고 촬영 logistics만 필요하면 `akbun-vlog-shootplan`을 안내한다.
 
 ## 스타일 선택
 
@@ -21,10 +21,10 @@ disable-model-invocation: true
 | 주제 유형 | 스타일 skill |
 |---|---|
 | 기술 원리·개념·트레이드오프 설명(모션 그래픽으로 원리를 보여 주는 영상) | `davinciresolve-style-essay` |
-| 내가 무엇을 만드는 과정, 시행착오 | `davinciresolve-style-project` |
+| 내가 무엇을 만드는 과정, 개발자 일상·주차 diary의 구체적 변화 | `davinciresolve-style-project` |
 | 회고, 개인 생각, 위 둘이 아닌 것 | `davinciresolve-style-reflection` |
 
-두 유형이 섞이면 큰 틀은 `reflection`, 설명 구간만 `essay`의 규칙을 쓰고 섞은 구간을 로그에 적는다. 총길이는 스타일과 무관하게 10분 미만이다.
+day-in-the-life와 주차 diary에서 진행·장애·결과가 중심이면 `project`, 사건 뒤 생각의 변화가 중심이면 `reflection`을 고른다. 두 유형이 섞이면 큰 틀은 `reflection`, 근거가 필요한 설명 구간만 `essay`의 규칙을 쓰고 로그에 적는다. 기본 목표는 5–7분, 최대 10분 미만이다. 사용자가 더 긴 길이를 지정하면 범위를 확인한다.
 
 ## 트랙 배치
 
