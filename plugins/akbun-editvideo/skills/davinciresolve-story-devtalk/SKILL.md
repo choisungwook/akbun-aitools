@@ -28,7 +28,7 @@ day-in-the-life와 주차 diary에서 진행·장애·결과가 중심이면 `pr
 
 ## 트랙 배치
 
-단계 skill이 같은 트랙에 겹쳐 놓지 않도록 여기서 고정한다.
+새 devtalk 타임라인의 기본 배치다. 기존 타임라인의 오디오 역할·인덱스는 사운드 공통 스킬에서 확인하며, 겹치는 음악·스템은 빈 트랙을 추가한다.
 
 | 트랙 | 내용 | 놓는 skill |
 |---|---|---|
@@ -41,11 +41,11 @@ day-in-the-life와 주차 diary에서 진행·장애·결과가 중심이면 `pr
 | A3 `SFX` | Epidemic Sound 효과음 | `davinciresolve-sfx-epidemicsound` |
 | A4 `MUSIC` | Epidemic Sound 배경음악 | `davinciresolve-bgm-epidemicsound` |
 
-레벨·덕킹·마스터는 `davinciresolve-audio-delivery`가 맞춘다. 그 skill의 트랙 표는 여행용이므로 A1 `LOCATION`을 `VOICE`, A2 `AMBIENCE`를 `LOCATION`(같은 -12 dB)으로 읽고 A3·A4는 그대로다.
+효과음·음악·레벨·덕킹·검토 마커는 [davinciresolve-sfx-epidemicsound](../davinciresolve-sfx-epidemicsound/SKILL.md)의 공통 기준을 따른다. 오디오 편집 직전에 복제한 작업본 ID를 이후 모든 단계가 이어받는다. 출력 계측은 `davinciresolve-audio-delivery`가 맡는다.
 
 ## 실행 환경 확인
 
-시작할 때 확인하고 작업 로그 `환경` 절에 적는다. Resolve 조작 수단은 `akbun-davinciresolve-workflow`의 표를 따르되, Resolve MCP(`get_resolve_status`, `run_script`)가 있으면 그것을 1순위로 쓴다. 전사 수단은 `davinciresolve-beats-devtalk`을 따른다. 그래픽 제작은 필요성과 도구 선택을 먼저 확인한다. 준비 문서의 도구가 미정이면 비용·편집 가능성·출력 형식에 맞춰 제안하고, 선택 전에는 특정 도구를 설치·구매·호출하지 않는다. HyperFrames를 선택한 경우만 `davinciresolve-gfx-hyperframes`를 읽는다. 글꼴은 `davinciresolve-subtitle-devtalk`, Epidemic Sound 플러그인은 `davinciresolve-bgm-epidemicsound`의 확인 방법을 따른다.
+시작할 때 확인하고 작업 로그 `환경` 절에 적는다. Resolve 조작 수단은 `akbun-davinciresolve-workflow`의 표를 따르되, Resolve MCP(`get_resolve_status`, `run_script`)가 있으면 그것을 1순위로 쓴다. 전사 수단은 `davinciresolve-beats-devtalk`을 따른다. 그래픽 제작은 필요성과 도구 선택을 먼저 확인한다. 준비 문서의 도구가 미정이면 비용·편집 가능성·출력 형식에 맞춰 제안하고, 선택 전에는 특정 도구를 설치·구매·호출하지 않는다. HyperFrames를 선택한 경우만 `davinciresolve-gfx-hyperframes`를 읽는다. 글꼴은 `davinciresolve-subtitle-devtalk`, Epidemic Sound Workflow Integration 또는 MCP는 사운드 공통 스킬의 확인 방법을 따른다.
 
 ## 작업 순서
 
@@ -59,9 +59,9 @@ day-in-the-life와 주차 diary에서 진행·장애·결과가 중심이면 `pr
 | 4 | 문장 단위 컷 | `davinciresolve-cut-devtalk` | 불필요한 침묵·재녹음·필러 제거, 의도된 pause 보존, 리듬 조정 이유 기록 |
 | 5 | 오버레이 자막 | `davinciresolve-subtitle-devtalk` | style skill 글자 표대로 들어갔고 안전 영역 안이며 최소 글자 크기를 지킨다 |
 | 6 | 필요한 그래픽 제작 | 선택한 도구의 절차; HyperFrames 선택 시 `davinciresolve-gfx-hyperframes` | 확정한 `GFX` 위치에 타임라인 해상도·fps와 맞는 결과가 있다. 그래픽 불필요이면 건너뜀, 도구 미정이면 아이디어와 위치를 유지하고 다른 작업 진행 |
-| 7 | 효과음 | `davinciresolve-sfx-epidemicsound` | 이벤트 표의 위치에 A3 효과음이 있고 밀도 제한 안 |
-| 8 | 배경음악 | `davinciresolve-bgm-epidemicsound` | 후보 표와 선택 이유를 사용자에게 말했고 A4에 곡이 있다 |
-| 9 | 노출·색, 타인 얼굴 모자이크, 오디오 믹싱, 렌더 | `akbun-davinciresolve-workflow` 4~10·12·14·16단계 | 그 skill의 완료 조건 |
+| 7 | 사운드 디자인·음악 계획 | `davinciresolve-sfx-epidemicsound` | 복제본에 원음·환경음·동작/창작 SFX·필요한 음악 cue가 배치되고 말 가림·싱크와 검토 마커 확인 |
+| 8 | 필요한 BGM 보완 | `davinciresolve-bgm-epidemicsound` | 7단계에 미완성인 음악 cue만 보완. 이미 배치된 음악은 반복 삽입하지 않고 선택 이유·구간 기록 |
+| 9 | 노출·색, 타인 얼굴 모자이크, 최종 믹스 계측·렌더 | `akbun-davinciresolve-workflow` 4~10·12·16단계 | 그 skill의 완료 조건 |
 
 5단계 뒤에 컷을 다시 고치면 `davinciresolve-cut-devtalk`이 바뀐 구간 목록을 넘기고 5~8단계 skill이 위치를 다시 맞춘다. 단계를 건너뛰거나 바꾸면 이유를 로그에 적는다.
 
@@ -79,8 +79,8 @@ day-in-the-life와 주차 diary에서 진행·장애·결과가 중심이면 `pr
 | 그래픽 | 확정한 `GFX` 위치와 V2 결과 대조 | 필요한 그래픽은 존재하고 해상도·fps 일치. 도구 미정으로 미완성이면 완료·최종 렌더로 보고하지 않음 |
 | 화자 얼굴 | 타임라인 렌더 프리뷰 또는 V1 구간 원본을 1초 간격 프레임으로 뽑아 얼굴 탐지(`akbun-davinciresolve-workflow` `references/agent-api.md`의 대체 방법) | 화자 얼굴이 식별되는 프레임 0개. 탐지기가 없으면 `확인 필요`로 남기고 렌더하지 않는다 |
 | 챕터 | `CHAPTER` 마커 | 3개 이상, 간격 10초 이상 |
-| 효과음 | A3 클립 수와 위치 | 분당 6개 이하, 음성 문장 중간에 없음 |
-| 배경음악 | 작업 로그 `오디오` 절 | 후보 표·선택 이유·곡명·아티스트가 있다 |
+| 사운드 | 공통 스킬의 큐시트·검청·마커 | 말 가림·싱크·의도하지 않은 무음/클릭 확인, 미확인 항목은 `AUDIO_REVIEW`와 TC 목록에 존재 |
+| 배경음악 | 작업 로그 `오디오` 절 | 사용 곡·스템·구간·전환 이유 기록. 무음 선택도 허용하며 추가 음악 미필요를 실패로 보지 않음 |
 
 ## 작업 로그
 
