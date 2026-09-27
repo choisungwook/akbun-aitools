@@ -34,7 +34,7 @@ ffmpeg -i "<타임라인 오디오 또는 렌더 파일>" -af silencedetect=n=-3
 
 ## 편집 결과 조정
 
-컷이 바뀌면 `davinciresolve-subtitle-devtalk`, `davinciresolve-gfx-hyperframes`, `davinciresolve-sfx-epidemicsound`, `davinciresolve-bgm-epidemicsound`에 바뀐 구간 목록(`파일명 | 이전 시작 TC | 새 시작 TC | 길이 변화(프레임)`)을 넘긴다. `CHAPTER`·`GFX` 타임라인 마커는 클립을 따라가지 않으므로 새 시작 TC로 다시 찍는다.
+컷이 바뀌면 `davinciresolve-subtitle-devtalk`, `davinciresolve-gfx-hyperframes`, `davinciresolve-sfx-epidemicsound`(BGM 포함 공통 기준)에 바뀐 구간 목록(`파일명 | 이전 시작 TC | 새 시작 TC | 길이 변화(프레임)`)을 넘긴다. `CHAPTER`·`GFX` 타임라인 마커는 클립을 따라가지 않으므로 새 시작 TC로 다시 찍는다.
 
 ## 작업 로그
 
