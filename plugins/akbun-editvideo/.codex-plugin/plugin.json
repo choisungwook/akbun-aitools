@@ -1,6 +1,6 @@
 {
   "name": "akbun-editvideo",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Video editing skills — plan and run DaVinci Resolve vlog edits: speech-free travel vlogs (cut/stabilize, chronological timeline, color-grading workflow (Log LUT, exposure, white balance, contrast, saturation on labeled nodes), face mosaic, Gmarket Sans subtitles, audio mix, 4K delivery) and faceless talking developer vlogs (transcript-driven storytelling, beat-ordered assembly, sentence-level cuts, dialogue/keyword subtitles, HyperFrames graphic cards, Epidemic Sound SFX and BGM selection in essay/project/reflection styles, plus a pre-shoot guide, shot sketches and a storyboard with OBS screen-recording list)",
   "author": {
     "name": "akbun",
@@ -49,6 +49,7 @@
       "하늘만 진하게 해줘, 하늘 없는 클립은 건너뛰고 (akbun-davinciresolve-sky)",
       "이 여행 영상 프로젝트를 시간순 타임라인부터 컷·색보정·모자이크·자막·오디오·4K 렌더까지 workflow대로 끝까지 편집해줘 (akbun-davinciresolve-workflow)",
       "얼굴 나오는 장면에 약한 모자이크 넣고 내가 나중에 찾을 수 있게 마커 남겨줘 (davinciresolve-face-privacy)",
+      "첫 클립의 관중석 전체를 한 개 넓은 모자이크 창으로 가리고 YouTube 챕터와 비공개 4K 업로드 설정해줘 (davinciresolve-face-privacy, davinciresolve-audio-delivery)",
       "Gmarket Sans로 장소·시간 전달하는 한글 자막과 챕터 마커 넣어줘 (davinciresolve-subtitle-travelnote)",
       "현장음·효과음·BGM 믹싱하고 YouTube용 4K로 렌더링해서 검증해줘 (davinciresolve-audio-delivery)",
       "촬영한 클립으로 스토리부터 컷·자막·그래픽 카드까지 workflow대로 끝까지 편집해줘 (davinciresolve-story-devtalk)",

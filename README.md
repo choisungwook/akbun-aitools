@@ -17,7 +17,7 @@ plugin 10개, skill 56개. 하고 싶은 일에서 plugin을 찾고, 아래 `plu
 | 이미 쓰는 코드·문서를 자동 검증에 걸어 리팩토링, 사람이 판단할 것만 보고 | [akbun-refactoring](#akbun-refactoring) | `akbun-refactoring-autoverify` |
 | agent 기억 구조 설정, 세션 시작 때 맥락 복원, 세션에서 배운 것을 skill에 반영 | [akbun-agent-ops](#akbun-agent-ops) | `akbun-memory-setup`, `akbun-recall`, `akbun-reflect` |
 | 매일 GitHub·Readwise 활동을 복습 문서로, 기간별 결과를 주간회의 브리프로 | [akbun-pulse](#akbun-pulse) | `github-daily-pulse`, `github-period-pulse`, `readwise-daily-pulse` |
-| DaVinci Resolve 브이로그 편집(여행: 시간순 타임라인, 컷·안정화, 색보정 workflow(LUT·밝기·화이트밸런스·대비·채도), 얼굴 모자이크, 한글 자막, 오디오 믹싱, 4K 출력 / 말하는 개발자 브이로그: 촬영 계획·스토리보드, 전사 기반 스토리·컷·자막·그래픽 카드·Epidemic Sound 효과음·BGM) | [akbun-editvideo](#akbun-editvideo) | `akbun-davinciresolve-workflow`, `davinciresolve-cut-travelflow`, `davinciresolve-story-devtalk`, `davinciresolve-subtitle-devtalk` |
+| DaVinci Resolve 브이로그 편집(여행: 시간순 타임라인, 컷·안정화, 색보정 workflow(LUT·밝기·화이트밸런스·대비·채도), 얼굴 모자이크, 한글 자막, 오디오 믹싱, YouTube 썸네일·챕터·업로드 / 말하는 개발자 브이로그: 촬영 계획·스토리보드, 전사 기반 스토리·컷·자막·그래픽 카드·Epidemic Sound 효과음·BGM) | [akbun-editvideo](#akbun-editvideo) | `akbun-davinciresolve-workflow`, `davinciresolve-cut-travelflow`, `davinciresolve-story-devtalk`, `davinciresolve-subtitle-devtalk` |
 
 ## 빠른 시작
 
@@ -170,7 +170,7 @@ agent 운영 skill 모음. 프로젝트의 기억 구조를 최초 1회 설계�
 
 ### akbun-editvideo
 
-영상 편집 skill 모음. 말소리 없는 여행 브이로그는 `akbun-davinciresolve-workflow`가, 개발자가 얼굴 없이 목소리로 말하는 브이로그는 `davinciresolve-story-devtalk`이 DaVinci Resolve에서 편집한다. 원본 타임라인은 건드리지 않고 복제본에서 작업하며, 모든 변경을 파일명·타임코드 기준 작업 로그에 남긴다. 컷·자막·편집 스타일은 스타일별 skill로 나눠 다른 스타일을 나중에 추가할 수 있다.
+영상 편집 skill 모음. 말소리 없는 여행 브이로그는 `akbun-davinciresolve-workflow`가, 개발자가 얼굴 없이 목소리로 말하는 브이로그는 `davinciresolve-story-devtalk`이 DaVinci Resolve에서 편집한다. 원본 타임라인은 건드리지 않고 복제본에서 작업하며, 모든 변경을 파일명·타임코드 기준 작업 로그에 남긴다. 컷·자막·편집 스타일은 스타일별 skill로 나눠 다른 스타일을 나중에 추가할 수 있다. YouTube 납품에는 서로 다른 장면의 썸네일 후보, 시작 지점 챕터 마커, 요청된 공개 범위·메타데이터를 포함한다.
 
 | skill | 설명 |
 |---|---|
@@ -185,7 +185,7 @@ agent 운영 skill 모음. 프로젝트의 기억 구조를 최초 1회 설계�
 | [akbun-davinciresolve-workflow](./plugins/akbun-editvideo/skills/akbun-davinciresolve-workflow/) | 여행 브이로그 편집 오케스트레이터. timeline-chrono(촬영 시간순 타임라인, 항상 첫 단계) → 복제 → 컷·안정화 → 클립별 라벨 노드 준비(`workflow.py nodes`로 점검) → logconvert → exposure → whitebalance → contrast → saturation → LOOK → 모자이크 → 자막·챕터 → 오디오 → 4K 렌더 순서로 아래 skill의 SKILL.md를 읽어 수행하고 마커 등록표·단계별 완료 조건·검증·작업 로그 관리. 노드 순서(EXPOSURE→WB→CST→CONTRAST→SAT)와 실행 순서가 다른 이유, Resolve 스크립팅 API 대응표와 없는 기능의 대체 방법 표(`references/agent-api.md`) 포함 |
 | [davinciresolve-face-privacy](./plugins/akbun-editvideo/skills/davinciresolve-face-privacy/) | 얼굴·개인정보에 넓고 부드러운 약한 Mosaic Blur. `PRIVACY_MOSAIC` 노드 + Purple 클립 마커 + 작업 로그 표로 사용자가 나중에 위치를 찾아 수정 가능, 판정 불가는 `PRIVACY_CHECK` Pink 클립 마커 |
 | [davinciresolve-subtitle-travelnote](./plugins/akbun-editvideo/skills/davinciresolve-subtitle-travelnote/) | 자막 스타일 travelnote. Gmarket Sans, 장소·시간·분위기 한 줄, 큰 글자(Text+ Size 0.12, 기본값 1.5배)를 스틸로 측정해 안전 영역에 맞춤, 통일 자간·행간, 컷 변경 뒤 재타이밍, 장소 변경 지점 YouTube 챕터 마커(3개 이상) |
-| [davinciresolve-audio-delivery](./plugins/akbun-editvideo/skills/davinciresolve-audio-delivery/) | A1 현장음·A2 환경음·A3 효과음·A4 BGM을 현장음 기준 상대 레벨로 믹싱하고 마스터 -14 LUFS, YouTube 4K(3840×2160, 타임라인 fps, H.264/H.265 + AAC) 렌더와 ffprobe 검증, 곡 출처 기록, 업로드 기본 비공개 |
+| [davinciresolve-audio-delivery](./plugins/akbun-editvideo/skills/davinciresolve-audio-delivery/) | A1 현장음·A2 환경음·A3 효과음·A4 BGM을 현장음 기준 상대 레벨로 믹싱하고 마스터 -14 LUFS, YouTube용 서로 다른 16:9 썸네일 후보 3개 추출, 4K(3840×2160, 타임라인 fps, H.264/H.265 + AAC) 렌더·ffprobe 검증, 챕터·제목·설명·위치·카테고리·공개 범위 설정 및 요청 시 직접 업로드 |
 | [davinciresolve-story-devtalk](./plugins/akbun-editvideo/skills/davinciresolve-story-devtalk/) | 얼굴 없이 목소리로 말하는 개발자 브이로그 workflow 선언. style skill 선택 → 아래 devtalk·epidemicsound skill 6개의 SKILL.md를 순서대로 읽어 수행하고 트랙 배치(V1 화면·V2 카드·V3 Text+·A1 음성)·완료 조건·검증(화자 얼굴 0프레임 포함)·작업 로그만 관리. 총길이 10분 미만. 영상 클립이 없으면 중단하고 `akbun-vlog-shootplan`을 안내 |
 | [akbun-vlog-shootplan](./plugins/akbun-editvideo/skills/akbun-vlog-shootplan/) | 촬영 전 방향 잡기. 질문표 한 번(주제·얻는 것·핵심 문장·유형·길이·자료·장비 수·음성 방식) → style skill 선택 → 구조 표대로 비트 시트 → 카메라·보조 카메라·마이크·화면 녹화 역할 배정(제품명 없음) → 얼굴이 나오지 않는 프레이밍 표 → 스타일별 말하기 가이드·B-roll 최소 개수를 담은 촬영 계획서. 집 안 촬영 기본, 편집은 하지 않음 |
 | [akbun-vlog-shotsketch](./plugins/akbun-editvideo/skills/akbun-vlog-shotsketch/) | 한 샷의 스토리보드 컷. 얼굴 없는 샷 유형 5종(탑다운·오버 숄더·가슴 아래·물건·공간·측면 손)별 카메라 위치·높이·각도와 프레임 상단이 끊는 곳, 화자 자세·동작을 회색 연필 스케치(이미지 도구 없으면 영어 프롬프트)와 샷 표로 |
