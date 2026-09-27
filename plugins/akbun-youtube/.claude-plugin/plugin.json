@@ -1,0 +1,23 @@
+{
+  "name": "akbun-youtube",
+  "description": "YouTube skills written as YAML for people and AI — a channel settings sheet that follows official YouTube documentation, Codex computer-use skills that set an uploaded video's metadata and register AI-translated titles and descriptions (English, Japanese, French, Simplified Chinese), and analysis of your own videos' metrics and style",
+  "version": "1.0.0",
+  "author": {
+    "name": "akbun"
+  },
+  "repository": "https://github.com/choisungwook/akbun-aitools",
+  "license": "MIT",
+  "keywords": [
+    "youtube",
+    "youtube-studio",
+    "channel",
+    "metadata",
+    "localization",
+    "translation",
+    "analytics",
+    "style",
+    "yaml",
+    "computer-use",
+    "codex"
+  ]
+}

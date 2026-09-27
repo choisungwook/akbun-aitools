@@ -67,6 +67,12 @@
       "source": "./plugins/akbun-editvideo",
       "description": "Video editing skills — DaVinci Resolve vlog edits: speech-free travel vlogs (cut/stabilize, exposure/white balance, face mosaic, Gmarket Sans subtitles, audio mix, 4K delivery) and faceless talking developer vlogs (transcript-driven storytelling, sentence-level cuts, subtitles, HyperFrames graphic cards, Epidemic Sound SFX/BGM in essay/project/reflection styles, pre-shoot guide, shot sketches, storyboard)",
       "strict": true
+    },
+    {
+      "name": "akbun-youtube",
+      "source": "./plugins/akbun-youtube",
+      "description": "YouTube skills written as YAML for people and AI — a channel settings sheet that follows official YouTube documentation, Codex computer-use skills that set an uploaded video's metadata and register AI-translated titles and descriptions (English, Japanese, French, Simplified Chinese), and analysis of your own videos' metrics and style",
+      "strict": true
     }
   ]
 }
