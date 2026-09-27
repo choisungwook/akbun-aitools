@@ -1,6 +1,6 @@
 ---
 name: akbun-davinciresolve-workflow
-description: 말소리 없는 여행 브이로그를 DaVinci Resolve 21.1에서 처음부터 끝까지 편집하는 workflow 오케스트레이터. 미디어 풀 영상 전부를 촬영 시간순 타임라인으로 만드는 것(akbun-davinciresolve-timeline-chrono)이 항상 첫 단계이고, 그 복제본에서 컷·안정화(davinciresolve-cut-travelflow) → 라벨 노드(EXPOSURE→WB→CST→CONTRAST→SAT) 색보정(logconvert → exposure → whitebalance → contrast → saturation) → 얼굴 모자이크(davinciresolve-face-privacy) → 한글 자막·챕터(davinciresolve-subtitle-travelnote) → 오디오 믹싱·4K 출력(davinciresolve-audio-delivery) 순서로 각 skill의 SKILL.md를 읽어 직접 수행하고 마커 등록표·단계별 완료 조건·검증·작업 로그를 관리한다. "이 프로젝트 편집 계획 세워서 끝까지 해줘", "영상 전부 시간순으로 놓고 색보정까지 해줘", "타임라인 정리부터 렌더까지" 요청에 사용한다. 사용자가 직접 호출할 때만 실행한다.
+description: 말소리 없는 여행 브이로그를 DaVinci Resolve 21.1에서 처음부터 끝까지 편집하는 workflow 오케스트레이터. 미디어 풀 영상 전부를 촬영 시간순 타임라인으로 만드는 것(akbun-davinciresolve-timeline-chrono)이 항상 첫 단계이고, 그 복제본에서 컷·안정화(davinciresolve-cut-travelflow) → 라벨 노드(EXPOSURE→WB→CST→CONTRAST→SAT) 기본 색보정(logconvert → exposure → whitebalance → contrast → saturation) → 요청된 look skill과 새 LOOK 노드 → 얼굴 모자이크(davinciresolve-face-privacy) → 한글 자막·챕터(davinciresolve-subtitle-travelnote) → 오디오 믹싱·4K 출력(davinciresolve-audio-delivery) 순서로 각 skill의 SKILL.md를 읽어 직접 수행하고 마커 등록표·단계별 완료 조건·검증·작업 로그를 관리한다. "이 프로젝트 편집 계획 세워서 끝까지 해줘", "영상 전부 시간순으로 놓고 색보정까지 해줘", "타임라인 정리부터 렌더까지" 요청에 사용한다. 사용자가 직접 호출할 때만 실행한다.
 disable-model-invocation: true
 ---
 
@@ -85,7 +85,7 @@ API가 있어도 없는 기능이 있다. 기능별 API 유무·버전 조건·�
 | 8 | 화이트밸런스 | `akbun-davinciresolve-whitebalance` | `WB_CHECK` 사용자 보고 |
 | 9 | 대비 | `akbun-davinciresolve-contrast` | 클리핑 없음 |
 | 10 | 채도 | `akbun-davinciresolve-saturation` | 대역 미달 없음 |
-| 11 | 사용자 지정 룩 LUT | 이 skill | 사용자가 별도 룩 LUT를 지정했을 때만 마지막 `LOOK` 라벨 노드에 `Graph.SetLUT`로 적용. 강도(Key Output Gain)는 API가 없어 화면에서 0.2 안팎. 지정이 없으면 건너뛰고 로그에 "LOOK 없음" |
+| 11 | 창작 look | 사용자가 고른 `akbun-davinciresolve-look-*` skill | 기본 보정이 끝난 뒤 해당 style skill을 읽는다. Color 페이지에서 새 Serial 노드를 추가해 `LOOK`으로 라벨하고 이 노드에만 창작 조정을 한다. 룩 LUT를 지정하지 않아도 노드는 새로 만든다. Look을 요청하지 않았으면 적용하지 않는다 |
 | 12 | 얼굴과 개인정보 모자이크 | `davinciresolve-face-privacy` | 모자이크 클립마다 `PRIVACY_MOSAIC` 클립 마커와 노드 존재 |
 | 13 | Gmarket Sans 한글 자막과 챕터 마커 | `davinciresolve-subtitle-travelnote` | 자막이 안전 영역 안에 있고 챕터 마커가 장소 변경 지점마다 존재 |
 | 14 | 현장음·효과음·BGM 믹싱 | `davinciresolve-audio-delivery` (믹싱 절) | 라우드니스·피크 기준 통과, 사용한 곡 목록 기록 |
@@ -114,17 +114,18 @@ API가 있어도 없는 기능이 있다. 기능별 API 유무·버전 조건·�
 | 3 | `CST` | `akbun-davinciresolve-logconvert` | **1** (6단계) | Log 클립만. LUT를 건다 |
 | 4 | `CONTRAST` | `akbun-davinciresolve-contrast` | 4 (9단계) | 변환 뒤 |
 | 5 | `SAT` | `akbun-davinciresolve-saturation` | 5 (10단계) | 변환 뒤 |
+| 6 (선택) | `LOOK` | 사용자가 고른 look skill | 6 (11단계) | 보정 노드 뒤 새 Serial 노드 |
 
 비Log 클립은 `CST`가 없고 나머지는 같다. 이 순서는 실무 튜토리얼 세 편(Declan Jenkinson "Colour Grading For BEGINNERS", Dunna Did It "My Davinci Resolve Color Grading Process", KC ian "The Highest Level of Color Grading")의 공통점에서 왔다.
 
 | 공통점 | 이 workflow의 대응 |
 |---|---|
-| 작업 1개 = 라벨 노드 1개(WB, Exposure, CST/LUT, Curves, Saturation, Look) | 라벨 노드 5개, 라벨 없는 노드에는 쓰지 않음 |
+| 기본 보정과 창작 look을 별도 노드에 둠 | 기본 보정 라벨 5개, 요청 시 창작용 `LOOK` 노드 1개를 추가 |
 | 화이트밸런스·노출은 Log 상태(변환 앞)에서, 대비·채도는 변환 뒤에서 | `EXPOSURE`·`WB`는 `CST` 앞, `CONTRAST`·`SAT`은 뒤 |
 | 스코프로 판단: Waveform으로 노출·클리핑, Vectorscope·피커로 WB, 피벗 0.435(Rec.709) 대비 | 스틸 기반 스코프값, 중립 픽셀 R/G/B, `--pivot 0.435` |
 | 밤 장면은 어두운 게 맞다("context is important") | 시간대별 목표 대역 |
 | 채도는 조금만, 섀도·하이라이트는 채도를 빼서 필름처럼 | 채도 상한 1.25, `--rolloff` |
-| 크리에이티브 룩 LUT는 맨 뒤에 약하게(Key Output Gain 0.2) | 11단계 `LOOK` 노드 |
+| 창작 룩은 기본 보정과 분리된 새 노드에서 한다 | 요청된 style skill을 읽고 마지막 `LOOK` 노드에서 조정 |
 
 ## 노드 준비
 
@@ -195,6 +196,8 @@ python3 scripts/workflow.py nodes --timeline "<작업 타임라인>" --profile "
 ## 4c. 대비                           ← contrast
 ## 4d. 채도                           ← saturation
 ## LOOK
+
+사용자가 look을 요청한 경우 선택한 skill 이름과 새 `LOOK` Serial 노드에서 조정한 목적을 기록한다. 요청한 룩 노드가 없거나 기존 노드에 창작 조정이 섞여 있으면 다음 단계로 넘어가지 않는다. 사용자가 요청하지 않았다면 `LOOK 없음`으로 남긴다.
 ## 모자이크                           ← face-privacy
 ## 자막·챕터                          ← subtitle-travelnote
 ## 오디오                             ← audio-delivery
