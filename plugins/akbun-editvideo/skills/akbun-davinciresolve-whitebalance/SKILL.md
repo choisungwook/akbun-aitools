@@ -6,7 +6,7 @@ disable-model-invocation: true
 
 # akbun-davinciresolve-whitebalance
 
-인접 클립 사이에 색온도가 튀지 않게 화이트밸런스를 맞춘다. 판단 근거는 눈이 아니라 중립 픽셀의 R·G·B 수치다. 밝기는 `akbun-davinciresolve-exposure`가 맡고 이 skill은 색만 다룬다.
+인접 클립 사이에 색온도가 튀지 않게 화이트밸런스를 맞춘다. 판단 근거는 눈이 아니라 중립 픽셀의 R·G·B 수치다. 인물이나 피부톤은 필요하지 않다. 하얀 건물·회색 포장·구름도 주변광이나 반사색을 받았을 수 있으므로, 장면에서 실제 중립이라고 판단할 근거가 있을 때만 표본으로 쓴다. 확실한 기준이 없으면 억지로 중립화하지 않고 `WB_CHECK`로 남긴다. 시간대의 따뜻함·차가움은 촬영 의도로 보존할 수 있지만, 별도의 창작 색조나 split tone은 기본 보정에 넣지 않고 요청된 새 `LOOK` 노드에서 만든다. 밝기는 `akbun-davinciresolve-exposure`가 맡고 이 skill은 색만 다룬다.
 
 `akbun-davinciresolve-workflow`의 기본 원칙과 `akbun-davinciresolve-exposure`의 노드 규칙(새 노드 + 라벨, 라벨 없는 노드에는 쓰지 않음)을 그대로 따른다. 실행 수단은 [`scripts/whitebalance.py`](scripts/whitebalance.py)다. 측정·세션 코드는 exposure skill의 `exposure_scope.py`를 가져다 쓴다.
 
