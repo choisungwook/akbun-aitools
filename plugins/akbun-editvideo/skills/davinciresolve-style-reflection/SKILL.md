@@ -1,12 +1,12 @@
 ---
 name: davinciresolve-style-reflection
-description: 회고·개인 생각을 목소리로 말하는 영상의 편집 스타일 reflection. 얼굴 없이 B-roll 위에 음성을 얹고, 뒤에 나올 강한 문장을 앞으로 끌어온 콜드 오픈, 균일한 3~4초 컷, 모든 대사에 하단 중앙 흰색 한 줄 자막을 단다. 주제가 essay·project에 맞지 않을 때의 기본 스타일이다. 총길이 10분 미만. davinciresolve-story-devtalk이 스타일로 읽는 기준 문서다. 사용자가 직접 호출할 때만 실행한다.
+description: 회고·개인 생각을 목소리로 말하는 영상의 편집 스타일 reflection. 얼굴 없이 구체적 사건·시청자 맥락·생각의 변화를 따라가고, 콜드 오픈과 대사 자막을 쓴다. 기본 5–7분, 최대 10분 미만. davinciresolve-story-devtalk이 스타일로 읽는 기준 문서다. 사용자가 직접 호출할 때만 실행한다.
 disable-model-invocation: true
 ---
 
 # davinciresolve-style-reflection
 
-생각의 흐름이 뼈대이고 모든 말이 B-roll 위 내레이션으로 얹히는 영상의 편집 규칙이다. 화자는 얼굴을 내지 않고, 소리는 계속 흐른다. 말은 `davinciresolve-cut-devtalk`이 자르고, 이 문서는 화면과 글자 규칙만 정한다.
+개인 경험에서 나온 생각의 변화가 뼈대인 영상의 편집 규칙이다. 화자는 얼굴을 내지 않고 목소리로 말한다. 구체적 사건과 시청자에게 필요한 배경을 먼저 두고, 상황 → 계기 → 생각 → 반대편/흔들림 → 결론으로 이어간다. B-roll은 감정이나 사건의 흔적을 보탤 때 쓴다. 말은 `davinciresolve-cut-devtalk`이 자르고, 이 문서는 화면과 글자 규칙만 정한다.
 
 B-roll의 종류는 정하지 않는다. 사용자가 가진 클립(대부분 집 안)을 `davinciresolve-beats-devtalk`이 배정한다. 장소 이동·외출 장면을 요구하지 않는다.
 
