@@ -224,7 +224,7 @@ Resolve 21.1.0.17에서 실측한 동작이다.
 | 훅 오디오 트랙 | 이름이 `HOOK`인 오디오 트랙을 찾는다. 없으면 `AddTrack`으로 stereo 오디오 트랙을 더하고 `SetTrackName`으로 `HOOK`이라 이름 붙인다. 이 트랙이 잠겨 있거나 BGM으로 지정되면 멈춘다. 훅 구간마다 영상(`mediaType` 1)은 V1에, 소리(`mediaType` 2)는 이 트랙에 같은 위치로 따로 붙인다. 렌더한 소리의 주파수로 훅 구간에서 이 트랙의 소리가 나는 것을 확인했다 |
 | V1 | V1이 잠겨 있으면 멈춘다 |
 | 실패했을 때 | 중간에 멈추면 H와 S가 만들다 만 상태로 남고 BGM 트랙이 잠겨 있을 수 있다. 스크립트는 타임라인을 지우지 않는다. 사용자 확인을 받고 지운 뒤 다시 실행한다 |
-| 화면 텍스트 | 미디어 풀의 `HOOK_TEXT_TEMPLATE`을 `AppendToTimeline`에 `trackIndex`(`HOOK_TEXT`)·`recordFrame`(시작)·`endFrame`(길이)으로 넘겨 일반 Text+ 클립 하나를 놓고, 그 클립의 Text+ 툴에 문구·글꼴·스타일·Size·Center를 넣는다. 자세한 실측은 `화면 텍스트를 놓는 방법` 절에 있다 |
+| 화면 텍스트 | 미디어 풀의 `HOOK_TEXT_TEMPLATE`을 `AppendToTimeline`에 `trackIndex`(`HOOK_TEXT`)·`recordFrame`(시작)·`endFrame`(길이)으로 넘겨 일반 Text+ 클립 하나를 놓고, 그 클립의 Text+ 툴에 문구·글꼴·스타일·Size·Center를 넣는다. Resolve 글꼴 목록에 글꼴·굵기가 없으면 놓지 않고 멈춘다. 놓는 함수 `put_text`는 자막 skill의 `textplus.py`도 쓴다. 자세한 실측은 `화면 텍스트를 놓는 방법` 절에 있다 |
 | 텍스트 수정 | `HOOK_TEXT` 트랙에서 Text+ 클립을 선택하고 Inspector의 Video > Title > Text 칸에서 문구를 바로 고친다. 글꼴·크기·위치도 같은 곳에서 고친다 |
 | 클립 마커 | 본편의 클립 마커(`PRIVACY_MOSAIC` 등)는 H에 그대로 있다. 훅 구간은 중첩 클립이라 그 안의 클립 마커가 보이지 않으므로 S에서 확인한다 |
 | 타임코드 | non-drop-frame만 지원한다. drop-frame 타임라인이면 멈춘다 |
@@ -266,7 +266,7 @@ Resolve 21.1.0.17에서 확인한 것이다. 확인한 API 한계와 그래서 �
 
 - 확인한 것은 3번(타임라인의 Text+ 클립을 미디어 풀로 끌어 놓으면 `Fusion Title` 항목이 생김)과 그 항목을 API로 놓는 것이다. 2번의 bin 만들기와 항목 옮기기는 API `AddSubFolder`·`MoveClips`로, 4번은 API `SetName`으로도 된다. `text`는 미디어 풀 전체에서 이름과 종류로 항목을 찾으므로 항목이 다른 bin에 있어도 쓴다. 1번과 5번은 Resolve의 일반 편집 동작이고 따로 확인하지 않았다.
 - Effects 목록의 Text+를 미디어 풀로 바로 끌어 놓는 것은 한 번 시도했고 항목이 생기지 않았다. 되는 방법으로 확인한 것은 타임라인의 클립을 끌어 놓는 것이다.
-- bin을 `.drb`로 내보내 다른 프로젝트에서 가져오는 API(`Folder.Export`, `ImportFolderFromFile`)가 있다. 내보낸 파일에 프로젝트 이름과 시스템 ID가 들어가므로 skill에 넣어 배포하지 않는다. 다른 프로젝트로 가져오는 것은 확인하지 않았다.
+- bin을 `.drb`로 내보내 다른 프로젝트에서 가져오는 API(`Folder.Export`, `ImportFolderFromFile`)가 있다. 내보낸 파일에 프로젝트 이름과 시스템 ID가 들어가므로 skill에 넣어 배포하지 않는다. `HOOK_TEXT_TEMPLATE` bin을 내보내 다른 프로젝트에서 `ImportFolderFromFile`로 가져오면 같은 이름의 `Fusion Title` 항목이 생기고 그대로 놓인다(21.1 실측).
 
 API로 놓을 수 없고 화면 조작으로도 템플릿을 만들 수 없으면 멈추고 사용자에게 알린다. 컴파운드 클립으로 감싸는 예전 방식으로 바꿔 놓지 않는다.
 

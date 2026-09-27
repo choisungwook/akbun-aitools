@@ -350,51 +350,76 @@ def pool_clips(mp):
     return clips
 
 
+def same_value(got, want):
+    return abs(got - want) < 1e-6 if isinstance(want, float) and isinstance(got, (int, float)) else got == want
+
+
+def put_text(resolve, project, tl, fps, track_name, template, at, frames, inputs):
+    """미디어 풀의 Fusion Title 항목 template을 이름이 track_name인 비디오 트랙의 at 프레임에 frames 길이의 일반 Text+ 클립 하나로 놓고
+    inputs [(Text+ 입력 이름, 값)]를 넣는다. Font와 Style은 꼭 있어야 한다. -> {track, kept, added}. 놓을 수 없으면 타임라인을 바꾸지 않고 종료한다.
+    davinciresolve-subtitle-travelnote의 textplus.py도 이 함수를 쓴다."""
+    origin, end, tc, want = tl.GetStartFrame(), tl.GetEndFrame(), frame_to_tc(at, fps), dict(inputs)
+    if not origin <= at < at + frames <= end or frames <= 0:
+        sys.exit("텍스트 구간이 타임라인 밖: %s + %.1f초" % (tc, frames / fps))
+    # Text+는 없는 글꼴 이름도 그대로 받아들이고 다른 글꼴로 그리므로(21.1 실측) Resolve의 글꼴 목록으로 확인한다
+    styles = list(((resolve.Fusion().FontManager.GetFontList() or {}).get(want["Font"]) or {}).keys())
+    if want["Style"] not in styles:
+        sys.exit("Resolve에 글꼴 없음: %s %s (있는 굵기: %s). 설치한 뒤 Resolve를 다시 열고 실행한다" % (want["Font"], want["Style"], ", ".join(styles) or "없음"))
+    # API에는 트랙과 위치를 정해 Text+를 새로 만드는 함수가 없다(InsertFusionTitleIntoTimeline은 재생헤드에 끼워 넣어 뒤와 마커를 민다, 21.1 실측).
+    # 미디어 풀의 Fusion Title 항목은 AppendToTimeline으로 트랙·위치·길이를 정해 놓을 수 있고, 놓인 것은 항목과 이어지지 않은 일반 Text+다.
+    mp = project.GetMediaPool()
+    pool = pool_clips(mp)
+    source = next((c for c in pool if c.GetName() == template and c.GetClipProperty("Type") == "Fusion Title"), None)
+    if not source:
+        sys.exit("미디어 풀에 Fusion Title 항목 `%s`이 없음. API로는 만들 수 없으니 akbun-davinciresolve-searchhook SKILL.md의 'Text+ 템플릿 준비' 절차를 Resolve 화면에서 한 번 한 뒤 다시 실행한다" % template)
+    project.SetCurrentTimeline(tl)
+    resolve.OpenPage("edit")
+    track = named_track(tl, "video", track_name)
+    if tl.GetIsTrackLocked("video", track):
+        sys.exit("%s 트랙(V%d)이 잠겨 있음. 잠금을 풀고 다시 실행한다" % (track_name, track))
+    before, marks = layout(tl), tl.GetMarkers()
+    hit = clash(at - origin, frames, before[("video", track)])
+    if hit:
+        sys.exit("충돌: %s 트랙(V%d)에 이미 클립이 있어 놓지 않음. 요청 %s + %.1f초, 기존 %s. 기존 클립은 그대로다" % (
+            track_name, track, tc, frames / fps, ", ".join("%s~%s" % (frame_to_tc(origin + s, fps), frame_to_tc(origin + s + d, fps)) for s, d in hit)))
+    got = mp.AppendToTimeline([{"mediaPoolItem": source, "trackIndex": track, "recordFrame": at, "startFrame": 0, "endFrame": frames, "mediaType": 1}])
+    clip = got[0] if got and got[0] and got[0].GetStart() is not None else None
+    if not clip:
+        sys.exit("Text+ 배치 실패: V%d %s. 타임라인은 바뀌지 않음" % (track, tc))
+    comp = clip.GetFusionCompByIndex(1) if clip.GetFusionCompCount() == 1 and not clip.GetMediaPoolItem() else None
+    tool = comp and next((t for t in comp.GetToolList(False).values() if t.GetAttrs()["TOOLS_RegID"] == "TextPlus"), None)
+    if not tool:
+        sys.exit("놓인 클립이 일반 Text+가 아님. `%s` 항목이 Text+로 만든 것인지 확인한다. 놓인 클립: V%d %s" % (template, track, tc))
+    for key, value in inputs:
+        tool.SetInput(key, value)
+    # 없는 입력 이름은 조용히 무시되므로 되읽어 확인한다. 표로 받는 Center는 빼고 본다
+    wrong = [k for k, v in inputs if not isinstance(v, dict) and not same_value(tool.GetInput(k), v)]
+    if wrong:
+        # 핸들은 지우기 직전에 다시 읽는다(오래된 핸들로 지우면 Resolve가 종료됨, 21.1 실측)
+        gone = tl.DeleteClips([it for it in tl.GetItemListInTrack("video", track) if it.GetStart() == at], False)
+        sys.exit("Text+ 입력이 들어가지 않음: %s. 놓은 클립은 %s" % (", ".join(wrong), "지움" if gone else "V%d %s에 남음" % (track, tc)))
+    clip.SetName("Text+")
+    expect = dict(before)
+    expect[("video", track)] = sorted(before[("video", track)] + [(at - origin, frames)])
+    kept = layout(tl) == expect and tl.GetMarkers() == marks and tl.GetEndFrame() == end
+    return {"track": track, "kept": kept, "added": len(pool_clips(mp)) - len(pool)}
+
+
+def text_inputs(text, font, style, size, x, y):
+    return [("StyledText", text.replace("\\n", "\n")), ("Font", font), ("Style", style), ("Size", size), ("Center", {1: x, 2: y})]
+
+
 def text(a, stamp):
     resolve, project = connect()
     tl, fps, length = open_source(project, a.timeline)
     if not any(m["name"].startswith("HOOK ") for m in (tl.GetMarkers() or {}).values()):
         sys.exit("HOOK 마커가 없음. build로 만든 훅 타임라인에만 텍스트를 넣는다: " + a.timeline)
-    origin, end = tl.GetStartFrame(), tl.GetEndFrame()
     try:
         at, frames = tc_to_frame(a.at, fps), round(a.seconds * fps)
     except ValueError as e:
         sys.exit(str(e))
-    if not origin <= at < at + frames <= end or frames <= 0:
-        sys.exit("텍스트 구간이 타임라인 밖: %s + %.1f초" % (a.at, a.seconds))
-    # API에는 트랙과 위치를 정해 Text+를 새로 만드는 함수가 없다(InsertFusionTitleIntoTimeline은 재생헤드에 끼워 넣어 뒤와 마커를 민다, 21.1 실측).
-    # 미디어 풀의 Fusion Title 항목은 AppendToTimeline으로 트랙·위치·길이를 정해 놓을 수 있고, 놓인 것은 항목과 이어지지 않은 일반 Text+다.
-    mp = project.GetMediaPool()
-    pool = pool_clips(mp)
-    source = next((c for c in pool if c.GetName() == TEXT_TEMPLATE and c.GetClipProperty("Type") == "Fusion Title"), None)
-    if not source:
-        sys.exit("미디어 풀에 Fusion Title 항목 `%s`이 없음. API로는 만들 수 없으니 SKILL.md의 'Text+ 템플릿 준비' 절차를 Resolve 화면에서 한 번 한 뒤 다시 실행한다" % TEXT_TEMPLATE)
-    project.SetCurrentTimeline(tl)
-    resolve.OpenPage("edit")
-    track = named_track(tl, "video", TEXT_TRACK)
-    if tl.GetIsTrackLocked("video", track):
-        sys.exit("%s 트랙(V%d)이 잠겨 있음. 잠금을 풀고 다시 실행한다" % (TEXT_TRACK, track))
-    before, marks = layout(tl), tl.GetMarkers()
-    hit = clash(at - origin, frames, before[("video", track)])
-    if hit:
-        sys.exit("충돌: %s 트랙(V%d)에 이미 클립이 있어 놓지 않음. 요청 %s + %.1f초, 기존 %s. 기존 클립은 그대로다" % (
-            TEXT_TRACK, track, a.at, frames / fps, ", ".join("%s~%s" % (frame_to_tc(origin + s, fps), frame_to_tc(origin + s + d, fps)) for s, d in hit)))
-    got = mp.AppendToTimeline([{"mediaPoolItem": source, "trackIndex": track, "recordFrame": at, "startFrame": 0, "endFrame": frames, "mediaType": 1}])
-    clip = got[0] if got and got[0] and got[0].GetStart() is not None else None
-    if not clip:
-        sys.exit("Text+ 배치 실패: V%d %s. 타임라인은 바뀌지 않음" % (track, a.at))
-    comp = clip.GetFusionCompByIndex(1) if clip.GetFusionCompCount() == 1 and not clip.GetMediaPoolItem() else None
-    tool = comp and next((t for t in comp.GetToolList(False).values() if t.GetAttrs()["TOOLS_RegID"] == "TextPlus"), None)
-    if not tool:
-        sys.exit("놓인 클립이 일반 Text+가 아님. `%s` 항목이 Text+로 만든 것인지 확인한다. 놓인 클립: V%d %s" % (TEXT_TEMPLATE, track, a.at))
-    for key, value in (("StyledText", a.text.replace("\\n", "\n")), ("Font", FONT), ("Style", a.style), ("Size", a.size), ("Center", {1: a.x, 2: a.y})):
-        tool.SetInput(key, value)
-    font = (tool.GetInput("Font"), tool.GetInput("Style"))
-    clip.SetName("Text+")
-    want = dict(before)
-    want[("video", track)] = sorted(before[("video", track)] + [(at - origin, frames)])
-    kept = layout(tl) == want and tl.GetMarkers() == marks and tl.GetEndFrame() == end
-    added = len(pool_clips(mp)) - len(pool)
+    r = put_text(resolve, project, tl, fps, TEXT_TRACK, TEXT_TEMPLATE, at, frames, text_inputs(a.text, FONT, a.style, a.size, a.x, a.y))
+    track, kept, added, font = r["track"], r["kept"], r["added"], (FONT, a.style)
     still = "-"
     if a.out:
         os.makedirs(os.path.join(a.out, "hook-stills"), exist_ok=True)
@@ -404,7 +429,7 @@ def text(a, stamp):
         time.sleep(1)
         if not project.ExportCurrentFrameAsStill(still):
             still = "확인 필요: 스틸 내보내기 실패"
-    ok = kept and not added and font == (FONT, a.style)
+    ok = kept and not added
     L = ["## 훅 텍스트", "", "| 타임라인 | 시작 TC | 길이(초) | 트랙 | 클립 | 문구 | 글꼴 | Size | Center | 기존 클립·마커·타임라인 길이 | 새 컴파운드 클립·타임라인 | 스틸 | 결과 |",
          "|---|---|---|---|---|---|---|---|---|---|---|---|---|",
          "| %s | %s | %.1f | V%d %s | Text+ 1개 | %s | %s %s | %s | %s, %s | %s | %s | %s | %s |" % (
@@ -436,6 +461,8 @@ def selftest():
     assert [(s, e) for s, e, _ in rows] == [(0, 500), (500, 900)] and "+200프레임 ripple" in rows[0][2] and "60프레임 짧음" in rows[1][2], rows
     assert "100프레임뿐" in bgm_rows([(0, 500, 100)], 200, 700)[0][2]
     assert free_frame(0, 48, {0, 1}) == 2 and free_frame(0, 2, {0, 1}) is None
+    assert same_value(1.2000000001, 1.2) and same_value(1, 1.0) and not same_value(None, 1.2) and not same_value("Arial", "Pretendard")
+    assert text_inputs("a\\nb", "F", "Bold", 0.12, 0.5, 0.2)[0] == ("StyledText", "a\nb")
     assert clash(100, 50, [(0, 100), (150, 10)]) == [] and clash(100, 50, [(60, 41), (149, 5), (110, 10)]) == [(60, 41), (149, 5), (110, 10)]
     print("selftest ok")
 

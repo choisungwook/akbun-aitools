@@ -168,9 +168,9 @@ interface VideoEditorAgentAPI {
 | `privacy.createPowerWindow`, `setWindowSoftness`, `applyMosaic` | 화면 | Color 페이지 Window·OpenFX 패널 |
 | `stabilization.apply` | 있음(파라미터 없음) | `TimelineItem.Stabilize()`는 현재 Inspector 값으로 실행. Mode·Cropping Ratio·Smooth는 화면 |
 | `stabilization.analyze`, `preview` | 없음 | 아래 "없는 기능" 표 |
-| `titles.addText`, `setFont` | 있음 | `Timeline.InsertFusionTitleIntoTimeline("Text+")` 뒤 `TimelineItem.GetFusionCompByIndex(1)`로 Text+ 툴의 `StyledText`, `Font`, `Style`, `Size` 입력 설정 |
+| `titles.addText`, `setFont` | 있음 | `davinciresolve-subtitle-travelnote`의 `scripts/textplus.py place`. `Timeline.InsertFusionTitleIntoTimeline("Text+")`은 항상 V1 재생헤드에 끼워 넣어 V1 클립을 자르고 모든 트랙·마커를 밀므로(21.1 실측) 쓰지 않는다. 미디어 풀의 Fusion Title 항목 `HOOK_TEXT_TEMPLATE`을 `AppendToTimeline`으로 `SUBTITLE` 트랙에 놓고 `TimelineItem.GetFusionCompByIndex(1)`로 Text+ 툴 입력을 설정한다 |
 | `titles.setSafeArea` | 화면 | Text+ `Center`·레이아웃 값을 Fusion 툴 입력으로 설정하고 스틸로 확인 |
-| `titles.retimeTitlesAfterEdit` | 화면 | 자막 클립 이동 API 없음. 새 위치에 다시 삽입하고 옛 것을 삭제 |
+| `titles.retimeTitlesAfterEdit` | 있음 | 자막 클립 이동 API 없음. `textplus.py remove`로 옛 것을 지우고 새 위치에 `place` |
 | `audio.analyzeLoudness` | 화면 | Fairlight 라우드니스 미터 또는 렌더 파일에 `ffmpeg -af ebur128` |
 | `audio.createTrack`, `setGain`, `addCrossfade`, `duckMusic` | API·화면 | 실제 21.1 문서의 `Timeline.AddTrack`·`TimelineItem`의 `AudioVolume` 속성을 확인한다. 시간별 자동화·페이드·덕킹은 지원 API를 확인하고 없으면 Fairlight UI. 오디오 설계·복제·미적용 마커는 [사운드 공통 스킬](../../davinciresolve-sfx-epidemicsound/SKILL.md)을 따름 |
 | `review.*Transaction` | 없음 | 아래 "없는 기능" 표 |
