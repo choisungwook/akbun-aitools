@@ -64,10 +64,11 @@ def audit(a, stamp):
         if PUSH in (it.GetFusionCompNameList() or []):
             moving.append((it.GetStart(), it.GetEnd()))
             events.append((it.GetStart(), "push", it.GetName()))
+    # 본편 밖의 비디오 트랙은 이름과 관계없이 모두 화면 위 변화로 센다. 오래된 타임라인은 카드를 다른 이름의 트랙에 두기도 한다
     for t, name in video.items():
-        if name in VISUAL and t != a.main_track:
+        if t != a.main_track:
             for it in tl.GetItemListInTrack("video", t) or []:
-                events.append((it.GetStart(), VISUAL[name], it.GetName()))
+                events.append((it.GetStart(), VISUAL.get(name, "오버레이"), it.GetName()))
                 changes += [it.GetStart(), it.GetEnd()]
     sfx_tracks = [t for t, name in audio.items() if name.upper().startswith("SFX")]
     sounds = [it.GetStart() for t in sfx_tracks for it in tl.GetItemListInTrack("audio", t) or []]
