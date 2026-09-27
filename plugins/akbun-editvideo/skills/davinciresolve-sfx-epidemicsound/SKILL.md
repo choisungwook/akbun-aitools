@@ -94,7 +94,7 @@ Reverse·reverb tail은 원본 파일을 덮어쓰지 않고 복제된 오디오
 
 ## 7. 사용자 검토 마커
 
-[workflow 마커 등록표](../akbun-davinciresolve-workflow/SKILL.md#마커-등록표)의 Orange `AUDIO_REVIEW <cue ID> <사유>` 타임라인 마커를 사용한다. 대표 사운드 선택, 곡 전환·재진입·의도된 무음, 창작적 대체음, 싱크/조성/말 가림이 불확실한 구간, 적용 못 한 효과를 표시한다. 모든 정상 효과음에 마커를 붙여 검토 목록을 채우지는 않는다.
+[workflow 마커 등록표](../akbun-davinciresolve-workflow/SKILL.md#마커-등록표)의 Sand `AUDIO_REVIEW <cue ID> <사유>` 타임라인 마커를 사용한다. 대표 사운드 선택, 곡 전환·재진입·의도된 무음, 창작적 대체음, 싱크/조성/말 가림이 불확실한 구간, 적용 못 한 효과를 표시한다. 모든 정상 효과음에 마커를 붙여 검토 목록을 채우지는 않는다.
 
 노트에는 `정확한 시작~끝 TC / 주인공 소리와 의도 / 적용 사항 또는 미적용 / 사용자에게 들을 포인트 / 대안 / 상태(needs-review·blocked·approved)`를 적는다. `customData`에는 작업 run ID와 cue ID를 넣어 재실행 때 자기 마커만 식별한다. AI 자체 검청은 사용자 승인과 구분하고 사용자가 확인하지 않은 것을 approved로 바꾸지 않는다.
 

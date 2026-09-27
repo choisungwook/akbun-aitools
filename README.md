@@ -59,6 +59,7 @@ Claude Code에서 marketplace를 등록하고 plugin 하나를 설치한 뒤 ski
 | [akbun-voice-diary](./plugins/akbun-writing/skills/akbun-voice-diary/) | 음성 채팅으로 말한 하루를 고정 규격 일기(한 줄·있었던 일·힘들었던 것·공부하면 좋은 것)로 저장(기본 ~/Downloads, Apple Notes·Google Docs 선택)하고 공부 주제를 이번 주 주말 Apple Calendar에 등록 |
 | [akbun-thumbnail-review](./plugins/akbun-writing/skills/akbun-thumbnail-review/) | 유튜브 썸네일을 6항목(TV 친화 50% 테스트·질문·감정 유발·레퍼런스 메커니즘·잡동사니 제거·문제 부각·문구 변주)으로 리뷰하고 제안마다 이유를 설명 |
 | [akbun-it-infra-change-notice](./plugins/akbun-writing/skills/akbun-it-infra-change-notice/) | 스테이징 검증이 끝난 인프라 변경을 운영에 적용하기 전 개발자용 작업 공지 초안(영향·해야 할 일 → 왜 → 변경 → 기대 효과 → 확인 항목 붙은 절차 → 시간 → 롤백과 불가 지점 → 비용 계산식 → 리스크 → 스테이징 증거). 수치는 측정/인용/추정 라벨, 없으면 확인 필요 |
+| [akbun-writing-travel-blog](./plugins/akbun-writing/skills/akbun-writing-travel-blog/) | 여행 메모·동선·사진 목록을 정중한 과거형을 기본으로 해요체를 간간이 섞은 짧은 문단으로 작성. 방문 정보 상자와 `사진삽입` 주석(썸네일·약도·현장)을 분리하고 입력의 사실·조건 보존 |
 
 ### akbun-draw
 
@@ -78,6 +79,7 @@ Claude Code에서 marketplace를 등록하고 plugin 하나를 설치한 뒤 ski
 | [akbun-draw-cardnews-cream](./plugins/akbun-draw/skills/akbun-draw-cardnews-cream/) | 아무 개념을 크림 배경+손글씨 제목·본문+낙서 다이어그램+파란 빗금 포인트 하나의 설명형 카드뉴스 스타일로 그리는 이미지 생성 프롬프트와 Figma/Canva용 SVG 작성 |
 | [akbun-mascot-whale](./plugins/akbun-draw/skills/akbun-mascot-whale/) | akbun 마스코트 고래 캐릭터의 표준 외형 스펙(다른 그리기 skill이 참조) |
 | [akbun-draw-learning-mono](./plugins/akbun-draw/skills/akbun-draw-learning-mono/) | 논문·책·문서·개념을 흰 배경 흑백 미니멀 16:9 학습용 설명 이미지(주제별 분할 + 한국어 발표 대본)로 변환 |
+| [akbun-draw-travel-blog](./plugins/akbun-draw/skills/akbun-draw-travel-blog/) | 여행블로그 썸네일·약도·장면 삽화의 크림 배경·크레용 플랫 일러스트 프롬프트 작성. 제목 가독성·비율별 구도와 방문 순서도 지원, `[현장]` 사진은 기본 건너뜀 |
 
 아래는 각 skill로 만든 예시다.
 
@@ -216,6 +218,7 @@ agent 운영 skill 모음. 프로젝트의 기억 구조를 최초 1회 설계�
 
 - `akbun-memory-setup`(akbun-agent-ops): AGENTS.md 읽기 순서를 만든다. `akbun-recall`이 그 순서를 따라 기억을 읽고, `akbun-reflect`는 그 구조 안의 기존 문서(SKILL.md·wiki·AGENTS.md)에만 쓰고 구조를 바꾸지 않는다.
 - `akbun-writing`(akbun-writing): 글쓰기 기준 skill. `akbun-writing-with-question`, `akbun-writing-persuasive`가 모든 기본 규칙을 참조로 상속하고 각자 한 축(질문 구조, 설득 장치)만 더한다. `akbun-writing-easy`는 tokenops 규칙을 참조한다. 마무리에 `akbun-writing-naturalize`를 호출 모드로 적용한다.
+- `akbun-writing-travel-blog`(akbun-writing): 여행 글에 `사진삽입` 주석(`[썸네일]`·`[약도]`·`[현장]`)을 남긴다. `akbun-draw-travel-blog`(akbun-draw)가 그 주석을 읽어 썸네일·약도 프롬프트를 만들므로, 주석 형식을 바꾸면 두 skill을 함께 고친다. 마무리에 `akbun-writing-naturalize`를 호출 모드로 적용한다.
 - `akbun-davinciresolve-workflow`(akbun-editvideo): 여행 브이로그 편집 순서와 검증·작업 로그를 정하는 오케스트레이터. `akbun-davinciresolve-timeline-chrono`로 시간순 타임라인을 만드는 것이 첫 단계이고, 복제본에 비디오·오디오 트랙 4개씩(`OVERLAY`·`GFX`·`SUBTITLE`·`HOOK_TEXT`, `AMBIENCE`·`SFX`·`MUSIC`·`HOOK`)을 준비한 뒤 `davinciresolve-cut-travelflow` → `akbun-davinciresolve-logconvert` → `akbun-davinciresolve-exposure` → `akbun-davinciresolve-whitebalance` → `akbun-davinciresolve-contrast` → `akbun-davinciresolve-saturation` → 요청된 `akbun-davinciresolve-look-*` → `davinciresolve-face-privacy` → `davinciresolve-subtitle-travelnote` → `davinciresolve-sfx-epidemicsound` → `davinciresolve-audio-delivery` 순서로 실행한다. 하위 skill 전부가 그 기본 원칙·마커 등록표와 `references/agent-api.md`의 대체 방법 표를 참조한다. 색보정 측정·세션·라벨 노드 규칙은 exposure skill의 `exposure_scope.py`를 모두가 import한다. 컷이 바뀌면 자막·오디오 skill이 바뀐 구간 목록을 받아 위치를 다시 맞춘다. `akbun-davinciresolve-sky`는 workflow 밖의 단독 skill이다. `akbun-davinciresolve-searchhook`도 workflow 밖의 단독 skill이며, workflow가 끝낸 작업 타임라인을 복제해 훅 타임라인을 따로 만들고 마커 등록표의 `HOOK`과 `davinciresolve-subtitle-travelnote`의 글꼴 규칙을 참조한다.
 - `davinciresolve-story-devtalk`(akbun-editvideo): 말하는 브이로그 workflow. `akbun-davinciresolve-workflow`의 기본 원칙과 마커 등록표(`TALK_REVIEW`, `GFX`)를 따르고, `davinciresolve-style-essay`·`davinciresolve-style-project`·`davinciresolve-style-reflection` 중 하나를 고른 뒤 `davinciresolve-beats-devtalk` → `davinciresolve-cut-devtalk` → `davinciresolve-subtitle-devtalk` → 필요한 그래픽(도구 선택 후, HyperFrames이면 `davinciresolve-gfx-hyperframes`) → `davinciresolve-sfx-epidemicsound` → 필요한 BGM 보완(`davinciresolve-bgm-epidemicsound`) 순서로 읽어 수행한다. 앞 네 skill은 고른 style skill의 구조·컷 리듬·글자 표를 참조하고 단독 호출도 된다. 글꼴·최소 글자 크기는 `davinciresolve-subtitle-devtalk`이 style skill보다 우선한다. `akbun-vlog-shootplan`은 같은 style skill의 구조 표로 촬영 계획서를 만들고, 그 비트 시트를 `davinciresolve-beats-devtalk`이 초안으로 읽는다. `akbun-vlog-storyboard`는 그 비트 시트를 컷마다 그리며 카메라 샷은 `akbun-vlog-shotsketch`의 샷 유형·그림 규칙을 쓴다. 색·오디오·렌더는 여행 skill과 같은 하위 skill을 다시 쓴다.
 - `akbun-presentation-visual`(akbun-presentation): `akbun-presentation`이 슬라이드에 삽입할 래스터 시각자료를 생성한다.
