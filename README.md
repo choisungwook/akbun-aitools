@@ -59,7 +59,7 @@ Claude Code에서 marketplace를 등록하고 plugin 하나를 설치한 뒤 ski
 | [akbun-voice-diary](./plugins/akbun-writing/skills/akbun-voice-diary/) | 음성 채팅으로 말한 하루를 고정 규격 일기(한 줄·있었던 일·힘들었던 것·공부하면 좋은 것)로 저장(기본 ~/Downloads, Apple Notes·Google Docs 선택)하고 공부 주제를 이번 주 주말 Apple Calendar에 등록 |
 | [akbun-thumbnail-review](./plugins/akbun-writing/skills/akbun-thumbnail-review/) | 유튜브 썸네일을 6항목(TV 친화 50% 테스트·질문·감정 유발·레퍼런스 메커니즘·잡동사니 제거·문제 부각·문구 변주)으로 리뷰하고 제안마다 이유를 설명 |
 | [akbun-it-infra-change-notice](./plugins/akbun-writing/skills/akbun-it-infra-change-notice/) | 스테이징 검증이 끝난 인프라 변경을 운영에 적용하기 전 개발자용 작업 공지 초안(영향·해야 할 일 → 왜 → 변경 → 기대 효과 → 확인 항목 붙은 절차 → 시간 → 롤백과 불가 지점 → 비용 계산식 → 리스크 → 스테이징 증거). 수치는 측정/인용/추정 라벨, 없으면 확인 필요 |
-| [akbun-writing-travel-blog](./plugins/akbun-writing/skills/akbun-writing-travel-blog/) | 여행 메모·동선·사진 목록을 해요체 과거형의 짧은 문단으로 작성. 방문 정보 상자와 `사진삽입` 주석(썸네일·약도·현장)을 분리하고 입력의 사실·조건 보존 |
+| [akbun-writing-travel-blog](./plugins/akbun-writing/skills/akbun-writing-travel-blog/) | 여행 메모·동선·사진 목록을 정중한 과거형을 기본으로 해요체를 간간이 섞은 짧은 문단으로 작성. 방문 정보 상자와 `사진삽입` 주석(썸네일·약도·현장)을 분리하고 입력의 사실·조건 보존 |
 
 ### akbun-draw
 
