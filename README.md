@@ -59,7 +59,7 @@ Claude Code에서 marketplace를 등록하고 plugin 하나를 설치한 뒤 ski
 | [akbun-voice-diary](./plugins/akbun-writing/skills/akbun-voice-diary/) | 음성 채팅으로 말한 하루를 고정 규격 일기(한 줄·있었던 일·힘들었던 것·공부하면 좋은 것)로 저장(기본 ~/Downloads, Apple Notes·Google Docs 선택)하고 공부 주제를 이번 주 주말 Apple Calendar에 등록 |
 | [akbun-thumbnail-review](./plugins/akbun-writing/skills/akbun-thumbnail-review/) | 유튜브 썸네일을 6항목(TV 친화 50% 테스트·질문·감정 유발·레퍼런스 메커니즘·잡동사니 제거·문제 부각·문구 변주)으로 리뷰하고 제안마다 이유를 설명 |
 | [akbun-it-infra-change-notice](./plugins/akbun-writing/skills/akbun-it-infra-change-notice/) | 스테이징 검증이 끝난 인프라 변경을 운영에 적용하기 전 개발자용 작업 공지 초안(영향·해야 할 일 → 왜 → 변경 → 기대 효과 → 확인 항목 붙은 절차 → 시간 → 롤백과 불가 지점 → 비용 계산식 → 리스크 → 스테이징 증거). 수치는 측정/인용/추정 라벨, 없으면 확인 필요 |
-| [akbun-writing-travel-blog](./plugins/akbun-writing/skills/akbun-writing-travel-blog/) | 여행 메모·동선·사진 목록을 걷는 순서대로 중계하는 합니다체 현재형 여행블로그 글로 작성. 본문(장면)과 정보 상자(가게·가격) 분리, 사진 자리에 `사진삽입` 주석(썸네일·약도·현장) 삽입 |
+| [akbun-writing-travel-blog](./plugins/akbun-writing/skills/akbun-writing-travel-blog/) | 여행 메모·동선·사진 목록을 해요체 과거형의 짧은 문단으로 작성. 방문 정보 상자와 `사진삽입` 주석(썸네일·약도·현장)을 분리하고 입력의 사실·조건 보존 |
 
 ### akbun-draw
 
@@ -79,7 +79,7 @@ Claude Code에서 marketplace를 등록하고 plugin 하나를 설치한 뒤 ski
 | [akbun-draw-cardnews-cream](./plugins/akbun-draw/skills/akbun-draw-cardnews-cream/) | 아무 개념을 크림 배경+손글씨 제목·본문+낙서 다이어그램+파란 빗금 포인트 하나의 설명형 카드뉴스 스타일로 그리는 이미지 생성 프롬프트와 Figma/Canva용 SVG 작성 |
 | [akbun-mascot-whale](./plugins/akbun-draw/skills/akbun-mascot-whale/) | akbun 마스코트 고래 캐릭터의 표준 외형 스펙(다른 그리기 skill이 참조) |
 | [akbun-draw-learning-mono](./plugins/akbun-draw/skills/akbun-draw-learning-mono/) | 논문·책·문서·개념을 흰 배경 흑백 미니멀 16:9 학습용 설명 이미지(주제별 분할 + 한국어 발표 대본)로 변환 |
-| [akbun-draw-travel-blog](./plugins/akbun-draw/skills/akbun-draw-travel-blog/) | 여행블로그 글의 썸네일·코스 약도·장면 삽화를 크림 배경+크레용 질감 길+구간별 색 동선+얼굴 없는 플랫 인물의 여행 일러스트 스타일로 그리는 이미지 생성 프롬프트 작성. 직접 찍을 `[현장]` 사진 자리는 건너뜀 |
+| [akbun-draw-travel-blog](./plugins/akbun-draw/skills/akbun-draw-travel-blog/) | 여행블로그 썸네일·약도·장면 삽화의 크림 배경·크레용 플랫 일러스트 프롬프트 작성. 제목 가독성·비율별 구도와 방문 순서도 지원, `[현장]` 사진은 기본 건너뜀 |
 
 아래는 각 skill로 만든 예시다.
 
