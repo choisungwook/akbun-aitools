@@ -111,7 +111,7 @@
 | 패닝 (panning) | 소리의 좌우 위치 조절. stereo를 넓히는 것과 실제 surround 채널 제작은 다르며 모노 재생도 확인한다. |
 | 오토메이션 / sidechain | 시간에 따라 gain·pan·효과 값 변경 / 다른 신호를 검출 입력으로 쓰는 방식. 음성을 기준으로 음악을 낮추는 덕킹에 사용할 수 있다. |
 | dBFS / dBTP / integrated LUFS | 디지털 샘플 피크 / 재구성 신호의 true peak 추정 / 프로그램 전체의 지각 음량. 페이더 dB 값만으로 이 측정값들을 알 수 없다. |
-| AUDIO_REVIEW | 사운드 검토용 Orange 타임라인 마커. cue ID·정확한 TC·의도·적용 여부·들을 지점·상태를 남기며 AI 검청과 사용자 승인을 구분한다. |
+| AUDIO_REVIEW | 사운드 검토용 Sand 타임라인 마커. cue ID·정확한 TC·의도·적용 여부·들을 지점·상태를 남기며 AI 검청과 사용자 승인을 구분한다. |
 | Workflow Integration / MCP | Resolve 안에서 여는 플러그인 경로 / AI가 연결 서비스의 도구를 사용하는 프로토콜. Epidemic 검색·다운로드와 Resolve 타임라인 조작은 서로 다른 역할이다. |
 | 대사 자막 (subtitle/caption) | 말한 내용을 글자로 보여주는 자막. 전사와 대조해 실제 발화와 맞춘다. |
 | Text+ | DaVinci Resolve의 Fusion 기반 텍스트 도구. 키워드·제목·장면 코멘트 등을 화면에 얹을 때 쓴다. |
