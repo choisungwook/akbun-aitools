@@ -176,10 +176,10 @@ agent 운영 skill 모음. 프로젝트의 기억 구조를 최초 1회 설계�
 |---|---|
 | [davinciresolve-cut-travelflow](./plugins/akbun-editvideo/skills/davinciresolve-cut-travelflow/) | 컷 편집 스타일 travelflow. 영상 흐름·자연음 중심, iPhone 앞부분 흰 화면·초점 이탈만 근거 기준으로 제거, 흔들림 감지된 iPhone 클립만 안정화, Insta360은 손대지 않음, 삭제 전 검토 마커 |
 | [davinciresolve-cut-citymontage](./plugins/akbun-editvideo/skills/davinciresolve-cut-citymontage/) | Resolve 21.1 AI assistant용 도시 여행 컷 스타일. 장소 전경·건축·교통·간판의 와이드·디테일과 움직임·음악 박자를 엮으며 사람을 요구하지 않고 이유 설명·사용자 확인 뒤 적용 |
-| [akbun-davinciresolve-look-japan-summer](./plugins/akbun-editvideo/skills/akbun-davinciresolve-look-japan-summer/) | 기본 보정 뒤 새 `LOOK` 노드에서 길·건물·하늘·물의 질감, 따뜻한 햇빛과 차분한 녹색을 다루는 일본 여름 필름 룩 |
-| [akbun-davinciresolve-look-tokyo-night](./plugins/akbun-editvideo/skills/akbun-davinciresolve-look-tokyo-night/) | 기본 보정 뒤 새 `LOOK` 노드에서 청록 그림자와 따뜻한 간판빛을 살리며 네온·건축·거리의 밤 디테일을 지키는 도쿄 야간 룩 |
-| [akbun-davinciresolve-look-still](./plugins/akbun-editvideo/skills/akbun-davinciresolve-look-still/) | 기본 보정 뒤 새 `LOOK` 노드에서 부드러운 대비, 회녹색 건축·광장·물·수목과 부드러운 하이라이트를 다루는 단편 드라마 룩 |
-| [akbun-davinciresolve-look-new-york](./plugins/akbun-editvideo/skills/akbun-davinciresolve-look-new-york/) | 기본 보정 뒤 새 `LOOK` 노드에서 도시 건축·하늘의 색과 늦은 오후 햇빛, 부드러운 하이라이트를 살리는 뉴욕 룩 |
+| [akbun-davinciresolve-look-japan-summer](./plugins/akbun-editvideo/skills/akbun-davinciresolve-look-japan-summer/) | 일본 여름 필름 룩. 대표 프레임의 P10/P50/P95 IRE와 녹색·햇빛 vectorscope 반경 목표 및 허용 오차 제공 |
+| [akbun-davinciresolve-look-tokyo-night](./plugins/akbun-editvideo/skills/akbun-davinciresolve-look-tokyo-night/) | 도쿄 야간 룩. 대표 프레임의 그림자·중간톤·네온 IRE와 청록·실광 vectorscope 반경 목표 및 허용 오차 제공 |
+| [akbun-davinciresolve-look-still](./plugins/akbun-editvideo/skills/akbun-davinciresolve-look-still/) | 단편 드라마 자연주의 룩. 대표 프레임의 저채도 IRE, 중성 건축·녹색 군집 반경과 가장 좁은 허용 오차 제공 |
+| [akbun-davinciresolve-look-new-york](./plugins/akbun-editvideo/skills/akbun-davinciresolve-look-new-york/) | 뉴욕 도시 필름 룩. 대표 프레임의 도시 IRE와 따뜻한 거리·푸른 하늘 vectorscope 반경 목표 및 허용 오차 제공 |
 | [akbun-davinciresolve-exposure](./plugins/akbun-editvideo/skills/akbun-davinciresolve-exposure/) | Resolve 21.1 API(`ExportCurrentFrameAsStill`·`SetCDL`)로 클립마다 스코프 중앙값을 재고 촬영 시간대(일출·일몰 기준 아침·낮·오후·저녁·밤)별 목표 대역과 인접 컷 tail→head 차이 한계(같은 시간대 60, 다른 시간대 120)에 맞춰 Color 페이지의 새 `EXPOSURE` 노드에만 CDL 적용. dry-run·reset·`EXPOSURE_CHECK` 마커 |
 | [akbun-davinciresolve-timeline-chrono](./plugins/akbun-editvideo/skills/akbun-davinciresolve-timeline-chrono/) | 미디어 풀 영상 전부를 촬영 시각(Date Recorded → Date Created)순으로 넣은 새 타임라인 생성. 파일명 접두어별 시계 오프셋, 시각 없는 클립은 맨 뒤 + 확인 필요, 생성 뒤 V1 순서 검증 |
 | [akbun-davinciresolve-whitebalance](./plugins/akbun-editvideo/skills/akbun-davinciresolve-whitebalance/) | 중립 후보 픽셀 R/G/B를 재서 기본은 `R-B 0`으로 `WB` 라벨 노드 보정, 사용자 지정 색편향도 지원. 카메라 Log→Rec.709 LUT 경로 자동화만 지원하고 DWG/Intermediate는 HDR Global 수동 조정 |
