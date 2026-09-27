@@ -1,6 +1,6 @@
 ---
 name: akbun-davinciresolve-workflow
-description: 말소리 없는 여행 브이로그를 DaVinci Resolve 21.1에서 처음부터 끝까지 편집하는 workflow 오케스트레이터. 미디어 풀 영상 전부를 촬영 시간순 타임라인으로 만드는 것(akbun-davinciresolve-timeline-chrono)이 항상 첫 단계이고, 그 복제본에서 컷·안정화(davinciresolve-cut-travelflow) → 라벨 노드(EXPOSURE→WB→CST→CONTRAST→SAT) 색보정(logconvert → exposure → whitebalance → contrast → saturation) → 얼굴 모자이크(davinciresolve-face-privacy) → 한글 자막·챕터(davinciresolve-subtitle-travelnote) → 오디오 믹싱·4K 출력(davinciresolve-audio-delivery) 순서로 각 skill의 SKILL.md를 읽어 직접 수행하고 마커 등록표·단계별 완료 조건·검증·작업 로그를 관리한다. "이 프로젝트 편집 계획 세워서 끝까지 해줘", "영상 전부 시간순으로 놓고 색보정까지 해줘", "타임라인 정리부터 렌더까지" 요청에 사용한다. 사용자가 직접 호출할 때만 실행한다.
+description: 말소리 없는 여행 브이로그를 DaVinci Resolve 21.1에서 처음부터 끝까지 편집하는 workflow 오케스트레이터. 미디어 풀 영상 전부를 촬영 시간순 타임라인으로 만드는 것(akbun-davinciresolve-timeline-chrono)이 항상 첫 단계이고, 그 복제본에서 컷·안정화(davinciresolve-cut-travelflow) → 라벨 노드(EXPOSURE→WB→CST→CONTRAST→SAT) 기본 색보정(logconvert → exposure → whitebalance → contrast → saturation) → 요청된 look skill과 새 LOOK 노드 → 얼굴 모자이크(davinciresolve-face-privacy) → 한글 자막·챕터(davinciresolve-subtitle-travelnote) → 오디오 믹싱·4K 출력(davinciresolve-audio-delivery) 순서로 각 skill의 SKILL.md를 읽어 직접 수행하고 마커 등록표·단계별 완료 조건·검증·작업 로그를 관리한다. "이 프로젝트 편집 계획 세워서 끝까지 해줘", "영상 전부 시간순으로 놓고 색보정까지 해줘", "타임라인 정리부터 렌더까지" 요청에 사용한다. 사용자가 직접 호출할 때만 실행한다.
 disable-model-invocation: true
 ---
 
@@ -68,6 +68,20 @@ python3 -c "import DaVinciResolveScript as dvr; r = dvr.scriptapp('Resolve'); pr
 
 API가 있어도 없는 기능이 있다. 기능별 API 유무·버전 조건·대체 방법은 [`references/agent-api.md`](references/agent-api.md)를 따른다. 대체 방법으로도 판정할 수 없으면 추측하지 않고 마커를 찍고 작업 로그에 `확인 필요`로 남긴다.
 
+## 색관리 방식 선택
+
+색보정 노드를 준비하기 전에 **활성 타임라인**의 Color Science, Timeline Color Space, Output Color Space와 실제 노드 변환을 확인해 작업 경로를 고른다. Project Settings 화면의 Color Management 값만 보지 않는다. 참고 영상에서도 해당 창에 현재 타임라인 설정이 프로젝트 설정을 덮어쓴다는 경고가 표시된다.
+
+| 경로 | 식별 기준 | 실행 |
+|---|---|---|
+| 현재 저장소의 LUT 자동 경로 | 클립별 Log→Rec.709 LUT 한 개. 별도 DWG/Intermediate 작업·출력 CST 쌍 없음 | 아래 `EXPOSURE → WB → CST → CONTRAST → SAT` 노드와 스크립트를 사용 |
+| DWG/Intermediate 노드 경로 | 원본별 Input CST가 DWG/Intermediate로 변환하고, 기술 보정 뒤 Output CST가 있음 | 현재 exposure·whitebalance·contrast 스크립트를 실행하지 않는다. 이중 CST가 단일 LUT 변환으로 오인될 수 있다. Resolve UI 또는 2026.9 AI Assistant로 노드를 확인해 수동 절차를 따른다 |
+| Project/Timeline Color Managed 자동 변환 | 색공간 변환이 Project/Timeline 설정에서 자동 적용되고 같은 노드 안에 명시적 CST 쌍이 없음 | 현재 스크립트가 지원하지 않는다. 입력·타임라인·출력 색공간을 먼저 확인하고, 자동 보정 스크립트는 사용하지 않는다 |
+
+참고 영상([I Made Color Grading QUICK and SIMPLE](https://youtu.be/RPDqklqWGSs))의 수동 노드 예시는 **Input CST(각 카메라 Log→DWG/Intermediate) → Contrast/Pivot → HDR Global Exposure → HDR Global WB(X 따뜻함/차가움, Y 녹색/마젠타) → 필요할 때 Color Slice 채도·선택 보정 → Output CST → 창작 LOOK/LUT** 순서다. 영상은 Contrast 1.3과 Pivot 0.336을 시작 예로 들지만 고정값으로 복사하지 않는다. `0.336`은 그 Contrast 노드 입력이 DaVinci Intermediate일 때만 맞는 기준이고, 대비·노출량은 샷과 카메라별로 판단한다. 휴대전화·360 카메라는 이미 대비와 채도가 강할 수 있으므로 더 약한 보정이 필요할 수 있다. 인물 없이도 가능하며, WB는 실제로 중립이라고 판단할 수 있는 풍경 표본만 기준으로 삼는다. 여러 카메라를 같은 장면에 썼다면 중립 표본과 Waveform의 흰 점·블랙 여유를 비교해 카메라 간 차이를 확인한다.
+
+이 수동 경로에서 LUT를 쓸 때는 Project Settings의 3D LUT interpolation을 확인한다. [Blackmagic의 Resolve 20 Colorist Guide](https://documents.blackmagicdesign.com/UserManuals/DaVinci-Resolve-20-Colorist-Guide.pdf)는 낮은 bit-depth LUT를 고 bit-depth 소스에 적용할 때 생길 수 있는 banding을 줄이는 방법으로 Tetrahedral을 권한다. 기존 프로젝트나 다른 앱에서 만든 LUT의 호환성·기존 결과를 유지해야 하면 설정을 바꾸기 전에 대표 샷을 비교한다. LUT interpolation이나 출력 감마를 앱 기본값으로 저장하지 않는다. 튜토리얼의 Mac `Rec.709 Scene` 출력도 개인 모니터링 선택이므로 YouTube 납품 설정으로 그대로 복사하지 말고 활성 타임라인과 납품 대상을 확인한다.
+
 ## 기본 작업 순서
 
 각 단계는 "읽는 skill → 완료 조건"이다. 완료 조건을 못 채우면 다음 단계로 넘어가지 않고 사용자에게 알린다. 1단계(촬영 시간순 타임라인)는 건너뛰지 않는다. 스크립팅 API에는 클립 이동 함수가 없어 순서는 타임라인을 만드는 시점에만 정할 수 있기 때문이다.
@@ -85,7 +99,7 @@ API가 있어도 없는 기능이 있다. 기능별 API 유무·버전 조건·�
 | 8 | 화이트밸런스 | `akbun-davinciresolve-whitebalance` | `WB_CHECK` 사용자 보고 |
 | 9 | 대비 | `akbun-davinciresolve-contrast` | 클리핑 없음 |
 | 10 | 채도 | `akbun-davinciresolve-saturation` | 대역 미달 없음 |
-| 11 | 사용자 지정 룩 LUT | 이 skill | 사용자가 별도 룩 LUT를 지정했을 때만 마지막 `LOOK` 라벨 노드에 `Graph.SetLUT`로 적용. 강도(Key Output Gain)는 API가 없어 화면에서 0.2 안팎. 지정이 없으면 건너뛰고 로그에 "LOOK 없음" |
+| 11 | 창작 look | 사용자가 고른 `akbun-davinciresolve-look-*` skill | 기본 보정이 끝난 뒤 해당 style skill을 읽는다. Color 페이지에서 새 Serial 노드를 추가해 `LOOK`으로 라벨하고 이 노드에만 창작 조정을 한다. 룩 LUT를 지정하지 않아도 노드는 새로 만든다. Look을 요청하지 않았으면 적용하지 않는다 |
 | 12 | 얼굴과 개인정보 모자이크 | `davinciresolve-face-privacy` | 모자이크 클립마다 `PRIVACY_MOSAIC` 클립 마커와 노드 존재 |
 | 13 | Gmarket Sans 한글 자막과 챕터 마커 | `davinciresolve-subtitle-travelnote` | 자막이 안전 영역 안에 있고 챕터 마커가 장소 변경 지점마다 존재 |
 | 14 | 현장음·효과음·BGM 믹싱 | `davinciresolve-audio-delivery` (믹싱 절) | 라우드니스·피크 기준 통과, 사용한 곡 목록 기록 |
@@ -105,7 +119,9 @@ API가 있어도 없는 기능이 있다. 기능별 API 유무·버전 조건·�
 
 ## 색보정 노드 순서와 실행 순서
 
-노드는 신호 흐름 순서, 실행은 측정이 가능한 순서다. 둘이 다르다. LUT를 먼저 걸어야 그 뒤 스코프값이 Rec.709 기준이 되고, 밝기·화이트밸런스 노드는 LUT **앞**에 있어도 측정은 LUT를 거친 출력으로 한다.
+다음 노드 표와 순서는 **현재 저장소의 단일 Log→Rec.709 LUT 자동 경로**에만 적용한다. 노드는 신호 흐름 순서, 실행은 측정이 가능한 순서다. LUT를 먼저 걸어야 그 뒤 스코프값이 Rec.709 기준이 되고, 밝기·화이트밸런스 노드는 LUT **앞**에 있어도 측정은 LUT를 거친 출력으로 한다. DWG/Intermediate 경로는 위 수동 경로를 따른다.
+
+색보정 순서는 look 취향만으로 정하지 않는다. 입력 Log를 어떤 작업 색공간으로 변환하는지에 따라 노출·대비·화이트밸런스의 적절한 위치가 달라질 수 있다. 참고 영상은 DaVinci YRGB, DWG/Intermediate 타임라인, 입력·출력 CST와 중간 보정 노드를 사용한다. 여기의 자동 경로는 카메라별 Log→Rec.709 LUT를 쓰므로 노드 순서를 그대로 섞지 않는다. 두 경로를 연결하는 자동화는 입력·출력 transform과 HDR wheel 처리를 별도로 구현하기 전까지 지원되지 않는다.
 
 | 노드 순서 | 라벨 | skill | 실행 순서(작업 단계) | 위치 |
 |---|---|---|---|---|
@@ -114,17 +130,22 @@ API가 있어도 없는 기능이 있다. 기능별 API 유무·버전 조건·�
 | 3 | `CST` | `akbun-davinciresolve-logconvert` | **1** (6단계) | Log 클립만. LUT를 건다 |
 | 4 | `CONTRAST` | `akbun-davinciresolve-contrast` | 4 (9단계) | 변환 뒤 |
 | 5 | `SAT` | `akbun-davinciresolve-saturation` | 5 (10단계) | 변환 뒤 |
+| 6 (선택) | `LOOK` | 사용자가 고른 look skill | 6 (11단계) | 보정 노드 뒤 새 Serial 노드 |
 
 비Log 클립은 `CST`가 없고 나머지는 같다. 이 순서는 실무 튜토리얼 세 편(Declan Jenkinson "Colour Grading For BEGINNERS", Dunna Did It "My Davinci Resolve Color Grading Process", KC ian "The Highest Level of Color Grading")의 공통점에서 왔다.
 
 | 공통점 | 이 workflow의 대응 |
 |---|---|
-| 작업 1개 = 라벨 노드 1개(WB, Exposure, CST/LUT, Curves, Saturation, Look) | 라벨 노드 5개, 라벨 없는 노드에는 쓰지 않음 |
+| 기본 보정과 창작 look을 별도 노드에 둠 | 기본 보정 라벨 5개, 요청 시 창작용 `LOOK` 노드 1개를 추가 |
 | 화이트밸런스·노출은 Log 상태(변환 앞)에서, 대비·채도는 변환 뒤에서 | `EXPOSURE`·`WB`는 `CST` 앞, `CONTRAST`·`SAT`은 뒤 |
-| 스코프로 판단: Waveform으로 노출·클리핑, Vectorscope·피커로 WB, 피벗 0.435(Rec.709) 대비 | 스틸 기반 스코프값, 중립 픽셀 R/G/B, `--pivot 0.435` |
+| 스코프로 판단: Waveform으로 노출·클리핑, Vectorscope·피커로 WB, 대비 피벗은 CONTRAST 입력 공간 기준 | 스틸 기반 스코프값, 중립 픽셀 R/G/B, [로컬 pivot reference](../akbun-davinciresolve-contrast/references/pivot-reference.md), workflow 기본 시작값 `--pivot 0.435` |
 | 밤 장면은 어두운 게 맞다("context is important") | 시간대별 목표 대역 |
 | 채도는 조금만, 섀도·하이라이트는 채도를 빼서 필름처럼 | 채도 상한 1.25, `--rolloff` |
-| 크리에이티브 룩 LUT는 맨 뒤에 약하게(Key Output Gain 0.2) | 11단계 `LOOK` 노드 |
+| 창작 룩은 기본 보정과 분리된 새 노드에서 한다 | 요청된 style skill을 읽고 마지막 `LOOK` 노드에서 조정 |
+
+기술 보정과 creative look을 구분한다. 기술 보정은 소스 변환, 노출, 화이트밸런스, 대비·채도를 장면 의도에 맞게 정돈한다. 따뜻하거나 차가운 분위기, 분할 색조, 필름 질감 같은 스타일 선택은 기본 보정에 섞지 말고 요청된 경우 새 `LOOK` 노드에서 한다. 참고 튜토리얼 중 인물·피부톤 예시가 있더라도 이 사용자의 풍경 중심 영상에서는 인물이나 피부톤을 필수 기준으로 삼지 않는다. 풍경의 중립 물체도 조명·반사색을 받을 수 있으므로 확실한 기준일 때만 화이트밸런스 표본으로 쓴다.
+
+이 skill은 2026년 9월에 공개된 DaVinci Resolve AI Assistant를 포함한 Resolve 작업을 대상으로 한다. AI Assistant가 색관리 설정이나 노드 연결을 제안해도 현재 프로젝트의 실제 입력·출력 색공간과 스코프로 확인한 뒤 적용한다.
 
 ## 노드 준비
 
@@ -183,6 +204,8 @@ python3 scripts/workflow.py nodes --timeline "<작업 타임라인>" --profile "
 - Resolve 에디션·버전:
 - 타임라인 A: <이름>
 - 작업 타임라인: <이름>
+- 색관리 경로: 단일 Log→Rec.709 LUT 자동 / DWG·Intermediate 수동 / Color Managed 미지원
+- 활성 타임라인 입력·출력 변환과 LUT interpolation: <설정>
 - 타임라인 프레임레이트: <값>(이유)
 - 카메라 시계 오프셋: <카메라> <초>(근거)
 
@@ -195,6 +218,8 @@ python3 scripts/workflow.py nodes --timeline "<작업 타임라인>" --profile "
 ## 4c. 대비                           ← contrast
 ## 4d. 채도                           ← saturation
 ## LOOK
+
+사용자가 look을 요청한 경우 선택한 skill 이름과 새 `LOOK` Serial 노드에서 조정한 목적을 기록한다. 요청한 룩 노드가 없거나 기존 노드에 창작 조정이 섞여 있으면 다음 단계로 넘어가지 않는다. 사용자가 요청하지 않았다면 `LOOK 없음`으로 남긴다.
 ## 모자이크                           ← face-privacy
 ## 자막·챕터                          ← subtitle-travelnote
 ## 오디오                             ← audio-delivery
