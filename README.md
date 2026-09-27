@@ -4,7 +4,7 @@ akbun(악분)이 매일 쓰는 AI agent skill을 Claude Code와 Codex plugin으�
 
 ## 한눈에 보기
 
-plugin 10개, skill 89개. 하고 싶은 일에서 plugin을 찾고, 아래 `plugin 목록`에서 skill을 고른다.
+plugin 11개, skill 92개. 하고 싶은 일에서 plugin을 찾고, 아래 `plugin 목록`에서 skill을 고른다.
 
 | 하고 싶은 일 | plugin | 대표 skill |
 |---|---|---|
@@ -18,6 +18,7 @@ plugin 10개, skill 89개. 하고 싶은 일에서 plugin을 찾고, 아래 `plu
 | agent 기억 구조 설정, 세션 시작 때 맥락 복원, 세션에서 배운 것을 skill에 반영 | [akbun-agent-ops](#akbun-agent-ops) | `akbun-memory-setup`, `akbun-recall`, `akbun-reflect` |
 | 매일 GitHub·Readwise 활동을 복습 문서로, 기간별 결과를 주간회의 브리프로 | [akbun-pulse](#akbun-pulse) | `github-daily-pulse`, `github-period-pulse`, `readwise-daily-pulse` |
 | DaVinci Resolve 브이로그 편집(여행: 시간순 타임라인, 컷·안정화, 색보정 workflow(LUT·밝기·화이트밸런스·대비·채도)와 네 가지 새 LOOK 스타일, 뉴욕 도시 몽타주 컷, 얼굴 모자이크, 한글 자막, 오디오 믹싱, YouTube 썸네일·챕터·업로드 / 말하는 개발자 브이로그: 촬영 전 인터뷰·기획·샷 스케치·스토리보드, 5–7분 기본 story arc, 전사 기반 스토리·컷·자막·그래픽 카드·Epidemic Sound 효과음·BGM) | [akbun-editvideo](#akbun-editvideo) | `akbun-davinciresolve-workflow`, `akbun-vlog-prepared-devtalk`, `akbun-davinciresolve-look-tokyo-night`, `akbun-davinciresolve-cut-new-york`, `davinciresolve-story-devtalk` |
+| YouTube Studio 채널 설정표, 업로드한 영상의 메타데이터 설정, 제목·설명 다국어 등록, 내 영상의 지표·스타일 분석 | [akbun-youtube](#akbun-youtube) | `akbun-youtube-plan-channel-settings`, `akbun-youtube-set-video-metadata`, `akbun-youtube-analyze-my-videos` |
 
 ## 빠른 시작
 
@@ -212,6 +213,18 @@ agent 운영 skill 모음. 프로젝트의 기억 구조를 최초 1회 설계�
 | [davinciresolve-style-project](./plugins/akbun-editvideo/skills/davinciresolve-style-project/) | 편집 스타일 project(프로젝트·개발자 diary). 목표·장애·선택·결과 story arc, 기본 5–7분, 타임랩스는 변화가 보일 때만, 따뜻한 장면 코멘트·전후 비교 |
 | [davinciresolve-style-reflection](./plugins/akbun-editvideo/skills/davinciresolve-style-reflection/) | 편집 스타일 reflection(회고·개인 생각, 기본값). 티저 콜드 오픈, 8비트 구조 5~7분, 컷/분 15개·같은 화면 6초를 시작점으로 장면의 호흡에 맞춰 조정, B-roll 위 내레이션, 모든 대사에 하단 중앙 흰색 한 줄 자막 |
 
+### akbun-youtube
+
+YouTube skill 모음. 규칙과 결과물은 사람과 AI가 함께 읽도록 YAML로 쓴다. 설정과 제한은 YouTube 공식 문서만 따른다. 채널 설정은 `akbun-youtube-plan-channel-settings`로 한 번 정리하고, 영상을 올릴 때마다 `akbun-youtube-set-video-metadata` → `akbun-youtube-translate-title-description` 순서로 쓴다. 이 둘은 Codex computer use 전용이고, 없으면 입력표와 번역표까지만 만든다. 올린 영상이 쌓이면 `akbun-youtube-analyze-my-videos`와 `akbun-youtube-analyze-my-style`로 돌아본다. 영상 편집과 렌더는 [akbun-editvideo](#akbun-editvideo)가 맡는다.
+
+| skill | 설명 |
+|---|---|
+| [akbun-youtube-plan-channel-settings](./plugins/akbun-youtube/skills/akbun-youtube-plan-channel-settings/) | YouTube Studio의 채널 단위 설정(채널 키워드·아동용 아님 고정·자동 더빙·기능 사용 자격·업로드 기본 설정·댓글 검토·워터마크·채널 이름과 설명의 번역)을 항목마다 Studio 위치·넣을 값·제한·공식 문서 주소와 함께 YAML 채널 설정표로 작성. 설명 템플릿에 촬영 장비·배경음악 목록 고정. 화면은 조작하지 않음 |
+| [akbun-youtube-set-video-metadata](./plugins/akbun-youtube/skills/akbun-youtube-set-video-metadata/) | Codex computer use 전용. 업로드한 영상을 영상 ID로 열어 제목·설명·썸네일·재생목록·태그·언어·최종 화면·카드를 YAML 입력표로 만들고 승인된 값만 입력·저장·재검증. 설명에 촬영 장비·배경음악 목록 필수, 시청자층은 아동용 아님 고정, 로그인·본인 확인은 사용자가 직접 |
+| [akbun-youtube-translate-title-description](./plugins/akbun-youtube/skills/akbun-youtube-translate-title-description/) | Codex computer use 전용. 한국어 제목·설명을 AI가 영어·일본어·프랑스어·중국어(간체, 목록에 있을 때)로 번역한 YAML 번역표를 한 번 승인받아 Studio 언어 화면에 등록하고 `게시됨`을 확인. 제목 100자·설명 5,000바이트, 장비·곡 이름·링크·챕터 시각 유지 |
+| [akbun-youtube-analyze-my-videos](./plugins/akbun-youtube/skills/akbun-youtube-analyze-my-videos/) | 내 영상들을 한 표에 나란히 놓고 채널 중앙값 대비 잘된 영상과 안된 영상을 함께 비교. 영상마다 막힌 곳(노출·클릭·시청)과 제목·썸네일의 약속·첫 30초를 진단하고, 관찰과 가설을 구분해 다음에 바꿀 변수 하나를 YAML 보고서로 제안. 지표 해석은 공식 문서 기준 |
+| [akbun-youtube-analyze-my-style](./plugins/akbun-youtube/skills/akbun-youtube-analyze-my-style/) | 내 영상 3~5개의 프레임·색·컷 간격·자막·배경음악 목록을 근거로 시각·리듬·전달 세 요소를 관찰해 YAML 스타일 프로필 작성. 영상끼리의 일관성과 아키타입(분위기·역할·가치)과의 어긋남을 표시하고 시험할 변화 하나를 제안 |
+
 ## skill 연관관계
 
 일부 skill은 다른 skill의 정의를 참조한다. 참조 대상 skill을 바꾸면 참조하는 skill의 결과물도 함께 바뀐다.
@@ -221,6 +234,7 @@ agent 운영 skill 모음. 프로젝트의 기억 구조를 최초 1회 설계�
 - `akbun-writing-travel-blog`(akbun-writing): 여행 글에 `사진삽입` 주석(`[썸네일]`·`[약도]`·`[현장]`)을 남긴다. `akbun-draw-travel-blog`(akbun-draw)가 그 주석을 읽어 썸네일·약도 프롬프트를 만들므로, 주석 형식을 바꾸면 두 skill을 함께 고친다. 마무리에 `akbun-writing-naturalize`를 호출 모드로 적용한다.
 - `akbun-davinciresolve-workflow`(akbun-editvideo): 여행 브이로그 편집 순서와 검증·작업 로그를 정하는 오케스트레이터. `akbun-davinciresolve-timeline-chrono`로 시간순 타임라인을 만드는 것이 첫 단계이고, 복제본에 비디오·오디오 트랙 4개씩(`OVERLAY`·`GFX`·`SUBTITLE`·`HOOK_TEXT`, `AMBIENCE`·`SFX`·`MUSIC`·`HOOK`)을 준비한 뒤 `davinciresolve-cut-travelflow` → `akbun-davinciresolve-logconvert` → `akbun-davinciresolve-exposure` → `akbun-davinciresolve-whitebalance` → `akbun-davinciresolve-contrast` → `akbun-davinciresolve-saturation` → 요청된 `akbun-davinciresolve-look-*` → `davinciresolve-face-privacy` → `davinciresolve-subtitle-travelnote` → `davinciresolve-sfx-epidemicsound` → `davinciresolve-audio-delivery` 순서로 실행한다. 하위 skill 전부가 그 기본 원칙·마커 등록표와 `references/agent-api.md`의 대체 방법 표를 참조한다. 색보정 측정·세션·라벨 노드 규칙은 exposure skill의 `exposure_scope.py`를 모두가 import한다. 컷이 바뀌면 자막·오디오 skill이 바뀐 구간 목록을 받아 위치를 다시 맞춘다. `akbun-davinciresolve-sky`는 workflow 밖의 단독 skill이다. `akbun-davinciresolve-searchhook`도 workflow 밖의 단독 skill이며, workflow가 끝낸 작업 타임라인을 복제해 훅 타임라인을 따로 만들고 마커 등록표의 `HOOK`과 `davinciresolve-subtitle-travelnote`의 글꼴 규칙을 참조한다.
 - `davinciresolve-story-devtalk`(akbun-editvideo): 말하는 브이로그 workflow. `akbun-davinciresolve-workflow`의 기본 원칙과 마커 등록표(`TALK_REVIEW`, `GFX`)를 따르고, `davinciresolve-style-essay`·`davinciresolve-style-project`·`davinciresolve-style-reflection` 중 하나를 고른 뒤 `davinciresolve-beats-devtalk` → `davinciresolve-cut-devtalk` → `davinciresolve-subtitle-devtalk` → 필요한 그래픽(도구 선택 후, HyperFrames이면 `davinciresolve-gfx-hyperframes`) → `davinciresolve-sfx-epidemicsound` → 필요한 BGM 보완(`davinciresolve-bgm-epidemicsound`) 순서로 읽어 수행한다. 앞 네 skill은 고른 style skill의 구조·컷 리듬·글자 표를 참조하고 단독 호출도 된다. 글꼴·최소 글자 크기는 `davinciresolve-subtitle-devtalk`이 style skill보다 우선한다. `akbun-vlog-shootplan`은 같은 style skill의 구조 표로 촬영 계획서를 만들고, 그 비트 시트를 `davinciresolve-beats-devtalk`이 초안으로 읽는다. `akbun-vlog-storyboard`는 그 비트 시트를 컷마다 그리며 카메라 샷은 `akbun-vlog-shotsketch`의 샷 유형·그림 규칙을 쓴다. 색·오디오·렌더는 여행 skill과 같은 하위 skill을 다시 쓴다.
+- `akbun-youtube-plan-channel-settings`(akbun-youtube): 고정 값(`fixed`: 아동용 아님, 번역은 AI)과 설명 구조(`description_template`: 촬영 장비·배경음악 목록 필수)를 정의한다. `akbun-youtube-set-video-metadata`와 `akbun-youtube-translate-title-description`이 이를 참조하고, translate-title-description은 set-video-metadata의 `Studio 화면 조작 규칙`을 그대로 따른다. `akbun-youtube-analyze-my-style`은 지표 분석을 `akbun-youtube-analyze-my-videos`에 맡긴다.
 - `akbun-presentation-visual`(akbun-presentation): `akbun-presentation`이 슬라이드에 삽입할 래스터 시각자료를 생성한다.
 - `akbun-mascot-whale`(akbun-draw): akbun 마스코트 고래의 표준 외형을 정의하는 기준 skill. 캐릭터를 그리는 아래 skill들이 이 스펙을 참조한다.
   - 캐릭터로 직접 사용: `akbun-draw-cartoon-b`, `akbun-draw-webtoon-c`
@@ -243,6 +257,7 @@ Claude Code에서 아래를 차례로 실행한다. 필요한 plugin만 골라 �
 /plugin install akbun-refactoring@akbun-aitools
 /plugin install akbun-agent-ops@akbun-aitools
 /plugin install akbun-editvideo@akbun-aitools
+/plugin install akbun-youtube@akbun-aitools
 /reload-plugins
 ```
 
@@ -262,6 +277,7 @@ codex plugin add akbun-pulse@akbun-aitools --json
 codex plugin add akbun-refactoring@akbun-aitools --json
 codex plugin add akbun-agent-ops@akbun-aitools --json
 codex plugin add akbun-editvideo@akbun-aitools --json
+codex plugin add akbun-youtube@akbun-aitools --json
 ```
 
 #### Codex 업그레이드 (hard reset)
@@ -285,6 +301,7 @@ codex plugin remove akbun-pulse@akbun-aitools --json
 codex plugin remove akbun-refactoring@akbun-aitools --json
 codex plugin remove akbun-agent-ops@akbun-aitools --json
 codex plugin remove akbun-editvideo@akbun-aitools --json
+codex plugin remove akbun-youtube@akbun-aitools --json
 
 rm -rf ~/.codex/plugins/cache/akbun-aitools
 rm -rf ~/.codex/.tmp/marketplaces/akbun-aitools
@@ -300,6 +317,7 @@ codex plugin add akbun-pulse@akbun-aitools --json
 codex plugin add akbun-refactoring@akbun-aitools --json
 codex plugin add akbun-agent-ops@akbun-aitools --json
 codex plugin add akbun-editvideo@akbun-aitools --json
+codex plugin add akbun-youtube@akbun-aitools --json
 
 codex plugin list --json
 ```
