@@ -47,7 +47,7 @@ Color 페이지에서 변환(LUT·CST) **뒤**에 새 노드를 만들고 라벨
 python3 scripts/contrast.py --out "<출력 폴더>" --timeline "<작업 타임라인>" --contrast 1.15 --pivot 0.435
 ```
 
-예: `CONTRAST` 노드 입력이 DaVinci Intermediate면 기준표에 따라 `--pivot 0.336`을 쓸 수 있다. 입력 공간과 변환 위치를 확인하지 않은 채 이 값을 일괄 적용하지 않는다.
+예: `CONTRAST` 노드 입력이 DaVinci Intermediate면 스크립트를 실행하지 않고 Resolve native Contrast/Pivot에서 `0.336`을 비교 시작점으로 쓴다. 자동 경로용 `--pivot` 예시와 혼동하지 않는다.
 
 되돌리기 명령이다.
 

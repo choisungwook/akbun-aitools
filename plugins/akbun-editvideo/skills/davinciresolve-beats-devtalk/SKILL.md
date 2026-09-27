@@ -27,7 +27,8 @@ disable-model-invocation: true
 whisper 대체 명령이다. 결과 JSON의 `segments[].start/end/text`를 전사로 쓴다.
 
 ```bash
-python3 -m venv .venv && .venv/bin/pip install -q mlx-whisper
+uv venv --python 3.12 .venv
+uv pip install --python .venv/bin/python mlx-whisper
 .venv/bin/python -c "import mlx_whisper,json,sys; r=mlx_whisper.transcribe(sys.argv[1], path_or_hf_repo='mlx-community/whisper-large-v3-turbo', language='ko', word_timestamps=True); json.dump(r, open(sys.argv[1]+'.json','w'), ensure_ascii=False)" "<클립 경로>"
 ```
 
@@ -79,7 +80,7 @@ python3 -m venv .venv && .venv/bin/pip install -q mlx-whisper
 - 트랙은 `davinciresolve-story-devtalk`의 트랙 배치대로 음성 구간은 A1에 소리만(`mediaType: 2`), 화면 클립은 V1에 영상만(`mediaType: 1`). 같은 `recordFrame`으로 넣어 음성 문장과 화면이 맞물리게 한다. 화면 클립의 현장음이 필요하면(타자 소리, 물건 소리) 같은 구간을 A2에 한 번 더 넣는다.
 - `face` 클립은 A1에만 들어간다. V1에 넣지 않는다.
 - 비트 시작 프레임마다 Blue 타임라인 마커 `CHAPTER <비트 이름>`. 첫 마커는 frameId 0.
-- 카드가 있는 위치에는 Cyan 타임라인 마커 `GFX <카드 종류> <제목>`. 카드 자리를 비워 두지 않는다(`davinciresolve-gfx-hyperframes`가 V2에 `recordFrame`으로 넣고, 그동안 A1 소리는 그대로 흐른다).
+- 카드가 있는 위치에는 Cyan 타임라인 마커 `GFX <카드 종류> <제목>`. 카드 자리를 비워 두지 않는다(선택한 제작 도구의 결과를 V2에 `recordFrame`으로 넣고, 그동안 A1 소리는 그대로 흐른다. 도구 미정이면 기존 화면을 유지하고 그래픽은 미완성으로 기록한다).
 
 ## 작업 로그
 

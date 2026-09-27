@@ -1,0 +1,32 @@
+name: Validate editvideo
+
+on:
+  pull_request:
+    paths:
+      - 'plugins/akbun-editvideo/**'
+      - 'docs/**'
+      - 'README.md'
+      - 'AGENTS.md'
+      - 'scripts/*validate_editvideo.py'
+      - '.github/workflows/validate-editvideo.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'plugins/akbun-editvideo/**'
+      - 'docs/**'
+      - 'README.md'
+      - 'AGENTS.md'
+      - 'scripts/*validate_editvideo.py'
+      - '.github/workflows/validate-editvideo.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: astral-sh/setup-uv@v6
+      - run: uv run --python 3.12 scripts/validate_editvideo.py
+      - run: uv run --python 3.12 --with PyYAML==6.0.3 python -m unittest discover -s scripts -p 'test_validate_editvideo.py'

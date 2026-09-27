@@ -79,6 +79,19 @@ Codex 쪽은 우선 JSON 유효성과 경로 일관성을 확인한다:
 - `plugins/<plugin-name>/.codex-plugin/plugin.json`
 - `.agents/plugins/marketplace.json`
 
+### akbun-editvideo 정합성 검사
+
+저장소 검사는 직접 호출 정책의 boolean 키를 지원하고 알 수 없는 키는 오류로 처리한다. 설치된 공용 `quick_validate.py`는 `disable-model-invocation`을 허용하지 않을 수 있으므로 원본 스킬의 필수 키를 지우거나 설치 파일을 고치지 않는다. 이 검사는 플랫폼 자체의 로딩·Resolve 실행 검증을 대신하지 않는다.
+
+저장소 루트에서 스킬·문서·manifest를 검사하고 오류 입력 테스트를 실행한다.
+
+```bash
+uv run --python 3.12 scripts/validate_editvideo.py
+uv run --python 3.12 --with PyYAML==6.0.3 python -m unittest discover -s scripts -p 'test_validate_editvideo.py'
+```
+
+같은 명령은 `Validate editvideo` PR CI에서 실행한다. 스킬 이름 변경이 있으면 매뉴얼에 이전 이름과 새 호출명을 함께 안내한다.
+
 ## 2. 버전 업데이트
 
 기존 plugin 내용을 수정해 다시 배포할 때 순서:
