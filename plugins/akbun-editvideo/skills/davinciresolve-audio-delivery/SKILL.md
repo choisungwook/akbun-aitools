@@ -65,7 +65,7 @@ python3 -c "import DaVinciResolveScript as dvr; p = dvr.scriptapp('Resolve').Get
 | 비트레이트 | 30fps 이하: H.264 45 Mbps, H.265 30 Mbps. 60fps: H.264 68 Mbps, H.265 45 Mbps(YouTube 4K 권장) | - |
 | 오디오 | AAC, 48 kHz, 320 kbps, 스테레오 | AAC 없으면 Linear PCM으로 렌더한 뒤 `ffmpeg -c:v copy -c:a aac -b:a 320k`로 변환하고 로그에 적음 |
 | 파일명 | `<작업 타임라인 이름>_youtube4k.mp4` | - |
-| 저장 위치 | `<출력 폴더>/render/` | 같은 이름 파일이 있으면 덮어쓰지 않고 사용자에게 알린다 |
+| 저장 위치 | `<출력 폴더>/render/` | 사용자가 지정한 경로를 우선 사용한다. 같은 이름 파일이 있으면 덮어쓰지 않고 사용자에게 알린다 |
 
 렌더 후 파일을 검사한다. Resolve가 없어도 돌릴 수 있게 `ffprobe`를 쓴다.
 
@@ -86,9 +86,12 @@ ffprobe -v error -show_entries stream=codec_name,width,height,r_frame_rate,sampl
 
 ## YouTube 업로드
 
-- 업로드는 사용자가 요청할 때만 하고, 실행 전 제목·공개 상태를 보여주고 확인을 받는다.
+- YouTube 직접 업로드는 사용자가 요청할 때만 한다. 사용자가 직접 업로드를 명시하면 제목·설명·공개 상태·카테고리·썸네일·저장 위치를 채워 바로 진행한다. 공개 상태가 지정되지 않으면 비공개로 둔다.
 - 기본 공개 상태는 비공개(Private)로 설정한다. 사용자가 바꾸라고 하기 전에는 공개·일부 공개로 올리지 않는다.
-- 제목, 설명, 챕터(`davinciresolve-subtitle-travelnote`의 챕터 목록), 장비(iPhone, Insta360 Luna Ultra), 음악 출처(Epidemic Sound 곡명·아티스트), 썸네일을 함께 적용한다. 썸네일은 사용자가 준 파일만 쓴다.
+- 제목과 설명은 타임라인에서 확인한 장소·장면만 사용해 작성한다. 챕터는 `davinciresolve-subtitle-travelnote` 목록과 타임라인 마커를 맞추고 첫 장은 `00:00`으로 시작한다.
+- 사용자가 요청하면 서로 다른 클립에서 3개의 16:9 썸네일 후보를 추출한다. 문구 요청이 있으면 Avenir Next Condensed나 Arial Black 등 설치된 굵은 글꼴을 우선하고, 얼굴이 보이는 프레임은 프라이버시 마스크가 반영된 결과에서 추출한다. 후보를 보여 주고 선택한 후보를 업로드 설정에 지정한다.
+- 제목, 설명, 챕터, 장비(iPhone, Insta360 Luna Ultra), 음악 출처(Epidemic Sound 곡명·아티스트), 썸네일을 함께 적용한다. 모르는 장비·곡 정보는 지어내지 않는다.
+- Deliver의 `Location`은 렌더 파일 저장 폴더다. 사용자가 Home/Downloads를 지정하면 `/Users/<사용자>/Downloads`에 저장한다. YouTube 지리적 촬영 위치와 구분한다.
 - 설명란 초안을 작업 로그에 남긴다.
 
 ## 작업 로그

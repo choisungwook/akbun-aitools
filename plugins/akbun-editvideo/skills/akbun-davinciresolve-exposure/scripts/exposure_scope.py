@@ -20,7 +20,7 @@ import time
 # ---------- 기준값 (SKILL.md 표와 같아야 한다) ----------
 BANDS = {  # 시간대 -> (중앙값 하한, 상한)
     "밤": (120, 280), "아침": (320, 460), "낮": (420, 560),
-    "오후": (360, 500), "저녁": (250, 400), "미상": (120, 560),
+    "오후": (440, 600), "저녁": (310, 485), "미상": (120, 560),
 }
 JUMP_SAME, JUMP_DIFF = 60, 120   # 인접 컷 tail→head 중앙값 차이 한계(같은 시간대 / 다른 시간대)
 MAX_SHIFT = 120                  # 클립당 최대 변화(약 ±0.5 stop). 넘으면 `확인 필요`
@@ -31,8 +31,8 @@ TOL = 15                         # 목표 중앙값 허용 오차
 IDENTITY = {"Slope": "1 1 1", "Offset": "0 0 0", "Power": "1 1 1", "Saturation": 1.0}
 MARKER = ("Lemon", "EXPOSURE_CHECK", 5)  # video-editor 마커 등록표
 NODE_HELP = ("EXPOSURE 라벨 노드 없음. Color 페이지에서 클립마다 Color → Nodes → Append a Node로 빈 노드를 붙이고 "
-             "Color → Nodes → Label Selected Node로 라벨 EXPOSURE를 단다(그레이드 없는 클립은 기본 노드에 라벨만). "
-             "변환 앞에 두려면(Log 소스) Add Serial Before Current. 라벨 없는 노드·기존 그레이드 노드에는 쓰지 않는다.")
+            "Color → Nodes → Label Selected Node로 라벨 EXPOSURE를 단다(그레이드 없는 클립은 기본 노드에 라벨만). "
+            "변환 앞에 두려면(Log 소스) Add Serial Before Current. 라벨 없는 노드·기존 그레이드 노드에는 쓰지 않는다.")
 
 
 # ---------- 순수 계산 ----------
@@ -335,8 +335,8 @@ def selftest():
     assert t[1] == 320, t  # 200+MAX_SHIFT
     assert all(abs(x - c["before"]["median"]) <= MAX_SHIFT for x, c in zip(t, clips))
     # 저녁→밤 경계는 다른 시간대 한계(120)만 적용, 대역 안이면 손대지 않음
-    clips = [C(300, "저녁"), C(200, "밤")]
-    assert plan(clips) == [300, 200] and jumps(clips, "before") == [(100, JUMP_DIFF)]
+    clips = [C(310, "저녁"), C(200, "밤")]
+    assert plan(clips) == [310, 200] and jumps(clips, "before") == [(110, JUMP_DIFF)]
     # 같은 시간대 안의 큰 차이는 양쪽이 절반씩 다가간다
     clips = [C(520, "낮"), C(420, "낮")]
     assert plan(clips) == [500, 440]
