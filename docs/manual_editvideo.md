@@ -104,7 +104,7 @@
 | 빈 화면·불량 구간 컷, 흔들림 보정 | [davinciresolve-cut-travelflow](../plugins/akbun-editvideo/skills/davinciresolve-cut-travelflow/SKILL.md): 여행 장면과 자연음의 흐름을 기준으로 정리하고 삭제 전 검토 표시를 남긴다. |
 | 도시 장면을 와이드·미디엄·디테일로 엮어 몽타주 구성 | [akbun-davinciresolve-cut-new-york](../plugins/akbun-editvideo/skills/akbun-davinciresolve-cut-new-york/SKILL.md): 건축·교통·거리의 움직임과 음악 리듬을 활용해 컷을 제안한다. 장면 삭제는 이유를 설명하고 사용자가 확인한 뒤 진행한다. |
 | 여행 자막과 장소·시간 챕터 | [davinciresolve-subtitle-travelnote](../plugins/akbun-editvideo/skills/davinciresolve-subtitle-travelnote/SKILL.md): 장소·시간·분위기를 짧은 한글 자막과 챕터로 전달한다. |
-| 완성본 앞에 붙일 훅(콜드 오픈·인트로) 찾기 | [akbun-davinciresolve-searchhook](../plugins/akbun-editvideo/skills/akbun-davinciresolve-searchhook/SKILL.md): 완성 타임라인의 장면을 채점해 훅 후보를 제안하고, 고른 후보만 완성 타임라인의 복제본 맨 앞에 넣는다. 영상·효과음은 함께 밀리고 잠근 BGM은 제자리에 남아 음악이 이어지며, 어긋난 음악 길이는 보정할 곳을 알려 준다. 완성 타임라인은 수정하지 않는다. |
+| 완성본 앞에 붙일 훅(콜드 오픈·인트로) 찾기 | [akbun-davinciresolve-searchhook](../plugins/akbun-editvideo/skills/akbun-davinciresolve-searchhook/SKILL.md): 완성 타임라인의 장면을 채점해 훅 후보를 제안하고, 고른 후보만 완성 타임라인의 복제본 맨 앞에 넣는다. 영상·효과음은 함께 밀리고 잠근 BGM은 제자리에 남아 음악이 이어지며, 어긋난 음악 길이는 보정할 곳을 알려 준다. 화면 텍스트는 `HOOK_TEXT` 트랙에 일반 Text+ 클립으로 놓이므로 클립을 선택해 Inspector에서 문구를 바로 고친다. 완성 타임라인은 수정하지 않는다. |
 | 여행 영상 오디오와 최종 파일 | [davinciresolve-audio-delivery](../plugins/akbun-editvideo/skills/davinciresolve-audio-delivery/SKILL.md): 사운드 공통 스킬로 준비한 믹스를 YouTube용 파일로 렌더하고 오디오·영상 결과를 계측한다. |
 
 ## 색보정은 무엇을 고를까

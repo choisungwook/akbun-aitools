@@ -12,7 +12,8 @@ H는 B를 복제한 타임라인이다. 복제본의 클립은 그대로 두고 
 훅 구간의 영상은 V1에, 소리는 새로 만든 HOOK 오디오 트랙에 놓는다.
 --bgm-track으로 준 오디오 트랙은 잠근 채 밀어서 음악이 처음부터 끊기지 않고 이어진다. 밀린 만큼의 음악 길이 보정은 표로 알린다.
 IN·OUT은 B의 타임라인 타임코드이고 OUT 프레임은 포함하지 않는다.
-text는 H의 HOOK_TEXT 비디오 트랙에 Text+ 화면 텍스트를 놓는다. V1은 밀리지 않는다.
+text는 H의 HOOK_TEXT 비디오 트랙에 일반 Text+ 클립 하나를 요청한 위치와 길이로 놓는다. 컴파운드 클립이나 다른 타임라인을 만들지 않고,
+기존 클립·마커·타임라인 길이를 바꾸지 않는다. 미디어 풀에 Fusion Title 항목 HOOK_TEXT_TEMPLATE이 있어야 한다(SKILL.md의 Text+ 템플릿 준비).
 """
 import argparse
 import datetime as dt
@@ -24,6 +25,7 @@ import time
 
 CHAPTER_MIN_SECONDS = 10  # YouTube 챕터 최소 길이
 TEXT_TRACK = "HOOK_TEXT"
+TEXT_TEMPLATE = "HOOK_TEXT_TEMPLATE"  # 미디어 풀의 Fusion Title 항목 이름
 AUDIO_TRACK = "HOOK"
 FONT = "Gmarket Sans"
 KINDS = ("video", "audio", "subtitle")
@@ -99,9 +101,9 @@ def bgm_rows(items, hook, video_end):
     return rows
 
 
-def pieces(frames, unit):
-    """frames 길이를 unit 이하 조각들로 나눈다. Text+ 한 개의 길이(unit)보다 오래 띄울 때 같은 텍스트를 이어 붙이는 용도."""
-    return [min(unit, frames - i) for i in range(0, frames, unit)]
+def clash(start, frames, clips):
+    """[start, start+frames)와 겹치는 기존 클립 [(시작, 길이)]. 끝 프레임은 포함하지 않으므로 맞닿은 클립은 겹치지 않는다."""
+    return [(s, d) for s, d in clips if s < start + frames and start < s + d]
 
 
 def free_frame(frame, end, used):
@@ -338,6 +340,16 @@ def named_track(tl, kind, name):
     return t
 
 
+def pool_clips(mp):
+    """미디어 풀의 모든 항목(하위 bin 포함). 타임라인과 컴파운드 클립도 항목이다."""
+    stack, clips = [mp.GetRootFolder()], []
+    while stack:
+        folder = stack.pop()
+        clips += folder.GetClipList() or []
+        stack += folder.GetSubFolderList() or []
+    return clips
+
+
 def text(a, stamp):
     resolve, project = connect()
     tl, fps, length = open_source(project, a.timeline)
@@ -350,36 +362,39 @@ def text(a, stamp):
         sys.exit(str(e))
     if not origin <= at < at + frames <= end or frames <= 0:
         sys.exit("텍스트 구간이 타임라인 밖: %s + %.1f초" % (a.at, a.seconds))
+    # API에는 트랙과 위치를 정해 Text+를 새로 만드는 함수가 없다(InsertFusionTitleIntoTimeline은 재생헤드에 끼워 넣어 뒤와 마커를 민다, 21.1 실측).
+    # 미디어 풀의 Fusion Title 항목은 AppendToTimeline으로 트랙·위치·길이를 정해 놓을 수 있고, 놓인 것은 항목과 이어지지 않은 일반 Text+다.
+    mp = project.GetMediaPool()
+    pool = pool_clips(mp)
+    source = next((c for c in pool if c.GetName() == TEXT_TEMPLATE and c.GetClipProperty("Type") == "Fusion Title"), None)
+    if not source:
+        sys.exit("미디어 풀에 Fusion Title 항목 `%s`이 없음. API로는 만들 수 없으니 SKILL.md의 'Text+ 템플릿 준비' 절차를 Resolve 화면에서 한 번 한 뒤 다시 실행한다" % TEXT_TEMPLATE)
     project.SetCurrentTimeline(tl)
     resolve.OpenPage("edit")
     track = named_track(tl, "video", TEXT_TRACK)
-    if any(it.GetStart() < at + frames and at < it.GetEnd() for it in tl.GetItemListInTrack("video", track) or []):
-        sys.exit("%s 트랙의 같은 구간에 이미 텍스트가 있음: %s" % (TEXT_TRACK, a.at))
-    before = [(it.GetStart(), it.GetDuration()) for it in tl.GetItemListInTrack("video", 1)]
-    # InsertFusionTitleIntoTimeline은 항상 V1 재생헤드에 끼워 넣어 뒤를 민다(21.1 실측).
-    # 그래서 타임라인 끝에 만들어 컴파운드 클립으로 묶고, 그것을 텍스트 트랙의 원하는 위치에 놓은 뒤 끝의 것을 지운다.
-    if not tl.SetCurrentTimecode(frame_to_tc(end, fps)):
-        sys.exit("타임라인 끝으로 이동 실패")
-    title = tl.InsertFusionTitleIntoTimeline("Text+")
-    if not title or title.GetStart() < end:
-        sys.exit("Text+ 삽입 실패 또는 타임라인 끝이 아닌 곳에 삽입됨. V1을 확인한다")
-    tool = next((t for t in title.GetFusionCompByIndex(1).GetToolList(False).values() if t.GetAttrs()["TOOLS_RegID"] == "TextPlus"), None)
+    if tl.GetIsTrackLocked("video", track):
+        sys.exit("%s 트랙(V%d)이 잠겨 있음. 잠금을 풀고 다시 실행한다" % (TEXT_TRACK, track))
+    before, marks = layout(tl), tl.GetMarkers()
+    hit = clash(at - origin, frames, before[("video", track)])
+    if hit:
+        sys.exit("충돌: %s 트랙(V%d)에 이미 클립이 있어 놓지 않음. 요청 %s + %.1f초, 기존 %s. 기존 클립은 그대로다" % (
+            TEXT_TRACK, track, a.at, frames / fps, ", ".join("%s~%s" % (frame_to_tc(origin + s, fps), frame_to_tc(origin + s + d, fps)) for s, d in hit)))
+    got = mp.AppendToTimeline([{"mediaPoolItem": source, "trackIndex": track, "recordFrame": at, "startFrame": 0, "endFrame": frames, "mediaType": 1}])
+    clip = got[0] if got and got[0] and got[0].GetStart() is not None else None
+    if not clip:
+        sys.exit("Text+ 배치 실패: V%d %s. 타임라인은 바뀌지 않음" % (track, a.at))
+    comp = clip.GetFusionCompByIndex(1) if clip.GetFusionCompCount() == 1 and not clip.GetMediaPoolItem() else None
+    tool = comp and next((t for t in comp.GetToolList(False).values() if t.GetAttrs()["TOOLS_RegID"] == "TextPlus"), None)
     if not tool:
-        sys.exit("Text+ 툴을 못 찾음")
+        sys.exit("놓인 클립이 일반 Text+가 아님. `%s` 항목이 Text+로 만든 것인지 확인한다. 놓인 클립: V%d %s" % (TEXT_TEMPLATE, track, a.at))
     for key, value in (("StyledText", a.text.replace("\\n", "\n")), ("Font", FONT), ("Style", a.style), ("Size", a.size), ("Center", {1: a.x, 2: a.y})):
         tool.SetInput(key, value)
     font = (tool.GetInput("Font"), tool.GetInput("Style"))
-    clip = tl.CreateCompoundClip([title], {"name": "HOOK_TEXT %s %s" % (a.at.replace(":", "_"), stamp)})
-    item = clip and clip.GetMediaPoolItem()
-    if not item:
-        sys.exit("컴파운드 클립 생성 실패. 타임라인 끝에 남은 Text+를 확인한다")
-    unit, record, placed = clip.GetDuration(), at, 0
-    for n in pieces(frames, unit):
-        got = project.GetMediaPool().AppendToTimeline([{"mediaPoolItem": item, "trackIndex": track, "recordFrame": record, "startFrame": 0, "endFrame": n, "mediaType": 1}])
-        placed += bool(got and got[0].GetStart() == record and got[0].GetDuration() == n)
-        record += n
-    tl.DeleteClips([clip], False)
-    after = [(it.GetStart(), it.GetDuration()) for it in tl.GetItemListInTrack("video", 1)]
+    clip.SetName("Text+")
+    want = dict(before)
+    want[("video", track)] = sorted(before[("video", track)] + [(at - origin, frames)])
+    kept = layout(tl) == want and tl.GetMarkers() == marks and tl.GetEndFrame() == end
+    added = len(pool_clips(mp)) - len(pool)
     still = "-"
     if a.out:
         os.makedirs(os.path.join(a.out, "hook-stills"), exist_ok=True)
@@ -389,11 +404,12 @@ def text(a, stamp):
         time.sleep(1)
         if not project.ExportCurrentFrameAsStill(still):
             still = "확인 필요: 스틸 내보내기 실패"
-    ok = placed == len(pieces(frames, unit)) and after == before and font == (FONT, a.style)
-    L = ["## 훅 텍스트", "", "| 타임라인 | 시작 TC | 길이(초) | 트랙 | 문구 | 글꼴 | Size | Center | V1 변화 | 스틸 | 결과 |", "|---|---|---|---|---|---|---|---|---|---|---|",
-         "| %s | %s | %.1f | V%d %s | %s | %s %s | %s | %s, %s | %s | %s | %s |" % (
+    ok = kept and not added and font == (FONT, a.style)
+    L = ["## 훅 텍스트", "", "| 타임라인 | 시작 TC | 길이(초) | 트랙 | 클립 | 문구 | 글꼴 | Size | Center | 기존 클립·마커·타임라인 길이 | 새 컴파운드 클립·타임라인 | 스틸 | 결과 |",
+         "|---|---|---|---|---|---|---|---|---|---|---|---|---|",
+         "| %s | %s | %.1f | V%d %s | Text+ 1개 | %s | %s %s | %s | %s, %s | %s | %s | %s | %s |" % (
              a.timeline, a.at, frames / fps, track, TEXT_TRACK, a.text, font[0], font[1], a.size, a.x, a.y,
-             "없음" if after == before else "확인 필요: V1이 바뀜", still, "적용" if ok else "확인 필요")]
+             "그대로" if kept else "확인 필요: 바뀜", "없음" if not added else "확인 필요: 미디어 풀 항목 %+d" % added, still, "적용" if ok else "확인 필요")]
     write_log(a.out, "searchhook-text", stamp, "\n".join(L) + "\n")
     if not ok:
         sys.exit(1)
@@ -420,7 +436,7 @@ def selftest():
     assert [(s, e) for s, e, _ in rows] == [(0, 500), (500, 900)] and "+200프레임 ripple" in rows[0][2] and "60프레임 짧음" in rows[1][2], rows
     assert "100프레임뿐" in bgm_rows([(0, 500, 100)], 200, 700)[0][2]
     assert free_frame(0, 48, {0, 1}) == 2 and free_frame(0, 2, {0, 1}) is None
-    assert pieces(36, 72) == [36] and pieces(72, 72) == [72] and pieces(150, 72) == [72, 72, 6]
+    assert clash(100, 50, [(0, 100), (150, 10)]) == [] and clash(100, 50, [(60, 41), (149, 5), (110, 10)]) == [(60, 41), (149, 5), (110, 10)]
     print("selftest ok")
 
 
