@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
-"""색보정 workflow의 보조 스크립트. 타임라인 복제와 클립별 라벨 노드 준비 상태 점검만 한다.
+"""색보정 workflow의 보조 스크립트. 타임라인 복제, 트랙 준비, 클립별 라벨 노드 준비 상태 점검만 한다.
 색보정 자체는 각 skill의 스크립트가 한다. 측정·세션·노드 규칙은 exposure_scope.py를 가져다 쓴다.
 
   python3 workflow.py duplicate --src "<타임라인 A>" [--name "<작업 타임라인>"]
+  python3 workflow.py tracks --timeline "<작업 타임라인>" [--out DIR]
   python3 workflow.py nodes --timeline "<작업 타임라인>" [--profile "VID_=Insta360 I-Log"] [--out DIR]
 
+tracks: 비디오 트랙 4개와 오디오 트랙 4개를 더하고 역할 이름을 붙인다. 이미 그 이름의 트랙이 있으면 더하지 않는다.
 nodes: 클립마다 필요한 라벨(EXPOSURE, WB, CST(Log만), CONTRAST, SAT)과 현재 라벨을 비교해 빠진 것을 표로 낸다.
 """
 import argparse
@@ -19,6 +21,14 @@ import exposure_scope as X  # noqa: E402
 import logconvert as LC  # noqa: E402
 
 ORDER = [("EXPOSURE", ("exposure",)), ("WB", ("wb", "white")), ("CST", ("cst", "lut")), ("CONTRAST", ("contrast",)), ("SAT", ("sat",))]
+
+# 아래에서 위 순서. 글자는 영상·그래픽 위에 오고, 훅 글자가 맨 위다
+TRACKS = {"video": ["OVERLAY", "GFX", "SUBTITLE", "HOOK_TEXT"], "audio": ["AMBIENCE", "SFX", "MUSIC", "HOOK"]}
+
+
+def lacking(have, want):
+    """현재 트랙 이름 목록에 없는 필요 이름. 순서는 want를 따른다."""
+    return [n for n in want if n not in have]
 
 
 def required(verdict):
@@ -55,6 +65,33 @@ def cmd_duplicate(a):
         sys.exit("복제 실패")
     project.SetCurrentTimeline(new)
     print("작업 타임라인:", new.GetName(), "클립", len(new.GetItemListInTrack("video", 1)))
+
+
+def cmd_tracks(a):
+    resolve, project = X.connect()
+    tl = X.pick_timeline(project, a.timeline)
+    project.SetCurrentTimeline(tl)
+    names = lambda kind: [tl.GetTrackName(kind, t) for t in range(1, tl.GetTrackCount(kind) + 1)]
+    added = []
+    for kind, want in TRACKS.items():
+        for name in lacking(names(kind), want):
+            if not (tl.AddTrack(kind, "stereo") if kind == "audio" else tl.AddTrack(kind)):
+                sys.exit("트랙 추가 실패: " + name)
+            tl.SetTrackName(kind, tl.GetTrackCount(kind), name)
+            added.append(name)
+    rows = ["| 트랙 | 이름 | 클립 수 | 이번에 추가 |", "|---|---|---|---|"]
+    for kind in TRACKS:
+        for t, name in enumerate(names(kind), 1):
+            rows.append("| %s%d | %s | %d | %s |" % (kind[0].upper(), t, name, len(tl.GetItemListInTrack(kind, t) or []), "예" if name in added else "-"))
+    lack = [n for kind, want in TRACKS.items() for n in lacking(names(kind), want)]
+    text = "## 트랙 준비\n\n타임라인: `%s`, 빠진 트랙 %d개%s\n\n%s\n" % (tl.GetName(), len(lack), " (%s)" % ", ".join(lack) if lack else "", "\n".join(rows))
+    print(text)
+    if a.out:
+        os.makedirs(a.out, exist_ok=True)
+        p = os.path.join(a.out, "track-plan_%s.md" % dt.datetime.now().strftime("%Y%m%d_%H%M"))
+        open(p, "w").write(text)
+        print("로그:", p)
+    sys.exit(1 if lack else 0)
 
 
 def cmd_nodes(a):
@@ -95,11 +132,12 @@ def main():
     d = sp.add_parser("duplicate"); d.add_argument("--src", required=True); d.add_argument("--name")
     n = sp.add_parser("nodes"); n.add_argument("--timeline"); n.add_argument("--track", type=int, default=1)
     n.add_argument("--profile", action="append"); n.add_argument("--out")
+    t = sp.add_parser("tracks"); t.add_argument("--timeline"); t.add_argument("--out")
     s = sp.add_parser("selftest")
     a = ap.parse_args()
     if a.cmd == "selftest":
         return selftest()
-    (cmd_duplicate if a.cmd == "duplicate" else cmd_nodes)(a)
+    {"duplicate": cmd_duplicate, "tracks": cmd_tracks, "nodes": cmd_nodes}[a.cmd](a)
 
 
 def selftest():
@@ -109,6 +147,8 @@ def selftest():
     assert order_ok(["exposure", "wb", "cst", "contrast", "sat"], required("Log"))
     assert not order_ok(["cst", "exposure", "wb"], required("Log"))
     assert order_ok(["", "wb"], required("미확인"))  # 빠진 건 순서 판정에서 무시
+    assert lacking(["Video 1"], TRACKS["video"]) == TRACKS["video"] and all(len(v) == 4 for v in TRACKS.values())
+    assert lacking(["Audio 1", "SFX", "HOOK"], TRACKS["audio"]) == ["AMBIENCE", "MUSIC"]
     print("selftest ok")
 
 

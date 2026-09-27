@@ -61,7 +61,7 @@ day-in-the-life와 주차 diary에서 진행·장애·결과가 중심이면 `pr
 | 6 | 필요한 그래픽 제작 | 선택한 도구의 절차; HyperFrames 선택 시 `davinciresolve-gfx-hyperframes` | 확정한 `GFX` 위치에 타임라인 해상도·fps와 맞는 결과가 있다. 그래픽 불필요이면 건너뜀, 도구 미정이면 아이디어와 위치를 유지하고 다른 작업 진행 |
 | 7 | 사운드 디자인·음악 계획 | `davinciresolve-sfx-epidemicsound` | 복제본에 원음·환경음·동작/창작 SFX·필요한 음악 cue가 배치되고 말 가림·싱크와 검토 마커 확인 |
 | 8 | 필요한 BGM 보완 | `davinciresolve-bgm-epidemicsound` | 7단계에 미완성인 음악 cue만 보완. 이미 배치된 음악은 반복 삽입하지 않고 선택 이유·구간 기록 |
-| 9 | 노출·색, 타인 얼굴 모자이크, 최종 믹스 계측·렌더 | `akbun-davinciresolve-workflow` 4~10·12·16단계 | 그 skill의 완료 조건 |
+| 9 | 노출·색, 타인 얼굴 모자이크, 최종 믹스 계측·렌더 | `akbun-davinciresolve-workflow` 5~11·13·17단계 | 그 skill의 완료 조건 |
 
 5단계 뒤에 컷을 다시 고치면 `davinciresolve-cut-devtalk`이 바뀐 구간 목록을 넘기고 5~8단계 skill이 위치를 다시 맞춘다. 단계를 건너뛰거나 바꾸면 이유를 로그에 적는다.
 
