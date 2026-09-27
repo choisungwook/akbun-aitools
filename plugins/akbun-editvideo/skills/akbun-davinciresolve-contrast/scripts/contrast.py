@@ -58,7 +58,7 @@ def main():
     ap.add_argument("--timeline")
     ap.add_argument("--track", type=int, default=1)
     ap.add_argument("--contrast", type=float, default=1.15)
-    ap.add_argument("--pivot", type=float, default=0.435, help="Rec.709 18%% 회색 부호화값")
+    ap.add_argument("--pivot", type=float, default=0.435, help="CONTRAST 입력 공간 기준점 (기본 0.435; 값은 로컬 pivot reference 참조)")
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--skip-missing", action="store_true")
     ap.add_argument("--reset", action="store_true")

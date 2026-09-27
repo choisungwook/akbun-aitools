@@ -124,7 +124,7 @@ API가 있어도 없는 기능이 있다. 기능별 API 유무·버전 조건·�
 |---|---|
 | 기본 보정과 창작 look을 별도 노드에 둠 | 기본 보정 라벨 5개, 요청 시 창작용 `LOOK` 노드 1개를 추가 |
 | 화이트밸런스·노출은 Log 상태(변환 앞)에서, 대비·채도는 변환 뒤에서 | `EXPOSURE`·`WB`는 `CST` 앞, `CONTRAST`·`SAT`은 뒤 |
-| 스코프로 판단: Waveform으로 노출·클리핑, Vectorscope·피커로 WB, 피벗 0.435(Rec.709) 대비 | 스틸 기반 스코프값, 중립 픽셀 R/G/B, `--pivot 0.435` |
+| 스코프로 판단: Waveform으로 노출·클리핑, Vectorscope·피커로 WB, 대비 피벗은 CONTRAST 입력 공간 기준 | 스틸 기반 스코프값, 중립 픽셀 R/G/B, [로컬 pivot reference](../akbun-davinciresolve-contrast/references/pivot-reference.md), workflow 기본 시작값 `--pivot 0.435` |
 | 밤 장면은 어두운 게 맞다("context is important") | 시간대별 목표 대역 |
 | 채도는 조금만, 섀도·하이라이트는 채도를 빼서 필름처럼 | 채도 상한 1.25, `--rolloff` |
 | 창작 룩은 기본 보정과 분리된 새 노드에서 한다 | 요청된 style skill을 읽고 마지막 `LOOK` 노드에서 조정 |
