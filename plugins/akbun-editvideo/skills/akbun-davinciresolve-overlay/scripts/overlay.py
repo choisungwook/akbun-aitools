@@ -7,7 +7,10 @@ DaVinci Resolve 21.1 외부 스크립팅 API만 쓴다.
                            [--radius 0.08] [--in pop] [--out fade] [--in-frames 8] [--out-frames 6] [--overshoot 0.0]
                            [--source-in 초] [--track OVERLAY] [--out-dir DIR]
   python3 overlay.py push --timeline B --at TC [--track-index 1] [--from 1.0] [--to 1.08] [--x 0.5] [--y 0.5] [--reset] [--out-dir DIR]
+  python3 overlay.py write-on --timeline B --at TC [--seconds 0.8] [--track SUBTITLE] [--out-dir DIR]
   python3 overlay.py selftest
+
+write-on은 textplus.py place로 놓은 Text+의 Write On End를 0에서 1로 키프레임해 글자가 타이핑되듯 나오게 한다.
 
 카드를 지울 때는 davinciresolve-subtitle-travelnote의 textplus.py remove --track OVERLAY를 쓴다.
 
@@ -329,6 +332,33 @@ def push(a, stamp):
         sys.exit(1)
 
 
+def write_on(a, stamp):
+    _, _, tl, fps, at = open_timeline(a)
+    track = next((t for t in range(1, tl.GetTrackCount("video") + 1) if tl.GetTrackName("video", t) == a.track), None)
+    if not track:
+        sys.exit("%s 트랙 없음" % a.track)
+    clip = next((it for it in tl.GetItemListInTrack("video", track) or [] if it.GetStart() == at), None)
+    comp = clip and not clip.GetMediaPoolItem() and clip.GetFusionCompCount() == 1 and clip.GetFusionCompByIndex(1)
+    tool = comp and next((t for t in comp.GetToolList(False).values() if t.GetAttrs()["TOOLS_RegID"] == "TextPlus"), None)
+    if not tool:
+        sys.exit("%s 트랙(V%d)의 %s에서 시작하는 Text+ 클립 없음" % (a.track, track, a.at))
+    start, last = comp_range(comp)
+    frames = round(a.seconds * fps * (last - start + 1) / clip.GetDuration())
+    if not 0 < frames < last - start:
+        sys.exit("타이핑 길이 %.2f초가 클립 길이 %.2f초 이상" % (a.seconds, clip.GetDuration() / fps))
+    # 글자가 한 글자씩 같은 속도로 나오게 선형으로 둔다. 핸들을 주지 않으면 BezierSpline은 직선이다
+    if not tool.AddModifier("End", "BezierSpline"):
+        sys.exit("Write On End에 키프레임을 넣을 수 없음")
+    tool.End.GetConnectedOutput().GetTool().SetKeyFrames({float(start): {1: 0.0}, float(start + frames): {1: 1.0}}, True)
+    got = [round(tool.GetInput("End", start + f), 3) for f in (0, frames // 2, frames)]
+    ok = got[0] == 0.0 and got[2] == 1.0 and 0 < got[1] < 1
+    L = ["## 글자 타이핑 등장", "", "| 타임라인 | 트랙 | 시작 TC | 타이핑(초) | 시작·중간·끝 Write On End | 결과 |", "|---|---|---|---|---|---|",
+         "| %s | V%d %s | %s | %.2f | %s | %s |" % (a.timeline, track, a.track, a.at, a.seconds, " / ".join(map(str, got)), "적용" if ok else "확인 필요")]
+    SH.write_log(a.out_dir, "overlay-writeon", stamp, "\n".join(L) + "\n")
+    if not ok:
+        sys.exit(1)
+
+
 def selftest():
     keys = spline([(0, 0.0, "out"), (8, 1.0, "inout")])
     values = [bezier_at(keys, 0, 8, f) for f in range(1, 8)]
@@ -399,10 +429,16 @@ def main():
     q.add_argument("--y", type=float, default=0.5, help="확대 중심 Y")
     q.add_argument("--reset", action="store_true", help="이 스크립트가 넣은 push를 지운다")
     q.add_argument("--out-dir")
+    w = sub.add_parser("write-on")
+    w.add_argument("--timeline", required=True)
+    w.add_argument("--at", required=True, help="Text+ 클립의 시작 타임코드")
+    w.add_argument("--seconds", type=float, default=0.8, help="글자가 다 나올 때까지 걸리는 시간")
+    w.add_argument("--track", default="SUBTITLE")
+    w.add_argument("--out-dir")
     sub.add_parser("selftest")
     a = ap.parse_args()
     stamp = dt.datetime.now().strftime("%Y%m%d_%H%M%S")
-    {"place": place, "push": push}.get(a.cmd, lambda *_: selftest())(a, stamp)
+    {"place": place, "push": push, "write-on": write_on}.get(a.cmd, lambda *_: selftest())(a, stamp)
 
 
 if __name__ == "__main__":

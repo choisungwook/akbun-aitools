@@ -38,6 +38,8 @@ Resolve는 한 프레임에 마커 1개만 허용한다. 종류마다 색·대�
 | Sky | `WB_CHECK <파일명> <사유>` | 클립 마커 | +6 | `akbun-davinciresolve-whitebalance` |
 | Sand | `AUDIO_REVIEW <cue ID> <사유>` | 타임라인 마커 | 검토 구간 시작. 충돌 시 구간 안 가장 가까운 빈 프레임 | `davinciresolve-sfx-epidemicsound` (BGM·출력의 오디오 작업 포함) |
 | Mint | `HOOK <구간 이름>`, `HOOK_BGM <트랙>` | 타임라인 마커 | `HOOK`은 훅 타임라인의 훅 구간 시작, `HOOK_BGM`은 길이 보정이 필요한 BGM 클립의 끝. 충돌 시 가장 가까운 빈 프레임 | `akbun-davinciresolve-searchhook` |
+| Lavender | `DIRECT <cue ID> <사유>` | 타임라인 마커 | 어긋난 화면 변화·효과음의 시작. 충돌 시 구간 안 가장 가까운 빈 프레임 | `akbun-davinciresolve-director` |
+| Rose | `VO_FIT <문장 번호> <차이 초>` | 타임라인 마커 | 최종 보이스오버 문장의 시작. 충돌 시 가장 가까운 빈 프레임 | `akbun-davinciresolve-workflow-voiceover` |
 
 마커 색은 Resolve가 받는 16색(Blue, Cyan, Green, Yellow, Red, Pink, Purple, Fuchsia, Rose, Lavender, Sky, Mint, Lemon, Sand, Cocoa, Cream)에서만 고른다. Orange처럼 클립 색에만 있는 이름을 넘기면 `AddMarker`가 False를 반환하고 마커가 찍히지 않는다.
 

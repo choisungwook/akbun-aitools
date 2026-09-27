@@ -17,7 +17,7 @@ plugin 11개, skill 92개. 하고 싶은 일에서 plugin을 찾고, 아래 `plu
 | 이미 쓰는 코드·문서를 자동 검증에 걸어 리팩토링, 사람이 판단할 것만 보고 | [akbun-refactoring](#akbun-refactoring) | `akbun-refactoring-autoverify` |
 | agent 기억 구조 설정, 세션 시작 때 맥락 복원, 세션에서 배운 것을 skill에 반영 | [akbun-agent-ops](#akbun-agent-ops) | `akbun-memory-setup`, `akbun-recall`, `akbun-reflect` |
 | 매일 GitHub·Readwise 활동을 복습 문서로, 기간별 결과를 주간회의 브리프로 | [akbun-pulse](#akbun-pulse) | `github-daily-pulse`, `github-period-pulse`, `readwise-daily-pulse` |
-| DaVinci Resolve 브이로그 편집(여행: 시간순 타임라인, 컷·안정화, 색보정 workflow(LUT·밝기·화이트밸런스·대비·채도)와 네 가지 새 LOOK 스타일, 뉴욕 도시 몽타주 컷, 얼굴 모자이크, 한글 자막, 오디오 믹싱, YouTube 썸네일·챕터·업로드 / 말하는 개발자 브이로그: 촬영 전 인터뷰·기획·샷 스케치·스토리보드, 5–7분 기본 story arc, 전사 기반 스토리·컷·자막·그래픽 카드·Epidemic Sound 효과음·BGM) | [akbun-editvideo](#akbun-editvideo) | `akbun-davinciresolve-workflow`, `akbun-vlog-prepared-devtalk`, `akbun-davinciresolve-look-tokyo-night`, `akbun-davinciresolve-cut-new-york`, `davinciresolve-story-devtalk` |
+| DaVinci Resolve 브이로그 편집(여행: 시간순 타임라인, 컷·안정화, 색보정 workflow(LUT·밝기·화이트밸런스·대비·채도)와 네 가지 새 LOOK 스타일, 뉴욕 도시 몽타주 컷, 얼굴 모자이크, 한글 자막, 오디오 믹싱, YouTube 썸네일·챕터·업로드 / 말하는 개발자 브이로그: 촬영 전 인터뷰·기획·샷 스케치·스토리보드, 5–7분 기본 story arc, 전사 기반 스토리·컷·자막·그래픽 카드·Epidemic Sound 효과음·BGM / 얼굴 없는 보이스오버 설명·제품 소개: 대본 우선 workflow, 오버레이 카드·주석, 감독 연출표와 점검) | [akbun-editvideo](#akbun-editvideo) | `akbun-davinciresolve-workflow`, `akbun-vlog-prepared-devtalk`, `akbun-davinciresolve-look-tokyo-night`, `akbun-davinciresolve-cut-new-york`, `davinciresolve-story-devtalk`, `akbun-davinciresolve-workflow-voiceover` |
 | YouTube Studio 채널 설정표, 업로드한 영상의 메타데이터 설정, 제목·설명 다국어 등록, 내 영상의 지표·스타일 분석 | [akbun-youtube](#akbun-youtube) | `akbun-youtube-plan-channel-settings`, `akbun-youtube-set-video-metadata`, `akbun-youtube-analyze-my-videos` |
 
 ## 빠른 시작
@@ -173,7 +173,7 @@ agent 운영 skill 모음. 프로젝트의 기억 구조를 최초 1회 설계�
 
 ### akbun-editvideo
 
-영상 편집 skill 모음. 여행 브이로그는 `akbun-davinciresolve-workflow`, 개발자 브이로그는 촬영 전 `akbun-vlog-prepared-devtalk`, 촬영 후 `davinciresolve-story-devtalk`을 쓴다. 개발자 diary는 시청자 맥락과 실제 경험의 변화를 잇고 기본 5–7분으로 계획한다. 기본 색보정과 창작 look은 분리하며, 네 가지 새 look은 Color 페이지의 새 `LOOK` Serial 노드에 적용한다. 도시 컷·색 스타일은 개별 skill로 선택한다. 원본 타임라인은 복제해 보존하고 변경은 파일명·타임코드 기준 작업 로그에 남긴다. YouTube 납품에는 서로 다른 장면의 썸네일 후보, 시작 지점 챕터 마커, 요청된 공개 범위·메타데이터를 포함한다.
+영상 편집 skill 모음. 여행 브이로그는 `akbun-davinciresolve-workflow`, 개발자 브이로그는 촬영 전 `akbun-vlog-prepared-devtalk`, 촬영 후 `davinciresolve-story-devtalk`을 쓴다. 얼굴 없이 보이스오버로 설명하는 공부·경험·기술 가이드·제품 소개 영상은 `akbun-davinciresolve-workflow-voiceover`를 쓰고, 감독 skill이 움직임·오버레이·효과음을 한 표로 정한다. 개발자 diary는 시청자 맥락과 실제 경험의 변화를 잇고 기본 5–7분으로 계획한다. 기본 색보정과 창작 look은 분리하며, 네 가지 새 look은 Color 페이지의 새 `LOOK` Serial 노드에 적용한다. 도시 컷·색 스타일은 개별 skill로 선택한다. 원본 타임라인은 복제해 보존하고 변경은 파일명·타임코드 기준 작업 로그에 남긴다. YouTube 납품에는 서로 다른 장면의 썸네일 후보, 시작 지점 챕터 마커, 요청된 공개 범위·메타데이터를 포함한다.
 
 | skill | 설명 |
 |---|---|
@@ -204,6 +204,11 @@ agent 운영 skill 모음. 프로젝트의 기억 구조를 최초 1회 설계�
 | [akbun-vlog-shotsketch](./plugins/akbun-editvideo/skills/akbun-vlog-shotsketch/) | 이야기 역할이 있는 핵심 샷을 회색 연필 스케치와 표로 작성. 카메라 위치·프레임·행동·빛·필요한 이동을 설명하고 얼굴·반사를 피함 |
 | [akbun-vlog-storyboard](./plugins/akbun-editvideo/skills/akbun-vlog-storyboard/) | 확정 비트별 음성·이야기 역할이 있는 B-roll/화면 녹화·필요한 그래픽 아이디어·분량을 스토리보드로 작성. 그래픽 제작 도구는 미정으로 두며 OBS 화면 녹화 목록 포함 |
 | [davinciresolve-beats-devtalk](./plugins/akbun-editvideo/skills/davinciresolve-beats-devtalk/) | 준비 devtalk의 확정 story arc와 실제 전사·장면을 대조해 소재 인벤토리와 5–7분 비트 시트를 제안. 사용자가 확정하면 음성·화면 구간을 비트 순서로 나열하고 `CHAPTER`·필요한 `GFX` 마커 추가 |
+| [akbun-davinciresolve-workflow-voiceover](./plugins/akbun-editvideo/skills/akbun-davinciresolve-workflow-voiceover/) | 얼굴 없는 보이스오버 설명·제품 소개 영상 workflow. 대본 확정 → 가이드 음성 → 화면 조립 → 연출표 → 오버레이 → 최종 보이스오버 복제본 교체(`VO_FIT` 마커) → 사운드 → 점검 → 출력 |
+| [akbun-davinciresolve-style-explainer](./plugins/akbun-editvideo/skills/akbun-davinciresolve-style-explainer/) | 공부·경험 공유·기술 가이드 편집 스타일. 결과 먼저, 단계별 챕터, 본편 위 결과 카드·진행 배지, 화면 녹화 확대, 챕터 경계 음악 비움과 효과음 수치 |
+| [akbun-davinciresolve-style-product](./plugins/akbun-editvideo/skills/akbun-davinciresolve-style-product/) | 제품 소개 촬영·편집 스타일. 와이드·측면·탑다운·매크로·어깨 너머 각도, 손으로 보여 주는 첫 등장, 히어로 push, 제품 옆 주석·2단 글자, 수미상관 결말 |
+| [akbun-davinciresolve-overlay](./plugins/akbun-editvideo/skills/akbun-davinciresolve-overlay/) | 사진·영상·화면 캡처를 둥근 모서리 카드로 `OVERLAY` 트랙에 놓고 pop·slide·fade를 Fusion 키프레임으로. 본편 push, Text+ 타이핑 등장. 다른 트랙·마커 불변 확인과 스틸 |
+| [akbun-davinciresolve-director](./plugins/akbun-editvideo/skills/akbun-davinciresolve-director/) | 감독. 비트별 화면 전환·움직임·오버레이·글자·효과음·음악 상태 연출표를 승인받아 실행 skill에 넘기고, 화면 변화와 효과음 짝·긴 정지 구간을 점검해 `DIRECT` 마커 |
 | [davinciresolve-cut-devtalk](./plugins/akbun-editvideo/skills/davinciresolve-cut-devtalk/) | 전사 기준 문장 컷. 무의미한 침묵·재녹음 앞 테이크·필러를 줄이고, 전환점 뒤 의도된 pause는 보존. 화면 리듬을 맞추며 얼굴 클립은 V1에서 제외 |
 | [davinciresolve-subtitle-devtalk](./plugins/akbun-editvideo/skills/davinciresolve-subtitle-devtalk/) | 자막 편집 스타일 devtalk. Windows·macOS 공용 SIL OFL 글꼴(Pretendard, 대체 Noto Sans KR)만 사용, 글자 높이 최소값(대사 5%·키워드 6%·번호 제목 8%)을 스틸로 측정해 강제, 대사 자막은 `CreateSubtitlesFromAudio` 뒤 전사 대조, 키워드·코멘트·목록은 Text+ |
 | [davinciresolve-gfx-hyperframes](./plugins/akbun-editvideo/skills/davinciresolve-gfx-hyperframes/) | 챕터 제목·원리·트레이드오프 구조·내 생각·전후 비교표 카드를 HyperFrames(HTML → MP4)로 렌더해 `GFX` 마커 위치 V2에 삽입. 카드 값은 style skill 글자 표, 내용은 비트 시트·전사에서만, 글꼴은 Pretendard `@font-face` |

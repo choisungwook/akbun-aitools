@@ -15,6 +15,7 @@
 | 특정 샷의 카메라 구도와 빛을 정하고 싶음 | [akbun-vlog-shotsketch](../plugins/akbun-editvideo/skills/akbun-vlog-shotsketch/SKILL.md) | 이야기 비트에 필요한 한 샷의 프레임, 카메라 위치, 동작, 조명과 얼굴 비노출 확인을 그림과 표로 만든다. |
 | 전체 이야기에서 어떤 장면을 어떤 순서로 찍을지 보고 싶음 | [akbun-vlog-storyboard](../plugins/akbun-editvideo/skills/akbun-vlog-storyboard/SKILL.md) | 확정된 비트를 음성·B-roll·화면 녹화·필요한 그래픽 아이디어에 연결하고 핵심 setup을 스케치한다. |
 | 말소리 있는 개발자 영상의 촬영 클립을 편집하고 싶음 | [davinciresolve-story-devtalk](../plugins/akbun-editvideo/skills/davinciresolve-story-devtalk/SKILL.md) | 전사·스토리 비트·컷·화면·자막·그래픽·오디오 작업을 조율한다. 촬영 전 이야기 기획은 `akbun-vlog-prepared-devtalk`에서 시작한다. |
+| 얼굴 없이 보이스오버로 공부·경험·기술 가이드·제품을 설명하고 싶음(목소리는 나중에 녹음해도 됨) | [akbun-davinciresolve-workflow-voiceover](../plugins/akbun-editvideo/skills/akbun-davinciresolve-workflow-voiceover/SKILL.md) | 대본을 먼저 확정하고, 가이드 음성으로 화면·오버레이를 맞춘 뒤 최종 보이스오버를 복제본에서 교체한다. 감독 연출표로 움직임·오버레이·효과음의 박자를 정하고 편집 뒤 점검한다. |
 | 말소리 없는 여행 영상 전체를 편집하고 싶음 | [akbun-davinciresolve-workflow](../plugins/akbun-editvideo/skills/akbun-davinciresolve-workflow/SKILL.md) | 원본 타임라인을 보존하면서 촬영 시간순 타임라인부터 컷, 색보정, 요청된 Look, 개인정보 보호, 자막, 오디오, 출력까지 단계별로 진행한다. |
 | 한 단계만 처리하고 싶음 | 아래의 해당 작업별 스킬 | 전체 workflow를 쓰지 않고 필요한 색보정·컷·자막·오디오·출력만 따로 요청한다. |
 
@@ -36,11 +37,17 @@
 | 화면이 어둡고 야간 네온 분위기를 원함 | `akbun-davinciresolve-exposure` 및 필요한 WB·대비·채도 → `akbun-davinciresolve-look-tokyo-night` | 기본 밝기와 새 LOOK 노드가 분리된 결과. 실제 보기 환경에서 밝기·간판 디테일 확인. +1/+2스톱은 선택 비교 |
 | 편집·믹스 완료, 업로드할 파일만 필요함 | 4K와 오디오 계측은 `davinciresolve-audio-delivery`; 현재 타임라인 해상도의 기본 프리셋은 `davinciresolve-export-youtube` | 렌더 파일과 수행한 검증 결과. `AUDIO_REVIEW` 미해결 목록 확인. 렌더 요청만으로 업로드하지 않음 |
 | 여행 편집본은 끝났는데 도입부가 밋밋함 | `akbun-davinciresolve-searchhook` → 후보 선택 → 필요하면 `davinciresolve-sfx-epidemicsound` → 출력 | 훅 후보 3~5개와 추천, 완성 타임라인을 복제해 앞에 훅을 넣은 훅 타임라인. 제목·썸네일과 첫 5초가 같은 것을 말하는지, 문구가 사실인지, `HOOK_BGM` 마커의 음악 길이 보정 확인 |
+| 공부한 기술을 튜토리얼처럼 설명하고 싶음. 화면 녹화와 결과물이 있음 | `akbun-davinciresolve-workflow-voiceover` → explainer 스타일 → 대본 → 감독 연출표 → 가이드 음성 → 조립 → 오버레이 → 최종 보이스오버 → 사운드 → 점검 | 결과를 먼저 보여 주는 도입, 단계별 챕터, 결과 카드와 진행 배지. 대본·연출표 두 번 확인, `VO_FIT`·`DIRECT`·`AUDIO_REVIEW` 마커 확인 |
+| 새로 산 장비·도구를 소개하고 싶음. 카메라로 여러 각도를 찍을 수 있음 | `akbun-davinciresolve-style-product`로 촬영 각도 목록 확인 → 촬영 → `akbun-davinciresolve-workflow-voiceover` | 와이드·측면·탑다운·매크로·어깨 너머 샷 목록과 제품 옆 주석이 붙은 편집본. 사양·가격 문구가 사실인지 확인 |
+| 편집은 됐는데 화면이 밋밋하거나 산만함 | `akbun-davinciresolve-director` 3절 점검 → 필요하면 연출표 수정 → `akbun-davinciresolve-overlay`·사운드 skill | 화면 변화와 효과음 짝, 변화 없는 긴 구간, 분당 효과음 수 표와 `DIRECT` 마커. 스크립트 표만 보지 말고 표시된 곳을 재생해 판단 |
+| 결과 사진 몇 장만 본편 위에 띄우고 싶음 | `akbun-davinciresolve-overlay` | 둥근 카드와 등장·퇴장 움직임, 확인 스틸. 카드가 피사체·글자를 가리지 않는지 확인 |
 | 완성한 가로 영상에서 Shorts 후보 추출 | `davinciresolve-youtube-shorts` | 별도 세로 후보, 원래 오디오 처리 보존. 잘린 말·음악 tail·세로 구도 확인 |
 
 예: `$davinciresolve-sfx-epidemicsound 현재 여행 타임라인을 복제해서 바다→거리 전환과 현장음을 살리고, 필요한 여러 BGM도 연결해줘. 내가 들을 곳은 마커로 남겨줘.`
 
 예: `$akbun-davinciresolve-searchhook 완성한 한강 산책 타임라인에서 훅 후보를 찾아줘. 제목은 아직 없으니 후보마다 제목도 같이 제안해줘.`
+
+예: `$akbun-davinciresolve-workflow-voiceover 쿠버네티스 네트워크 정책을 공부한 노트로 설명 영상을 만들고 싶어. 화면 녹화는 있고, 목소리는 화면을 다 맞춘 뒤 녹음할게.`
 
 예: `$davinciresolve-bgm-epidemicsound 32주차 diary의 집중→막힘→해결 흐름에 맞는 음악 후보만 보여줘. 아직 넣지는 말아줘.`
 
@@ -76,6 +83,43 @@
 요청 예: `$davinciresolve-sfx-epidemicsound 책상에서 코딩하는 구간은 원래 타이핑 소리를 살리고, 테스트 성공 화면에만 작은 악센트를 넣어줘. 설명 중에는 음악이 물러나게 하고 검토 지점을 표시해줘.`
 
 요청 예: `$davinciresolve-bgm-epidemicsound 집중→막힘→해결 비트에 맞는 후보를 찾아줘. lo-fi나 minimal underscore부터 비교하되, 기존 곡의 스템을 줄이거나 음악을 빼는 선택도 포함해줘.`
+
+## 얼굴 없는 보이스오버 설명·제품 소개 영상
+
+얼굴을 드러내지 않고 공부·경험·기술 가이드·제품을 목소리로 설명하는 영상은 [akbun-davinciresolve-workflow-voiceover](../plugins/akbun-editvideo/skills/akbun-davinciresolve-workflow-voiceover/SKILL.md)로 시작한다. 이미 말하면서 찍은 클립이 있으면 아래 `말소리 있는 개발자 영상`의 devtalk 흐름이 맞고, 대본을 먼저 쓰고 목소리를 나중에 녹음하려면 이 흐름이 맞다. 참고 영상 3개를 분석한 수치가 두 스타일 skill의 `references/analysis.md`에 있다.
+
+| 해결할 문제 | 스킬과 동작 |
+|---|---|
+| 대본부터 출력까지 전체 순서 | [akbun-davinciresolve-workflow-voiceover](../plugins/akbun-editvideo/skills/akbun-davinciresolve-workflow-voiceover/SKILL.md): 대본·연출표를 확인받은 뒤 가이드 음성으로 화면을 맞추고, 최종 보이스오버는 `<이름>_vo_<일시>` 복제본에서 교체한다. 길이가 어긋난 문장은 Rose `VO_FIT` 마커로 알려 준다. |
+| 공부·경험·튜토리얼을 어떤 화면 규칙으로 보여 줄지 | [akbun-davinciresolve-style-explainer](../plugins/akbun-editvideo/skills/akbun-davinciresolve-style-explainer/SKILL.md): 결과 먼저, 단계별 챕터 카드, 본편 위 결과 카드(폭 40%, 5~6프레임 페이드), 진행 배지, 화면 녹화 1.25초 확대, 챕터 경계 음악 비움. |
+| 제품을 어떤 각도로 찍고 어떻게 보여 줄지 | [akbun-davinciresolve-style-product](../plugins/akbun-editvideo/skills/akbun-davinciresolve-style-product/SKILL.md): 한 장면을 와이드·측면·탑다운·매크로·어깨 너머로 찍고, 손으로 내미는 첫 등장, 히어로 샷 5초 push, 제품 옆 손글씨 주석과 2단 글자, 도입 매크로로 끝나는 결말. |
+| 사진·영상·화면 캡처를 본편 위에 자연스럽게 띄우기 | [akbun-davinciresolve-overlay](../plugins/akbun-editvideo/skills/akbun-davinciresolve-overlay/SKILL.md): 둥근 카드를 `OVERLAY` 트랙에 놓고 pop·slide·fade를 키프레임으로 넣는다. 본편 push와 글자 타이핑 등장도 넣는다. 다른 트랙·마커·길이가 그대로인지 확인하고 스틸을 남긴다. |
+| 움직임·효과음·음악이 서로 박자가 맞는지 | [akbun-davinciresolve-director](../plugins/akbun-editvideo/skills/akbun-davinciresolve-director/SKILL.md): 비트마다 화면 전환·움직임·오버레이·글자·효과음·음악 상태를 한 표로 정하고, 편집 뒤 화면 변화와 효과음의 짝, 긴 정지 구간을 점검해 Lavender `DIRECT` 마커를 남긴다. |
+
+스타일이 헷갈리면 "무엇을 배웠고 어떻게 했나"가 중심이면 explainer, "이 물건이 무엇이고 어떻게 쓰나"가 중심이면 product를 고른다. 원리·트레이드오프 주장이 중심이면 기존 essay도 쓸 수 있다.
+
+### DaVinci Resolve AI Assistant로 오버레이를 쓰는 법
+
+AI Assistant에 요청할 때는 "무엇을, 어디에, 언제, 어떻게 들어오게"를 한 문장에 담으면 한 번에 들어간다. 위치는 화면 비율(왼쪽 아래가 0, 0), 길이는 초로 말하면 된다.
+
+| 원하는 화면 | 요청 예 |
+|---|---|
+| 결과 사진을 옆에 띄움 | `$akbun-davinciresolve-overlay 01:00:12:00부터 4초 동안 result.png를 오른쪽 절반 가운데에 폭 40% 카드로, 6프레임 페이드로 넣어줘` |
+| 두 결과를 비교 | `$akbun-davinciresolve-overlay 첫 시도 사진을 왼쪽, 개선 사진을 오른쪽에 폭 22% 세로 카드로 아래에서 올라오게 넣어줘` |
+| 단계 완료 표시 | `$akbun-davinciresolve-overlay 단계가 끝날 때마다 오른쪽 위에 작은 배지를 튕기듯 넣어줘` |
+| 제품 옆 주석 | `$akbun-davinciresolve-overlay 01:02:05:00에 제품 오른쪽 빈 공간에 손글씨로 '처음 켰을 때'를 타이핑되게 넣어줘` |
+| 천천히 다가가는 화면 | `$akbun-davinciresolve-overlay 제품 전체가 보이는 01:03:10:00 클립을 끝까지 6% 천천히 확대해줘` |
+
+- 카드와 글자는 컴파운드 클립이 아니라 일반 클립이다. 위치를 바꾸려면 "그 카드 지우고 왼쪽에 다시 넣어줘"라고 요청한다.
+- 카드 테두리·그림자, 카드와 같은 순간의 짧은 본편 확대는 스크립트가 넣지 않는다. 필요하면 Fusion 페이지나 Inspector에서 넣도록 안내받는다.
+- 글꼴은 SIL OFL 글꼴(Pretendard, Noto Serif KR, Nanum Pen Script)만 쓴다. Resolve에 없으면 설치 안내가 나온다.
+
+### 보이스오버를 나중에 녹음할 때
+
+1. 대본을 확정하면 휴대폰으로 대충 읽은 가이드 음성을 넣는다. 원하면 Resolve 음성 생성으로 만들 수 있지만 한국어 품질은 대표 문장으로 먼저 들어 본다.
+2. 가이드 음성 길이에 맞춰 화면·오버레이를 끝낸다.
+3. 마이크로 문장 번호를 말하고 녹음한 최종 음성을 준다. 복제본에서 교체되고, 가이드보다 0.5초 넘게 길거나 짧은 문장은 `VO_FIT` 마커로 표시된다.
+4. 마커마다 샷 길이·문장 사이 쉼·카드 시작 중 어떻게 맞출지 고른다. 가이드 음성은 뮤트 트랙에 비교용으로 남는다.
 
 ## 말소리 있는 개발자 영상
 
@@ -147,6 +191,7 @@ Look 수치는 참고 영상에서 프레임을 복제한 절대값이 아니라
 - 노출 스크립트의 0–1020 밝기 근사치와 스톱·IRE를 바꿔 쓰지 않는다. +1/+2스톱은 선택 비교이며 중간값·무조정도 가능하다.
 - [Pivot 로컬 표](../plugins/akbun-editvideo/skills/akbun-davinciresolve-contrast/references/pivot-reference.md)는 인터넷 검색 없이 사용할 수 있다. DWG의 노드 연결은 입력 CST→노출→WB→대비→채도·선택 보정→출력 CST이며, 대비를 먼저 조정할 수 있다.
 - devtalk는 주 음성(내레이션)을 화면과 구분하며 주장 문장을 두 번 녹음할 의무가 없다. 컷 수·샷 길이는 출발점이고 이야기의 pause·자료 읽기 시간을 보존한다. 그래픽 도구가 미정이면 아이디어를 유지하고 다른 편집을 진행한다.
+- 1.2.5부터 오버레이·감독·설명형/제품 스타일·보이스오버 workflow가 추가됐다. 스타일 수치는 참고 영상 일부 구간을 0.5초 간격으로, 나머지를 10·20초 간격으로 본 결과라 출발점이다. 범위는 각 스타일의 `references/analysis.md`에 있다.
 - 1.2.0부터 SFX 스킬이 공통 사운드 디자인을 맡고 BGM·출력 스킬이 이를 참조한다. 이전의 효과음 개수·단일 BGM·고정 상대 레벨 규칙은 장면별 검청 기준으로 바뀌었다.
 - 1.1.0부터 도시 컷 스킬은 `davinciresolve-cut-citymontage`에서 `akbun-davinciresolve-cut-new-york`로 변경됐다. 저장한 호출문은 새 이름으로 바꾼다.
 
