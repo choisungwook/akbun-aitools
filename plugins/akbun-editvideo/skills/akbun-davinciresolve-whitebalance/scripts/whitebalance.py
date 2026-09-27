@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""클립마다 중립(무채색) 픽셀의 R·G·B를 재서 시간대별 허용 색온도 안에서 화이트밸런스를 맞춘다.
+"""클립마다 중립 후보 픽셀의 R·G·B를 재고 사용자가 정한 R-B 기준에 화이트밸런스를 맞춘다.
 DaVinci Resolve 21.1 외부 스크립팅 API + Pillow만 쓴다. 측정·노드·세션 코드는 akbun-davinciresolve-exposure의 exposure_scope.py를 가져다 쓴다.
 
-  python3 whitebalance.py --out DIR [--timeline NAME] [--sunrise 06:30 --sunset 18:30] [--dry-run] [--reset] [--selftest]
+  python3 whitebalance.py --out DIR [--timeline NAME] [--target-rb 0] [--dry-run] [--reset] [--selftest]
 
 조정은 Color 페이지에서 새로 만들고 라벨 WB를 단 노드에만 쓴다. 라벨 없는 노드에는 쓰지 않는다. Log 소스이고 변환(LUT·CST) 노드가 뒤에 있으면 채널별 Offset(로그 공간의
 채널 오프셋 = 선형 게인), 아니면 채널별 Slope. G는 고정하고 R·B만 움직인다.
@@ -17,7 +17,6 @@ sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."
 import exposure_scope as X  # noqa: E402  ponytail: 같은 plugin 안의 형제 skill을 직접 import. 분리 배포하면 복사한다
 
 # ---------- 기준값 (SKILL.md 표와 같아야 한다) ----------
-SKEW = {"밤": 0, "아침": 10, "낮": 0, "오후": 30, "저녁": -20, "미상": 0}  # 시간대별 중립 픽셀의 목표 R-B (10비트). 양수 = 따뜻하게 남김
 TOL = 20            # 채널 차이 허용
 MIN_SHARE = 0.5     # 중립 픽셀이 화면의 이 %보다 적으면 기준 없음
 MAX_OFFSET, MAX_SLOPE = 0.10, 0.20   # 채널당 최대 변화(Offset 절대값 / Slope 1±)
@@ -47,18 +46,18 @@ def neutral_rgb(path, size=320):
     return {"R": round(acc[0] / n * 4), "G": round(acc[1] / n * 4), "B": round(acc[2] / n * 4), "share": share}
 
 
-def errors(rgb, skew):
-    """목표 대비 R·B 오차. 목표: R-G = +skew/2, B-G = -skew/2."""
-    return {"R": (rgb["R"] - rgb["G"]) - skew / 2, "B": (rgb["B"] - rgb["G"]) + skew / 2}
+def errors(rgb, target_rb):
+    """목표 대비 R·B 오차. 목표: R-G = +target_rb/2, B-G = -target_rb/2."""
+    return {"R": (rgb["R"] - rgb["G"]) - target_rb / 2, "B": (rgb["B"] - rgb["G"]) + target_rb / 2}
 
 
-def ok(rgb, skew):
-    e = errors(rgb, skew)
+def ok(rgb, target_rb):
+    e = errors(rgb, target_rb)
     return abs(e["R"]) <= TOL and abs(e["B"]) <= TOL
 
 
-def first_guess(param, rgb, skew):
-    e = errors(rgb, skew)
+def first_guess(param, rgb, target_rb):
+    e = errors(rgb, target_rb)
     if param == "Offset":
         return {"R": -e["R"] / 1700.0, "B": -e["B"] / 1700.0}  # ponytail: exposure_scope와 같은 실측 기울기
     return {"R": (rgb["R"] - e["R"]) / max(rgb["R"], 1), "B": (rgb["B"] - e["B"]) / max(rgb["B"], 1)}
@@ -87,7 +86,7 @@ def verdict(c):
         flags.append("WB 노드 없음")
     if c["before"] is None:
         flags.append("중립 기준 없음")
-    elif c.get("after") is not None and not ok(c["after"], c["skew"]):
+    elif c.get("after") is not None and not ok(c["after"], c["target_rb"]):
         flags.append("채널 차이 %d 초과" % TOL)
     return "확인 필요: " + ", ".join(flags) if flags else "통과"
 
@@ -100,17 +99,17 @@ def grab_rgb(sess, c, tag):
 
 
 def solve(sess, c):
-    node, param, skew = c["node"], c["param"], c["skew"]
-    x = {k: clamp(param, v) for k, v in first_guess(param, c["before"], skew).items()}
+    node, param, target_rb = c["node"], c["param"], c["target_rb"]
+    x = {k: clamp(param, v) for k, v in first_guess(param, c["before"], target_rb).items()}
     xp = {"R": IDENT[param], "B": IDENT[param]}
-    fp = errors(c["before"], skew)
+    fp = errors(c["before"], target_rb)
     for _ in range(3):
         c["item"].SetCDL(cdl(node, param, x))
         rgb = grab_rgb(sess, c, "_iter")
         if rgb is None:
             return x, None
-        f = errors(rgb, skew)
-        if ok(rgb, skew):
+        f = errors(rgb, target_rb)
+        if ok(rgb, target_rb):
             return x, rgb
         nx = {}
         for k in ("R", "B"):
@@ -127,10 +126,10 @@ def fmt(rgb):
 def write_log(out, clips, dry):
     stamp = dt.datetime.now().strftime("%Y%m%d_%H%M")
     L = ["## 4b. 화이트밸런스", "", "측정: Resolve 출력 스틸의 중립 후보 픽셀(채도 20% 이하, 중간 밝기) 평균 R/G/B, 10비트. 모드: " + ("dry-run" if dry else "적용"), "",
-         "| 파일명 | 시작 TC | 촬영 시각 | 시간대 | 목표 R-B | 기준 픽셀% | R/G/B 전 | R/G/B 후 | 조정 | 판정 |", "|---|---|---|---|---|---|---|---|---|---|"]
+         "| 파일명 | 시작 TC | 촬영 시각 | 시간대(기록용) | 목표 R-B | 기준 픽셀% | R/G/B 전 | R/G/B 후 | 조정 | 판정 |", "|---|---|---|---|---|---|---|---|---|---|"]
     for c in clips:
         L.append("| %s | %s | %s | %s | %+d | %s | %s | %s | %s | %s |" % (
-            c["name"], c["tc"], "%02d:%02d" % (int(c["hour"]), int(c["hour"] * 60) % 60) if c["hour"] is not None else "없음", c["bucket"], c["skew"],
+            c["name"], c["tc"], "%02d:%02d" % (int(c["hour"]), int(c["hour"] * 60) % 60) if c["hour"] is not None else "없음", c["bucket"], c["target_rb"],
             c["before"]["share"] if c["before"] else "-", fmt(c["before"]), fmt(c.get("after")), c.get("adj", "-"), verdict(c)))
     path = os.path.join(out, "whitebalance_%s.md" % stamp)
     open(path, "w").write("\n".join(L) + "\n")
@@ -145,6 +144,7 @@ def main():
     ap.add_argument("--track", type=int, default=1)
     ap.add_argument("--sunrise", default="06:30")
     ap.add_argument("--sunset", default="18:30")
+    ap.add_argument("--target-rb", type=int, default=0, help="목표 중립 픽셀 R-B (10비트, 기본 0; 양수는 따뜻함, 음수는 차가움)")
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--skip-missing", action="store_true", help="라벨 노드 없는 클립은 건너뛰고 확인 필요로만 남긴다")
     ap.add_argument("--reset", action="store_true")
@@ -168,7 +168,7 @@ def main():
         hour = X.hour_of(mpi)
         b = X.bucket(hour, sr, ss)
         clips.append({"i": len(clips), "item": it, "name": it.GetName(), "start": int(it.GetStart()), "end": int(it.GetEnd()),
-                      "tc": sess.tc(it.GetStart()), "hour": hour, "bucket": b, "skew": SKEW[b], "node": node, "param": param})
+                      "tc": sess.tc(it.GetStart()), "hour": hour, "bucket": b, "target_rb": a.target_rb, "node": node, "param": param})
     missing = [c["name"] for c in clips if c["node"] is None]
     if a.reset:
         for c in clips:
@@ -182,14 +182,14 @@ def main():
         c["before"] = grab_rgb(sess, c, "before")
     if not a.dry_run:
         for c in clips:
-            if c["node"] is None or c["before"] is None or ok(c["before"], c["skew"]):
+            if c["node"] is None or c["before"] is None or ok(c["before"], c["target_rb"]):
                 c["adj"] = "없음"
                 c["after"] = c["before"]
                 continue
             x, rgb = solve(sess, c)
             c["after"] = rgb
             c["adj"] = "노드%d %s R %.4f B %.4f" % (c["node"], c["param"], x["R"], x["B"])
-            if rgb is None or not ok(rgb, c["skew"]):
+            if rgb is None or not ok(rgb, c["target_rb"]):
                 c["item"].AddMarker(MARKER[2], MARKER[0], "%s %s %s" % (MARKER[1], c["name"], "기준 없음" if rgb is None else "채널 차이 초과"), "", 1)
     print("로그:", write_log(a.out, clips, a.dry_run))
     if missing:
@@ -209,7 +209,7 @@ def selftest():
     rgb = neutral_rgb(p)
     assert 48 <= rgb["share"] <= 52 and (rgb["R"], rgb["G"], rgb["B"]) == (600, 560, 480), rgb  # 축소 보간으로 경계가 흐려진다
     assert not ok(rgb, 0) and errors(rgb, 0) == {"R": 40, "B": -80}
-    assert ok({"R": 575, "G": 560, "B": 545}, 30)          # 오후: R-B 30 남긴 상태가 통과
+    assert ok({"R": 575, "G": 560, "B": 545}, 30)          # 명시적으로 +30의 따뜻한 기준을 요청한 예
     g = first_guess("Slope", rgb, 0)
     assert abs(g["R"] * 600 - 560) < 1 and abs(g["B"] * 480 - 560) < 1
     assert clamp("Slope", 2.0) == 1.2 and clamp("Offset", -1) == -0.1

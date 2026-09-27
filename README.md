@@ -4,7 +4,7 @@ akbun(악분)이 매일 쓰는 AI agent skill을 Claude Code와 Codex plugin으�
 
 ## 한눈에 보기
 
-plugin 10개, skill 56개. 하고 싶은 일에서 plugin을 찾고, 아래 `plugin 목록`에서 skill을 고른다.
+plugin 10개, skill 88개. 하고 싶은 일에서 plugin을 찾고, 아래 `plugin 목록`에서 skill을 고른다.
 
 | 하고 싶은 일 | plugin | 대표 skill |
 |---|---|---|
@@ -17,7 +17,7 @@ plugin 10개, skill 56개. 하고 싶은 일에서 plugin을 찾고, 아래 `plu
 | 이미 쓰는 코드·문서를 자동 검증에 걸어 리팩토링, 사람이 판단할 것만 보고 | [akbun-refactoring](#akbun-refactoring) | `akbun-refactoring-autoverify` |
 | agent 기억 구조 설정, 세션 시작 때 맥락 복원, 세션에서 배운 것을 skill에 반영 | [akbun-agent-ops](#akbun-agent-ops) | `akbun-memory-setup`, `akbun-recall`, `akbun-reflect` |
 | 매일 GitHub·Readwise 활동을 복습 문서로, 기간별 결과를 주간회의 브리프로 | [akbun-pulse](#akbun-pulse) | `github-daily-pulse`, `github-period-pulse`, `readwise-daily-pulse` |
-| DaVinci Resolve 브이로그 편집(여행: 시간순 타임라인, 컷·안정화, 색보정 workflow(LUT·밝기·화이트밸런스·대비·채도), 얼굴 모자이크, 한글 자막, 오디오 믹싱, YouTube 썸네일·챕터·업로드 / 말하는 개발자 브이로그: 촬영 계획·스토리보드, 전사 기반 스토리·컷·자막·그래픽 카드·Epidemic Sound 효과음·BGM) | [akbun-editvideo](#akbun-editvideo) | `akbun-davinciresolve-workflow`, `davinciresolve-cut-travelflow`, `davinciresolve-story-devtalk`, `davinciresolve-subtitle-devtalk` |
+| DaVinci Resolve 브이로그 편집(여행: 시간순 타임라인, 컷·안정화, 색보정 workflow(LUT·밝기·화이트밸런스·대비·채도)와 네 가지 새 LOOK 스타일, 도시 몽타주 컷, 얼굴 모자이크, 한글 자막, 오디오 믹싱, YouTube 썸네일·챕터·업로드 / 말하는 개발자 브이로그: 촬영 계획·스토리보드, 전사 기반 스토리·컷·자막·그래픽 카드·Epidemic Sound 효과음·BGM) | [akbun-editvideo](#akbun-editvideo) | `akbun-davinciresolve-workflow`, `davinciresolve-cut-travelflow`, `akbun-davinciresolve-look-tokyo-night`, `davinciresolve-cut-citymontage`, `davinciresolve-story-devtalk` |
 
 ## 빠른 시작
 
@@ -170,19 +170,24 @@ agent 운영 skill 모음. 프로젝트의 기억 구조를 최초 1회 설계�
 
 ### akbun-editvideo
 
-영상 편집 skill 모음. 말소리 없는 여행 브이로그는 `akbun-davinciresolve-workflow`가, 개발자가 얼굴 없이 목소리로 말하는 브이로그는 `davinciresolve-story-devtalk`이 DaVinci Resolve에서 편집한다. 원본 타임라인은 건드리지 않고 복제본에서 작업하며, 모든 변경을 파일명·타임코드 기준 작업 로그에 남긴다. 컷·자막·편집 스타일은 스타일별 skill로 나눠 다른 스타일을 나중에 추가할 수 있다. YouTube 납품에는 서로 다른 장면의 썸네일 후보, 시작 지점 챕터 마커, 요청된 공개 범위·메타데이터를 포함한다.
+영상 편집 skill 모음. 여행 브이로그는 `akbun-davinciresolve-workflow`, 개발자 브이로그는 `davinciresolve-story-devtalk`으로 편집한다. 기본 색보정과 창작 look은 분리하며, 네 가지 새 look은 Color 페이지의 새 `LOOK` Serial 노드에 적용한다. 도시 컷·색 스타일은 개별 skill로 선택한다. 원본 타임라인은 복제해 보존하고 변경은 파일명·타임코드 기준 작업 로그에 남긴다. YouTube 납품에는 서로 다른 장면의 썸네일 후보, 시작 지점 챕터 마커, 요청된 공개 범위·메타데이터를 포함한다.
 
 | skill | 설명 |
 |---|---|
 | [davinciresolve-cut-travelflow](./plugins/akbun-editvideo/skills/davinciresolve-cut-travelflow/) | 컷 편집 스타일 travelflow. 영상 흐름·자연음 중심, iPhone 앞부분 흰 화면·초점 이탈만 근거 기준으로 제거, 흔들림 감지된 iPhone 클립만 안정화, Insta360은 손대지 않음, 삭제 전 검토 마커 |
+| [davinciresolve-cut-citymontage](./plugins/akbun-editvideo/skills/davinciresolve-cut-citymontage/) | Resolve 21.1 AI assistant용 도시 여행 컷 스타일. 장소 전경·건축·교통·간판의 와이드·디테일과 움직임·음악 박자를 엮으며 사람을 요구하지 않고 이유 설명·사용자 확인 뒤 적용 |
+| [akbun-davinciresolve-look-japan-summer](./plugins/akbun-editvideo/skills/akbun-davinciresolve-look-japan-summer/) | 일본 여름 필름 룩. 대표 프레임의 P10/P50/P95 IRE와 녹색·햇빛 vectorscope 반경 목표 및 허용 오차 제공 |
+| [akbun-davinciresolve-look-tokyo-night](./plugins/akbun-editvideo/skills/akbun-davinciresolve-look-tokyo-night/) | 도쿄 야간 룩. 대표 프레임의 그림자·중간톤·네온 IRE와 청록·실광 vectorscope 반경 목표 및 허용 오차 제공 |
+| [akbun-davinciresolve-look-still](./plugins/akbun-editvideo/skills/akbun-davinciresolve-look-still/) | 단편 드라마 자연주의 룩. 대표 프레임의 저채도 IRE, 중성 건축·녹색 군집 반경과 가장 좁은 허용 오차 제공 |
+| [akbun-davinciresolve-look-new-york](./plugins/akbun-editvideo/skills/akbun-davinciresolve-look-new-york/) | 뉴욕 도시 필름 룩. 대표 프레임의 도시 IRE와 따뜻한 거리·푸른 하늘 vectorscope 반경 목표 및 허용 오차 제공 |
 | [akbun-davinciresolve-exposure](./plugins/akbun-editvideo/skills/akbun-davinciresolve-exposure/) | Resolve 21.1 API(`ExportCurrentFrameAsStill`·`SetCDL`)로 클립마다 스코프 중앙값을 재고 촬영 시간대(일출·일몰 기준 아침·낮·오후·저녁·밤)별 목표 대역과 인접 컷 tail→head 차이 한계(같은 시간대 60, 다른 시간대 120)에 맞춰 Color 페이지의 새 `EXPOSURE` 노드에만 CDL 적용. dry-run·reset·`EXPOSURE_CHECK` 마커 |
 | [akbun-davinciresolve-timeline-chrono](./plugins/akbun-editvideo/skills/akbun-davinciresolve-timeline-chrono/) | 미디어 풀 영상 전부를 촬영 시각(Date Recorded → Date Created)순으로 넣은 새 타임라인 생성. 파일명 접두어별 시계 오프셋, 시각 없는 클립은 맨 뒤 + 확인 필요, 생성 뒤 V1 순서 검증 |
-| [akbun-davinciresolve-whitebalance](./plugins/akbun-editvideo/skills/akbun-davinciresolve-whitebalance/) | 중립(무채색) 픽셀 R/G/B를 재서 시간대별 허용 색온도(오후 따뜻하게, 저녁 차갑게) 안에서 `WB` 라벨 노드에 채널별 CDL(Log는 변환 앞 Offset, 709는 Slope). 기준 없음은 `WB_CHECK` 마커 |
+| [akbun-davinciresolve-whitebalance](./plugins/akbun-editvideo/skills/akbun-davinciresolve-whitebalance/) | 중립 후보 픽셀 R/G/B를 재서 기본은 `R-B 0`으로 `WB` 라벨 노드 보정, 사용자 지정 색편향도 지원. 카메라 Log→Rec.709 LUT 경로 자동화만 지원하고 DWG/Intermediate는 HDR Global 수동 조정 |
 | [akbun-davinciresolve-logconvert](./plugins/akbun-editvideo/skills/akbun-davinciresolve-logconvert/) | Log 판정을 근거(사용자 지정 → Resolve Input Color Space → ffprobe transfer → 8비트=비Log)로 `Log`·`비Log`·`미확인` 기록. BT.709 태그·외관은 근거 아님. `Log`만 `CST` 라벨 노드에 프로파일별 LUT(`SetLUT`) 적용, 픽셀 차이로 검증 |
 | [akbun-davinciresolve-contrast](./plugins/akbun-editvideo/skills/akbun-davinciresolve-contrast/) | 변환 뒤 `CONTRAST` 노드에 피벗(0.435) 기준 대비를 CDL Slope·Offset으로. p10~p90 폭 측정, 클리핑이면 대비를 낮춰 재측정. S 커브는 API 불가로 안 함 |
 | [akbun-davinciresolve-saturation](./plugins/akbun-editvideo/skills/akbun-davinciresolve-saturation/) | `SAT` 노드에서 시간대별 채도 대역보다 낮은 클립만 CDL Saturation(최대 1.4)으로 보충, 낮추지 않음. `--rolloff`로 섀도·하이라이트 채도 롤오프 DCTL(Lum vs Sat) 추가 |
 | [akbun-davinciresolve-sky](./plugins/akbun-editvideo/skills/akbun-davinciresolve-sky/) | 하늘 색상 범위(hue 215±20°)만 채도·밝기를 바꾸는 DCTL을 생성해 `SKY` 노드 LUT로. 위쪽 절반 하늘 픽셀 3% 미만이면 건너뜀, 전후 채도·밝기로 검증 |
-| [akbun-davinciresolve-workflow](./plugins/akbun-editvideo/skills/akbun-davinciresolve-workflow/) | 여행 브이로그 편집 오케스트레이터. timeline-chrono(촬영 시간순 타임라인, 항상 첫 단계) → 복제 → 컷·안정화 → 클립별 라벨 노드 준비(`workflow.py nodes`로 점검) → logconvert → exposure → whitebalance → contrast → saturation → LOOK → 모자이크 → 자막·챕터 → 오디오 → 4K 렌더 순서로 아래 skill의 SKILL.md를 읽어 수행하고 마커 등록표·단계별 완료 조건·검증·작업 로그 관리. 노드 순서(EXPOSURE→WB→CST→CONTRAST→SAT)와 실행 순서가 다른 이유, Resolve 스크립팅 API 대응표와 없는 기능의 대체 방법 표(`references/agent-api.md`) 포함 |
+| [akbun-davinciresolve-workflow](./plugins/akbun-editvideo/skills/akbun-davinciresolve-workflow/) | 여행 브이로그 편집 오케스트레이터. 색관리 경로를 확인해 단일 Log→Rec.709 LUT만 자동화하고 DWG/Intermediate·자동 color-managed는 수동/미지원 경로로 분기. timeline-chrono → 복제 → 컷·안정화 → logconvert → exposure → whitebalance → contrast → saturation → LOOK → 모자이크 → 자막·챕터 → 오디오 → 4K 렌더. 노드·실행 순서, API 대응표, 로그와 검증 기준 포함 |
 | [davinciresolve-face-privacy](./plugins/akbun-editvideo/skills/davinciresolve-face-privacy/) | 얼굴·개인정보에 넓고 부드러운 약한 Mosaic Blur. `PRIVACY_MOSAIC` 노드 + Purple 클립 마커 + 작업 로그 표로 사용자가 나중에 위치를 찾아 수정 가능, 판정 불가는 `PRIVACY_CHECK` Pink 클립 마커 |
 | [davinciresolve-face-mosaic](./plugins/akbun-editvideo/skills/davinciresolve-face-mosaic/) | 새 `Mosaic Blur` 노드(기본 0.400)에 얼굴만 감싸는 마스크(Pen Tool 우선, 불가 시 타이트한 사각형)를 `Effect Mask`로 연결하고 움직임은 추적·키프레임, 배경은 보존 |
 | [davinciresolve-subtitle-travelnote](./plugins/akbun-editvideo/skills/davinciresolve-subtitle-travelnote/) | 자막 스타일 travelnote. Gmarket Sans, 장소·시간·분위기 한 줄, 큰 글자(Text+ Size 0.12, 기본값 1.5배)를 스틸로 측정해 안전 영역에 맞춤, 통일 자간·행간, 컷 변경 뒤 재타이밍, 장소 변경 지점 YouTube 챕터 마커(3개 이상) |
@@ -209,7 +214,7 @@ agent 운영 skill 모음. 프로젝트의 기억 구조를 최초 1회 설계�
 
 - `akbun-memory-setup`(akbun-agent-ops): AGENTS.md 읽기 순서를 만든다. `akbun-recall`이 그 순서를 따라 기억을 읽고, `akbun-reflect`는 그 구조 안의 기존 문서(SKILL.md·wiki·AGENTS.md)에만 쓰고 구조를 바꾸지 않는다.
 - `akbun-writing`(akbun-writing): 글쓰기 기준 skill. `akbun-writing-with-question`, `akbun-writing-persuasive`가 모든 기본 규칙을 참조로 상속하고 각자 한 축(질문 구조, 설득 장치)만 더한다. `akbun-writing-easy`는 tokenops 규칙을 참조한다. 마무리에 `akbun-writing-naturalize`를 호출 모드로 적용한다.
-- `akbun-davinciresolve-workflow`(akbun-editvideo): 여행 브이로그 편집 순서와 검증·작업 로그를 정하는 오케스트레이터. `akbun-davinciresolve-timeline-chrono`로 시간순 타임라인을 만드는 것이 첫 단계이고, 복제본에서 `davinciresolve-cut-travelflow` → `akbun-davinciresolve-logconvert` → `akbun-davinciresolve-exposure` → `akbun-davinciresolve-whitebalance` → `akbun-davinciresolve-contrast` → `akbun-davinciresolve-saturation` → `davinciresolve-face-privacy` → `davinciresolve-subtitle-travelnote` → `davinciresolve-audio-delivery` 순서로 실행한다. 하위 skill 전부가 그 기본 원칙·마커 등록표와 `references/agent-api.md`의 대체 방법 표를 참조한다. 색보정 측정·세션·라벨 노드 규칙은 exposure skill의 `exposure_scope.py`를 모두가 import한다. 컷이 바뀌면 자막·오디오 skill이 바뀐 구간 목록을 받아 위치를 다시 맞춘다. `akbun-davinciresolve-sky`는 workflow 밖의 단독 skill이다.
+- `akbun-davinciresolve-workflow`(akbun-editvideo): 여행 브이로그 편집 순서와 검증·작업 로그를 정하는 오케스트레이터. `akbun-davinciresolve-timeline-chrono`로 시간순 타임라인을 만드는 것이 첫 단계이고, 복제본에서 `davinciresolve-cut-travelflow` → `akbun-davinciresolve-logconvert` → `akbun-davinciresolve-exposure` → `akbun-davinciresolve-whitebalance` → `akbun-davinciresolve-contrast` → `akbun-davinciresolve-saturation` → 요청된 `akbun-davinciresolve-look-*` → `davinciresolve-face-privacy` → `davinciresolve-subtitle-travelnote` → `davinciresolve-audio-delivery` 순서로 실행한다. 하위 skill 전부가 그 기본 원칙·마커 등록표와 `references/agent-api.md`의 대체 방법 표를 참조한다. 색보정 측정·세션·라벨 노드 규칙은 exposure skill의 `exposure_scope.py`를 모두가 import한다. 컷이 바뀌면 자막·오디오 skill이 바뀐 구간 목록을 받아 위치를 다시 맞춘다. `akbun-davinciresolve-sky`는 workflow 밖의 단독 skill이다.
 - `davinciresolve-story-devtalk`(akbun-editvideo): 말하는 브이로그 workflow. `akbun-davinciresolve-workflow`의 기본 원칙과 마커 등록표(`TALK_REVIEW`, `GFX`)를 따르고, `davinciresolve-style-essay`·`davinciresolve-style-project`·`davinciresolve-style-reflection` 중 하나를 고른 뒤 `davinciresolve-beats-devtalk` → `davinciresolve-cut-devtalk` → `davinciresolve-subtitle-devtalk` → `davinciresolve-gfx-hyperframes` → `davinciresolve-sfx-epidemicsound` → `davinciresolve-bgm-epidemicsound` 순서로 읽어 수행한다. 앞 네 skill은 고른 style skill의 구조·컷 리듬·글자 표를 참조하고 단독 호출도 된다. 글꼴·최소 글자 크기는 `davinciresolve-subtitle-devtalk`이 style skill보다 우선한다. `akbun-vlog-shootplan`은 같은 style skill의 구조 표로 촬영 계획서를 만들고, 그 비트 시트를 `davinciresolve-beats-devtalk`이 초안으로 읽는다. `akbun-vlog-storyboard`는 그 비트 시트를 컷마다 그리며 카메라 샷은 `akbun-vlog-shotsketch`의 샷 유형·그림 규칙을 쓴다. 색·오디오·렌더는 여행 skill과 같은 하위 skill을 다시 쓴다.
 - `akbun-presentation-visual`(akbun-presentation): `akbun-presentation`이 슬라이드에 삽입할 래스터 시각자료를 생성한다.
 - `akbun-mascot-whale`(akbun-draw): akbun 마스코트 고래의 표준 외형을 정의하는 기준 skill. 캐릭터를 그리는 아래 skill들이 이 스펙을 참조한다.

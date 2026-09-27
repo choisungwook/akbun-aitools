@@ -32,6 +32,8 @@ Color 페이지에서 새 노드를 만들고 라벨 `CST`(또는 `LUT`, `03_CST
 - 클립의 다른 노드에 이미 LUT나 Color Space Transform이 있으면 건너뛰고 "다른 노드에 변환 있음"으로 적는다. 변환을 두 번 걸지 않는다.
 - API는 LUT만 걸 수 있다(`Graph.SetLUT`). CST OFX는 API가 없으므로 CST를 원하면 화면에서 넣고 이 skill은 건너뛴다.
 - LUT는 프로파일별로 사용자가 지정한다. Resolve LUT 폴더(`/Library/Application Support/Blackmagic Design/DaVinci Resolve/LUT/`) 기준 상대 경로다.
+- 3D LUT 보간은 프로젝트 설정이다. 새 프로젝트에서 LUT를 쓸 때 `Project Settings → Color Management → 3D LUT interpolation`을 확인한다. [Blackmagic의 Resolve 20 Colorist Guide](https://documents.blackmagicdesign.com/UserManuals/DaVinci-Resolve-20-Colorist-Guide.pdf)는 저 bit-depth LUT를 고 bit-depth 소스에 적용할 때 생길 수 있는 banding을 줄이는 방법으로 Tetrahedral을 권한다. 기존 프로젝트, 레거시 grade, 다른 앱과 호환해야 하는 LUT는 결과를 대표 샷으로 비교한 뒤 설정을 바꾸고, 앱 기본값으로 저장하지 않는다.
+- 이 skill은 단일 Log→Rec.709 LUT 노드 경로용이다. DWG/Intermediate 작업 노드 뒤에 output transform을 두는 색관리 구성에서는 이 LUT와 correction 스크립트를 함께 쓰지 않는다. 파이프라인 선택은 [`akbun-davinciresolve-workflow`](../akbun-davinciresolve-workflow/SKILL.md)의 색관리 방식 선택 절을 따른다.
 
 ## 실행 순서
 
