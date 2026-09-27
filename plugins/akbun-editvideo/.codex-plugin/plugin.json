@@ -42,7 +42,7 @@
       "iPhone 클립 앞부분 흰 화면 잘라내고 흔들리는 클립만 안정화해줘 (davinciresolve-cut-travelflow)",
       "스코프 재서 시간대별 밝기 맞추고 컷 넘어갈 때 눈 안 피곤하게 해줘 (akbun-davinciresolve-exposure)",
       "미디어 풀 영상 전부 촬영 시간순으로 새 타임라인에 나열해줘 (akbun-davinciresolve-timeline-chrono)",
-      "중립 픽셀 기준으로 클립마다 화이트밸런스 맞춰줘, 노을은 따뜻하게 남기고 (akbun-davinciresolve-whitebalance)",
+      "중립 표본이 믿을 만한 클립은 중립 기준으로 화이트밸런스 맞추고, 노을 색은 의도된 장면인지 확인해줘 (akbun-davinciresolve-whitebalance)",
       "Log로 찍은 클립만 판정해서 CST 노드에 LUT 걸어줘 (akbun-davinciresolve-logconvert)",
       "변환 뒤 CONTRAST 노드에 피벗 기준 대비 주고 클리핑 없는지 확인해줘 (akbun-davinciresolve-contrast)",
       "채도 부족한 클립만 보충하고 섀도·하이라이트는 롤오프 해줘 (akbun-davinciresolve-saturation)",

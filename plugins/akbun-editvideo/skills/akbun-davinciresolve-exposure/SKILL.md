@@ -1,6 +1,6 @@
 ---
 name: akbun-davinciresolve-exposure
-description: DaVinci Resolve 21.1 스크립팅 API로 클립마다 스코프(Waveform 중앙값)를 재고, 촬영 시간대(아침·낮·오후·저녁·밤)별 목표 밝기 대역과 컷 전환 피로 한계(인접 클립 차이)에 맞춰 Color 페이지의 새 `EXPOSURE` 노드에 CDL로 밝기를 맞춘다. 화이트밸런스는 다루지 않는다. "클립마다 밝기 달라", "컷 넘어갈 때 눈 피곤해", "시간대별 밝기 맞춰줘" 요청에 사용한다. 사용자가 직접 호출할 때만 실행한다.
+description: DaVinci Resolve 21.1 스크립팅 API로 단일 Log→Rec.709 LUT 변환 workflow에서 클립별 Waveform 밝기와 컷 전환을 확인하고 새 `EXPOSURE` 노드에 CDL을 적용한다. DWG/Intermediate 이중 CST 경로는 지원하지 않으며, 사용자 화면에서 +1/+2스톱 비교를 한다. "밝기 맞춰줘", "컷 밝기 튀어" 요청에 사용한다. 사용자가 직접 호출할 때만 실행한다.
 disable-model-invocation: true
 ---
 
@@ -9,6 +9,10 @@ disable-model-invocation: true
 컷이 바뀔 때 보는 사람이 밝기 변화로 피로를 느끼지 않게, 클립마다 스코프 수치를 재서 밝기를 맞춘다. 판단 근거는 눈이 아니라 수치다. 밝기만 다루고 화이트밸런스·색은 건드리지 않는다.
 
 `akbun-davinciresolve-workflow`의 기본 원칙(작업 타임라인에서만, 클립은 파일명 + 시작 타임코드, 작업 로그)을 따른다. 실행 수단은 [`scripts/exposure_scope.py`](scripts/exposure_scope.py) 하나다. 측정·계획·적용·검증·로그를 모두 이 스크립트가 하고, Agent는 실행 전후에 노드 준비와 결과 확인만 한다.
+
+Resolve 21.1과 2026년 9월 공개된 DaVinci Resolve AI Assistant를 대상으로 한다. AI Assistant가 색관리 경로나 밝기 값을 제안해도 활성 타임라인·노드 입력 공간·스코프를 확인한 다음 적용한다.
+
+이 자동 스크립트는 클립 입력이 Log인지와 `EXPOSURE` 뒤에 LUT/CST가 있는지를 보고 `Offset` 또는 `Power`를 고른다. 영상 튜토리얼처럼 입력 CST→DaVinci Wide Gamut/Intermediate 작업 노드들→출력 CST의 이중 변환 구조에서는 출력 CST를 입력 변환으로 오인할 수 있다. 그런 프로젝트에서는 실행하지 않고 `akbun-davinciresolve-workflow`의 DWG 수동 경로를 따른다.
 
 ## 용어
 
@@ -25,7 +29,7 @@ disable-model-invocation: true
 2. 클립마다 마지막에 빈 Serial 노드를 붙인다. 메뉴 `Color → Nodes → Append a Node`(현재 클립의 마지막에 붙는다). 스크립트는 라벨이 없으면 "마지막 노드가 비어 있을 때" 그 노드를 쓴다. 그레이드가 전혀 없는 클립은 기본 노드 1개가 그 노드라 붙이지 않아도 된다.
    - 실측(21.1): 클립 전체 선택(Cmd+A) 뒤 Alt+S·메뉴는 **현재 클립 하나에만** 적용된다. `Add Serial Node`(Alt+S)는 현재 선택된 노드 뒤에 끼워 넣어 마지막이 아닐 수 있다. 그래서 `Append a Node`를 클립마다 쓴다.
    - Agent가 화면 조작 권한이 있으면 API `Timeline.SetCurrentTimecode(클립 중간)`으로 현재 클립을 옮기고 메뉴를 누르는 것을 노드가 없는 클립 수만큼 반복한다. 백그라운드 키 입력(Alt+S)은 Resolve에 전달되지 않으므로 메뉴로 한다.
-3. Log 소스(Apple Log, Insta360 I-Log 등)로 1번 노드에 LUT·CST가 있는 클립은 변환 앞에 두는 것을 권장한다. 1번 노드를 선택하고 `Add Serial Before Current`(Shift+S)로 앞에 넣은 뒤 라벨을 `EXPOSURE`로 바꾼다(라벨은 `01_Exposure`처럼 `exposure`를 포함하면 인식). Log 상태에서 밝기를 맞춰야 변환 뒤 암부 노이즈가 적다. 마지막에 둬도 동작은 하며 그때는 `Power`로 맞춘다.
+3. 단일 Log→Rec.709 LUT 경로에서 Log 소스(Apple Log, Insta360 I-Log 등)로 1번 노드에 변환이 있는 클립은 변환 앞에 둔다. 1번 노드를 선택하고 `Add Serial Before Current`(Shift+S)로 앞에 넣은 뒤 라벨을 `EXPOSURE`로 바꾼다(라벨은 `01_Exposure`처럼 `exposure`를 포함하면 인식). Log 상태에서 밝기를 맞춰야 변환 뒤 암부 노이즈가 적다. 마지막에 둬도 동작은 하며 그때는 `Power`로 맞춘다.
 4. 이미 `EXPOSURE` 라벨 노드가 있으면 그대로 쓴다. 두 번째 실행은 같은 노드의 CDL을 덮어쓴다.
 
 스크립트는 조건에 맞는 노드가 없는 클립이 하나라도 있으면 적용하지 않고 그 클립 목록과 위 절차를 출력한다. 화면 조작 권한이 있으면 Agent가 위 절차를 대신 하고, 없으면 사용자에게 요청한다. 대체 방법으로 사용자가 만든 빈 노드 트리 DRX를 `Graph.ApplyGradeFromDRX`로 넣을 수 있지만 그레이드 전체를 덮어쓰므로 그레이드가 없는 클립에만 쓴다.
@@ -49,7 +53,9 @@ disable-model-invocation: true
 
 ## 실제 화면 밝기 확인
 
-스코프 목표는 일관성을 위한 출발점이지 사용자의 화면 밝기 선호를 대신하지 않는다. 대표 장면의 현재 화면과 `+1 stop`, `+2 stop`으로 올린 비교본을 Resolve viewer 또는 실제 재생 화면에서 확인한다. 사람의 피부, 밝은 하늘·광원 질감, 어두운 디테일이 함께 살아 있는 쪽을 사용자 기준으로 삼아 작업 로그에 선택을 적는다. 이는 현재 사용자의 시청 환경에서 관찰된 선호를 반영하는 확인 절차이며 모든 영상에 적용되는 보정 원칙은 아니다.
+스코프 목표는 일관성을 위한 출발점이지 사용자의 화면 밝기 선호를 대신하지 않는다. 대표 장면의 현재 화면과 `+1 stop`, `+2 stop`으로 올린 비교본을 Resolve viewer 또는 실제 재생 화면에서 확인한다. 풍경·도시 장면은 하늘·광원 질감, 건물과 자연의 밝은 면, 어두운 디테일이 함께 살아 있는 쪽을 사용자 기준으로 삼아 작업 로그에 선택을 적는다. 이는 현재 사용자의 시청 환경에서 관찰된 선호를 반영하는 확인 절차이며 모든 영상에 적용되는 보정 원칙은 아니다.
+
+참고 영상은 DWG/Intermediate 안에서 Contrast/Pivot을 먼저 조정해 톤을 살펴본 뒤 HDR Global Exposure로 노출을 다듬는다. 이 자동 스킬은 Rec.709 출력 스틸의 중앙값·하이라이트 여유·컷 연결성을 함께 맞추는 Offset/Power CDL 방식이다. 영상의 pivot `0.336`이나 HDR Exposure 컨트롤의 수치를 이 스크립트에 옮기지 않는다. 360 카메라·휴대전화 영상은 이미 대비·채도가 강하게 들어갈 수 있으므로, 대비를 더하기 전에 밝은 영역과 그림자 질감을 확인한다.
 
 비교는 대표 클립 한 개에서 시작하고, 선택된 밝기 기준이 다른 시간대나 장면의 의도를 해치지 않는지 확인한다. +1·+2 stop을 전 클립에 일괄 적용하지 않는다. 스크립트의 목표 대역이나 `--max-shift`가 비교 결과와 충돌하면 자동 적용을 멈추고 화면 조작으로 `EXPOSURE` 노드에서 조정하거나 사용자 판단을 요청한다. 하이라이트 클리핑이 늘거나 밤 장면이 낮처럼 보이면 더 밝은 비교본을 채택하지 않는다.
 

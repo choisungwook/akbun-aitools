@@ -1,6 +1,6 @@
 ---
 name: akbun-davinciresolve-contrast
-description: DaVinci Resolve 21.1 스크립팅 API로 새 `CONTRAST` 라벨 노드에 pivot 기준 대비를 적용하고, 노드에 들어오는 색공간의 중간 회색 기준값을 고르며, 스코프에서 클리핑을 확인한다. "대비 올려줘", "pivot 맞춰줘", "밋밋해" 요청에 사용한다. 사용자가 직접 호출할 때만 실행한다.
+description: 단일 Log→Rec.709 LUT 경로에서 DaVinci Resolve 21.1 스크립팅 API로 새 `CONTRAST` 라벨 노드에 pivot 기준 대비를 적용하고 입력 공간의 기준값과 클리핑을 확인한다. DWG 이중 CST 경로는 자동 스크립트 미지원이다. "대비 올려줘", "pivot 맞춰줘" 요청에 사용한다. 사용자가 직접 호출할 때만 실행한다.
 disable-model-invocation: true
 ---
 
@@ -32,6 +32,8 @@ S 커브는 CDL로 만들 수 없어 하지 않는다. S 커브가 필요하면 
 ## 노드 규칙
 
 Color 페이지에서 변환(LUT·CST) **뒤**에 새 노드를 만들고 라벨 `CONTRAST`(또는 `04_Contrast`)를 단다. 스크립트는 라벨에 `contrast`가 들어간 노드만 쓴다. 노드가 변환 앞(Log 공간)에 있으면 적용하지 않고 `확인 필요`로 남긴다. 절차는 `akbun-davinciresolve-exposure`의 노드 규칙과 같다.
+
+현재 자동 경로에서는 단일 카메라 LUT 뒤 Rec.709 신호를 처리한다. DWG/Intermediate에서 보정한 뒤 Output CST로 나가는 구조는 이 스크립트가 Output CST를 변환 앞 노드로 오인해 건너뛸 수 있으므로 실행하지 않는다. 해당 경로에서는 Resolve native Contrast/Pivot을 사용하고 workflow의 로컬 pivot reference와 신호 공간을 확인한다.
 
 ## 실행 순서
 

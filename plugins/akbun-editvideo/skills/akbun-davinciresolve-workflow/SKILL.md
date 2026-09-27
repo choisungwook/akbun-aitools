@@ -68,6 +68,20 @@ python3 -c "import DaVinciResolveScript as dvr; r = dvr.scriptapp('Resolve'); pr
 
 API가 있어도 없는 기능이 있다. 기능별 API 유무·버전 조건·대체 방법은 [`references/agent-api.md`](references/agent-api.md)를 따른다. 대체 방법으로도 판정할 수 없으면 추측하지 않고 마커를 찍고 작업 로그에 `확인 필요`로 남긴다.
 
+## 색관리 방식 선택
+
+색보정 노드를 준비하기 전에 **활성 타임라인**의 Color Science, Timeline Color Space, Output Color Space와 실제 노드 변환을 확인해 작업 경로를 고른다. Project Settings 화면의 Color Management 값만 보지 않는다. 참고 영상에서도 해당 창에 현재 타임라인 설정이 프로젝트 설정을 덮어쓴다는 경고가 표시된다.
+
+| 경로 | 식별 기준 | 실행 |
+|---|---|---|
+| 현재 저장소의 LUT 자동 경로 | 클립별 Log→Rec.709 LUT 한 개. 별도 DWG/Intermediate 작업·출력 CST 쌍 없음 | 아래 `EXPOSURE → WB → CST → CONTRAST → SAT` 노드와 스크립트를 사용 |
+| DWG/Intermediate 노드 경로 | 원본별 Input CST가 DWG/Intermediate로 변환하고, 기술 보정 뒤 Output CST가 있음 | 현재 exposure·whitebalance·contrast 스크립트를 실행하지 않는다. 이중 CST가 단일 LUT 변환으로 오인될 수 있다. Resolve UI 또는 2026.9 AI Assistant로 노드를 확인해 수동 절차를 따른다 |
+| Project/Timeline Color Managed 자동 변환 | 색공간 변환이 Project/Timeline 설정에서 자동 적용되고 같은 노드 안에 명시적 CST 쌍이 없음 | 현재 스크립트가 지원하지 않는다. 입력·타임라인·출력 색공간을 먼저 확인하고, 자동 보정 스크립트는 사용하지 않는다 |
+
+참고 영상([I Made Color Grading QUICK and SIMPLE](https://youtu.be/RPDqklqWGSs))의 수동 노드 예시는 **Input CST(각 카메라 Log→DWG/Intermediate) → Contrast/Pivot → HDR Global Exposure → HDR Global WB(X 따뜻함/차가움, Y 녹색/마젠타) → 필요할 때 Color Slice 채도·선택 보정 → Output CST → 창작 LOOK/LUT** 순서다. 영상은 Contrast 1.3과 Pivot 0.336을 시작 예로 들지만 고정값으로 복사하지 않는다. `0.336`은 그 Contrast 노드 입력이 DaVinci Intermediate일 때만 맞는 기준이고, 대비·노출량은 샷과 카메라별로 판단한다. 휴대전화·360 카메라는 이미 대비와 채도가 강할 수 있으므로 더 약한 보정이 필요할 수 있다. 인물 없이도 가능하며, WB는 실제로 중립이라고 판단할 수 있는 풍경 표본만 기준으로 삼는다. 여러 카메라를 같은 장면에 썼다면 중립 표본과 Waveform의 흰 점·블랙 여유를 비교해 카메라 간 차이를 확인한다.
+
+이 수동 경로에서 LUT를 쓸 때는 Project Settings의 3D LUT interpolation을 확인한다. [Blackmagic의 Resolve 20 Colorist Guide](https://documents.blackmagicdesign.com/UserManuals/DaVinci-Resolve-20-Colorist-Guide.pdf)는 낮은 bit-depth LUT를 고 bit-depth 소스에 적용할 때 생길 수 있는 banding을 줄이는 방법으로 Tetrahedral을 권한다. 기존 프로젝트나 다른 앱에서 만든 LUT의 호환성·기존 결과를 유지해야 하면 설정을 바꾸기 전에 대표 샷을 비교한다. LUT interpolation이나 출력 감마를 앱 기본값으로 저장하지 않는다. 튜토리얼의 Mac `Rec.709 Scene` 출력도 개인 모니터링 선택이므로 YouTube 납품 설정으로 그대로 복사하지 말고 활성 타임라인과 납품 대상을 확인한다.
+
 ## 기본 작업 순서
 
 각 단계는 "읽는 skill → 완료 조건"이다. 완료 조건을 못 채우면 다음 단계로 넘어가지 않고 사용자에게 알린다. 1단계(촬영 시간순 타임라인)는 건너뛰지 않는다. 스크립팅 API에는 클립 이동 함수가 없어 순서는 타임라인을 만드는 시점에만 정할 수 있기 때문이다.
@@ -105,9 +119,9 @@ API가 있어도 없는 기능이 있다. 기능별 API 유무·버전 조건·�
 
 ## 색보정 노드 순서와 실행 순서
 
-노드는 신호 흐름 순서, 실행은 측정이 가능한 순서다. 둘이 다르다. LUT를 먼저 걸어야 그 뒤 스코프값이 Rec.709 기준이 되고, 밝기·화이트밸런스 노드는 LUT **앞**에 있어도 측정은 LUT를 거친 출력으로 한다.
+다음 노드 표와 순서는 **현재 저장소의 단일 Log→Rec.709 LUT 자동 경로**에만 적용한다. 노드는 신호 흐름 순서, 실행은 측정이 가능한 순서다. LUT를 먼저 걸어야 그 뒤 스코프값이 Rec.709 기준이 되고, 밝기·화이트밸런스 노드는 LUT **앞**에 있어도 측정은 LUT를 거친 출력으로 한다. DWG/Intermediate 경로는 위 수동 경로를 따른다.
 
-색보정 순서는 look 취향만으로 정하지 않는다. 입력 Log를 어떤 작업 색공간으로 변환하는지에 따라 노출·대비·화이트밸런스의 적절한 위치가 달라질 수 있다. 예를 들어 DWG 작업공간으로 먼저 변환한 뒤 노출→대비→화이트밸런스를 조정하는 튜토리얼의 순서를, 카메라별 Log→Rec.709 LUT를 쓰는 이 workflow에 그대로 옮기지 않는다. 여기서는 Log 클립의 `EXPOSURE`·`WB`를 변환 앞, `CONTRAST`·`SAT`을 뒤에 둔다. 프로젝트가 DWG/RCM이나 다른 색관리 방식이면 먼저 그 신호 경로와 각 노드의 입력·출력 색공간을 확인하고 순서를 다시 판단한다.
+색보정 순서는 look 취향만으로 정하지 않는다. 입력 Log를 어떤 작업 색공간으로 변환하는지에 따라 노출·대비·화이트밸런스의 적절한 위치가 달라질 수 있다. 참고 영상은 DaVinci YRGB, DWG/Intermediate 타임라인, 입력·출력 CST와 중간 보정 노드를 사용한다. 여기의 자동 경로는 카메라별 Log→Rec.709 LUT를 쓰므로 노드 순서를 그대로 섞지 않는다. 두 경로를 연결하는 자동화는 입력·출력 transform과 HDR wheel 처리를 별도로 구현하기 전까지 지원되지 않는다.
 
 | 노드 순서 | 라벨 | skill | 실행 순서(작업 단계) | 위치 |
 |---|---|---|---|---|
@@ -190,6 +204,8 @@ python3 scripts/workflow.py nodes --timeline "<작업 타임라인>" --profile "
 - Resolve 에디션·버전:
 - 타임라인 A: <이름>
 - 작업 타임라인: <이름>
+- 색관리 경로: 단일 Log→Rec.709 LUT 자동 / DWG·Intermediate 수동 / Color Managed 미지원
+- 활성 타임라인 입력·출력 변환과 LUT interpolation: <설정>
 - 타임라인 프레임레이트: <값>(이유)
 - 카메라 시계 오프셋: <카메라> <초>(근거)
 
