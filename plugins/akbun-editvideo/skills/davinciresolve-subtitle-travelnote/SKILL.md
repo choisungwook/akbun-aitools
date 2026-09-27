@@ -8,7 +8,37 @@ disable-model-invocation: true
 
 자막 스타일 중 하나다. 이름의 travelnote는 "여행 노트처럼 장소·시간·분위기를 한 줄로 적는 담백한 자막"이라는 뜻이다. 다른 스타일(예: 대사 자막, 예능형 강조 자막)은 이 skill을 고치지 않고 `davinciresolve-subtitle-<스타일>`로 따로 만든다.
 
-`akbun-davinciresolve-workflow`의 기본 원칙(작업 타임라인, 클립은 파일명 + 시작 타임코드, 대표 자막 1개 선적용, 작업 로그)과 마커 등록표를 따른다. 자막은 Fusion Text+로 만들고, 스크립팅 API가 있으면 `InsertFusionTitleIntoTimeline("Text+")` 뒤 `GetFusionCompByIndex(1)`로 Text+ 툴의 `StyledText`·`Font`·`Style`·`Size` 입력을 설정한다.
+`akbun-davinciresolve-workflow`의 기본 원칙(작업 타임라인, 클립은 파일명 + 시작 타임코드, 대표 자막 1개 선적용, 작업 로그)과 마커 등록표를 따른다. 자막과 챕터 제목은 Fusion Text+로 만들어 이름이 `SUBTITLE`인 비디오 트랙에 놓는다. 놓는 방법은 아래 "Text+ 배치"를 따른다.
+
+## Text+ 배치
+
+`Timeline.InsertFusionTitleIntoTimeline("Text+")`을 타임라인 중간에서 부르지 않는다. 이 함수는 항상 V1의 재생헤드에 끼워 넣어 그 아래 V1 클립을 자르고, 잠기지 않은 모든 트랙과 타임라인 마커를 타이틀 길이만큼 뒤로 민다(21.1 실측). V1이 잠겨 있으면 아무것도 돌려주지 않고, 트랙을 고르는 API는 없다.
+
+`scripts/textplus.py place`로 놓는다. 스크립트는 미디어 풀의 Fusion Title 항목 `HOOK_TEXT_TEMPLATE`을 `SUBTITLE` 트랙의 원하는 위치와 길이로 놓고 글자 값을 넣는다. 자막 1개가 일반 Text+ 클립 1개다. 다른 트랙의 클립·타임라인 마커·타임라인 길이가 그대로인지 전후를 비교해 다르면 종료 코드 1이다.
+
+자막 1개를 놓는 명령이다. 챕터 제목은 `--style Bold --size 0.16`으로 바꾼다.
+
+```bash
+python3 scripts/textplus.py place --timeline "<작업 타임라인>" --at 01:00:04:00 --seconds 3 --text "오전 9시, 시장 골목" \
+  --font "Gmarket Sans" --style Medium --size 0.12 --x 0.5 --y <측정값> --set LineSpacing=1.2 --out "<출력 폴더>"
+```
+
+옛 자막을 지우는 명령이다. `--at`은 지울 자막의 시작 타임코드다.
+
+```bash
+python3 scripts/textplus.py remove --timeline "<작업 타임라인>" --at 01:00:04:00
+```
+
+- 미디어 풀에 `HOOK_TEXT_TEMPLATE`이 없으면 스크립트가 멈춘다. [akbun-davinciresolve-searchhook](../akbun-davinciresolve-searchhook/SKILL.md)의 "Text+ 템플릿 준비"를 프로젝트마다 한 번 한다. 작업 타임라인이 아니라 연습용으로 복제한 타임라인에서 하고, 훅 skill과 같은 항목을 같이 쓴다. 다른 항목을 쓰려면 `--template`으로 이름을 준다.
+- `SUBTITLE` 트랙은 번호가 아니라 이름으로 찾는다. `akbun-davinciresolve-workflow`의 트랙 준비가 만든 트랙을 쓰고, 없으면 스크립트가 비디오 트랙 맨 위에 만든다.
+- `--x`·`--y`는 Text+ `Center`다(0~1, 왼쪽 아래가 0, 0). 아래 "위치와 안전 영역"의 여백을 만족하는 값을 대표 자막 스틸(`--out`의 `subtitle-stills/`)에서 정해 모든 자막에 같은 값을 쓴다.
+- 글꼴·굵기·크기·`Center` 밖의 Text+ 입력은 `--set 입력=값`으로 준다(예: `LineSpacing`, `CharacterSpacing`, `Enabled2`, `HorizontalLeftCenterRight`). 없는 입력 이름이면 스크립트가 놓은 클립을 지우고 멈춘다. `--set`으로 주지 않은 값은 템플릿의 값이다.
+- Text+는 설치되지 않은 글꼴 이름도 그대로 받아들이고 다른 글꼴로 그린다(21.1 실측). 스크립트는 Resolve의 글꼴 목록에 `--font`·`--style`이 없으면 놓지 않고 멈춘다.
+- 놓인 자막은 컴파운드 클립이 아니므로 클립을 선택해 Inspector에서 문구를 바로 고친다. 위치나 길이를 스크립트로 바꾸려면 `remove` 뒤 다시 `place`한다.
+- 같은 구간에 이미 자막이 있으면 놓지 않고 충돌 구간을 알린다.
+- 등장·퇴장 8프레임 페이드는 스크립트가 넣지 않는다. `TimelineItem.SetFades`로 건 값은 프로젝트를 닫았다 열면 0으로 돌아온다(21.1 실측). Resolve에서 `SUBTITLE` 트랙의 자막마다 넣고, 화면 조작이 안 되면 자막 목록을 절차서로 남긴다.
+- 클립을 직접 지울 때는 지우기 직전에 `GetItemListInTrack`으로 다시 읽은 핸들만 `DeleteClips`에 넘긴다. 오래된 핸들로 지우면 Resolve가 종료된다(21.1 실측).
+- 놓는 함수는 `akbun-davinciresolve-searchhook`의 `scripts/searchhook.py` `put_text`이고 `searchhook.py text`와 같이 쓴다. 고치면 `python3 scripts/textplus.py selftest`와 `searchhook.py selftest`로 확인한다.
 
 ## 글꼴
 
@@ -58,7 +88,7 @@ disable-model-invocation: true
 `davinciresolve-cut-travelflow`가 넘긴 바뀐 구간 목록(`파일명 | 이전 시작 TC | 새 시작 TC | 길이 변화(프레임)`)을 받으면 아래를 한다.
 
 1. 자막 클립마다 어느 영상 클립에 붙어 있는지 파일명으로 찾는다.
-2. 새 시작 TC 기준으로 자막 시작·종료를 다시 계산한다. 자막 클립 이동 API가 없으므로 새 위치에 다시 삽입하고 옛 자막을 삭제한다.
+2. 새 시작 TC 기준으로 자막 시작·종료를 다시 계산한다. 자막 클립 이동 API가 없으므로 `scripts/textplus.py remove`로 옛 자막을 지우고 새 위치에 `place`로 다시 놓는다.
 3. 챕터 타임라인 마커는 클립을 따라가지 않으므로 새 시작 TC로 다시 찍고 옛 마커를 지운다.
 4. 옮긴 결과를 `7. 자막·챕터` 표에 "재타이밍" 비고와 함께 적는다.
 
@@ -99,3 +129,5 @@ disable-model-invocation: true
 - 얼굴·주요 피사체 위의 자막, 챕터 제목과 겹치는 자막
 - 좌우 크롭, 슬라이드·바운스 같은 애니메이션
 - 컷 변경 뒤 자막·챕터 마커 타이밍을 그대로 두는 것
+- 타임라인 중간에서 `InsertFusionTitleIntoTimeline` 호출, V1이나 `SUBTITLE` 밖의 트랙에 자막 놓기
+- 자막을 컴파운드 클립으로 감싸기, 자막 하나를 여러 클립으로 이어 붙이기

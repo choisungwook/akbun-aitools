@@ -46,15 +46,24 @@ style skill이 대사 자막을 쓰는 경우에만 만든다. 화자가 화면�
 
 키워드 강조, 번호 제목, 장면 코멘트, 목록 자막, 비트 제목, 오프닝 타이틀은 Text+로 만든다.
 
-- `InsertFusionTitleIntoTimeline("Text+")` 뒤 `GetFusionCompByIndex(1)`로 `StyledText`·`Font`·`Style`·`Size`를 설정한다. 트랙은 V3(`davinciresolve-story-devtalk` 트랙 배치). 삽입 위치가 다른 트랙이면 V3로 옮긴다.
+- [davinciresolve-subtitle-travelnote](../davinciresolve-subtitle-travelnote/SKILL.md)의 "Text+ 배치"대로 `../davinciresolve-subtitle-travelnote/scripts/textplus.py place`로 놓는다. `Timeline.InsertFusionTitleIntoTimeline("Text+")`을 타임라인 중간에서 부르면 V1 클립이 잘리고 모든 트랙과 타임라인 마커가 밀리며(21.1 실측), 놓인 클립을 다른 트랙으로 옮기는 API는 없다. 미디어 풀에 `HOOK_TEXT_TEMPLATE`이 없으면 그 절의 템플릿 준비를 먼저 한다.
+- 트랙은 이름이 `SUBTITLE`인 비디오 트랙이다(`davinciresolve-story-devtalk` 트랙 배치의 V3). 번호가 아니라 이름으로 찾고, 없으면 스크립트가 비디오 트랙 맨 위에 만든다. 그래픽(V2)보다 위에 있어야 하므로 V2가 없으면 V2를 먼저 만든다.
+- `--font`는 위 글꼴 표의 글꼴, `--style`·`--size`·`--x`·`--y`는 style skill 글자 표의 값이다. Resolve의 글꼴 목록에 그 글꼴·굵기가 없으면 스크립트가 놓지 않고 멈춘다.
 - 크기는 대표 자막 1개를 스틸로 찍어 글자 높이를 재고 style skill 글자 표의 비율(화면 높이의 N%)에 맞춘다. 위 최소 크기 표보다 작으면 최소값으로 올린다. 한 줄 최대 글자 수도 같은 스틸로 정해 로그에 적는다. 측정 방식은 `davinciresolve-subtitle-travelnote`와 같다.
 - 텍스트는 전사에서만 가져온다. 키워드 강조는 화자가 그 단어를 말하는 프레임에 등장한다.
 - 안전 영역: 글자 전체가 화면 폭의 90%, 높이의 90% 안에 있어야 한다. 대표 자막 스틸로 확인한다.
-- 등장·퇴장은 8프레임 페이드. 화면 녹화의 코드·터미널 글자 위에 겹치지 않게 놓는다.
+- 등장·퇴장은 8프레임 페이드. 스크립트가 넣지 않으므로 `davinciresolve-subtitle-travelnote`의 "Text+ 배치"대로 Resolve에서 넣는다. 화면 녹화의 코드·터미널 글자 위에 겹치지 않게 놓는다.
+
+키워드 1개를 놓는 명령이다.
+
+```bash
+python3 ../davinciresolve-subtitle-travelnote/scripts/textplus.py place --timeline "<작업 타임라인>" --at 01:01:05:00 --seconds 1.5 --text "namespace" \
+  --font "Pretendard" --style Bold --size <측정값> --x <글자 표 값> --y <글자 표 값> --out "<출력 폴더>"
+```
 
 ## 컷 변경 반영
 
-`davinciresolve-cut-devtalk`이 넘긴 바뀐 구간 목록을 받으면 Text+는 새 위치에 다시 삽입하고 옛것을 삭제한다(이동 API 없음). 대사 자막은 `CreateSubtitlesFromAudio`를 다시 돌리고 전사 대조를 다시 한다. 결과를 `자막·챕터` 표에 "재타이밍" 비고로 적는다.
+`davinciresolve-cut-devtalk`이 넘긴 바뀐 구간 목록을 받으면 Text+는 `textplus.py remove`로 옛것을 지우고 새 위치에 `place`로 다시 놓는다(이동 API 없음). 대사 자막은 `CreateSubtitlesFromAudio`를 다시 돌리고 전사 대조를 다시 한다. 결과를 `자막·챕터` 표에 "재타이밍" 비고로 적는다.
 
 ## 작업 로그
 
@@ -79,3 +88,4 @@ style skill이 대사 자막을 쓰는 경우에만 만든다. 화자가 화면�
 - 전사에 없는 문장·수치
 - style skill이 쓰지 않는 자막 종류 추가
 - 컷 변경 뒤 자막 타이밍을 그대로 두는 것
+- 타임라인 중간에서 `InsertFusionTitleIntoTimeline` 호출

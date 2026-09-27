@@ -34,7 +34,7 @@ day-in-the-life와 주차 diary에서 진행·장애·결과가 중심이면 `pr
 |---|---|---|
 | V1 | 화면 클립(얼굴 없는 클립, 화면 녹화), 영상만 | `davinciresolve-beats-devtalk`, `davinciresolve-cut-devtalk` |
 | V2 | 필요한 그래픽 | 선택한 제작 도구. HyperFrames 선택 시 `davinciresolve-gfx-hyperframes` |
-| V3 | Text+ 오버레이 | `davinciresolve-subtitle-devtalk` |
+| V3 `SUBTITLE` | Text+ 오버레이. 이름으로 찾는다 | `davinciresolve-subtitle-devtalk` |
 | 자막 트랙 | 대사 자막 | `davinciresolve-subtitle-devtalk` |
 | A1 `VOICE` | 음성 클립의 소리만(`mediaType: 2`) | `davinciresolve-beats-devtalk`, `davinciresolve-cut-devtalk` |
 | A2 `LOCATION` | 화면 클립의 현장음(쓸 때만) | `davinciresolve-beats-devtalk` |
