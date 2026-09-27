@@ -49,6 +49,31 @@
 
 분당 효과음 수·BGM 한 곡·고정 페이드 길이를 강제하지 않는다. 장면의 감정·말의 이해·싱크·공간의 연속성과 실제 청감으로 판단한다. 참고 영상의 상품·광고·채널 홍보는 제작 조건으로 사용하지 않는다. 분석 자료는 `Downloads/`에서 수동 정리해도 되지만 프로젝트가 참조하는 최종 음원은 별도 `audio-assets/` 같은 유지할 위치에 둔다.
 
+## 장면별 사운드 효과 시나리오
+
+효과음·환경음과 음악을 함께 다루면 [davinciresolve-sfx-epidemicsound](../plugins/akbun-editvideo/skills/davinciresolve-sfx-epidemicsound/SKILL.md), 음악만 찾거나 편집하면 [davinciresolve-bgm-epidemicsound](../plugins/akbun-editvideo/skills/davinciresolve-bgm-epidemicsound/SKILL.md)를 쓴다. 아래 표의 `사운드`와 `BGM`은 각각 이 두 스킬을 가리킨다. 편집은 복제본에서 진행하고 사용자가 들을 부분을 `AUDIO_REVIEW`로 표시한다.
+
+검색 예시는 특정 음원이나 필수 조합이 아니다. 쓸 만한 원음이 있으면 먼저 살리고, 표의 소리를 전부 추가하지 않는다. 영문 표현의 뜻과 검색어 조합법은 [사운드 검색 용어](terms_editvideo.md#브이로그-사운드-검색-용어)를 참고한다.
+
+| 장면·해결할 문제 | 사용할 스킬·소리의 역할 | 검색어 예시 | 직접 들어볼 부분 |
+|---|---|---|---|
+| 아침에 책상 정리·커피 준비로 하루를 시작 | 사운드: 방의 바닥 소리 위에 컵 내려놓기·물 따르기 등 실제 동작만 보강 | `room tone`, `cup ceramic`, `coffee pour`; 음악은 `warm acoustic` | 컵·물소리의 어택이 손동작에 맞는지, 조용한 아침보다 과장되지 않는지 |
+| 코딩·타이핑·마우스 조작이 밋밋함 | 사운드: 원음이 부족한 동작에만 짧고 가까운 소리 추가 | `keyboard typing soft`, `mouse click`, `desk tap` | 키 입력과 어긋나거나 같은 소리가 반복돼 거슬리지 않는지 |
+| 화면 녹화에서 결과·버튼·키워드를 강조 | 사운드: 꼭 알아차려야 하는 변화에만 작은 악센트 | `soft click`, `pop`, `notification chime` | 핵심 단어를 가리지 않는지, 실제 시스템 알림과 혼동되지 않는지 |
+| 긴 작업 과정을 타임랩스로 압축 | 사운드 또는 BGM: 음악의 반복 리듬으로 시간 경과를 표현하고 필요할 때만 시작·끝 강조 | `lofi instrumental`, `light percussion`, `subtle pulse`; 강조는 `short whoosh` | 빠른 타이핑 소리로 화면을 과하게 채우지 않았는지, 음악 접합부가 반복 티를 내는지 |
+| 작업 중 막힘·버그 발견 뒤 잠시 생각함 | 사운드: 음악이나 드럼을 덜어내고 room tone·짧은 여백 유지. 긴장이 필요할 때만 낮은 질감 추가 | `room tone quiet`, `subtle drone`; 음악은 `minimal tension` | 평범한 실수를 공포·재난처럼 과장하지 않는지, 무음이 의도적으로 들리는지 |
+| 테스트 성공·문제 해결·전후 비교 결과 공개 | 사운드: 결과가 보이는 순간에 악센트, 필요한 경우 음악 재진입 | `soft impact`, `bright chime`, `gentle swell`; 음악은 `hopeful instrumental` | 성공을 설명하는 말과 충돌하지 않는지, 효과음을 빼도 결과가 이해되는지 |
+| 걷기·거리·카페·기차 등 장소가 바뀜 | 사운드: 다음 장소의 환경음을 먼저 들려주는 J-cut 또는 이전 여운을 남기는 L-cut | `footsteps pavement`, `city ambience distant`, `cafe ambience`, `train interior` | 실제 공간·거리·시점에 맞는지, 화면 밖 소리의 연결이 자연스러운지 |
+| 바다·숲·비 오는 창가에서 풍경을 오래 보여줌 | 사운드: 파도·바람·비 등 장면의 주인공 소리를 살리고 음악은 필요할 때만 사용 | `ocean waves gentle`, `wind trees`, `rain window`; 음악은 `ambient sparse` | 음악 없이도 공간이 이어지는지, 바람·저역·레이어가 과하지 않은지 |
+| 챕터 카드·지도·화면 이동이 뚝 끊겨 보임 | 사운드: 움직임 방향·무게에 맞는 전환음을 필요한 경계에만 배치 | `soft whoosh`, `short swish`, `reverse swell` | 소리의 최고점이 카드 도착·장면 변화에 맞는지, 매 컷 같은 전환이 반복되지 않는지 |
+| 회고에서 중요한 한 문장을 또렷하게 전달 | 사운드 또는 BGM: 멜로디·드럼을 줄이거나 음악을 빼고 말과 여백을 전면에 배치 | `reflective piano`, `minimal underscore`, `warm pad` | 말의 시작과 끝, 호흡이 들리는지. 슬픈 음악으로 감정을 강요하지 않는지 |
+| 집중→막힘→해결에 맞춰 BGM 여러 곡 연결 | BGM: 비트별 곡·스템·여백을 정하고 phrase 끝에서 연결 | `laid back electronic` → `minimal tension` → `gentle uplifting` | 곡 간 코드·리듬·음량 충돌, 급격한 분위기 변화. 같은 key만으로 연결을 확정하지 않음 |
+| 하루·주차 diary를 조용히 마무리 | 사운드 또는 BGM: 마지막 생활음·음악의 종지·잔향 중 필요한 끝을 선택 | `soft chime`, `gentle swell`, `reflective acoustic` | 마지막 말·잔향이 렌더 끝에서 잘리지 않는지, 불필요한 마무리 효과가 없는지 |
+
+요청 예: `$davinciresolve-sfx-epidemicsound 책상에서 코딩하는 구간은 원래 타이핑 소리를 살리고, 테스트 성공 화면에만 작은 악센트를 넣어줘. 설명 중에는 음악이 물러나게 하고 검토 지점을 표시해줘.`
+
+요청 예: `$davinciresolve-bgm-epidemicsound 집중→막힘→해결 비트에 맞는 후보를 찾아줘. lo-fi나 minimal underscore부터 비교하되, 기존 곡의 스템을 줄이거나 음악을 빼는 선택도 포함해줘.`
+
 ## 말소리 있는 개발자 영상
 
 ### 촬영 후 편집 흐름
