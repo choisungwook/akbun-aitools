@@ -172,7 +172,7 @@ interface VideoEditorAgentAPI {
 | `titles.setSafeArea` | 화면 | Text+ `Center`·레이아웃 값을 Fusion 툴 입력으로 설정하고 스틸로 확인 |
 | `titles.retimeTitlesAfterEdit` | 화면 | 자막 클립 이동 API 없음. 새 위치에 다시 삽입하고 옛 것을 삭제 |
 | `audio.analyzeLoudness` | 화면 | Fairlight 라우드니스 미터 또는 렌더 파일에 `ffmpeg -af ebur128` |
-| `audio.createTrack`, `setGain`, `addCrossfade`, `duckMusic` | 화면 | `Timeline.AddTrack("audio")`만 있음(18.5 이상). 게인·페이드·덕킹은 Fairlight 화면 |
+| `audio.createTrack`, `setGain`, `addCrossfade`, `duckMusic` | API·화면 | 실제 21.1 문서의 `Timeline.AddTrack`·`TimelineItem`의 `AudioVolume` 속성을 확인한다. 시간별 자동화·페이드·덕킹은 지원 API를 확인하고 없으면 Fairlight UI. 오디오 설계·복제·미적용 마커는 [사운드 공통 스킬](../../davinciresolve-sfx-epidemicsound/SKILL.md)을 따름 |
 | `review.*Transaction` | 없음 | 아래 "없는 기능" 표 |
 | `review.addReviewMarker` | 있음 | `TimelineItem.AddMarker` |
 | `review.exportEditDecisionList` | 있음 | `Timeline.Export(path, EXPORT_EDL)` |
