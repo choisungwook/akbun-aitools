@@ -75,7 +75,7 @@
       "기본 보정 뒤 새 LOOK 노드에 따뜻한 뉴욕 도시 필름 룩을 만들어줘 (akbun-davinciresolve-look-new-york)",
       "도시 여행 영상을 와이드·미디엄·디테일과 동작 연결로 몽타주 편집해줘 (akbun-davinciresolve-cut-new-york)",
       "완성한 여행 타임라인에서 YouTube 훅 후보를 찾아 제안하고, 내가 고른 후보로 훅 타임라인을 만들어줘 (akbun-davinciresolve-searchhook)",
-      "블로그·뉴스 발췌를 본편 위에 띄우고 빨간 밑줄·원 강조와 효과음을 넣어줘. 음원 삽입이 안 되면 분·초 큐시트를 알려줘 (davinciresolve-article-overlay)"
+      "본문 발췌를 본편 위의 기존 또는 새 오버레이 트랙에 겹쳐 놓고 효과음을 넣어줘. 나중에 위치와 밑줄·원의 크기·색을 직접 고칠 수 있게 남겨줘 (davinciresolve-article-overlay)"
     ],
     "brandColor": "#7C3AED",
     "screenshots": []
