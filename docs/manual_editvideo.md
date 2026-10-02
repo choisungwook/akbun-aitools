@@ -136,7 +136,8 @@ Look 수치는 참고 영상에서 프레임을 복제한 절대값이 아니라
 | 영상에서 얼굴·번호판·개인정보 가리기 | [davinciresolve-face-privacy](../plugins/akbun-editvideo/skills/davinciresolve-face-privacy/SKILL.md): Color 페이지에서 가릴 대상을 추적하고 타임라인에 확인 표시를 남긴다. |
 | Fusion에서 특정 영역만 모자이크 | [davinciresolve-face-mosaic](../plugins/akbun-editvideo/skills/davinciresolve-face-mosaic/SKILL.md): 새 Mosaic Blur 노드와 마스크로 필요한 영역을 가린다. |
 | 챕터 카드·비교표 등 모션그래픽 만들기 | [davinciresolve-gfx-hyperframes](../plugins/akbun-editvideo/skills/davinciresolve-gfx-hyperframes/SKILL.md): HyperFrames로 그래픽 카드를 만든다. 촬영 전 기획에서는 먼저 그래픽의 목적만 정하고, 사용할 제작 도구는 결정된 경우에만 이 스킬을 선택한다. |
-| 기사·블로그·논문을 본편 위에 발췌해 보여주기 | [davinciresolve-article-overlay](../plugins/akbun-editvideo/skills/davinciresolve-article-overlay/SKILL.md): Resolve Fusion으로 밝은 발췌 패널을 만들고 선택한 문장에 밑줄·원·하이라이트를 붙인다. Epidemic Sound MCP 음원을 SFX 트랙에 동기화하고 삽입 불가 시 분·초·길이·검색어·트랙을 채팅으로 안내한다. |
+| 기사·블로그·논문을 본편 위에 발췌해 보여주기 | [akbun-davinciresolve-article-overlay](../plugins/akbun-editvideo/skills/akbun-davinciresolve-article-overlay/SKILL.md): Resolve Fusion으로 밝은 발췌 패널을 만들고 선택한 문장에 밑줄·원·하이라이트를 붙인다. Epidemic Sound MCP 음원을 SFX 트랙에 동기화하고 삽입 불가 시 분·초·길이·검색어·트랙을 채팅으로 안내한다. |
+| 손글씨 타이핑 자막을 재사용 템플릿으로 만들기 | [akbun-davinciresolve-caption-template](../plugins/akbun-editvideo/skills/akbun-davinciresolve-caption-template/SKILL.md): Text+로 문장을 순차 공개하고 큰 노란 키워드와 선택형 밑줄·원을 만든다. DRFX를 Downloads에 생성하고 macOS 설치법을 안내한다. |
 | 영상 분위기에 맞는 배경음악 후보 찾기 | [davinciresolve-bgm-epidemicsound](../plugins/akbun-editvideo/skills/davinciresolve-bgm-epidemicsound/SKILL.md): Epidemic Sound 후보와 이유를 제시하고, 요청하면 공통 사운드 기준으로 여러 곡·스템·전환을 편집한다. |
 | 효과음·환경음·여러 BGM 사운드 디자인 | [davinciresolve-sfx-epidemicsound](../plugins/akbun-editvideo/skills/davinciresolve-sfx-epidemicsound/SKILL.md): 타임라인을 복제해 현장음·효과음·음악을 설계·믹싱하고 검토 지점을 마커로 남긴다. |
 | YouTube Shorts 후보 만들기 | [davinciresolve-youtube-shorts](../plugins/akbun-editvideo/skills/davinciresolve-youtube-shorts/SKILL.md): 선택한 타임라인에서 세로 영상 후보를 만들고 원본과 오디오 구성을 보존한다. |
@@ -144,7 +145,7 @@ Look 수치는 참고 영상에서 프레임을 복제한 절대값이 아니라
 
 ### 기사 발췌 오버레이 사용
 
-`$davinciresolve-article-overlay`에 기사 URL/본문/캡처와 대상 타임라인·표시 구간을 준다. 예: “이 글을 0분 12초부터 5초 동안 띄우고 핵심 문장에 빨간 밑줄과 Marker stroke 효과음을 넣어줘.” 강조는 선택 사항이며 밑줄·원·하이라이트 중 필요한 방식과 색을 지정할 수 있다.
+`$akbun-davinciresolve-article-overlay`에 기사 URL/본문/캡처와 대상 타임라인·표시 구간을 준다. 예: “이 글을 0분 12초부터 5초 동안 띄우고 핵심 문장에 빨간 밑줄과 Marker stroke 효과음을 넣어줘.” 강조는 선택 사항이며 밑줄·원·하이라이트 중 필요한 방식과 색을 지정할 수 있다.
 
 AI agent가 참고 프레임을 직접 확인한 뒤 패널·글자·강조를 구성하고, 복제본에서 본편보다 위의 별도 비디오 트랙에 같은 시간으로 겹쳐 배치한다. 대상 구간이 비어 있는 기존 오버레이 트랙은 재사용하고, 없으면 새 `ARTICLE_OVERLAY` 트랙을 만든다. 본편 트랙에 발췌를 끼워 넣거나 기존 영상의 길이를 밀지 않는다. 원문 캡처는 이미지로 남고 재조판한 문구는 Text+로 수정할 수 있다. 대사 자막이나 전체 화면 챕터 카드는 위의 해당 스킬을 고른다.
 
@@ -175,3 +176,13 @@ AI agent가 참고 프레임을 직접 확인한 뒤 패널·글자·강조를 �
 ## 버전과 세부 절차
 
 이 매뉴얼은 스킬 선택을 돕는 안내서다. DaVinci Resolve AI Assistant 2026.9 기준으로 사용하며, 특정 버전·도구·스크립트 조건, 입력 확인, 되돌리기, 검증 방법은 각 스킬의 `SKILL.md`에서 확인한다. 그래픽 제작 도구를 아직 선택하지 않았다면 기획 단계에서는 그래픽 아이디어만 정리하고, 도구를 정한 뒤 해당 제작 스킬을 사용한다.
+
+## 재사용 타이핑 자막 템플릿
+
+`$akbun-davinciresolve-caption-template`에 참고 영상/구간과 사용할 문구를 준다. AI가 `/tmp`에 직접 캡처해 글자 공개 순서·정렬·색을 분석한다. 문장형 `Akbun Typewriter`와 큰 세리프 키워드형 `Akbun Keyword`는 Text+·도형으로 구성해 문구와 강조를 다시 편집할 수 있다.
+
+템플릿만 요청하면 `~/Downloads/Akbun-Caption/`의 `.drfx`와 설치 안내를 받는다. Finder에서 더블클릭해 Resolve에 설치하고 Edit → Effects → Titles에서 찾아 본편 위의 별도 비디오 트랙에 드래그한다. 이 설치는 다음 프로젝트에도 유지되며 폰트는 별도다. 원본 패키지는 백업한다.
+
+Inspector에서 문구·위치·크기와 밑줄/원의 Visibility를 조절한다. 문장형 Reveal Duration은 클립 길이에 대한 비율이며 기본 0.65다. 글꼴은 오뮤 다예쁨체·나눔명조를 기본으로 확인하고 OFL 대안으로 나눔손글씨 펜을 안내한다. 문구 변경 뒤 강조 위치는 다시 맞춘다. Epidemic Sound 연결이 안 되면 효과음의 분·초·길이·검색어·오디오 트랙을 채팅으로 받는다.
+
+호출명 변경: `davinciresolve-article-overlay` → `akbun-davinciresolve-article-overlay`, `davinciresolve-caption-template` → `akbun-davinciresolve-caption-template`. 이전 호출명 대신 새 이름을 사용한다.
