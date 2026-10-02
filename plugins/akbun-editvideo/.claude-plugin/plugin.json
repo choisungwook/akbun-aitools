@@ -1,7 +1,7 @@
 {
   "name": "akbun-editvideo",
   "description": "Video editing skills — plan and run DaVinci Resolve vlog edits: speech-free travel vlogs (cut/stabilize, chronological timeline, color-grading workflow (Log LUT, exposure, white balance, contrast, saturation on labeled nodes), four separate creative looks on new LOOK nodes, and a city montage cut style, face mosaic, Gmarket Sans subtitles, audio mix, 4K delivery, vertical YouTube Shorts, and a YouTube hook finder that proposes cold-open/intro candidates and builds an approved hook timeline) and faceless talking developer vlogs (transcript-driven storytelling, beat-ordered assembly, sentence-level cuts, dialogue/keyword subtitles, HyperFrames graphic cards, Epidemic Sound SFX and BGM selection in essay/project/reflection styles, plus a pre-shoot guide, shot sketches and a storyboard with OBS screen-recording list)",
-  "version": "1.2.4",
+  "version": "1.2.5",
   "author": {
     "name": "akbun"
   },

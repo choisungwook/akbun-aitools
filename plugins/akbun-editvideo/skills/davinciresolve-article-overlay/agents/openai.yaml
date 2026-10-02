@@ -1,0 +1,6 @@
+interface:
+  display_name: "Resolve 기사 발췌 오버레이"
+  short_description: "기사 발췌 패널·밑줄·원 강조와 효과음을 Resolve에서 편집"
+  default_prompt: "$davinciresolve-article-overlay로 이 기사 발췌를 영상 위에 띄우고 핵심 문장에 빨간 밑줄과 효과음을 넣어줘."
+policy:
+  allow_implicit_invocation: false
