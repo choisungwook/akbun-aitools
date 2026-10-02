@@ -6,6 +6,12 @@ disable-model-invocation: true
 
 # davinciresolve-subtitle-travelnote
 
+## 자막 외형 선택 우선순위
+
+사용자가 이 스타일을 직접 지정했으면 아래 외형 규칙을 적용한다. 단순히 “자막을 달아줘”라고 했거나 편집 workflow가 이 문서를 읽는 경우처럼 자막 외형 지정이 없으면 [akbun-davinciresolve-caption-template](../akbun-davinciresolve-caption-template/SKILL.md)의 **Akbun Cinema**를 기본으로 사용한다. 영상의 주제(여행·개발자)나 자동 선택된 편집 스타일은 자막 외형의 명시적 지정으로 간주하지 않는다.
+
+기본 Cinema에서도 아래 문구의 사실성·전사 대조·타이밍·컷 변경 반영·챕터 규칙은 유지한다. 글꼴·최소 크기·위치·8프레임 페이드 규칙은 Cinema 기준으로 대체하며 본편 위 비디오 트랙에 놓는다. 대사 자동 전사가 필요하면 전사 결과에서 문구·시간을 얻고, 검토용 subtitle 트랙과 최종 Cinema가 동시에 표시되지 않게 한다. 기존 사용자 자막은 임의로 삭제하지 않는다.
+
 자막 스타일 중 하나다. 이름의 travelnote는 "여행 노트처럼 장소·시간·분위기를 한 줄로 적는 담백한 자막"이라는 뜻이다. 다른 스타일(예: 대사 자막, 예능형 강조 자막)은 이 skill을 고치지 않고 `davinciresolve-subtitle-<스타일>`로 따로 만든다.
 
 `akbun-davinciresolve-workflow`의 기본 원칙(작업 타임라인, 클립은 파일명 + 시작 타임코드, 대표 자막 1개 선적용, 작업 로그)과 마커 등록표를 따른다. 자막과 챕터 제목은 Fusion Text+로 만들어 이름이 `SUBTITLE`인 비디오 트랙에 놓는다. 놓는 방법은 아래 "Text+ 배치"를 따른다.

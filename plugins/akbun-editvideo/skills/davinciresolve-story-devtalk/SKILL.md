@@ -35,7 +35,7 @@ day-in-the-life와 주차 diary에서 진행·장애·결과가 중심이면 `pr
 | V1 | 화면 클립(얼굴 없는 클립, 화면 녹화), 영상만 | `davinciresolve-beats-devtalk`, `davinciresolve-cut-devtalk` |
 | V2 | 필요한 그래픽 | 선택한 제작 도구. HyperFrames 선택 시 `davinciresolve-gfx-hyperframes` |
 | V3 `SUBTITLE` | Text+ 오버레이. 이름으로 찾는다 | `davinciresolve-subtitle-devtalk` |
-| 자막 트랙 | 대사 자막 | `davinciresolve-subtitle-devtalk` |
+| 자막 트랙 | 전사 검토 또는 명시적으로 요청한 자막 트랙 스타일. 기본 Cinema는 위 비디오 트랙에 배치 | `davinciresolve-subtitle-devtalk` |
 | A1 `VOICE` | 음성 클립의 소리만(`mediaType: 2`) | `davinciresolve-beats-devtalk`, `davinciresolve-cut-devtalk` |
 | A2 `LOCATION` | 화면 클립의 현장음(쓸 때만) | `davinciresolve-beats-devtalk` |
 | A3 `SFX` | Epidemic Sound 효과음 | `davinciresolve-sfx-epidemicsound` |
@@ -57,7 +57,7 @@ day-in-the-life와 주차 diary에서 진행·장애·결과가 중심이면 `pr
 | 2 | 스토리 비트 제안 | `davinciresolve-beats-devtalk` 2절 | 비트 시트를 사용자가 확정했다. 이 workflow에서 사용자 확인을 받는 유일한 필수 지점 |
 | 3 | 비트 순서로 나열 | `davinciresolve-beats-devtalk` 3절 | 작업 타임라인에 구간이 비트 순서로 놓였고 비트마다 `CHAPTER`, 카드 자리마다 `GFX` 마커가 있다 |
 | 4 | 문장 단위 컷 | `davinciresolve-cut-devtalk` | 불필요한 침묵·재녹음·필러 제거, 의도된 pause 보존, 리듬 조정 이유 기록 |
-| 5 | 오버레이 자막 | `davinciresolve-subtitle-devtalk` | style skill 글자 표대로 들어갔고 안전 영역 안이며 최소 글자 크기를 지킨다 |
+| 5 | 오버레이 자막 | `davinciresolve-subtitle-devtalk` | 외형 미지정이면 Cinema, 명시한 자막 스타일이면 그 글자 표·안전 영역을 지킨다 |
 | 6 | 필요한 그래픽 제작 | 선택한 도구의 절차; HyperFrames 선택 시 `davinciresolve-gfx-hyperframes` | 확정한 `GFX` 위치에 타임라인 해상도·fps와 맞는 결과가 있다. 그래픽 불필요이면 건너뜀, 도구 미정이면 아이디어와 위치를 유지하고 다른 작업 진행 |
 | 7 | 사운드 디자인·음악 계획 | `davinciresolve-sfx-epidemicsound` | 복제본에 원음·환경음·동작/창작 SFX·필요한 음악 cue가 배치되고 말 가림·싱크와 검토 마커 확인 |
 | 8 | 필요한 BGM 보완 | `davinciresolve-bgm-epidemicsound` | 7단계에 미완성인 음악 cue만 보완. 이미 배치된 음악은 반복 삽입하지 않고 선택 이유·구간 기록 |
@@ -75,7 +75,7 @@ day-in-the-life와 주차 diary에서 진행·장애·결과가 중심이면 `pr
 | 비트 순서 | `CHAPTER` 마커 순서와 확정 비트 시트 대조 | 일치 |
 | 침묵 | `davinciresolve-cut-devtalk`의 silencedetect 명령 | 의도하지 않은 0.7초 초과 침묵 0개. `TALK_REVIEW pause`와 로그로 남긴 여운·현장음 구간은 보존 |
 | 리듬 | 평균 샷 길이, 첫 60초 컷 수 | style skill의 시작 범위와 비교하고, 벗어난 구간은 이야기·가독성 근거를 기록 |
-| 자막 | 대사 자막 수와 음성 문장 수, 대표 자막 스틸 | style skill이 대사 자막을 쓰면 문장마다 존재, `davinciresolve-subtitle-devtalk`의 최소 크기·안전 영역 안 |
+| 자막 | 대사 자막 수와 음성 문장 수, 대표 자막 스틸 | style skill이 대사 자막을 쓰면 문장마다 존재, 선택한 자막 외형(Cinema 또는 명시한 스타일)의 크기·안전 영역 안 |
 | 그래픽 | 확정한 `GFX` 위치와 V2 결과 대조 | 필요한 그래픽은 존재하고 해상도·fps 일치. 도구 미정으로 미완성이면 완료·최종 렌더로 보고하지 않음 |
 | 화자 얼굴 | 타임라인 렌더 프리뷰 또는 V1 구간 원본을 1초 간격 프레임으로 뽑아 얼굴 탐지(`akbun-davinciresolve-workflow` `references/agent-api.md`의 대체 방법) | 화자 얼굴이 식별되는 프레임 0개. 탐지기가 없으면 `확인 필요`로 남기고 렌더하지 않는다 |
 | 챕터 | `CHAPTER` 마커 | 3개 이상, 간격 10초 이상 |
