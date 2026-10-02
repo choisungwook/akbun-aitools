@@ -136,10 +136,32 @@ Look 수치는 참고 영상에서 프레임을 복제한 절대값이 아니라
 | 영상에서 얼굴·번호판·개인정보 가리기 | [davinciresolve-face-privacy](../plugins/akbun-editvideo/skills/davinciresolve-face-privacy/SKILL.md): Color 페이지에서 가릴 대상을 추적하고 타임라인에 확인 표시를 남긴다. |
 | Fusion에서 특정 영역만 모자이크 | [davinciresolve-face-mosaic](../plugins/akbun-editvideo/skills/davinciresolve-face-mosaic/SKILL.md): 새 Mosaic Blur 노드와 마스크로 필요한 영역을 가린다. |
 | 챕터 카드·비교표 등 모션그래픽 만들기 | [davinciresolve-gfx-hyperframes](../plugins/akbun-editvideo/skills/davinciresolve-gfx-hyperframes/SKILL.md): HyperFrames로 그래픽 카드를 만든다. 촬영 전 기획에서는 먼저 그래픽의 목적만 정하고, 사용할 제작 도구는 결정된 경우에만 이 스킬을 선택한다. |
+| 기사·블로그·논문을 본편 위에 발췌해 보여주기 | [davinciresolve-article-overlay](../plugins/akbun-editvideo/skills/davinciresolve-article-overlay/SKILL.md): Resolve Fusion으로 밝은 발췌 패널을 만들고 선택한 문장에 밑줄·원·하이라이트를 붙인다. Epidemic Sound MCP 음원을 SFX 트랙에 동기화하고 삽입 불가 시 분·초·길이·검색어·트랙을 채팅으로 안내한다. |
 | 영상 분위기에 맞는 배경음악 후보 찾기 | [davinciresolve-bgm-epidemicsound](../plugins/akbun-editvideo/skills/davinciresolve-bgm-epidemicsound/SKILL.md): Epidemic Sound 후보와 이유를 제시하고, 요청하면 공통 사운드 기준으로 여러 곡·스템·전환을 편집한다. |
 | 효과음·환경음·여러 BGM 사운드 디자인 | [davinciresolve-sfx-epidemicsound](../plugins/akbun-editvideo/skills/davinciresolve-sfx-epidemicsound/SKILL.md): 타임라인을 복제해 현장음·효과음·음악을 설계·믹싱하고 검토 지점을 마커로 남긴다. |
 | YouTube Shorts 후보 만들기 | [davinciresolve-youtube-shorts](../plugins/akbun-editvideo/skills/davinciresolve-youtube-shorts/SKILL.md): 선택한 타임라인에서 세로 영상 후보를 만들고 원본과 오디오 구성을 보존한다. |
 | YouTube 기본 렌더 출력 | [davinciresolve-export-youtube](../plugins/akbun-editvideo/skills/davinciresolve-export-youtube/SKILL.md): 타임라인 해상도에 맞는 YouTube 렌더 프리셋을 고르고 결과 해상도를 확인한다. |
+
+### 기사 발췌 오버레이 사용
+
+`$davinciresolve-article-overlay`에 기사 URL/본문/캡처와 대상 타임라인·표시 구간을 준다. 예: “이 글을 0분 12초부터 5초 동안 띄우고 핵심 문장에 빨간 밑줄과 Marker stroke 효과음을 넣어줘.” 강조는 선택 사항이며 밑줄·원·하이라이트 중 필요한 방식과 색을 지정할 수 있다.
+
+AI agent가 참고 프레임을 직접 확인한 뒤 패널·글자·강조를 구성하고, 복제본에서 본편보다 위의 별도 비디오 트랙에 같은 시간으로 겹쳐 배치한다. 대상 구간이 비어 있는 기존 오버레이 트랙은 재사용하고, 없으면 새 `ARTICLE_OVERLAY` 트랙을 만든다. 본편 트랙에 발췌를 끼워 넣거나 기존 영상의 길이를 밀지 않는다. 원문 캡처는 이미지로 남고 재조판한 문구는 Text+로 수정할 수 있다. 대사 자막이나 전체 화면 챕터 카드는 위의 해당 스킬을 고른다.
+
+편집 후에는 발췌 클립을 선택하고 Fusion 페이지에서 해당 노드를 선택해 Inspector로 고친다. 실제 트랙·클립·노드 이름과 수정 항목을 AI가 함께 안내한다.
+
+| 수정할 것 | 기본 컨트롤 |
+|---|---|
+| 본문 발췌 전체 위치·크기 | `ARTICLE_LAYOUT`의 Center·Size. 본문·패널·강조가 함께 움직임 |
+| 밑줄·원 위치·크기·두께 | `UNDERLINE_01` / `CIRCLE_01` 계열의 LAYOUT·SHAPE 노드 |
+| 빨강을 다른 색으로 변경 | 해당 강조의 COLOR 노드 색상 피커 |
+| 강조 숨기기 | 해당 강조의 MERGE 노드 Blend |
+
+밑줄·원은 원문 이미지에 합쳐 굽지 않고 독립된 편집 요소로 남긴다. 정적 위치·색 컨트롤은 애니메이션과 분리하므로 재생해도 사용자 수정값을 덮어쓰지 않는다. 대표 클립에서 이동·크기·색·숨김을 바꿨다가 복원하고 저장 후 컨트롤을 확인해야 수정 가능 검증이 끝난다.
+
+검증은 실제 Edit 합성 캡처와 저장 후 컴포지션 재열기로 한다. PNG는 요청 길이 대신 기본 스틸 길이로 들어갈 수 있어 실제 길이를 확인하고 교정해야 한다. 원의 write-on과 페이드 제어는 사용자의 위치·색·숨김 제어와 분리한다.
+
+분석 캡처는 macOS `/tmp` 임시 디렉터리에 둔다. Resolve가 참조하는 실제 이미지·음원은 import 전에 `article-assets/`·`audio-assets/` 같은 유지할 출력 폴더로 저장한다. 참고 영상의 초와 편집 타임라인의 경과 시간·Resolve TC는 구분한다. 원문을 확인하지 못하면 인용문을 만들지 않으며, 효과음 다운로드나 배치가 실패하면 미삽입 큐시트를 채팅에 남긴다.
 
 ## 측정·촬영 규칙을 읽는 법
 
