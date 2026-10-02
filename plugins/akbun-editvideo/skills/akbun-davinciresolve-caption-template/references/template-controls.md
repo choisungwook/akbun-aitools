@@ -2,9 +2,9 @@
 
 ## 설치와 보관
 
-1. `package_template.py`가 반환한 `~/Downloads/Akbun-Caption/Akbun-Caption-<내용해시>.drfx`를 Finder에서 더블클릭한다.
+1. `package_template.py`가 반환한 `~/Downloads/Akbun-Caption/<내용해시>/Akbun-Caption-<내용해시>.drfx`를 Finder에서 더블클릭한다.
 2. Resolve의 템플릿 설치 창에서 설치한다. 목록이 즉시 갱신되지 않으면 프로젝트를 저장하고 Resolve를 재실행한다.
-3. Edit → Effects → Titles에서 `Akbun Typewriter`, `Akbun Keyword`를 검색하고 본편보다 위의 빈 비디오 트랙으로 드래그한다.
+3. Edit → Effects → Titles에서 `Akbun Cinema`(기본), `Akbun Typewriter`, `Akbun Keyword`를 검색하고 본편보다 위의 빈 비디오 트랙으로 드래그한다.
 4. 클립 선택 → Inspector에서 문구·폰트·위치·타이핑 비율과 강조 표시를 바꾼다. Fusion 페이지에서는 그룹을 열어 내부 도형까지 수정할 수 있다.
 
 `.drfx`를 Media Pool의 일반 영상 Import로 불러오는 절차가 아니다. 설치 파일은 현재 macOS 사용자 라이브러리에 남아 다음 프로젝트에서도 사용할 수 있다. 재부팅으로 없어지지 않지만 사용자 계정/설치 폴더 삭제, 초기화, 재설치 방식에 따라 사라질 수 있으므로 Downloads의 원본을 백업한다. 폰트는 별도 설치다.
@@ -13,7 +13,15 @@ DRFX 안에는 `Edit/Titles/Akbun/*.setting`이 들어간다. 수동 설치가 �
 
 근거는 설치된 Resolve의 `Developer/Fusion Templates/README.txt`에 있는 Fusion Titles, Template Paths, DRFX Bundles 절이다. DRFX는 설치 패키지이며 편집본의 `.comp` 파일과 역할이 다르다.
 
-## 컨트롤
+## Cinema 컨트롤
+
+Cinema는 정적 Text+ 한 개(`CINEMA_TEXT`)로 구성한다. `Text/Font/Style/TextSize/Position/LineSpacing`은 각각 `StyledText/Font/Style/Size/Center/LineSpacing`에 연결된다. `TextRed/Green/Blue`는 글자색, `OutlineWidth/OutlineOpacity`는 `Thickness2/Opacity2`에 연결된다. 두 번째 Shading Element는 검은 외곽선(`Enabled2=1`, `ElementShape2=1`)이다.
+
+`HorizontalLeftCenterRight=0`, `VerticalTopCenterBottom=1`은 가운데·아래 기준이다. 아래 기준을 -1로 바꾸면 두 줄이 하단 밖으로 늘어날 수 있으므로 사용하지 않는다. `Start=0`, `End=1`에는 표현식·키프레임을 연결하지 않으며 클립 전환·페이드도 추가하지 않는다. Cinema는 밑줄·원과 타이핑 컨트롤을 노출하지 않는다.
+
+사용자에게는 패키징 시 복사되는 [readme.md](../assets/readme.md)를 전달한다. 폰트 설치·수동 설치·템플릿 선택·편집·문제 해결은 그 문서를 따른다.
+
+## 타이핑·키워드 컨트롤
 
 템플릿의 `InstanceInput`은 내부 입력을 Inspector에 노출한다. Label은 UI용이고 API에서는 실제 ID를 읽는다. 다음은 번들 원본의 매핑이다.
 

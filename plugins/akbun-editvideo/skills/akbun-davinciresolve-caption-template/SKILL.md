@@ -1,22 +1,31 @@
 ---
 name: akbun-davinciresolve-caption-template
-description: DaVinci Resolve에서 손글씨 느낌의 타이핑 자막과 노란 세리프 키워드 타이틀을 재사용 Fusion Title 템플릿으로 만들고 별도 비디오 트랙에 겹쳐 배치한다. 선택형 밑줄·원 강조, macOS DRFX 설치 안내, Epidemic Sound 효과음 또는 분·초 큐시트를 제공한다. 참고 영상의 자막 스타일이나 재사용 자막 템플릿 요청에 사용한다. 사용자가 직접 호출할 때만 실행한다.
+description: DaVinci Resolve에서 기본 영화식 정적 자막, 요청한 손글씨 타이핑 자막·노란 세리프 키워드를 재사용 Fusion Title 템플릿으로 만들고 별도 비디오 트랙에 겹쳐 배치한다. 선택형 밑줄·원 강조, macOS DRFX 설치 안내, Epidemic Sound 효과음 또는 분·초 큐시트를 제공한다. 참고 영상의 자막 스타일이나 재사용 자막 템플릿 요청에 사용한다. 사용자가 직접 호출할 때만 실행한다.
 disable-model-invocation: true
 ---
 
 # akbun-davinciresolve-caption-template
 
-Codex·Claude 등 agent가 Resolve 기본 Text+와 Fusion 도형으로 편집 가능한 **타이핑 자막(typewriter caption)**을 만든다. 대사 자동 전사나 기사 발췌 패널은 각각 [devtalk 자막](../davinciresolve-subtitle-devtalk/SKILL.md), [기사 오버레이](../akbun-davinciresolve-article-overlay/SKILL.md)가 맡는다.
+Codex·Claude 등 agent가 Resolve 기본 Text+와 Fusion 도형으로 편집 가능한 **영화식 자막(cinema caption)**을 기본으로 만든다. 별도 스타일 요청이 없으면 `Akbun Cinema`를 선택하고, 타이핑·키워드는 명시적으로 요청했을 때만 선택한다. 대사 자동 전사나 기사 발췌 패널은 각각 [devtalk 자막](../davinciresolve-subtitle-devtalk/SKILL.md), [기사 오버레이](../akbun-davinciresolve-article-overlay/SKILL.md)가 맡는다.
+
+## 기본 영화식 자막
+
+- [Akbun Cinema.setting](assets/Akbun%20Cinema.setting)을 기본으로 사용한다. 하단 중앙·흰 글자·얇은 검은 외곽선이며 투명 배경이다. Text+ `Start=0`, `End=1`을 고정하고 타이핑·페이드·이동·강조·효과음을 넣지 않는다.
+- 기본 글꼴은 `Source Han Sans KR` Regular(본고딕, SIL OFL). 없으면 공식 배포를 안내하거나 사용 가능한 Pretendard / Noto Sans KR로 바꾼 사실을 알린 뒤 크기·줄바꿈을 재검증한다. 폰트 파일은 동봉하지 않는다.
+- 한 줄 우선, 최대 두 줄. 글자 높이 약 화면 높이의 3.5~4.5%, 좌우 여백 8% 이상, 하단 여백 8~10%를 출발점으로 밝고 어두운 장면에서 확인한다. Text+ Size 기본 0.04는 픽셀 높이 비율이 아니다. 문장이 길면 의미 단위로 나눈다.
+- `Center={0.5,0.1}`, `HorizontalLeftCenterRight=0`, `VerticalTopCenterBottom=1`로 아래를 고정해 두 줄이 위로 늘어나게 한다. Fusion Y는 아래가 0이다. 세로 영상·레터박스는 실제 영상 영역에 맞춰 위치를 다시 확인한다.
+- 문구·시간이 없으면 예문 템플릿만 만든다. 본편 자막은 제공된 문구 또는 검증된 전사와 실제 발화 시간으로 만든다. 기존 사용자 자막 스타일·템플릿을 명시했으면 그것을 우선한다.
+- 다른 자막 스킬이 기본으로 정한 8프레임 페이드, 5% 이상 글자, 자막 트랙은 Cinema에 적용하지 않는다. 영화식 자막은 상위 비디오 트랙의 독립 Text+ 클립이다. 기존 자막이 있으면 중복을 피한다.
 
 ## 입력과 참고 분석
 
 참고 영상/구간, 사용할 문구, 대상 프로젝트·타임라인·배치 구간을 구분한다. 참고 영상의 시간은 배치 시간이 아니다. 템플릿만 요청했으면 패키징·미리보기·설치 안내까지 하고 실제 본편에 넣지 않는다.
 
-참고 파일이 있으면 [프레임 캡처 도구](../akbun-davinciresolve-article-overlay/scripts/capture_reference.py)를 사용해 `/tmp` 아래 임시 디렉터리에 캡처한다. 각 프레임을 직접 열어 읽는다. 먼저 0.5초 간격으로 등장 전·등장·완성·문장 교체·퇴장을 보고, 글자 증가 경계는 약 0.1초 간격으로 다시 본다. 원본이 없으면 링크/경로를 요청하고 확인 전에는 참고 분석 완료나 스타일 일치를 주장하지 않는다.
+참고 파일이 있으면 [프레임 캡처 도구](../akbun-davinciresolve-article-overlay/scripts/capture_reference.py)를 사용해 `/tmp` 아래 임시 디렉터리에 캡처한다. 각 프레임을 직접 열어 읽는다. 먼저 0.5초 간격으로 등장 전·등장·완성·문장 교체·퇴장을 보고, 글자 증가 경계는 약 0.1초 간격으로 다시 본다. 참고 스타일 재현을 요청했는데 원본이 없으면 링크/경로를 요청하고 확인 전에는 참고 분석 완료나 스타일 일치를 주장하지 않는다. 기본 Cinema 제작에는 참고 영상이 필요하지 않다.
 
 추출 대상은 글자 높이·여백·정렬·색·표시 순서·읽는 시간이다. 원본 인물·문장·밈 이미지·브랜드·출처 맥락을 배포 자산에 복제하지 않는다. 다른 소재의 예문으로 검증한다. 스크린샷만으로 원본 SFX를 들었다고 말하지 않는다.
 
-## 화면 규칙
+## 요청한 타이핑·키워드의 화면 규칙
 
 | 요소 | 재사용 기준 |
 |---|---|
@@ -32,11 +41,12 @@ Codex·Claude 등 agent가 Resolve 기본 Text+와 Fusion 도형으로 편집 �
 
 ## 템플릿 선택과 제작
 
-정적인 문구·단일 스타일만 필요하면 Resolve 기본 **Text**로 충분한지 먼저 판단한다. 글자 순차 공개와 개별 강조 도형이 필요하면 **Text+ 기반 Fusion Title**을 쓴다. 글자를 PNG나 영상으로 굽지 않는다.
+기본 Cinema는 동봉 Text+ 템플릿을 사용한다. 사용자가 기본 **Text**를 요청하면 같은 정적 외형을 재현할 수 있는지 먼저 판단한다. 글자 순차 공개와 개별 강조 도형이 필요하면 **Text+ 기반 Fusion Title**을 쓴다. 글자를 PNG나 영상으로 굽지 않는다.
 
+- [Akbun Cinema.setting](assets/Akbun%20Cinema.setting): 기본 정적 자막, 문구·글꼴·크기·하단 위치·외곽선 제어.
 - [Akbun Typewriter.setting](assets/Akbun%20Typewriter.setting): 문장형, 타이핑 시간·문구·폰트·전체 위치·밑줄·원 제어.
 - [Akbun Keyword.setting](assets/Akbun%20Keyword.setting): 작은 안내 문장과 노란 키워드, 각 텍스트·폰트·크기·키워드 위치·색 제어.
-- `.setting`은 편집 가능한 원본이고 `.drfx`는 이를 설치하는 ZIP 패키지다. [패키징 스크립트](scripts/package_template.py)는 `~/Downloads/Akbun-Caption/`에 생성하고 **설치하지 않는다**. 동일 내용은 같은 파일을 재사용하며 다른 기존 파일을 덮어쓰지 않는다.
+- `.setting`은 편집 가능한 원본이고 `.drfx`는 이를 설치하는 ZIP 패키지다. [패키징 스크립트](scripts/package_template.py)는 `~/Downloads/Akbun-Caption/<내용해시>/`에 DRFX·원본 setting 3개·[사용설명서](assets/readme.md)를 생성하고 **설치하지 않는다**. 동일 내용은 같은 파일을 재사용하며 다른 기존 파일을 덮어쓰지 않는다.
 
 스킬 디렉터리에서 패키징한다.
 
@@ -44,12 +54,13 @@ Codex·Claude 등 agent가 Resolve 기본 Text+와 Fusion 도형으로 편집 �
 uv run --python 3.12 scripts/package_template.py
 ```
 
-제작·수정·설치 안내에는 [템플릿 컨트롤과 macOS 설치](references/template-controls.md)를 읽는다. 기본 글꼴은 이 환경에서 확인한 `omyu pretty` Regular와 `NanumMyeongjoOTF` Regular이며 파일은 포함하지 않는다. 다른 컴퓨터에서는 Resolve의 실제 글꼴 목록에서 이름과 굵기를 확인한다. 없으면 아래 추천 글꼴 설치 또는 이미 있는 적합한 글꼴 선택을 안내하고, 대체가 발생했음을 알린다.
+제작·수정·설치 안내에는 [템플릿 컨트롤과 macOS 설치](references/template-controls.md)를 읽는다. 타이핑·키워드의 기본 글꼴은 `omyu pretty` Regular와 `NanumMyeongjoOTF` Regular이며 파일은 포함하지 않는다. 다른 컴퓨터에서는 Resolve의 실제 글꼴 목록에서 이름과 굵기를 확인한다. 없으면 아래 추천 글꼴 설치 또는 이미 있는 적합한 글꼴 선택을 안내하고, 대체가 발생했음을 알린다.
 
 ## 한글 무료 글꼴
 
 | 용도 | 추천 | 공식 출처 |
 |---|---|---|
+| 영화식 기본 | 본고딕 (`Source Han Sans KR` Regular) | [Adobe 공식 배포·OFL](https://github.com/adobe-fonts/source-han-sans) |
 | 손글씨 문장 | 오뮤 다예쁨체 (`omyu pretty`) | [제작자 무료 배포](https://omyudiary.com/product/detail.html?product_no=73). 별도 이용조건 확인, 폰트 파일을 템플릿에 재배포하지 않음 |
 | OFL 손글씨 대안 | 나눔손글씨 펜 (`Nanum Pen Script`) | [Google Fonts 원본·라이선스](https://github.com/google/fonts/tree/main/ofl/nanumpenscript) |
 | 명조 키워드 | 나눔명조 (`Nanum Myeongjo`, 설치본에 따라 `NanumMyeongjoOTF`) | [Google Fonts 원본·OFL](https://github.com/google/fonts/tree/main/ofl/nanummyeongjo) |
@@ -62,13 +73,15 @@ uv run --python 3.12 scripts/package_template.py
 Resolve MCP의 현재 버전·API를 확인하고 없으면 로컬 스크립팅 또는 UI를 사용한다. **타임라인 안의 본편보다 위에 있는 별도 비디오 트랙**에 같은 시간으로 겹친다. subtitle 트랙이나 기존 본편 클립의 Fusion에 넣지 않는다.
 
 1. 현재 타임라인을 복제하고 원본/작업본 ID, fps, 시작 TC, 클립 시작·끝, 마커와 길이를 기록한다. 재개라면 이전 작업본을 확인한다.
-2. 상위의 비어 있는 자막 전용 비디오 트랙을 찾거나 `CAPTION` 트랙을 추가한다. V2 등 번호를 고정하지 않는다.
+2. 상위의 비어 있는 `SUBTITLE` 또는 `CAPTION` 자막 전용 비디오 트랙을 찾거나 `CAPTION` 트랙을 추가한다. V2 등 번호를 고정하지 않는다.
 3. 설치된 Title을 UI로 해당 트랙에 드래그하거나, 준비된 미디어 풀 Fusion Title을 `AppendToTimeline`의 `trackIndex`·`recordFrame`으로 배치한다. [배치·프레임 주의사항](../akbun-davinciresolve-article-overlay/references/resolve-compositing.md)의 비리플 원칙을 따른다. 타임라인 중간에서 `InsertFusionTitleIntoTimeline`을 호출하지 않는다.
-4. 해당 클립 인스턴스만 수정한다. 타이핑 시간은 기본 비율을 발화에 맞춰 조절하며, 정밀한 발화 동기화가 필요하면 해당 `End` 표현식을 제거한 뒤 실제 comp 시작 프레임 기준 키프레임을 넣는다. 문구를 글자마다 바꾸는 방식은 줄바꿈·정렬이 흔들리므로 쓰지 않는다.
-5. 텍스트가 완전히 나온 뒤 선택한 밑줄·원을 표시한다. 원의 write-on은 `CIRCLE_SHAPE.WriteLength`를 사용하고, 길이 0에서 남는 점은 Merge Blend로 숨긴다. 강조 애니메이션은 기본 패키지에 없으므로 요청 시 클립에 작성한다.
+4. 해당 클립 인스턴스만 수정한다. Cinema는 전체 문장을 정적으로 표시하고 클립 페이드도 0으로 둔다. 요청한 타이핑 시간은 기본 비율을 발화에 맞춰 조절하며, 정밀한 발화 동기화가 필요하면 해당 `End` 표현식을 제거한 뒤 실제 comp 시작 프레임 기준 키프레임을 넣는다. 문구를 글자마다 바꾸는 방식은 줄바꿈·정렬이 흔들리므로 쓰지 않는다.
+5. 타이핑·키워드에서 강조를 요청했을 때만 텍스트가 완전히 나온 뒤 선택한 밑줄·원을 표시한다. 원의 write-on은 `CIRCLE_SHAPE.WriteLength`를 사용하고, 길이 0에서 남는 점은 Merge Blend로 숨긴다. 강조 애니메이션은 기본 패키지에 없으므로 요청 시 클립에 작성한다.
 6. 기존 클립·마커·길이가 그대로인지 다시 읽는다. cue ID/클립 ID로 재실행 중복을 막는다.
 
 ## 효과음
+
+Cinema에는 효과음을 자동 추가하지 않는다. 아래는 요청한 타이핑·키워드·강조에만 적용한다.
 
 Epidemic Sound MCP의 실제 검색·미리듣기·다운로드 지원 여부를 확인한다. 가능하면 [공통 사운드 스킬](../davinciresolve-sfx-epidemicsound/SKILL.md)의 연결·배치·믹싱 절차를 적용해 영구 `audio-assets/`에 다운로드하고 빈 `SFX_CAPTION` 오디오 트랙에 넣는다. 기존 BGM 교체로 범위를 넓히지 않는다.
 
@@ -90,8 +103,8 @@ MCP 없음·다운로드 실패·배치 실패면 **채팅에** `경과 분:초.
 
 ## 완료 검증
 
-- Resolve에서 빈 글자·공개 중간·완성·문장 교체·클립 끝을 `/tmp`에 캡처해 각각 직접 연다. 한글 깨짐, 고정된 왼쪽 정렬, 줄바꿈, 읽힘, 투명 합성을 확인한다. API 성공만으로 화면 적용을 판정하지 않는다.
-- 문구·위치·글꼴 변경, 밑줄/원 표시·색·폭 변경을 실제로 시험하고 기본값을 복원한다. 저장 후 다시 열어 제어와 연결이 남아 있는지 확인한다.
-- 서로 다른 클립 길이에서 타이핑이 끝나고 정지 시간이 남는지 확인한다. 프레임레이트가 바뀌면 비율과 실제 읽는 시간을 모두 확인한다.
+- Cinema는 첫·중간·마지막 프레임에서 문장 전체가 그대로인지, 한 줄·두 줄이 같은 하단 여백을 지키는지 확인한다. 타이핑·키워드는 빈 글자·공개 중간·완성·문장 교체·클립 끝을 `/tmp`에 캡처해 각각 직접 연다. 한글 깨짐, 고정된 왼쪽 정렬, 줄바꿈, 읽힘, 투명 합성을 확인한다. API 성공만으로 화면 적용을 판정하지 않는다.
+- 문구·위치·글꼴·Cinema 외곽선 변경, 타이핑/키워드의 밑줄/원 표시·색·폭 변경을 실제로 시험하고 기본값을 복원한다. 저장 후 다시 열어 제어와 연결이 남아 있는지 확인한다.
+- Cinema는 클립 길이를 바꿔도 정적으로 유지되는지 확인한다. 타이핑/키워드는 서로 다른 클립 길이에서 타이핑이 끝나고 정지 시간이 남는지 확인한다. 프레임레이트가 바뀌면 비율과 실제 읽는 시간을 모두 확인한다.
 - 테스트는 별도 테스트 프로젝트/타임라인에 두고 원래 프로젝트로 돌아간다. 템플릿 설치만 안내하는 요청에서는 사용자 템플릿 라이브러리에 자동 설치하지 않는다.
 - 패키지 경로·설치법·호출 예·사용 폰트·검증 범위·미삽입 SFX를 간결하게 전달한다. 설치·본편 적용·오디오 검청을 각각 구분한다.

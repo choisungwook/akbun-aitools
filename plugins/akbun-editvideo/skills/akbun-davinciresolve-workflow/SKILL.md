@@ -1,6 +1,6 @@
 ---
 name: akbun-davinciresolve-workflow
-description: 말소리 없는 여행 브이로그를 DaVinci Resolve 21.1에서 처음부터 끝까지 편집하는 workflow 오케스트레이터. 미디어 풀 영상 전부를 촬영 시간순 타임라인으로 만드는 것(akbun-davinciresolve-timeline-chrono)이 항상 첫 단계이고, 그 복제본에 비디오·오디오 트랙을 4개씩 준비한 뒤 컷·안정화(davinciresolve-cut-travelflow) → 라벨 노드(EXPOSURE→WB→CST→CONTRAST→SAT) 기본 색보정(logconvert → exposure → whitebalance → contrast → saturation) → 요청된 look skill과 새 LOOK 노드 → 얼굴 모자이크(davinciresolve-face-privacy) → 한글 자막·챕터(davinciresolve-subtitle-travelnote) → 사운드 디자인(davinciresolve-sfx-epidemicsound)·4K 출력(davinciresolve-audio-delivery) 순서로 각 skill의 SKILL.md를 읽어 직접 수행하고 마커 등록표·단계별 완료 조건·검증·작업 로그를 관리한다. "이 프로젝트 편집 계획 세워서 끝까지 해줘", "영상 전부 시간순으로 놓고 색보정까지 해줘", "타임라인 정리부터 렌더까지" 요청에 사용한다. 사용자가 직접 호출할 때만 실행한다.
+description: 말소리 없는 여행 브이로그를 DaVinci Resolve 21.1에서 처음부터 끝까지 편집하는 workflow 오케스트레이터. 미디어 풀 영상 전부를 촬영 시간순 타임라인으로 만드는 것(akbun-davinciresolve-timeline-chrono)이 항상 첫 단계이고, 그 복제본에 비디오·오디오 트랙을 4개씩 준비한 뒤 컷·안정화(davinciresolve-cut-travelflow) → 라벨 노드(EXPOSURE→WB→CST→CONTRAST→SAT) 기본 색보정(logconvert → exposure → whitebalance → contrast → saturation) → 요청된 look skill과 새 LOOK 노드 → 얼굴 모자이크(davinciresolve-face-privacy) → 한글 자막·챕터(travelnote 내용 규칙, 외형 미지정은 akbun-davinciresolve-caption-template의 Cinema) → 사운드 디자인(davinciresolve-sfx-epidemicsound)·4K 출력(davinciresolve-audio-delivery) 순서로 각 skill의 SKILL.md를 읽어 직접 수행하고 마커 등록표·단계별 완료 조건·검증·작업 로그를 관리한다. "이 프로젝트 편집 계획 세워서 끝까지 해줘", "영상 전부 시간순으로 놓고 색보정까지 해줘", "타임라인 정리부터 렌더까지" 요청에 사용한다. 사용자가 직접 호출할 때만 실행한다.
 disable-model-invocation: true
 ---
 
@@ -108,7 +108,7 @@ API가 있어도 없는 기능이 있다. 기능별 API 유무·버전 조건·�
 | 11 | 채도 | `akbun-davinciresolve-saturation` | 대역 미달 없음 |
 | 12 | 창작 look | 사용자가 고른 `akbun-davinciresolve-look-*` skill | 기본 보정이 끝난 뒤 해당 style skill을 읽는다. Color 페이지에서 새 Serial 노드를 추가해 `LOOK`으로 라벨하고 이 노드에만 창작 조정을 한다. 룩 LUT를 지정하지 않아도 노드는 새로 만든다. Look을 요청하지 않았으면 적용하지 않는다 |
 | 13 | 얼굴과 개인정보 모자이크 | `davinciresolve-face-privacy` | 모자이크 클립마다 `PRIVACY_MOSAIC` 클립 마커와 노드 존재 |
-| 14 | Gmarket Sans 한글 자막과 챕터 마커 | `davinciresolve-subtitle-travelnote` | 자막이 `SUBTITLE` 트랙과 안전 영역 안에 있고 V1·다른 트랙·마커가 밀리지 않았으며 챕터 마커가 장소 변경 지점마다 존재 |
+| 14 | 한글 자막과 챕터 마커(외형 미지정은 Cinema) | `davinciresolve-subtitle-travelnote`의 외형 선택 규칙. 기본은 `akbun-davinciresolve-caption-template` | 자막이 `SUBTITLE` 트랙과 안전 영역 안에 있고 V1·다른 트랙·마커가 밀리지 않았으며 챕터 마커가 장소 변경 지점마다 존재 |
 | 15 | 현장음·효과음·여러 BGM 사운드 디자인 | `davinciresolve-sfx-epidemicsound` | 오디오 직전 타임라인 복제, 큐시트·검청·`AUDIO_REVIEW` 기록. 새 작업본 ID를 16–17단계에 인계 |
 | 16 | YouTube 챕터 마커 최종 정리 | 이 skill | 마커 이름이 장소명·행사명이고 첫 `CHAPTER`가 타임라인 시작(마커 상대 프레임 0)에 있고 `00:00`부터 시간과 장소명이 표시되며 3개 이상 |
 | 17 | 썸네일 후보·YouTube 설정·4K 렌더와 검증 | `davinciresolve-audio-delivery` (YouTube 업로드·출력 절) | 요청된 썸네일·제목·설명·카테고리·공개 상태 적용, 렌더 파일의 해상도·프레임레이트·길이·오디오 스트림이 타임라인과 일치 |
