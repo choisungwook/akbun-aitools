@@ -1,6 +1,6 @@
 {
   "name": "akbun-editvideo",
-  "version": "1.2.5",
+  "version": "1.2.6",
   "description": "Video editing skills — plan and run DaVinci Resolve vlog edits: speech-free travel vlogs (cut/stabilize, chronological timeline, color-grading workflow (Log LUT, exposure, white balance, contrast, saturation on labeled nodes), four separate creative looks on new LOOK nodes, and a city montage cut style, face mosaic, Gmarket Sans subtitles, audio mix, 4K delivery, vertical YouTube Shorts, and a YouTube hook finder that proposes cold-open/intro candidates and builds an approved hook timeline) and faceless talking developer vlogs (transcript-driven storytelling, beat-ordered assembly, sentence-level cuts, dialogue/keyword subtitles, HyperFrames graphic cards, Epidemic Sound SFX and BGM selection in essay/project/reflection styles, plus a pre-shoot guide, shot sketches and a storyboard with OBS screen-recording list)",
   "author": {
     "name": "akbun",
@@ -75,7 +75,8 @@
       "기본 보정 뒤 새 LOOK 노드에 따뜻한 뉴욕 도시 필름 룩을 만들어줘 (akbun-davinciresolve-look-new-york)",
       "도시 여행 영상을 와이드·미디엄·디테일과 동작 연결로 몽타주 편집해줘 (akbun-davinciresolve-cut-new-york)",
       "완성한 여행 타임라인에서 YouTube 훅 후보를 찾아 제안하고, 내가 고른 후보로 훅 타임라인을 만들어줘 (akbun-davinciresolve-searchhook)",
-      "본문 발췌를 본편 위의 기존 또는 새 오버레이 트랙에 겹쳐 놓고 효과음을 넣어줘. 나중에 위치와 밑줄·원의 크기·색을 직접 고칠 수 있게 남겨줘 (davinciresolve-article-overlay)"
+      "본문 발췌를 본편 위의 기존 또는 새 오버레이 트랙에 겹쳐 놓고 효과음을 넣어줘. 나중에 위치와 밑줄·원의 크기·색을 직접 고칠 수 있게 남겨줘 (akbun-davinciresolve-article-overlay)",
+      "참고 영상처럼 손글씨 타이핑 자막과 노란 키워드 템플릿을 만들고, 선택형 빨간 밑줄·원을 넣어줘 (akbun-davinciresolve-caption-template)"
     ],
     "brandColor": "#7C3AED",
     "screenshots": []

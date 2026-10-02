@@ -1,10 +1,10 @@
 ---
-name: davinciresolve-article-overlay
+name: akbun-davinciresolve-article-overlay
 description: DaVinci Resolve에서 블로그·뉴스·논문 발췌를 본편 위 패널로 띄우고 선택한 문장에 밑줄·원·하이라이트와 효과음을 동기화한다. Codex·Claude가 Fusion 화면을 구성하고, Epidemic Sound MCP로 음원을 확보해 별도 오디오 트랙에 배치하거나 불가하면 분·초 큐시트를 채팅에 남긴다. 기사 인용 화면·자료 발췌 오버레이 요청에 사용하며 대사 자막·전체 화면 챕터 카드는 별도 스킬이다. 사용자가 직접 호출할 때만 실행한다.
 disable-model-invocation: true
 ---
 
-# davinciresolve-article-overlay
+# akbun-davinciresolve-article-overlay
 
 본편이 계속 보이는 **기사 발췌 오버레이(article excerpt overlay)**를 Resolve 안에서 만든다. 본문 발췌 클립을 **기존 영상보다 위의 별도 비디오 트랙에 같은 시간으로 겹쳐 배치**한다. 기존 영상 클립 사이에 끼워 넣는 insert/ripple 편집이나 기존 영상 클립 자체에 효과를 굽는 방식이 아니다. 화면 설계·Fusion 노드·키프레임은 AI agent가 맡고, 사용자는 패널 위치와 밑줄·원 표시의 위치·크기·색을 나중에 직접 바꿀 수 있어야 한다.
 

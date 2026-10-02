@@ -1,0 +1,6 @@
+interface:
+  display_name: "Resolve 자막 템플릿"
+  short_description: "재사용 Text+ 자막과 선택형 밑줄·원을 별도 비디오 트랙에 배치"
+  default_prompt: "$akbun-davinciresolve-caption-template로 참고 영상 자막을 분석하고 재사용 가능한 Resolve 템플릿을 만들어줘."
+policy:
+  allow_implicit_invocation: false
