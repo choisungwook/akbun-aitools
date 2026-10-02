@@ -136,6 +136,7 @@
 | 밑줄 / 원 표시 / 형광 강조 | 글자 아래의 선(underline) / 단어를 둘러싼 원·타원(circle callout) / 글자 뒤 색 띠(highlight). 선택한 부분을 강조하며 패널과 같은 좌표계로 움직인다. |
 | 수정 가능한 오버레이 | 패널 전체 위치와 밑줄·원의 위치·크기·색·표시를 Fusion Inspector에서 따로 고칠 수 있게 남긴 구성. 전체 이동용 ARTICLE_LAYOUT과 애니메이션용 ARTICLE_MOTION을 분리하며, 강조를 원문 이미지에 굽지 않는다. |
 | Write-on | 선이나 획이 시간에 따라 그려지는 효과. 밑줄·원 표시의 시작과 완성을 효과음에 맞출 수 있다. |
+| REVEAL / FADE 노드 | 강조가 그려지기 전 시작점을 숨기거나 전체 그래픽의 등장·퇴장 불투명도를 애니메이션하는 합성 노드의 역할 이름. 사용자가 고정값으로 조절할 LAYOUT·COLOR·개별 MERGE와 분리한다. |
 | Whoosh / Paper rustle / Page turn | 빠른 이동을 표현하는 바람 소리 / 종이 바스락거림 / 페이지 넘김 소리. 패널 등장·교체의 선택적 효과음 검색 용어다. |
 | Marker stroke / Scribble | 마커의 한 획 / 연속해서 긋는 필기 소리. `marker on paper stroke`, `marker writing circle`, `highlighter drag` 등으로 검색하고 강조 획과 동기화한다. 특정 자산명이나 필터를 뜻하지 않는다. |
 | 미삽입 큐시트 | 효과음을 넣지 못했을 때 채팅에 남기는 경과 분·초, 길이, 검색어, 동기화 기준, 대상 트랙과 실패 사유. 타임라인이 있으면 실제 Resolve TC·fps·시작 TC도 병기한다. |
