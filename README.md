@@ -105,14 +105,15 @@ akbun 발표자료 스타일 skill 모음.
 
 | skill | 설명 |
 |---|---|
-| [akbun-presentation](./plugins/akbun-presentation/skills/akbun-presentation/) | 주제·원본 자료를 akbun 스타일 pptx 덱 + 슬라이드별 상세 발표 대본(md)으로 생성 — 발표 시간·청중·언어 설정을 받아 분량을 맞추고, 라이트 샌드위치(기본)/다크 스텝 스타일과 질문 훅 스토리를 따름 |
+| [akbun-presentation](./plugins/akbun-presentation/skills/akbun-presentation/) | 1920×1080 다크 배경·Gmarket Sans·흰 선·노랑 강조·빨강 문제 경로의 고정 디자인으로 pptx 덱과 대본 생성 |
+| [akbun-presentation-paper](./plugins/akbun-presentation/skills/akbun-presentation-paper/) | 주제·원본 자료를 논문형식 pptx 덱 + 슬라이드별 상세 발표 대본(md)으로 생성 — 발표 시간·청중·언어 설정을 받아 분량을 맞추고, 라이트 샌드위치(기본)/다크 스텝 스타일과 질문 훅 스토리를 따름 |
 | [akbun-presentation-visual](./plugins/akbun-presentation/skills/akbun-presentation-visual/) | 발표 내용·슬라이드 브리프·원본 Figure를 akbun 스타일의 16:9 삽입용 시각자료 이미지로 생성 |
 
-아래는 skill로 만든 예시다.
+기존 `akbun-presentation`은 `akbun-presentation-paper`으로 이름을 변경했다. `paper`는 논문형식 발표를 뜻한다. 아래는 해당 디자인 예시다.
 
 | skill | 이미지 |
 |---|---|
-| `akbun-presentation` | <img src="./imgs/akbun-presentation.png" alt="akbun-presentation 예시 슬라이드" width="480"> |
+| `akbun-presentation-paper` | <img src="./imgs/akbun-presentation.png" alt="akbun-presentation-paper 예시 슬라이드" width="480"> |
 
 ### akbun-learning
 
@@ -237,7 +238,7 @@ YouTube skill 모음. 규칙과 결과물은 사람과 AI가 함께 읽도록 YA
 - `akbun-davinciresolve-workflow`(akbun-editvideo): 여행 브이로그 편집 순서와 검증·작업 로그를 정하는 오케스트레이터. `akbun-davinciresolve-timeline-chrono`로 시간순 타임라인을 만드는 것이 첫 단계이고, 복제본에 비디오·오디오 트랙 4개씩(`OVERLAY`·`GFX`·`SUBTITLE`·`HOOK_TEXT`, `AMBIENCE`·`SFX`·`MUSIC`·`HOOK`)을 준비한 뒤 `davinciresolve-cut-travelflow` → `akbun-davinciresolve-logconvert` → `akbun-davinciresolve-exposure` → `akbun-davinciresolve-whitebalance` → `akbun-davinciresolve-contrast` → `akbun-davinciresolve-saturation` → 요청된 `akbun-davinciresolve-look-*` → `davinciresolve-face-privacy` → `davinciresolve-subtitle-travelnote` → `davinciresolve-sfx-epidemicsound` → `davinciresolve-audio-delivery` 순서로 실행한다. 하위 skill 전부가 그 기본 원칙·마커 등록표와 `references/agent-api.md`의 대체 방법 표를 참조한다. 색보정 측정·세션·라벨 노드 규칙은 exposure skill의 `exposure_scope.py`를 모두가 import한다. 컷이 바뀌면 자막·오디오 skill이 바뀐 구간 목록을 받아 위치를 다시 맞춘다. `akbun-davinciresolve-sky`는 workflow 밖의 단독 skill이다. `akbun-davinciresolve-searchhook`도 workflow 밖의 단독 skill이며, workflow가 끝낸 작업 타임라인을 복제해 훅 타임라인을 따로 만들고 마커 등록표의 `HOOK`과 `davinciresolve-subtitle-travelnote`의 글꼴 규칙을 참조한다.
 - `davinciresolve-story-devtalk`(akbun-editvideo): 말하는 브이로그 workflow. `akbun-davinciresolve-workflow`의 기본 원칙과 마커 등록표(`TALK_REVIEW`, `GFX`)를 따르고, `davinciresolve-style-essay`·`davinciresolve-style-project`·`davinciresolve-style-reflection` 중 하나를 고른 뒤 `davinciresolve-beats-devtalk` → `davinciresolve-cut-devtalk` → `davinciresolve-subtitle-devtalk` → 필요한 그래픽(도구 선택 후, HyperFrames이면 `davinciresolve-gfx-hyperframes`) → `davinciresolve-sfx-epidemicsound` → 필요한 BGM 보완(`davinciresolve-bgm-epidemicsound`) 순서로 읽어 수행한다. 앞 네 skill은 고른 style skill의 구조·컷 리듬·글자 표를 참조하고 단독 호출도 된다. 글꼴·최소 글자 크기는 `davinciresolve-subtitle-devtalk`이 style skill보다 우선한다. `akbun-vlog-shootplan`은 같은 style skill의 구조 표로 촬영 계획서를 만들고, 그 비트 시트를 `davinciresolve-beats-devtalk`이 초안으로 읽는다. `akbun-vlog-storyboard`는 그 비트 시트를 컷마다 그리며 카메라 샷은 `akbun-vlog-shotsketch`의 샷 유형·그림 규칙을 쓴다. 색·오디오·렌더는 여행 skill과 같은 하위 skill을 다시 쓴다.
 - `akbun-youtube-plan-channel-settings`(akbun-youtube): 고정 값(`fixed`: 아동용 아님, 번역은 AI)과 설명 구조(`description_template`: 촬영 장비·배경음악 목록 필수)를 정의한다. `akbun-youtube-set-video-metadata`와 `akbun-youtube-translate-title-description`이 이를 참조하고, translate-title-description은 set-video-metadata의 `Studio 화면 조작 규칙`을 그대로 따른다. `akbun-youtube-analyze-my-style`은 지표 분석을 `akbun-youtube-analyze-my-videos`에 맡긴다.
-- `akbun-presentation-visual`(akbun-presentation): `akbun-presentation`이 슬라이드에 삽입할 래스터 시각자료를 생성한다.
+- `akbun-presentation-visual`(akbun-presentation): `akbun-presentation-paper`이 슬라이드에 삽입할 래스터 시각자료를 생성한다.
 - `akbun-mascot-whale`(akbun-draw): akbun 마스코트 고래의 표준 외형을 정의하는 기준 skill. 캐릭터를 그리는 아래 skill들이 이 스펙을 참조한다.
   - 캐릭터로 직접 사용: `akbun-draw-cartoon-b`, `akbun-draw-webtoon-c`
 
