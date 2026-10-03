@@ -1,6 +1,6 @@
 {
   "name": "akbun-presentation",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Technical presentation decks (pptx) and speaker scripts (md): fixed dark design plus paper-style light-sandwich and dark-step styles",
   "author": {
     "name": "akbun",
