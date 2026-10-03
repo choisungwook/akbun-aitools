@@ -1,6 +1,6 @@
 ---
 name: davinciresolve-subtitle-devtalk
-description: 말하는 개발자 브이로그의 오버레이 자막을 만드는 devtalk 스타일. 편집 스타일(essay·project·reflection)의 글자 표에 따라 대사 자막(Resolve CreateSubtitlesFromAudio), 키워드 강조·장면 코멘트·목록 자막(Text+)을 넣고 전사와 대조해 용어를 고친다. 글꼴은 Windows·macOS 어디서나 쓸 수 있는 SIL OFL 한글 글꼴(Pretendard, 없으면 Noto Sans KR)만 쓰고, 자막 글자 높이는 화면 높이의 5% 이상으로 스틸로 재서 지킨다. "대사 자막 넣어줘", "키워드 강조 자막", "장면 코멘트 자막" 요청에 사용한다. 사용자가 직접 호출할 때만 실행한다.
+description: 말하는 개발자 브이로그의 대사·키워드·장면 코멘트 자막을 만들고 전사와 대조한다. 자막 외형을 지정하지 않으면 Akbun Cinema를 사용한다. devtalk 자막 스타일을 명시한 경우에만 편집 스타일의 글자 표와 Pretendard(없으면 Noto Sans KR), 글자 높이 최소 5% 규칙을 적용한다. "대사 자막 넣어줘", "키워드 강조 자막", "장면 코멘트 자막" 요청에 사용한다. 사용자가 직접 호출할 때만 실행한다.
 disable-model-invocation: true
 ---
 

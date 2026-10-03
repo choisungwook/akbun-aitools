@@ -179,7 +179,7 @@ AI agent가 참고 프레임을 직접 확인한 뒤 패널·글자·강조를 �
 
 ## 재사용 자막 템플릿
 
-`$akbun-davinciresolve-caption-template`에 문구·표시 시간을 준다. 외형 지정이 없으면 `Akbun Cinema`가 기본이다. 하단 중앙·흰 글자·검은 외곽선이며 애니메이션·효과음은 없다. Source Han Sans KR Regular, 한 줄 우선·최대 두 줄을 사용하고 대표 자막의 가독성을 확인한다. 여행/개발자 workflow의 자동 스타일 선택만으로 이 기본값을 바꾸지 않는다. 타이핑·키워드를 요청하면 참고 영상/구간을 줄 수 있다. AI가 `/tmp`에 직접 캡처해 글자 공개 순서·정렬·색을 분석한다. 문장형 `Akbun Typewriter`와 큰 세리프 키워드형 `Akbun Keyword`는 Text+·도형으로 구성해 문구와 강조를 다시 편집할 수 있다.
+`$akbun-davinciresolve-caption-template`에 문구·표시 시간을 준다. 외형 지정이 없으면 `Akbun Cinema`가 기본이다. 하단 중앙·흰 글자·검은 외곽선이며 애니메이션·효과음은 없다. Source Han Sans KR Regular, 한 줄 우선·최대 두 줄을 사용하고 대표 자막의 가독성을 확인한다. 여행/개발자 workflow의 자동 스타일 선택만으로 이 기본값을 바꾸지 않는다. devtalk·travelnote 자막 외형을 명시했을 때만 해당 스킬의 기존 글꼴·크기 규칙을 적용한다. 타이핑·키워드를 요청하면 참고 영상/구간을 줄 수 있다. AI가 `/tmp`에 직접 캡처해 글자 공개 순서·정렬·색을 분석한다. 문장형 `Akbun Typewriter`와 큰 세리프 키워드형 `Akbun Keyword`는 Text+·도형으로 구성해 문구와 강조를 다시 편집할 수 있다.
 
 템플릿만 요청하면 `~/Downloads/Akbun-Caption/<내용해시>/`의 `.drfx`·setting 3개·`readme.md` 사용설명서를 받는다. Finder에서 더블클릭해 Resolve에 설치하고 Edit → Effects → Titles에서 찾아 본편 위의 별도 비디오 트랙에 드래그한다. 이 설치는 다음 프로젝트에도 유지되며 폰트는 별도다. 원본 패키지는 백업한다.
 

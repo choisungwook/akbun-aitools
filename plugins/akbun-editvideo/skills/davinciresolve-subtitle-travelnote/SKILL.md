@@ -1,6 +1,6 @@
 ---
 name: davinciresolve-subtitle-travelnote
-description: DaVinci Resolve에서 Gmarket Sans로 차분한 여행 브이로그용 한글 자막과 챕터 제목을 만드는 travelnote 스타일. 장면 설명 대신 장소·시간·분위기를 짧게 전달하고, 자막다운 큰 글자(Text+ Size 0.12, 기본값 0.08의 1.5배)를 스틸로 측정해 안전 영역 안에 맞추며, 자간·행간을 통일하고 장소가 바뀌는 지점에 YouTube 챕터 마커를 넣는다. "자막 넣어줘", "챕터 제목 만들어줘", "장소 자막" 요청에 사용한다. 다른 자막 스타일은 별도 skill로 추가한다. 사용자가 직접 호출할 때만 실행한다.
+description: DaVinci Resolve에서 여행 브이로그의 장소·시간·분위기를 전달하는 한글 자막과 챕터 마커를 만든다. 자막 외형을 지정하지 않으면 Akbun Cinema를 사용한다. travelnote 자막 스타일을 명시한 경우에만 Gmarket Sans와 Text+ Size 0.12 규칙을 적용하고 안전 영역을 스틸로 확인한다. "자막 넣어줘", "챕터 제목 만들어줘", "장소 자막" 요청에 사용한다. 사용자가 직접 호출할 때만 실행한다.
 disable-model-invocation: true
 ---
 

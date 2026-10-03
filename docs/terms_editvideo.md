@@ -130,7 +130,7 @@
 | Workflow Integration / MCP | Resolve 안에서 여는 플러그인 경로 / AI가 연결 서비스의 도구를 사용하는 프로토콜. Epidemic 검색·다운로드와 Resolve 타임라인 조작은 서로 다른 역할이다. |
 | 대사 자막 (subtitle/caption) | 말한 내용을 글자로 보여주는 자막. 전사와 대조해 실제 발화와 맞춘다. |
 | Text+ | DaVinci Resolve의 Fusion 기반 텍스트 도구. 키워드·제목·장면 코멘트 등을 화면에 얹을 때 쓴다. |
-| 영화식 자막 (cinema caption) | 별도 외형 지정이 없을 때 쓰는 Akbun Cinema. 하단 중앙의 정적 흰 글자와 검은 외곽선, 한 줄 우선·최대 두 줄이며 타이핑·페이드·효과음을 자동 추가하지 않는다. |
+| 영화식 자막 (cinema caption) | 별도 외형 지정이 없을 때 쓰는 Akbun Cinema. devtalk·travelnote 외형을 명시하면 그 스타일의 규칙을 따른다. 하단 중앙의 정적 흰 글자와 검은 외곽선, 한 줄 우선·최대 두 줄이며 타이핑·페이드·효과음을 자동 추가하지 않는다. |
 | 타이핑 자막 (typewriter caption) | 완성 문장의 위치·줄바꿈을 고정하고 Text+ Write On End로 글자를 순차 공개하는 자막. 손으로 획을 그리는 애니메이션과 구분한다. |
 | Fusion Title 템플릿 | Text+와 필요한 도형을 그룹으로 묶고 문구·폰트·강조 컨트롤을 Inspector에 노출한 재사용 타이틀. 본편 위의 별도 비디오 트랙에 배치한다. |
 | DRFX | Edit/Titles 등의 폴더 구조를 가진 Fusion 템플릿 설치용 ZIP 패키지. 더블클릭해 설치하며 영상 미디어나 프로젝트 파일과 구분한다. |
