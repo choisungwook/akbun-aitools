@@ -62,7 +62,8 @@
         "installation": "AVAILABLE",
         "authentication": "ON_INSTALL"
       },
-      "category": "Writing"
+      "category": "Writing",
+      "description": "Technical presentation decks (pptx) and speaker scripts (md): fixed dark design plus paper-style light-sandwich and dark-step styles"
     },
     {
       "name": "akbun-analysis",

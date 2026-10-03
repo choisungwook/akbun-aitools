@@ -5,7 +5,7 @@ description: >
   라이트 샌드위치와 다크 스텝의 색 문법으로 시스템 구조·과정·비교·문제 흐름을 단순화하며,
   연속 슬라이드는 같은 구도에서 마커와 강조만 바꾼다. 발표 덱이나 대본은 만들지 않는다.
   Trigger on: "발표용 이미지 그려줘", "슬라이드 시각자료", "이 내용을 akbun 발표 그림으로",
-  or when akbun-presentation needs a raster visual for a slide.
+  or when akbun-presentation-paper needs a raster visual for a slide.
 ---
 
 # akbun 발표 시각자료 생성

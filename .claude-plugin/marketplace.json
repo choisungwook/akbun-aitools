@@ -35,7 +35,7 @@
     {
       "name": "akbun-presentation",
       "source": "./plugins/akbun-presentation",
-      "description": "Presentation skill — akbun-style pptx deck plus a per-slide speaker script (light-sandwich / dark-step)",
+      "description": "Technical presentation decks (pptx) and speaker scripts (md): fixed dark design plus paper-style light-sandwich and dark-step styles",
       "strict": true
     },
     {
