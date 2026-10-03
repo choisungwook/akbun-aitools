@@ -35,7 +35,7 @@ python3 scripts/textplus.py place --timeline "<작업 타임라인>" --at 01:00:
 python3 scripts/textplus.py remove --timeline "<작업 타임라인>" --at 01:00:04:00
 ```
 
-- 미디어 풀에 `HOOK_TEXT_TEMPLATE`이 없으면 스크립트가 멈춘다. [akbun-davinciresolve-searchhook](../akbun-davinciresolve-searchhook/SKILL.md)의 "Text+ 템플릿 준비"를 프로젝트마다 한 번 한다. 작업 타임라인이 아니라 연습용으로 복제한 타임라인에서 하고, 훅 skill과 같은 항목을 같이 쓴다. 다른 항목을 쓰려면 `--template`으로 이름을 준다.
+- 미디어 풀에 `HOOK_TEXT_TEMPLATE`이 없으면 스크립트가 멈춘다. 아래 "Text+ 템플릿 준비"를 프로젝트마다 한 번 한다. 다른 항목을 쓰려면 `--template`으로 이름을 준다.
 - `SUBTITLE` 트랙은 번호가 아니라 이름으로 찾는다. `akbun-davinciresolve-workflow`의 트랙 준비가 만든 트랙을 쓰고, 없으면 스크립트가 비디오 트랙 맨 위에 만든다.
 - `--x`·`--y`는 Text+ `Center`다(0~1, 왼쪽 아래가 0, 0). 아래 "위치와 안전 영역"의 여백을 만족하는 값을 대표 자막 스틸(`--out`의 `subtitle-stills/`)에서 정해 모든 자막에 같은 값을 쓴다.
 - 글꼴·굵기·크기·`Center` 밖의 Text+ 입력은 `--set 입력=값`으로 준다(예: `LineSpacing`, `CharacterSpacing`, `Enabled2`, `HorizontalLeftCenterRight`). 없는 입력 이름이면 스크립트가 놓은 클립을 지우고 멈춘다. `--set`으로 주지 않은 값은 템플릿의 값이다.
@@ -44,7 +44,7 @@ python3 scripts/textplus.py remove --timeline "<작업 타임라인>" --at 01:00
 - 같은 구간에 이미 자막이 있으면 놓지 않고 충돌 구간을 알린다.
 - 등장·퇴장 8프레임 페이드는 스크립트가 넣지 않는다. `TimelineItem.SetFades`로 건 값은 프로젝트를 닫았다 열면 0으로 돌아온다(21.1 실측). Resolve에서 `SUBTITLE` 트랙의 자막마다 넣고, 화면 조작이 안 되면 자막 목록을 절차서로 남긴다.
 - 클립을 직접 지울 때는 지우기 직전에 `GetItemListInTrack`으로 다시 읽은 핸들만 `DeleteClips`에 넘긴다. 오래된 핸들로 지우면 Resolve가 종료된다(21.1 실측).
-- 놓는 함수는 `akbun-davinciresolve-searchhook`의 `scripts/searchhook.py` `put_text`이고 `searchhook.py text`와 같이 쓴다. 고치면 `python3 scripts/textplus.py selftest`와 `searchhook.py selftest`로 확인한다.
+- 배치 함수 `put_text`는 `scripts/textplus.py`에 있다. 수정 후 `uv run --python 3.12 scripts/textplus.py selftest`로 확인한다.
 
 ## 글꼴
 
@@ -137,3 +137,12 @@ python3 scripts/textplus.py remove --timeline "<작업 타임라인>" --at 01:00
 - 컷 변경 뒤 자막·챕터 마커 타이밍을 그대로 두는 것
 - 타임라인 중간에서 `InsertFusionTitleIntoTimeline` 호출, V1이나 `SUBTITLE` 밖의 트랙에 자막 놓기
 - 자막을 컴파운드 클립으로 감싸기, 자막 하나를 여러 클립으로 이어 붙이기
+
+## Text+ 템플릿 준비
+
+1. 연습용으로 복제한 타임라인의 빈 상위 비디오 트랙에 Effects → Titles → Text+를 끌어 놓는다.
+2. 미디어 풀 Master 아래에 `HOOK_TEXT_TEMPLATE` bin을 만든다.
+3. 타임라인의 Text+ 클립을 해당 bin으로 끌어 놓고 생성된 Fusion Title 항목 이름을 `HOOK_TEXT_TEMPLATE`으로 바꾼다.
+4. 연습용 타임라인에 놓은 Text+ 클립만 지우고 미디어 풀 항목은 남긴다.
+
+기존 프로젝트와의 호환을 위해 템플릿 이름을 유지한다. 템플릿을 만들 수 없으면 미적용으로 보고하며 컴파운드 클립으로 대체하지 않는다.

@@ -11,10 +11,8 @@
 | 상황 | 시작할 스킬 | 해결하는 문제와 동작 |
 |---|---|---|
 | 아직 촬영 전이고 경험을 영상 이야기로 만들고 싶음 | [akbun-vlog-prepared-devtalk](../plugins/akbun-editvideo/skills/akbun-vlog-prepared-devtalk/SKILL.md) | 한 번에 하나씩 인터뷰하며 실제 경험을 5–7분 이야기로 정리하고, 비트·샷·스케치·촬영 계획까지 준비한다. 얼굴 비노출을 전제로 하고 모션그래픽 도구는 미리 정하지 않는다. |
-| 이야기는 정했고 촬영 방법만 필요함 | [akbun-vlog-shootplan](../plugins/akbun-editvideo/skills/akbun-vlog-shootplan/SKILL.md) | 촬영 장비·음성·화면 녹화의 역할과 촬영 순서를 정한다. 불필요한 장면을 과하게 찍지 않도록 핵심 샷을 고른다. |
 | 특정 샷의 카메라 구도와 빛을 정하고 싶음 | [akbun-vlog-shotsketch](../plugins/akbun-editvideo/skills/akbun-vlog-shotsketch/SKILL.md) | 이야기 비트에 필요한 한 샷의 프레임, 카메라 위치, 동작, 조명과 얼굴 비노출 확인을 그림과 표로 만든다. |
 | 전체 이야기에서 어떤 장면을 어떤 순서로 찍을지 보고 싶음 | [akbun-vlog-storyboard](../plugins/akbun-editvideo/skills/akbun-vlog-storyboard/SKILL.md) | 확정된 비트를 음성·B-roll·화면 녹화·필요한 그래픽 아이디어에 연결하고 핵심 setup을 스케치한다. |
-| 말소리 있는 개발자 영상의 촬영 클립을 편집하고 싶음 | [davinciresolve-story-devtalk](../plugins/akbun-editvideo/skills/davinciresolve-story-devtalk/SKILL.md) | 전사·스토리 비트·컷·화면·자막·그래픽·오디오 작업을 조율한다. 촬영 전 이야기 기획은 `akbun-vlog-prepared-devtalk`에서 시작한다. |
 | 말소리 없는 여행 영상 전체를 편집하고 싶음 | [akbun-davinciresolve-workflow](../plugins/akbun-editvideo/skills/akbun-davinciresolve-workflow/SKILL.md) | 원본 타임라인을 보존하면서 촬영 시간순 타임라인부터 컷, 색보정, 요청된 Look, 개인정보 보호, 자막, 오디오, 출력까지 단계별로 진행한다. |
 | 글·PPTX·이미지로 설명 영상을 새로 만들고 싶음 | [akbun-davinciresolve-explainer](../plugins/akbun-editvideo/skills/akbun-davinciresolve-explainer/SKILL.md) | 대본·스토리보드를 확인한 뒤 장면별 Fusion 타이틀을 만든다. Inspector에서 글자·표시·등장 시점·위치를 고치고 대본·가이드·스틸을 받는다. |
 | 한 단계만 처리하고 싶음 | 아래의 해당 작업별 스킬 | 전체 workflow를 쓰지 않고 필요한 색보정·컷·자막·오디오·출력만 따로 요청한다. |
@@ -25,29 +23,26 @@
 
 | 상황·준비된 입력 | 시작과 이어지는 스킬 | 받게 되는 결과·직접 확인할 부분 |
 |---|---|---|
-| 촬영 전, “32주차 개발자 diary”라는 생각만 있음 | `akbun-vlog-prepared-devtalk` → 이야기 확정 후 `akbun-vlog-storyboard`·`akbun-vlog-shotsketch`·`akbun-vlog-shootplan` | 인터뷰에서 찾은 실제 사건, 5–7분 이야기, 얼굴 없는 샷·소리의 역할·녹음·촬영 순서. 경험과 내 말투가 맞는지 확인 |
-| 얼굴 없이 녹음한 설명과 화면 녹화가 있음 | `davinciresolve-story-devtalk` → essay/project/reflection 선택 → beats → cut → subtitle → 필요한 그래픽 → 사운드 → 출력 | 확정 비트에 맞춘 편집본. 비트 시트, 얼굴 노출, 핵심 문장의 이해와 사운드 마커 확인 |
+| 촬영 전, “32주차 개발자 diary”라는 생각만 있음 | `akbun-vlog-prepared-devtalk` → 이야기 확정 후 `akbun-vlog-storyboard`·`akbun-vlog-shotsketch` | 인터뷰에서 찾은 실제 사건, 5–7분 이야기, 얼굴 없는 샷·소리의 역할·녹음·촬영 순서. 경험과 내 말투가 맞는지 확인 |
 | 말 없는 여행 원본을 통째로 편집 | `akbun-davinciresolve-workflow` → 시간순 타임라인 → 트랙 준비 → 컷·색보정 → 선택 Look → 개인정보·자막 → 사운드 → 출력 | 원본을 보존한 여행 편집본. 시간순 배열, 주요 장면과 자연음, 검토 마커 확인 |
 | 도시 클립의 리듬만 다듬고 싶음 | `akbun-davinciresolve-cut-new-york` → 바뀐 구간을 자막·사운드 스킬에 전달 | 와이드·미디엄·디테일과 움직임을 잇는 몽타주. 삭제 후보와 자막·소리의 새 위치 확인 |
-| 컷은 끝났고 풍경 소리·효과음·음악을 함께 보강 | `davinciresolve-sfx-epidemicsound` → 필요하면 `davinciresolve-audio-delivery` | 오디오 직전 상태를 복제한 작업본, 환경음·동작음·필요한 여러 BGM, 검토 큐시트. `AUDIO_REVIEW` 순서로 들어보기 |
+| 컷은 끝났고 풍경 소리·효과음·음악을 함께 보강 | `davinciresolve-sfx-epidemicsound` → 필요하면 `davinciresolve-export-youtube` | 오디오 직전 상태를 복제한 작업본, 환경음·동작음·필요한 여러 BGM, 검토 큐시트. `AUDIO_REVIEW` 순서로 들어보기 |
 | 음악 후보만 비교하고 싶음 | `davinciresolve-bgm-epidemicsound`의 후보 단계 | 비트별 후보·선택 이유·전환 제안. 타임라인은 수정하지 않으며 장면의 감정과 음악이 맞는지 판단 |
 | 이미 있는 BGM을 여러 곡으로 나누거나, 말할 때 잠시 빼고 재진입 | `davinciresolve-bgm-epidemicsound` → 사운드 공통 기준의 음악 편집·믹싱·마커 절 | 복제본에서 phrase·스템·tail·여백을 편집. 곡의 경계, 말 가림, 재진입 강도를 확인 |
 | 카드·버튼·키워드 소리만 필요함 | `davinciresolve-sfx-epidemicsound`에 대상 이벤트/구간 지정 | 복제본의 지정 SFX만 편집. 기존 음악 유지, 강조 타이밍과 반복 피로 확인 |
 | 사운드를 끝낸 뒤 컷 길이가 달라짐 | 컷 스킬의 변경 목록 → `davinciresolve-sfx-epidemicsound`의 컷 변경과 인계 | 앵커·스템·덕킹·전환·마커를 다시 맞춘 결과. 음악 phrase와 효과음 싱크가 어긋나지 않는지 확인 |
 | 화면이 어둡고 야간 네온 분위기를 원함 | `akbun-davinciresolve-exposure` 및 필요한 WB·대비·채도 → `akbun-davinciresolve-look-tokyo-night` | 기본 밝기와 새 LOOK 노드가 분리된 결과. 실제 보기 환경에서 밝기·간판 디테일 확인. +1/+2스톱은 선택 비교 |
-| 편집·믹스 완료, 업로드할 파일만 필요함 | 4K와 오디오 계측은 `davinciresolve-audio-delivery`; 현재 타임라인 해상도의 기본 프리셋은 `davinciresolve-export-youtube` | 렌더 파일과 수행한 검증 결과. `AUDIO_REVIEW` 미해결 목록 확인. 렌더 요청만으로 업로드하지 않음 |
-| 여행 편집본은 끝났는데 도입부가 밋밋함 | `akbun-davinciresolve-searchhook` → 후보 선택 → 필요하면 `davinciresolve-sfx-epidemicsound` → 출력 | 훅 후보 3~5개와 추천, 완성 타임라인을 복제해 앞에 훅을 넣은 훅 타임라인. 제목·썸네일과 첫 5초가 같은 것을 말하는지, 문구가 사실인지, `HOOK_BGM` 마커의 음악 길이 보정 확인 |
+| 편집·믹스 완료, 업로드할 파일만 필요함 | 타임라인 해상도에 맞는 기본 프리셋은 `davinciresolve-export-youtube` | 렌더 파일과 수행한 검증 결과. `AUDIO_REVIEW` 미해결 목록 확인. 렌더 요청만으로 업로드하지 않음 |
 | 완성한 가로 영상에서 Shorts 후보 추출 | `davinciresolve-youtube-shorts` | 별도 세로 후보, 원래 오디오 처리 보존. 잘린 말·음악 tail·세로 구도 확인 |
 
 예: `$davinciresolve-sfx-epidemicsound 현재 여행 타임라인을 복제해서 바다→거리 전환과 현장음을 살리고, 필요한 여러 BGM도 연결해줘. 내가 들을 곳은 마커로 남겨줘.`
 
-예: `$akbun-davinciresolve-searchhook 완성한 한강 산책 타임라인에서 훅 후보를 찾아줘. 제목은 아직 없으니 후보마다 제목도 같이 제안해줘.`
 
 예: `$davinciresolve-bgm-epidemicsound 32주차 diary의 집중→막힘→해결 흐름에 맞는 음악 후보만 보여줘. 아직 넣지는 말아줘.`
 
 ### 사운드 작업에서 확인할 것
 
-효과음·환경음·여러 음악·스템·전환·믹싱의 실행 기준은 [사운드 디자인 스킬](../plugins/akbun-editvideo/skills/davinciresolve-sfx-epidemicsound/SKILL.md) 한곳에 있다. BGM 스킬은 음악만 요청하는 진입점이고, audio-delivery는 최종 파일의 출력·계측을 맡는다. Epidemic Sound 유료 계정은 Resolve Workflow Integration이나 연결된 MCP 중 사용 가능한 경로를 쓴다.
+효과음·환경음·여러 음악·스템·전환·믹싱의 실행 기준은 [사운드 디자인 스킬](../plugins/akbun-editvideo/skills/davinciresolve-sfx-epidemicsound/SKILL.md) 한곳에 있다. BGM 스킬은 음악만 요청하는 진입점이고, `davinciresolve-export-youtube`는 기본 프리셋 출력과 결과 해상도 확인을 맡는다. Epidemic Sound 유료 계정은 Resolve Workflow Integration이나 연결된 MCP 중 사용 가능한 경로를 쓴다.
 
 오디오 편집은 `<기존 이름>_sound_<일시>` 복제본에서 진행한다. 음악이 잠깐 사라지는 여백, 곡 전환·재진입, 창작적 효과와 판단이 필요한 곳은 Sand `AUDIO_REVIEW` 마커로 찾는다. 노트의 정확한 TC·의도·대안·적용 여부를 읽고 전후로 들어보면 된다. AI가 자체 검청한 상태와 사용자가 승인한 상태는 구분한다. 후속 렌더는 이 복제본을 사용한다.
 
@@ -82,22 +77,19 @@
 
 ### 촬영 후 편집 흐름
 
-`davinciresolve-story-devtalk`은 촬영 클립이 있을 때 쓰는 편집 진행자다. 영상과 전사를 근거로 소재를 정리하고, 사용자가 확정한 이야기 비트에 맞춰 장면을 배열한다. 기본 길이는 5–7분이며, 일상·주차 diary도 단순한 할 일 목록 대신 맥락과 실제 사건·선택·변화를 중심으로 다룬다.
+촬영 후에는 아래 스타일·자막 스킬과 사운드 스킬을 필요한 작업별로 고른다.
 
 | 편집할 문제 | 스킬이 하는 일 |
 |---|---|
-| 클립에서 이야기 소재를 찾고 비트 순서로 배열 | [davinciresolve-beats-devtalk](../plugins/akbun-editvideo/skills/davinciresolve-beats-devtalk/SKILL.md): 음성을 전사해 사실과 근거를 정리하고 비트 시트를 제안한다. 타임라인 배열은 사용자가 확정한 뒤 진행한다. |
-| 말의 군더더기를 덜고 이야기 호흡을 살림 | [davinciresolve-cut-devtalk](../plugins/akbun-editvideo/skills/davinciresolve-cut-devtalk/SKILL.md): 문장 단위로 침묵·필러·재녹음을 정리하되 의미 있는 멈춤은 남긴다. |
 | 기술 원리나 트레이드오프를 설명 | [davinciresolve-style-essay](../plugins/akbun-editvideo/skills/davinciresolve-style-essay/SKILL.md): 주장과 근거를 중심으로 화면 녹화·자료·필요한 그래픽을 배치한다. |
 | 프로젝트 진행이나 개발자 일상을 기록 | [davinciresolve-style-project](../plugins/akbun-editvideo/skills/davinciresolve-style-project/SKILL.md): 목표·장애·선택·결과의 변화를 화면과 내레이션으로 보여준다. |
-| 구체적 경험에서 생각의 변화를 이야기 | [davinciresolve-style-reflection](../plugins/akbun-editvideo/skills/davinciresolve-style-reflection/SKILL.md): 상황·계기·생각·흔들림·결론의 흐름으로 편집한다. |
 | 대사 자막, 키워드, 장면 설명 추가 | [davinciresolve-subtitle-devtalk](../plugins/akbun-editvideo/skills/davinciresolve-subtitle-devtalk/SKILL.md): 전사와 대조해 대사 자막과 필요한 강조·코멘트를 넣는다. 키워드·코멘트 Text+는 본편을 밀지 않고 `SUBTITLE` 트랙에 놓는다. |
 
-편집 스타일이 헷갈리면 핵심이 `원리 설명`이면 essay, `진행과 결과`이면 project, `생각의 변화`이면 reflection을 고른다. 하루나 주차 diary라도 실제 경험의 진행이 중심이면 project, 사건 뒤 관점이 달라진 것이 중심이면 reflection이 적합하다.
+편집 스타일은 핵심이 `원리 설명`이면 essay, `진행과 결과`이면 project를 고른다.
 
 ## 말소리 없는 여행 영상
 
-전체 순서를 맡길 때는 [akbun-davinciresolve-workflow](../plugins/akbun-editvideo/skills/akbun-davinciresolve-workflow/SKILL.md)를 쓴다. 이 workflow는 시간순 타임라인을 만들고 복제본에 비디오·오디오 트랙을 4개씩 준비한 뒤 작업을 이어간다. 그중 `HOOK` 오디오 트랙과 `HOOK_TEXT` 비디오 트랙은 편집이 끝난 뒤 훅을 만들 때 쓴다. 일부 작업만 원하면 아래 스킬을 직접 고른다.
+전체 순서를 맡길 때는 [akbun-davinciresolve-workflow](../plugins/akbun-editvideo/skills/akbun-davinciresolve-workflow/SKILL.md)를 쓴다. 이 workflow는 시간순 타임라인을 만들고 복제본에 비디오·오디오 트랙을 3개씩 준비한 뒤 작업을 이어간다. 일부 작업만 원하면 아래 스킬을 직접 고른다.
 
 | 원하는 작업 | 스킬과 동작 |
 |---|---|
@@ -105,8 +97,6 @@
 | 빈 화면·불량 구간 컷, 흔들림 보정 | [davinciresolve-cut-travelflow](../plugins/akbun-editvideo/skills/davinciresolve-cut-travelflow/SKILL.md): 여행 장면과 자연음의 흐름을 기준으로 정리하고 삭제 전 검토 표시를 남긴다. |
 | 도시 장면을 와이드·미디엄·디테일로 엮어 몽타주 구성 | [akbun-davinciresolve-cut-new-york](../plugins/akbun-editvideo/skills/akbun-davinciresolve-cut-new-york/SKILL.md): 건축·교통·거리의 움직임과 음악 리듬을 활용해 컷을 제안한다. 장면 삭제는 이유를 설명하고 사용자가 확인한 뒤 진행한다. |
 | 여행 자막과 장소·시간 챕터 | [davinciresolve-subtitle-travelnote](../plugins/akbun-editvideo/skills/davinciresolve-subtitle-travelnote/SKILL.md): 장소·시간·분위기를 짧은 한글 자막과 챕터로 전달한다. 자막 Text+는 본편과 마커를 밀지 않고 `SUBTITLE` 트랙에 놓는다. |
-| 완성본 앞에 붙일 훅(콜드 오픈·인트로) 찾기 | [akbun-davinciresolve-searchhook](../plugins/akbun-editvideo/skills/akbun-davinciresolve-searchhook/SKILL.md): 완성 타임라인의 장면을 채점해 훅 후보를 제안하고, 고른 후보만 완성 타임라인의 복제본 맨 앞에 넣는다. 영상·효과음은 함께 밀리고 잠근 BGM은 제자리에 남아 음악이 이어지며, 어긋난 음악 길이는 보정할 곳을 알려 준다. 화면 텍스트는 `HOOK_TEXT` 트랙에 일반 Text+ 클립으로 놓이므로 클립을 선택해 Inspector에서 문구를 바로 고친다. 완성 타임라인은 수정하지 않는다. |
-| 여행 영상 오디오와 최종 파일 | [davinciresolve-audio-delivery](../plugins/akbun-editvideo/skills/davinciresolve-audio-delivery/SKILL.md): 사운드 공통 스킬로 준비한 믹스를 YouTube용 파일로 렌더하고 오디오·영상 결과를 계측한다. |
 
 ## 색보정은 무엇을 고를까
 
@@ -136,7 +126,6 @@ Look 수치는 참고 영상에서 프레임을 복제한 절대값이 아니라
 |---|---|
 | 영상에서 얼굴·번호판·개인정보 가리기 | [davinciresolve-face-privacy](../plugins/akbun-editvideo/skills/davinciresolve-face-privacy/SKILL.md): Color 페이지에서 가릴 대상을 추적하고 타임라인에 확인 표시를 남긴다. |
 | Fusion에서 특정 영역만 모자이크 | [davinciresolve-face-mosaic](../plugins/akbun-editvideo/skills/davinciresolve-face-mosaic/SKILL.md): 새 Mosaic Blur 노드와 마스크로 필요한 영역을 가린다. |
-| 챕터 카드·비교표 등 모션그래픽 만들기 | [davinciresolve-gfx-hyperframes](../plugins/akbun-editvideo/skills/davinciresolve-gfx-hyperframes/SKILL.md): HyperFrames로 그래픽 카드를 만든다. 촬영 전 기획에서는 먼저 그래픽의 목적만 정하고, 사용할 제작 도구는 결정된 경우에만 이 스킬을 선택한다. |
 | 기사·블로그·논문을 본편 위에 발췌해 보여주기 | [akbun-davinciresolve-article-overlay](../plugins/akbun-editvideo/skills/akbun-davinciresolve-article-overlay/SKILL.md): Resolve Fusion으로 밝은 발췌 패널을 만들고 선택한 문장에 밑줄·원·하이라이트를 붙인다. Epidemic Sound MCP 음원을 SFX 트랙에 동기화하고 삽입 불가 시 분·초·길이·검색어·트랙을 채팅으로 안내한다. |
 | 영화식 기본 자막·타이핑 자막을 재사용 템플릿으로 만들기 | [akbun-davinciresolve-caption-template](../plugins/akbun-editvideo/skills/akbun-davinciresolve-caption-template/SKILL.md): 외형 지정이 없으면 하단 중앙의 정적 Cinema를 사용하고, 요청 시 타이핑·키워드·밑줄·원을 만든다. DRFX를 Downloads에 생성하고 macOS 설치법을 안내한다. |
 | 영상 분위기에 맞는 배경음악 후보 찾기 | [davinciresolve-bgm-epidemicsound](../plugins/akbun-editvideo/skills/davinciresolve-bgm-epidemicsound/SKILL.md): Epidemic Sound 후보와 이유를 제시하고, 요청하면 공통 사운드 기준으로 여러 곡·스템·전환을 편집한다. |
@@ -148,7 +137,7 @@ Look 수치는 참고 영상에서 프레임을 복제한 절대값이 아니라
 
 `$akbun-davinciresolve-article-overlay`에 기사 URL/본문/캡처와 대상 타임라인·표시 구간을 준다. 예: “이 글을 0분 12초부터 5초 동안 띄우고 핵심 문장에 빨간 밑줄과 Marker stroke 효과음을 넣어줘.” 강조는 선택 사항이며 밑줄·원·하이라이트 중 필요한 방식과 색을 지정할 수 있다.
 
-AI agent가 참고 프레임을 직접 확인한 뒤 패널·글자·강조를 구성하고, 복제본에서 본편보다 위의 별도 비디오 트랙에 같은 시간으로 겹쳐 배치한다. 대상 구간이 비어 있는 기존 오버레이 트랙은 재사용하고, 없으면 새 `ARTICLE_OVERLAY` 트랙을 만든다. 본편 트랙에 발췌를 끼워 넣거나 기존 영상의 길이를 밀지 않는다. 원문 캡처는 이미지로 남고 재조판한 문구는 Text+로 수정할 수 있다. 대사 자막이나 전체 화면 챕터 카드는 위의 해당 스킬을 고른다.
+AI agent가 참고 프레임을 직접 확인한 뒤 패널·글자·강조를 구성하고, 복제본에서 본편보다 위의 별도 비디오 트랙에 같은 시간으로 겹쳐 배치한다. 대상 구간이 비어 있는 기존 오버레이 트랙은 재사용하고, 없으면 새 `ARTICLE_OVERLAY` 트랙을 만든다. 본편 트랙에 발췌를 끼워 넣거나 기존 영상의 길이를 밀지 않는다. 원문 캡처는 이미지로 남고 재조판한 문구는 Text+로 수정할 수 있다. 대사 자막은 위의 자막 스킬을 고른다.
 
 편집 후에는 발췌 클립을 선택하고 Fusion 페이지에서 해당 노드를 선택해 Inspector로 고친다. 실제 트랙·클립·노드 이름과 수정 항목을 AI가 함께 안내한다.
 
@@ -171,7 +160,7 @@ AI agent가 참고 프레임을 직접 확인한 뒤 패널·글자·강조를 �
 - 노출 스크립트의 0–1020 밝기 근사치와 스톱·IRE를 바꿔 쓰지 않는다. +1/+2스톱은 선택 비교이며 중간값·무조정도 가능하다.
 - [Pivot 로컬 표](../plugins/akbun-editvideo/skills/akbun-davinciresolve-contrast/references/pivot-reference.md)는 인터넷 검색 없이 사용할 수 있다. DWG의 노드 연결은 입력 CST→노출→WB→대비→채도·선택 보정→출력 CST이며, 대비를 먼저 조정할 수 있다.
 - devtalk는 주 음성(내레이션)을 화면과 구분하며 주장 문장을 두 번 녹음할 의무가 없다. 컷 수·샷 길이는 출발점이고 이야기의 pause·자료 읽기 시간을 보존한다. 그래픽 도구가 미정이면 아이디어를 유지하고 다른 편집을 진행한다.
-- 1.2.0부터 SFX 스킬이 공통 사운드 디자인을 맡고 BGM·출력 스킬이 이를 참조한다. 이전의 효과음 개수·단일 BGM·고정 상대 레벨 규칙은 장면별 검청 기준으로 바뀌었다.
+- 1.2.0부터 SFX 스킬이 공통 사운드 디자인을 맡고 BGM 스킬이 이를 참조한다. 이전의 효과음 개수·단일 BGM·고정 상대 레벨 규칙은 장면별 검청 기준으로 바뀌었다.
 - 1.1.0부터 도시 컷 스킬은 `davinciresolve-cut-citymontage`에서 `akbun-davinciresolve-cut-new-york`로 변경됐다. 저장한 호출문은 새 이름으로 바꾼다.
 
 ## 버전과 세부 절차
@@ -180,7 +169,7 @@ AI agent가 참고 프레임을 직접 확인한 뒤 패널·글자·강조를 �
 
 ## 재사용 자막 템플릿
 
-`$akbun-davinciresolve-caption-template`에 문구·표시 시간을 준다. 외형 지정이 없으면 `Akbun Cinema`가 기본이다. 하단 중앙·흰 글자·검은 외곽선이며 애니메이션·효과음은 없다. Source Han Sans KR Regular, 한 줄 우선·최대 두 줄을 사용하고 대표 자막의 가독성을 확인한다. 여행/개발자 workflow의 자동 스타일 선택만으로 이 기본값을 바꾸지 않는다. 타이핑·키워드를 요청하면 참고 영상/구간을 줄 수 있다. AI가 `/tmp`에 직접 캡처해 글자 공개 순서·정렬·색을 분석한다. 문장형 `Akbun Typewriter`와 큰 세리프 키워드형 `Akbun Keyword`는 Text+·도형으로 구성해 문구와 강조를 다시 편집할 수 있다.
+`$akbun-davinciresolve-caption-template`에 문구·표시 시간을 준다. 외형 지정이 없으면 `Akbun Cinema`가 기본이다. 하단 중앙·흰 글자·검은 외곽선이며 애니메이션·효과음은 없다. Source Han Sans KR Regular, 한 줄 우선·최대 두 줄을 사용하고 대표 자막의 가독성을 확인한다. workflow의 자동 스타일 선택만으로 이 기본값을 바꾸지 않는다. 타이핑·키워드를 요청하면 참고 영상/구간을 줄 수 있다. AI가 `/tmp`에 직접 캡처해 글자 공개 순서·정렬·색을 분석한다. 문장형 `Akbun Typewriter`와 큰 세리프 키워드형 `Akbun Keyword`는 Text+·도형으로 구성해 문구와 강조를 다시 편집할 수 있다.
 
 템플릿만 요청하면 `~/Downloads/Akbun-Caption/<내용해시>/`의 `.drfx`·setting 3개·`readme.md` 사용설명서를 받는다. Finder에서 더블클릭해 Resolve에 설치하고 Edit → Effects → Titles에서 찾아 본편 위의 별도 비디오 트랙에 드래그한다. 이 설치는 다음 프로젝트에도 유지되며 폰트는 별도다. 원본 패키지는 백업한다.
 

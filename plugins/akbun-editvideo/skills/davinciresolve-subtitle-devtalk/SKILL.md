@@ -1,6 +1,6 @@
 ---
 name: davinciresolve-subtitle-devtalk
-description: 말하는 개발자 브이로그의 오버레이 자막을 만드는 devtalk 스타일. 편집 스타일(essay·project·reflection)의 글자 표에 따라 대사 자막(Resolve CreateSubtitlesFromAudio), 키워드 강조·장면 코멘트·목록 자막(Text+)을 넣고 전사와 대조해 용어를 고친다. 글꼴은 Windows·macOS 어디서나 쓸 수 있는 SIL OFL 한글 글꼴(Pretendard, 없으면 Noto Sans KR)만 쓰고, 자막 글자 높이는 화면 높이의 5% 이상으로 스틸로 재서 지킨다. "대사 자막 넣어줘", "키워드 강조 자막", "장면 코멘트 자막" 요청에 사용한다. 사용자가 직접 호출할 때만 실행한다.
+description: 말하는 개발자 브이로그의 오버레이 자막을 만드는 devtalk 스타일. 요청된 대사 자막(Resolve CreateSubtitlesFromAudio)과 편집 스타일(essay·project)의 글자 표에 따른 키워드 강조·장면 코멘트·목록 자막(Text+)을 넣고 전사와 대조해 용어를 고친다. 글꼴은 Windows·macOS 어디서나 쓸 수 있는 SIL OFL 한글 글꼴(Pretendard, 없으면 Noto Sans KR)만 쓰고, 자막 글자 높이는 화면 높이의 5% 이상으로 스틸로 재서 지킨다. "대사 자막 넣어줘", "키워드 강조 자막", "장면 코멘트 자막" 요청에 사용한다. 사용자가 직접 호출할 때만 실행한다.
 disable-model-invocation: true
 ---
 
@@ -14,7 +14,7 @@ disable-model-invocation: true
 
 자막 스타일 중 하나다. 이름의 devtalk은 "화자가 말한 것만 글자로 얹는다"는 뜻이다. 장소·시간을 적는 여행 자막은 `davinciresolve-subtitle-travelnote`가 맡는다.
 
-`akbun-davinciresolve-workflow`의 기본 원칙(대표 자막 1개 선적용, 작업 로그)을 따른다. 어떤 자막을 어디에 넣는지는 `davinciresolve-story-devtalk`이 정한 style skill의 글자 표가 원본이다. 스타일이 없으면 그 skill의 스타일 선택 표로 먼저 정한다. 글꼴과 최소 크기는 style skill보다 이 문서가 우선한다.
+`akbun-davinciresolve-workflow`의 기본 원칙(대표 자막 1개 선적용, 작업 로그)을 따른다. essay·project를 명시한 경우 해당 style skill의 글자 표로 종류와 위치를 정한다. 대사 자막을 직접 요청한 경우 아래 대사 자막 규칙을 적용한다. 스타일 표가 없는 대사 자막은 하단 중앙 한 줄을 시작점으로 삼고 대표 자막의 가독성과 실제 발화 시간에 맞춘다. 글꼴과 최소 크기는 style skill보다 이 문서가 우선한다.
 
 ## 글꼴
 
@@ -41,9 +41,9 @@ style skill 글자 표의 값이 이보다 작으면 최소값으로 올리고 �
 
 ## 대사 자막
 
-style skill이 대사 자막을 쓰는 경우에만 만든다. 화자가 화면에 없으므로 대사 자막은 누가 말하는지 보여 주는 유일한 글자다. 음성 문장마다 하나씩 있어야 한다.
+사용자가 대사 자막을 요청한 경우에 만든다. 화자가 화면에 없으므로 대사 자막은 누가 말하는지 보여 주는 유일한 글자다. 음성 문장마다 하나씩 있어야 한다.
 
-- `Timeline.CreateSubtitlesFromAudio`로 만든다. `language` 한국어, `charsPerLine`·`lineBreak`·`gap`은 style skill 글자 표의 값.
+- `Timeline.CreateSubtitlesFromAudio`로 만든다. `language` 한국어로 설정하고, 한 줄 길이·줄바꿈·간격은 대표 자막의 가독성과 실제 발화 시간에 맞춰 정한다.
 - 만든 뒤 전사와 대조해 고유명사·영문 용어(예: `kubectl`, `namespace`)를 원문 표기로 고친다. 필러는 뺀다. 화자가 말하지 않은 내용을 넣지 않는다.
 - 자막 트랙 스타일(글꼴 Pretendard Medium, 글자 높이, 위치, 그림자)은 API가 없으므로 Inspector 트랙 스타일에서 한 번 설정한다. 화면 조작이 안 되면 값 표를 절차서로 남긴다.
 - 문장 부호는 쉼표·물음표만 쓴다.
@@ -53,7 +53,7 @@ style skill이 대사 자막을 쓰는 경우에만 만든다. 화자가 화면�
 키워드 강조, 번호 제목, 장면 코멘트, 목록 자막, 비트 제목, 오프닝 타이틀은 Text+로 만든다.
 
 - [davinciresolve-subtitle-travelnote](../davinciresolve-subtitle-travelnote/SKILL.md)의 "Text+ 배치"대로 `../davinciresolve-subtitle-travelnote/scripts/textplus.py place`로 놓는다. `Timeline.InsertFusionTitleIntoTimeline("Text+")`을 타임라인 중간에서 부르면 V1 클립이 잘리고 모든 트랙과 타임라인 마커가 밀리며(21.1 실측), 놓인 클립을 다른 트랙으로 옮기는 API는 없다. 미디어 풀에 `HOOK_TEXT_TEMPLATE`이 없으면 그 절의 템플릿 준비를 먼저 한다.
-- 트랙은 이름이 `SUBTITLE`인 비디오 트랙이다(`davinciresolve-story-devtalk` 트랙 배치의 V3). 번호가 아니라 이름으로 찾고, 없으면 스크립트가 비디오 트랙 맨 위에 만든다. 그래픽(V2)보다 위에 있어야 하므로 V2가 없으면 V2를 먼저 만든다.
+- 트랙은 이름이 `SUBTITLE`인 비디오 트랙이다. 번호가 아니라 이름으로 찾고, 없으면 스크립트가 비디오 트랙 맨 위에 만든다. 본편과 그래픽보다 위에 있어야 한다.
 - `--font`는 위 글꼴 표의 글꼴, `--style`·`--size`·`--x`·`--y`는 style skill 글자 표의 값이다. Resolve의 글꼴 목록에 그 글꼴·굵기가 없으면 스크립트가 놓지 않고 멈춘다.
 - 크기는 대표 자막 1개를 스틸로 찍어 글자 높이를 재고 style skill 글자 표의 비율(화면 높이의 N%)에 맞춘다. 위 최소 크기 표보다 작으면 최소값으로 올린다. 한 줄 최대 글자 수도 같은 스틸로 정해 로그에 적는다. 측정 방식은 `davinciresolve-subtitle-travelnote`와 같다.
 - 텍스트는 전사에서만 가져온다. 키워드 강조는 화자가 그 단어를 말하는 프레임에 등장한다.
@@ -69,7 +69,7 @@ python3 ../davinciresolve-subtitle-travelnote/scripts/textplus.py place --timeli
 
 ## 컷 변경 반영
 
-`davinciresolve-cut-devtalk`이 넘긴 바뀐 구간 목록을 받으면 Text+는 `textplus.py remove`로 옛것을 지우고 새 위치에 `place`로 다시 놓는다(이동 API 없음). 대사 자막은 `CreateSubtitlesFromAudio`를 다시 돌리고 전사 대조를 다시 한다. 결과를 `자막·챕터` 표에 "재타이밍" 비고로 적는다.
+컷 편집으로 바뀐 구간 목록을 받으면 Text+는 `textplus.py remove`로 옛것을 지우고 새 위치에 `place`로 다시 놓는다(이동 API 없음). 대사 자막은 `CreateSubtitlesFromAudio`를 다시 돌리고 전사 대조를 다시 한다. 결과를 `자막·챕터` 표에 "재타이밍" 비고로 적는다.
 
 ## 작업 로그
 
@@ -92,6 +92,6 @@ python3 ../davinciresolve-subtitle-travelnote/scripts/textplus.py place --timeli
 
 - Pretendard·Noto Sans KR 외 글꼴, 최소 크기 표보다 작은 글자, style skill 글자 표 밖의 위치
 - 전사에 없는 문장·수치
-- style skill이 쓰지 않는 자막 종류 추가
+- 사용자가 요청하거나 선택한 style skill이 정하지 않은 자막 종류 추가
 - 컷 변경 뒤 자막 타이밍을 그대로 두는 것
 - 타임라인 중간에서 `InsertFusionTitleIntoTimeline` 호출
