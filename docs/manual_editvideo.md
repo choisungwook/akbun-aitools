@@ -16,6 +16,7 @@
 | 전체 이야기에서 어떤 장면을 어떤 순서로 찍을지 보고 싶음 | [akbun-vlog-storyboard](../plugins/akbun-editvideo/skills/akbun-vlog-storyboard/SKILL.md) | 확정된 비트를 음성·B-roll·화면 녹화·필요한 그래픽 아이디어에 연결하고 핵심 setup을 스케치한다. |
 | 말소리 있는 개발자 영상의 촬영 클립을 편집하고 싶음 | [davinciresolve-story-devtalk](../plugins/akbun-editvideo/skills/davinciresolve-story-devtalk/SKILL.md) | 전사·스토리 비트·컷·화면·자막·그래픽·오디오 작업을 조율한다. 촬영 전 이야기 기획은 `akbun-vlog-prepared-devtalk`에서 시작한다. |
 | 말소리 없는 여행 영상 전체를 편집하고 싶음 | [akbun-davinciresolve-workflow](../plugins/akbun-editvideo/skills/akbun-davinciresolve-workflow/SKILL.md) | 원본 타임라인을 보존하면서 촬영 시간순 타임라인부터 컷, 색보정, 요청된 Look, 개인정보 보호, 자막, 오디오, 출력까지 단계별로 진행한다. |
+| 글·PPTX·이미지로 설명 영상을 새로 만들고 싶음 | [akbun-davinciresolve-explainer](../plugins/akbun-editvideo/skills/akbun-davinciresolve-explainer/SKILL.md) | 대본·스토리보드를 확인한 뒤 장면별 Fusion 타이틀을 만든다. Inspector에서 글자·표시·등장 시점·위치를 고치고 대본·가이드·스틸을 받는다. |
 | 한 단계만 처리하고 싶음 | 아래의 해당 작업별 스킬 | 전체 workflow를 쓰지 않고 필요한 색보정·컷·자막·오디오·출력만 따로 요청한다. |
 
 ## 시나리오별 사용 순서
@@ -186,3 +187,19 @@ AI agent가 참고 프레임을 직접 확인한 뒤 패널·글자·강조를 �
 Inspector에서 문구·위치·크기와 밑줄/원의 Visibility를 조절한다. 문장형 Reveal Duration은 클립 길이에 대한 비율이며 기본 0.65다. 타이핑·키워드의 글꼴은 오뮤 다예쁨체·나눔명조를 기본으로 확인하고 OFL 대안으로 나눔손글씨 펜을 안내한다. 문구 변경 뒤 강조 위치는 다시 맞춘다. Epidemic Sound 연결이 안 되면 효과음의 분·초·길이·검색어·오디오 트랙을 채팅으로 받는다.
 
 호출명 변경: `davinciresolve-article-overlay` → `akbun-davinciresolve-article-overlay`, `davinciresolve-caption-template` → `akbun-davinciresolve-caption-template`. 이전 호출명 대신 새 이름을 사용한다.
+
+## 문서에서 설명 영상 만들기
+
+[akbun-davinciresolve-explainer](../plugins/akbun-editvideo/skills/akbun-davinciresolve-explainer/SKILL.md)는 촬영본 없이 글·PPTX·이미지를 설명형 모션그래픽으로 바꾼다. PPTX는 슬라이드마다 한 장면으로 배치를 옮기고, 글은 장면을 설계하며, 설명용 이미지는 구조와 글자를 도형·Text+로 다시 만든다. 스타일 참고용 이미지는 스타일만 추출한다.
+
+예: `$akbun-davinciresolve-explainer 이 PPTX를 설명 영상으로 만들어줘. 글자와 등장 시점을 Edit Inspector에서 바꿀 수 있게 남겨줘.`
+
+1. 기술 내용·계산을 확인하고 회사명·실제 IP 등 민감 정보를 제거한다.
+2. 대본·스토리보드를 확인한다. PPTX는 내레이션만 확인하며 이미 승인한 내용은 다시 묻지 않는다.
+3. 별도 1920×1080 타임라인에 비디오·오디오 각 5개 트랙과 장면별 Fusion 타이틀을 만든다. fps는 지정값·프로젝트 값을 사용하고 새 프로젝트에 기준이 없으면 24fps로 시작한다.
+4. 장면별 마지막 프레임과 대표 중간 프레임, Inspector 수정·트림·환경설정 복원을 확인한다.
+5. 타임라인, 시작 시각·길이·내레이션을 담은 대본, 편집 가이드, 검수 스틸을 받는다. 녹음이 없으면 A1은 비어 있으며 대본만 제공한다.
+
+Edit 페이지에서 클립 선택 → Inspector → Video → Title의 그룹을 펼친다. 글자 칸, 보이기 체크박스, 클립 시작 기준 등장 시점(초), 위치 이동을 바꿀 수 있다. 위치 `(0.5, 0.5)`는 원래 자리다. 도형·색 수정은 Fusion의 Template 내부에서 하며 Timing 노드는 유지한다.
+
+배경·본문·선·정상 강조·문제의 기본 5색과 노랑 채움 안 검정 글자 예외를 사용한다. 전환은 약 0.3초로 24fps에서 7프레임, 30fps에서 9프레임이다. 결과는 편집 가능한 타임라인이며 외부 MP4로 대체하지 않는다. Resolve 연결이나 필수 기능이 없으면 대본·스토리보드와 미적용 항목을 전달한다.
