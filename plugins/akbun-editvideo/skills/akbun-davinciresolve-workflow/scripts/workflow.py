@@ -6,7 +6,7 @@
   python3 workflow.py tracks --timeline "<작업 타임라인>" [--out DIR]
   python3 workflow.py nodes --timeline "<작업 타임라인>" [--profile "VID_=Insta360 I-Log"] [--out DIR]
 
-tracks: 비디오 트랙 4개와 오디오 트랙 4개를 더하고 역할 이름을 붙인다. 이미 그 이름의 트랙이 있으면 더하지 않는다.
+tracks: 비디오 트랙 3개와 오디오 트랙 3개를 더하고 역할 이름을 붙인다. 이미 그 이름의 트랙이 있으면 더하지 않는다.
 nodes: 클립마다 필요한 라벨(EXPOSURE, WB, CST(Log만), CONTRAST, SAT)과 현재 라벨을 비교해 빠진 것을 표로 낸다.
 """
 import argparse
@@ -22,8 +22,8 @@ import logconvert as LC  # noqa: E402
 
 ORDER = [("EXPOSURE", ("exposure",)), ("WB", ("wb", "white")), ("CST", ("cst", "lut")), ("CONTRAST", ("contrast",)), ("SAT", ("sat",))]
 
-# 아래에서 위 순서. 글자는 영상·그래픽 위에 오고, 훅 글자가 맨 위다
-TRACKS = {"video": ["OVERLAY", "GFX", "SUBTITLE", "HOOK_TEXT"], "audio": ["AMBIENCE", "SFX", "MUSIC", "HOOK"]}
+# 아래에서 위 순서. 자막은 영상·그래픽 위에 온다
+TRACKS = {"video": ["OVERLAY", "GFX", "SUBTITLE"], "audio": ["AMBIENCE", "SFX", "MUSIC"]}
 
 
 def lacking(have, want):
@@ -147,8 +147,8 @@ def selftest():
     assert order_ok(["exposure", "wb", "cst", "contrast", "sat"], required("Log"))
     assert not order_ok(["cst", "exposure", "wb"], required("Log"))
     assert order_ok(["", "wb"], required("미확인"))  # 빠진 건 순서 판정에서 무시
-    assert lacking(["Video 1"], TRACKS["video"]) == TRACKS["video"] and all(len(v) == 4 for v in TRACKS.values())
-    assert lacking(["Audio 1", "SFX", "HOOK"], TRACKS["audio"]) == ["AMBIENCE", "MUSIC"]
+    assert lacking(["Video 1"], TRACKS["video"]) == TRACKS["video"] and all(len(v) == 3 for v in TRACKS.values())
+    assert lacking(["Audio 1", "SFX"], TRACKS["audio"]) == ["AMBIENCE", "MUSIC"]
     print("selftest ok")
 
 

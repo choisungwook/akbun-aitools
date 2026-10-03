@@ -1,6 +1,6 @@
 ---
 name: akbun-davinciresolve-workflow
-description: 말소리 없는 여행 브이로그를 DaVinci Resolve 21.1에서 처음부터 끝까지 편집하는 workflow 오케스트레이터. 미디어 풀 영상 전부를 촬영 시간순 타임라인으로 만드는 것(akbun-davinciresolve-timeline-chrono)이 항상 첫 단계이고, 그 복제본에 비디오·오디오 트랙을 4개씩 준비한 뒤 컷·안정화(davinciresolve-cut-travelflow) → 라벨 노드(EXPOSURE→WB→CST→CONTRAST→SAT) 기본 색보정(logconvert → exposure → whitebalance → contrast → saturation) → 요청된 look skill과 새 LOOK 노드 → 얼굴 모자이크(davinciresolve-face-privacy) → 한글 자막·챕터(travelnote 내용 규칙, 외형 미지정은 akbun-davinciresolve-caption-template의 Cinema) → 사운드 디자인(davinciresolve-sfx-epidemicsound)·4K 출력(davinciresolve-audio-delivery) 순서로 각 skill의 SKILL.md를 읽어 직접 수행하고 마커 등록표·단계별 완료 조건·검증·작업 로그를 관리한다. "이 프로젝트 편집 계획 세워서 끝까지 해줘", "영상 전부 시간순으로 놓고 색보정까지 해줘", "타임라인 정리부터 렌더까지" 요청에 사용한다. 사용자가 직접 호출할 때만 실행한다.
+description: 말소리 없는 여행 브이로그를 DaVinci Resolve 21.1에서 처음부터 끝까지 편집하는 workflow 오케스트레이터. 미디어 풀 영상 전부를 촬영 시간순 타임라인으로 만드는 것(akbun-davinciresolve-timeline-chrono)이 항상 첫 단계이고, 그 복제본에 비디오·오디오 트랙을 3개씩 준비한 뒤 컷·안정화(davinciresolve-cut-travelflow) → 라벨 노드(EXPOSURE→WB→CST→CONTRAST→SAT) 기본 색보정(logconvert → exposure → whitebalance → contrast → saturation) → 요청된 look skill과 새 LOOK 노드 → 얼굴 모자이크(davinciresolve-face-privacy) → 한글 자막·챕터(travelnote 내용 규칙, 외형 미지정은 akbun-davinciresolve-caption-template의 Cinema) → 사운드 디자인(davinciresolve-sfx-epidemicsound)·YouTube 프리셋 출력(davinciresolve-export-youtube) 순서로 각 skill의 SKILL.md를 읽어 직접 수행하고 마커 등록표·단계별 완료 조건·검증·작업 로그를 관리한다. "이 프로젝트 편집 계획 세워서 끝까지 해줘", "영상 전부 시간순으로 놓고 색보정까지 해줘", "타임라인 정리부터 렌더까지" 요청에 사용한다. 사용자가 직접 호출할 때만 실행한다.
 disable-model-invocation: true
 ---
 
@@ -27,17 +27,15 @@ Resolve는 한 프레임에 마커 1개만 허용한다. 종류마다 색·대�
 
 | 색 | 이름 | 대상 | 오프셋 | 찍는 skill |
 |---|---|---|---|---|
-| Blue | `CHAPTER <장소명·행사명 또는 비트 이름>` | 타임라인 마커 | 장면·비트 시작 프레임 | `davinciresolve-subtitle-travelnote`, `davinciresolve-beats-devtalk` |
+| Blue | `CHAPTER <장소명·행사명 또는 비트 이름>` | 타임라인 마커 | 장면·비트 시작 프레임 | `davinciresolve-subtitle-travelnote`, `davinciresolve-style-essay`, `davinciresolve-style-project` |
 | Purple | `PRIVACY_MOSAIC <파일명> <창 개수>개` | 클립 마커 | +0 | `davinciresolve-face-privacy` |
 | Pink | `PRIVACY_CHECK <파일명> <사유>` | 클립 마커 | +1 | `davinciresolve-face-privacy` |
 | Red | `CUT_DONE <사유>` | 클립 마커 | +2 | `davinciresolve-cut-travelflow` |
 | Yellow | `CUT_REVIEW <사유>` | 클립 마커 | +3 | `davinciresolve-cut-travelflow` |
-| Green | `TALK_REVIEW <사유>` | 클립 마커 | +4 | `davinciresolve-cut-devtalk` |
-| Cyan | `GFX <카드 종류> <제목>` | 타임라인 마커 | 카드 시작 프레임 | `davinciresolve-beats-devtalk` |
+| Cyan | `GFX <카드 종류> <제목>` | 타임라인 마커 | 카드 시작 프레임 | 그래픽 작업 시 직접 등록 |
 | Lemon | `EXPOSURE_CHECK <파일명> <사유>` | 클립 마커 | +5 | `akbun-davinciresolve-exposure` |
 | Sky | `WB_CHECK <파일명> <사유>` | 클립 마커 | +6 | `akbun-davinciresolve-whitebalance` |
-| Sand | `AUDIO_REVIEW <cue ID> <사유>` | 타임라인 마커 | 검토 구간 시작. 충돌 시 구간 안 가장 가까운 빈 프레임 | `davinciresolve-sfx-epidemicsound` (BGM·출력의 오디오 작업 포함) |
-| Mint | `HOOK <구간 이름>`, `HOOK_BGM <트랙>` | 타임라인 마커 | `HOOK`은 훅 타임라인의 훅 구간 시작, `HOOK_BGM`은 길이 보정이 필요한 BGM 클립의 끝. 충돌 시 가장 가까운 빈 프레임 | `akbun-davinciresolve-searchhook` |
+| Sand | `AUDIO_REVIEW <cue ID> <사유>` | 타임라인 마커 | 검토 구간 시작. 충돌 시 구간 안 가장 가까운 빈 프레임 | `davinciresolve-sfx-epidemicsound` (BGM 작업 포함) |
 
 마커 색은 Resolve가 받는 16색(Blue, Cyan, Green, Yellow, Red, Pink, Purple, Fuchsia, Rose, Lavender, Sky, Mint, Lemon, Sand, Cocoa, Cream)에서만 고른다. Orange처럼 클립 색에만 있는 이름을 넘기면 `AddMarker`가 False를 반환하고 마커가 찍히지 않는다.
 
@@ -97,7 +95,7 @@ API가 있어도 없는 기능이 있다. 기능별 API 유무·버전 조건·�
 | 0 | 실행 환경 확인 | 이 skill의 실행 환경 확인 절 | 로그 `환경` 절 기록 |
 | 1 | 미디어 풀 영상 전부를 촬영 시간순 타임라인 A로. dry-run 표로 메타데이터(파일명, 촬영 시간, 카메라, 해상도, 프레임레이트, 색공간·감마)를 정리하고 카메라별 시계 오프셋과 타임라인 프레임레이트를 정한 뒤 만든다 | `akbun-davinciresolve-timeline-chrono` | 클립 전부가 표로 정리, V1 순서 검증 일치. 촬영 시간 없음·시계 오프셋 미확인은 `확인 필요` |
 | 2 | A를 복제해 작업 타임라인 B | `scripts/workflow.py duplicate` | B가 현재 타임라인, A는 그대로 |
-| 3 | B에 비디오 트랙 4개와 오디오 트랙 4개를 더하고 역할 이름을 붙인다 | `scripts/workflow.py tracks`, 아래 "트랙 준비" | 트랙 표의 이름 8개가 모두 있고 빠진 트랙 0개 |
+| 3 | B에 비디오 트랙 3개와 오디오 트랙 3개를 더하고 역할 이름을 붙인다 | `scripts/workflow.py tracks`, 아래 "트랙 준비" | 트랙 표의 이름 6개가 모두 있고 빠진 트랙 0개 |
 | 4 | 컷 편집과 흔들림 보정 | `davinciresolve-cut-travelflow` | 불량 구간 제거·안정화 결과가 작업 로그에 클립별로 기록 |
 | 5 | Log 판정 dry-run으로 클립별 `Log`·`비Log`·`미확인` 확정. `미확인`은 사용자에게 물어 `--profile`로 | `akbun-davinciresolve-logconvert --dry-run` | 판정 표 |
 | 6 | 클립마다 라벨 노드 준비 | 아래 "노드 준비" | `scripts/workflow.py nodes`가 빠진 라벨 0개 |
@@ -111,7 +109,7 @@ API가 있어도 없는 기능이 있다. 기능별 API 유무·버전 조건·�
 | 14 | 한글 자막과 챕터 마커(외형 미지정은 Cinema) | `davinciresolve-subtitle-travelnote`의 외형 선택 규칙. 기본은 `akbun-davinciresolve-caption-template` | 자막이 `SUBTITLE` 트랙과 안전 영역 안에 있고 V1·다른 트랙·마커가 밀리지 않았으며 챕터 마커가 장소 변경 지점마다 존재 |
 | 15 | 현장음·효과음·여러 BGM 사운드 디자인 | `davinciresolve-sfx-epidemicsound` | 오디오 직전 타임라인 복제, 큐시트·검청·`AUDIO_REVIEW` 기록. 새 작업본 ID를 16–17단계에 인계 |
 | 16 | YouTube 챕터 마커 최종 정리 | 이 skill | 마커 이름이 장소명·행사명이고 첫 `CHAPTER`가 타임라인 시작(마커 상대 프레임 0)에 있고 `00:00`부터 시간과 장소명이 표시되며 3개 이상 |
-| 17 | 썸네일 후보·YouTube 설정·4K 렌더와 검증 | `davinciresolve-audio-delivery` (YouTube 업로드·출력 절) | 요청된 썸네일·제목·설명·카테고리·공개 상태 적용, 렌더 파일의 해상도·프레임레이트·길이·오디오 스트림이 타임라인과 일치 |
+| 17 | YouTube 기본 프리셋 렌더 | `davinciresolve-export-youtube` | 타임라인 해상도에 맞는 프리셋 선택, fps·출력 범위와 렌더 결과 해상도 확인 |
 
 1단계 세부 규칙이다.
 
@@ -126,23 +124,20 @@ API가 있어도 없는 기능이 있다. 기능별 API 유무·버전 조건·�
 
 ## 트랙 준비
 
-3단계에서 작업 타임라인 B에 비디오 트랙 4개와 오디오 트랙 4개를 더한다. 뒤 단계의 skill이 넣는 것이 본편(V1·A1)에 섞이지 않게 자리를 먼저 만들어 두는 것이다. 트랙은 번호가 아니라 이름으로 찾는다. 기존 트랙이 몇 개냐에 따라 번호가 달라지기 때문이다.
+3단계에서 작업 타임라인 B에 비디오 트랙 3개와 오디오 트랙 3개를 더한다. 뒤 단계의 skill이 넣는 것이 본편(V1·A1)에 섞이지 않게 자리를 먼저 만들어 두는 것이다. 트랙은 번호가 아니라 이름으로 찾는다. 기존 트랙이 몇 개냐에 따라 번호가 달라지기 때문이다.
 
 | 종류 | 이름 | 놓는 것 | 쓰는 skill |
 |---|---|---|---|
 | 비디오 | `OVERLAY` | 본편 위에 겹치는 영상 | 컷 skill |
-| 비디오 | `GFX` | 그래픽 카드 | `davinciresolve-gfx-hyperframes` |
+| 비디오 | `GFX` | 그래픽 카드 | 사용자가 선택한 그래픽 제작 도구 |
 | 비디오 | `SUBTITLE` | 자막·챕터 제목 Text+ | `davinciresolve-subtitle-travelnote` |
-| 비디오 | `HOOK_TEXT` | 훅의 화면 텍스트. 맨 위 트랙 | `akbun-davinciresolve-searchhook` |
 | 오디오 | `AMBIENCE` | 환경음 | `davinciresolve-sfx-epidemicsound` |
 | 오디오 | `SFX` | 효과음 | `davinciresolve-sfx-epidemicsound` |
 | 오디오 | `MUSIC` | BGM | `davinciresolve-sfx-epidemicsound`, `davinciresolve-bgm-epidemicsound` |
-| 오디오 | `HOOK` | 훅 구간의 소리 | `akbun-davinciresolve-searchhook` |
 
-- 비디오 트랙은 표의 순서대로 아래에서 위로 쌓인다. 글자가 영상·그래픽을 덮고 훅 글자가 맨 위에 온다.
+- 비디오 트랙은 표의 순서대로 아래에서 위로 쌓인다. 자막이 영상·그래픽 위에 온다.
 - 기존 트랙의 이름과 내용은 바꾸지 않는다. 클립의 소리가 있는 A1은 현장음 트랙으로 그대로 둔다.
 - 같은 이름의 트랙이 이미 있으면 더하지 않는다. 다시 실행해도 트랙이 늘지 않는다.
-- `HOOK`·`HOOK_TEXT` 트랙은 workflow 동안 비워 둔다. 편집이 끝난 뒤 `akbun-davinciresolve-searchhook`이 B를 복제한 훅 타임라인에서 이 두 트랙을 쓴다.
 - 사운드 skill이 트랙을 더 필요로 하면 그 skill의 트랙 규칙대로 더한다.
 
 ## 색보정 노드 순서와 실행 순서
@@ -263,7 +258,7 @@ python3 scripts/workflow.py nodes --timeline "<작업 타임라인>" --profile "
 사용자가 look을 요청한 경우 선택한 skill 이름과 새 `LOOK` Serial 노드에서 조정한 목적을 기록한다. 요청한 룩 노드가 없거나 기존 노드에 창작 조정이 섞여 있으면 다음 단계로 넘어가지 않는다. 사용자가 요청하지 않았다면 `LOOK 없음`으로 남긴다.
 ## 모자이크                           ← face-privacy
 ## 자막·챕터                          ← subtitle-travelnote
-## 오디오                             ← sfx-epidemicsound (출력 계측은 audio-delivery)
+## 오디오                             ← sfx-epidemicsound
 ## 검증
 ## 확인 필요                          ← 각 표의 확인 필요 행과 마커(EXPOSURE_CHECK, WB_CHECK, PRIVACY_CHECK, CUT_REVIEW, AUDIO_REVIEW) 모음
 ```
@@ -279,5 +274,4 @@ python3 scripts/workflow.py nodes --timeline "<작업 타임라인>" --profile "
 - 사용자 확인 없는 삭제, 렌더 파일 덮어쓰기, YouTube 업로드(업로드 시 기본 공개 상태는 비공개)
 - 스코프·얼굴 탐지 결과 없이 "문제없음" 판정. 판정 근거가 없으면 `확인 필요`로 남긴다
 - 사용자가 지정하지 않은 LUT·스타일 적용
-- 훅·인트로 제작. 편집이 끝난 뒤 `akbun-davinciresolve-searchhook`을 따로 호출한다
 - 마커 등록표 밖의 색·이름·오프셋 사용
