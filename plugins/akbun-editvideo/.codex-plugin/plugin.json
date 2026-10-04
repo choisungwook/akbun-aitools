@@ -1,6 +1,6 @@
 {
   "name": "akbun-editvideo",
-  "version": "1.2.9",
+  "version": "1.2.10",
   "description": "Video editing skills — plan and run DaVinci Resolve vlog edits: speech-free travel vlogs (cut/stabilize, chronological timeline, color-grading workflow (Log LUT, exposure, white balance, contrast, saturation on labeled nodes), four separate creative looks on new LOOK nodes, and a city montage cut style, face mosaic, Gmarket Sans subtitles, audio mix, YouTube preset export, vertical YouTube Shorts) and faceless talking developer vlogs (dialogue/keyword subtitles, Epidemic Sound SFX and BGM selection, essay/project style guides, plus a pre-shoot guide, shot sketches and a storyboard with OBS screen-recording list)",
   "author": {
     "name": "akbun",
@@ -68,7 +68,10 @@
       "본문 발췌를 본편 위의 기존 또는 새 오버레이 트랙에 겹쳐 놓고 효과음을 넣어줘. 나중에 위치와 밑줄·원의 크기·색을 직접 고칠 수 있게 남겨줘 (akbun-davinciresolve-article-overlay)",
       "참고 영상처럼 손글씨 타이핑 자막과 노란 키워드 템플릿을 만들고, 선택형 빨간 밑줄·원을 넣어줘 (akbun-davinciresolve-caption-template)",
       "별도 스타일 지정이 없으면 하단 중앙의 정적인 영화식 기본 자막을 만들어줘 (akbun-davinciresolve-caption-template)",
-      "이 글·PPTX·이미지를 Resolve Inspector에서 글자와 등장 시점을 고칠 수 있는 설명 영상으로 만들어줘 (akbun-davinciresolve-explainer)"
+      "이 글·PPTX·이미지를 Resolve Inspector에서 글자와 등장 시점을 고칠 수 있는 설명 영상으로 만들어줘 (akbun-davinciresolve-explainer)",
+      "어두운 다이어그램 스타일로 설명 영상을 만들고, 내가 녹음하면 실제 목소리에 맞춰 장면을 다시 맞춰줘 (explainer-dark-diagram)",
+      "02:25:02~02:25:10이 숨소리야. 이 주파수 패턴으로 녹음 전체 숨소리를 지우고 긴 쉼을 줄여줘 (davinciresolve-narration-cleanup)",
+      "이 영상 왜 중간에 나가는지 시청 지속 기준으로 검토하고, 다시 만든다면 어떻게 할지 재구성안 써줘 (akbun-review-video-for-retention)"
     ],
     "brandColor": "#7C3AED",
     "screenshots": []
