@@ -1,10 +1,10 @@
 ---
-name: davinciresolve-narration-cleanup
+name: akbun-davinciresolve-narration-cleanup
 description: 내레이션 녹음에서 숨소리를 주파수 프로필로 찾아 지우고, 말 사이 긴 쉼을 줄이고, 장면 사이 숨고르기 간격을 남긴 장면별 음성 파일을 만든다. 사용자가 귀로 짚은 숨소리 시각을 받아 같은 주파수 패턴을 녹음 전체에서 찾는다. 애매한 구간은 지우지 않는다. DaVinci Resolve 타임라인의 A1 녹음 테이크를 정리할 때 사용한다. 사용자가 직접 호출할 때만 실행한다.
 disable-model-invocation: true
 ---
 
-# davinciresolve-narration-cleanup
+# akbun-davinciresolve-narration-cleanup
 
 ## 목적
 

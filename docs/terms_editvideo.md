@@ -245,7 +245,7 @@ Epidemic Sound에서 효과음·BGM 후보를 찾을 때 사용할 **영문 검�
 
 ## 녹음 정리와 녹음 맞춤
 
-[davinciresolve-narration-cleanup](../plugins/akbun-editvideo/skills/davinciresolve-narration-cleanup/SKILL.md)과 [explainer-dark-diagram](../plugins/akbun-editvideo/skills/explainer-dark-diagram/SKILL.md)에서 사용하는 용어다.
+[akbun-davinciresolve-narration-cleanup](../plugins/akbun-editvideo/skills/akbun-davinciresolve-narration-cleanup/SKILL.md)과 [akbun-davinciresolve-explainer-dark-diagram](../plugins/akbun-editvideo/skills/akbun-davinciresolve-explainer-dark-diagram/SKILL.md)에서 사용하는 용어다.
 
 | 용어 | 뜻 |
 |---|---|

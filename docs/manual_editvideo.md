@@ -6,6 +6,15 @@
 
 스킬은 이름을 직접 불러 사용할 수 있다. 예: `$akbun-vlog-prepared-devtalk`. 전체 작업을 맡는 workflow 스킬은 필요한 하위 스킬 문서를 읽어 순서대로 진행하고, 각 하위 스킬은 원하는 단계만 따로 요청할 때 쓴다.
 
+## 스킬 이름 변경
+
+다음 두 스킬은 새 호출명으로 사용한다.
+
+| 이전 이름 | 새 호출명 |
+|---|---|
+| `davinciresolve-narration-cleanup` | `$akbun-davinciresolve-narration-cleanup` |
+| `explainer-dark-diagram` | `$akbun-davinciresolve-explainer-dark-diagram` |
+
 ## 어떤 흐름을 고를까
 
 | 상황 | 시작할 스킬 | 해결하는 문제와 동작 |
@@ -15,8 +24,8 @@
 | 전체 이야기에서 어떤 장면을 어떤 순서로 찍을지 보고 싶음 | [akbun-vlog-storyboard](../plugins/akbun-editvideo/skills/akbun-vlog-storyboard/SKILL.md) | 확정된 비트를 음성·B-roll·화면 녹화·필요한 그래픽 아이디어에 연결하고 핵심 setup을 스케치한다. |
 | 말소리 없는 여행 영상 전체를 편집하고 싶음 | [akbun-davinciresolve-workflow](../plugins/akbun-editvideo/skills/akbun-davinciresolve-workflow/SKILL.md) | 원본 타임라인을 보존하면서 촬영 시간순 타임라인부터 컷, 색보정, 요청된 Look, 개인정보 보호, 자막, 오디오, 출력까지 단계별로 진행한다. |
 | 글·PPTX·이미지로 설명 영상을 새로 만들고 싶음 | [akbun-davinciresolve-explainer](../plugins/akbun-editvideo/skills/akbun-davinciresolve-explainer/SKILL.md) | 대본·스토리보드를 확인한 뒤 장면별 Fusion 타이틀을 만든다. Inspector에서 글자·표시·등장 시점·위치를 고치고 대본·가이드·스틸을 받는다. |
-| 어두운 다이어그램 스타일로 설명 영상을 만들고 녹음에 맞추고 싶음 | [explainer-dark-diagram](../plugins/akbun-editvideo/skills/explainer-dark-diagram/SKILL.md) | 대본을 읽기 시간 기준으로 장면화하고 자막 트랙을 보며 녹음하게 한다. 녹음 후 테이크를 내용으로 장면에 배정해 장면 길이·등장 시점·자막을 실제 목소리에 맞춘다. |
-| 녹음의 숨소리와 빈 시간을 덜어 내고 싶음 | [davinciresolve-narration-cleanup](../plugins/akbun-editvideo/skills/davinciresolve-narration-cleanup/SKILL.md) | 주파수 프로필로 숨소리를 찾아 지우고 긴 쉼을 줄인 장면별 음성 파일과 지운 구간 보고서를 만든다. 애매한 구간은 남긴다. |
+| 어두운 다이어그램 스타일로 설명 영상을 만들고 녹음에 맞추고 싶음 | [akbun-davinciresolve-explainer-dark-diagram](../plugins/akbun-editvideo/skills/akbun-davinciresolve-explainer-dark-diagram/SKILL.md) | 대본을 읽기 시간 기준으로 장면화하고 자막 트랙을 보며 녹음하게 한다. 녹음 후 테이크를 내용으로 장면에 배정해 장면 길이·등장 시점·자막을 실제 목소리에 맞춘다. |
+| 녹음의 숨소리와 빈 시간을 덜어 내고 싶음 | [akbun-davinciresolve-narration-cleanup](../plugins/akbun-editvideo/skills/akbun-davinciresolve-narration-cleanup/SKILL.md) | 주파수 프로필로 숨소리를 찾아 지우고 긴 쉼을 줄인 장면별 음성 파일과 지운 구간 보고서를 만든다. 애매한 구간은 남긴다. |
 | 만든 영상이 지루한지, 다시 만들면 어떻게 할지 알고 싶음 | [akbun-review-video-for-retention](../plugins/akbun-editvideo/skills/akbun-review-video-for-retention/SKILL.md) | 시청 지속 기준으로 시각·측정값 근거와 함께 채점하고, 인트로 대본·챕터 순서·화면 보강·끝맺음을 담은 재구성안을 만든다. |
 | 한 단계만 처리하고 싶음 | 아래의 해당 작업별 스킬 | 전체 workflow를 쓰지 않고 필요한 색보정·컷·자막·오디오·출력만 따로 요청한다. |
 
@@ -198,15 +207,15 @@ Edit 페이지에서 클립 선택 → Inspector → Video → Title의 그룹�
 
 ## 설명 영상을 녹음에 맞추기 (dark-diagram)
 
-[explainer-dark-diagram](../plugins/akbun-editvideo/skills/explainer-dark-diagram/SKILL.md)은 장면 빌드 방식을 기본 Explainer에서 가져오고 스타일과 녹음 맞춤 흐름을 정한다. 배경 `#202020`에 둥근 박스·선 아이콘·터널·패킷으로 그리고, 요소는 살짝 커지며 등장하고 장면은 천천히 확대된다. 왼쪽 위에 챕터 이름·장면 부제목·주황 결론 한 줄을 두고 화면 아래는 자막 자리로 비운다.
+[akbun-davinciresolve-explainer-dark-diagram](../plugins/akbun-editvideo/skills/akbun-davinciresolve-explainer-dark-diagram/SKILL.md)은 장면 빌드 방식을 기본 Explainer에서 가져오고 스타일과 녹음 맞춤 흐름을 정한다. 배경 `#202020`에 둥근 박스·선 아이콘·터널·패킷으로 그리고, 요소는 살짝 커지며 등장하고 장면은 천천히 확대된다. 왼쪽 위에 챕터 이름·장면 부제목·주황 결론 한 줄을 두고 화면 아래는 자막 자리로 비운다.
 
-예: `$explainer-dark-diagram 이 주제로 대본과 장면을 만들고, 내가 녹음하면 녹음에 맞춰 다시 그려줘.`
+예: `$akbun-davinciresolve-explainer-dark-diagram 이 주제로 대본과 장면을 만들고, 내가 녹음하면 녹음에 맞춰 다시 그려줘.`
 
 1. 대본(md·srt)과 장면을 만든다. 장면 길이는 초당 5.0음절에 15% 여유다.
 2. 자막 트랙 `대본`을 먼저 넣고 장면을 배치한다. 자막 글꼴·위치는 Inspector → Track 탭에서 Gmarket Sans Medium 28, Position Y 110으로 바꾼다.
 3. 사용자가 A1에 녹음한다. 대본과 다르게 말해도 된다.
 4. 녹음 원본 타임라인을 보존하고, 임시 타임라인에서 음성 인식을 돌려 테이크를 내용으로 장면에 배정한다. 실제 사례·특정 조직을 가리키는 문장은 기본으로 빼고 보고한다.
-5. [davinciresolve-narration-cleanup](../plugins/akbun-editvideo/skills/davinciresolve-narration-cleanup/SKILL.md)으로 장면별 음성을 만들고, 장면 길이·등장 시점·자막을 실제 목소리에 맞춰 타임라인을 다시 만든다.
+5. [akbun-davinciresolve-narration-cleanup](../plugins/akbun-editvideo/skills/akbun-davinciresolve-narration-cleanup/SKILL.md)으로 장면별 음성을 만들고, 장면 길이·등장 시점·자막을 실제 목소리에 맞춰 타임라인을 다시 만든다.
 
 ## 만든 영상을 시청 지속 기준으로 검토하기
 
@@ -218,8 +227,8 @@ Edit 페이지에서 클립 선택 → Inspector → Video → Title의 그룹�
 
 ## 녹음 숨소리·쉼 정리
 
-[davinciresolve-narration-cleanup](../plugins/akbun-editvideo/skills/davinciresolve-narration-cleanup/SKILL.md)은 숨소리를 대역별 레벨로 판정한다. 1~6kHz에 소음이 있고 목소리 배음(70~300Hz)이 없으며 8kHz 이상이 약한 0.12~0.8초 구간이 유성음과 떨어져 있으면 숨소리다. 들리는 숨소리 시각을 알려 주면 그 구간을 재서 규칙을 확인하고 녹음 전체에 다시 적용한다.
+[akbun-davinciresolve-narration-cleanup](../plugins/akbun-editvideo/skills/akbun-davinciresolve-narration-cleanup/SKILL.md)은 숨소리를 대역별 레벨로 판정한다. 1~6kHz에 소음이 있고 목소리 배음(70~300Hz)이 없으며 8kHz 이상이 약한 0.12~0.8초 구간이 유성음과 떨어져 있으면 숨소리다. 들리는 숨소리 시각을 알려 주면 그 구간을 재서 규칙을 확인하고 녹음 전체에 다시 적용한다.
 
-예: `$davinciresolve-narration-cleanup 02:25:02~02:25:10이 숨소리야. 이 주파수로 녹음 전체 숨소리를 지우고 긴 쉼도 줄여줘.`
+예: `$akbun-davinciresolve-narration-cleanup 02:25:02~02:25:10이 숨소리야. 이 주파수로 녹음 전체 숨소리를 지우고 긴 쉼도 줄여줘.`
 
 0.3초 넘는 쉼은 0.27초로 줄이고 장면 사이에는 약 0.6초의 숨고르기를 남긴다. 결과는 장면별 -16 LUFS wav와 지운 구간 보고서다. 원본 녹음은 수정하지 않으며, 스펙트로그램 확인은 직접 듣기를 대신하지 않는다.

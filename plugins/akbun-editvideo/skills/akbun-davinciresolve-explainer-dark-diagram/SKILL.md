@@ -1,10 +1,10 @@
 ---
-name: explainer-dark-diagram
+name: akbun-davinciresolve-explainer-dark-diagram
 description: 어두운 배경 위 둥근 다이어그램·선 아이콘·확대 등장 모션으로 기술 개념을 설명하는 얼굴 없는 Explainer 스타일 dark-diagram. 대본을 읽기 시간 기준으로 장면화하고, 녹음 후에는 실제 목소리 길이·말한 구절에 맞춰 장면 길이와 등장 시점을 다시 맞춘다. 장면 빌드 방식은 akbun-davinciresolve-explainer를 따르고 이 문서는 스타일과 녹음 맞춤 흐름을 정한다. 사용자가 직접 호출할 때만 실행한다.
 disable-model-invocation: true
 ---
 
-# explainer-dark-diagram
+# akbun-davinciresolve-explainer-dark-diagram
 
 ## 목적
 
@@ -16,7 +16,7 @@ disable-model-invocation: true
 
 - 사용자가 직접 호출할 때 실행한다. 새 설명 영상을 만들거나, 이 스타일로 만든 타임라인을 녹음에 맞출 때 쓴다.
 - 촬영본 편집, 실사 B-roll 중심 영상은 범위 밖이다.
-- 녹음 정리(숨소리·쉼)는 [davinciresolve-narration-cleanup](../davinciresolve-narration-cleanup/SKILL.md)을 부른다.
+- 녹음 정리(숨소리·쉼)는 [akbun-davinciresolve-narration-cleanup](../akbun-davinciresolve-narration-cleanup/SKILL.md)을 부른다.
 
 ## 스타일
 
@@ -113,7 +113,7 @@ disable-model-invocation: true
 3. 음성 인식: 자막 트랙이 이미 있는 타임라인에서는 `CreateSubtitlesFromAudio()`가 실패한다. 테이크만 같은 위치에 놓은 임시 타임라인을 만들어 기본 설정으로 실행하고, 자막 항목의 `GetName()`과 시작·끝을 읽은 뒤 임시 타임라인을 지운다. 설정 dict를 넘기면 실패할 수 있다.
 4. 테이크를 **내용으로** 장면에 배정한다. 시간 위치로 배정하지 않는다. 사용자가 장면 순서를 건너뛰거나 한 테이크에 여러 장면을 말할 수 있다. 내레이션이 없는 장면은 3초로 둔다.
 5. 민감 문장 점검: 인식 결과에서 실제 회사 사례, 장애 경험, 특정 조직을 가리키는 문장을 찾는다. 해당 문장 구간은 기본으로 빼고, 무엇을 뺐는지와 되살리는 방법을 보고한다.
-6. 장면별 음성을 [davinciresolve-narration-cleanup](../davinciresolve-narration-cleanup/SKILL.md)으로 만든다. 장면 길이 = `ceil((0.25 + 말 길이 + 0.35) × fps)`, 질문 장면은 뒤 0.8초.
+6. 장면별 음성을 [akbun-davinciresolve-narration-cleanup](../akbun-davinciresolve-narration-cleanup/SKILL.md)으로 만든다. 장면 길이 = `ceil((0.25 + 말 길이 + 0.35) × fps)`, 질문 장면은 뒤 0.8초.
 7. 등장 시점을 실제 목소리에 맞춘다.
    - 기본: 대본 단서의 음절 비율을 실제 말 길이에 옮긴다. `0.25 + 말 길이 × 앞쪽 음절 수 / 전체 음절 수`.
    - 실제로 다르게 말한 장면은 "대본 단서 → 실제 말한 구절" 표를 만들고, 인식 자막에서 그 구절이 나온 시각을 쓴다(구절 위치 비율로 자막 안에서 보간).
