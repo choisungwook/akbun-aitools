@@ -207,7 +207,7 @@ Edit 페이지에서 클립 선택 → Inspector → Video → Title의 그룹�
 
 ## 설명 영상을 녹음에 맞추기 (dark-diagram)
 
-[akbun-davinciresolve-explainer-dark-diagram](../plugins/akbun-editvideo/skills/akbun-davinciresolve-explainer-dark-diagram/SKILL.md)은 장면 빌드 방식을 기본 Explainer에서 가져오고 스타일과 녹음 맞춤 흐름을 정한다. 배경 `#202020`에 둥근 박스·선 아이콘·터널·패킷으로 그리고, 요소는 살짝 커지며 등장하고 장면은 천천히 확대된다. 왼쪽 위에 챕터 이름·장면 부제목·주황 결론 한 줄을 두고 화면 아래는 자막 자리로 비운다.
+[akbun-davinciresolve-explainer-dark-diagram](../plugins/akbun-editvideo/skills/akbun-davinciresolve-explainer-dark-diagram/SKILL.md)은 장면 빌드 방식을 기본 Explainer에서 가져오고 스타일과 녹음 맞춤 흐름을 정한다. 배경 `#202020`에 색으로 역할을 나눈 글자와 화살표를 기본으로 그리고, 구분·포함·색 전환이 필요한 실제 대상만 둥근 박스·영역으로 감싼다. 선 아이콘·터널·패킷을 더하고, 요소는 살짝 커지며 등장하고 장면은 천천히 확대된다. 왼쪽 위에 챕터 이름·장면 부제목·주황 결론 한 줄을 두고 화면 아래는 자막 자리로 비운다.
 
 예: `$akbun-davinciresolve-explainer-dark-diagram 이 주제로 대본과 장면을 만들고, 내가 녹음하면 녹음에 맞춰 다시 그려줘.`
 
