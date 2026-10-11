@@ -88,6 +88,7 @@ Claude Code에서 marketplace를 등록하고 plugin 하나를 설치한 뒤 ski
 | `akbun-mascot-whale` | <img src="./imgs/akbun-mascot-whale.png" alt="akbun-mascot-whale" width="320"> |
 | `akbun-draw-webtoon-c` | <img src="./imgs/akbun-draw-webtoon-c.png" alt="akbun-draw-webtoon-c" width="320"> |
 | `akbun-draw-cartoon-b` | <img src="./imgs/akbun-draw-cartoon-b.png" alt="akbun-draw-cartoon-b" width="320"> |
+| `akbun-draw-motion-doodle` | <img src="./imgs/akbun-draw-motion-doodle.png" alt="akbun-draw-motion-doodle" width="320"> |
 
 ### akbun-draw-architecture
 
