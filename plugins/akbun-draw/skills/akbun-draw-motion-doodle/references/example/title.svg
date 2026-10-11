@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080">
+  <!-- 개념 카드 예시: 제목 한 줄(왼쪽) + 개념 그림 하나(오른쪽). 글자마다 rotate·dy를 조금씩 달리 줘 손글씨처럼 보이게 한다 -->
+  <text x="220" y="560" font-family="'Gaegu', 'Nanum Pen Script', sans-serif" font-size="170" fill="#000000"
+        rotate="-2 1.5 -1 2 -1.5" dy="0 -4 5 -3 4">깃 브랜치</text>
+  <!-- 그림: 줄기 하나에서 갈라지는 가지, 갈라진 가지 끝 하나만 ACCENT -->
+  <g fill="none" stroke="#000000" stroke-width="9" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M1300 860 C1302 760 1298 620 1301 300"/>
+    <path d="M1300 700 C1360 650 1450 640 1480 560 C1500 500 1498 460 1500 420"/>
+  </g>
+  <g stroke="#000000" stroke-width="9">
+    <circle cx="1301" cy="860" r="34" fill="#FFFFFF"/>
+    <circle cx="1301" cy="580" r="34" fill="#FFFFFF"/>
+    <circle cx="1301" cy="300" r="34" fill="#FFFFFF"/>
+    <circle cx="1500" cy="410" r="34" fill="#E89850"/>
+  </g>
+</svg>

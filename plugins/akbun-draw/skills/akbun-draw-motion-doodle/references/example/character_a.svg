@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080">
+  <g stroke="#000000" stroke-width="9" stroke-linecap="round" stroke-linejoin="round">
+    <!-- 다리: 선 하나 -->
+    <path d="M640 790 L622 950 M720 792 L736 948" fill="none"/>
+    <!-- 몸통: 강조색 평면 채움 + 오른쪽에 짙은 그림자 한 덩어리 -->
+    <path d="M680 250 C760 380 830 470 830 620 C830 730 760 800 680 800 C600 800 530 730 530 620 C530 470 600 380 680 250 Z" fill="#E89850"/>
+    <path d="M760 420 C810 500 828 560 828 620 C828 720 770 790 690 799 C770 740 790 600 760 420 Z" fill="#E05018" stroke="none"/>
+    <path d="M680 250 C760 380 830 470 830 620 C830 730 760 800 680 800 C600 800 530 730 530 620 C530 470 600 380 680 250 Z" fill="none"/>
+    <ellipse cx="640" cy="560" rx="16" ry="24" fill="#000"/><ellipse cx="720" cy="560" rx="16" ry="24" fill="#000"/>
+    <path d="M548 650 L470 760 M812 650 L900 740" fill="none"/>
+  </g>
+  <!-- 소품: 흰 채움 + 한쪽 회색 면 + 빗금 -->
+  <g stroke="#000000" stroke-width="9" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M1080 640 L1340 630 L1350 900 L1086 908 Z" fill="#FFFFFF"/>
+    <path d="M1300 632 L1340 630 L1350 900 L1310 902 Z" fill="#E0E0E0" stroke="none"/>
+    <path d="M1080 640 L1340 630 L1350 900 L1086 908 Z" fill="none"/>
+    <path d="M1080 640 L1150 570 L1405 562 L1340 630 M1405 562 L1412 830 L1350 900" fill="none"/>
+    <path d="M1130 700 L1290 860 M1130 780 L1210 860 M1190 690 L1300 800" fill="none" stroke-width="5"/>
+  </g>
+</svg>
