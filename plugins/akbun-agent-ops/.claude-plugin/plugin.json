@@ -1,7 +1,7 @@
 {
   "name": "akbun-agent-ops",
   "description": "Agent operations skills — set up a project's memory layout once, rebuild working context at session start, and turn each session's lessons into approved edits to the memory structure the codebase already has",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": {
     "name": "akbun"
   },
