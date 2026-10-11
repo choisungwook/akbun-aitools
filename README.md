@@ -77,6 +77,7 @@ Claude Code에서 marketplace를 등록하고 plugin 하나를 설치한 뒤 ski
 | [akbun-draw-cartoon-b](./plugins/akbun-draw/skills/akbun-draw-cartoon-b/) | 아무 상황을 회색 그라데이션+베이지 테두리+낙서풍 고래 캐릭터+올리브 포인트 하나의 이슈 카드뉴스 스타일로 그리는 이미지 생성 프롬프트와 Figma/Canva용 SVG 작성 |
 | [akbun-draw-cardnews-cream](./plugins/akbun-draw/skills/akbun-draw-cardnews-cream/) | 아무 개념을 크림 배경+손글씨 제목·본문+낙서 다이어그램+파란 빗금 포인트 하나의 설명형 카드뉴스 스타일로 그리는 이미지 생성 프롬프트와 Figma/Canva용 SVG 작성 |
 | [akbun-draw-motion-doodle](./plugins/akbun-draw/skills/akbun-draw-motion-doodle/) | 흰 종이 위 검은 잉크 낙서 모션그래픽 스타일 doodle. 그림은 흔들리지 않고 캐릭터는 포즈 교체, 설명 장면(차트·주석·대화)은 선 그려지기·글자 써지기. 초당 12장·하드 컷. 모델은 SVG와 시간 속성만 쓰고 스크립트가 기본 MP4로 렌더(다른 영상 위에 겹칠 때만 물어서 투명 MOV), 요청 시 Resolve MCP로 새 트랙에 배치 |
+| [akbun-draw-doodle-comic](./plugins/akbun-draw/skills/akbun-draw-doodle-comic/) | doodle 그림체 2·4·6컷 만화. 모든 컷을 한 장 격자(블로그) 또는 컷마다 1장(인스타툰 1080×1350, 유튜브 커뮤니티 1080×1080)으로 렌더하고 컷 왼쪽 위에 읽는 순서 번호. 모델은 컷 SVG만 쓰고 스크립트가 배치·테두리·번호·PNG를 맡음 |
 | [akbun-mascot-whale](./plugins/akbun-draw/skills/akbun-mascot-whale/) | akbun 마스코트 고래 캐릭터의 표준 외형 스펙(다른 그리기 skill이 참조) |
 | [akbun-draw-learning-mono](./plugins/akbun-draw/skills/akbun-draw-learning-mono/) | 논문·책·문서·개념을 흰 배경 흑백 미니멀 16:9 학습용 설명 이미지(주제별 분할 + 한국어 발표 대본)로 변환 |
 | [akbun-draw-travel-blog](./plugins/akbun-draw/skills/akbun-draw-travel-blog/) | 여행블로그 썸네일·약도·장면 삽화의 크림 배경·크레용 플랫 일러스트 프롬프트 작성. 제목 가독성·비율별 구도와 방문 순서도 지원, `[현장]` 사진은 기본 건너뜀 |
@@ -89,6 +90,7 @@ Claude Code에서 marketplace를 등록하고 plugin 하나를 설치한 뒤 ski
 | `akbun-draw-webtoon-c` | <img src="./imgs/akbun-draw-webtoon-c.png" alt="akbun-draw-webtoon-c" width="320"> |
 | `akbun-draw-cartoon-b` | <img src="./imgs/akbun-draw-cartoon-b.png" alt="akbun-draw-cartoon-b" width="320"> |
 | `akbun-draw-motion-doodle` | <img src="./imgs/akbun-draw-motion-doodle.png" alt="akbun-draw-motion-doodle" width="320"> |
+| `akbun-draw-doodle-comic` | <img src="./imgs/akbun-draw-doodle-comic.png" alt="akbun-draw-doodle-comic" width="320"> |
 
 ### akbun-draw-architecture
 

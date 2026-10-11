@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080"><g transform="translate(1300 950) scale(1.0)" stroke="#000000" stroke-width="9.00" stroke-linecap="round" stroke-linejoin="round">
+    <ellipse cx="0" cy="6" rx="170" ry="28" fill="#B0B0B0" stroke="none"/>
+    <g transform="translate(0 -272)"><path d="M0 0 C4 -60 -2 -110 30 -150 C60 -170 90 -140 100 -90" fill="none"/>
+      <path d="M100 -90 C120 -70 125 -40 112 -20 C90 -40 88 -65 100 -90 Z" fill="#FFFFFF"/>
+      <path d="M6 -70 C-30 -60 -55 -30 -60 0 C-30 -10 -10 -35 6 -70 Z" fill="#FFFFFF"/></g>
+    <path d="M-130 -230 L130 -230 L104 0 L-102 2 Z" fill="#FFFFFF"/>
+    <path d="M92 -230 L130 -230 L104 0 L72 1 Z" fill="#E0E0E0" stroke="none"/>
+    <path d="M-130 -230 L130 -230 L104 0 L-102 2 Z" fill="none"/>
+    <path d="M-160 -272 L160 -274 L161 -230 L-159 -229 Z" fill="#FFFFFF"/>
+  </g><g transform="translate(926.0 -77) scale(0.55)" stroke="#000000" stroke-width="16.36" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M640 790 L622 950 M720 792 L736 948" fill="none"/>
+    <path d="M680 250 C760 380 830 470 830 620 C830 730 760 800 680 800 C600 800 530 730 530 620 C530 470 600 380 680 250 Z" fill="#E89850"/>
+    <path d="M760 420 C810 500 828 560 828 620 C828 720 770 790 690 799 C770 740 790 600 760 420 Z" fill="#E05018" stroke="none"/>
+    <path d="M680 250 C760 380 830 470 830 620 C830 730 760 800 680 800 C600 800 530 730 530 620 C530 470 600 380 680 250 Z" fill="none"/>
+    <path d="M622 566 Q640 538 658 566 M702 566 Q720 538 738 566" fill="none"/><path d="M656 618 Q680 642 704 618" fill="none" stroke-width="6"/>
+    <path d="M548 640 L470 520 M812 640 L890 520" fill="none"/>
+  </g><g stroke="#000000" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M670 150 C841 146 992 153 1113 151 Q1143 150 1145 180 C1147 230 1141 279 1113 309
+      L1119 310 L1100 360 L1067 309 L670 308 Q638 309 640 279 C637 230 642 180 670 150 Z" fill="#FFFFFF"/>
+  </g>
+  <text x="685" y="257" font-family="'Gaegu', 'Nanum Pen Script', sans-serif" font-size="84" fill="#000000" rotate="-2 1 0 2 -1 1 -2 2 0 -1" dy="0 -3 2 3 -2 0 2 -3 1 0">내가 갈게!</text></svg>

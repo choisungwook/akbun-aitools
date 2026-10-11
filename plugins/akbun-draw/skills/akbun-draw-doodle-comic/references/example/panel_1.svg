@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080"><ellipse cx="600" cy="942" rx="95" ry="19" fill="#B0B0B0"/><g transform="translate(56.0 182) scale(0.8)" stroke="#000000" stroke-width="11.25" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M640 790 L622 950 M720 792 L736 948" fill="none"/>
+    <path d="M680 250 C760 380 830 470 830 620 C830 730 760 800 680 800 C600 800 530 730 530 620 C530 470 600 380 680 250 Z" fill="#E89850"/>
+    <path d="M760 420 C810 500 828 560 828 620 C828 720 770 790 690 799 C770 740 790 600 760 420 Z" fill="#E05018" stroke="none"/>
+    <path d="M680 250 C760 380 830 470 830 620 C830 730 760 800 680 800 C600 800 530 730 530 620 C530 470 600 380 680 250 Z" fill="none"/>
+    <ellipse cx="654" cy="560" rx="16" ry="24" fill="#000000" stroke="none"/><ellipse cx="734" cy="560" rx="16" ry="24" fill="#000000" stroke="none"/><path d="M662 628 Q674 618 686 628 Q698 638 710 628" fill="none" stroke-width="5"/>
+    <path d="M548 650 L470 760 M812 650 L890 760" fill="none"/>
+  </g><g transform="translate(1300 950) scale(1.0)" stroke="#000000" stroke-width="9.00" stroke-linecap="round" stroke-linejoin="round">
+    <ellipse cx="0" cy="6" rx="170" ry="28" fill="#B0B0B0" stroke="none"/>
+    <g transform="translate(0 -272)"><path d="M0 0 C4 -60 -2 -110 30 -150 C60 -170 90 -140 100 -90" fill="none"/>
+      <path d="M100 -90 C120 -70 125 -40 112 -20 C90 -40 88 -65 100 -90 Z" fill="#FFFFFF"/>
+      <path d="M6 -70 C-30 -60 -55 -30 -60 0 C-30 -10 -10 -35 6 -70 Z" fill="#FFFFFF"/></g>
+    <path d="M-130 -230 L130 -230 L104 0 L-102 2 Z" fill="#FFFFFF"/>
+    <path d="M92 -230 L130 -230 L104 0 L72 1 Z" fill="#E0E0E0" stroke="none"/>
+    <path d="M-130 -230 L130 -230 L104 0 L-102 2 Z" fill="none"/>
+    <path d="M-160 -272 L160 -274 L161 -230 L-159 -229 Z" fill="#FFFFFF"/>
+  </g><g stroke="#000000" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M290 110 C544 106 756 113 939 111 Q969 110 971 140 C973 190 967 239 939 269
+      L626 270 L600 370 L574 269 L290 268 Q258 269 260 239 C257 190 262 140 290 110 Z" fill="#FFFFFF"/>
+  </g>
+  <text x="305" y="217" font-family="'Gaegu', 'Nanum Pen Script', sans-serif" font-size="84" fill="#000000" rotate="-2 1 0 2 -1 1 -2 2 0 -1" dy="0 -3 2 3 -2 0 2 -3 1 0">목말라 보여...</text></svg>
