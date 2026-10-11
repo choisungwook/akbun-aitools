@@ -9,7 +9,7 @@ plugin 11개, skill 88개. 하고 싶은 일에서 plugin을 찾고, 아래 `plu
 | 하고 싶은 일 | plugin | 대표 skill |
 |---|---|---|
 | 공부한 것을 akbun 스타일 한국어 기술 글로 쓰기, 문서 교정, 운영 작업 공지 | [akbun-writing](#akbun-writing) | `akbun-writing`, `akbun-docs-review`, `akbun-it-infra-change-notice` |
-| 고정 스타일의 이미지 생성 프롬프트와 Figma/Canva용 SVG(웹툰·카드뉴스·삽화), 낙서 모션그래픽·만화 | [akbun-draw](#akbun-draw) | `akbun-draw-doodle-comic`, `akbun-draw-cardnews-cream`, `akbun-draw-motion-doodle` |
+| 고정 스타일의 이미지 생성 프롬프트와 Figma/Canva용 SVG(웹툰·카드뉴스·삽화), 낙서 모션그래픽·만화 | [akbun-draw](#akbun-draw) | `akbun-draw-doodle-comic`, `akbun-draw-motion-doodle` |
 | AWS VPC draw.io 다이어그램, 경계·데이터 흐름 아키텍처 SVG | [akbun-draw-architecture](#akbun-draw-architecture) | `akbun-drawio-aws-vpc`, `akbun-draw-architecture` |
 | akbun 스타일 pptx 덱과 발표 대본, 삽입 시각자료 | [akbun-presentation](#akbun-presentation) | `akbun-presentation` |
 | 알고리즘 과외, 영상 자막 대본, 발음 가이드, Anki, 학습지 | [akbun-learning](#akbun-learning) | `akbun-algorithm-tutor`, `akbun-studysheet` |
@@ -73,7 +73,6 @@ Claude Code에서 marketplace를 등록하고 plugin 하나를 설치한 뒤 ski
 | [akbun-draw-webtoon-d](./plugins/akbun-draw/skills/akbun-draw-webtoon-d/) | 실제 경험담을 인스타 세로형(3:4) 흑백 다큐툰(거친 잉크 낙서선+하단 자막 내레이션+얼굴 없는 실루엣 군중)의 장면별 이미지 생성 프롬프트로 작성 |
 | [akbun-draw-sketchbook-card](./plugins/akbun-draw/skills/akbun-draw-sketchbook-card/) | 개념을 연필 스케치북 카드(손글씨 제목·체크리스트+일러스트)로 그리는 이미지 생성 프롬프트 작성 |
 | [akbun-draw-quiet-pencil](./plugins/akbun-draw/skills/akbun-draw-quiet-pencil/) | 아무 순간을 크림 배경+넓은 여백+회색 연필 소재+틸 소품 하나의 조용한 연필 스케치 장면 스타일로 그리는 이미지 생성 프롬프트 작성 |
-| [akbun-draw-cardnews-cream](./plugins/akbun-draw/skills/akbun-draw-cardnews-cream/) | 아무 개념을 크림 배경+손글씨 제목·본문+낙서 다이어그램+파란 빗금 포인트 하나의 설명형 카드뉴스 스타일로 그리는 이미지 생성 프롬프트와 Figma/Canva용 SVG 작성 |
 | [akbun-draw-motion-doodle](./plugins/akbun-draw/skills/akbun-draw-motion-doodle/) | 흰 종이 위 검은 잉크 낙서 모션그래픽 스타일 doodle. 그림은 흔들리지 않고 캐릭터는 포즈 교체, 설명 장면(차트·주석·대화)은 선 그려지기·글자 써지기. 초당 12장·하드 컷. 모델은 SVG와 시간 속성만 쓰고 스크립트가 기본 MP4로 렌더(다른 영상 위에 겹칠 때만 물어서 투명 MOV), 요청 시 Resolve MCP로 새 트랙에 배치 |
 | [akbun-draw-doodle-comic](./plugins/akbun-draw/skills/akbun-draw-doodle-comic/) | doodle 그림체 2·4·6컷 만화. 모든 컷을 한 장 격자(블로그) 또는 컷마다 1장(인스타툰 1080×1350, 유튜브 커뮤니티 1080×1080)으로 렌더하고 컷 왼쪽 위에 읽는 순서 번호. 모델은 컷 SVG만 쓰고 스크립트가 배치·테두리·번호·PNG를 맡음 |
 | [akbun-mascot-whale](./plugins/akbun-draw/skills/akbun-mascot-whale/) | akbun 마스코트 고래 캐릭터의 표준 외형 스펙(다른 그리기 skill이 참조) |
