@@ -33,7 +33,7 @@ SNS 카드 한 장으로 설명하는 필기 노트 같은 느낌이다.
 1. **영어 이미지 생성 프롬프트** — GPT image나 nano-banana 같은 이미지 생성 AI agent에 그대로 붙여넣는다.
 2. **SVG 파일** — 같은 카드를 이 스타일의 벡터로 그린 파일. Figma나 Canva로 가져와 색·문구를 편집한다.
 
-`akbun-draw-cartoon-b`, `akbun-draw-sketchbook-card`처럼 "정해진 비주얼 스타일로 카드 프롬프트와
+`akbun-draw-sketchbook-card`처럼 "정해진 비주얼 스타일로 카드 프롬프트와
 SVG를 만드는" 계열이다. 이 skill은 특정 다이어그램이 아니라 **설명형 카드뉴스 스타일 자체**를 재사용한다.
 
 ## 스타일 정의 (고정 — 절대 바꾸지 않는다)
