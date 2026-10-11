@@ -15,7 +15,6 @@
 """
 import argparse
 import copy
-import io
 import json
 import random
 import sys
