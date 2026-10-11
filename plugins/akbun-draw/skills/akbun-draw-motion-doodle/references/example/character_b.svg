@@ -7,7 +7,7 @@
     <path d="M760 420 C810 500 828 560 828 620 C828 720 770 790 690 799 C770 740 790 600 760 420 Z" fill="#E05018" stroke="none"/>
     <path d="M680 250 C760 380 830 470 830 620 C830 730 760 800 680 800 C600 800 530 730 530 620 C530 470 600 380 680 250 Z" fill="none"/>
     <ellipse cx="660" cy="552" rx="16" ry="24" fill="#000"/><ellipse cx="740" cy="552" rx="16" ry="24" fill="#000"/>
-    <path d="M548 650 L470 760 M812 640 C900 600 980 600 1060 610" fill="none"/>
+    <path d="M548 650 L470 760 M812 640 C900 610 990 630 1081 668" fill="none"/>
   </g>
   <!-- 소품: 흰 채움 + 한쪽 회색 면 + 빗금 -->
   <g stroke="#000000" stroke-width="9" stroke-linejoin="round" stroke-linecap="round">
