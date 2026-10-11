@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080">
+  <!-- 주석 장면 예시: 라벨이 써지고 회색 주석 화살표가 그려진다 -->
+  <ellipse cx="980" cy="952" rx="100" ry="20" fill="#B0B0B0"/>
+  <g transform="translate(300 0)">
+  <g stroke="#000000" stroke-width="9" stroke-linecap="round" stroke-linejoin="round">
+    <!-- 다리: 선 하나 -->
+    <path d="M640 790 L622 950 M720 792 L736 948" fill="none"/>
+    <!-- 몸통: 강조색 평면 채움 + 오른쪽에 짙은 그림자 한 덩어리 -->
+    <path d="M680 250 C760 380 830 470 830 620 C830 730 760 800 680 800 C600 800 530 730 530 620 C530 470 600 380 680 250 Z" fill="#E89850"/>
+    <path d="M760 420 C810 500 828 560 828 620 C828 720 770 790 690 799 C770 740 790 600 760 420 Z" fill="#E05018" stroke="none"/>
+    <path d="M680 250 C760 380 830 470 830 620 C830 730 760 800 680 800 C600 800 530 730 530 620 C530 470 600 380 680 250 Z" fill="none"/>
+    <ellipse cx="640" cy="560" rx="16" ry="24" fill="#000"/><ellipse cx="720" cy="560" rx="16" ry="24" fill="#000"/>
+    <path d="M548 650 L470 760 M812 650 L900 740" fill="none"/>
+  </g>
+  </g>
+  <text x="200" y="400" font-family="'Gaegu', 'Nanum Pen Script', sans-serif" font-size="60" fill="#000000" rotate="-2 1 0 2 -1 1" dy="0 -3 2 3 -2 0" data-write="0.5 1.25">아침에 한 잔</text>
+  <path d="M600 395 Q720 410 815 480" fill="none" stroke="#B0B0B0" stroke-width="5" stroke-linecap="round" data-draw="1.55 1.89"/>
+  <path d="M815 480 L793 478 M815 480 L806 460" fill="none" stroke="#B0B0B0" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" data-draw="1.89 1.99"/>
+  <text x="1310" y="618" font-family="'Gaegu', 'Nanum Pen Script', sans-serif" font-size="60" fill="#E89850" rotate="2 -1 1 -2" dy="0 3 -3 0" data-write="3.9 4.4">운동 뒤</text>
+  <path d="M1290 600 Q1230 585 1165 640" fill="none" stroke="#B0B0B0" stroke-width="5" stroke-linecap="round" data-draw="5.1 5.40"/>
+  <path d="M1165 640 L1172 619 M1165 640 L1187 636" fill="none" stroke="#B0B0B0" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" data-draw="5.40 5.50"/>
+</svg>

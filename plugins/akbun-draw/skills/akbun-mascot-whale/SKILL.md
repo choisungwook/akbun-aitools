@@ -79,6 +79,9 @@ serious, a single sweat drop when tired, holding a big prop when working).
 - `path` 1개 — 곡선 입
 - (선택) `circle` — 뺨 패치
 
+- 꼬리지느러미는 꼬리자루와 함께 위로 들어 올려 그린다. 몸 뒤에 수평으로 붙이면 물고기로 읽힌다.
+- 옆지느러미·소품은 눈·입을 가리지 않게 몸 외곽선 밖으로 뻗는다.
+
 정밀함보다 실루엣과 표정이 읽히는 게 중요하다. 외곽선은 `stroke="#1A1A1A"`에 굵기 3~5,
 `stroke-linecap="round"`를 쓴다.
 

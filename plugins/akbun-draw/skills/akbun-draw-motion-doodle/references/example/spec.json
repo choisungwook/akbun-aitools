@@ -1,0 +1,45 @@
+{
+  "size": [
+    1920,
+    1080
+  ],
+  "fps": 24,
+  "drawings_per_second": 12,
+  "background": "#FEFEFE",
+  "scenes": [
+    {
+      "id": "character",
+      "duration": 4.0,
+      "poses": [
+        {
+          "svg": "character_a.svg",
+          "at": 0
+        },
+        {
+          "svg": "character_b.svg",
+          "at": 1.5
+        }
+      ]
+    },
+    {
+      "id": "title",
+      "duration": 3.0,
+      "poses": [
+        {
+          "svg": "title.svg",
+          "at": 0
+        }
+      ]
+    },
+    {
+      "id": "callout",
+      "duration": 7.5,
+      "poses": [
+        {
+          "svg": "callout.svg",
+          "at": 0
+        }
+      ]
+    }
+  ]
+}
