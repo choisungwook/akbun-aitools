@@ -1,0 +1,7 @@
+{
+  "name": "akbun-diagram",
+  "version": "0.1.0",
+  "author": { "name": "akbun" },
+  "description": "/diagram 으로 세션에서 다룬 구조나 지정한 대상을 Mermaid 다이어그램으로 만들어 docs/diagrams/에 저장하고 pane에 띄운다. 파일을 여러 개 고친 턴 뒤에는 제안 띠를 띄운다.",
+  "types": "./types/index.d.ts"
+}

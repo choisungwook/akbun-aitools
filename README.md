@@ -325,3 +325,4 @@ codex plugin list --json
 - `AGENTS.md`: agent가 이 저장소에서 일할 때 따르는 규칙(읽는 순서, 버전 규칙, Discussion·Issue·PR 흐름, PR 형식).
 - `docs/guide_deploy_plugins.md`: plugin 생성·배포 절차.
 - `docs/adr/`: 되돌리기 어려운 설계 결정 기록.
+- `mods/`: Claude Code 동작을 바꾸는 mod(메모리 자동 반영·결정 기록·다이어그램). plugin이 아니라 `mods/install.sh`로 `~/.claude/mods/`에 복사해 쓴다. 설치와 매뉴얼은 [mods/README.md](./mods/README.md).

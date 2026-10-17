@@ -1,0 +1,7 @@
+{
+  "name": "akbun-decision-log",
+  "version": "0.1.0",
+  "author": { "name": "akbun" },
+  "description": "대안 비교 끝에 내린 결정을 감지해 docs/adr/에 결정 기록(ADR)으로 남긴다. /decision 으로 직접 기록할 수도 있다.",
+  "types": "./types/index.d.ts"
+}
