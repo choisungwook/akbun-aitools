@@ -304,3 +304,7 @@ skill 이름을 누르면 문서로 이동합니다.
 | [akbun-youtube-analyze-my-style](./plugins/akbun-youtube/skills/akbun-youtube-analyze-my-style/) | 내 영상 스타일 정리 |
 
 </details>
+
+## mods
+
+Claude Code 동작을 바꾸는 mod(메모리 자동 반영·결정 기록·다이어그램 pane)는 plugin이 아니라 파일 묶음이라 `mods/install.sh`로 `~/.claude/mods/`에 복사해 씁니다. 설치와 매뉴얼은 [mods/README.md](./mods/README.md)에 있습니다.
