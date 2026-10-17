@@ -1,0 +1,9 @@
+{
+  "name": "akbun-diagram",
+  "version": "0.2.0",
+  "author": {
+    "name": "akbun"
+  },
+  "description": "Claude가 답에 쓴 Mermaid 블록을 pane에 고정하고, 몇 턴마다 haiku 게이트가 작업 모양이 바뀌었다고 하면 세션을 fork해 파일·컴포넌트·단계 지도를 상자와 간선으로 그린다. /diagram save 는 docs/diagrams/에 Mermaid로 저장한다.",
+  "types": "./types/index.d.ts"
+}
