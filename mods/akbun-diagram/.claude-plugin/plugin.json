@@ -1,7 +1,9 @@
 {
   "name": "akbun-diagram",
-  "version": "0.1.0",
-  "author": { "name": "akbun" },
-  "description": "/diagram 으로 세션에서 다룬 구조나 지정한 대상을 Mermaid 다이어그램으로 만들어 docs/diagrams/에 저장하고 pane에 띄운다. 파일을 여러 개 고친 턴 뒤에는 제안 띠를 띄운다.",
+  "version": "0.2.0",
+  "author": {
+    "name": "akbun"
+  },
+  "description": "Claude가 답에 쓴 Mermaid 블록을 pane에 고정하고, 몇 턴마다 haiku 게이트가 작업 모양이 바뀌었다고 하면 세션을 fork해 파일·컴포넌트·단계 지도를 상자와 간선으로 그린다. /diagram save 는 docs/diagrams/에 Mermaid로 저장한다.",
   "types": "./types/index.d.ts"
 }

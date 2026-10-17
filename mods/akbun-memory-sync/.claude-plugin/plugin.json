@@ -1,7 +1,9 @@
 {
   "name": "akbun-memory-sync",
-  "version": "0.1.0",
-  "author": { "name": "akbun" },
-  "description": "턴이 끝날 때 사용자 지시에서 반복 규칙을 뽑아 AGENTS.md와 그 파일이 참조하는 문서에 반영하도록 제안하거나 자동 반영한다.",
+  "version": "0.2.0",
+  "author": {
+    "name": "akbun"
+  },
+  "description": "턴이 끝날 때마다 haiku가 메모리에 남길 규칙이 있는지 판정하고, 세션을 fork한 모델이 AGENTS.md와 그 파일이 참조하는 문서의 섹션 끝에 줄을 덧붙인다. 띠와 pane에 바뀐 파일과 줄 수를 보여 준다.",
   "types": "./types/index.d.ts"
 }
