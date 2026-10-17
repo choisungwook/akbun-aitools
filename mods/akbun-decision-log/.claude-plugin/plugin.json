@@ -1,7 +1,9 @@
 {
   "name": "akbun-decision-log",
-  "version": "0.1.0",
-  "author": { "name": "akbun" },
-  "description": "대안 비교 끝에 내린 결정을 감지해 docs/adr/에 결정 기록(ADR)으로 남긴다. /decision 으로 직접 기록할 수도 있다.",
+  "version": "0.2.0",
+  "author": {
+    "name": "akbun"
+  },
+  "description": "Claude의 답이 선택지를 묻는 질문으로 끝나면 haiku 게이트 뒤 세션을 fork해 선택지·장단점·추천을 pane에 정리하고, 사용자가 고른 안을 docs/adr/에 ADR과 색인 행으로 기록한다.",
   "types": "./types/index.d.ts"
 }
