@@ -1,0 +1,133 @@
+{
+ "fps": 30,
+ "source_timeline": "main",
+ "work_timeline": "main_quote_cards_example",
+ "track_name": "QUOTE_CARDS",
+ "at": 2.0,
+ "duration": 8.0,
+ "canvas_clip": "edit-assets/canvas_30fps.mp4",
+ "canvas_color": "#EAEAEA",
+ "cards": [
+  {
+   "id": "01",
+   "frame": "edit-assets/quote01_frame.png",
+   "content": [
+    301,
+    195,
+    998,
+    513
+   ],
+   "shot": "edit-assets/pr243@2x.png",
+   "crop": [
+    0,
+    360,
+    1460,
+    0
+   ],
+   "fade": [
+    0,
+    0.25
+   ]
+  },
+  {
+   "id": "02",
+   "frame": "edit-assets/quote02_frame.png",
+   "content": [
+    421,
+    325,
+    998,
+    513
+   ],
+   "shot": "edit-assets/pr241@2x.png",
+   "crop": [
+    0,
+    360,
+    1460,
+    0
+   ],
+   "fade": [
+    1.2,
+    0.25
+   ]
+  },
+  {
+   "id": "03",
+   "frame": "edit-assets/quote03_frame.png",
+   "content": [
+    541,
+    455,
+    998,
+    513
+   ],
+   "shot": "edit-assets/pr239dark@2x.png",
+   "crop": [
+    0,
+    360,
+    1460,
+    0
+   ],
+   "fade": [
+    2.4,
+    0.25
+   ]
+  }
+ ],
+ "marks": [
+  {
+   "id": "01",
+   "card": "03",
+   "kind": "fill",
+   "sweep": true,
+   "rect": [
+    578.6,
+    478.9,
+    960.4,
+    51.3
+   ],
+   "color": "#9C8CFF",
+   "alpha": 0.45,
+   "start": 3.2,
+   "len": 0.5
+  },
+  {
+   "id": "02",
+   "card": "03",
+   "kind": "fill",
+   "sweep": true,
+   "rect": [
+    677.7,
+    841.2,
+    758.8,
+    35.5
+   ],
+   "color": "#9C8CFF",
+   "alpha": 0.45,
+   "start": 4.9,
+   "len": 0.6
+  }
+ ],
+ "camera": [
+  {
+   "at": 0,
+   "zoom": 1.0
+  },
+  {
+   "at": 4.3,
+   "zoom": 1.035,
+   "x": 990,
+   "y": 558,
+   "ease": "linear"
+  },
+  {
+   "at": 5.0,
+   "zoom": 1.32,
+   "x": 1057,
+   "y": 671
+  },
+  {
+   "at": 8.0,
+   "zoom": 1.36,
+   "ease": "linear"
+  }
+ ]
+}

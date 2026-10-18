@@ -1,0 +1,77 @@
+{
+ "size": [
+  1920,
+  1080
+ ],
+ "fps": 30,
+ "drawings_per_second": 15,
+ "background": "#EDE8D5",
+ "grain": 0.035,
+ "scenes": [
+  {
+   "id": "cache_reach",
+   "duration": 3.4667,
+   "poses": [
+    {
+     "svg": "s1_1.svg",
+     "at": 0
+    },
+    {
+     "svg": "s1_2.svg",
+     "at": 1.9
+    }
+   ],
+   "camera": [
+    {
+     "at": 0,
+     "zoom": 1.0
+    },
+    {
+     "at": 3.4667,
+     "zoom": 1.04,
+     "ease": "linear"
+    }
+   ]
+  },
+  {
+   "id": "ttl_label",
+   "duration": 8.0667,
+   "poses": [
+    {
+     "svg": "s2_1.svg",
+     "at": 0
+    },
+    {
+     "svg": "s2_2.svg",
+     "at": 4.3
+    },
+    {
+     "svg": "s2_3.svg",
+     "at": 4.43
+    }
+   ],
+   "camera": [
+    {
+     "at": 0,
+     "zoom": 1.0
+    },
+    {
+     "at": 3.5,
+     "zoom": 1.022,
+     "ease": "linear"
+    },
+    {
+     "at": 4.4,
+     "zoom": 1.2,
+     "x": 1120,
+     "y": 630
+    },
+    {
+     "at": 8.0667,
+     "zoom": 1.223,
+     "ease": "linear"
+    }
+   ]
+  }
+ ]
+}

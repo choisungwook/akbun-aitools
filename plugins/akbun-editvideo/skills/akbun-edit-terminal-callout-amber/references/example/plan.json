@@ -1,0 +1,103 @@
+{
+ "fps": 30,
+ "source_timeline": "main",
+ "work_timeline": "main_terminal_callout_example",
+ "track_name": "TERMINAL_CALLOUT",
+ "at": 2.0,
+ "duration": 6.0,
+ "canvas_clip": "edit-assets/canvas_30fps.mp4",
+ "canvas_color": "#EAEAEA",
+ "cards": [
+  {
+   "id": "01",
+   "frame": "edit-assets/term_frame.png",
+   "content": [
+    181,
+    155,
+    1558,
+    813
+   ],
+   "shot": "edit-assets/session_replay.mp4",
+   "shot_size": [
+    1440,
+    900
+   ],
+   "crop": [
+    0,
+    0,
+    1440,
+    0
+   ],
+   "fade": [
+    0,
+    0.25
+   ],
+   "video": true
+  }
+ ],
+ "marks": [
+  {
+   "id": "01",
+   "card": "01",
+   "kind": "fill",
+   "sweep": true,
+   "rect": [
+    1110.4,
+    243.7,
+    159.0,
+    43.3
+   ],
+   "color": "#FFD84D",
+   "alpha": 0.25,
+   "start": 2.2,
+   "len": 0.3
+  },
+  {
+   "id": "02",
+   "card": "01",
+   "kind": "box",
+   "rect": [
+    1110.4,
+    243.7,
+    159.0,
+    43.3
+   ],
+   "color": "#FFD84D",
+   "border": 3,
+   "start": 2.2,
+   "len": 0.2
+  }
+ ],
+ "callouts": [
+  {
+   "id": "01",
+   "card": "01",
+   "arrow": "edit-assets/callout_arrow.png",
+   "label": "글꼴 없음",
+   "pos": [
+    1619,
+    425
+   ],
+   "size": 48,
+   "font": "Gaegu",
+   "style": "Bold",
+   "color": "#FFD84D",
+   "start": 2.8
+  }
+ ],
+ "camera": [
+  {
+   "at": 0,
+   "zoom": 1
+  },
+  {
+   "at": 3.5
+  },
+  {
+   "at": 4.2,
+   "zoom": 1.4,
+   "x": 1234,
+   "y": 386
+  }
+ ]
+}

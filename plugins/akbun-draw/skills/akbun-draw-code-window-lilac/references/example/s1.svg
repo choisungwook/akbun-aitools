@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080">
+<g data-fade="0 0.25">
+<g class="window">
+<rect x="180.0" y="162.0" width="900.0" height="788.0" rx="14" fill="#000" opacity="0.035"/>
+<rect x="180.0" y="152.0" width="900.0" height="788.0" rx="14" fill="#000" opacity="0.045"/>
+<rect x="180.0" y="146.0" width="900.0" height="788.0" rx="14" fill="#FFFFFF" stroke="#D6D6DA" stroke-width="1.5"/>
+<path d="M180.0 190.0H1080.0" stroke="#D6D6DA" stroke-width="1.5"/>
+<circle cx="204.0" cy="168.0" r="7" fill="#FF5F57"/>
+<circle cx="226.0" cy="168.0" r="7" fill="#FEBC2E"/>
+<circle cx="248.0" cy="168.0" r="7" fill="#28C840"/>
+<text x="280.0" y="174.0" font-family="'Pretendard', 'Noto Sans KR', sans-serif" font-size="17" font-weight="600" fill="#57606A">deployment.yaml</text>
+</g>
+<rect x="208.0" y="394.6" width="844.0" height="44.8" rx="6" fill="#ECE8FF" data-fade="1.92 2.12"/>
+<g font-family="'D2Coding', monospace" font-size="28.0">
+<text x="236.0" y="247.6" text-anchor="end" fill="#B8BEC6">1</text>
+<text x="264.0" y="247.6" xml:space="preserve" data-write="0.0 0.38"><tspan fill="#24292F">apiVersion: apps/v1</tspan></text>
+<text x="236.0" y="292.4" text-anchor="end" fill="#B8BEC6">2</text>
+<text x="264.0" y="292.4" xml:space="preserve" data-write="0.5 0.82"><tspan fill="#24292F">kind: Deployment</tspan></text>
+<text x="236.0" y="337.2" text-anchor="end" fill="#B8BEC6">3</text>
+<text x="264.0" y="337.2" xml:space="preserve" data-write="0.94 1.36"><tspan fill="#24292F">metadata: {name: web}</tspan></text>
+<text x="236.0" y="382.0" text-anchor="end" fill="#B8BEC6">4</text>
+<text x="264.0" y="382.0" xml:space="preserve" data-write="1.48 1.58"><tspan fill="#24292F">spec:</tspan></text>
+<text x="236.0" y="426.8" text-anchor="end" fill="#B8BEC6">5</text>
+<text x="292.0" y="426.8" xml:space="preserve" data-write="1.7 1.92"><tspan fill="#24292F">replicas: 3</tspan></text>
+</g>
+</g>
+</svg>
