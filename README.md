@@ -80,6 +80,9 @@ codex plugin list --json
 <td><a href="./plugins/akbun-draw/skills/akbun-draw-storybook-crayon/SKILL.md"><img src="./imgs/akbun-draw-storybook-crayon.jpg" alt="akbun-draw-storybook-crayon" width="400"></a><br><code>akbun-draw-storybook-crayon</code></td>
 <td><a href="./plugins/akbun-draw/skills/akbun-mascot-whale/SKILL.md"><img src="./imgs/akbun-mascot-whale.png" alt="akbun-mascot-whale" width="400"></a><br><code>akbun-mascot-whale</code></td>
 </tr>
+<tr>
+<td><a href="./plugins/akbun-draw/skills/akbun-draw-night-gouache/SKILL.md"><img src="./imgs/akbun-draw-night-gouache.jpg" alt="akbun-draw-night-gouache" width="400"></a><br><code>akbun-draw-night-gouache</code></td>
+</tr>
 </table>
 
 ### akbun-presentation 예시
@@ -99,6 +102,7 @@ codex plugin list --json
 </tr>
 <tr>
 <td><a href="./plugins/akbun-editvideo/skills/akbun-edit-terminal-callout-amber/SKILL.md"><img src="./imgs/akbun-edit-terminal-callout-amber.jpg" alt="akbun-edit-terminal-callout-amber" width="400"></a><br><code>akbun-edit-terminal-callout-amber</code></td>
+<td><a href="./plugins/akbun-editvideo/skills/akbun-davinciresolve-explainer-night-gouache/SKILL.md"><img src="./imgs/akbun-davinciresolve-explainer-night-gouache.gif" alt="akbun-davinciresolve-explainer-night-gouache" width="400"></a><br><code>akbun-davinciresolve-explainer-night-gouache</code></td>
 </tr>
 </table>
 
@@ -137,6 +141,7 @@ skill 이름을 누르면 문서로 이동합니다.
 | [akbun-draw-motion-doodle](./plugins/akbun-draw/skills/akbun-draw-motion-doodle/) | 흰 종이 낙서 모션그래픽 MP4 |
 | [akbun-draw-doodle-comic](./plugins/akbun-draw/skills/akbun-draw-doodle-comic/) | 낙서 그림체 2·4·6컷 만화 |
 | [akbun-draw-code-window-lilac](./plugins/akbun-draw/skills/akbun-draw-code-window-lilac/) | 코드 에디터 창 모션그래픽(타이핑·줄 띠·정보 카드) |
+| [akbun-draw-night-gouache](./plugins/akbun-draw/skills/akbun-draw-night-gouache/) | 어두운 배경 손채색 설명 장면, IT 컴포넌트는 이름 상자·DB 원통, Resolve용 레이어 PNG |
 | [akbun-draw-pencil-analogy-graphite](./plugins/akbun-draw/skills/akbun-draw-pencil-analogy-graphite/) | 연필 막대 인물로 그리는 비유 모션그래픽 |
 | [akbun-draw-storybook-crayon](./plugins/akbun-draw/skills/akbun-draw-storybook-crayon/) | 색연필 동화책 비유 모션그래픽 |
 | [akbun-generateimage-code](./plugins/akbun-draw/skills/akbun-generateimage-code/) | 코드 설명 그림 프롬프트 |
@@ -276,6 +281,7 @@ skill 이름을 누르면 문서로 이동합니다.
 | [davinciresolve-style-project](./plugins/akbun-editvideo/skills/davinciresolve-style-project/) | 프로젝트 diary 편집 스타일 |
 | [akbun-davinciresolve-explainer](./plugins/akbun-editvideo/skills/akbun-davinciresolve-explainer/) | 글·PPTX로 설명 영상 |
 | [akbun-davinciresolve-explainer-dark-diagram](./plugins/akbun-editvideo/skills/akbun-davinciresolve-explainer-dark-diagram/) | 어두운 다이어그램 설명 영상, 녹음에 맞춤 |
+| [akbun-davinciresolve-explainer-night-gouache](./plugins/akbun-editvideo/skills/akbun-davinciresolve-explainer-night-gouache/) | 손채색 레이어가 말하는 순서대로 튀어나오는 설명 영상, 후광 하나·펀치 인 |
 | [akbun-davinciresolve-narration-cleanup](./plugins/akbun-editvideo/skills/akbun-davinciresolve-narration-cleanup/) | 내레이션 숨소리·쉼 정리 |
 | [akbun-review-video-for-retention](./plugins/akbun-editvideo/skills/akbun-review-video-for-retention/) | 시청 지속 기준 영상 리뷰 |
 | [akbun-davinciresolve-article-overlay](./plugins/akbun-editvideo/skills/akbun-davinciresolve-article-overlay/) | 본편 위에 기사 발췌 패널 |

@@ -1,6 +1,6 @@
 {
   "name": "akbun-draw",
-  "version": "1.0.21",
+  "version": "1.0.22",
   "description": "Image drawing skills by akbun — image-generation prompts and editable SVGs in fixed akbun styles",
   "author": {
     "name": "akbun",
@@ -33,6 +33,7 @@
     "privacyPolicyURL": "https://docs.github.com/site-policy/privacy-policies/github-general-privacy-statement",
     "termsOfServiceURL": "https://docs.github.com/en/site-policy/github-terms/github-terms-of-service",
     "defaultPrompt": [
+      "Draw this script as night-gouache explainer scenes (dark painted illustrations with one glowing highlight) and export the layers for Resolve",
       "Make an image prompt that explains this code as a blog figure",
       "Make a hand-drawn doodle motion graphic (pose swaps, draw-on lines and text) as MP4 or transparent MOV and place it on my Resolve timeline at 12s",
       "Make a code-window motion graphic: type this function line by line in a white editor window and highlight the line I talk about (akbun-draw-code-window-lilac)",

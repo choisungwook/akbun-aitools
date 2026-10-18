@@ -243,6 +243,20 @@ Epidemic Sound에서 효과음·BGM 후보를 찾을 때 사용할 **영문 검�
 | EMU | PPTX에서 위치·크기를 저장하는 단위. 슬라이드 가로 EMU를 기준으로 1920px 캔버스 좌표로 환산한다. |
 | 기본 5색과 검정 예외 | 배경 #252525·본문 #EBEBEB·선 #FFFFFF·정상 강조 #FFC000·문제 #FF0000과 노랑 채움 안 글자·숫자용 #000000. 총 6개 허용 색이다. |
 
+## 손채색 그림 설명 영상
+
+[akbun-davinciresolve-explainer-night-gouache](../plugins/akbun-editvideo/skills/akbun-davinciresolve-explainer-night-gouache/SKILL.md)에서 사용하는 용어다.
+
+| 용어 | 뜻 |
+|---|---|
+| 레이어 PNG | akbun-draw-night-gouache가 등장 단위(대상·후광·화살표·태그)마다 만든 화면 전체 크기의 투명 PNG. 위치 정보가 그림 안에 있어 Fusion에서는 크기 변화의 중심(Pivot)만 준다. |
+| layers.json | 레이어 순서, 파일 이름, 그림 영역(bbox), 크기 변화 중심(pivot, Fusion 좌표), 태그 글자, 자막을 적은 파일. |
+| 팝 | 대상 중심에서 0.3초 동안 0.6배 → 약 1.04배 → 1.0배로 넘쳤다 돌아오며 나타나는 등장. |
+| 자라기 | 화살표·연결선이 0.25초 동안 0.85배에서 1.0배로 커지며 나타나는 등장. 넘침이 없다. |
+| 밀려 들어오기 | 대상이 가까운 화면 가장자리 밖에서 제자리로 0.6초 동안 들어오며 끝으로 갈수록 느려지는 등장. |
+| 후광 맥박 | 강조 대상 뒤 후광 레이어가 0.3초 페이드 뒤 불투명도 0.5~1.0을 1.2초 주기로 오가는 움직임. 장면에 하나다. |
+| 펀치 인 | 장면의 핵심 순간에 강조 대상 중심으로 화면 전체를 0.2초 만에 1.4~1.8배 확대하는 움직임. 장면당 한 번까지다. |
+
 ## 녹음 정리와 녹음 맞춤
 
 [akbun-davinciresolve-narration-cleanup](../plugins/akbun-editvideo/skills/akbun-davinciresolve-narration-cleanup/SKILL.md)과 [akbun-davinciresolve-explainer-dark-diagram](../plugins/akbun-editvideo/skills/akbun-davinciresolve-explainer-dark-diagram/SKILL.md)에서 사용하는 용어다.

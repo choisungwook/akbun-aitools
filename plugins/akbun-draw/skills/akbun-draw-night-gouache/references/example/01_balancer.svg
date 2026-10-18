@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" data-subtitle="요청은 한가운데에서 나뉘어 흩어집니다">
+  <g data-layer="person" filter="url(#paint)">
+    <path d="M150 640 Q160 520 260 505 Q360 520 370 640 Z" fill="#0F7DF5"/>
+    <path d="M150 640 Q160 520 260 505 Q360 520 370 640 Z" fill="url(#shade)"/>
+    <circle cx="260" cy="430" r="78" fill="#E6C494"/>
+    <circle cx="260" cy="430" r="78" fill="url(#shade)"/>
+    <path d="M182 412 Q200 340 272 346 Q336 352 340 420 Q300 380 182 412 Z" fill="#8B6CFF"/>
+    <circle cx="238" cy="440" r="7" fill="#5D4029"/>
+    <circle cx="282" cy="440" r="7" fill="#5D4029"/>
+    <path d="M248 470 Q260 478 272 470" fill="none" stroke="#5D4029" stroke-width="4" stroke-linecap="round"/>
+  </g>
+  <g data-layer="arrow-in" fill="none" stroke="#F3F4F5" stroke-width="11" stroke-linecap="round" stroke-linejoin="round" filter="url(#brush)">
+    <path d="M400 480 Q450 445 500 465"/><path d="M464 440 L502 466 L456 486"/>
+  </g>
+  <g data-layer="lb-halo"><circle cx="705" cy="470" r="215" fill="url(#halo-mint)"/></g>
+  <g data-layer="lb">
+    <g filter="url(#paint)">
+      <rect x="535" y="410" width="340" height="120" rx="16" fill="#17F0D8"/>
+      <rect x="535" y="410" width="340" height="120" rx="16" fill="url(#shade)"/>
+    </g>
+    <text x="705" y="482" text-anchor="middle" font-family="Inter, Pretendard" font-weight="600" font-size="34" fill="#0E1014">Load Balancer</text>
+  </g>
+  <g data-layer="arrows-out" fill="none" stroke="#F3F4F5" stroke-width="11" stroke-linecap="round" stroke-linejoin="round" filter="url(#brush)">
+    <path d="M905 440 Q950 385 995 380"/><path d="M952 356 L992 380 L950 402"/>
+    <path d="M905 500 Q950 560 995 570"/><path d="M950 546 L992 570 L954 594"/>
+  </g>
+  <g data-layer="group">
+    <rect x="1020" y="250" width="380" height="460" rx="24" fill="none" stroke="#F3F4F5" stroke-opacity="0.35" stroke-width="3" stroke-dasharray="14 10"/>
+    <text x="1044" y="292" font-family="Inter, Pretendard" font-weight="500" font-size="24" fill="#8A8F98">Auto Scaling Group</text>
+  </g>
+  <g data-layer="instance-a">
+    <g filter="url(#paint)">
+      <rect x="1080" y="330" width="260" height="120" rx="16" fill="#F0A040"/>
+      <rect x="1080" y="330" width="260" height="120" rx="16" fill="url(#shade)"/>
+    </g>
+    <text x="1210" y="402" text-anchor="middle" font-family="Inter, Pretendard" font-weight="600" font-size="34" fill="#0E1014">Instance</text>
+  </g>
+  <g data-layer="instance-b">
+    <g filter="url(#paint)">
+      <rect x="1080" y="510" width="260" height="120" rx="16" fill="#F0A040"/>
+      <rect x="1080" y="510" width="260" height="120" rx="16" fill="url(#shade)"/>
+    </g>
+    <text x="1210" y="582" text-anchor="middle" font-family="Inter, Pretendard" font-weight="600" font-size="34" fill="#0E1014">Instance</text>
+  </g>
+  <g data-layer="arrow-db" fill="none" stroke="#F3F4F5" stroke-width="11" stroke-linecap="round" stroke-linejoin="round" filter="url(#brush)">
+    <path d="M1430 480 Q1480 460 1530 480"/><path d="M1494 456 L1532 482 L1488 502"/>
+  </g>
+  <g data-layer="db">
+    <g filter="url(#paint)">
+      <path d="M1570 405 V555 A110 31 0 0 0 1790 555 V405 Z" fill="#0F7DF5"/>
+      <path d="M1570 405 V555 A110 31 0 0 0 1790 555 V405 Z" fill="url(#shade)"/>
+      <ellipse cx="1680" cy="405" rx="110" ry="31" fill="#5CA6FF"/>
+    </g>
+    <text x="1680" y="505" text-anchor="middle" font-family="Inter, Pretendard" font-weight="600" font-size="34" fill="#F3F4F5">Database</text>
+  </g>
+</svg>
