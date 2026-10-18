@@ -79,6 +79,17 @@ Codex 쪽은 우선 JSON 유효성과 경로 일관성을 확인한다:
 - `plugins/<plugin-name>/.codex-plugin/plugin.json`
 - `.agents/plugins/marketplace.json`
 
+### 저장소 전체 정합성 검사
+
+모든 plugin의 manifest 두 파일 version 일치, `SKILL.md` frontmatter `name`, `README.md`의 `## plugin 목록`을 검사한다. `--base`를 주면 그 ref와 비교해 파일이 바뀐 plugin의 version이 한 번만 올랐는지도 검사한다.
+
+```bash
+uv run --python 3.12 scripts/validate_plugins.py --base origin/main
+uv run --python 3.12 --with PyYAML==6.0.3 python -m unittest discover -s scripts -p 'test_validate_plugins.py'
+```
+
+같은 명령은 `Validate PR` CI가 모든 PR에서 실행한다. PR 본문 검사(`scripts/check_pr_body.py`)와 리스크 등급은 `AGENTS.md`의 검증·리스크 등급 절을 따른다.
+
 ### akbun-editvideo 정합성 검사
 
 저장소 검사는 직접 호출 정책의 boolean 키를 지원하고 알 수 없는 키는 오류로 처리한다. 설치된 공용 `quick_validate.py`는 `disable-model-invocation`을 허용하지 않을 수 있으므로 원본 스킬의 필수 키를 지우거나 설치 파일을 고치지 않는다. 이 검사는 플랫폼 자체의 로딩·Resolve 실행 검증을 대신하지 않는다.
