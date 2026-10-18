@@ -36,9 +36,10 @@
 
 ## PR 본문
 
-PR 본문은 `.github/pull_request_template.md` 구조(`# 구현`, `# 검증`, `# 리스크`)다. diff와 대조한다.
+PR 본문은 `.github/pull_request_template.md` 구조(`# 구현`, `# 구조`, `# 검증`, `# 리스크`)다. diff와 대조한다.
 
 - `# 구현` 첫 줄이 diff에서 가장 큰 변경과 다르면 지적한다. 예: 본문은 설명 수정이라는데 diff는 스크립트 동작을 바꿈.
+- `# 구조`의 mermaid 노드가 저장소에 없는 파일을 가리키거나, diff에서 바뀐 주요 파일(스크립트, SKILL.md, workflow)이 그림에 없으면 지적한다. 노드가 12개를 넘거나 `changed` 표시가 diff와 다르면 지적한다.
 - `# 검증`에 적힌 명령·skill이 diff에서 바뀐 것과 안 맞으면 지적한다.
 - diff에 `scripts/**/*.py`나 skill의 `scripts/` 파일이 있는데 `# 검증`에 그 검사(`--selftest`, `test_*.py`)를 돌린 줄이 없으면 지적한다.
 - diff가 `SKILL.md`의 동작·수치·흐름을 바꿨는데 `# 검증`에 실제 입력으로 실행한 줄이 없고 "검증하지 않음"도 없으면 지적한다.

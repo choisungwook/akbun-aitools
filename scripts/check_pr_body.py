@@ -39,6 +39,16 @@ def sections(body):
   return result, text
 
 
+def prose_lines(text):
+  inside = False
+  for line in text.splitlines():
+    if line.startswith("```"):
+      inside = not inside
+      continue
+    if not inside:
+      yield line
+
+
 def body_errors(body, tier):
   found, text = sections(body)
   errors = []
@@ -51,6 +61,9 @@ def body_errors(body, tier):
     errors.append("# 검증: '무엇을 → 결과' 형식의 줄 필요")
   if not re.search(r"Closes #\d+", text):
     errors.append("Closes #<issue 번호> 필요")
+  structure = found.get("구조", [])
+  if tier != "낮음" and not any(line.startswith("```mermaid") for line in structure):
+    errors.append(f"등급 {tier}: # 구조에 바뀐 것의 위치를 그린 mermaid 코드블록 필요")
   risk = found.get("리스크", [])
   declared = next((re.match(r"등급:\s*(\S+)", line)[1] for line in risk if re.match(r"등급:\s*(\S+)", line)), None)
   if declared and declared != tier:
@@ -60,7 +73,7 @@ def body_errors(body, tier):
       errors.append(f"# 리스크: 첫 줄 '등급: {tier}' 필요")
     if len(risk) < 2:
       errors.append("# 리스크: 등급 줄 아래에 자동 검사와 리뷰가 못 보는 것 한 줄 필요")
-  lines = [line for line in text.splitlines() if line.strip()]
+  lines = [line for line in prose_lines(text) if line.strip()]
   if len(lines) > MAX_LINES:
     errors.append(f"PR 본문 {len(lines)}줄: {MAX_LINES}줄 이내")
   return errors

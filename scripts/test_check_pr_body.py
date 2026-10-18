@@ -9,6 +9,14 @@ BODY = """<!-- 안내 -->
 skill 설명 한 줄 수정
 - SKILL.md 설명 줄 교체
 
+# 구조
+
+```mermaid
+flowchart LR
+  skill[SKILL.md]:::changed --> script[scripts/render.py]
+  classDef changed stroke-width:3px
+```
+
 # 검증
 
 - validate_plugins.py → 오류 0건
@@ -40,6 +48,15 @@ class BodyTests(unittest.TestCase):
     body = BODY.replace("# 리스크\n\n등급: 중간\n- 설명 문장의 뜻이 바뀌었는지는 사람이 읽어야 함\n", "")
     self.assertEqual(body_errors(body, "낮음"), [])
     self.assertTrue(body_errors(body, "중간"))
+
+  def test_medium_and_high_tier_require_mermaid_structure(self):
+    body = BODY.replace("```mermaid\nflowchart LR\n  skill[SKILL.md]:::changed --> script[scripts/render.py]\n  classDef changed stroke-width:3px\n```\n", "- 글로 설명\n")
+    self.assertTrue(any("mermaid" in error for error in body_errors(body, "중간")))
+    self.assertEqual(body_errors(body.replace("등급: 중간", "등급: 낮음"), "낮음"), [])
+
+  def test_code_block_lines_do_not_count_toward_limit(self):
+    body = BODY.replace("  classDef changed stroke-width:3px\n", "".join(f"  n{i} --> n{i + 1}\n" for i in range(40)))
+    self.assertEqual(body_errors(body, "중간"), [])
 
   def test_declared_tier_must_match_changed_paths(self):
     self.assertTrue(body_errors(BODY, "높음"))
