@@ -1,0 +1,49 @@
+name: Validate PR
+
+on:
+  pull_request:
+    types: [opened, edited, synchronize, reopened]
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  plugins:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - uses: astral-sh/setup-uv@v6
+      - name: manifest version·frontmatter·README 목록
+        if: github.event_name == 'pull_request'
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: uv run --python 3.12 scripts/validate_plugins.py --base "$BASE_SHA"
+      - name: manifest version·frontmatter·README 목록 (main)
+        if: github.event_name == 'push'
+        run: uv run --python 3.12 scripts/validate_plugins.py
+      - name: 검사 스크립트 자체 테스트
+        run: uv run --python 3.12 --with PyYAML==6.0.3 python -m unittest discover -s scripts -p 'test_validate_plugins.py'
+
+  pr-body:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - uses: astral-sh/setup-uv@v6
+      - name: 바뀐 파일 목록
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: git diff --name-only "$BASE_SHA...$HEAD_SHA" > "$RUNNER_TEMP/changed.txt"
+      - name: PR 본문 구조와 리스크 등급
+        env:
+          PR_BODY: ${{ github.event.pull_request.body }}
+        run: uv run --python 3.12 scripts/check_pr_body.py --files "$RUNNER_TEMP/changed.txt"
+      - name: 검사 스크립트 자체 테스트
+        run: uv run --python 3.12 python -m unittest discover -s scripts -p 'test_check_pr_body.py'
