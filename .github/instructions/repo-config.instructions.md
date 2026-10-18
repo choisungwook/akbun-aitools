@@ -31,7 +31,6 @@ applyTo: ".github/**,AGENTS.md,CLAUDE.md,scripts/**,.claude/**,.claude-plugin/**
 - 새 규칙에 판정 기준(파일 이름, 숫자, 조건)이 없어 리뷰어마다 다르게 읽히면 지적한다.
 - 파일 이름과 숫자로 판정할 수 있는 규칙을 `scripts/` 검사 대신 `AGENTS.md`나 리뷰 지침에 글로만 추가했으면 지적한다.
 - 같은 규칙이 `AGENTS.md`, `.github/copilot-instructions.md`, `.github/pull_request_template.md`에 다른 말로 있으면 지적한다.
-- PR 본문 `# 리스크`에 `등급: 높음`이 없으면 지적한다.
 
 ## 지적하지 않는다
 

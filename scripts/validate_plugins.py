@@ -105,9 +105,9 @@ def git(root, *args):
   return subprocess.run(["git", "-C", str(root), *args], check=True, capture_output=True, text=True).stdout
 
 
-def changed_plugins(root, base):
+def plugins_in_paths(paths):
   names = set()
-  for line in git(root, "diff", "--name-only", f"{base}...HEAD").splitlines():
+  for line in paths:
     parts = line.split("/")
     if len(parts) < 3 or parts[0] != "plugins":
       continue
@@ -115,6 +115,10 @@ def changed_plugins(root, base):
       continue
     names.add(parts[1])
   return names
+
+
+def changed_plugins(root, base):
+  return plugins_in_paths(git(root, "diff", "--name-only", "--no-renames", f"{base}...HEAD").splitlines())
 
 
 def version_at(root, ref, name):

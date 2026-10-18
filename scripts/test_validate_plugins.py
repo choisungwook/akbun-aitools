@@ -4,7 +4,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from validate_plugins import ROOT, bump_errors, plugin_errors
+from validate_plugins import ROOT, bump_errors, plugin_errors, plugins_in_paths
 
 
 class BumpTests(unittest.TestCase):
@@ -21,6 +21,12 @@ class BumpTests(unittest.TestCase):
   def test_new_plugin_and_unchanged_plugin_are_skipped(self):
     self.assertEqual(bump_errors({"new"}, {"new": None}, {"new": "1.0.0"}), [])
     self.assertEqual(bump_errors(set(), {"p": "1.0.0"}, {"p": "1.0.0"}), [])
+
+
+class ChangedPluginTests(unittest.TestCase):
+  def test_both_sides_of_a_move_count_and_manifests_do_not(self):
+    paths = ["plugins/a/skills/s/SKILL.md", "plugins/b/skills/s/SKILL.md", "plugins/c/.claude-plugin/plugin.json", "README.md", "plugins"]
+    self.assertEqual(plugins_in_paths(paths), {"a", "b"})
 
 
 class RepositoryTests(unittest.TestCase):
