@@ -1,0 +1,97 @@
+{
+ "fps": 30,
+ "source_timeline": "main",
+ "work_timeline": "main_page_tour_example",
+ "track_name": "PAGE_TOUR",
+ "at": 2.0,
+ "duration": 8.0,
+ "canvas_clip": "edit-assets/canvas_30fps.mp4",
+ "canvas_color": "#EAEAEA",
+ "cards": [
+  {
+   "id": "01",
+   "frame": "edit-assets/card01_frame.png",
+   "content": [
+    240,
+    115,
+    1440,
+    914
+   ],
+   "shot": "edit-assets/repo.png",
+   "shot_size": [
+    1440,
+    2400
+   ],
+   "crop": [
+    0,
+    60,
+    1440,
+    0
+   ],
+   "fade": [
+    0,
+    0.25
+   ]
+  }
+ ],
+ "marks": [
+  {
+   "id": "01",
+   "card": "01",
+   "kind": "highlight",
+   "rect": [
+    355,
+    671,
+    890,
+    38
+   ],
+   "color": "#C9BCFF",
+   "start": 2.0,
+   "len": 0.5
+  },
+  {
+   "id": "02",
+   "card": "01",
+   "kind": "box",
+   "rect": [
+    1279,
+    431,
+    187,
+    46
+   ],
+   "color": "#8B78F0",
+   "border": 4,
+   "start": 4.4,
+   "len": 0.2
+  }
+ ],
+ "camera": [
+  {
+   "at": 0,
+   "zoom": 1
+  },
+  {
+   "at": 1.3
+  },
+  {
+   "at": 2.0,
+   "zoom": 1.6,
+   "x": 800,
+   "y": 690
+  },
+  {
+   "at": 3.6
+  },
+  {
+   "at": 4.3,
+   "zoom": 1.8,
+   "x": 1372,
+   "y": 454
+  },
+  {
+   "at": 8.0,
+   "zoom": 1.85,
+   "ease": "linear"
+  }
+ ]
+}

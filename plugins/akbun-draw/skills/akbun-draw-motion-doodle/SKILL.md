@@ -107,8 +107,8 @@ MP4(H.264)는 투명을 담지 못한다. 투명이 필요하면 MOV다.
 
 글꼴과 SVG 속성으로 손으로 쓴 느낌을 만든다.
 
-- 글꼴은 저작권 없는 SIL OFL 글꼴만 쓴다. `font-family`는 항상 `'Gaegu', 'Nanum Pen Script', sans-serif`로 지정한다. 둘 다 Google Fonts에서 무료다. 유료·상용 글꼴이나 라이선스가 불분명한 글꼴 이름을 넣지 않는다.
-- 렌더하는 컴퓨터에 Gaegu·Nanum Pen Script가 없으면 resvg가 sans-serif로 대체해 손글씨 느낌이 사라진다. 렌더 전에 `~/Library/Fonts`에 있는지 확인하고, 없으면 설치할지 사용자에게 먼저 묻는다. 글꼴 파일을 skill 폴더에 넣지 않는다.
+- 글꼴은 저작권 없는 SIL OFL 글꼴만 쓴다. `font-family`는 항상 `'Gaegu', 'Nanum Pen', 'Nanum Pen Script', sans-serif`로 지정한다. 둘 다 Google Fonts에서 무료다. Nanum Pen Script 글꼴 파일의 실제 family 이름은 `Nanum Pen`이라 둘 다 적는다. 유료·상용 글꼴이나 라이선스가 불분명한 글꼴 이름을 넣지 않는다.
+- 렌더하는 컴퓨터에 글꼴이 없으면 resvg가 sans-serif로 대체해 손글씨 느낌이 사라진다. 렌더 전에 `uv run --python 3.12 <skill>/scripts/render_doodle.py --fonts "Gaegu"`의 JSON 값이 `"ok"`인지 보고, `"missing"`이면 설치할지 사용자에게 먼저 묻는다. 글꼴 파일을 skill 폴더에 넣지 않는다.
 - 글자마다 기울기와 높이를 조금씩 다르게 준다. `<text>`에 `rotate`(글자별 -3~3도)와 `dy`(글자별 -5~5px, 합이 0에 가깝게) 목록을 넣는다. 같은 값을 연속 두 글자에 쓰지 않는다.
 - 영문은 평소 쓰는 대소문자 그대로 쓴다. 글자 크기를 단어 안에서 바꾸는 장식은 하지 않는다. 명령어·브랜치 이름 같은 코드 토큰은 원래 대소문자를 지킨다.
 - 써지기(`data-write`)를 쓰는 글자는 `tspan` 없이 한 `<text>`에 쓴다.

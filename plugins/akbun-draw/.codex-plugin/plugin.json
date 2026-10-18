@@ -1,6 +1,6 @@
 {
   "name": "akbun-draw",
-  "version": "1.0.20",
+  "version": "1.0.21",
   "description": "Image drawing skills by akbun — image-generation prompts and editable SVGs in fixed akbun styles",
   "author": {
     "name": "akbun",
@@ -35,6 +35,9 @@
     "defaultPrompt": [
       "Make an image prompt that explains this code as a blog figure",
       "Make a hand-drawn doodle motion graphic (pose swaps, draw-on lines and text) as MP4 or transparent MOV and place it on my Resolve timeline at 12s",
+      "Make a code-window motion graphic: type this function line by line in a white editor window and highlight the line I talk about (akbun-draw-code-window-lilac)",
+      "Make a pencil-analogy scene that explains caching with a stick figure, one colored prop and falling tags, timed to my script (akbun-draw-pencil-analogy-graphite)",
+      "Make a colored-pencil storybook scene that explains a message queue with characters and a red dashed warning, timed to my script (akbun-draw-storybook-crayon)",
       "Make a pastel animal-character webtoon page (image prompts + Figma/Canva SVG) from these images and story",
       "Make a 4-panel doodle comic from this story as Instagram carousel images (1080x1350) with reading-order numbers",
       "Make a grayscale documentary-style webtoon with subtitle narration (per-scene image prompts) from my story",

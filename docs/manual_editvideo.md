@@ -139,6 +139,9 @@ Look 수치는 참고 영상에서 프레임을 복제한 절대값이 아니라
 | 영상에서 얼굴·번호판·개인정보 가리기 | [davinciresolve-face-privacy](../plugins/akbun-editvideo/skills/davinciresolve-face-privacy/SKILL.md): Color 페이지에서 가릴 대상을 추적하고 타임라인에 확인 표시를 남긴다. |
 | Fusion에서 특정 영역만 모자이크 | [davinciresolve-face-mosaic](../plugins/akbun-editvideo/skills/davinciresolve-face-mosaic/SKILL.md): 새 Mosaic Blur 노드와 마스크로 필요한 영역을 가린다. |
 | 기사·블로그·논문을 본편 위에 발췌해 보여주기 | [akbun-davinciresolve-article-overlay](../plugins/akbun-editvideo/skills/akbun-davinciresolve-article-overlay/SKILL.md): Resolve Fusion으로 밝은 발췌 패널을 만들고 선택한 문장에 밑줄·원·하이라이트를 붙인다. Epidemic Sound MCP 음원을 SFX 트랙에 동기화하고 삽입 불가 시 분·초·길이·검색어·트랙을 채팅으로 안내한다. |
+| 웹 페이지·GitHub 저장소를 둘러보며 요소를 짚기 | [akbun-edit-page-tour-lilac](../plugins/akbun-editvideo/skills/akbun-edit-page-tour-lilac/SKILL.md): 2배 스크린샷을 창 카드에 넣고 카메라가 요소마다 짧게 다가가 머물며 연보라 형광펜·외곽 상자로 짚는 전체 화면 장면을 만든다. 본편을 밀지 않는 새 트랙에 놓고, 노드 라벨로 Fusion 페이지에서 위치·색을 고친다. |
+| 여러 글·게시물·이슈를 겹쳐 보여주며 구절 짚기 | [akbun-edit-quote-cards-lilac](../plugins/akbun-editvideo/skills/akbun-edit-quote-cards-lilac/SKILL.md): 실제 출처 스크린샷 카드 2~4장을 겹쳐 쌓고 읽는 구절에 형광펜을 쓸어 칠한다. 본편이 계속 보여야 하면 article-overlay를 쓴다. |
+| 터미널·AI 도구 화면 녹화에 주석 달기 | [akbun-edit-terminal-callout-amber](../plugins/akbun-editvideo/skills/akbun-edit-terminal-callout-amber/SKILL.md): 실제 녹화를 어두운 창 카드에 넣고 오류 줄 옆에 노란 손그림 화살표·라벨, 토큰 하이라이트를 붙인다. 출력을 지어내지 않는다. |
 | 영화식 기본 자막·타이핑 자막을 재사용 템플릿으로 만들기 | [akbun-davinciresolve-caption-template](../plugins/akbun-editvideo/skills/akbun-davinciresolve-caption-template/SKILL.md): 외형 지정이 없으면 하단 중앙의 정적 Cinema를 사용하고, 요청 시 타이핑·키워드·밑줄·원을 만든다. DRFX를 Downloads에 생성하고 macOS 설치법을 안내한다. |
 | 영상 분위기에 맞는 배경음악 후보 찾기 | [davinciresolve-bgm-epidemicsound](../plugins/akbun-editvideo/skills/davinciresolve-bgm-epidemicsound/SKILL.md): Epidemic Sound 후보와 이유를 제시하고, 요청하면 공통 사운드 기준으로 여러 곡·스템·전환을 편집한다. |
 | 효과음·환경음·여러 BGM 사운드 디자인 | [davinciresolve-sfx-epidemicsound](../plugins/akbun-editvideo/skills/davinciresolve-sfx-epidemicsound/SKILL.md): 타임라인을 복제해 현장음·효과음·음악을 설계·믹싱하고 검토 지점을 마커로 남긴다. |
@@ -165,6 +168,18 @@ AI agent가 참고 프레임을 직접 확인한 뒤 패널·글자·강조를 �
 검증은 실제 Edit 합성 캡처와 저장 후 컴포지션 재열기로 한다. PNG는 요청 길이 대신 기본 스틸 길이로 들어갈 수 있어 실제 길이를 확인하고 교정해야 한다. 원의 write-on과 페이드 제어는 사용자의 위치·색·숨김 제어와 분리한다.
 
 분석 캡처는 macOS `/tmp` 임시 디렉터리에 둔다. Resolve가 참조하는 실제 이미지·음원은 import 전에 `article-assets/`·`audio-assets/` 같은 유지할 출력 폴더로 저장한다. 참고 영상의 초와 편집 타임라인의 경과 시간·Resolve TC는 구분한다. 원문을 확인하지 못하면 인용문을 만들지 않으며, 효과음 다운로드나 배치가 실패하면 미삽입 큐시트를 채팅에 남긴다.
+
+### 창 카드 장면 사용 (page-tour, quote-cards, terminal-callout)
+
+대본과 스크린샷(또는 터미널 녹화)을 주고 스킬을 부른다. 예: “이 저장소 스크린샷으로 대본 2문장에 맞춰 이름·폴더 목록을 차례로 짚어줘.” 얼굴 화면은 넣지 않는다.
+
+1. AI agent가 대본을 초당 6.5음절로 읽는다고 보고 신호 단어마다 등장 시각을 잡아 장면 표와 `plan.json`을 만든다.
+2. 작업 타임라인을 복제하고 본편보다 위의 새 트랙에 단색 캔버스 클립을 놓은 뒤, 그 클립의 Fusion에 `FRAME_01`·`SHOT_01`·`MARK_01`·`CARD_01_LAYOUT`·`CAMERA` 같은 이름의 노드를 만든다. 다른 트랙의 클립·마커가 그대로인지 자동으로 대조한다.
+3. 녹음 뒤에는 Resolve 전사·SRT·Whisper의 단어 시각으로 plan의 시각만 고치고 `retime`으로 다시 맞춘다. 직접 옮긴 표시·카드 위치와 색은 그대로 남는다.
+4. 위치·색·크기는 Fusion 페이지에서 해당 노드의 Inspector로 고친다. 기본(캔버스 클립) 모드에서는 이 값들이 Edit 페이지 Inspector에 나오지 않는다(21.1.1 실측).
+5. Edit 페이지 Inspector에서 바로 고치고 싶으면 “Edit Inspector에서 고칠 수 있게 만들어줘”라고 요청한다. 장면이 장면 전용 타임라인 끝에 Fusion 타이틀로 붙고, 클립을 고르면 Inspector → Video → Title 탭에 표시 색·위치·폭·높이, 카드 위치·크기, 주석 글자·위치가 나온다. 대신 장면을 본편 타임라인으로 직접 복사해 붙여야 하고, 녹음 후에는 시각만 다시 맞추는 대신 장면을 다시 만든다. 자세한 노드 표와 절차는 [fusion-cards 참조](../plugins/akbun-editvideo/skills/akbun-edit-page-tour-lilac/references/fusion-cards.md)에 있다.
+
+검증 프레임은 `grab`이 클립 구간을 Deliver 렌더 잡으로 한 번 렌더해 뽑는다. Fusion 노드 하나를 직접 렌더하는 `grab --tool`은 프레임마다 "Render completed!" 창을 남기고, 이 창이 열려 있으면 다음 편집 API가 실패하므로 꼭 필요할 때만 쓰고 창을 닫는다.
 
 ## 측정·촬영 규칙을 읽는 법
 

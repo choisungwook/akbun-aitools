@@ -1,6 +1,6 @@
 {
   "name": "akbun-editvideo",
-  "version": "1.2.13",
+  "version": "1.2.14",
   "description": "Video editing skills — plan and run DaVinci Resolve vlog edits: speech-free travel vlogs (cut/stabilize, chronological timeline, color-grading workflow (Log LUT, exposure, white balance, contrast, saturation on labeled nodes), four separate creative looks on new LOOK nodes, and a city montage cut style, face mosaic, Gmarket Sans subtitles, audio mix, YouTube preset export, vertical YouTube Shorts) and faceless talking developer vlogs (dialogue/keyword subtitles, Epidemic Sound SFX and BGM selection, essay/project style guides, plus a pre-shoot guide, shot sketches and a storyboard with OBS screen-recording list)",
   "author": {
     "name": "akbun",
@@ -56,6 +56,9 @@
       "아직 촬영 전인데 인터뷰하면서 5–7분 개발자 diary 스토리와 얼굴 없는 촬영·스케치를 같이 준비해줘 (akbun-vlog-prepared-devtalk)",
       "이 장면 카메라 어디 두고 어떻게 앉아서 찍어야 하는지 스케치해줘 (akbun-vlog-shotsketch)",
       "이 주제로 뭘 말하고 뭘 찍고 OBS로 뭘 녹화할지 컷별 스토리보드 그려줘 (akbun-vlog-storyboard)",
+      "이 GitHub 저장소 스크린샷을 창 카드에 넣고 설명 순서대로 카메라가 다가가며 연보라로 짚게 Resolve에 만들어줘 (akbun-edit-page-tour-lilac)",
+      "이 글·이슈 스크린샷 세 장을 카드로 겹쳐 쌓고 내가 읽는 구절에 형광펜이 칠해지게 Resolve에 만들어줘 (akbun-edit-quote-cards-lilac)",
+      "내 터미널 녹화에서 오류 줄 옆에 노란 손그림 화살표와 라벨을 붙여 Resolve에 만들어줘 (akbun-edit-terminal-callout-amber)",
       "기술 원리 설명 영상이니까 essay 스타일 컷 리듬·카드 규칙으로 편집해줘 (davinciresolve-style-essay)",
       "내 프로젝트 만드는 과정 영상이니까 project 스타일로 편집해줘 (davinciresolve-style-project)",
       "프로젝트 설정이 4K면 YouTube 2160p, 아니면 YouTube 1080p 기본 템플릿으로 출력해줘 (davinciresolve-export-youtube)",

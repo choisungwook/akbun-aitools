@@ -1,0 +1,49 @@
+{
+ "size": [
+  1920,
+  1080
+ ],
+ "fps": 30,
+ "drawings_per_second": 30,
+ "background": "#EAEAEA",
+ "grain": 0.015,
+ "scenes": [
+  {
+   "id": "replicas",
+   "duration": 4.4,
+   "poses": [
+    {
+     "svg": "s1.svg",
+     "at": 0
+    }
+   ]
+  },
+  {
+   "id": "readiness",
+   "duration": 6.6333,
+   "poses": [
+    {
+     "svg": "s2.svg",
+     "at": 0
+    }
+   ],
+   "camera": [
+    {
+     "at": 0,
+     "zoom": 1
+    },
+    {
+     "at": 4.6,
+     "zoom": 1.0208,
+     "ease": "linear"
+    },
+    {
+     "at": 5.3,
+     "zoom": 1.179,
+     "x": 1049.0,
+     "y": 821.0
+    }
+   ]
+  }
+ ]
+}
