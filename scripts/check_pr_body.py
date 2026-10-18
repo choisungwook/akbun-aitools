@@ -49,16 +49,19 @@ def prose_lines(text):
       yield line
 
 
+def table_rows(lines):
+  rows = [line for line in lines if line.startswith("|") and line.count("|") >= 4]
+  separators = [line for line in rows if re.fullmatch(r"[\s|:-]+", line)]
+  return len(rows) - len(separators) - 1
+
+
 def body_errors(body, tier):
   found, text = sections(body)
   errors = []
   if not found.get("구현"):
     errors.append("# 구현: 무엇이 달라지는지 한 줄 필요")
-  verification = found.get("검증", [])
-  if not verification:
-    errors.append("# 검증: 실제로 돌린 것 또는 '검증하지 않음' 필요")
-  elif not any("→" in line or "->" in line or "검증하지 않음" in line for line in verification):
-    errors.append("# 검증: '무엇을 → 결과' 형식의 줄 필요")
+  if table_rows(found.get("검증", [])) < 1:
+    errors.append("# 검증: '| 대상 | 방법 | 결과 |' 표에 실제로 돌린 것 한 줄 이상 필요")
   if not re.search(r"Closes #\d+", text):
     errors.append("Closes #<issue 번호> 필요")
   structure = found.get("구조", [])

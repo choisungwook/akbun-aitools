@@ -19,7 +19,9 @@ flowchart LR
 
 # 검증
 
-- validate_plugins.py → 오류 0건
+| 대상 | 방법 | 결과 |
+|---|---|---|
+| plugin 정합성 | validate_plugins.py | 오류 0건 |
 
 # 리스크
 
@@ -65,8 +67,9 @@ class BodyTests(unittest.TestCase):
   def test_missing_sections_are_rejected(self):
     cases = {
       "구현": BODY.replace("skill 설명 한 줄 수정\n- SKILL.md 설명 줄 교체\n", ""),
-      "검증": BODY.replace("- validate_plugins.py → 오류 0건\n", ""),
-      "형식": BODY.replace("- validate_plugins.py → 오류 0건", "- 확인함"),
+      "검증": BODY.replace("| plugin 정합성 | validate_plugins.py | 오류 0건 |\n", ""),
+      "형식": BODY.replace("| plugin 정합성 | validate_plugins.py | 오류 0건 |", "- validate_plugins.py → 오류 0건"),
+      "칸 부족": BODY.replace("| plugin 정합성 | validate_plugins.py | 오류 0건 |", "| plugin 정합성 | 오류 0건 |"),
       "issue": BODY.replace("Closes #12", "Closes #"),
       "못 보는 것": BODY.replace("- 설명 문장의 뜻이 바뀌었는지는 사람이 읽어야 함\n", ""),
     }
@@ -75,7 +78,7 @@ class BodyTests(unittest.TestCase):
         self.assertTrue(body_errors(body, "중간"))
 
   def test_comments_do_not_count_as_content(self):
-    body = BODY.replace("- validate_plugins.py → 오류 0건", "<!-- - 명령 → 결과 -->")
+    body = BODY.replace("| plugin 정합성 | validate_plugins.py | 오류 0건 |", "<!-- | 대상 | 방법 | 결과 | -->")
     self.assertTrue(body_errors(body, "중간"))
 
   def test_long_body_is_rejected(self):
