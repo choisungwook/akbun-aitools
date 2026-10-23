@@ -37,6 +37,7 @@ plugin의 버전을 올린다. 사용자에게 버전 업데이트 여부를 묻
 - 스타일을 고정하는 skill(그림체·편집 스타일 등)은 이름 끝에 그 스타일을 대표하는 쉬운 영어 한 단어를 붙인다(예: `akbun-draw-code-window-lilac`, `akbun-edit-terminal-callout-amber`). 같은 종류의 다른 스타일은 끝 단어만 바꿔 나란히 추가한다.
 - `README.md`에는 plugin·skill 개수처럼 skill을 추가·삭제할 때마다 고쳐야 하는 숫자를 쓰지 않는다.
 - `README.md`는 처음 읽는 사람이 1분 안에 훑는 존댓말(-습니다) 문서다. 설치·재설치 명령은 링크로 넘기지 않고 본문에 쓴다. AGENTS.md·배포 가이드와 겹치는 절은 두지 않는다. skill을 추가했는데 그 plugin에 `### <plugin> 예시` 표가 있으면 `imgs/<skill 이름>.jpg`를 그 skill의 `SKILL.md` 링크로 넣는다. 예시 헤더는 `## plugin 목록`의 `### <plugin>` 헤더와 이름이 겹치지 않게 한다.
+- 기존 skill의 동작을 바꿀 때는 새 절·불릿을 덧붙이지 않고 그 규칙이 원래 있던 문장을 고친다. 바뀐 규칙과 같은 말을 하거나 어긋나는 문장은 같은 변경에서 지운다. 덧붙이기만 하면 skill이 계속 길어지고 규칙끼리 충돌해 망가진다.
 - skill을 새로 만들면 `SKILL.md` frontmatter에 `disable-model-invocation: true`를 기본으로 넣는다. 모델이
   알아서 부르지 않고 사용자가 직접 호출할 때만 실행되게 한다. 다른 skill이 참조하는 기준 skill이거나
   사용자가 자동 호출을 요청한 경우에만 뺀다.
