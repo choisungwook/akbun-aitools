@@ -25,7 +25,7 @@
 | 말소리 없는 여행 영상 전체를 편집하고 싶음 | [akbun-davinciresolve-workflow](../plugins/akbun-editvideo/skills/akbun-davinciresolve-workflow/SKILL.md) | 원본 타임라인을 보존하면서 촬영 시간순 타임라인부터 컷, 색보정, 요청된 Look, 개인정보 보호, 자막, 오디오, 출력까지 단계별로 진행한다. |
 | 글·PPTX·이미지로 설명 영상을 새로 만들고 싶음 | [akbun-davinciresolve-explainer](../plugins/akbun-editvideo/skills/akbun-davinciresolve-explainer/SKILL.md) | 대본·스토리보드를 확인한 뒤 장면별 Fusion 타이틀을 만든다. Inspector에서 글자·표시·등장 시점·위치를 고치고 대본·가이드·스틸을 받는다. |
 | 어두운 다이어그램 스타일로 설명 영상을 만들고 녹음에 맞추고 싶음 | [akbun-davinciresolve-explainer-dark-diagram](../plugins/akbun-editvideo/skills/akbun-davinciresolve-explainer-dark-diagram/SKILL.md) | 대본을 읽기 시간 기준으로 장면화하고 자막 트랙을 보며 녹음하게 한다. 녹음 후 테이크를 내용으로 장면에 배정해 장면 길이·등장 시점·자막을 실제 목소리에 맞춘다. |
-| 어두운 배경 위 손채색 그림이 말하는 순서대로 튀어나오는 설명 영상을 만들고 싶음 | [akbun-davinciresolve-explainer-night-gouache](../plugins/akbun-editvideo/skills/akbun-davinciresolve-explainer-night-gouache/SKILL.md) | akbun-draw-night-gouache로 장면 그림을 등장 단위 레이어로 만들고, 장면마다 Fusion 클립 하나에서 팝·자라기·밀려 들어오기·후광 맥박·펀치 인으로 움직인다. 같은 배경 위 하드 컷과 Pretendard 자막 트랙을 쓴다. |
+| 어두운 배경 위 손채색 그림이 말하는 순서대로 튀어나오는 설명 영상을 만들고 싶음 | [akbun-davinciresolve-explainer-night-gouache](../plugins/akbun-editvideo/skills/akbun-davinciresolve-explainer-night-gouache/SKILL.md) | akbun-draw-night-gouache로 장면 그림을 등장 단위 레이어로 만들고, 장면마다 Fusion 클립 하나에서 팝·자라기·밀려 들어오기·펀치 인으로 움직이고, 강조가 꼭 필요한 장면에만 후광 맥박을 쓴다. 같은 배경 위 하드 컷과 Pretendard 자막 트랙을 쓴다. |
 | 녹음의 숨소리와 빈 시간을 덜어 내고 싶음 | [akbun-davinciresolve-narration-cleanup](../plugins/akbun-editvideo/skills/akbun-davinciresolve-narration-cleanup/SKILL.md) | 주파수 프로필로 숨소리를 찾아 지우고 긴 쉼을 줄인 장면별 음성 파일과 지운 구간 보고서를 만든다. 애매한 구간은 남긴다. |
 | 만든 영상이 지루한지, 다시 만들면 어떻게 할지 알고 싶음 | [akbun-review-video-for-retention](../plugins/akbun-editvideo/skills/akbun-review-video-for-retention/SKILL.md) | 시청 지속 기준으로 시각·측정값 근거와 함께 채점하고, 인트로 대본·챕터 순서·화면 보강·끝맺음을 담은 재구성안을 만든다. |
 | 한 단계만 처리하고 싶음 | 아래의 해당 작업별 스킬 | 전체 workflow를 쓰지 않고 필요한 색보정·컷·자막·오디오·출력만 따로 요청한다. |
@@ -223,11 +223,11 @@ Edit 페이지에서 클립 선택 → Inspector → Video → Title의 그룹�
 
 ## 손채색 그림 설명 영상 (night-gouache)
 
-[akbun-davinciresolve-explainer-night-gouache](../plugins/akbun-editvideo/skills/akbun-davinciresolve-explainer-night-gouache/SKILL.md)은 클립 구조를 기본 Explainer에서 가져오고 스타일과 모션을 정한다. 그림은 [akbun-draw-night-gouache](../plugins/akbun-draw/skills/akbun-draw-night-gouache/SKILL.md)가 만든 투명 레이어 PNG를 쓰고 Fusion 도형으로 다시 그리지 않는다. 모든 장면이 같은 어두운 배경이고, 그림은 내레이션 순서대로 하나씩 튀어나온 뒤 멈춘다. 지금 말하는 대상 하나만 후광이 맥박치고, 핵심 순간에 그 대상으로 0.2초 펀치 인한다. 장면 전환은 하드 컷이다.
+[akbun-davinciresolve-explainer-night-gouache](../plugins/akbun-editvideo/skills/akbun-davinciresolve-explainer-night-gouache/SKILL.md)은 클립 구조를 기본 Explainer에서 가져오고 스타일과 모션을 정한다. 그림은 [akbun-draw-night-gouache](../plugins/akbun-draw/skills/akbun-draw-night-gouache/SKILL.md)가 만든 투명 레이어 PNG를 쓰고 Fusion 도형으로 다시 그리지 않는다. 모든 장면이 같은 어두운 배경이고, 그림은 내레이션 순서대로 하나씩 튀어나온 뒤 멈춘다. 후광(glow)은 기본으로 쓰지 않고 여러 대상 중 하나를 골라 봐야 하거나 경고·결론이 처음 나오는 장면에만 그 대상 하나에 맥박친다. 후광 장면 수는 max(1, 전체 장면 수 ÷ 3 내림)개까지다. 핵심 순간에 그 대상으로 0.2초 펀치 인한다. 장면 전환은 하드 컷이다.
 
 예: `$akbun-davinciresolve-explainer-night-gouache 이 대본을 장면으로 나누고, 그림 레이어를 만들어 Resolve 타임라인으로 움직여줘.`
 
-1. 대본을 장면 표(자막·레이어·모션·등장 시점·펀치 인)로 나누고 확인받는다.
+1. 대본을 장면 표(자막·레이어·모션·등장 시점·빛 강조·펀치 인)로 나누고 확인받는다.
 2. draw 스킬로 장면마다 레이어 PNG와 `layers.json`을 만든다.
 3. 장면 길이만큼 Fusion 클립을 넣고 레이어마다 Loader → Transform → MultiMerge로 쌓아 표현식을 건다. Inspector에서 등장 시점·펀치 인 시점·배율을 고친다.
 4. 자막 트랙 글꼴·위치는 Inspector → Track 탭에서 Pretendard Medium 42, Position Y 130으로 바꾼다.
