@@ -117,27 +117,27 @@ codex plugin list --json
 
 ## plugin 목록
 
-skill 이름을 누르면 문서로 이동합니다.
+표의 오른쪽 칸은 그 skill을 쓰면 좋은 상황입니다. skill 이름을 누르면 문서로 이동합니다. 그림 스킬을 고르는 자세한 기준은 [그림 스킬 매뉴얼](docs/manual_draw.md), 영상 편집 스킬은 [영상 편집 매뉴얼](docs/manual_editvideo.md)에 있습니다.
 
 ### akbun-writing
 
 <details><summary>기술 글 쓰기, 문서 교정, 운영 공지</summary>
 
-| skill | 하는 일 |
+| skill | 이럴 때 쓰세요 |
 |---|---|
-| [akbun-writing](./plugins/akbun-writing/skills/akbun-writing/) | akbun 스타일 한국어 기술 글 |
-| [akbun-writing-with-question](./plugins/akbun-writing/skills/akbun-writing-with-question/) | 질문이 끌고 가는 학습형 글 |
-| [akbun-writing-persuasive](./plugins/akbun-writing/skills/akbun-writing-persuasive/) | 끝까지 읽고 납득하게 만드는 설득형 글 |
-| [akbun-writing-easy](./plugins/akbun-writing/skills/akbun-writing-easy/) | 원본 자료를 초보자용 쉬운 설명으로 |
-| [akbun-writing-style-warm](./plugins/akbun-writing/skills/akbun-writing-style-warm/) | 초보 독자용 해요체 경험담 말투 |
-| [akbun-writing-naturalize](./plugins/akbun-writing/skills/akbun-writing-naturalize/) | 원문 말투를 지키며 맞춤법·어색한 문체 교정 |
-| [akbun-docs-review](./plugins/akbun-writing/skills/akbun-docs-review/) | 기술 문서 용어 통일과 사실 교정 |
-| [akbun-it-infra-change-notice](./plugins/akbun-writing/skills/akbun-it-infra-change-notice/) | 인프라 변경을 운영에 넣기 전 작업 공지 초안 |
-| [akbun-writing-travel-blog](./plugins/akbun-writing/skills/akbun-writing-travel-blog/) | 여행 메모를 블로그 글로, 사진 자리 표시 |
-| [akbun-voice-diary](./plugins/akbun-writing/skills/akbun-voice-diary/) | 말로 한 하루를 일기로 저장, 공부 일정 등록 |
-| [akbun-thumbnail-review](./plugins/akbun-writing/skills/akbun-thumbnail-review/) | 유튜브 썸네일 6항목 리뷰 |
-| [akbun-markdown-to-html-pandoc](./plugins/akbun-writing/skills/akbun-markdown-to-html-pandoc/) | markdown을 블로그용 HTML로 |
-| [akbun-md-to-notion](./plugins/akbun-writing/skills/akbun-md-to-notion/) | markdown을 Notion으로 |
+| [akbun-writing](./plugins/akbun-writing/skills/akbun-writing/) | 기술 블로그 글을 akbun 말투로 처음부터 쓸 때 |
+| [akbun-writing-with-question](./plugins/akbun-writing/skills/akbun-writing-with-question/) | 독자가 질문을 따라가며 개념을 익히는 학습형 글이 필요할 때 |
+| [akbun-writing-persuasive](./plugins/akbun-writing/skills/akbun-writing-persuasive/) | 독자가 끝까지 읽고 납득해야 하는 주장·제안 글을 쓸 때 |
+| [akbun-writing-easy](./plugins/akbun-writing/skills/akbun-writing-easy/) | 어려운 원본 자료를 초보자도 읽을 수 있게 풀어야 할 때 |
+| [akbun-writing-style-warm](./plugins/akbun-writing/skills/akbun-writing-style-warm/) | 초보 독자에게 해요체 경험담 말투로 다가가고 싶을 때 |
+| [akbun-writing-naturalize](./plugins/akbun-writing/skills/akbun-writing-naturalize/) | 원문 말투는 지키고 맞춤법·어색한 문장만 다듬고 싶을 때 |
+| [akbun-docs-review](./plugins/akbun-writing/skills/akbun-docs-review/) | 기술 문서의 용어가 들쭉날쭉하거나 사실 확인이 필요할 때 |
+| [akbun-it-infra-change-notice](./plugins/akbun-writing/skills/akbun-it-infra-change-notice/) | 인프라 변경을 운영에 넣기 전에 작업 공지를 돌려야 할 때 |
+| [akbun-writing-travel-blog](./plugins/akbun-writing/skills/akbun-writing-travel-blog/) | 여행 메모와 사진을 블로그 글로 옮길 때 |
+| [akbun-voice-diary](./plugins/akbun-writing/skills/akbun-voice-diary/) | 말로 한 하루를 일기로 남기고 공부 일정까지 잡고 싶을 때 |
+| [akbun-thumbnail-review](./plugins/akbun-writing/skills/akbun-thumbnail-review/) | 올리기 전 유튜브 썸네일이 잘 읽히는지 점검할 때 |
+| [akbun-markdown-to-html-pandoc](./plugins/akbun-writing/skills/akbun-markdown-to-html-pandoc/) | markdown 글을 블로그에 붙일 HTML로 바꿀 때 |
+| [akbun-md-to-notion](./plugins/akbun-writing/skills/akbun-md-to-notion/) | markdown·Obsidian 문서를 Notion 페이지로 옮기거나 맞출 때 |
 
 </details>
 
@@ -145,27 +145,27 @@ skill 이름을 누르면 문서로 이동합니다.
 
 <details><summary>그림 프롬프트, 모션그래픽 영상, 만화</summary>
 
-| skill | 하는 일 |
+| skill | 이럴 때 쓰세요 |
 |---|---|
-| [akbun-draw-motion-doodle](./plugins/akbun-draw/skills/akbun-draw-motion-doodle/) | 흰 종이 낙서 모션그래픽 MP4 |
-| [akbun-draw-doodle-comic](./plugins/akbun-draw/skills/akbun-draw-doodle-comic/) | 낙서 그림체 2·4·6컷 만화 |
-| [akbun-draw-code-window-lilac](./plugins/akbun-draw/skills/akbun-draw-code-window-lilac/) | 코드 에디터 창 모션그래픽(타이핑·줄 띠·정보 카드) |
-| [akbun-draw-night-gouache](./plugins/akbun-draw/skills/akbun-draw-night-gouache/) | 어두운 배경 손채색 설명 장면, IT 컴포넌트는 이름 상자·DB 원통, Resolve용 레이어 PNG |
-| [akbun-draw-pencil-analogy-graphite](./plugins/akbun-draw/skills/akbun-draw-pencil-analogy-graphite/) | 연필 막대 인물로 그리는 비유 모션그래픽 |
-| [akbun-draw-storybook-crayon](./plugins/akbun-draw/skills/akbun-draw-storybook-crayon/) | 색연필 동화책 비유 모션그래픽 |
-| [akbun-draw-crayon-milo](./plugins/akbun-draw/skills/akbun-draw-crayon-milo/) | 아이 크레용 다이어그램 프롬프트 |
-| [akbun-draw-scribble-black](./plugins/akbun-draw/skills/akbun-draw-scribble-black/) | 검정 보드에 흰 펜으로 생각 구름·말풍선·막대 인물·수식을 한 획씩 써 내려가는 모션그래픽 |
-| [akbun-draw-ember-grid](./plugins/akbun-draw/skills/akbun-draw-ember-grid/) | 따뜻한 검정 격자 위 큰 흰 숫자·흰 선·납작한 사물로 개념을 차분히 설명하는 모션그래픽 |
-| [akbun-draw-slate-marker](./plugins/akbun-draw/skills/akbun-draw-slate-marker/) | 검정 캔버스 슬레이트 카드와 손글씨 캡션으로 시스템 동작 모션그래픽 |
-| [akbun-draw-live-ink](./plugins/akbun-draw/skills/akbun-draw-live-ink/) | 검정 판 위 펜 손글씨가 말하는 순서대로 한 글자씩 써지는 계산·공식 설명 모션그래픽 |
-| [akbun-generateimage-code](./plugins/akbun-draw/skills/akbun-generateimage-code/) | 코드 설명 그림 프롬프트 |
-| [akbun-draw-webtoon-b](./plugins/akbun-draw/skills/akbun-draw-webtoon-b/) | 파스텔 동물 웹툰 프롬프트와 편집용 SVG |
-| [akbun-draw-webtoon-d](./plugins/akbun-draw/skills/akbun-draw-webtoon-d/) | 흑백 다큐툰 장면 프롬프트 |
-| [akbun-draw-sketchbook-card](./plugins/akbun-draw/skills/akbun-draw-sketchbook-card/) | 연필 스케치북 개념 카드 프롬프트 |
-| [akbun-draw-quiet-pencil](./plugins/akbun-draw/skills/akbun-draw-quiet-pencil/) | 크림 배경 조용한 연필 장면 프롬프트 |
-| [akbun-draw-learning-mono](./plugins/akbun-draw/skills/akbun-draw-learning-mono/) | 자료를 흑백 16:9 학습 이미지와 대본으로 |
-| [akbun-draw-travel-blog](./plugins/akbun-draw/skills/akbun-draw-travel-blog/) | 여행 블로그 썸네일·약도 삽화 프롬프트 |
-| [akbun-mascot-whale](./plugins/akbun-draw/skills/akbun-mascot-whale/) | akbun 고래 마스코트 외형 기준 |
+| [akbun-draw-motion-doodle](./plugins/akbun-draw/skills/akbun-draw-motion-doodle/) | 흰 종이 낙서 캐릭터가 연기하는 짧은 모션그래픽이 필요할 때 |
+| [akbun-draw-doodle-comic](./plugins/akbun-draw/skills/akbun-draw-doodle-comic/) | 낙서 그림체로 2·4·6컷 만화(블로그·인스타툰)를 만들 때 |
+| [akbun-draw-code-window-lilac](./plugins/akbun-draw/skills/akbun-draw-code-window-lilac/) | 코드를 한 줄씩 타이핑하며 짚어 주는 영상 장면이 필요할 때 |
+| [akbun-draw-night-gouache](./plugins/akbun-draw/skills/akbun-draw-night-gouache/) | 어두운 배경 손채색 그림으로 비유·대화를 보여 주는 설명 장면이 필요할 때 |
+| [akbun-draw-pencil-analogy-graphite](./plugins/akbun-draw/skills/akbun-draw-pencil-analogy-graphite/) | 연필 막대 인물로 개념을 일상 비유로 풀어 줄 때 |
+| [akbun-draw-storybook-crayon](./plugins/akbun-draw/skills/akbun-draw-storybook-crayon/) | 색연필 동화책 느낌으로 부드럽게 비유를 들 때 |
+| [akbun-draw-crayon-milo](./plugins/akbun-draw/skills/akbun-draw-crayon-milo/) | 시스템 흐름을 아이 크레용 그림 같은 다이어그램 이미지로 만들 때 |
+| [akbun-draw-scribble-black](./plugins/akbun-draw/skills/akbun-draw-scribble-black/) | 보드에 손으로 써 내려가며 수식·단계·묻고 답하기를 설명할 때 |
+| [akbun-draw-ember-grid](./plugins/akbun-draw/skills/akbun-draw-ember-grid/) | 숫자·선 몇 개로 추상 개념을 차분한 다큐멘터리 느낌으로 풀 때 |
+| [akbun-draw-slate-marker](./plugins/akbun-draw/skills/akbun-draw-slate-marker/) | 요청·메모리 같은 시스템 동작을 카드와 상태 변화로 보여 줄 때 |
+| [akbun-draw-live-ink](./plugins/akbun-draw/skills/akbun-draw-live-ink/) | 계산·공식을 손으로 적어 가며 한 글자씩 풀어 줄 때 |
+| [akbun-generateimage-code](./plugins/akbun-draw/skills/akbun-generateimage-code/) | 블로그에 코드를 짚어 설명하는 그림이 필요할 때 |
+| [akbun-draw-webtoon-b](./plugins/akbun-draw/skills/akbun-draw-webtoon-b/) | 이미지·글로 파스텔 동물 캐릭터 웹툰 페이지를 만들 때 |
+| [akbun-draw-webtoon-d](./plugins/akbun-draw/skills/akbun-draw-webtoon-d/) | 이야기를 흑백 다큐툰 장면으로 그릴 때 |
+| [akbun-draw-sketchbook-card](./plugins/akbun-draw/skills/akbun-draw-sketchbook-card/) | 개념 하나를 스케치북 카드 한 장으로 정리할 때 |
+| [akbun-draw-quiet-pencil](./plugins/akbun-draw/skills/akbun-draw-quiet-pencil/) | 여백 많은 조용한 연필 장면 그림이 필요할 때 |
+| [akbun-draw-learning-mono](./plugins/akbun-draw/skills/akbun-draw-learning-mono/) | 논문·학습 자료를 흑백 16:9 학습 이미지와 대본으로 바꿀 때 |
+| [akbun-draw-travel-blog](./plugins/akbun-draw/skills/akbun-draw-travel-blog/) | 여행 글에 넣을 썸네일·약도 삽화가 필요할 때 |
+| [akbun-mascot-whale](./plugins/akbun-draw/skills/akbun-mascot-whale/) | 다른 그림에 akbun 고래 마스코트를 같은 모습으로 넣어야 할 때 |
 
 </details>
 
@@ -173,10 +173,10 @@ skill 이름을 누르면 문서로 이동합니다.
 
 <details><summary>AWS·시스템 구조 다이어그램</summary>
 
-| skill | 하는 일 |
+| skill | 이럴 때 쓰세요 |
 |---|---|
-| [akbun-drawio-aws-vpc](./plugins/akbun-draw-architecture/skills/akbun-drawio-aws-vpc/) | AWS VPC draw.io 다이어그램 |
-| [akbun-draw-architecture](./plugins/akbun-draw-architecture/skills/akbun-draw-architecture/) | 경계·데이터 흐름 아키텍처 SVG |
+| [akbun-drawio-aws-vpc](./plugins/akbun-draw-architecture/skills/akbun-drawio-aws-vpc/) | AWS VPC 구성을 draw.io에서 고칠 수 있는 다이어그램으로 남길 때 |
+| [akbun-draw-architecture](./plugins/akbun-draw-architecture/skills/akbun-draw-architecture/) | 시스템 경계와 데이터 흐름을 아키텍처 그림 한 장으로 보여 줄 때 |
 
 </details>
 
@@ -184,11 +184,11 @@ skill 이름을 누르면 문서로 이동합니다.
 
 <details><summary>발표 덱과 대본</summary>
 
-| skill | 하는 일 |
+| skill | 이럴 때 쓰세요 |
 |---|---|
-| [akbun-presentation-paper](./plugins/akbun-presentation/skills/akbun-presentation-paper/) | 논문형식 pptx 덱과 발표 대본 |
-| [akbun-presentation](./plugins/akbun-presentation/skills/akbun-presentation/) | 다크 고정 디자인 pptx 덱과 대본 |
-| [akbun-presentation-visual](./plugins/akbun-presentation/skills/akbun-presentation-visual/) | 발표에 넣을 16:9 시각자료 |
+| [akbun-presentation-paper](./plugins/akbun-presentation/skills/akbun-presentation-paper/) | 논문형식(배경·방법·결과)으로 발표 덱과 대본을 만들 때 |
+| [akbun-presentation](./plugins/akbun-presentation/skills/akbun-presentation/) | 다크 고정 디자인으로 발표 덱과 대본을 만들 때 |
+| [akbun-presentation-visual](./plugins/akbun-presentation/skills/akbun-presentation-visual/) | 발표 슬라이드에 넣을 16:9 설명 그림이 필요할 때 |
 
 </details>
 
@@ -196,16 +196,16 @@ skill 이름을 누르면 문서로 이동합니다.
 
 <details><summary>과외, 영상 대본, 발음, 학습지</summary>
 
-| skill | 하는 일 |
+| skill | 이럴 때 쓰세요 |
 |---|---|
-| [akbun-algorithm-tutor](./plugins/akbun-learning/skills/akbun-algorithm-tutor/) | 눈높이 알고리즘 과외 |
-| [akbun-driven-learning](./plugins/akbun-learning/skills/akbun-driven-learning/) | 가설을 확인해 가는 개념 설명 |
-| [akbun-studysheet](./plugins/akbun-learning/skills/akbun-studysheet/) | 인터랙티브 HTML 학습지 |
-| [akbun-describe-youtube-transcript](./plugins/akbun-learning/skills/akbun-describe-youtube-transcript/) | 유튜브 자막을 한국어 보고서로 |
-| [akbun-describe-twitter-transcript](./plugins/akbun-learning/skills/akbun-describe-twitter-transcript/) | x.com 영상 대본 정리 |
-| [akbun-learning-english](./plugins/akbun-learning/skills/akbun-learning-english/) | 영어 발음·읽기 가이드 |
-| [akbun-learning-japanese](./plugins/akbun-learning/skills/akbun-learning-japanese/) | 일본어 발음·읽기 가이드 |
-| [akbun-make-anki-japanese](./plugins/akbun-learning/skills/akbun-make-anki-japanese/) | 일본어 교재를 Anki 덱으로 |
+| [akbun-algorithm-tutor](./plugins/akbun-learning/skills/akbun-algorithm-tutor/) | 알고리즘 문제를 내 수준에 맞춰 단계별로 배우고 싶을 때 |
+| [akbun-driven-learning](./plugins/akbun-learning/skills/akbun-driven-learning/) | 내가 이해한 내용을 확인받으며 개념을 파고들 때 |
+| [akbun-studysheet](./plugins/akbun-learning/skills/akbun-studysheet/) | 처음 배우는 주제를 핸즈온까지 따라 하는 HTML 학습지로 만들 때 |
+| [akbun-describe-youtube-transcript](./plugins/akbun-learning/skills/akbun-describe-youtube-transcript/) | 유튜브 영상의 말을 한국어 대본으로 옮겨 읽고 싶을 때 |
+| [akbun-describe-twitter-transcript](./plugins/akbun-learning/skills/akbun-describe-twitter-transcript/) | x.com 영상 내용을 대본으로 정리하고 싶을 때 |
+| [akbun-learning-english](./plugins/akbun-learning/skills/akbun-learning-english/) | 영어 문장의 발음과 끊어 읽기를 익힐 때 |
+| [akbun-learning-japanese](./plugins/akbun-learning/skills/akbun-learning-japanese/) | 일본어 문장의 발음과 읽기를 익힐 때 |
+| [akbun-make-anki-japanese](./plugins/akbun-learning/skills/akbun-make-anki-japanese/) | 일본어 단어·문장 사진이나 PDF를 Anki 덱으로 만들 때 |
 
 </details>
 
@@ -213,15 +213,15 @@ skill 이름을 누르면 문서로 이동합니다.
 
 <details><summary>코드베이스 분석과 리뷰</summary>
 
-| skill | 하는 일 |
+| skill | 이럴 때 쓰세요 |
 |---|---|
-| [akbun-analysiscode](./plugins/akbun-analysis/skills/akbun-analysiscode/) | 코드 관계를 근거 있는 JSON·HTML로 |
-| [akbun-analysis-git-whyandhow](./plugins/akbun-analysis/skills/akbun-analysis-git-whyandhow/) | 코드·PR의 왜와 어떻게 |
-| [akbun-analysis-gitdiff-blast-radius](./plugins/akbun-analysis/skills/akbun-analysis-gitdiff-blast-radius/) | 머지하면 어디가 깨지는지 |
-| [akbun-analysis-bottleneck](./plugins/akbun-analysis/skills/akbun-analysis-bottleneck/) | 트래픽이 늘 때 병목 예측 |
-| [akbun-analysis-architecture-review](./plugins/akbun-analysis/skills/akbun-analysis-architecture-review/) | 아키텍처를 의심하며 평가하고 대안 제시 |
-| [akbun-analysis-adversarial-review](./plugins/akbun-analysis/skills/akbun-analysis-adversarial-review/) | 코드·주장을 반례로 깨 보는 리뷰 |
-| [akbun-analysis-token-credential](./plugins/akbun-analysis/skills/akbun-analysis-token-credential/) | 토큰·API 키를 누가 발급하고 누가 읽는지 묻는 한 줄 |
+| [akbun-analysiscode](./plugins/akbun-analysis/skills/akbun-analysiscode/) | 낯선 코드베이스의 구조와 관계를 근거와 함께 파악할 때 |
+| [akbun-analysis-git-whyandhow](./plugins/akbun-analysis/skills/akbun-analysis-git-whyandhow/) | 이 코드·PR이 왜, 어떻게 바뀌었는지 알아야 할 때 |
+| [akbun-analysis-gitdiff-blast-radius](./plugins/akbun-analysis/skills/akbun-analysis-gitdiff-blast-radius/) | 머지 전에 이 변경이 어디를 깨뜨릴지 확인할 때 |
+| [akbun-analysis-bottleneck](./plugins/akbun-analysis/skills/akbun-analysis-bottleneck/) | 트래픽이 늘면 어디서 먼저 막힐지 미리 알고 싶을 때 |
+| [akbun-analysis-architecture-review](./plugins/akbun-analysis/skills/akbun-analysis-architecture-review/) | 아키텍처를 비판적으로 평가하고 대안을 찾을 때 |
+| [akbun-analysis-adversarial-review](./plugins/akbun-analysis/skills/akbun-analysis-adversarial-review/) | 코드나 주장이 정말 맞는지 반례로 흔들어 볼 때 |
+| [akbun-analysis-token-credential](./plugins/akbun-analysis/skills/akbun-analysis-token-credential/) | 토큰·API 키를 누가 발급하고 누가 읽는지 따져 볼 때 |
 
 </details>
 
@@ -229,9 +229,9 @@ skill 이름을 누르면 문서로 이동합니다.
 
 <details><summary>자동 검증을 통과시키며 고치기</summary>
 
-| skill | 하는 일 |
+| skill | 이럴 때 쓰세요 |
 |---|---|
-| [akbun-refactoring-autoverify](./plugins/akbun-refactoring/skills/akbun-refactoring-autoverify/) | 검증을 돌리며 고치고 사람이 판단할 것만 보고 |
+| [akbun-refactoring-autoverify](./plugins/akbun-refactoring/skills/akbun-refactoring-autoverify/) | 검증을 돌려 가며 고치고 사람 판단이 필요한 것만 받고 싶을 때 |
 
 </details>
 
@@ -239,11 +239,11 @@ skill 이름을 누르면 문서로 이동합니다.
 
 <details><summary>agent 기억과 세션 맥락</summary>
 
-| skill | 하는 일 |
+| skill | 이럴 때 쓰세요 |
 |---|---|
-| [akbun-memory-setup](./plugins/akbun-agent-ops/skills/akbun-memory-setup/) | agent 기억 구조 처음 설정 |
-| [akbun-recall](./plugins/akbun-agent-ops/skills/akbun-recall/) | 세션 시작 때 맥락 복원 |
-| [akbun-reflect](./plugins/akbun-agent-ops/skills/akbun-reflect/) | 세션에서 배운 것을 SKILL.md에 반영 |
+| [akbun-memory-setup](./plugins/akbun-agent-ops/skills/akbun-memory-setup/) | agent가 기억할 구조를 처음 만들 때 |
+| [akbun-recall](./plugins/akbun-agent-ops/skills/akbun-recall/) | 새 세션에서 이전 작업 맥락을 이어받을 때 |
+| [akbun-reflect](./plugins/akbun-agent-ops/skills/akbun-reflect/) | 세션에서 배운 것을 SKILL.md에 남길 때 |
 
 </details>
 
@@ -251,11 +251,11 @@ skill 이름을 누르면 문서로 이동합니다.
 
 <details><summary>GitHub·Readwise 하루·기간 요약</summary>
 
-| skill | 하는 일 |
+| skill | 이럴 때 쓰세요 |
 |---|---|
-| [github-daily-pulse](./plugins/akbun-pulse/skills/github-daily-pulse/) | 오늘 GitHub 활동 복습 문서 |
-| [github-period-pulse](./plugins/akbun-pulse/skills/github-period-pulse/) | 기간 결과를 주간회의 브리프로 |
-| [readwise-daily-pulse](./plugins/akbun-pulse/skills/readwise-daily-pulse/) | 어제 Readwise에 들어온 글 요약 |
+| [github-daily-pulse](./plugins/akbun-pulse/skills/github-daily-pulse/) | 오늘 GitHub에서 한 일을 복습 문서로 정리할 때 |
+| [github-period-pulse](./plugins/akbun-pulse/skills/github-period-pulse/) | 한 기간의 GitHub 결과를 주간회의 브리프로 만들 때 |
+| [readwise-daily-pulse](./plugins/akbun-pulse/skills/readwise-daily-pulse/) | 어제 Readwise에 쌓인 글을 한 번에 훑고 싶을 때 |
 
 </details>
 
@@ -263,49 +263,49 @@ skill 이름을 누르면 문서로 이동합니다.
 
 <details><summary>DaVinci Resolve 영상 편집</summary>
 
-| skill | 하는 일 |
+| skill | 이럴 때 쓰세요 |
 |---|---|
-| [akbun-davinciresolve-workflow](./plugins/akbun-editvideo/skills/akbun-davinciresolve-workflow/) | 여행 브이로그 편집 전체 순서 |
-| [akbun-davinciresolve-timeline-chrono](./plugins/akbun-editvideo/skills/akbun-davinciresolve-timeline-chrono/) | 촬영 시간순 타임라인 |
-| [davinciresolve-cut-travelflow](./plugins/akbun-editvideo/skills/davinciresolve-cut-travelflow/) | 여행 컷 편집·안정화 |
-| [akbun-davinciresolve-cut-new-york](./plugins/akbun-editvideo/skills/akbun-davinciresolve-cut-new-york/) | 도시 몽타주 컷 |
-| [akbun-davinciresolve-logconvert](./plugins/akbun-editvideo/skills/akbun-davinciresolve-logconvert/) | Log 판정과 LUT 변환 |
-| [akbun-davinciresolve-exposure](./plugins/akbun-editvideo/skills/akbun-davinciresolve-exposure/) | 시간대별 밝기 맞춤 |
-| [akbun-davinciresolve-whitebalance](./plugins/akbun-editvideo/skills/akbun-davinciresolve-whitebalance/) | 화이트밸런스 |
-| [akbun-davinciresolve-contrast](./plugins/akbun-editvideo/skills/akbun-davinciresolve-contrast/) | 대비 |
-| [akbun-davinciresolve-saturation](./plugins/akbun-editvideo/skills/akbun-davinciresolve-saturation/) | 채도 보충 |
-| [akbun-davinciresolve-sky](./plugins/akbun-editvideo/skills/akbun-davinciresolve-sky/) | 하늘만 진하게 |
-| [akbun-davinciresolve-look-japan-summer](./plugins/akbun-editvideo/skills/akbun-davinciresolve-look-japan-summer/) | 일본 여름 룩 |
-| [akbun-davinciresolve-look-tokyo-night](./plugins/akbun-editvideo/skills/akbun-davinciresolve-look-tokyo-night/) | 도쿄 야간 룩 |
-| [akbun-davinciresolve-look-still](./plugins/akbun-editvideo/skills/akbun-davinciresolve-look-still/) | 자연주의 드라마 룩 |
-| [akbun-davinciresolve-look-new-york](./plugins/akbun-editvideo/skills/akbun-davinciresolve-look-new-york/) | 뉴욕 도시 룩 |
-| [davinciresolve-face-privacy](./plugins/akbun-editvideo/skills/davinciresolve-face-privacy/) | 얼굴·개인정보 약한 모자이크 |
-| [davinciresolve-face-mosaic](./plugins/akbun-editvideo/skills/davinciresolve-face-mosaic/) | 얼굴만 모자이크 |
-| [davinciresolve-subtitle-travelnote](./plugins/akbun-editvideo/skills/davinciresolve-subtitle-travelnote/) | 여행 자막 |
-| [davinciresolve-subtitle-devtalk](./plugins/akbun-editvideo/skills/davinciresolve-subtitle-devtalk/) | 개발자 영상 자막 |
-| [akbun-davinciresolve-caption-template](./plugins/akbun-editvideo/skills/akbun-davinciresolve-caption-template/) | 다시 쓰는 자막 템플릿 |
-| [davinciresolve-sfx-epidemicsound](./plugins/akbun-editvideo/skills/davinciresolve-sfx-epidemicsound/) | 효과음·환경음·배경음악 편집 |
-| [davinciresolve-bgm-epidemicsound](./plugins/akbun-editvideo/skills/davinciresolve-bgm-epidemicsound/) | 배경음악 고르기 |
-| [davinciresolve-export-youtube](./plugins/akbun-editvideo/skills/davinciresolve-export-youtube/) | YouTube 기본 프리셋 출력 |
-| [davinciresolve-youtube-shorts](./plugins/akbun-editvideo/skills/davinciresolve-youtube-shorts/) | 세로 Shorts 후보 |
-| [akbun-vlog-prepared-devtalk](./plugins/akbun-editvideo/skills/akbun-vlog-prepared-devtalk/) | 촬영 전 인터뷰로 개발자 브이로그 기획 |
-| [akbun-vlog-shotsketch](./plugins/akbun-editvideo/skills/akbun-vlog-shotsketch/) | 샷 스케치 |
-| [akbun-vlog-storyboard](./plugins/akbun-editvideo/skills/akbun-vlog-storyboard/) | 스토리보드 |
-| [davinciresolve-style-essay](./plugins/akbun-editvideo/skills/davinciresolve-style-essay/) | 기술 설명 편집 스타일 |
-| [davinciresolve-style-project](./plugins/akbun-editvideo/skills/davinciresolve-style-project/) | 프로젝트 diary 편집 스타일 |
-| [akbun-davinciresolve-explainer](./plugins/akbun-editvideo/skills/akbun-davinciresolve-explainer/) | 글·PPTX로 설명 영상 |
-| [akbun-davinciresolve-explainer-dark-diagram](./plugins/akbun-editvideo/skills/akbun-davinciresolve-explainer-dark-diagram/) | 어두운 다이어그램 설명 영상, 녹음에 맞춤 |
-| [akbun-davinciresolve-explainer-night-gouache](./plugins/akbun-editvideo/skills/akbun-davinciresolve-explainer-night-gouache/) | 손채색 레이어가 말하는 순서대로 튀어나오는 설명 영상, 필요할 때만 후광·펀치 인 |
-| [akbun-davinciresolve-explainer-scribble-black](./plugins/akbun-editvideo/skills/akbun-davinciresolve-explainer-scribble-black/) | 검정 보드 손그림 설명 영상, 글씨는 Text+ 써지기·획은 레이어 PNG로 한 번에 한 획씩 |
-| [akbun-davinciresolve-explainer-ember-grid](./plugins/akbun-editvideo/skills/akbun-davinciresolve-explainer-ember-grid/) | 검정 격자 다큐멘터리 설명 영상, 글자는 Text+·선과 사물은 레이어 PNG로 Inspector에서 수정 |
-| [akbun-davinciresolve-explainer-slate-marker](./plugins/akbun-editvideo/skills/akbun-davinciresolve-explainer-slate-marker/) | 검정 슬레이트 카드·손글씨 캡션 설명 영상을 Fusion 도형으로, Inspector에서 수정 |
-| [akbun-davinciresolve-explainer-live-ink](./plugins/akbun-editvideo/skills/akbun-davinciresolve-explainer-live-ink/) | 검정 판 위 손글씨가 한 글자씩 써지는 설명 영상을 Fusion 마스크로, Inspector에서 수정 |
-| [akbun-davinciresolve-narration-cleanup](./plugins/akbun-editvideo/skills/akbun-davinciresolve-narration-cleanup/) | 내레이션 숨소리·쉼 정리 |
-| [akbun-review-video-for-retention](./plugins/akbun-editvideo/skills/akbun-review-video-for-retention/) | 시청 지속 기준 영상 리뷰 |
-| [akbun-davinciresolve-article-overlay](./plugins/akbun-editvideo/skills/akbun-davinciresolve-article-overlay/) | 본편 위에 기사 발췌 패널 |
-| [akbun-edit-page-tour-lilac](./plugins/akbun-editvideo/skills/akbun-edit-page-tour-lilac/) | 웹 페이지 스크린샷을 짚어 가는 장면 |
-| [akbun-edit-quote-cards-lilac](./plugins/akbun-editvideo/skills/akbun-edit-quote-cards-lilac/) | 글 카드를 겹쳐 쌓고 형광펜 |
-| [akbun-edit-terminal-callout-amber](./plugins/akbun-editvideo/skills/akbun-edit-terminal-callout-amber/) | 터미널 녹화에 화살표·라벨 |
+| [akbun-davinciresolve-workflow](./plugins/akbun-editvideo/skills/akbun-davinciresolve-workflow/) | 말소리 없는 여행 브이로그를 처음부터 끝까지 편집할 때 |
+| [akbun-davinciresolve-timeline-chrono](./plugins/akbun-editvideo/skills/akbun-davinciresolve-timeline-chrono/) | 촬영한 클립을 찍은 시간순으로 늘어놓고 싶을 때 |
+| [davinciresolve-cut-travelflow](./plugins/akbun-editvideo/skills/davinciresolve-cut-travelflow/) | 여행 클립을 흐름 있게 자르고 흔들림을 잡을 때 |
+| [akbun-davinciresolve-cut-new-york](./plugins/akbun-editvideo/skills/akbun-davinciresolve-cut-new-york/) | 도시 풍경을 리듬감 있는 몽타주로 이을 때 |
+| [akbun-davinciresolve-logconvert](./plugins/akbun-editvideo/skills/akbun-davinciresolve-logconvert/) | Log로 찍은 영상인지 판정하고 LUT로 변환할 때 |
+| [akbun-davinciresolve-exposure](./plugins/akbun-editvideo/skills/akbun-davinciresolve-exposure/) | 시간대가 다른 클립의 밝기를 맞출 때 |
+| [akbun-davinciresolve-whitebalance](./plugins/akbun-editvideo/skills/akbun-davinciresolve-whitebalance/) | 클립마다 색온도가 달라 화면이 누렇거나 퍼렇게 보일 때 |
+| [akbun-davinciresolve-contrast](./plugins/akbun-editvideo/skills/akbun-davinciresolve-contrast/) | 화면이 밋밋해 대비를 잡아야 할 때 |
+| [akbun-davinciresolve-saturation](./plugins/akbun-editvideo/skills/akbun-davinciresolve-saturation/) | 색이 바래 보여 채도를 조금 보충할 때 |
+| [akbun-davinciresolve-sky](./plugins/akbun-editvideo/skills/akbun-davinciresolve-sky/) | 하늘만 진하게 살리고 싶을 때 |
+| [akbun-davinciresolve-look-japan-summer](./plugins/akbun-editvideo/skills/akbun-davinciresolve-look-japan-summer/) | 밝고 산뜻한 일본 여름 느낌의 룩을 입힐 때 |
+| [akbun-davinciresolve-look-tokyo-night](./plugins/akbun-editvideo/skills/akbun-davinciresolve-look-tokyo-night/) | 네온이 도는 도쿄 야경 룩을 입힐 때 |
+| [akbun-davinciresolve-look-still](./plugins/akbun-editvideo/skills/akbun-davinciresolve-look-still/) | 차분한 자연주의 드라마 룩을 입힐 때 |
+| [akbun-davinciresolve-look-new-york](./plugins/akbun-editvideo/skills/akbun-davinciresolve-look-new-york/) | 도시적인 뉴욕 룩을 입힐 때 |
+| [davinciresolve-face-privacy](./plugins/akbun-editvideo/skills/davinciresolve-face-privacy/) | 얼굴이 보이는 장면을 넓고 약하게 가릴 때 |
+| [davinciresolve-face-mosaic](./plugins/akbun-editvideo/skills/davinciresolve-face-mosaic/) | 필요한 영역만 얼굴 모자이크하고 배경은 그대로 둘 때 |
+| [davinciresolve-subtitle-travelnote](./plugins/akbun-editvideo/skills/davinciresolve-subtitle-travelnote/) | 여행 영상에 메모 같은 자막을 넣을 때 |
+| [davinciresolve-subtitle-devtalk](./plugins/akbun-editvideo/skills/davinciresolve-subtitle-devtalk/) | 개발자 말하는 영상에 대사·키워드 자막을 넣을 때 |
+| [akbun-davinciresolve-caption-template](./plugins/akbun-editvideo/skills/akbun-davinciresolve-caption-template/) | 같은 모양의 자막을 여러 영상에서 다시 쓰고 싶을 때 |
+| [davinciresolve-sfx-epidemicsound](./plugins/akbun-editvideo/skills/davinciresolve-sfx-epidemicsound/) | 장면에 효과음·환경음·배경음악을 깔 때 |
+| [davinciresolve-bgm-epidemicsound](./plugins/akbun-editvideo/skills/davinciresolve-bgm-epidemicsound/) | 영상 분위기에 맞는 배경음악을 고를 때 |
+| [davinciresolve-export-youtube](./plugins/akbun-editvideo/skills/davinciresolve-export-youtube/) | YouTube에 올릴 파일을 기본 프리셋으로 뽑을 때 |
+| [davinciresolve-youtube-shorts](./plugins/akbun-editvideo/skills/davinciresolve-youtube-shorts/) | 긴 영상에서 세로 Shorts를 뽑아 렌더·업로드할 때 |
+| [akbun-vlog-prepared-devtalk](./plugins/akbun-editvideo/skills/akbun-vlog-prepared-devtalk/) | 촬영 전에 내 경험을 인터뷰로 개발자 브이로그 이야기로 만들 때 |
+| [akbun-vlog-shotsketch](./plugins/akbun-editvideo/skills/akbun-vlog-shotsketch/) | 한 샷의 구도·카메라 위치·빛을 미리 정할 때 |
+| [akbun-vlog-storyboard](./plugins/akbun-editvideo/skills/akbun-vlog-storyboard/) | 어떤 장면을 어떤 순서로 찍을지 한눈에 보고 싶을 때 |
+| [davinciresolve-style-essay](./plugins/akbun-editvideo/skills/davinciresolve-style-essay/) | 기술을 설명하는 에세이형 영상의 편집 기준이 필요할 때 |
+| [davinciresolve-style-project](./plugins/akbun-editvideo/skills/davinciresolve-style-project/) | 프로젝트 과정을 기록하는 diary형 영상의 편집 기준이 필요할 때 |
+| [akbun-davinciresolve-explainer](./plugins/akbun-editvideo/skills/akbun-davinciresolve-explainer/) | 글·PPTX로 Resolve에서 고칠 수 있는 설명 영상을 만들 때 |
+| [akbun-davinciresolve-explainer-dark-diagram](./plugins/akbun-editvideo/skills/akbun-davinciresolve-explainer-dark-diagram/) | 어두운 다이어그램 설명 영상을 만들고 내 녹음에 맞출 때 |
+| [akbun-davinciresolve-explainer-night-gouache](./plugins/akbun-editvideo/skills/akbun-davinciresolve-explainer-night-gouache/) | 손채색 그림이 말하는 순서대로 튀어나오는 설명 영상을 만들 때 |
+| [akbun-davinciresolve-explainer-scribble-black](./plugins/akbun-editvideo/skills/akbun-davinciresolve-explainer-scribble-black/) | 보드에 써 내려가는 손그림 설명 영상을 Resolve에서 고치며 만들 때 |
+| [akbun-davinciresolve-explainer-ember-grid](./plugins/akbun-editvideo/skills/akbun-davinciresolve-explainer-ember-grid/) | 숫자·선으로 차분히 푸는 설명 영상을 Resolve에서 고치며 만들 때 |
+| [akbun-davinciresolve-explainer-slate-marker](./plugins/akbun-editvideo/skills/akbun-davinciresolve-explainer-slate-marker/) | 카드와 상태 변화로 시스템 동작을 보여 주는 설명 영상을 Resolve에서 고치며 만들 때 |
+| [akbun-davinciresolve-explainer-live-ink](./plugins/akbun-editvideo/skills/akbun-davinciresolve-explainer-live-ink/) | 손글씨로 적어 가는 설명 영상을 Resolve에서 고치며 만들 때 |
+| [akbun-davinciresolve-narration-cleanup](./plugins/akbun-editvideo/skills/akbun-davinciresolve-narration-cleanup/) | 녹음한 내레이션의 숨소리·긴 쉼을 정리할 때 |
+| [akbun-review-video-for-retention](./plugins/akbun-editvideo/skills/akbun-review-video-for-retention/) | 만든 영상이 끝까지 볼 만한지 시청 지속 기준으로 점검할 때 |
+| [akbun-davinciresolve-article-overlay](./plugins/akbun-editvideo/skills/akbun-davinciresolve-article-overlay/) | 본편 위에 기사 문장을 발췌 패널로 보여 줄 때 |
+| [akbun-edit-page-tour-lilac](./plugins/akbun-editvideo/skills/akbun-edit-page-tour-lilac/) | 웹 페이지 스크린샷을 짚어 가며 설명할 때 |
+| [akbun-edit-quote-cards-lilac](./plugins/akbun-editvideo/skills/akbun-edit-quote-cards-lilac/) | 인용 글 카드를 쌓고 형광펜으로 강조할 때 |
+| [akbun-edit-terminal-callout-amber](./plugins/akbun-editvideo/skills/akbun-edit-terminal-callout-amber/) | 터미널 녹화 화면에 화살표·라벨을 붙여 짚을 때 |
 
 </details>
 
@@ -313,12 +313,12 @@ skill 이름을 누르면 문서로 이동합니다.
 
 <details><summary>채널·영상 설정과 분석</summary>
 
-| skill | 하는 일 |
+| skill | 이럴 때 쓰세요 |
 |---|---|
-| [akbun-youtube-plan-channel-settings](./plugins/akbun-youtube/skills/akbun-youtube-plan-channel-settings/) | 채널 설정표 |
-| [akbun-youtube-set-video-metadata](./plugins/akbun-youtube/skills/akbun-youtube-set-video-metadata/) | 올린 영상의 제목·설명·태그 입력 |
-| [akbun-youtube-translate-title-description](./plugins/akbun-youtube/skills/akbun-youtube-translate-title-description/) | 제목·설명 다국어 등록 |
-| [akbun-youtube-analyze-my-videos](./plugins/akbun-youtube/skills/akbun-youtube-analyze-my-videos/) | 내 영상 지표 비교 |
-| [akbun-youtube-analyze-my-style](./plugins/akbun-youtube/skills/akbun-youtube-analyze-my-style/) | 내 영상 스타일 정리 |
+| [akbun-youtube-plan-channel-settings](./plugins/akbun-youtube/skills/akbun-youtube-plan-channel-settings/) | 채널을 만들거나 정비하며 설정표가 필요할 때 |
+| [akbun-youtube-set-video-metadata](./plugins/akbun-youtube/skills/akbun-youtube-set-video-metadata/) | 올린 영상의 제목·설명·태그를 입력할 때 |
+| [akbun-youtube-translate-title-description](./plugins/akbun-youtube/skills/akbun-youtube-translate-title-description/) | 제목·설명을 여러 언어로 등록할 때 |
+| [akbun-youtube-analyze-my-videos](./plugins/akbun-youtube/skills/akbun-youtube-analyze-my-videos/) | 내 영상들의 지표를 비교해 볼 때 |
+| [akbun-youtube-analyze-my-style](./plugins/akbun-youtube/skills/akbun-youtube-analyze-my-style/) | 내 영상 스타일을 정리해 다음 영상에 쓰고 싶을 때 |
 
 </details>

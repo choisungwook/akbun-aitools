@@ -64,9 +64,6 @@ def body_errors(body, tier):
     errors.append("# 검증: '| 대상 | 방법 | 결과 |' 표에 실제로 돌린 것 한 줄 이상 필요")
   if not re.search(r"Closes #\d+", text):
     errors.append("Closes #<issue 번호> 필요")
-  structure = found.get("구조", [])
-  if tier != "낮음" and not any(line.startswith("```mermaid") for line in structure):
-    errors.append(f"등급 {tier}: # 구조에 바뀐 것의 위치를 그린 mermaid 코드블록 필요")
   risk = found.get("리스크", [])
   declared = next((re.match(r"등급:\s*(\S+)", line)[1] for line in risk if re.match(r"등급:\s*(\S+)", line)), None)
   if declared and declared != tier:

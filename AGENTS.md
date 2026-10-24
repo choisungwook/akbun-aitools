@@ -43,7 +43,7 @@ plugin의 버전을 올린다. 사용자에게 버전 업데이트 여부를 묻
   사용자가 자동 호출을 요청한 경우에만 뺀다.
 - plugin을 추가/삭제하거나 plugin 아래 skill을 추가/삭제하면 `README.md`의 `## plugin 목록` 섹션도 함께 갱신한다.
   plugin이 추가되면 해당 plugin의 `### <plugin-name>` 하위 섹션과 skill 표를 만들고, 삭제되면 그 섹션을 지운다.
-  skill이 추가/삭제되면 해당 plugin 표에서 한 줄짜리 설명 행을 추가/삭제한다. `docs/` 같이 `SKILL.md`가 없는 디렉터리는 목록에 넣지 않는다.
+  skill이 추가/삭제되면 해당 plugin 표에서 행을 추가/삭제한다. 표 머리줄은 `| skill | 이럴 때 쓰세요 |`이고, 행은 그 skill을 쓰면 좋은 상황을 "~할 때"로 끝나는 한 줄로 쓴다(하는 일이 아니라 상황). `akbun-draw` skill이면 `docs/manual_draw.md`의 상황 표도 같은 변경에서 갱신한다. 머리줄, 행 끝 "때", `docs/manual_draw.md` 목록은 `scripts/validate_plugins.py`가 검사한다. `docs/` 같이 `SKILL.md`가 없는 디렉터리는 목록에 넣지 않는다.
 - `akbun-editvideo` skill을 추가·수정·삭제하거나 스킬의 사용 흐름을 바꾸면 `docs/manual_editvideo.md`와 `docs/terms_editvideo.md`를 같은 변경에서 함께 갱신한다. 매뉴얼은 상황별 안내·해결하는 문제·동작 요약·스킬 링크를, 용어사전은 관련 용어와 정의를 실제 `SKILL.md`와 일치시킨다.
 - `akbun-editvideo` 변경은 `uv run --python 3.12 scripts/validate_editvideo.py`로 frontmatter·문서 목록·링크·manifest·prompt를 검사한다. 공용 `quick_validate.py`가 `disable-model-invocation`을 거부하더라도 필수 키를 삭제하지 않는다.
 - marketplace의 description/category가 바뀐 경우에만 `.claude-plugin/marketplace.json`, `.agents/plugins/marketplace.json`도 함께 수정한다.
@@ -125,13 +125,13 @@ agent가 PR을 머지하면 그 PR이 링크한 기록용 Issue를 같은 작업
 
 | 바꾼 것 | 돌리는 것 | 보는 것 |
 |---|---|---|
-| `plugins/**` 전부 | `uv run --python 3.12 scripts/validate_plugins.py --base origin/main` | manifest 두 파일의 version 일치와 base에서 +1, frontmatter `name`, `README.md` 목록 |
+| `plugins/**` 전부, `README.md`, `docs/manual_draw.md` | `uv run --python 3.12 scripts/validate_plugins.py --base origin/main` | manifest 두 파일의 version 일치와 base에서 +1, frontmatter `name`, `README.md` 목록·표 머리줄·행 끝 "때", `docs/manual_draw.md` skill 목록·로컬 링크 |
 | `plugins/akbun-editvideo/**`, `docs/**` | `uv run --python 3.12 scripts/validate_editvideo.py` | 매뉴얼·용어사전·defaultPrompt 정합성 |
 | `scripts/**/*.py`, skill의 `scripts/` | 그 스크립트의 `--selftest` 또는 `test_*.py` | 바꾼 분기를 검사가 실제로 지나는지 |
 | `SKILL.md`의 동작·수치·흐름 | 그 skill을 실제 입력 하나로 끝까지 실행 | 결과 파일 또는 출력 요약과 틀린 곳 |
 | 그림·영상 스타일 skill | 이미지 작업 규칙의 모델 2개 이상 시험 | 결과가 한 모양으로 몰리지 않는지 |
 | `.github/workflows/**`, `scripts/` 검사 | 같은 명령을 로컬에서 돌리고, 일부러 틀린 입력으로 실패하는지 확인 | 빨강이 났다가 초록이 되는지 |
-| PR 본문 | `PR_BODY="$(cat body.md)" uv run --python 3.12 scripts/check_pr_body.py --files changed.txt` | 구조, 검증 표, 리스크 등급, 40줄 |
+| PR 본문 | `PR_BODY="$(cat body.md)" uv run --python 3.12 scripts/check_pr_body.py --files changed.txt` | 검증 표, 리스크 등급, 40줄 |
 
 돌리지 않은 검사는 PR 검증 표의 결과 칸에 "검증하지 않음"과 이유를 남긴다.
 
@@ -152,7 +152,6 @@ PR을 올리기 전에 diff를 작성 맥락이 없는 새 subagent에게 준다
 - agent의 승인·리뷰 코멘트는 사람 승인이 아니다. agent에게 작업을 시킨 사람이 리뷰어이고, 코드를 직접 쓴 것과 같은 책임으로 검증 절의 증거를 읽는다.
 - 사람이 읽은 뒤 커밋이 더 붙으면(agent의 추가 push, 충돌 해결) 그 커밋의 diff를 다시 읽는다.
 - 사람이 답할 질문은 "자동 검사와 Copilot이 무엇을 못 보나"다. 답을 쓸 수 없으면 검증 절의 증거가 부족한 것이므로 머지하지 않고 검증을 더 만든다.
-- 사람이 읽어야 하는 PR(중간·높음)은 diff를 읽기 전에 그림부터 본다. PR 본문 `# 구조`에 바뀐 것이 어디에 끼는지 mermaid 한 장을 둔다. 노드는 바뀐 파일·skill·스크립트와 그것을 부르는 것, 그것이 부르는 것만 12개 이내, 바뀐 노드는 `classDef changed`로 굵게. `scripts/check_pr_body.py`가 mermaid 코드블록 유무를 검사한다.
 
 ## 리뷰 대응
 
@@ -170,14 +169,14 @@ Copilot과 사람 리뷰어의 지적에 답하지 않은 채 머지하지 않�
 - push 전에 PR 브랜치의 커밋을 변경 종류(feat·refactor·docs 등)별로 rebase해 묶는다.
 - 올리기 전에 `scripts/check_pr_body.py`로 본문을 검사한다. `Validate PR` CI가 같은 검사를 돌린다.
 - PR 설명은 한국어로 쓴다. PR body는 리뷰어가 diff를 옆에 두고 1분 안에 읽는 브리핑이고, squash 커밋 본문이 된다. 40줄 이내.
-- `.github/pull_request_template.md`의 H1 구조(`# 구현`, `# 구조`, `# 검증`, `# 리스크`)를 따른다. PR body는 `.claude/rules/markdown.md`의 헤더 규칙 대상이 아니다.
+- `.github/pull_request_template.md`의 H1 구조(`# 구현`, `# 검증`, `# 리스크`)를 따른다. 구조 그림(mermaid)은 넣지 않는다. PR body는 `.claude/rules/markdown.md`의 헤더 규칙 대상이 아니다.
 - 개조식으로 쓰고 문장은 명사 또는 `-음`, `-함`으로 끝낸다.
-- `구현`, `검증`, 기록용 Issue 링크(`Closes #<issue>`)는 항상 남긴다. `구조`는 등급이 중간·높음이면 mermaid 한 장을 넣고, 낮음이면 헤더째 삭제한다. `리스크`는 등급이 낮음이고 못 보는 것이 없을 때만 헤더째 삭제한다. `어려웠던 점` 헤더는 쓰지 않는다.
-- `구현` 첫 줄은 사용자(또는 이 코드를 쓰는 동료)에게 무엇이 달라지는지 한 줄. 근거는 실제 파일·함수 이름 한 줄. 이름을 바꾸거나 옮겼으면 전후 이름 모두.
+- `구현`, `검증`, 기록용 Issue 링크(`Closes #<issue>`)는 항상 남긴다. `리스크`는 등급이 낮음이고 못 보는 것이 없을 때만 헤더째 삭제한다. `어려웠던 점` 헤더는 쓰지 않는다.
+- `구현` 첫 줄은 사용자(또는 이 코드를 쓰는 동료)에게 무엇이 달라지는지 한 줄. 근거는 바뀐 skill·파일마다 무엇인지 한 줄씩. 이름을 바꾸거나 옮겼으면 전후 이름 모두.
 - `검증`은 `| 대상 | 방법 | 결과 |` 표 하나. 실제로 돌린 것마다 한 줄이고 대상은 Issue의 완료 조건 하나 또는 돌린 명령·skill 이름, 방법은 입력과 명령, 결과는 출력에서 옮긴 사실. 수치는 전 → 후와 단위. 새 컨텍스트 리뷰도 한 줄. 돌리지 않은 것은 결과에 "검증하지 않음"과 이유. "통과"만 쓰지 않는다.
 - `리스크` 첫 줄은 `등급: 낮음|중간|높음`(리스크 등급 표). 둘째 줄은 자동 검사와 Copilot이 못 보는 것과 사람이 그것을 어떻게 확인하는지. 누가 언제 영향을 받는지가 있으면 같이 쓴다.
 - 왜 하는지와 의사결정은 기록용 Issue에 두고 PR에는 링크만 남긴다.
-- 각 섹션은 요약 한 줄과 필요한 경우 근거 목록 하나까지만 사용한다. `구조`는 mermaid 코드블록 하나만 두고 글을 보태지 않는다. 40줄 제한에서 코드블록 안은 세지 않는다.
+- 각 섹션은 요약 한 줄과 필요한 경우 근거 목록 하나까지만 사용한다. 40줄 제한에서 코드블록 안은 세지 않는다.
 - 쓰지 않는 것: 커밋 SHA 나열, 파일별 체크리스트, 로그·메트릭 표 붙여넣기, "완벽"·"문제없음" 같은 판정어, Summary·Test plan 보일러플레이트. diff와 실제로 돌린 결과에서만 쓰고 기억이나 계획으로 쓰지 않는다.
 
 ## 세션 중 원칙

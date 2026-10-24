@@ -32,14 +32,13 @@
 - `SKILL.md`가 거짓말한다: 설명하는 옵션·키·단계가 같은 skill의 `scripts/`·`references/`에 없거나 다르게 동작하면 지적한다.
 - 문서끼리 어긋난다: 같은 값이 표와 본문에서 다르거나, `README.md`·`docs/`가 `SKILL.md`와 다른 이름·흐름을 말하면 지적한다.
 - PR 본문이 diff와 다르다: 아래 `## PR 본문`.
-- `Validate PR`·`Validate editvideo` CI가 이미 검사하는 것(manifest version 일치와 +1, frontmatter `name`, `README.md` 목록, PR 본문 구조·등급, `akbun-editvideo`의 깨진 로컬 링크)은 다시 지적하지 않는다. 다른 plugin의 깨진 로컬 링크는 CI가 보지 않으므로 지적한다. CI가 못 보는 의미상의 어긋남에 집중한다.
+- `Validate PR`·`Validate editvideo` CI가 이미 검사하는 것(manifest version 일치와 +1, frontmatter `name`, `README.md` 목록·표 머리줄·행 끝, `docs/manual_draw.md` 목록·링크, PR 본문 구조·등급, `akbun-editvideo`의 깨진 로컬 링크)은 다시 지적하지 않는다. 다른 plugin의 깨진 로컬 링크는 CI가 보지 않으므로 지적한다. CI가 못 보는 의미상의 어긋남에 집중한다.
 
 ## PR 본문
 
-PR 본문은 `.github/pull_request_template.md` 구조(`# 구현`, `# 구조`, `# 검증`, `# 리스크`)다. diff와 대조한다.
+PR 본문은 `.github/pull_request_template.md` 구조(`# 구현`, `# 검증`, `# 리스크`)다. diff와 대조한다.
 
 - `# 구현` 첫 줄이 diff에서 가장 큰 변경과 다르면 지적한다. 예: 본문은 설명 수정이라는데 diff는 스크립트 동작을 바꿈.
-- `# 구조`의 mermaid 노드가 저장소에 없는 파일을 가리키거나, diff에서 바뀐 주요 파일(스크립트, SKILL.md, workflow)이 그림에 없으면 지적한다. 노드가 12개를 넘거나 `changed` 표시가 diff와 다르면 지적한다.
 - `# 검증` 표의 대상·방법이 diff에서 바뀐 것과 안 맞으면 지적한다.
 - diff에 `scripts/**/*.py`나 skill의 `scripts/` 파일이 있는데 `# 검증`에 그 검사(`--selftest`, `test_*.py`)를 돌린 줄이 없으면 지적한다.
 - diff가 `SKILL.md`의 동작·수치·흐름을 바꿨는데 `# 검증`에 실제 입력으로 실행한 줄이 없고 "검증하지 않음"도 없으면 지적한다.

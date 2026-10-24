@@ -78,6 +78,37 @@ def plugin_errors(root):
     errors.extend(skill_errors(plugin, found))
   errors.extend(f"README.md: '## plugin 목록'에 없는 skill {rel}" for rel in sorted(found - listed))
   errors.extend(f"README.md: 존재하지 않는 skill 링크 {rel}" for rel in sorted(listed - found))
+  errors.extend(table_errors(index))
+  errors.extend(manual_errors(root, found))
+  return errors
+
+
+def table_errors(index):
+  """plugin 목록의 skill 표: 머리줄은 '| skill | 이럴 때 쓰세요 |', 표는 plugin 절마다 하나, 행은 '때'로 끝난다."""
+  errors = []
+  headers = re.findall(r"^\|\s*skill\s*\|.*$", index, re.M | re.I)
+  errors += [f"README.md: skill 표 머리줄은 '| skill | 이럴 때 쓰세요 |'여야 함 ('{h.strip()}')" for h in headers if h.strip() != "| skill | 이럴 때 쓰세요 |"]
+  sections = len(re.findall(r"^### ", index, re.M))
+  if len(headers) != sections:
+    errors.append(f"README.md: plugin 절 {sections}개, skill 표 머리줄 {len(headers)}개")
+  for name, text in re.findall(r"^\| \[([^\]]+)\]\(\./plugins/[^)]+\) \|([^|\n]*)\|\s*$", index, re.M):
+    if not text.strip().endswith("때"):
+      errors.append(f"README.md: {name} 행은 쓰면 좋은 상황을 '~할 때'로 끝내야 함 ('{text.strip()}')")
+  return errors
+
+
+def manual_errors(root, found):
+  """docs/manual_draw.md가 akbun-draw의 skill을 빠짐없이, 없는 skill 없이 다루는지 본다."""
+  manual = root / "docs/manual_draw.md"
+  draw = {rel.split("/")[-1] for rel in found if rel.startswith("akbun-draw/")}
+  if not manual.exists():
+    return ["docs/manual_draw.md 없음"]
+  linked = set(re.findall(r"plugins/akbun-draw/skills/([^/\s)]+)/", manual.read_text()))
+  errors = [f"docs/manual_draw.md: 빠진 skill {name}" for name in sorted(draw - linked)]
+  errors += [f"docs/manual_draw.md: 존재하지 않는 skill {name}" for name in sorted(linked - draw)]
+  for target in re.findall(r"\]\(([^)#\s]+)(?:#[^)]*)?\)", manual.read_text()):
+    if "://" not in target and not (manual.parent / target).exists():
+      errors.append(f"docs/manual_draw.md: 깨진 링크 {target}")
   return errors
 
 
@@ -136,7 +167,7 @@ def version_errors(root, base):
 
 
 def main():
-  parser = argparse.ArgumentParser(description="plugin manifest·SKILL.md frontmatter·README 목록 정합성 검사")
+  parser = argparse.ArgumentParser(description="plugin manifest·SKILL.md frontmatter·README 목록·manual_draw 정합성 검사")
   parser.add_argument("--base", help="이 ref와 비교해 바뀐 plugin의 version 증가를 검사")
   args = parser.parse_args()
   errors = plugin_errors(ROOT)
@@ -147,7 +178,7 @@ def main():
     return 1
   plugins = len([path for path in (ROOT / "plugins").iterdir() if path.is_dir()])
   skills = len(list((ROOT / "plugins").glob("*/skills/*/SKILL.md")))
-  print(f"plugin {plugins}개, skill {skills}개: manifest version·frontmatter·README 목록 정합성 확인")
+  print(f"plugin {plugins}개, skill {skills}개: manifest version·frontmatter·README 목록·manual_draw 정합성 확인")
   return 0
 
 
