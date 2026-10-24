@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080">
+<defs>
+<mask id="pen1" maskUnits="userSpaceOnUse" x="0" y="0" width="1920" height="1080"><path d="M249 396 L355 396" stroke="#FFFFFF" stroke-width="110" fill="none" data-draw="0.00 0.40"/></mask>
+<mask id="pen2" maskUnits="userSpaceOnUse" x="0" y="0" width="1920" height="1080"><path d="M549 396 L677 396" stroke="#FFFFFF" stroke-width="110" fill="none" data-draw="1.30 1.70"/></mask>
+<mask id="pen3" maskUnits="userSpaceOnUse" x="0" y="0" width="1920" height="1080"><path d="M849 396 L985 396" stroke="#FFFFFF" stroke-width="110" fill="none" data-draw="2.60 3.00"/></mask>
+<mask id="pen4" maskUnits="userSpaceOnUse" x="0" y="0" width="1920" height="1080"><path d="M1149 396 L1270 396" stroke="#FFFFFF" stroke-width="110" fill="none" data-draw="3.90 4.30"/></mask>
+<mask id="pen5" maskUnits="userSpaceOnUse" x="0" y="0" width="1920" height="1080"><path d="M1142 613 L1514 613" stroke="#FFFFFF" stroke-width="76" fill="none" data-draw="5.35 7.05"/></mask>
+<mask id="pen6" maskUnits="userSpaceOnUse" x="0" y="0" width="1920" height="1080"><path d="M249 776 L355 776" stroke="#FFFFFF" stroke-width="110" fill="none" data-draw="7.95 8.35"/></mask>
+<mask id="pen7" maskUnits="userSpaceOnUse" x="0" y="0" width="1920" height="1080"><path d="M549 776 L655 776" stroke="#FFFFFF" stroke-width="110" fill="none" data-draw="8.65 9.05"/></mask>
+<mask id="pen8" maskUnits="userSpaceOnUse" x="0" y="0" width="1920" height="1080"><path d="M849 776 L955 776" stroke="#FFFFFF" stroke-width="110" fill="none" data-draw="9.35 9.75"/></mask>
+<mask id="pen9" maskUnits="userSpaceOnUse" x="0" y="0" width="1920" height="1080"><path d="M1149 776 L1255 776" stroke="#FFFFFF" stroke-width="110" fill="none" data-draw="10.05 10.45"/></mask>
+<mask id="pen10" maskUnits="userSpaceOnUse" x="0" y="0" width="1920" height="1080"><path d="M1362 803 L1822 803" stroke="#FFFFFF" stroke-width="76" fill="none" data-draw="12.20 14.00"/></mask>
+</defs>
+<text x="260" y="420" font-family="'Nanum Pen'" font-size="110" letter-spacing="13" fill="#F4F2EA" mask="url(#pen1)">1s</text>
+<path d="M390 385 L510 385" stroke="#F4F2EA" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none" data-draw="0.55 0.70"/>
+<path d="M495.3 374.7 L510 385 L495.3 395.3" stroke="#F4F2EA" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none" data-draw="0.70 0.85"/>
+<text x="560" y="420" font-family="'Nanum Pen'" font-size="110" letter-spacing="13" fill="#F4F2EA" mask="url(#pen2)">2s</text>
+<path d="M690 385 L810 385" stroke="#F4F2EA" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none" data-draw="1.85 2.00"/>
+<path d="M795.3 374.7 L810 385 L795.3 395.3" stroke="#F4F2EA" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none" data-draw="2.00 2.15"/>
+<text x="860" y="420" font-family="'Nanum Pen'" font-size="110" letter-spacing="13" fill="#F4F2EA" mask="url(#pen3)">4s</text>
+<path d="M990 385 L1110 385" stroke="#F4F2EA" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none" data-draw="3.15 3.30"/>
+<path d="M1095.3 374.7 L1110 385 L1095.3 395.3" stroke="#F4F2EA" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none" data-draw="3.30 3.45"/>
+<text x="1160" y="420" font-family="'Nanum Pen'" font-size="110" letter-spacing="13" fill="#F4F2EA" mask="url(#pen4)">8s</text>
+<path d="M1205 560 L1205 455" stroke="#FC9E36" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none" data-draw="4.45 4.60"/>
+<path d="M1194.7 469.7 L1205 455 L1215.3 469.7" stroke="#FC9E36" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none" data-draw="4.60 4.75"/>
+<text x="1150" y="630" font-family="'Nanum Pen'" font-size="76" letter-spacing="9" fill="#FC9E36" mask="url(#pen5)">4번째 재시도</text>
+<text x="260" y="800" font-family="'Nanum Pen'" font-size="110" letter-spacing="13" fill="#F87478" mask="url(#pen6)">1s</text>
+<text x="560" y="800" font-family="'Nanum Pen'" font-size="110" letter-spacing="13" fill="#F87478" mask="url(#pen7)">1s</text>
+<text x="860" y="800" font-family="'Nanum Pen'" font-size="110" letter-spacing="13" fill="#F87478" mask="url(#pen8)">1s</text>
+<text x="1160" y="800" font-family="'Nanum Pen'" font-size="110" letter-spacing="13" fill="#F87478" mask="url(#pen9)">1s</text>
+<path d="M240 822 Q765 828 1290 820" stroke="#F87478" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none" data-draw="10.60 11.30"/>
+<text x="1370" y="820" font-family="'Nanum Pen'" font-size="76" letter-spacing="9" fill="#94D05E" mask="url(#pen10)">다음 = 이전 × 2</text>
+</svg>
