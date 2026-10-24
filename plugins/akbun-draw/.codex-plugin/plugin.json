@@ -1,6 +1,6 @@
 {
   "name": "akbun-draw",
-  "version": "1.0.24",
+  "version": "1.0.25",
   "description": "Image drawing skills by akbun — image-generation prompts and editable SVGs in fixed akbun styles",
   "author": {
     "name": "akbun",
@@ -39,6 +39,7 @@
       "Make a code-window motion graphic: type this function line by line in a white editor window and highlight the line I talk about (akbun-draw-code-window-lilac)",
       "Make a pencil-analogy scene that explains caching with a stick figure, one colored prop and falling tags, timed to my script (akbun-draw-pencil-analogy-graphite)",
       "Make a colored-pencil storybook scene that explains a message queue with characters and a red dashed warning, timed to my script (akbun-draw-storybook-crayon)",
+      "Make a dark slate-card motion graphic that explains how a request moves through these servers, with hand-lettered captions and one meaning per accent color (akbun-draw-slate-marker)",
       "Make a child-like crayon diagram image prompt (wobbly double outlines, scribble fill, gray dashed standby parts) for this system flow (akbun-draw-crayon-milo)",
       "Make a pastel animal-character webtoon page (image prompts + Figma/Canva SVG) from these images and story",
       "Make a 4-panel doodle comic from this story as Instagram carousel images (1080x1350) with reading-order numbers",

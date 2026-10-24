@@ -84,6 +84,9 @@ codex plugin list --json
 <td><a href="./plugins/akbun-draw/skills/akbun-draw-night-gouache/SKILL.md"><img src="./imgs/akbun-draw-night-gouache.jpg" alt="akbun-draw-night-gouache" width="400"></a><br><code>akbun-draw-night-gouache</code></td>
 <td><a href="./plugins/akbun-draw/skills/akbun-draw-crayon-milo/SKILL.md"><img src="./imgs/akbun-draw-crayon-milo.jpg" alt="akbun-draw-crayon-milo" width="400"></a><br><code>akbun-draw-crayon-milo</code></td>
 </tr>
+<tr>
+<td><a href="./plugins/akbun-draw/skills/akbun-draw-slate-marker/SKILL.md"><img src="./imgs/akbun-draw-slate-marker.jpg" alt="akbun-draw-slate-marker" width="400"></a><br><code>akbun-draw-slate-marker</code></td>
+</tr>
 </table>
 
 ### akbun-presentation 예시
@@ -146,6 +149,7 @@ skill 이름을 누르면 문서로 이동합니다.
 | [akbun-draw-pencil-analogy-graphite](./plugins/akbun-draw/skills/akbun-draw-pencil-analogy-graphite/) | 연필 막대 인물로 그리는 비유 모션그래픽 |
 | [akbun-draw-storybook-crayon](./plugins/akbun-draw/skills/akbun-draw-storybook-crayon/) | 색연필 동화책 비유 모션그래픽 |
 | [akbun-draw-crayon-milo](./plugins/akbun-draw/skills/akbun-draw-crayon-milo/) | 아이 크레용 다이어그램 프롬프트 |
+| [akbun-draw-slate-marker](./plugins/akbun-draw/skills/akbun-draw-slate-marker/) | 검정 캔버스 슬레이트 카드와 손글씨 캡션으로 시스템 동작 모션그래픽 |
 | [akbun-generateimage-code](./plugins/akbun-draw/skills/akbun-generateimage-code/) | 코드 설명 그림 프롬프트 |
 | [akbun-draw-webtoon-b](./plugins/akbun-draw/skills/akbun-draw-webtoon-b/) | 파스텔 동물 웹툰 프롬프트와 편집용 SVG |
 | [akbun-draw-webtoon-d](./plugins/akbun-draw/skills/akbun-draw-webtoon-d/) | 흑백 다큐툰 장면 프롬프트 |
