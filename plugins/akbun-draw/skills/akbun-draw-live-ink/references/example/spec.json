@@ -1,0 +1,22 @@
+{
+ "size": [
+  1920,
+  1080
+ ],
+ "fps": 30,
+ "drawings_per_second": 30,
+ "background": "#0C0C07",
+ "grain": 0,
+ "scenes": [
+  {
+   "id": "backoff",
+   "duration": 15.2,
+   "poses": [
+    {
+     "svg": "s1.svg",
+     "at": 0
+    }
+   ]
+  }
+ ]
+}
