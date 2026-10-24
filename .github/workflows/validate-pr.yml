@@ -17,12 +17,12 @@ jobs:
         with:
           fetch-depth: 0
       - uses: astral-sh/setup-uv@v6
-      - name: manifest version·frontmatter·README 목록
+      - name: manifest version·frontmatter·README 목록·manual_draw
         if: github.event_name == 'pull_request'
         env:
           BASE_SHA: ${{ github.event.pull_request.base.sha }}
         run: uv run --python 3.12 scripts/validate_plugins.py --base "$BASE_SHA"
-      - name: manifest version·frontmatter·README 목록 (main)
+      - name: manifest version·frontmatter·README 목록·manual_draw (main)
         if: github.event_name == 'push'
         run: uv run --python 3.12 scripts/validate_plugins.py
       - name: 검사 스크립트 자체 테스트
