@@ -10,7 +10,7 @@ disable-model-invocation: true
 
 요청·메모리·프로세스·권한처럼 눈에 보이지 않는 시스템 동작을 "상자와 상태 변화"로 보여 줄 때 쓴다. 이 skill이 고정하는 것은 그림체다. 무엇을 어디에 몇 개 놓을지는 설명할 내용이 정한다. 같은 영상 안에서도 장면마다 배치가 달라도 된다.
 
-- 코드를 한 줄씩 짚는 장면은 [akbun-draw-code-window-lilac](../akbun-draw-code-window-lilac/SKILL.md), 손그림 비유 장면은 [akbun-draw-night-gouache](../akbun-draw-night-gouache/SKILL.md)의 범위다.
+- 코드를 한 줄씩 짚는 장면은 [akbun-draw-code-window-lilac](../akbun-draw-code-window-lilac/SKILL.md), 손그림 비유 장면은 [akbun-draw-night-gouache](../akbun-draw-night-gouache/SKILL.md), 같은 스타일을 Resolve에서 글자·시점을 고칠 수 있는 타임라인으로 만드는 일은 [akbun-davinciresolve-explainer-slate-marker](../../../akbun-editvideo/skills/akbun-davinciresolve-explainer-slate-marker/SKILL.md)의 범위다.
 - 실제 제품 로고·마스코트를 그리지 않는다. 제품은 이름 글자와 일반 선 아이콘(톱니, 사람, 문서, 원통)으로 나타낸다.
 
 ## 캔버스
