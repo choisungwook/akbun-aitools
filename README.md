@@ -88,6 +88,10 @@ codex plugin list --json
 <td><a href="./plugins/akbun-draw/skills/akbun-draw-slate-marker/SKILL.md"><img src="./imgs/akbun-draw-slate-marker.jpg" alt="akbun-draw-slate-marker" width="400"></a><br><code>akbun-draw-slate-marker</code></td>
 <td><a href="./plugins/akbun-draw/skills/akbun-draw-live-ink/SKILL.md"><img src="./imgs/akbun-draw-live-ink.jpg" alt="akbun-draw-live-ink" width="400"></a><br><code>akbun-draw-live-ink</code></td>
 </tr>
+<tr>
+<td><a href="./plugins/akbun-draw/skills/akbun-draw-ember-grid/SKILL.md"><img src="./imgs/akbun-draw-ember-grid.jpg" alt="akbun-draw-ember-grid" width="400"></a><br><code>akbun-draw-ember-grid</code></td>
+<td><a href="./plugins/akbun-draw/skills/akbun-draw-scribble-black/SKILL.md"><img src="./imgs/akbun-draw-scribble-black.jpg" alt="akbun-draw-scribble-black" width="400"></a><br><code>akbun-draw-scribble-black</code></td>
+</tr>
 </table>
 
 ### akbun-presentation 예시
@@ -150,6 +154,8 @@ skill 이름을 누르면 문서로 이동합니다.
 | [akbun-draw-pencil-analogy-graphite](./plugins/akbun-draw/skills/akbun-draw-pencil-analogy-graphite/) | 연필 막대 인물로 그리는 비유 모션그래픽 |
 | [akbun-draw-storybook-crayon](./plugins/akbun-draw/skills/akbun-draw-storybook-crayon/) | 색연필 동화책 비유 모션그래픽 |
 | [akbun-draw-crayon-milo](./plugins/akbun-draw/skills/akbun-draw-crayon-milo/) | 아이 크레용 다이어그램 프롬프트 |
+| [akbun-draw-scribble-black](./plugins/akbun-draw/skills/akbun-draw-scribble-black/) | 검정 보드에 흰 펜으로 생각 구름·말풍선·막대 인물·수식을 한 획씩 써 내려가는 모션그래픽 |
+| [akbun-draw-ember-grid](./plugins/akbun-draw/skills/akbun-draw-ember-grid/) | 따뜻한 검정 격자 위 큰 흰 숫자·흰 선·납작한 사물로 개념을 차분히 설명하는 모션그래픽 |
 | [akbun-draw-slate-marker](./plugins/akbun-draw/skills/akbun-draw-slate-marker/) | 검정 캔버스 슬레이트 카드와 손글씨 캡션으로 시스템 동작 모션그래픽 |
 | [akbun-draw-live-ink](./plugins/akbun-draw/skills/akbun-draw-live-ink/) | 검정 판 위 펜 손글씨가 말하는 순서대로 한 글자씩 써지는 계산·공식 설명 모션그래픽 |
 | [akbun-generateimage-code](./plugins/akbun-draw/skills/akbun-generateimage-code/) | 코드 설명 그림 프롬프트 |
@@ -290,6 +296,8 @@ skill 이름을 누르면 문서로 이동합니다.
 | [akbun-davinciresolve-explainer](./plugins/akbun-editvideo/skills/akbun-davinciresolve-explainer/) | 글·PPTX로 설명 영상 |
 | [akbun-davinciresolve-explainer-dark-diagram](./plugins/akbun-editvideo/skills/akbun-davinciresolve-explainer-dark-diagram/) | 어두운 다이어그램 설명 영상, 녹음에 맞춤 |
 | [akbun-davinciresolve-explainer-night-gouache](./plugins/akbun-editvideo/skills/akbun-davinciresolve-explainer-night-gouache/) | 손채색 레이어가 말하는 순서대로 튀어나오는 설명 영상, 필요할 때만 후광·펀치 인 |
+| [akbun-davinciresolve-explainer-scribble-black](./plugins/akbun-editvideo/skills/akbun-davinciresolve-explainer-scribble-black/) | 검정 보드 손그림 설명 영상, 글씨는 Text+ 써지기·획은 레이어 PNG로 한 번에 한 획씩 |
+| [akbun-davinciresolve-explainer-ember-grid](./plugins/akbun-editvideo/skills/akbun-davinciresolve-explainer-ember-grid/) | 검정 격자 다큐멘터리 설명 영상, 글자는 Text+·선과 사물은 레이어 PNG로 Inspector에서 수정 |
 | [akbun-davinciresolve-explainer-slate-marker](./plugins/akbun-editvideo/skills/akbun-davinciresolve-explainer-slate-marker/) | 검정 슬레이트 카드·손글씨 캡션 설명 영상을 Fusion 도형으로, Inspector에서 수정 |
 | [akbun-davinciresolve-explainer-live-ink](./plugins/akbun-editvideo/skills/akbun-davinciresolve-explainer-live-ink/) | 검정 판 위 손글씨가 한 글자씩 써지는 설명 영상을 Fusion 마스크로, Inspector에서 수정 |
 | [akbun-davinciresolve-narration-cleanup](./plugins/akbun-editvideo/skills/akbun-davinciresolve-narration-cleanup/) | 내레이션 숨소리·쉼 정리 |

@@ -38,6 +38,9 @@ SVG 요소에 붙이는 시간 속성(장면 시작 기준 초, 그림 단위 1/
                         점선(stroke-dasharray를 그 <path>에 직접 둔 경우)도 점선 모양을 유지한 채 그려진다
   data-write="t0 t1"    <text>의 글자가 t0~t1초 동안 한 글자씩 써진다. 안쪽 <tspan> 글자까지 순서대로 센다.
                         공백만 있는 글자 조각(tspan 사이 들여쓰기)은 세지 않는다
+  data-move="t0 t1 dx dy s cx cy"
+                        t0~t1초 동안 (cx, cy)를 중심으로 s배가 되며 (dx, dy)만큼 옮겨 간다(ease-in-out).
+                        t0 전에는 제자리, t1 뒤에는 옮긴 자리에 머문다. 요소에 원래 transform이 있으면 그 바깥에 건다
 
   uv run render_doodle.py spec.json out.mp4            # 배경색 H.264
   uv run render_doodle.py spec.json out.mov            # 투명 배경 ProRes 4444 (Resolve 오버레이)
@@ -61,7 +64,7 @@ import resvg_py
 from PIL import Image
 from svgpathtools import parse_path
 
-TIMED = ("data-show", "data-draw", "data-write", "data-fade")
+TIMED = ("data-show", "data-draw", "data-write", "data-fade", "data-move")
 EPS = 0.005  # 소수 둘째 자리로 적은 시각(5.17)이 그 그림(5.1667)에 걸리게 하는 반올림 여유
 ET.register_namespace("", "http://www.w3.org/2000/svg")
 
@@ -110,6 +113,15 @@ def draw(el, p):
       el.set("stroke-dashoffset", f"{length * (1 - p):.2f}")
 
 
+def move(el, t):
+  t0, t1, dx, dy, s, cx, cy = (float(v) for v in el.get("data-move").split())
+  u = progress(f"{t0} {t1}", t)
+  u = u * u * (3 - 2 * u)
+  k = 1 + (s - 1) * u
+  outer = f"translate({cx + dx * u:.3f} {cy + dy * u:.3f}) scale({k:.5f}) translate({-cx:.3f} {-cy:.3f})"
+  el.set("transform", f"{outer} {el.get('transform', '')}".strip())
+
+
 def at_length(path, target):
   """경로 시작에서 target 길이인 지점의 T. svgpathtools ilength는 거의 직선인 Q 곡선에서
   'Maximum iterations reached'로 죽어서 이분 탐색으로 찾는다."""
@@ -137,6 +149,8 @@ def at_time(root, t, view=None):
       draw(el, progress(el.get("data-draw"), t))
     if el.get("data-write"):
       write(el, progress(el.get("data-write"), t))
+    if el.get("data-move"):
+      move(el, t)
   if view:
     x0, y0, w, h = (float(v) for v in root.get("viewBox").replace(",", " ").split())
     x, y, zoom = view
@@ -253,7 +267,7 @@ def decode(out, w, h):
 
 
 def selftest():
-  """포즈 전환·그림 유지·그려지기(실선·점선)·써지기(tspan 포함)·페이드·카메라·종이 결·정지를 확인한다."""
+  """포즈 전환·그림 유지·그려지기(실선·점선)·써지기(tspan 포함)·페이드·카메라·종이 결·정지·이동을 확인한다."""
   with tempfile.TemporaryDirectory() as tmp:
     tmp = Path(tmp)
     svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 180"><circle cx="{}" cy="90" r="30" fill="none" stroke="#000" stroke-width="4"/></svg>'
@@ -320,6 +334,24 @@ def selftest():
     assert 120 < np.nonzero(frames[59][90] < 128)[0].mean() < 200, "x·y 지점이 화면 가운데로 옴"
     step = [np.nonzero(frames[i][90] < 128)[0].mean() for i in (37, 38, 47, 48)]
     assert abs(step[1] - step[0]) < abs(step[3] - step[2]), "ease-in-out: 시작은 느리고 중간은 빠름"
+
+    (tmp / "move.svg").write_text(
+      '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 180">'
+      '<rect x="40" y="70" width="40" height="40" fill="#000" data-move="0.25 0.75 200 -40 0.5 60 90"/></svg>')
+    spec = {"size": [320, 180], "fps": 24, "drawings_per_second": 24, "scenes": [
+      {"id": "m", "duration": 1.0, "poses": [{"svg": "move.svg", "at": 0}]}]}
+    (tmp / "spec3.json").write_text(json.dumps(spec))
+    out = tmp / "out3.mp4"
+    assert render(tmp / "spec3.json", out) == 24
+    frames = decode(out, 320, 180)
+    box = lambda f: (lambda ys, xs: (xs.mean(), ys.mean(), xs.max() - xs.min() + 1))(*np.nonzero(f < 128))
+    x0, y0, w0 = box(frames[0])
+    x1, y1, w1 = box(frames[23])
+    xm = box(frames[12])[0]
+    assert abs(x0 - 60) < 2 and abs(w0 - 40) < 3, f"0.25초 전에는 제자리·원래 크기: {x0, w0}"
+    assert abs(x1 - 260) < 2 and abs(y1 - 50) < 2 and abs(w1 - 20) < 3, f"0.75초 뒤에는 (dx, dy)만큼 옮기고 s배: {x1, y1, w1}"
+    assert 120 < xm < 200, f"가운데 시각에는 중간쯤: {xm}"
+    assert not [i for i in range(19, 24) if np.abs(frames[i] - frames[i - 1]).mean() > 0.05], "이동이 끝나면 정지"
   print("selftest ok")
 
 

@@ -25,6 +25,8 @@
 | 말소리 없는 여행 영상 전체를 편집하고 싶음 | [akbun-davinciresolve-workflow](../plugins/akbun-editvideo/skills/akbun-davinciresolve-workflow/SKILL.md) | 원본 타임라인을 보존하면서 촬영 시간순 타임라인부터 컷, 색보정, 요청된 Look, 개인정보 보호, 자막, 오디오, 출력까지 단계별로 진행한다. |
 | 글·PPTX·이미지로 설명 영상을 새로 만들고 싶음 | [akbun-davinciresolve-explainer](../plugins/akbun-editvideo/skills/akbun-davinciresolve-explainer/SKILL.md) | 대본·스토리보드를 확인한 뒤 장면별 Fusion 타이틀을 만든다. Inspector에서 글자·표시·등장 시점·위치를 고치고 대본·가이드·스틸을 받는다. |
 | 어두운 다이어그램 스타일로 설명 영상을 만들고 녹음에 맞추고 싶음 | [akbun-davinciresolve-explainer-dark-diagram](../plugins/akbun-editvideo/skills/akbun-davinciresolve-explainer-dark-diagram/SKILL.md) | 대본을 읽기 시간 기준으로 장면화하고 자막 트랙을 보며 녹음하게 한다. 녹음 후 테이크를 내용으로 장면에 배정해 장면 길이·등장 시점·자막을 실제 목소리에 맞춘다. |
+| 보드에 손으로 써 내려가며 수식·단계·질문과 답을 설명하는 영상을 Resolve에서 고치며 만들고 싶음 | [akbun-davinciresolve-explainer-scribble-black](../plugins/akbun-editvideo/skills/akbun-davinciresolve-explainer-scribble-black/SKILL.md) | akbun-draw-scribble-black의 색·선·도형·글씨 규칙을 그대로 쓰고, 글씨는 Text+ 써지기로, 도형 획은 투명 레이어 PNG를 긋는 방향으로 드러낸다. 한 번에 한 획만 그려지고, 첫 시점을 옮기면 뒤 획이 같이 밀린다. |
+| 숫자·선·사물 몇 개로 추상 개념을 차분하게 설명하는 다큐멘터리 느낌 영상을 Resolve에서 고치며 만들고 싶음 | [akbun-davinciresolve-explainer-ember-grid](../plugins/akbun-editvideo/skills/akbun-davinciresolve-explainer-ember-grid/SKILL.md) | akbun-draw-ember-grid의 색·글꼴·선·사물 표를 그대로 쓰고, 글자는 Text+로, 선·사물은 draw 렌더러가 만든 투명 레이어 PNG로 Fusion에서 움직인다. 끝난 요소는 흐려지고 작아지며 다음 라벨이 된다. 카메라 없이 하드 컷이다. |
 | 검정 배경 카드와 손글씨 캡션으로 요청·메모리 같은 시스템 동작을 설명하는 영상을 Resolve에서 고치며 만들고 싶음 | [akbun-davinciresolve-explainer-slate-marker](../plugins/akbun-editvideo/skills/akbun-davinciresolve-explainer-slate-marker/SKILL.md) | akbun-draw-slate-marker의 색·글꼴·부품 표를 그대로 쓰고, 카드·칩·선을 Fusion 도형으로 그려 Inspector에서 글자·등장 시점을 고친다. 배치는 장면마다 내용이 정하고, 장면 전환은 하드 컷이다. |
 | 계산 과정·공식을 손으로 적으며 설명하듯, 손글씨가 말하는 순서대로 한 글자씩 써지는 영상을 Resolve에서 고치며 만들고 싶음 | [akbun-davinciresolve-explainer-live-ink](../plugins/akbun-editvideo/skills/akbun-davinciresolve-explainer-live-ink/SKILL.md) | akbun-draw-live-ink의 색·글꼴·써지기 규칙을 그대로 쓰고, Text+에 왼쪽부터 넓어지는 사각 마스크를 걸어 글자가 펜이 지나가듯 드러나게 한다. 한 번에 하나만 쓰고 지우지 않으며, Inspector에서 글자·써지는 시점을 고친다. |
 | 어두운 배경 위 손채색 그림이 말하는 순서대로 튀어나오는 설명 영상을 만들고 싶음 | [akbun-davinciresolve-explainer-night-gouache](../plugins/akbun-editvideo/skills/akbun-davinciresolve-explainer-night-gouache/SKILL.md) | akbun-draw-night-gouache로 장면 그림을 등장 단위 레이어로 만들고, 장면마다 Fusion 클립 하나에서 팝·자라기·밀려 들어오기·펀치 인으로 움직이고, 후광 맥박은 꼭 강조할 장면에만 쓴다. 같은 배경 위 하드 컷과 Pretendard 자막 트랙을 쓴다. |
@@ -234,6 +236,30 @@ Edit 페이지에서 클립 선택 → Inspector → Video → Title의 그룹�
 3. 장면 길이만큼 Fusion 클립을 넣고 레이어마다 Loader → Transform → MultiMerge로 쌓아 표현식을 건다. Inspector에서 등장 시점·펀치 인 시점·배율을 고친다.
 4. 자막 트랙 글꼴·위치는 Inspector → Track 탭에서 Pretendard Medium 42, Position Y 130으로 바꾼다.
 5. 등장 직후·펀치 인 직전·마지막 프레임 스틸을 10항목 채점표로 채점한다.
+
+## 검정 보드 손그림 설명 영상 (scribble-black)
+
+[akbun-davinciresolve-explainer-scribble-black](../plugins/akbun-editvideo/skills/akbun-davinciresolve-explainer-scribble-black/SKILL.md)은 클립 구조를 기본 Explainer에서, 색·선·도형·글씨·그리는 속도를 [akbun-draw-scribble-black](../plugins/akbun-draw/skills/akbun-draw-scribble-black/SKILL.md)에서 가져온다. 검정 보드에 흰 펜으로 생각 구름·말풍선·얼굴 없는 막대 인물·상자 사물·회색 화살표·손글씨 수식을 한 획씩 써 내려가고, 하늘색(입력)·주황(결과)·노랑(주목)·빨강(문제)으로 강조한다. 그리는 손과 사람 얼굴은 넣지 않는다.
+
+예: `$akbun-davinciresolve-explainer-scribble-black 이 대본으로 DNS 조회 과정을 보드에 써 내려가는 설명 영상으로 만들어줘.`
+
+1. 대본을 장면 표(획 순서·색 글씨·신호 단어와 시작·끝 시각)로 나누고 획이 겹치지 않는지 확인받는다.
+2. draw skill 규칙으로 그린 SVG에서 획·채움 레이어를 투명 PNG로 뽑는다.
+3. 다른 작업이 연 프로젝트를 건드리지 않고 새 타임라인을 만든다. 대표 장면 하나로 획 드러나기·Text+ 써지기·시점 이어 밀기를 확인한 뒤 나머지를 만든다.
+4. 녹음이 오면 첫 빌드 시점과 장면 길이만 다시 맞춘다. 뒤 빌드는 표현식으로 따라온다.
+5. 첫 획 직후·중간·마지막 프레임 스틸을 10항목 채점표로 채점한다.
+
+## 검정 격자 다큐멘터리 설명 영상 (ember-grid)
+
+[akbun-davinciresolve-explainer-ember-grid](../plugins/akbun-editvideo/skills/akbun-davinciresolve-explainer-ember-grid/SKILL.md)은 클립 구조를 기본 Explainer에서, 색·글꼴·선·사물·모션 길이를 [akbun-draw-ember-grid](../plugins/akbun-draw/skills/akbun-draw-ember-grid/SKILL.md)에서 가져온다. 따뜻한 검정 격자 바탕 위에 큰 흰 숫자·단어와 흰 선, 납작한 사물이 나오고, 끝난 요소는 회색으로 흐려진 뒤 작아지며 다음 설명의 라벨이 된다. 글자는 Text+로 고치고, 선·사물은 draw 렌더러로 만든 투명 레이어 PNG를 Fusion에서 움직인다. 사람 얼굴·실사 컷은 넣지 않는다.
+
+예: `$akbun-davinciresolve-explainer-ember-grid 이 대본으로 HTTP 캐시가 304를 돌려주는 과정을 설명 영상으로 만들어줘.`
+
+1. 대본을 장면 표(변화·큰 숫자·선·사물 레이어·라벨 색·신호 단어와 등장 시점)로 나누고 확인받는다.
+2. draw skill 규칙으로 그린 SVG에서 바탕·선·사물 레이어를 투명 PNG로 뽑는다.
+3. 다른 작업이 연 프로젝트를 건드리지 않고 새 타임라인을 만든다. 대표 장면 하나로 선 드러나기·이동을 확인한 뒤 나머지를 만든다.
+4. 녹음이 오면 단어 시각으로 등장·흐려지기·이동 시점과 장면 길이를 다시 맞춘다.
+5. 등장·흐려지기·이어지기 직후와 마지막 프레임 스틸을 10항목 채점표로 채점한다.
 
 ## 슬레이트 카드 설명 영상 (slate-marker)
 
