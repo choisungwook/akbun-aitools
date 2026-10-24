@@ -6,7 +6,8 @@
 
 모델은 장면 그림만 SVG로 쓰고, 스타일에서 숫자로 고정된 부분은 이 스크립트가 맡는다.
 
-  - 배경: 루트 data-bg="night"(기본, 어두운 비네트+입자) 또는 "paper"(구김 종이)
+  - 배경: 루트 data-bg="night"(기본, 어두운 비네트+입자), "paper"(구김 종이), "flat:#202020"(단색)
+  - 태그 점: 루트 data-tag-dot="off"면 태그 왼쪽 위 노란 점을 그리지 않는다
   - 질감 필터·광·그늘 그라데이션 defs 주입: url(#paint) url(#brush) url(#pencil) url(#glow) url(#halo-*) url(#spot) url(#shade)
   - 자막 미리보기: 루트 data-subtitle="..."
   - 키워드 태그: <text class="tag" x=".." y="..">라벨</text> (x,y = 태그 상자 왼쪽 위)
@@ -27,7 +28,7 @@ from pathlib import Path
 
 import numpy as np
 import resvg_py
-from PIL import Image
+from PIL import Image, ImageColor
 
 NS = "http://www.w3.org/2000/svg"
 ET.register_namespace("", NS)
@@ -92,13 +93,14 @@ def text_width(s, size):
   return sum(size * (0.98 if ord(c) > 0x2E80 else 0.3 if c == " " else 0.58) for c in s)
 
 
-def tag_group(el):
+def tag_group(el, dot=True):
   label, x, y = (el.text or "").strip(), float(el.get("x", 0)), float(el.get("y", 0))
   w = text_width(label, 26) + 36
+  dot_rect = f'<rect x="{x - 4}" y="{y - 4}" width="8" height="8" fill="#E8C840"/>' if dot else ""
   return ET.fromstring(f"""<g xmlns="{NS}" filter="url(#tag-shadow)">
   <rect x="{x}" y="{y}" width="{w:.0f}" height="46" fill="#0B0C0F" fill-opacity="0.82"/>
   <rect x="{x}" y="{y + 44}" width="{w:.0f}" height="2" fill="#E8C840"/>
-  <rect x="{x - 4}" y="{y - 4}" width="8" height="8" fill="#E8C840"/>
+  {dot_rect}
   <text x="{x + 18}" y="{y + 32}" font-family="{FONT}" font-weight="700" font-size="26" fill="#FFFFFF">{html.escape(label)}</text>
 </g>"""), {"text": label, "box": [x, y, x + w, y + 46]}
 
@@ -117,11 +119,12 @@ def raster(svg):
 def prepare(root):
   """defs를 넣고 태그를 상자로 바꾼다. 태그 목록을 돌려준다."""
   root.insert(0, ET.fromstring(DEFS))
+  dot = root.get("data-tag-dot", "on") != "off"
   tags = []
   for parent in list(root.iter()):
     for i, el in enumerate(list(parent)):
       if el.tag == f"{{{NS}}}text" and "tag" in (el.get("class") or "").split():
-        g, info = tag_group(el)
+        g, info = tag_group(el, dot)
         parent.remove(el)
         parent.insert(i, g)
         info["layer"] = parent.get("data-layer", "")
@@ -140,7 +143,13 @@ def render(svg_path, still_path, layers_dir=None):
     root.attrib.pop(k, None)
   tags = prepare(root)
   scene = raster(ET.tostring(root, encoding="unicode"))
-  back = raster(BG[bg])
+  # data-bg="flat:#202020" = 단색 배경
+  if bg.startswith("flat:"):
+    back = Image.new("RGBA", (W, H), ImageColor.getrgb(bg[5:].strip()))
+  elif bg in BG:
+    back = raster(BG[bg])
+  else:
+    sys.exit(f'error: data-bg="{bg}"는 지원하지 않는다(night, paper, flat:#RRGGBB)')
   still = Image.alpha_composite(back, scene)
   if subtitle:
     still = Image.alpha_composite(still, raster(subtitle_svg(subtitle, bg)))
@@ -192,6 +201,13 @@ def selftest():
     assert meta["tags"][0]["text"] == "키워드" and meta["tags"][0]["layer"] == "label"
     still = np.asarray(Image.open(Path(d) / "still.png"))
     assert still[540, 20].max() < 30 and still[400, 600, 1] > 150, (still[540, 20], still[400, 600])
+    assert still[197, 1197, 0] > 150, still[197, 1197]  # 태그 점(x 1196~1204, y 196~204)이 노랗다
+    p.write_text(p.read_text().replace('data-subtitle="테스트"', 'data-subtitle="테스트" data-bg="flat: #202020" data-tag-dot="off"'))
+    render(p, Path(d) / "flat.png", Path(d) / "flat")
+    flat = np.asarray(Image.open(Path(d) / "flat.png"))
+    bgpx = np.asarray(Image.open(Path(d) / "flat" / "background.png"))
+    assert tuple(flat[540, 20]) == (32, 32, 32) and tuple(bgpx[10, 10]) == (32, 32, 32), (flat[540, 20], bgpx[10, 10])
+    assert flat[197, 1197, 0] < 60, flat[197, 1197]  # data-tag-dot="off"면 점이 없다
   print("selftest ok")
 
 
