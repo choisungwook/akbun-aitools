@@ -54,7 +54,6 @@
 
 예: `$davinciresolve-sfx-epidemicsound 현재 여행 타임라인을 복제해서 바다→거리 전환과 현장음을 살리고, 필요한 여러 BGM도 연결해줘. 내가 들을 곳은 마커로 남겨줘.`
 
-
 예: `$davinciresolve-bgm-epidemicsound 32주차 diary의 집중→막힘→해결 흐름에 맞는 음악 후보만 보여줘. 아직 넣지는 말아줘.`
 
 ### 사운드 작업에서 확인할 것
@@ -234,7 +233,7 @@ Edit 페이지에서 클립 선택 → Inspector → Video → Title의 그룹�
 1. 대본을 장면 표(자막·레이어·모션·등장 시점·펀치 인)로 나누고 확인받는다.
 2. draw 스킬로 장면마다 레이어 PNG와 `layers.json`을 만든다.
 3. 장면 길이만큼 Fusion 클립을 넣고 레이어마다 Loader → Transform → MultiMerge로 쌓아 표현식을 건다. Inspector에서 등장 시점·펀치 인 시점·배율을 고친다.
-4. 자막 트랙 글꼴·위치는 Inspector → Track 탭에서 Pretendard Medium 42, Position Y 130으로 바꾼다.
+4. 장면을 다 넣은 뒤 자막 트랙 잠금을 풀고, 자막 글꼴·위치(Pretendard Medium 42, Position Y 130)를 그 값이 설정된 타임라인 복제 또는 Inspector → Track 탭으로 맞춘다.
 5. 등장 직후·펀치 인 직전·마지막 프레임 스틸을 10항목 채점표로 채점한다.
 
 ## 검정 보드 손그림 설명 영상 (scribble-black)
