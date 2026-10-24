@@ -257,6 +257,18 @@ Epidemic Sound에서 효과음·BGM 후보를 찾을 때 사용할 **영문 검�
 | 후광 맥박 | 강조 대상 뒤 후광 레이어가 0.3초 페이드 뒤 불투명도 0.5~1.0을 1.2초 주기로 오가는 움직임. 꼭 강조할 장면에만 하나 둔다. |
 | 펀치 인 | 장면의 핵심 순간에 강조 대상 중심으로 화면 전체를 0.2초 만에 1.4~1.8배 확대하는 움직임. 장면당 한 번까지다. |
 
+## 슬레이트 카드 설명 영상
+
+[akbun-davinciresolve-explainer-slate-marker](../plugins/akbun-editvideo/skills/akbun-davinciresolve-explainer-slate-marker/SKILL.md)에서 사용하는 용어다.
+
+| 용어 | 뜻 |
+|---|---|
+| 슬레이트 카드 | 순검정 배경 위 어두운 회색 채움과 한 단계 밝은 테두리로 그린 둥근 사각형. 깊이는 그림자 없이 카드와 칸의 밝기 차이로만 낸다. |
+| 강조색 의미 | 청록 정상, 코랄 위험, 노랑 지금 보는 곳, 라벤더 참조, 초록 성공처럼 색 하나에 의미 하나를 묶는 규칙. 포즈당 3가지까지 쓴다. |
+| 흐름 선과 연결 화살표 | 흐름 선은 실제로 오가는 것(요청·응답)을 흰 실선과 끝 삼각형으로, 연결 화살표는 오가는 것 없는 가리킴(참조·포인터)을 강조색 점선으로 그린다. |
+| 초점 점선 | 지금 설명하는 대상 바깥 6px에 두르는 노랑 점선 테두리. |
+| 포즈 | 한 장면 안에서 상태가 바뀌기 전까지의 화면. 상태 변화는 새 포즈로 즉시 바뀐다. |
+
 ## 녹음 정리와 녹음 맞춤
 
 [akbun-davinciresolve-narration-cleanup](../plugins/akbun-editvideo/skills/akbun-davinciresolve-narration-cleanup/SKILL.md)과 [akbun-davinciresolve-explainer-dark-diagram](../plugins/akbun-editvideo/skills/akbun-davinciresolve-explainer-dark-diagram/SKILL.md)에서 사용하는 용어다.

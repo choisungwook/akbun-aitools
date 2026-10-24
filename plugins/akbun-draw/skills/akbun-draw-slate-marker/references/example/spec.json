@@ -1,0 +1,26 @@
+{
+ "size": [
+  1920,
+  1080
+ ],
+ "fps": 30,
+ "drawings_per_second": 30,
+ "background": "#060606",
+ "grain": 0,
+ "scenes": [
+  {
+   "id": "healthcheck",
+   "duration": 6.0,
+   "poses": [
+    {
+     "svg": "s1.svg",
+     "at": 0
+    },
+    {
+     "svg": "s2.svg",
+     "at": 3.5
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,143 @@
+---
+name: akbun-davinciresolve-explainer-slate-marker
+description: 순검정 캔버스 위 어두운 슬레이트 카드·손글씨 마커 캡션·의미별 강조색(청록 정상·코랄 위험·노랑 지금 보는 곳·라벤더 참조·초록 성공)으로 시스템 동작을 설명하는 설명 영상 스타일 slate-marker를 DaVinci Resolve 타임라인으로 만든다. 색·글꼴·부품 모양·시각 규칙은 akbun-draw-slate-marker를 그대로 쓰고, 카드·칩·선은 Fusion 도형으로 그려 Inspector에서 글자·등장 시점을 고치게 한다. 클립 구조는 akbun-davinciresolve-explainer를 따르고 배치는 내용에 맞춰 자유롭게 정한다. 사용자가 직접 호출할 때만 실행한다.
+disable-model-invocation: true
+---
+
+# akbun-davinciresolve-explainer-slate-marker
+
+## 목적
+
+요청·메모리·프로세스·권한처럼 보이지 않는 시스템 동작을 "카드와 상태 변화"로 보여 주는 얼굴 없는 설명 영상을 만든다. 결과물은 Resolve에서 고칠 수 있는 타임라인이다. 장면마다 Fusion 클립 하나이고, 글자·등장 시점·보이기·위치를 Edit 페이지 Inspector에서 바꾼다.
+
+## 범위
+
+- 사용자가 직접 호출할 때 실행한다.
+- **스타일 원본**: 색·글꼴·선과 모양·캡션 규칙·모션 길이·시각 맞추기는 [akbun-draw-slate-marker의 "스타일"](../../../akbun-draw/skills/akbun-draw-slate-marker/SKILL.md#스타일)이 원본이다. 이 문서는 Fusion으로 옮기는 데 필요한 값만 옮겨 적는다. 어긋나면 draw skill을 따른다. Fusion 때문에 일부러 다르게 하는 것은 둘뿐이다.
+  - 점선 사각형(초점 점선·경계 점선)은 네 변을 따로 만들어 모서리가 각지다.
+  - 카메라 다가가기는 장면당 한 번까지다.
+- **클립 구조**: [akbun-davinciresolve-explainer의 "Resolve 구현"](../akbun-davinciresolve-explainer/SKILL.md#resolve-구현)을 따른다. Fusion 타이틀 + Template 매크로, `Timing` 노드, 표현식 애니메이션, 제너레이터 길이 조정, Inspector 설계(글자마다 "보이기", 그룹마다 "등장 시점(초)"·"위치 이동"), 마커 API, 성능 규칙이 여기에 포함된다. 그 스킬의 사실 확인(작업 흐름 1단계)과 "민감 정보 규칙"도 그대로 적용한다.
+- **대신하는 것**: 기본 explainer의 "스타일"(고정 위치 포함), "내레이션 규칙", 장면 전환 규칙. 무엇을 어디에 몇 개 둘지는 장면이 설명하는 관계가 정한다.
+- 렌더된 MP4를 장면 대신 올리지 않는다. Resolve 밖에서 렌더한 영상이 필요하면 draw skill을 쓴다.
+- 녹음 정리는 [akbun-davinciresolve-narration-cleanup](../akbun-davinciresolve-narration-cleanup/SKILL.md)을 부른다.
+
+## 캔버스와 좌표
+
+- 1920×1080이 기본이고, 쇼츠는 1080×1920 타임라인이다. px 값은 둘 다 그대로 쓴다.
+- fps는 대상 타임라인 값이고, 기준이 없으면 30이다. 표현식의 `fps`에는 소수까지 그대로 넣는다(예: 29.97).
+- 도형 좌표는 기본 explainer의 "좌표와 단위"를 따르되 화면 폭 W를 쓴다. 가로 화면은 W = 1920, 세로 화면은 W = 1080이다.
+  - X = (px − W/2) ÷ W
+  - Y = (H/2 − py) ÷ W
+  - 크기·BorderWidth = px ÷ W
+  - Text+ Size = px ÷ W
+- 모든 장면의 배경은 Background 노드 하나이고, 색은 INK(`#060606`)다. 장면이 바뀌어도 배경이 같아서 하드 컷이 한 화면처럼 이어진다.
+- 화면 글자는 장면 안의 제목·카드 이름·캡션뿐이다. 별도 자막 트랙은 사용자가 요청할 때만 넣는다. 넣으면 Inspector → Track 탭에서 Font `Pretendard` Medium, 흰색으로 하고 배경·외곽선을 끈다(API로 바꿀 수 없다).
+
+## Fusion 매핑
+
+부품 하나는 도형 노드(들) → sMerge → sRender → `레이어_목록` MultiMerge 레이어 1개다. 노드 이름 규칙(한글 종류 접두사, 밑줄)은 기본 explainer를 따르고, 다음 접두사를 더한다: 카드_, 칸_, 칩_, 알약_, 태그_, 초점_, 경계_, 흐름_, 연결_, 아이콘_, 눈금_, 창_.
+
+| 부품 | Fusion 구성 |
+|---|---|
+| 카드·칸 | sRectangle 두 개: 채움(Solid 켬, SLATE 또는 CELL) + 테두리(Solid 끔, BorderWidth 1.5px, SLATE_EDGE 또는 CELL_EDGE). 모서리 반지름은 draw skill 표의 px |
+| 알약·칩 | sRectangle 하나(Solid 켬, 강조색, 모서리 = 높이의 절반 또는 6px) + Text+ |
+| 태그 | sRectangle 하나(Solid 끔, BorderWidth 2px, 강조색) + 같은 색 Text+ |
+| 글자 | Text+. Font `Gaegu` Style `Bold`, 또는 `D2Coding` |
+| 제목 밑줄 | sRectangle(높이 2.5px, CHALK). 폭은 draw skill의 밑줄 길이 식 |
+| 흐름 선 | 기본 explainer의 "실선 화살표 그리기"(sRectangle 폭을 진행률로 늘림) + 끝 삼각형 sNGon Sides=3 |
+| 연결 화살표 | 기본 explainer의 "점선 화살표 그리기"(짧은 sRectangle 하나를 sDuplicate로 반복) + 같은 색 끝 삼각형 sNGon |
+| 점선 사각형 | 네 변을 각각 sDuplicate 점선으로 만든다. 모서리는 각지다(범위의 예외) |
+| 선 아이콘 | sRectangle·sEllipse(Solid 끔, BorderWidth 2.5px)와 얇은 sRectangle 선, 합쳐서 6개 이하 |
+| 눈금 막대 | 칸 sRectangle을 sDuplicate로 반복한 묶음 세 개. 빈 칸(DIM, 전체 칸 수만큼 처음부터 보임) 위에 찬 칸(CYAN)을 겹친다. 한도를 넘은 칸(CORAL)은 한도 다음 칸 자리에서 시작하는 별도 묶음이다 |
+| 창 틀 | 카드 + 제목줄 점 세 개(sEllipse, CORAL·AMBER·GREEN) + MUTED D2Coding Text+ |
+
+- 색은 draw skill 색 표의 hex를 0~1 값으로 바꿔 넣는다(각 값 ÷ 255, 소수 넷째 자리에서 반올림). 도형 노드는 `Red`·`Green`·`Blue`, Text+는 `Red1`·`Green1`·`Blue1`에 넣는다.
+- 그림자·블러·Glow·그라디언트 노드를 넣지 않는다. 깊이는 SLATE와 CELL의 밝기 차이로만 낸다.
+- 실제 제품 로고는 넣지 않는다. 제품은 이름 글자와 선 아이콘으로 나타낸다.
+
+## 모션
+
+길이는 draw skill의 모션 표를 따르고, 아래 식으로 옮긴다. `fps`는 숫자로 넣고, 표의 `^`는 Fusion 식에서 곱셈으로 풀어 쓴다.
+
+- `A` = `time - (comp.RenderStart + Timing.At{k} * fps)`
+- `q(d)` = `min(1, max(0, A / (d * fps)))`
+
+| 움직임 | 입력 | 식 |
+|---|---|---|
+| 페이드 등장(제목·카드·칩·캡션·초점) | `Layer{n}.Blend` | `q(d)`. d는 그 부품의 페이드 길이이고, 글자 레이어에만 `Timing.On{n}`을 곱한다 |
+| 실선 그리기 | 선 sRectangle의 Width·Translate | 기본 explainer 식에 진행률 p = `q(d)`. d = 선 길이 ÷ 900을 0.05초 단위로 올림, 최소 0.3. 삼각형 Opacity = `iif(p < 1, 0, 1)` |
+| 점선 그리기 | sDuplicate의 `Copies` | `floor((개수 - 1) * p)`. p와 삼각형은 실선과 같다 |
+| 눈금 막대 차오름 | 찬 칸 sDuplicate의 `Copies` | `max(0, floor(min(칸 수 - 1, A / (0.04 * fps))))`. 칸이 보이기 시작하는 시각은 첫 칸의 `Blend = iif(A < 0, 0, 1)`로 둔다 |
+| 상태 변화(색 바뀜) | 도형 `Red`·`Green`·`Blue`, Text+ `Red1`·`Green1`·`Blue1` | `iif(A < 0, 원래값, 바뀐값)` |
+| 사라짐 | `Layer{n}.Blend` | 등장 식 × `iif(A_사라짐 < 0, 1, 0)` |
+| 카메라 다가가기(선택) | `레이어_목록` 뒤 Transform `카메라`의 Size·Center | Size = `1 + (Timing.Zoom - 1) * e`. Center = `Point(0.5 + (Timing.CamX - 0.5) * e, 0.5 + (Timing.CamY - 0.5) * e)`. e는 3차 ease-in-out으로 `p < 0.5`면 `4p³`, 아니면 `1 - (-2p + 2)³ / 2`, p = `q(0.7)`. CamX·CamY는 확대 중심의 Fusion 좌표(0~1). Zoom ≤ 1.4 |
+
+- 동시에 진행하는 빌드는 둘까지다. 마지막 빌드는 장면 끝 1.0초 전까지 끝낸다. 대본 마지막 단어에 묶인 요소 때문에 지킬 수 없으면 0.5초 전까지 허용한다. 장면 하나는 25초 이하다.
+- 카메라는 확대 뒤 보이는 영역(가운데 ± 0.5/Zoom)이 화면 안(0~1)에 있어야 한다. 넘으면 CamX·CamY를 안쪽으로 옮긴다.
+- 시점·배율은 `Timing` 컨트롤로만 바꾼다. 키프레임을 쓰지 않는다.
+- 장면 전환은 하드 컷이다. 기본 explainer의 크로스 디졸브를 넣지 않는다. 같은 소재를 이어 설명하는 장면은 앞 장면 마지막 화면의 부품을 새 장면 0초부터 이미 보이게(`Timing.At` = `-1`) 두고, 새 부품만 등장시킨다.
+
+## 작업 흐름
+
+1. **장면 표**: 대본을 장면으로 나눈다. 장면마다 다음을 적는다:
+   - 보여 줄 상태 변화
+   - 부품과 강조색(3가지 이하)
+   - 캡션(포즈당 1개)
+   - 부품별 신호 단어와 등장 시점
+   - 장면 길이
+
+   신호 단어 고르는 법과 시각 계산(녹음 전 초당 6.5음절, 0.1초 앞당김, 장면 끝 + 0.4초)은 draw skill의 시각 규칙을 따른다. 장면 표는 사용자에게 먼저 보여 주고 확인받는다.
+2. **Resolve 준비**:
+   - 다른 작업이 열어 둔 프로젝트·타임라인을 확인 없이 바꾸지 않는다.
+   - 새 타임라인을 만든다. 트랙은 V1 장면, A1 내레이션, A2 BGM, A3 효과음이다.
+   - Gaegu·D2Coding이 설치돼 있는지 `fc-list : family`로 본다. 없으면 설치를 묻는다(배포처는 draw skill에 있다).
+3. **대표 장면 하나**로 삽입·매크로·길이·Inspector·점선·선 그리기를 먼저 확인하고, 그다음 나머지를 만든다.
+4. **장면 삽입과 빌드**:
+   - 기본 explainer의 "클립 길이 맞추기"로 장면을 차례로 끝에 붙인다.
+   - "Fusion 매핑"대로 노드를 만들고 표현식을 건다.
+   - Template 매크로로 감싸고, 기본 explainer의 Inspector 설계에 "카메라 시점"·"카메라 배율"을 더해 공개한다.
+5. **마커**: 장면 시작마다 대본 메모 마커를 단다.
+6. **녹음 뒤**: 음성 인식 단어 시각에서 신호 단어를 찾아 `Timing.At` 값과 장면 길이를 다시 맞춘다. 못 찾은 신호 단어는 추측하지 말고 목록으로 보고한다.
+7. **검수**: 아래 표로 채점한다.
+
+## 검수
+
+장면마다 첫 부품 등장 직후·상태 변화 직후·마지막 프레임을 `ExportCurrentFrameAsStill`로 뽑고, 한 장으로 붙여 한 번만 본다. 항목마다 0·5·10점으로 채점하고, 80점 미만인 장면은 고친다.
+
+| # | 항목 | 10점 기준 |
+|---|---|---|
+| 1 | 배경 | 모든 장면이 INK 단색, 무늬·그라디언트 없음 |
+| 2 | 색 | 쓰인 색이 draw skill 색 표 안, 포즈당 강조색 3가지 이하 |
+| 3 | 색 의미 | 같은 의미가 모든 장면에서 같은 색 |
+| 4 | 글꼴 | 손글씨는 Gaegu Bold, 값·번호는 D2Coding, 대체 글꼴 없음 |
+| 5 | 카드·칸 | 모서리·테두리 굵기가 표와 같고 그림자 없음. 점선 사각형만 모서리가 각짐 |
+| 6 | 선 | 흐름은 CHALK 실선과 삼각형, 참조는 강조색 점선과 삼각형, 끝이 대상에 닿음 |
+| 7 | 등장 | 신호 단어 순서대로, 동시 빌드 2개 이하, 마지막 빌드 뒤 1.0초(예외 0.5초) 이상 정지 |
+| 8 | 캡션 | 포즈당 1개, 길이 규칙 안, 가리키는 요소의 색 |
+| 9 | 배치 | 글자가 잘리거나 겹치지 않음, 장면마다 같은 배치를 기계적으로 반복하지 않음 |
+| 10 | 전환·카메라 | 하드 컷이고, 이어지는 장면은 앞 화면이 그대로 이어짐. 카메라는 장면당 0~1회, Zoom ≤ 1.4, 보이는 영역이 화면 안 |
+
+- 색은 숫자로도 본다. 장면 comp를 `ExportFusionComp`로 내보내고, 도형 `Red`·`Green`·`Blue`와 Text+ `Red1`·`Green1`·`Blue1` 값을 hex로 바꿔 draw skill 색 표와 대조한다.
+- 클립·마커 개수와 끝 프레임을 장면 표와 대조한다.
+- Inspector에서 등장 시점 하나를 바꿔 움직임이 옮겨지는지 확인하고 되돌린다. 확인이 끝나면 프로젝트를 저장한다.
+- 실제 로고·알려진 캐릭터·영상 장면과 닮아 보이는 화면이 없는지 본다. 닮았으면 아이콘 모양이나 배치를 바꾼다.
+
+## 완료 보고
+
+다음을 적는다:
+
+- 타임라인 이름·fps·길이
+- 장면 표
+- 장면별 채점 점수
+- 색 대조 결과
+- 글꼴 확인 결과
+- 환경설정 복원 확인 결과
+
+화면으로 보지 않고 스틸로만 확인한 것은 그렇게 적는다.
+
+## 하지 말 것
+
+- 렌더된 MP4·PNG로 장면을 대신하지 않는다.
+- 기본 explainer의 고정 위치, 크로스 디졸브, 기본 5색을 섞어 쓰지 않는다.
+- Glow·그림자·그라디언트, 키프레임 애니메이션을 쓰지 않는다.
+- 다른 작업이 열어 둔 Resolve 프로젝트를 확인 없이 바꾸지 않는다.
