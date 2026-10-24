@@ -257,6 +257,30 @@ Epidemic Sound에서 효과음·BGM 후보를 찾을 때 사용할 **영문 검�
 | 후광 맥박 | 강조 대상 뒤 후광 레이어가 0.3초 페이드 뒤 불투명도 0.5~1.0을 1.2초 주기로 오가는 움직임. 꼭 강조할 장면에만 하나 둔다. |
 | 펀치 인 | 장면의 핵심 순간에 강조 대상 중심으로 화면 전체를 0.2초 만에 1.4~1.8배 확대하는 움직임. 장면당 한 번까지다. |
 
+## 검정 보드 손그림 설명 영상
+
+[akbun-davinciresolve-explainer-scribble-black](../plugins/akbun-editvideo/skills/akbun-davinciresolve-explainer-scribble-black/SKILL.md)에서 사용하는 용어다.
+
+| 용어 | 뜻 |
+|---|---|
+| 한 번에 한 획 | 손이 하나라서 두 곳이 동시에 그려지지 않는다는 규칙. 다음 빌드는 앞 빌드가 끝난 뒤 0.1초 이상 지나서 시작한다. |
+| 획 레이어 | 한 번에 긋는 선이나 도형 하나만 담은 투명 PNG. 마스크를 긋는 방향으로 늘려 드러낸다. |
+| 생각 구름 | 크기가 다른 혹 6~9개를 이은 외곽선과, 생각하는 대상 쪽으로 작아지는 원 세 개 꼬리. 같은 크기 혹을 줄지어 붙이지 않는다. |
+| 막대 인물 | 빈 원 머리와 선 몇 개로 그린 사람. 얼굴·손·옷을 그리지 않는다. |
+| 시점 이어 밀기 | 둘째 빌드부터 시작 시점을 앞 빌드 끝 + 0.15초 표현식으로 두어, 첫 시점만 옮겨도 뒤가 같이 밀리게 하는 구성. |
+
+## 검정 격자 다큐멘터리 설명 영상
+
+[akbun-davinciresolve-explainer-ember-grid](../plugins/akbun-editvideo/skills/akbun-davinciresolve-explainer-ember-grid/SKILL.md)에서 사용하는 용어다.
+
+| 용어 | 뜻 |
+|---|---|
+| 바탕 레이어 | 따뜻한 검정 위 옅은 격자선과 가장자리 비네트를 담은 투명 PNG(`ground.png`). 모든 장면에서 같다. |
+| 그림 레이어 | 선이나 사물 하나만 담은 화면 전체 크기 투명 PNG. draw 렌더러를 MOV로 돌려 `--stills`로 뽑는다. |
+| 선 드러나기 | 선 레이어를 사각형 마스크로 가리고 마스크 폭을 늘려 왼쪽에서 오른쪽으로 보이게 하는 움직임. |
+| 흐려지기 | 설명이 끝난 숫자·선이 0.4초 동안 흰색에서 회색으로 바뀌는 움직임. |
+| 바뀌어 이어지기 | 요소가 0.6초 동안 작아지며 옮겨 가 다음 설명의 라벨이 되는 움직임. 다음 장면은 그 자리·크기에서 이어 간다. |
+
 ## 슬레이트 카드 설명 영상
 
 [akbun-davinciresolve-explainer-slate-marker](../plugins/akbun-editvideo/skills/akbun-davinciresolve-explainer-slate-marker/SKILL.md)에서 사용하는 용어다.

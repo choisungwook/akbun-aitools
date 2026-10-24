@@ -17,7 +17,7 @@ disable-model-invocation: true
   - 점선 사각형(초점 점선·경계 점선)은 네 변을 따로 만들어 모서리가 각지다.
   - 카메라 다가가기는 장면당 한 번까지다.
 - **클립 구조**: [akbun-davinciresolve-explainer의 "Resolve 구현"](../akbun-davinciresolve-explainer/SKILL.md#resolve-구현)을 따른다. Fusion 타이틀 + Template 매크로, `Timing` 노드, 표현식 애니메이션, 제너레이터 길이 조정, Inspector 설계(글자마다 "보이기", 그룹마다 "등장 시점(초)"·"위치 이동"), 마커 API, 성능 규칙이 여기에 포함된다. 그 스킬의 사실 확인(작업 흐름 1단계)과 "민감 정보 규칙"도 그대로 적용한다.
-- **대신하는 것**: 기본 explainer의 "스타일"(고정 위치 포함), "내레이션 규칙", 장면 전환 규칙. 무엇을 어디에 몇 개 둘지는 장면이 설명하는 관계가 정한다.
+- **대신하는 것**: 기본 explainer의 "스타일"(고정 위치 포함), "내레이션 규칙", 장면 전환 규칙. 무엇을 어디에 몇 개 둘지는 장면이 설명하는 관계가 정하고, 배치 고르는 기준은 draw skill의 "하지 말 것" 첫 줄을 따른다(흐름을 기본으로 왼쪽→오른쪽에 두지 않는다).
 - 렌더된 MP4를 장면 대신 올리지 않는다. Resolve 밖에서 렌더한 영상이 필요하면 draw skill을 쓴다.
 - 녹음 정리는 [akbun-davinciresolve-narration-cleanup](../akbun-davinciresolve-narration-cleanup/SKILL.md)을 부른다.
 
