@@ -1,6 +1,6 @@
 {
   "name": "akbun-editvideo",
-  "version": "1.2.17",
+  "version": "1.2.18",
   "description": "Video editing skills — plan and run DaVinci Resolve vlog edits: speech-free travel vlogs (cut/stabilize, chronological timeline, color-grading workflow (Log LUT, exposure, white balance, contrast, saturation on labeled nodes), four separate creative looks on new LOOK nodes, and a city montage cut style, face mosaic, Gmarket Sans subtitles, audio mix, YouTube preset export, vertical YouTube Shorts) and faceless talking developer vlogs (dialogue/keyword subtitles, Epidemic Sound SFX and BGM selection, essay/project style guides, plus a pre-shoot guide, shot sketches and a storyboard with OBS screen-recording list)",
   "author": {
     "name": "akbun",
@@ -39,6 +39,7 @@
     "termsOfServiceURL": "https://docs.github.com/en/site-policy/github-terms/github-terms-of-service",
     "defaultPrompt": [
       "이 대본을 slate-marker 스타일 설명 영상으로 만들어줘. 검정 배경 카드와 손글씨 캡션으로 요청이 서버를 거치는 과정을 Resolve에서 고칠 수 있게 (akbun-davinciresolve-explainer-slate-marker)",
+      "이 대본을 live-ink 스타일 설명 영상으로 만들어줘. 검정 판에 손글씨가 말하는 순서대로 한 글자씩 써지게, Resolve에서 고칠 수 있게 (akbun-davinciresolve-explainer-live-ink)",
       "이 대본을 night-gouache 스타일 설명 영상으로 만들어줘. 그림이 말하는 순서대로 튀어나오고 핵심 대상만 빛나게 (akbun-davinciresolve-explainer-night-gouache)",
       "iPhone 클립 앞부분 흰 화면 잘라내고 흔들리는 클립만 안정화해줘 (davinciresolve-cut-travelflow)",
       "스코프 재서 시간대별 밝기 맞추고 컷 넘어갈 때 눈 안 피곤하게 해줘 (akbun-davinciresolve-exposure)",

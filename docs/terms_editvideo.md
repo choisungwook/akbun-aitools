@@ -269,6 +269,17 @@ Epidemic Sound에서 효과음·BGM 후보를 찾을 때 사용할 **영문 검�
 | 초점 점선 | 지금 설명하는 대상 바깥 6px에 두르는 노랑 점선 테두리. |
 | 포즈 | 한 장면 안에서 상태가 바뀌기 전까지의 화면. 상태 변화는 새 포즈로 즉시 바뀐다. |
 
+## 손글씨 설명 영상
+
+[akbun-davinciresolve-explainer-live-ink](../plugins/akbun-editvideo/skills/akbun-davinciresolve-explainer-live-ink/SKILL.md)에서 사용하는 용어다.
+
+| 용어 | 뜻 |
+|---|---|
+| 써지기 | 글자 한 줄을 덮은 마스크가 왼쪽부터 넓어져 글자가 펜이 지나간 만큼 드러나는 움직임. 한글 음절 0.3초, 그 밖의 글자 0.2초씩 걸린다. |
+| 빌드 | 한 번에 써지는 단위. 글자 한 줄, 밑줄 하나, 화살표 하나가 각각 빌드 하나다. |
+| 펜 한 자루 | 빌드끼리 시간이 겹치지 않고 다음 빌드가 앞 빌드 끝 0.15초 뒤 이후에 시작하는 규칙. |
+| 색 역할 | 흰 본문, 초록 규칙(공식·조건), 주황 이름표(부분 이름과 화살표), 분홍 비교 예시처럼 글이 하는 일 하나에 색 하나를 묶는 규칙. |
+
 ## 녹음 정리와 녹음 맞춤
 
 [akbun-davinciresolve-narration-cleanup](../plugins/akbun-editvideo/skills/akbun-davinciresolve-narration-cleanup/SKILL.md)과 [akbun-davinciresolve-explainer-dark-diagram](../plugins/akbun-editvideo/skills/akbun-davinciresolve-explainer-dark-diagram/SKILL.md)에서 사용하는 용어다.
