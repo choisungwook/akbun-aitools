@@ -83,7 +83,7 @@ Resolve MCP의 현재 버전·API를 확인하고 없으면 로컬 스크립팅 
 
 Cinema에는 효과음을 자동 추가하지 않는다. 아래는 요청한 타이핑·키워드·강조에만 적용한다.
 
-Epidemic Sound MCP의 실제 검색·미리듣기·다운로드 지원 여부를 확인한다. 가능하면 [공통 사운드 스킬](../davinciresolve-sfx-epidemicsound/SKILL.md)의 연결·배치·믹싱 절차를 적용해 영구 `audio-assets/`에 다운로드하고 빈 `SFX_CAPTION` 오디오 트랙에 넣는다. 기존 BGM 교체로 범위를 넓히지 않는다.
+Epidemic Sound MCP의 실제 검색·미리듣기·다운로드 지원 여부를 확인한다. 가능하면 영구 `audio-assets/`에 다운로드하고 빈 `SFX_CAPTION` 오디오 트랙에 넣는다. 기존 BGM 교체로 범위를 넓히지 않는다.
 
 | 화면 이벤트 | 영상 분야 SFX 용어·검색어 | 동기화 |
 |---|---|---|

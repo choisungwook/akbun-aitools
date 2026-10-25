@@ -121,7 +121,6 @@ YouTube 기본 프리셋 출력은 `davinciresolve-export-youtube`가 타임라�
 | 패닝 (panning) | 소리의 좌우 위치 조절. stereo를 넓히는 것과 실제 surround 채널 제작은 다르며 모노 재생도 확인한다. |
 | 오토메이션 / sidechain | 시간에 따라 gain·pan·효과 값 변경 / 다른 신호를 검출 입력으로 쓰는 방식. 음성을 기준으로 음악을 낮추는 덕킹에 사용할 수 있다. |
 | dBFS / dBTP / integrated LUFS | 디지털 샘플 피크 / 재구성 신호의 true peak 추정 / 프로그램 전체의 지각 음량. 페이더 dB 값만으로 이 측정값들을 알 수 없다. |
-| AUDIO_REVIEW | 사운드 검토용 Sand 타임라인 마커. cue ID·정확한 TC·의도·적용 여부·들을 지점·상태를 남기며 AI 검청과 사용자 승인을 구분한다. |
 | HOOK_TEXT_TEMPLATE | 미디어 풀의 같은 이름 bin에 두는 Fusion Title 항목. 이것을 `SUBTITLE` 트랙에 놓아 자막 클립을 만든다. 기존 프로젝트와의 호환을 위해 이름을 유지한다. 프로젝트마다 Resolve 화면에서 한 번 만든다. |
 | Workflow Integration / MCP | Resolve 안에서 여는 플러그인 경로 / AI가 연결 서비스의 도구를 사용하는 프로토콜. Epidemic 검색·다운로드와 Resolve 타임라인 조작은 서로 다른 역할이다. |
 | 대사 자막 (subtitle/caption) | 말한 내용을 글자로 보여주는 자막. 전사와 대조해 실제 발화와 맞춘다. |
@@ -148,7 +147,7 @@ YouTube 기본 프리셋 출력은 `davinciresolve-export-youtube`가 타임라�
 
 ## 브이로그 사운드 검색 용어
 
-Epidemic Sound에서 효과음·BGM 후보를 찾을 때 사용할 **영문 검색 표현**이다. 실제 곡명이나 공식 카테고리·필터 이름을 보장하는 목록은 아니다. 아래 조합을 그대로 넣어 결과가 적으면 핵심 단어부터 검색하고 하나씩 좁힌다. 장면에 적용하는 방법은 [매뉴얼의 사운드 효과 시나리오](manual_editvideo.md#장면별-사운드-효과-시나리오)를 참고한다.
+Epidemic Sound에서 효과음·BGM 후보를 찾을 때 사용할 **영문 검색 표현**이다. 실제 곡명이나 공식 카테고리·필터 이름을 보장하는 목록은 아니다. 아래 조합을 그대로 넣어 결과가 적으면 핵심 단어부터 검색하고 하나씩 좁힌다.
 
 ### 환경음과 일상 동작 검색
 
