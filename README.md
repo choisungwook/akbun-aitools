@@ -110,9 +110,26 @@ codex plugin list --json
 </tr>
 <tr>
 <td><a href="./plugins/akbun-editvideo/skills/akbun-edit-terminal-callout-amber/SKILL.md"><img src="./imgs/akbun-edit-terminal-callout-amber.jpg" alt="akbun-edit-terminal-callout-amber" width="400"></a><br><code>akbun-edit-terminal-callout-amber</code></td>
-<td><a href="./plugins/akbun-editvideo/skills/akbun-davinciresolve-explainer-night-gouache/SKILL.md"><img src="./imgs/akbun-davinciresolve-explainer-night-gouache.gif" alt="akbun-davinciresolve-explainer-night-gouache" width="400"></a><br><code>akbun-davinciresolve-explainer-night-gouache</code></td>
+<td><a href="./plugins/akbun-editvideo/skills/akbun-davinciresolve-explainer/SKILL.md"><img src="./imgs/akbun-davinciresolve-explainer.gif" alt="akbun-davinciresolve-explainer" width="400"></a><br><code>akbun-davinciresolve-explainer</code></td>
 </tr>
 </table>
+
+### explainer 색 조합과 도형 스타일
+
+`akbun-davinciresolve-explainer`는 호출할 때 색 조합과 도형 스타일을 고릅니다. 말하지 않으면 `night` 색과 `gouache` 도형입니다. 각 그림의 왼쪽은 `gouache` 도형(손채색 질감, 붓 화살표), 오른쪽은 `akbun` 도형(akbun-presentation-paper의 테두리 상자와 곧은 화살표)입니다. 색 값은 [palettes.jsonl](./plugins/akbun-editvideo/skills/akbun-davinciresolve-explainer/references/palettes.jsonl)에 있습니다.
+
+| 색 조합 | 색 | 미리보기 |
+|---|---|---|
+| `night` (기본) | 배경 `#202020`, 사람 `#9A9EA6`, 상자 `#F0A040` `#17F0D8` `#FF5F8F` `#91CCA3`, 강조 `#FFD84D` | <img src="./imgs/explainer-palette-night.jpg" alt="night" width="480"> |
+| `apple-orchard` | 배경 `#E8E9E5`, `#796236` `#D2AF7D` `#6A8871` `#907C6C` | <img src="./imgs/explainer-palette-apple-orchard.jpg" alt="apple-orchard" width="480"> |
+| `fiery-ocean` | 배경 `#FDF0D5`, `#780000` `#C1121F` `#003049` `#669BBC` | <img src="./imgs/explainer-palette-fiery-ocean.jpg" alt="fiery-ocean" width="480"> |
+| `akbun` | 배경 `#000000`, 기본 `#FFFFFF`, 강조 주황 `#FF8A00`, 문제 빨강 `#FF3B30` | <img src="./imgs/explainer-palette-akbun.jpg" alt="akbun" width="480"> |
+
+색 조합과 도형 스타일을 정해 호출하는 예입니다.
+
+```text
+$akbun-davinciresolve-explainer 이 대본을 fiery-ocean 색, akbun 도형으로 만들어줘.
+```
 
 ## plugin 목록
 
@@ -277,9 +294,8 @@ codex plugin list --json
 | [davinciresolve-youtube-shorts](./plugins/akbun-editvideo/skills/davinciresolve-youtube-shorts/) | 긴 영상에서 세로 Shorts를 뽑아 렌더·업로드할 때 |
 | [akbun-vlog-shotsketch](./plugins/akbun-editvideo/skills/akbun-vlog-shotsketch/) | 한 샷의 구도·카메라 위치·빛을 미리 정할 때 |
 | [davinciresolve-style-project](./plugins/akbun-editvideo/skills/davinciresolve-style-project/) | 프로젝트 과정을 기록하는 diary형 영상의 편집 기준이 필요할 때 |
-| [akbun-davinciresolve-explainer](./plugins/akbun-editvideo/skills/akbun-davinciresolve-explainer/) | 글·PPTX로 Resolve에서 고칠 수 있는 설명 영상을 만들 때 |
 | [akbun-davinciresolve-explainer-dark-diagram](./plugins/akbun-editvideo/skills/akbun-davinciresolve-explainer-dark-diagram/) | 어두운 다이어그램 설명 영상을 만들고 내 녹음에 맞출 때 |
-| [akbun-davinciresolve-explainer-night-gouache](./plugins/akbun-editvideo/skills/akbun-davinciresolve-explainer-night-gouache/) | 손채색 그림이 말하는 순서대로 튀어나오는 설명 영상을 만들 때 |
+| [akbun-davinciresolve-explainer](./plugins/akbun-editvideo/skills/akbun-davinciresolve-explainer/) | 대본을 그림이 자막에 맞춰 튀어나오는 설명 영상으로 만들고, 색 조합·도형 스타일을 골라 쓰고 싶을 때 |
 | [akbun-davinciresolve-explainer-scribble-black](./plugins/akbun-editvideo/skills/akbun-davinciresolve-explainer-scribble-black/) | 보드에 써 내려가는 손그림 설명 영상을 Resolve에서 고치며 만들 때 |
 | [akbun-davinciresolve-explainer-slate-marker](./plugins/akbun-editvideo/skills/akbun-davinciresolve-explainer-slate-marker/) | 카드와 상태 변화로 시스템 동작을 보여 주는 설명 영상을 Resolve에서 고치며 만들 때 |
 | [akbun-davinciresolve-explainer-live-ink](./plugins/akbun-editvideo/skills/akbun-davinciresolve-explainer-live-ink/) | 손글씨로 적어 가는 설명 영상을 Resolve에서 고치며 만들 때 |

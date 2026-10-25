@@ -220,7 +220,7 @@ Epidemic Sound에서 효과음·BGM 후보를 찾을 때 사용할 **영문 검�
 
 ## 설명형 모션그래픽 제작
 
-[Explainer 스킬](../plugins/akbun-editvideo/skills/akbun-davinciresolve-explainer/SKILL.md)에서 사용하는 용어다.
+explainer 스킬들과 [공통 Resolve 구현](../plugins/akbun-editvideo/skills/akbun-davinciresolve-explainer/references/resolve-core.md)에서 사용하는 용어다.
 
 | 용어 | 뜻 |
 |---|---|
@@ -232,23 +232,25 @@ Epidemic Sound에서 효과음·BGM 후보를 찾을 때 사용할 **영문 검�
 | 표현식 애니메이션 | 시간과 Timing 값을 계산해 페이드·화살표 진행·강조를 제어하는 방식. 시점을 Inspector에서 바꿀 수 있다. |
 | MultiMerge / 레이어_목록 | 여러 요소를 레이어로 합치는 Fusion 노드와 이 스킬의 노드 이름. 레이어 번호가 클수록 위에 보인다. |
 | 제너레이터 기본 길이 | 타이틀 삽입 시 사용하는 환경설정의 Standard generator duration. 임시 변경 전 원래 값을 기록하고 삽입 뒤 복원한다. |
-| EMU | PPTX에서 위치·크기를 저장하는 단위. 슬라이드 가로 EMU를 기준으로 1920px 캔버스 좌표로 환산한다. |
-| 기본 5색과 검정 예외 | 배경 #252525·본문 #EBEBEB·선 #FFFFFF·정상 강조 #FFC000·문제 #FF0000과 노랑 채움 안 글자·숫자용 #000000. 총 6개 허용 색이다. |
 
-## 손채색 그림 설명 영상
+## 대본 설명 영상(akbun-davinciresolve-explainer)
 
-[akbun-davinciresolve-explainer-night-gouache](../plugins/akbun-editvideo/skills/akbun-davinciresolve-explainer-night-gouache/SKILL.md)에서 사용하는 용어다.
+[akbun-davinciresolve-explainer](../plugins/akbun-editvideo/skills/akbun-davinciresolve-explainer/SKILL.md)에서 사용하는 용어다.
 
 | 용어 | 뜻 |
 |---|---|
-| 레이어 PNG | akbun-draw-night-gouache가 등장 단위(대상·후광·화살표·태그)마다 만든 화면 전체 크기의 투명 PNG. 위치 정보가 그림 안에 있어 Fusion에서는 크기 변화의 중심(Pivot)만 준다. |
+| 장면 spec | 장면 하나를 적은 JSON. 자막, 레이어(shape·등장 시점), row 배치, 이어받을 앞 장면, 펀치 인만 정하고 모양·색 값은 쓰지 않는다. |
+| shape 라이브러리 | `references/shapes.jsonl`. 사람·상자·원통·코드 카드·화살표·점선 상자·✕·태그의 치수·색 키·모션을 한 줄씩 정의한 파일. |
+| 색 조합(팔레트) | `references/palettes.jsonl`의 한 줄. 모든 팔레트가 같은 색 키(BG, LINE, EMPH, COMPUTE …)를 가져서 어떤 도형과도 섞어 쓸 수 있다. 기본은 `night`. |
+| 도형 스타일 | `references/shape-styles.jsonl`의 한 줄. `gouache`(기본, 손채색 질감·붓 화살표)와 `akbun`(akbun-presentation-paper의 테두리 상자·곧은 화살표). |
+| 검사표 | `references/checklist.jsonl`. 장면별(S)·장면 사이(X) 항목을 `scene.py check`가 참/거짓으로 채점하고, 95% 이상이어야 통과다. |
+| 레이어 PNG | `scene.py build`가 akbun-draw-night-gouache 렌더러로 등장 단위(대상·화살표·태그·코드 카드·점선 강조 상자)마다 만든 화면 전체 크기의 투명 PNG. 위치 정보가 그림 안에 있어 Fusion에서는 크기 변화의 중심(Pivot)만 준다. |
 | layers.json | 레이어 순서, 파일 이름, 그림 영역(bbox), 크기 변화 중심(pivot, Fusion 좌표), 태그 글자, 자막을 적은 파일. |
 | 팝 | 대상 중심에서 0.3초 동안 0.6배 → 약 1.04배 → 1.0배로 넘쳤다 돌아오며 나타나는 등장. |
 | 자라기 | 화살표·연결선이 0.25초 동안 0.85배에서 1.0배로 커지며 나타나는 등장. 넘침이 없다. |
-| 밀려 들어오기 | 대상이 가까운 화면 가장자리 밖에서 제자리로 0.6초 동안 들어오며 끝으로 갈수록 느려지는 등장. |
-| 후광 맥박 | 강조 대상 뒤 후광 레이어가 0.3초 페이드 뒤 불투명도 0.5~1.0을 1.2초 주기로 오가는 움직임. 꼭 강조할 장면에만 하나 둔다. |
-| 펀치 인 | 장면의 핵심 순간에 강조 대상 중심으로 화면 전체를 0.2초 만에 1.4~1.8배 확대하는 움직임. 장면당 한 번까지이고, 확대한 대상이 자막 자리(y 860)를 덮지 않는 배율까지만 쓴다. |
-| live / freed 레이어 | 장면 중간에 상태가 바뀌거나 사라질 대상을 같은 자리의 두 레이어(`*-live`, `*-freed`)로 나눈 것. 영상에서 둘을 교차 페이드한다. |
+| 페이드 | 코드 카드처럼 큰 면이 0.25초 동안 나타나는 움직임. |
+| 코드 카드 | 터미널 창 모양 레이어. 첫 줄은 `$ cat <php 파일 이름>`, 그 아래는 실제 파일에서 뽑은 줄만 쓰고 건너뛴 자리는 `...`로 표시한다. 코드 글자는 D2Coding 29px(기본 24px의 1.2배). |
+| 펀치 인 | 장면의 핵심 순간에 강조 대상 중심으로 화면 전체를 0.2초 만에 1.3~1.8배 확대하는 움직임. 장면당 한 번까지이고, 확대한 대상이 자막 자리(y 860)를 덮지 않는 배율까지만 쓴다. |
 
 ## 검정 보드 손그림 설명 영상
 
