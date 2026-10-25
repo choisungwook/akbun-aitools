@@ -4,7 +4,7 @@
 
 영상·Resolve 용어는 [용어사전](terms_editvideo.md)을 참고한다.
 
-스킬은 이름을 직접 불러 사용할 수 있다. 예: `$akbun-vlog-prepared-devtalk`. 전체 작업을 맡는 workflow 스킬은 필요한 하위 스킬 문서를 읽어 순서대로 진행하고, 각 하위 스킬은 원하는 단계만 따로 요청할 때 쓴다.
+스킬은 이름을 직접 불러 사용할 수 있다. 예: `$akbun-vlog-storyboard`. 전체 작업을 맡는 workflow 스킬은 필요한 하위 스킬 문서를 읽어 순서대로 진행하고, 각 하위 스킬은 원하는 단계만 따로 요청할 때 쓴다.
 
 ## 스킬 이름 변경
 
@@ -19,7 +19,6 @@
 
 | 상황 | 시작할 스킬 | 해결하는 문제와 동작 |
 |---|---|---|
-| 아직 촬영 전이고 경험을 영상 이야기로 만들고 싶음 | [akbun-vlog-prepared-devtalk](../plugins/akbun-editvideo/skills/akbun-vlog-prepared-devtalk/SKILL.md) | 한 번에 하나씩 인터뷰하며 실제 경험을 5–7분 이야기로 정리하고, 비트·샷·스케치·촬영 계획까지 준비한다. 얼굴 비노출을 전제로 하고 모션그래픽 도구는 미리 정하지 않는다. |
 | 특정 샷의 카메라 구도와 빛을 정하고 싶음 | [akbun-vlog-shotsketch](../plugins/akbun-editvideo/skills/akbun-vlog-shotsketch/SKILL.md) | 이야기 비트에 필요한 한 샷의 프레임, 카메라 위치, 동작, 조명과 얼굴 비노출 확인을 그림과 표로 만든다. |
 | 전체 이야기에서 어떤 장면을 어떤 순서로 찍을지 보고 싶음 | [akbun-vlog-storyboard](../plugins/akbun-editvideo/skills/akbun-vlog-storyboard/SKILL.md) | 확정된 비트를 음성·B-roll·화면 녹화·필요한 그래픽 아이디어에 연결하고 핵심 setup을 스케치한다. |
 | 말소리 없는 여행 영상 전체를 편집하고 싶음 | [akbun-davinciresolve-workflow](../plugins/akbun-editvideo/skills/akbun-davinciresolve-workflow/SKILL.md) | 원본 타임라인을 보존하면서 촬영 시간순 타임라인부터 컷, 색보정, 요청된 Look, 개인정보 보호, 자막, 출력까지 단계별로 진행한다. |
@@ -40,7 +39,6 @@
 
 | 상황·준비된 입력 | 시작과 이어지는 스킬 | 받게 되는 결과·직접 확인할 부분 |
 |---|---|---|
-| 촬영 전, “32주차 개발자 diary”라는 생각만 있음 | `akbun-vlog-prepared-devtalk` → 이야기 확정 후 `akbun-vlog-storyboard`·`akbun-vlog-shotsketch` | 인터뷰에서 찾은 실제 사건, 5–7분 이야기, 얼굴 없는 샷·소리의 역할·녹음·촬영 순서. 경험과 내 말투가 맞는지 확인 |
 | 말 없는 여행 원본을 통째로 편집 | `akbun-davinciresolve-workflow` → 시간순 타임라인 → 트랙 준비 → 컷·색보정 → 선택 Look → 개인정보·자막 → 출력 | 원본을 보존한 여행 편집본. 시간순 배열, 주요 장면과 자연음, 검토 마커 확인 |
 | 도시 클립의 리듬만 다듬고 싶음 | `akbun-davinciresolve-cut-new-york` → 바뀐 구간을 자막 스킬에 전달 | 와이드·미디엄·디테일과 움직임을 잇는 몽타주. 삭제 후보와 자막·소리의 새 위치 확인 |
 | 화면이 어둡고 야간 네온 분위기를 원함 | `akbun-davinciresolve-exposure` 및 필요한 WB·대비·채도 → `akbun-davinciresolve-look-tokyo-night` | 기본 밝기와 새 LOOK 노드가 분리된 결과. 실제 보기 환경에서 밝기·간판 디테일 확인. +1/+2스톱은 선택 비교 |
@@ -100,34 +98,12 @@ Look 수치는 참고 영상에서 프레임을 복제한 절대값이 아니라
 |---|---|
 | 영상에서 얼굴·번호판·개인정보 가리기 | [davinciresolve-face-privacy](../plugins/akbun-editvideo/skills/davinciresolve-face-privacy/SKILL.md): Color 페이지에서 가릴 대상을 추적하고 타임라인에 확인 표시를 남긴다. |
 | Fusion에서 특정 영역만 모자이크 | [davinciresolve-face-mosaic](../plugins/akbun-editvideo/skills/davinciresolve-face-mosaic/SKILL.md): 새 Mosaic Blur 노드와 마스크로 필요한 영역을 가린다. |
-| 기사·블로그·논문을 본편 위에 발췌해 보여주기 | [akbun-davinciresolve-article-overlay](../plugins/akbun-editvideo/skills/akbun-davinciresolve-article-overlay/SKILL.md): Resolve Fusion으로 밝은 발췌 패널을 만들고 선택한 문장에 밑줄·원·하이라이트를 붙인다. Epidemic Sound MCP 음원을 SFX 트랙에 동기화하고 삽입 불가 시 분·초·길이·검색어·트랙을 채팅으로 안내한다. |
 | 웹 페이지·GitHub 저장소를 둘러보며 요소를 짚기 | [akbun-edit-page-tour-lilac](../plugins/akbun-editvideo/skills/akbun-edit-page-tour-lilac/SKILL.md): 2배 스크린샷을 창 카드에 넣고 카메라가 요소마다 짧게 다가가 머물며 연보라 형광펜·외곽 상자로 짚는 전체 화면 장면을 만든다. 본편을 밀지 않는 새 트랙에 놓고, 노드 라벨로 Fusion 페이지에서 위치·색을 고친다. |
-| 여러 글·게시물·이슈를 겹쳐 보여주며 구절 짚기 | [akbun-edit-quote-cards-lilac](../plugins/akbun-editvideo/skills/akbun-edit-quote-cards-lilac/SKILL.md): 실제 출처 스크린샷 카드 2~4장을 겹쳐 쌓고 읽는 구절에 형광펜을 쓸어 칠한다. 본편이 계속 보여야 하면 article-overlay를 쓴다. |
+| 여러 글·게시물·이슈를 겹쳐 보여주며 구절 짚기 | [akbun-edit-quote-cards-lilac](../plugins/akbun-editvideo/skills/akbun-edit-quote-cards-lilac/SKILL.md): 실제 출처 스크린샷 카드 2~4장을 겹쳐 쌓고 읽는 구절에 형광펜을 쓸어 칠한다. |
 | 터미널·AI 도구 화면 녹화에 주석 달기 | [akbun-edit-terminal-callout-amber](../plugins/akbun-editvideo/skills/akbun-edit-terminal-callout-amber/SKILL.md): 실제 녹화를 어두운 창 카드에 넣고 오류 줄 옆에 노란 손그림 화살표·라벨, 토큰 하이라이트를 붙인다. 출력을 지어내지 않는다. |
 | 영화식 기본 자막·타이핑 자막을 재사용 템플릿으로 만들기 | [akbun-davinciresolve-caption-template](../plugins/akbun-editvideo/skills/akbun-davinciresolve-caption-template/SKILL.md): 외형 지정이 없으면 하단 중앙의 정적 Cinema를 사용하고, 요청 시 타이핑·키워드·밑줄·원을 만든다. DRFX를 Downloads에 생성하고 macOS 설치법을 안내한다. |
 | YouTube Shorts 후보 만들기 | [davinciresolve-youtube-shorts](../plugins/akbun-editvideo/skills/davinciresolve-youtube-shorts/SKILL.md): 선택한 타임라인에서 세로 영상 후보를 만들고 원본과 오디오 구성을 보존한다. |
 | YouTube 기본 렌더 출력 | [davinciresolve-export-youtube](../plugins/akbun-editvideo/skills/davinciresolve-export-youtube/SKILL.md): 타임라인 해상도에 맞는 YouTube 렌더 프리셋을 고르고 결과 해상도를 확인한다. |
-
-### 기사 발췌 오버레이 사용
-
-`$akbun-davinciresolve-article-overlay`에 기사 URL/본문/캡처와 대상 타임라인·표시 구간을 준다. 예: “이 글을 0분 12초부터 5초 동안 띄우고 핵심 문장에 빨간 밑줄과 Marker stroke 효과음을 넣어줘.” 강조는 선택 사항이며 밑줄·원·하이라이트 중 필요한 방식과 색을 지정할 수 있다.
-
-AI agent가 참고 프레임을 직접 확인한 뒤 패널·글자·강조를 구성하고, 복제본에서 본편보다 위의 별도 비디오 트랙에 같은 시간으로 겹쳐 배치한다. 대상 구간이 비어 있는 기존 오버레이 트랙은 재사용하고, 없으면 새 `ARTICLE_OVERLAY` 트랙을 만든다. 본편 트랙에 발췌를 끼워 넣거나 기존 영상의 길이를 밀지 않는다. 원문 캡처는 이미지로 남고 재조판한 문구는 Text+로 수정할 수 있다. 대사 자막은 위의 자막 스킬을 고른다.
-
-편집 후에는 발췌 클립을 선택하고 Fusion 페이지에서 해당 노드를 선택해 Inspector로 고친다. 실제 트랙·클립·노드 이름과 수정 항목을 AI가 함께 안내한다.
-
-| 수정할 것 | 기본 컨트롤 |
-|---|---|
-| 본문 발췌 전체 위치·크기 | `ARTICLE_LAYOUT`의 Center·Size. 본문·패널·강조가 함께 움직임 |
-| 밑줄·원 위치·크기·두께 | `UNDERLINE_01` / `CIRCLE_01` 계열의 LAYOUT·SHAPE 노드 |
-| 빨강을 다른 색으로 변경 | 해당 강조의 COLOR 노드 색상 피커 |
-| 강조 숨기기 | 해당 강조의 MERGE 노드 Blend |
-
-밑줄·원은 원문 이미지에 합쳐 굽지 않고 독립된 편집 요소로 남긴다. 정적 위치·색 컨트롤은 애니메이션과 분리하므로 재생해도 사용자 수정값을 덮어쓰지 않는다. 대표 클립에서 이동·크기·색·숨김을 바꿨다가 복원하고 저장 후 컨트롤을 확인해야 수정 가능 검증이 끝난다.
-
-검증은 실제 Edit 합성 캡처와 저장 후 컴포지션 재열기로 한다. PNG는 요청 길이 대신 기본 스틸 길이로 들어갈 수 있어 실제 길이를 확인하고 교정해야 한다. 원의 write-on과 페이드 제어는 사용자의 위치·색·숨김 제어와 분리한다.
-
-분석 캡처는 macOS `/tmp` 임시 디렉터리에 둔다. Resolve가 참조하는 실제 이미지·음원은 import 전에 `article-assets/`·`audio-assets/` 같은 유지할 출력 폴더로 저장한다. 참고 영상의 초와 편집 타임라인의 경과 시간·Resolve TC는 구분한다. 원문을 확인하지 못하면 인용문을 만들지 않으며, 효과음 다운로드나 배치가 실패하면 미삽입 큐시트를 채팅에 남긴다.
 
 ### 창 카드 장면 사용 (page-tour, quote-cards, terminal-callout)
 
@@ -161,7 +137,7 @@ AI agent가 참고 프레임을 직접 확인한 뒤 패널·글자·강조를 �
 
 Inspector에서 문구·위치·크기와 밑줄/원의 Visibility를 조절한다. 문장형 Reveal Duration은 클립 길이에 대한 비율이며 기본 0.65다. 타이핑·키워드의 글꼴은 오뮤 다예쁨체·나눔명조를 기본으로 확인하고 OFL 대안으로 나눔손글씨 펜을 안내한다. 문구 변경 뒤 강조 위치는 다시 맞춘다. Epidemic Sound 연결이 안 되면 효과음의 분·초·길이·검색어·오디오 트랙을 채팅으로 받는다.
 
-호출명 변경: `davinciresolve-article-overlay` → `akbun-davinciresolve-article-overlay`, `davinciresolve-caption-template` → `akbun-davinciresolve-caption-template`. 이전 호출명 대신 새 이름을 사용한다.
+호출명 변경: `davinciresolve-caption-template` → `akbun-davinciresolve-caption-template`. 이전 호출명 대신 새 이름을 사용한다.
 
 ## 문서에서 설명 영상 만들기
 

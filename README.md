@@ -286,7 +286,6 @@ codex plugin list --json
 | [akbun-davinciresolve-caption-template](./plugins/akbun-editvideo/skills/akbun-davinciresolve-caption-template/) | 같은 모양의 자막을 여러 영상에서 다시 쓰고 싶을 때 |
 | [davinciresolve-export-youtube](./plugins/akbun-editvideo/skills/davinciresolve-export-youtube/) | YouTube에 올릴 파일을 기본 프리셋으로 뽑을 때 |
 | [davinciresolve-youtube-shorts](./plugins/akbun-editvideo/skills/davinciresolve-youtube-shorts/) | 긴 영상에서 세로 Shorts를 뽑아 렌더·업로드할 때 |
-| [akbun-vlog-prepared-devtalk](./plugins/akbun-editvideo/skills/akbun-vlog-prepared-devtalk/) | 촬영 전에 내 경험을 인터뷰로 개발자 브이로그 이야기로 만들 때 |
 | [akbun-vlog-shotsketch](./plugins/akbun-editvideo/skills/akbun-vlog-shotsketch/) | 한 샷의 구도·카메라 위치·빛을 미리 정할 때 |
 | [akbun-vlog-storyboard](./plugins/akbun-editvideo/skills/akbun-vlog-storyboard/) | 어떤 장면을 어떤 순서로 찍을지 한눈에 보고 싶을 때 |
 | [davinciresolve-style-essay](./plugins/akbun-editvideo/skills/davinciresolve-style-essay/) | 기술을 설명하는 에세이형 영상의 편집 기준이 필요할 때 |
@@ -300,7 +299,6 @@ codex plugin list --json
 | [akbun-davinciresolve-explainer-live-ink](./plugins/akbun-editvideo/skills/akbun-davinciresolve-explainer-live-ink/) | 손글씨로 적어 가는 설명 영상을 Resolve에서 고치며 만들 때 |
 | [akbun-davinciresolve-narration-cleanup](./plugins/akbun-editvideo/skills/akbun-davinciresolve-narration-cleanup/) | 녹음한 내레이션의 숨소리·긴 쉼을 정리할 때 |
 | [akbun-review-video-for-retention](./plugins/akbun-editvideo/skills/akbun-review-video-for-retention/) | 만든 영상이 끝까지 볼 만한지 시청 지속 기준으로 점검할 때 |
-| [akbun-davinciresolve-article-overlay](./plugins/akbun-editvideo/skills/akbun-davinciresolve-article-overlay/) | 본편 위에 기사 문장을 발췌 패널로 보여 줄 때 |
 | [akbun-edit-page-tour-lilac](./plugins/akbun-editvideo/skills/akbun-edit-page-tour-lilac/) | 웹 페이지 스크린샷을 짚어 가며 설명할 때 |
 | [akbun-edit-quote-cards-lilac](./plugins/akbun-editvideo/skills/akbun-edit-quote-cards-lilac/) | 인용 글 카드를 쌓고 형광펜으로 강조할 때 |
 | [akbun-edit-terminal-callout-amber](./plugins/akbun-editvideo/skills/akbun-edit-terminal-callout-amber/) | 터미널 녹화 화면에 화살표·라벨을 붙여 짚을 때 |

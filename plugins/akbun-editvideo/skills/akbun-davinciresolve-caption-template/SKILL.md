@@ -6,7 +6,7 @@ disable-model-invocation: true
 
 # akbun-davinciresolve-caption-template
 
-Codex·Claude 등 agent가 Resolve 기본 Text+와 Fusion 도형으로 편집 가능한 **영화식 자막(cinema caption)**을 기본으로 만든다. 별도 스타일 요청이 없으면 `Akbun Cinema`를 선택하고, 타이핑·키워드는 명시적으로 요청했을 때만 선택한다. 대사 자동 전사나 기사 발췌 패널은 각각 [devtalk 자막](../davinciresolve-subtitle-devtalk/SKILL.md), [기사 오버레이](../akbun-davinciresolve-article-overlay/SKILL.md)가 맡는다.
+Codex·Claude 등 agent가 Resolve 기본 Text+와 Fusion 도형으로 편집 가능한 **영화식 자막(cinema caption)**을 기본으로 만든다. 별도 스타일 요청이 없으면 `Akbun Cinema`를 선택하고, 타이핑·키워드는 명시적으로 요청했을 때만 선택한다. 대사 자동 전사는 [devtalk 자막](../davinciresolve-subtitle-devtalk/SKILL.md)이 맡는다.
 
 ## 기본 영화식 자막
 
@@ -21,7 +21,7 @@ Codex·Claude 등 agent가 Resolve 기본 Text+와 Fusion 도형으로 편집 �
 
 참고 영상/구간, 사용할 문구, 대상 프로젝트·타임라인·배치 구간을 구분한다. 참고 영상의 시간은 배치 시간이 아니다. 템플릿만 요청했으면 패키징·미리보기·설치 안내까지 하고 실제 본편에 넣지 않는다.
 
-참고 파일이 있으면 [프레임 캡처 도구](../akbun-davinciresolve-article-overlay/scripts/capture_reference.py)를 사용해 `/tmp` 아래 임시 디렉터리에 캡처한다. 각 프레임을 직접 열어 읽는다. 먼저 0.5초 간격으로 등장 전·등장·완성·문장 교체·퇴장을 보고, 글자 증가 경계는 약 0.1초 간격으로 다시 본다. 참고 스타일 재현을 요청했는데 원본이 없으면 링크/경로를 요청하고 확인 전에는 참고 분석 완료나 스타일 일치를 주장하지 않는다. 기본 Cinema 제작에는 참고 영상이 필요하지 않다.
+참고 파일이 있으면 [프레임 캡처 도구](scripts/capture_reference.py)를 사용해 `/tmp` 아래 임시 디렉터리에 캡처한다. 각 프레임을 직접 열어 읽는다. 먼저 0.5초 간격으로 등장 전·등장·완성·문장 교체·퇴장을 보고, 글자 증가 경계는 약 0.1초 간격으로 다시 본다. 참고 스타일 재현을 요청했는데 원본이 없으면 링크/경로를 요청하고 확인 전에는 참고 분석 완료나 스타일 일치를 주장하지 않는다. 기본 Cinema 제작에는 참고 영상이 필요하지 않다.
 
 추출 대상은 글자 높이·여백·정렬·색·표시 순서·읽는 시간이다. 원본 인물·문장·밈 이미지·브랜드·출처 맥락을 배포 자산에 복제하지 않는다. 다른 소재의 예문으로 검증한다. 스크린샷만으로 원본 SFX를 들었다고 말하지 않는다.
 
@@ -74,7 +74,7 @@ Resolve MCP의 현재 버전·API를 확인하고 없으면 로컬 스크립팅 
 
 1. 현재 타임라인을 복제하고 원본/작업본 ID, fps, 시작 TC, 클립 시작·끝, 마커와 길이를 기록한다. 재개라면 이전 작업본을 확인한다.
 2. 상위의 비어 있는 `SUBTITLE` 또는 `CAPTION` 자막 전용 비디오 트랙을 찾거나 `CAPTION` 트랙을 추가한다. V2 등 번호를 고정하지 않는다.
-3. 설치된 Title을 UI로 해당 트랙에 드래그하거나, 준비된 미디어 풀 Fusion Title을 `AppendToTimeline`의 `trackIndex`·`recordFrame`으로 배치한다. [배치·프레임 주의사항](../akbun-davinciresolve-article-overlay/references/resolve-compositing.md)의 비리플 원칙을 따른다. 타임라인 중간에서 `InsertFusionTitleIntoTimeline`을 호출하지 않는다.
+3. 설치된 Title을 UI로 해당 트랙에 드래그하거나, 준비된 미디어 풀 Fusion Title을 `AppendToTimeline`의 `trackIndex`·`recordFrame`으로 배치한다. 배치 뒤 실제 트랙·시작·길이를 다시 읽고 다른 클립·마커가 밀리지 않았는지 대조한다. 타임라인 중간에서 `InsertFusionTitleIntoTimeline`을 호출하지 않는다.
 4. 해당 클립 인스턴스만 수정한다. Cinema는 전체 문장을 정적으로 표시하고 클립 페이드도 0으로 둔다. 요청한 타이핑 시간은 기본 비율을 발화에 맞춰 조절하며, 정밀한 발화 동기화가 필요하면 해당 `End` 표현식을 제거한 뒤 실제 comp 시작 프레임 기준 키프레임을 넣는다. 문구를 글자마다 바꾸는 방식은 줄바꿈·정렬이 흔들리므로 쓰지 않는다.
 5. 타이핑·키워드에서 강조를 요청했을 때만 텍스트가 완전히 나온 뒤 선택한 밑줄·원을 표시한다. 원의 write-on은 `CIRCLE_SHAPE.WriteLength`를 사용하고, 길이 0에서 남는 점은 Merge Blend로 숨긴다. 강조 애니메이션은 기본 패키지에 없으므로 요청 시 클립에 작성한다.
 6. 기존 클립·마커·길이가 그대로인지 다시 읽는다. cue ID/클립 ID로 재실행 중복을 막는다.

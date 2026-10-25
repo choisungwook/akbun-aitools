@@ -86,7 +86,7 @@ def repository_errors(root):
     prompts = []
   called = set(re.findall(r"\(((?:akbun-|davinciresolve-)[a-z0-9-]+)\)", "\n".join(prompts)))
   required = {name for name in names if name.startswith("akbun-davinciresolve-look-")}
-  required |= {"akbun-vlog-prepared-devtalk", "akbun-davinciresolve-cut-new-york"}
+  required |= {"akbun-davinciresolve-cut-new-york"}
   if called - names or required - called:
     errors.append(f"prompt 오류: 없는 스킬={sorted(called - names)}, 새 스킬 예시 누락={sorted(required - called)}")
   agents = (root / "AGENTS.md").read_text()
