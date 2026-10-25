@@ -37,6 +37,7 @@
 | 여백 많은 조용한 일상 장면 그림이 필요함 | [akbun-draw-quiet-pencil](../plugins/akbun-draw/skills/akbun-draw-quiet-pencil/SKILL.md) | 크림 배경 연필 장면 프롬프트 |
 | 논문·학습 자료를 이미지와 설명 대본으로 바꾸고 싶음 | [akbun-draw-learning-mono](../plugins/akbun-draw/skills/akbun-draw-learning-mono/SKILL.md) | 흑백 16:9 학습 이미지와 대본 |
 | 여행 글에 넣을 썸네일·약도 삽화가 필요함 | [akbun-draw-travel-blog](../plugins/akbun-draw/skills/akbun-draw-travel-blog/SKILL.md) | 썸네일·코스 약도 프롬프트 |
+| IT·여행 글이나 영상의 유튜브·티스토리 썸네일을 포스터처럼 만들고 싶음 | [akbun-draw-thumbnail-retro](../plugins/akbun-draw/skills/akbun-draw-thumbnail-retro/SKILL.md) | 70년대 필름 사진 위 레트로 디스플레이 글자 썸네일 프롬프트(16:9·1:1) |
 
 ## 만화·웹툰
 
