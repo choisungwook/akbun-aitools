@@ -49,12 +49,12 @@ codex plugin list --json
 
 | plugin | 하는 일 |
 |---|---|
-| [akbun-writing](#akbun-writing) | 기술 글 쓰기, 문서 교정, 운영 공지 |
+| [akbun-writing](#akbun-writing) | 기술 글 쓰기, 문서 교정 |
 | [akbun-draw](#akbun-draw) | 그림 프롬프트, 모션그래픽 영상, 만화 |
 | [akbun-draw-architecture](#akbun-draw-architecture) | AWS·시스템 구조 다이어그램 |
 | [akbun-presentation](#akbun-presentation) | 발표 덱과 대본 |
-| [akbun-learning](#akbun-learning) | 과외, 영상 대본, 발음, 학습지 |
-| [akbun-analysis](#akbun-analysis) | 코드베이스 분석과 리뷰 |
+| [akbun-learning](#akbun-learning) | 개념 학습, 영상 대본, 발음, Anki |
+| [akbun-analysis](#akbun-analysis) | 코드 변경 조사와 리뷰 |
 | [akbun-refactoring](#akbun-refactoring) | 자동 검증을 통과시키며 고치기 |
 | [akbun-agent-ops](#akbun-agent-ops) | agent 기억과 세션 맥락 |
 | [akbun-pulse](#akbun-pulse) | GitHub·Readwise 하루·기간 요약 |
@@ -126,12 +126,9 @@ codex plugin list --json
 |---|---|
 | [akbun-writing](./plugins/akbun-writing/skills/akbun-writing/) | 기술 블로그 글을 akbun 말투로 처음부터 쓸 때 |
 | [akbun-writing-with-question](./plugins/akbun-writing/skills/akbun-writing-with-question/) | 독자가 질문을 따라가며 개념을 익히는 학습형 글이 필요할 때 |
-| [akbun-writing-persuasive](./plugins/akbun-writing/skills/akbun-writing-persuasive/) | 독자가 끝까지 읽고 납득해야 하는 주장·제안 글을 쓸 때 |
-| [akbun-writing-easy](./plugins/akbun-writing/skills/akbun-writing-easy/) | 어려운 원본 자료를 초보자도 읽을 수 있게 풀어야 할 때 |
 | [akbun-writing-style-warm](./plugins/akbun-writing/skills/akbun-writing-style-warm/) | 초보 독자에게 해요체 경험담 말투로 다가가고 싶을 때 |
 | [akbun-writing-naturalize](./plugins/akbun-writing/skills/akbun-writing-naturalize/) | 원문 말투는 지키고 맞춤법·어색한 문장만 다듬고 싶을 때 |
 | [akbun-docs-review](./plugins/akbun-writing/skills/akbun-docs-review/) | 기술 문서의 용어가 들쭉날쭉하거나 사실 확인이 필요할 때 |
-| [akbun-it-infra-change-notice](./plugins/akbun-writing/skills/akbun-it-infra-change-notice/) | 인프라 변경을 운영에 넣기 전에 작업 공지를 돌려야 할 때 |
 | [akbun-writing-travel-blog](./plugins/akbun-writing/skills/akbun-writing-travel-blog/) | 여행 메모와 사진을 블로그 글로 옮길 때 |
 | [akbun-voice-diary](./plugins/akbun-writing/skills/akbun-voice-diary/) | 말로 한 하루를 일기로 남기고 공부 일정까지 잡고 싶을 때 |
 | [akbun-thumbnail-review](./plugins/akbun-writing/skills/akbun-thumbnail-review/) | 올리기 전 유튜브 썸네일이 잘 읽히는지 점검할 때 |
@@ -192,13 +189,11 @@ codex plugin list --json
 
 ### akbun-learning
 
-<details><summary>과외, 영상 대본, 발음, 학습지</summary>
+<details><summary>개념 학습, 영상 대본, 발음, Anki</summary>
 
 | skill | 이럴 때 쓰세요 |
 |---|---|
-| [akbun-algorithm-tutor](./plugins/akbun-learning/skills/akbun-algorithm-tutor/) | 알고리즘 문제를 내 수준에 맞춰 단계별로 배우고 싶을 때 |
 | [akbun-driven-learning](./plugins/akbun-learning/skills/akbun-driven-learning/) | 내가 이해한 내용을 확인받으며 개념을 파고들 때 |
-| [akbun-studysheet](./plugins/akbun-learning/skills/akbun-studysheet/) | 처음 배우는 주제를 핸즈온까지 따라 하는 HTML 학습지로 만들 때 |
 | [akbun-describe-youtube-transcript](./plugins/akbun-learning/skills/akbun-describe-youtube-transcript/) | 유튜브 영상의 말을 한국어 대본으로 옮겨 읽고 싶을 때 |
 | [akbun-describe-twitter-transcript](./plugins/akbun-learning/skills/akbun-describe-twitter-transcript/) | x.com 영상 내용을 대본으로 정리하고 싶을 때 |
 | [akbun-learning-english](./plugins/akbun-learning/skills/akbun-learning-english/) | 영어 문장의 발음과 끊어 읽기를 익힐 때 |
@@ -209,15 +204,12 @@ codex plugin list --json
 
 ### akbun-analysis
 
-<details><summary>코드베이스 분석과 리뷰</summary>
+<details><summary>코드 변경 조사와 리뷰</summary>
 
 | skill | 이럴 때 쓰세요 |
 |---|---|
-| [akbun-analysiscode](./plugins/akbun-analysis/skills/akbun-analysiscode/) | 낯선 코드베이스의 구조와 관계를 근거와 함께 파악할 때 |
 | [akbun-analysis-git-whyandhow](./plugins/akbun-analysis/skills/akbun-analysis-git-whyandhow/) | 이 코드·PR이 왜, 어떻게 바뀌었는지 알아야 할 때 |
 | [akbun-analysis-gitdiff-blast-radius](./plugins/akbun-analysis/skills/akbun-analysis-gitdiff-blast-radius/) | 머지 전에 이 변경이 어디를 깨뜨릴지 확인할 때 |
-| [akbun-analysis-bottleneck](./plugins/akbun-analysis/skills/akbun-analysis-bottleneck/) | 트래픽이 늘면 어디서 먼저 막힐지 미리 알고 싶을 때 |
-| [akbun-analysis-architecture-review](./plugins/akbun-analysis/skills/akbun-analysis-architecture-review/) | 아키텍처를 비판적으로 평가하고 대안을 찾을 때 |
 | [akbun-analysis-adversarial-review](./plugins/akbun-analysis/skills/akbun-analysis-adversarial-review/) | 코드나 주장이 정말 맞는지 반례로 흔들어 볼 때 |
 | [akbun-analysis-token-credential](./plugins/akbun-analysis/skills/akbun-analysis-token-credential/) | 토큰·API 키를 누가 발급하고 누가 읽는지 따져 볼 때 |
 
@@ -282,7 +274,6 @@ codex plugin list --json
 | [davinciresolve-subtitle-travelnote](./plugins/akbun-editvideo/skills/davinciresolve-subtitle-travelnote/) | 여행 영상에 메모 같은 자막을 넣을 때 |
 | [davinciresolve-subtitle-devtalk](./plugins/akbun-editvideo/skills/davinciresolve-subtitle-devtalk/) | 개발자 말하는 영상에 대사·키워드 자막을 넣을 때 |
 | [akbun-davinciresolve-caption-template](./plugins/akbun-editvideo/skills/akbun-davinciresolve-caption-template/) | 같은 모양의 자막을 여러 영상에서 다시 쓰고 싶을 때 |
-| [davinciresolve-export-youtube](./plugins/akbun-editvideo/skills/davinciresolve-export-youtube/) | YouTube에 올릴 파일을 기본 프리셋으로 뽑을 때 |
 | [davinciresolve-youtube-shorts](./plugins/akbun-editvideo/skills/davinciresolve-youtube-shorts/) | 긴 영상에서 세로 Shorts를 뽑아 렌더·업로드할 때 |
 | [akbun-vlog-shotsketch](./plugins/akbun-editvideo/skills/akbun-vlog-shotsketch/) | 한 샷의 구도·카메라 위치·빛을 미리 정할 때 |
 | [davinciresolve-style-project](./plugins/akbun-editvideo/skills/davinciresolve-style-project/) | 프로젝트 과정을 기록하는 diary형 영상의 편집 기준이 필요할 때 |
@@ -293,7 +284,6 @@ codex plugin list --json
 | [akbun-davinciresolve-explainer-slate-marker](./plugins/akbun-editvideo/skills/akbun-davinciresolve-explainer-slate-marker/) | 카드와 상태 변화로 시스템 동작을 보여 주는 설명 영상을 Resolve에서 고치며 만들 때 |
 | [akbun-davinciresolve-explainer-live-ink](./plugins/akbun-editvideo/skills/akbun-davinciresolve-explainer-live-ink/) | 손글씨로 적어 가는 설명 영상을 Resolve에서 고치며 만들 때 |
 | [akbun-davinciresolve-narration-cleanup](./plugins/akbun-editvideo/skills/akbun-davinciresolve-narration-cleanup/) | 녹음한 내레이션의 숨소리·긴 쉼을 정리할 때 |
-| [akbun-review-video-for-retention](./plugins/akbun-editvideo/skills/akbun-review-video-for-retention/) | 만든 영상이 끝까지 볼 만한지 시청 지속 기준으로 점검할 때 |
 | [akbun-edit-page-tour-lilac](./plugins/akbun-editvideo/skills/akbun-edit-page-tour-lilac/) | 웹 페이지 스크린샷을 짚어 가며 설명할 때 |
 | [akbun-edit-quote-cards-lilac](./plugins/akbun-editvideo/skills/akbun-edit-quote-cards-lilac/) | 인용 글 카드를 쌓고 형광펜으로 강조할 때 |
 | [akbun-edit-terminal-callout-amber](./plugins/akbun-editvideo/skills/akbun-edit-terminal-callout-amber/) | 터미널 녹화 화면에 화살표·라벨을 붙여 짚을 때 |

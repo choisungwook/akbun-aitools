@@ -1,11 +1,11 @@
 {
   "name": "akbun-analysis",
-  "description": "Codebase analysis skills — evidence-backed service/component relationships in JSON with interactive HTML, optional draw.io, and incremental updates",
-  "version": "1.2.10",
+  "description": "Code review and change analysis skills — why/how investigation of PRs from git history, diff blast-radius proof by execution, credential authn/authz checks, and adversarial review",
+  "version": "1.2.11",
   "author": {
     "name": "akbun"
   },
   "repository": "https://github.com/choisungwook/akbun-aitools",
   "license": "MIT",
-  "keywords": ["analysis", "architecture", "codebase", "relationship-graph", "impact-analysis", "json", "html", "drawio", "incremental"]
+  "keywords": ["analysis", "code-review", "git", "pull-request", "blast-radius", "security", "credential", "adversarial-review"]
 }
