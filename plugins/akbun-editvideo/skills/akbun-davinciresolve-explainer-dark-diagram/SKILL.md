@@ -10,7 +10,7 @@ disable-model-invocation: true
 
 화자의 얼굴 없이 목소리와 다이어그램만으로 기술 개념을 설명하는 영상의 스타일이다. 화면은 어두운 단색 배경에 색으로 역할을 나눈 글자와 화살표를 기본으로 하고, 구분이 필요한 대상만 둥근 박스로 그린다. 여기에 선으로 그린 아이콘, 연결 막대(터널), 움직이는 점(패킷)을 더한다. 요소는 살짝 커지며 튀어나오고, 장면 전체가 천천히 확대된다.
 
-결과물은 Resolve에서 수정 가능한 타임라인이다. 장면 클립 구조(Fusion 타이틀 + Template 매크로, Timing 노드, 표현식 애니메이션, 제너레이터 길이 조정)는 [akbun-davinciresolve-explainer](../akbun-davinciresolve-explainer/SKILL.md)의 "Resolve 구현"을 그대로 따른다. 이 문서는 그 스킬의 "스타일"·"내레이션 규칙"을 대신하고, 녹음에 맞추는 흐름과 렌더·업로드를 더한다.
+결과물은 Resolve에서 수정 가능한 타임라인이다. 장면 클립 구조(Fusion 타이틀 + Template 매크로, Timing 노드, 표현식 애니메이션, 제너레이터 길이 조정)는 [공통 구현](../akbun-davinciresolve-explainer/references/resolve-core.md)의 "Resolve 구현"을 그대로 따른다. 이 문서는 공통 구현의 "내레이션 규칙"을 대신하고, 녹음에 맞추는 흐름과 렌더·업로드를 더한다.
 
 ## 범위
 
@@ -89,7 +89,7 @@ disable-model-invocation: true
 
 ### Fusion 노드 구성의 차이
 
-기본 Explainer와 다른 점만 적는다.
+공통 구현과 다른 점만 적는다.
 
 - 요소를 합치는 MultiMerge 이름은 `레이어_합성`이다. 그 뒤에 장면 확대용 Transform을 두고 이름을 `레이어_목록`으로 한다. 매크로 출력과 MediaOut은 `레이어_목록`을 가리킨다.
 - 확대 등장은 레이어마다 `Layer{n}.Size`와 `Layer{n}.Center` 표현식으로 만든다. 크기가 바뀌어도 요소 중심이 제자리에 있도록 Center를 `Timing.Pos{k} + (pivot - 0.5) × (1 - s)`로 보정한다.

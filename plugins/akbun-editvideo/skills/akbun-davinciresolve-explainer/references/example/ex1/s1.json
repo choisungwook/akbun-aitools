@@ -1,0 +1,62 @@
+{
+ "id": "s1",
+ "dur": 5.7,
+ "subs": [
+  [
+   0.0,
+   2.4,
+   "사용자가 파일을 올립니다"
+  ],
+  [
+   2.5,
+   5.7,
+   "PHP가 크기 한도를 먼저 봅니다"
+  ]
+ ],
+ "row": [
+  "person",
+  "php"
+ ],
+ "layers": [
+  {
+   "name": "person",
+   "shape": "person",
+   "at": 0.0
+  },
+  {
+   "name": "arrow-1",
+   "shape": "arrow",
+   "from": "person",
+   "to": "php"
+  },
+  {
+   "name": "php",
+   "shape": "box",
+   "label": "PHP",
+   "role": "compute",
+   "at": 2.5
+  },
+  {
+   "name": "limit",
+   "shape": "dashed-box",
+   "around": [
+    "php"
+   ],
+   "at": 3.1
+  },
+  {
+   "name": "tag",
+   "shape": "tag",
+   "text": "upload_max_filesize",
+   "on": "limit",
+   "at": 3.1
+  }
+ ],
+ "punch": {
+  "targets": [
+   "php",
+   "limit",
+   "tag"
+  ]
+ }
+}

@@ -1,0 +1,40 @@
+{
+ "id": "s2",
+ "dur": 5.2,
+ "subs": [
+  [
+   0.0,
+   2.3,
+   "실제 코드를 열어 봅니다"
+  ],
+  [
+   2.4,
+   5.2,
+   "이 줄이 파일 크기를 비교합니다"
+  ]
+ ],
+ "layers": [
+  {
+   "name": "code-card",
+   "shape": "code-card",
+   "file": "upload.php",
+   "lines": [
+    7,
+    16
+   ],
+   "at": 0.0
+  },
+  {
+   "name": "mark",
+   "shape": "code-mark",
+   "card": "code-card",
+   "line": 12,
+   "at": 2.4
+  }
+ ],
+ "punch": {
+  "targets": [
+   "mark"
+  ]
+ }
+}

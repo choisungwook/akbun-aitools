@@ -41,7 +41,7 @@
       "이 대본을 scribble-black 스타일 설명 영상으로 만들어줘. 검정 보드에 흰 펜으로 한 획씩 써 내려가고 Resolve에서 글씨와 시점을 고칠 수 있게 (akbun-davinciresolve-explainer-scribble-black)",
       "이 대본을 slate-marker 스타일 설명 영상으로 만들어줘. 검정 배경 카드와 손글씨 캡션으로 요청이 서버를 거치는 과정을 Resolve에서 고칠 수 있게 (akbun-davinciresolve-explainer-slate-marker)",
       "이 대본을 live-ink 스타일 설명 영상으로 만들어줘. 검정 판에 손글씨가 말하는 순서대로 한 글자씩 써지게, Resolve에서 고칠 수 있게 (akbun-davinciresolve-explainer-live-ink)",
-      "이 대본을 night-gouache 스타일 설명 영상으로 만들어줘. 그림이 말하는 순서대로 튀어나오고 핵심 대상만 빛나게 (akbun-davinciresolve-explainer-night-gouache)",
+      "이 대본을 설명 영상으로 만들어줘. fiery-ocean 색, akbun 도형으로 그림이 자막에 맞춰 튀어나오게 (akbun-davinciresolve-explainer)",
       "iPhone 클립 앞부분 흰 화면 잘라내고 흔들리는 클립만 안정화해줘 (davinciresolve-cut-travelflow)",
       "스코프 재서 시간대별 밝기 맞추고 컷 넘어갈 때 눈 안 피곤하게 해줘 (akbun-davinciresolve-exposure)",
       "미디어 풀 영상 전부 촬영 시간순으로 새 타임라인에 나열해줘 (akbun-davinciresolve-timeline-chrono)",
@@ -68,7 +68,6 @@
       "도시 여행 영상을 와이드·미디엄·디테일과 동작 연결로 몽타주 편집해줘 (akbun-davinciresolve-cut-new-york)",
       "참고 영상처럼 손글씨 타이핑 자막과 노란 키워드 템플릿을 만들고, 선택형 빨간 밑줄·원을 넣어줘 (akbun-davinciresolve-caption-template)",
       "별도 스타일 지정이 없으면 하단 중앙의 정적인 영화식 기본 자막을 만들어줘 (akbun-davinciresolve-caption-template)",
-      "이 글·PPTX·이미지를 Resolve Inspector에서 글자와 등장 시점을 고칠 수 있는 설명 영상으로 만들어줘 (akbun-davinciresolve-explainer)",
       "어두운 다이어그램 스타일로 설명 영상을 만들고, 내가 녹음하면 실제 목소리에 맞춰 장면을 다시 맞춰줘 (akbun-davinciresolve-explainer-dark-diagram)",
       "02:25:02~02:25:10이 숨소리야. 이 주파수 패턴으로 녹음 전체 숨소리를 지우고 긴 쉼을 줄여줘 (akbun-davinciresolve-narration-cleanup)"
     ],

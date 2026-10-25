@@ -1,0 +1,53 @@
+{
+ "id": "s1",
+ "dur": 5.1,
+ "subs": [
+  [
+   0.0,
+   2.4,
+   "요청은 먼저 캐시로 갑니다"
+  ],
+  [
+   2.5,
+   5.1,
+   "없을 때만 DB까지 갑니다"
+  ]
+ ],
+ "row": [
+  "person",
+  "cache",
+  "db"
+ ],
+ "layers": [
+  {
+   "name": "person",
+   "shape": "person",
+   "at": 0.0
+  },
+  {
+   "name": "arrow-1",
+   "shape": "arrow",
+   "from": "person",
+   "to": "cache"
+  },
+  {
+   "name": "cache",
+   "shape": "box",
+   "label": "Cache",
+   "role": "entry",
+   "at": 0.3
+  },
+  {
+   "name": "arrow-2",
+   "shape": "arrow",
+   "from": "cache",
+   "to": "db"
+  },
+  {
+   "name": "db",
+   "shape": "db",
+   "label": "DB",
+   "at": 2.5
+  }
+ ]
+}
