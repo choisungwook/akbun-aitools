@@ -1,6 +1,6 @@
 ---
 name: akbun-draw-night-gouache
-description: 거의 검은 비네트 배경 위에 외곽선 없는 손채색(과슈·크레용 입자) 그림이 떠 있고, 핵심 대상 하나만 빛나는 설명 영상용 장면 그림 스타일 night-gouache. 모델은 장면마다 SVG 그림만 쓰고, 스크립트가 배경·질감 필터·자막 미리보기·키워드 태그를 붙여 확인용 스틸 PNG와 등장 단위별 투명 레이어 PNG(+layers.json)를 만든다. 레이어는 akbun-davinciresolve-explainer-night-gouache가 Resolve에서 움직인다. 데이터 차트는 밝은 구김 종이 변형을 쓴다. 사용자가 직접 호출할 때만 실행한다.
+description: 거의 검은 비네트 배경 위에 외곽선 없는 손채색(과슈·크레용 입자) 그림이 떠 있고, 핵심 대상 하나만 빛나는 설명 영상용 장면 그림 스타일 night-gouache. 모델은 장면마다 SVG 그림만 쓰고, 스크립트가 배경·질감 필터·자막 미리보기·키워드 태그를 붙여 확인용 스틸 PNG와 등장 단위별 투명 레이어 PNG(+layers.json)를 만든다. 레이어는 akbun-davinciresolve-explainer가 Resolve에서 움직인다. 데이터 차트는 밝은 구김 종이 변형을 쓴다. 사용자가 직접 호출할 때만 실행한다.
 disable-model-invocation: true
 ---
 
@@ -21,7 +21,7 @@ disable-model-invocation: true
 ## 범위
 
 - 사용자가 직접 호출할 때 실행한다. 이 스타일로 장면 그림(스틸)이나 영상용 레이어를 만들 때 쓴다.
-- 움직임(등장·광 깜빡임·확대)과 Resolve 타임라인은 [akbun-davinciresolve-explainer-night-gouache](../../../akbun-editvideo/skills/akbun-davinciresolve-explainer-night-gouache/SKILL.md)의 범위다. 이 스킬은 정지 그림과 레이어만 만든다.
+- 이 스킬은 정지 그림과 레이어만 만든다. 대본을 Resolve 설명 영상으로 만들 때는 [akbun-davinciresolve-explainer](../../../akbun-editvideo/skills/akbun-davinciresolve-explainer/SKILL.md)를 쓴다. 그 스킬은 이 그림을 받지 않고 자기 도형 라이브러리로 그리며, 후광·광을 쓰지 않는다.
 - 무엇을 그릴지(소재·배치)는 입력 내용에 맞춰 정한다. 이 스킬이 고정하는 것은 그림체·색·질감·강조 방식·글자 방식이다.
 
 ## 스타일

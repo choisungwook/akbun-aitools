@@ -1,0 +1,48 @@
+{
+ "id": "s2",
+ "dur": 5.0,
+ "extends": "s1.json",
+ "subs": [
+  [
+   0.0,
+   2.6,
+   "캐시에 있으면 바로 답합니다"
+  ],
+  [
+   2.7,
+   5.0,
+   "DB는 쉴 수 있습니다"
+  ]
+ ],
+ "layers": [
+  {
+   "name": "hit",
+   "shape": "dashed-box",
+   "around": [
+    "cache"
+   ],
+   "at": 0.0
+  },
+  {
+   "name": "arrow-back",
+   "shape": "arrow",
+   "from": "cache",
+   "to": "person",
+   "lane": "below",
+   "at": 0.3,
+   "flow": "reply"
+  },
+  {
+   "name": "cross",
+   "shape": "cross",
+   "on": "arrow-2",
+   "at": 2.7
+  }
+ ],
+ "punch": {
+  "targets": [
+   "cache",
+   "hit"
+  ]
+ }
+}

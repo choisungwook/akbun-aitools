@@ -14,8 +14,8 @@ disable-model-invocation: true
 
 - 사용자가 직접 호출할 때 실행한다.
 - **스타일 원본**: 색·선·도형·글씨·그리는 속도·"한 번에 한 획" 규칙·시각 맞추기는 [akbun-draw-scribble-black의 "스타일"](../../../akbun-draw/skills/akbun-draw-scribble-black/SKILL.md#스타일)이 원본이다. 이 문서는 Resolve로 옮기는 데 필요한 값만 옮겨 적고, 어긋나면 draw skill을 따른다. Resolve 때문에 일부러 다르게 하는 것은 하나다: 도형 획은 경로를 따라 그려지지 않고 긋는 방향으로 드러난다.
-- **클립 구조**: [akbun-davinciresolve-explainer의 "Resolve 구현"](../akbun-davinciresolve-explainer/SKILL.md#resolve-구현)을 따른다(Fusion 타이틀 + Template 매크로, `Timing` 노드, 표현식 애니메이션, 제너레이터 길이 조정, Inspector 설계, 마커 API, 성능 규칙). 그 스킬의 사실 확인과 "민감 정보 규칙"도 적용한다.
-- **대신하는 것**: 기본 explainer의 "스타일"(고정 위치 포함), "내레이션 규칙", 장면 전환 규칙. 무엇을 어디에 몇 개 둘지는 장면이 설명하는 관계가 정하고, 배치 고르는 기준은 draw skill의 "하지 말 것" 첫 줄을 따른다(흐름을 기본으로 왼쪽→오른쪽에 두지 않는다).
+- **클립 구조**: [공통 "Resolve 구현"](../akbun-davinciresolve-explainer/references/resolve-core.md#resolve-구현)을 따른다(Fusion 타이틀 + Template 매크로, `Timing` 노드, 표현식 애니메이션, 제너레이터 길이 조정, Inspector 설계, 마커 API, 성능 규칙). 공통 구현의 "사실 확인"과 "민감 정보 규칙"도 적용한다.
+- **대신하는 것**: 공통 구현의 "내레이션 규칙"과 장면 전환 규칙. 무엇을 어디에 몇 개 둘지는 장면이 설명하는 관계가 정하고, 배치 고르는 기준은 draw skill의 "하지 말 것" 첫 줄을 따른다(흐름을 기본으로 왼쪽→오른쪽에 두지 않는다).
 - 그리는 손·사람 얼굴·실사 컷을 넣지 않는다. 렌더된 MP4로 장면을 대신하지 않는다.
 - 녹음 정리는 [akbun-davinciresolve-narration-cleanup](../akbun-davinciresolve-narration-cleanup/SKILL.md)을 부른다.
 
@@ -77,7 +77,7 @@ uv run --python 3.12 <doodle>/scripts/render_doodle.py <출력>/layers_spec.json
 2. **획 레이어 PNG**: "획 레이어 만들기"대로 획·채움 레이어를 만든다.
 3. **Resolve 준비**: 다른 작업이 열어 둔 프로젝트·타임라인을 확인 없이 바꾸지 않는다. 새 타임라인(V1 장면, A1 내레이션, A2 BGM, A3 효과음)을 만든다. `fc-list : family`로 Gaegu 설치를 본다.
 4. **대표 장면 하나**로 삽입·매크로·길이·Inspector·획 드러나기·Text+ 써지기·시점 이어 밀기를 확인한 뒤 나머지를 만든다.
-5. **장면 삽입과 빌드**: 기본 explainer의 "클립 길이 맞추기"로 장면을 끝에 차례로 붙이고, "Fusion 구성"대로 노드를 만들어 표현식을 건다. Template 매크로로 감싸 기본 explainer의 Inspector 설계대로 공개한다(글씨 칸, 보이기, 등장 시점).
+5. **장면 삽입과 빌드**: 공통 구현의 "클립 길이 맞추기"로 장면을 끝에 차례로 붙이고, "Fusion 구성"대로 노드를 만들어 표현식을 건다. Template 매크로로 감싸 공통 구현의 Inspector 설계대로 공개한다(글씨 칸, 보이기, 등장 시점).
 6. **마커**: 장면 시작마다 대본 메모 마커를 단다.
 7. **녹음 뒤**: 음성 인식 단어 시각에서 신호 단어를 찾아 `Sig` 값과 장면 길이를 다시 맞춘다(앞 획이 늦게 끝나면 뒤 획은 표현식으로 밀린다). 못 찾은 신호 단어는 추측하지 말고 목록으로 보고한다.
 8. **검수**: 아래 표로 채점한다.
@@ -111,6 +111,6 @@ uv run --python 3.12 <doodle>/scripts/render_doodle.py <출력>/layers_spec.json
 
 - 렌더된 MP4로 장면을 대신하거나, 글씨를 PNG로 굽지 않는다.
 - 빌드를 겹치게 두지 않는다.
-- 기본 explainer의 고정 위치, 크로스 디졸브, 기본 5색을 섞어 쓰지 않는다. 카메라, 키프레임 애니메이션도 쓰지 않는다.
+- 카메라, 키프레임 애니메이션을 쓰지 않는다.
 - 그리는 손·사람 얼굴·실사 컷을 넣지 않는다.
 - 다른 작업이 열어 둔 Resolve 프로젝트를 확인 없이 바꾸지 않는다.

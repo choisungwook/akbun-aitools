@@ -17,8 +17,8 @@ disable-model-invocation: true
   - 밑줄은 곡선이 아니라 직선이고, 기울기 0.3°로 수평을 살짝 벗어난다.
   - 동그라미는 쓰지 않는다. 강조는 밑줄과 이름표 화살표로 한다.
   - 화살표 머리는 그려지지 않고 몸통이 끝나는 프레임에 한 번에 보인다.
-- **클립 구조**: [akbun-davinciresolve-explainer의 "Resolve 구현"](../akbun-davinciresolve-explainer/SKILL.md#resolve-구현)을 따른다. Fusion 타이틀 + Template 매크로, `Timing` 노드, 표현식 애니메이션, 제너레이터 길이 조정, Inspector 설계(글자마다 "보이기", 빌드마다 "써지는 시점(초)"·"위치 이동"), 마커 API, 성능 규칙이 여기에 포함된다. 그 스킬의 사실 확인(작업 흐름 1단계)과 "민감 정보 규칙"도 그대로 적용한다.
-- **대신하는 것**: 기본 explainer의 "스타일"(고정 위치·박스·5색 포함), "내레이션 규칙", 크로스 디졸브. 무엇을 어디에 몇 개 쓸지는 장면이 설명하는 관계가 정한다.
+- **클립 구조**: [공통 "Resolve 구현"](../akbun-davinciresolve-explainer/references/resolve-core.md#resolve-구현)을 따른다. Fusion 타이틀 + Template 매크로, `Timing` 노드, 표현식 애니메이션, 제너레이터 길이 조정, Inspector 설계(글자마다 "보이기", 빌드마다 "써지는 시점(초)"·"위치 이동"), 마커 API, 성능 규칙이 여기에 포함된다. 공통 구현의 "사실 확인"과 "민감 정보 규칙"도 그대로 적용한다.
+- **대신하는 것**: 공통 구현의 "내레이션 규칙"과 크로스 디졸브. 무엇을 어디에 몇 개 쓸지는 장면이 설명하는 관계가 정한다.
 - 렌더된 MP4를 장면 대신 올리지 않는다. Resolve 밖에서 렌더한 영상이 필요하면 draw skill을 쓴다.
 - 녹음 정리는 [akbun-davinciresolve-narration-cleanup](../akbun-davinciresolve-narration-cleanup/SKILL.md)을 부른다.
 
@@ -26,16 +26,16 @@ disable-model-invocation: true
 
 - 1920×1080이 기본이고, 쇼츠는 1080×1920 타임라인이다. px 값은 둘 다 그대로 쓴다. 글자와 선은 네 변에서 96px 안쪽에 둔다.
 - fps는 대상 타임라인 값이고, 기준이 없으면 30이다. 표현식의 `fps`에는 소수까지 그대로 넣는다(예: 29.97).
-- 좌표는 기본 explainer의 "좌표와 단위"를 따르되 화면 폭 W, 높이 H를 쓴다. 가로 화면은 W = 1920, 세로 화면은 W = 1080이다.
+- 좌표는 공통 구현의 "좌표와 단위"를 따르되 화면 폭 W, 높이 H를 쓴다. 가로 화면은 W = 1920, 세로 화면은 W = 1080이다.
   - 도형(sRectangle): X = (px − W/2) ÷ W, Y = (H/2 − py) ÷ W, 크기·선 굵기 = px ÷ W
   - Text+: Center = (px ÷ W, 1 − py ÷ H), Size = px ÷ W
-  - RectangleMask: Center = (px ÷ W, 1 − py ÷ H), Width = px ÷ W, Height = px ÷ H(기본 explainer의 "RectangleMask의 Height는 세로 기준". 대표 장면에서 마스크 높이가 글자 크기와 같은지 재서 확인한다)
+  - RectangleMask: Center = (px ÷ W, 1 − py ÷ H), Width = px ÷ W, Height = px ÷ H(공통 구현의 "RectangleMask의 Height는 세로 기준". 대표 장면에서 마스크 높이가 글자 크기와 같은지 재서 확인한다)
 - 모든 장면의 배경은 Background 노드 하나이고, 색은 BOARD(`#0C0C07`)다. 장면이 바뀌어도 배경이 같아서 하드 컷이 빈 판으로 넘어가는 것처럼 보인다.
 - 화면 글자는 장면 안의 손글씨뿐이다. 별도 자막 트랙은 사용자가 요청할 때만 넣는다. 넣으면 Inspector → Track 탭에서 Font `Pretendard` Medium, 흰색으로 하고 배경·외곽선을 끈다(API로 바꿀 수 없다).
 
 ## Fusion 매핑
 
-빌드 하나(글자 한 줄, 선 하나, 화살표 하나)는 노드 묶음 하나 → `레이어_목록` MultiMerge 레이어 1개다. 노드 이름 규칙(한글 종류 접두사, 밑줄)은 기본 explainer를 따르고, 다음 접두사를 더한다: 글씨_, 펜_, 밑줄_, 화살표_.
+빌드 하나(글자 한 줄, 선 하나, 화살표 하나)는 노드 묶음 하나 → `레이어_목록` MultiMerge 레이어 1개다. 노드 이름 규칙(한글 종류 접두사, 밑줄)은 공통 구현을 따르고, 다음 접두사를 더한다: 글씨_, 펜_, 밑줄_, 화살표_.
 
 | 빌드 | Fusion 구성 |
 |---|---|
@@ -59,14 +59,14 @@ disable-model-invocation: true
 | 빌드 | 입력 | 식 |
 |---|---|---|
 | 글자 써지기 | `펜_…` RectangleMask의 Width·Center.X | p = `q(d)`. Width = `(w + 0.2 * 크기) * p / W`. Center.X = `(x - 0.1 * 크기 + (w + 0.2 * 크기) * p / 2) / W`. d는 한글 음절 수 × 0.3 + 그 밖 글자 수 × 0.2를 0.05초 단위로 올림, 최소 0.2 |
-| 밑줄·화살표 몸통 그리기 | sRectangle의 Width·Translate | 기본 explainer의 "실선 화살표 그리기" 식에 진행률 p = `q(d)`. d = 선 길이 ÷ 1500을 0.05초 단위로 올림, 최소 0.15 |
+| 밑줄·화살표 몸통 그리기 | sRectangle의 Width·Translate | 공통 구현의 "실선 화살표 그리기" 식에 진행률 p = `q(d)`. d = 선 길이 ÷ 1500을 0.05초 단위로 올림, 최소 0.15 |
 | 화살표 머리 | 머리 sRectangle 두 개의 Opacity | `iif(p < 1, 0, 1)`. p는 몸통의 진행률 |
 | 보이기 끄기 | `Layer{n}.Blend` | `Timing.On{n}`. 글자 레이어에만 둔다 |
 
 - 펜은 한 자루다. 빌드끼리 시간이 겹치지 않고, 다음 빌드는 앞 빌드 끝 + 0.15초 이상 뒤에 시작한다. 마지막 빌드 뒤 정지와 장면 길이는 draw skill의 "시각 맞추기"대로 정한다. 장면 하나는 90초 이하다.
 - 장면 안에서 지우기·페이드·카메라 이동을 쓰지 않는다. 쓴 것은 장면 끝까지 남는다.
 - 시점은 `Timing` 컨트롤로만 바꾼다. 키프레임을 쓰지 않는다.
-- 장면 전환은 빈 판으로의 하드 컷이다. 기본 explainer의 크로스 디졸브를 넣지 않는다.
+- 장면 전환은 빈 판으로의 하드 컷이다. 크로스 디졸브를 넣지 않는다.
 
 ## 작업 흐름
 
@@ -82,9 +82,9 @@ disable-model-invocation: true
    - Nanum Pen이 설치돼 있는지 `fc-list : family | grep -i "nanum pen"`으로 본다. 없으면 설치를 묻는다(배포처는 draw skill에 있다).
 3. **대표 장면 하나**로 삽입·매크로·길이·Inspector·마스크 써지기·글자 간격·baseline 차이를 먼저 확인하고, 그다음 나머지를 만든다.
 4. **장면 삽입과 빌드**:
-   - 기본 explainer의 "클립 길이 맞추기"로 장면을 차례로 끝에 붙인다.
+   - 공통 구현의 "클립 길이 맞추기"로 장면을 차례로 끝에 붙인다.
    - "Fusion 매핑"대로 노드를 만들고 표현식을 건다.
-   - Template 매크로로 감싸고, 기본 explainer의 Inspector 설계에서 "등장 시점(초)" 이름을 "써지는 시점(초)"으로 바꿔 공개한다.
+   - Template 매크로로 감싸고, 공통 구현의 Inspector 설계에서 "등장 시점(초)" 이름을 "써지는 시점(초)"으로 바꿔 공개한다.
 5. **마커**: 장면 시작마다 대본 메모 마커를 단다.
 6. **녹음 뒤**: 음성 인식 단어 시각에서 신호 단어를 찾아 `Timing.At` 값과 장면 길이를 다시 맞춘다. 못 찾은 신호 단어는 추측하지 말고 목록으로 보고한다.
 7. **검수**: 아래 표로 채점한다.
@@ -128,6 +128,5 @@ disable-model-invocation: true
 ## 하지 말 것
 
 - 렌더된 MP4·PNG로 장면을 대신하지 않는다.
-- 기본 explainer의 고정 위치, 박스, 크로스 디졸브, 기본 5색을 섞어 쓰지 않는다.
 - Glow·그림자·그라디언트, Blend 페이드, Write On, 키프레임 애니메이션을 쓰지 않는다.
 - 다른 작업이 열어 둔 Resolve 프로젝트를 확인 없이 바꾸지 않는다.
