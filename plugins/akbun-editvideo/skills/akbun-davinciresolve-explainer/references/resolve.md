@@ -16,7 +16,7 @@
 
 ## 순서
 
-1. 새 타임라인을 만든다(기존 타임라인을 덮어쓰지 않고 새 이름, 예: `<주제> v2`). 다른 작업이 열어 둔 프로젝트는 확인 없이 바꾸지 않는다.
+1. 새 타임라인을 만든다(기존 타임라인을 덮어쓰지 않고 새 이름, 예: `<주제> v2`). 타임라인 fps(`GetSetting("timelineFrameRate")`)를 읽어 `comp --fps <값>`으로 넘긴다. 정수가 아니면(23.976, 29.97) 멈추고 사용자에게 알린다. 장면 프레임 수 = round(dur × fps)다. 다른 작업이 열어 둔 프로젝트는 확인 없이 바꾸지 않는다.
 2. 자막 srt(타임라인 시작 기준 시각)를 미디어 풀에 가져와 빈 타임라인에 먼저 `AppendToTimeline`으로 넣는다. 클립이 있는 타임라인에 넣으면 마지막 클립 뒤에 붙는다. 자막 트랙을 잠그고 `GetIsTrackLocked("subtitle", 1)`이 True인지 본다.
 3. 제너레이터 기본 길이: `SaveUserPreferencesPreset`·`ExportUserPreferencesPreset`으로 현재 값을 저장한다. 내보낸 파일에서 `GeneratorDurationType`을 `DURATION_IN_FRAMES`, `GeneratorDurationFrames`를 장면 프레임 수로 바꾼 임시 프리셋을 `ImportUserPreferencesPreset`·`LoadUserPreferencesPreset`으로 적용한다.
 4. 장면마다 플레이헤드를 장면 시작에 두고 `InsertFusionCompositionIntoTimeline()`. 자막 트랙은 잠근 채 둔다(풀려 있으면 자막이 밀린다). 넣은 뒤 자막 시작 프레임이 그대로인지 본다.
@@ -31,4 +31,4 @@
 - 펀치 인 직전 프레임(`ExportCurrentFrameAsStill`)과 `<id>_still.png`의 자막 위(y < 880) 평균 픽셀 차이가 1 이하. 크면 Pivot·Center를 의심한다. 첫 캡처가 검게 나오면 1초 기다려 다시 뽑는다.
 - `등장_<레이어>.Size`를 등장 뒤 10프레임 읽어 최댓값 1.03~1.05, `레이어_목록.Size`가 `PunchAt` + 0.2초에 `PunchZoom`에 닿는지.
 - `Timing.At{n}`을 바꾸면 `GetInput("Size", 프레임)` 값이 옮겨지는지 보고 되돌린다.
-- 클립·자막·마커 개수와 시작 프레임을 spec과 대조하고 프로젝트를 저장한다.
+- 클립·자막·마커 개수와 시작 프레임을 spec과 대조하고, 타임라인 끝 프레임 = 장면 프레임 수 합인지 보고, 프로젝트를 저장한다.

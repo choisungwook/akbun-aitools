@@ -156,7 +156,7 @@ Inspector에서 문구·위치·크기와 밑줄/원의 Visibility를 조절한�
 
 ## 슬레이트 카드 설명 영상 (slate-marker)
 
-[akbun-davinciresolve-explainer-slate-marker](../plugins/akbun-editvideo/skills/akbun-davinciresolve-explainer-slate-marker/SKILL.md)은 클립 구조를 공통 Resolve 구현에서, 색·글꼴·부품 모양을 [akbun-draw-slate-marker](../plugins/akbun-draw/skills/akbun-draw-slate-marker/SKILL.md)에서 가져온다. 순검정 배경 위 슬레이트 카드와 손글씨 캡션, 의미마다 하나씩 정한 강조색으로 상태 변화를 보여 준다. 기본 Explainer의 고정 위치를 쓰지 않고 배치는 장면마다 내용이 정한다. 렌더된 영상 대신 Fusion 도형으로 그려 Inspector에서 고친다.
+[akbun-davinciresolve-explainer-slate-marker](../plugins/akbun-editvideo/skills/akbun-davinciresolve-explainer-slate-marker/SKILL.md)은 클립 구조를 공통 Resolve 구현에서, 색·글꼴·부품 모양을 [akbun-draw-slate-marker](../plugins/akbun-draw/skills/akbun-draw-slate-marker/SKILL.md)에서 가져온다. 순검정 배경 위 슬레이트 카드와 손글씨 캡션, 의미마다 하나씩 정한 강조색으로 상태 변화를 보여 준다. 배치는 장면마다 내용이 정한다. 렌더된 영상 대신 Fusion 도형으로 그려 Inspector에서 고친다.
 
 예: `$akbun-davinciresolve-explainer-slate-marker 이 대본으로 로드밸런서가 죽은 서버를 빼는 과정을 설명 영상으로 만들어줘.`
 

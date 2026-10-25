@@ -9,7 +9,7 @@ spec은 무엇을 어디에 언제 둘지와 theme(palette·shape 스타일 id)�
 
   uv run scene.py build spec.json out/          # out/<id>.svg, <id>_still.png, <id>_layers/
   uv run scene.py check out/ spec1.json ...     # references/checklist.jsonl 채점, 95% 미만이면 종료 코드 1
-  uv run scene.py comp spec.json out/           # out/<id>.comp (Template 매크로, Timing 컨트롤)
+  uv run scene.py comp spec.json out/ [--fps 24] # out/<id>.comp (Template 매크로, Timing 컨트롤). fps = 타임라인 fps(정수)
   uv run scene.py timing "자막1" "자막2"          # 녹음 전 subs·dur
   uv run scene.py --selftest
 """
@@ -668,8 +668,10 @@ if __name__ == "__main__":
   ap = argparse.ArgumentParser()
   ap.add_argument("cmd", nargs="?", choices=["build", "check", "comp", "timing"])
   ap.add_argument("args", nargs="*")
+  ap.add_argument("--fps", type=int, default=24, help="타임라인 fps(정수). 23.976·29.97 같은 정수가 아닌 fps는 지원하지 않는다")
   ap.add_argument("--selftest", action="store_true")
   a = ap.parse_args()
+  FPS = a.fps
   if a.selftest:
     selftest()
   elif a.cmd == "build":

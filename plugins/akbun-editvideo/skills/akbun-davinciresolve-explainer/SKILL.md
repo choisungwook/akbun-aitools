@@ -28,15 +28,16 @@ disable-model-invocation: true
 
 이 스킬 디렉터리에서 `uv run --python 3.12`로 돌린다. 레이어 PNG 렌더는 [akbun-draw-night-gouache](../../../akbun-draw/skills/akbun-draw-night-gouache/SKILL.md)의 `render_gouache.py`를 불러 쓴다.
 
-장면마다 spec을 빌드하고, 장면 전체를 한 번에 채점한 뒤, 통과하면 comp를 만드는 명령이다.
+장면마다 자막 시각을 얻고 spec을 빌드한 뒤, 장면 전체를 한 번에 채점하고, 통과하면 타임라인 fps로 comp를 만드는 명령이다.
 
 ```bash
+uv run --python 3.12 scripts/scene.py timing "<장면 자막 1>" "<장면 자막 2>"
 uv run --python 3.12 scripts/scene.py build <작업 폴더>/spec/s1.json <작업 폴더>/out/
 uv run --python 3.12 scripts/scene.py check <작업 폴더>/out/ <작업 폴더>/spec/s1.json <작업 폴더>/spec/s2.json
-uv run --python 3.12 scripts/scene.py comp <작업 폴더>/spec/s1.json <작업 폴더>/out/
+uv run --python 3.12 scripts/scene.py comp <작업 폴더>/spec/s1.json <작업 폴더>/out/ --fps 24
 ```
 
-1. 사용자가 호출에서 색 조합·도형 스타일을 말했으면 그 id를, 아니면 기본값을 쓴다(따로 묻지 않는다). 대본을 spec 표(theme·자막·레이어·at·펀치 인)로 나눠 사용자에게 먼저 확인받는다.
+1. 사용자가 호출에서 색 조합·도형 스타일을 말했으면 그 id를, 아니면 기본값을 쓴다(따로 묻지 않는다). 대본을 spec 표(theme·자막·레이어·at·펀치 인)로 나누고 장면마다 `timing`으로 `subs`·`dur`를 얻어 사용자에게 먼저 확인받는다.
 2. `build` → `check`. 장면별·`set` 점수가 모두 95% 이상이어야 다음으로 간다. 떨어지면 spec을 고쳐 다시 돈다. SVG를 손으로 고치지 않는다.
 3. `comp` → resolve.md 순서대로 타임라인에 넣고 확인한다.
 4. 완료 보고: 타임라인 이름·fps·길이, 장면 시작 프레임, `check` 출력, 코드 카드의 파일 경로·줄 범위, 자막 트랙 잠금 해제·스타일 적용 결과, 제너레이터 길이 복원 결과. 확인하지 못한 것(재생, 청취)은 따로 적는다.

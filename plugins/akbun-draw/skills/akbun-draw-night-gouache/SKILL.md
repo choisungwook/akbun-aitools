@@ -21,7 +21,7 @@ disable-model-invocation: true
 ## 범위
 
 - 사용자가 직접 호출할 때 실행한다. 이 스타일로 장면 그림(스틸)이나 영상용 레이어를 만들 때 쓴다.
-- 움직임(등장·광 깜빡임·확대)과 Resolve 타임라인은 [akbun-davinciresolve-explainer](../../../akbun-editvideo/skills/akbun-davinciresolve-explainer/SKILL.md)의 범위다. 이 스킬은 정지 그림과 레이어만 만든다.
+- 이 스킬은 정지 그림과 레이어만 만든다. 대본을 Resolve 설명 영상으로 만들 때는 [akbun-davinciresolve-explainer](../../../akbun-editvideo/skills/akbun-davinciresolve-explainer/SKILL.md)를 쓴다. 그 스킬은 이 그림을 받지 않고 자기 도형 라이브러리로 그리며, 후광·광을 쓰지 않는다.
 - 무엇을 그릴지(소재·배치)는 입력 내용에 맞춰 정한다. 이 스킬이 고정하는 것은 그림체·색·질감·강조 방식·글자 방식이다.
 
 ## 스타일
