@@ -1,7 +1,7 @@
 {
   "name": "akbun-analysis",
-  "version": "1.2.10",
-  "description": "Codebase analysis skills — evidence-backed service/component relationships in JSON with interactive HTML, optional draw.io, and incremental updates",
+  "version": "1.2.11",
+  "description": "Code review and change analysis skills — why/how investigation of PRs from git history, diff blast-radius proof by execution, credential authn/authz checks, and adversarial review",
   "author": {
     "name": "akbun",
     "url": "https://github.com/choisungwook"
@@ -11,20 +11,19 @@
   "license": "MIT",
   "keywords": [
     "analysis",
-    "architecture",
-    "codebase",
-    "relationship-graph",
-    "impact-analysis",
-    "json",
-    "html",
-    "drawio",
-    "incremental"
+    "code-review",
+    "git",
+    "pull-request",
+    "blast-radius",
+    "security",
+    "credential",
+    "adversarial-review"
   ],
   "skills": "./skills/",
   "interface": {
     "displayName": "akbun Analysis",
-    "shortDescription": "Evidence-backed service/component relationship analysis with JSON, interactive HTML, and draw.io",
-    "longDescription": "Analyzes service and component boundaries plus HTTP/gRPC calls, database reads and writes, external APIs, events, and queues. Every component and relationship carries file:line evidence in one validated analysis.json source, which generates a self-contained interactive HTML map and optional editable draw.io export. Stored analysis is refreshed incrementally from Git changes, and optional cross-project views combine independently maintained project JSON files.",
+    "shortDescription": "Investigate why and how code changed, prove what a diff breaks, check credentials, and review adversarially",
+    "longDescription": "Investigates a PR or subsystem in two steps: why it was built that way, from git history, gh PRs, issues, reviews and repository docs with quotes and confidence levels, then how it works under those constraints. Finds what a diff breaks outside the diff and proves the one fact that makes it safe by running code. Checks who issues, reads and scopes tokens, API keys, certificates and service accounts, and reviews code or claims adversarially with counterexamples.",
     "developerName": "akbun",
     "category": "Developer Tools",
     "capabilities": [
@@ -35,12 +34,6 @@
     "privacyPolicyURL": "https://docs.github.com/site-policy/privacy-policies/github-general-privacy-statement",
     "termsOfServiceURL": "https://docs.github.com/en/site-policy/github-terms/github-terms-of-service",
     "defaultPrompt": [
-      "이 저장소의 서비스·컴포넌트 호출 관계를 분석해서 인터랙티브 HTML로 시각화해줘",
-      "Analyze this codebase and create an evidence-backed service relationship JSON and HTML map",
-      "저장된 분석을 증분 갱신하고 이 변경의 영향 가능 컴포넌트를 알려줘",
-      "분석된 관계도를 편집 가능한 draw.io 파일로 내보내줘",
-      "이 코드베이스에서 트래픽이 늘면 어디가 먼저 병목이 되는지 근거·측정법·해결책·개선 뒤 새 문제까지 분석해줘",
-      "현재 아키텍처를 적대적으로 평가하고 보안·운영 부담 관점에서 더 나은 구조를 수치와 mermaid로 제안해줘",
       "이 토큰은 누가 발급했고 누가 읽으며 어디까지 허용하는지 보안 관점에서 확인해줘",
       "내가 구현한 코드와 주장을 적대적으로 리뷰해서 숨은 가정과 깨지는 반례를 들어줘",
       "이 PR이 왜 나왔고 바뀐 부분이 어떻게 동작하는지 gh와 git만으로 조사해줘 (akbun-analysis-git-whyandhow)",

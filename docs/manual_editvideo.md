@@ -28,7 +28,6 @@
 | 계산 과정·공식을 손으로 적으며 설명하듯, 손글씨가 말하는 순서대로 한 글자씩 써지는 영상을 Resolve에서 고치며 만들고 싶음 | [akbun-davinciresolve-explainer-live-ink](../plugins/akbun-editvideo/skills/akbun-davinciresolve-explainer-live-ink/SKILL.md) | akbun-draw-live-ink의 색·글꼴·써지기 규칙을 그대로 쓰고, Text+에 왼쪽부터 넓어지는 사각 마스크를 걸어 글자가 펜이 지나가듯 드러나게 한다. 한 번에 하나만 쓰고 지우지 않으며, Inspector에서 글자·써지는 시점을 고친다. |
 | 어두운 배경 위 손채색 그림이 말하는 순서대로 튀어나오는 설명 영상을 만들고 싶음 | [akbun-davinciresolve-explainer-night-gouache](../plugins/akbun-editvideo/skills/akbun-davinciresolve-explainer-night-gouache/SKILL.md) | akbun-draw-night-gouache로 장면 그림을 등장 단위 레이어로 만들고, 장면마다 Fusion 클립 하나에서 팝·자라기·밀려 들어오기·펀치 인으로 움직이고, 후광 맥박은 꼭 강조할 장면에만 쓴다. 같은 배경 위 하드 컷과 Pretendard 자막 트랙을 쓴다. |
 | 녹음의 숨소리와 빈 시간을 덜어 내고 싶음 | [akbun-davinciresolve-narration-cleanup](../plugins/akbun-editvideo/skills/akbun-davinciresolve-narration-cleanup/SKILL.md) | 주파수 프로필로 숨소리를 찾아 지우고 긴 쉼을 줄인 장면별 음성 파일과 지운 구간 보고서를 만든다. 애매한 구간은 남긴다. |
-| 만든 영상이 지루한지, 다시 만들면 어떻게 할지 알고 싶음 | [akbun-review-video-for-retention](../plugins/akbun-editvideo/skills/akbun-review-video-for-retention/SKILL.md) | 시청 지속 기준으로 시각·측정값 근거와 함께 채점하고, 인트로 대본·챕터 순서·화면 보강·끝맺음을 담은 재구성안을 만든다. |
 | 한 단계만 처리하고 싶음 | 아래의 해당 작업별 스킬 | 전체 workflow를 쓰지 않고 필요한 색보정·컷·자막·오디오·출력만 따로 요청한다. |
 
 ## 시나리오별 사용 순서
@@ -37,10 +36,9 @@
 
 | 상황·준비된 입력 | 시작과 이어지는 스킬 | 받게 되는 결과·직접 확인할 부분 |
 |---|---|---|
-| 말 없는 여행 원본을 통째로 편집 | `akbun-davinciresolve-workflow` → 시간순 타임라인 → 트랙 준비 → 컷·색보정 → 선택 Look → 개인정보·자막 → 출력 | 원본을 보존한 여행 편집본. 시간순 배열, 주요 장면과 자연음, 검토 마커 확인 |
+| 말 없는 여행 원본을 통째로 편집 | `akbun-davinciresolve-workflow` → 시간순 타임라인 → 트랙 준비 → 컷·색보정 → 선택 Look → 개인정보·자막 | 원본을 보존한 여행 편집본. 시간순 배열, 주요 장면과 자연음, 검토 마커 확인 |
 | 도시 클립의 리듬만 다듬고 싶음 | `akbun-davinciresolve-cut-new-york` → 바뀐 구간을 자막 스킬에 전달 | 와이드·미디엄·디테일과 움직임을 잇는 몽타주. 삭제 후보와 자막·소리의 새 위치 확인 |
 | 화면이 어둡고 야간 네온 분위기를 원함 | `akbun-davinciresolve-exposure` 및 필요한 WB·대비·채도 → `akbun-davinciresolve-look-tokyo-night` | 기본 밝기와 새 LOOK 노드가 분리된 결과. 실제 보기 환경에서 밝기·간판 디테일 확인. +1/+2스톱은 선택 비교 |
-| 편집·믹스 완료, 업로드할 파일만 필요함 | 타임라인 해상도에 맞는 기본 프리셋은 `davinciresolve-export-youtube` | 렌더 파일과 수행한 검증 결과. 렌더 요청만으로 업로드하지 않음 |
 | 완성한 가로 영상에서 Shorts 후보 추출 | `davinciresolve-youtube-shorts` | 별도 세로 후보, 원래 오디오 처리 보존. 잘린 말·음악 tail·세로 구도 확인 |
 
 ## 말소리 있는 개발자 영상
@@ -98,7 +96,6 @@ Look 수치는 참고 영상에서 프레임을 복제한 절대값이 아니라
 | 터미널·AI 도구 화면 녹화에 주석 달기 | [akbun-edit-terminal-callout-amber](../plugins/akbun-editvideo/skills/akbun-edit-terminal-callout-amber/SKILL.md): 실제 녹화를 어두운 창 카드에 넣고 오류 줄 옆에 노란 손그림 화살표·라벨, 토큰 하이라이트를 붙인다. 출력을 지어내지 않는다. |
 | 영화식 기본 자막·타이핑 자막을 재사용 템플릿으로 만들기 | [akbun-davinciresolve-caption-template](../plugins/akbun-editvideo/skills/akbun-davinciresolve-caption-template/SKILL.md): 외형 지정이 없으면 하단 중앙의 정적 Cinema를 사용하고, 요청 시 타이핑·키워드·밑줄·원을 만든다. DRFX를 Downloads에 생성하고 macOS 설치법을 안내한다. |
 | YouTube Shorts 후보 만들기 | [davinciresolve-youtube-shorts](../plugins/akbun-editvideo/skills/davinciresolve-youtube-shorts/SKILL.md): 선택한 타임라인에서 세로 영상 후보를 만들고 원본과 오디오 구성을 보존한다. |
-| YouTube 기본 렌더 출력 | [davinciresolve-export-youtube](../plugins/akbun-editvideo/skills/davinciresolve-export-youtube/SKILL.md): 타임라인 해상도에 맞는 YouTube 렌더 프리셋을 고르고 결과 해상도를 확인한다. |
 
 ### 창 카드 장면 사용 (page-tour, quote-cards, terminal-callout)
 
@@ -211,14 +208,6 @@ Edit 페이지에서 클립 선택 → Inspector → Video → Title의 그룹�
 5. [akbun-davinciresolve-narration-cleanup](../plugins/akbun-editvideo/skills/akbun-davinciresolve-narration-cleanup/SKILL.md)으로 장면별 음성을 만들고, 장면 길이·등장 시점·자막을 실제 목소리에 맞춰 타임라인을 다시 만든다.
 6. 효과음과 챕터 마커를 넣는다. 챕터 마커는 장면 메모 마커와 다른 색으로 두고, 0:00 시작·3개 이상·각 10초 이상을 검사한 뒤 매번 마지막에 다시 단다.
 7. 첫 렌더 전에 자막을 화면에 구울지 자막 파일로 올릴지, 업로드 채널·카테고리·공개 범위를 한 번에 정한다. 업로드는 YouTube 렌더 프리셋 job으로 하고, 제목·설명·챕터를 채운 설정은 렌더 프리셋으로 저장해 다시 쓴다. 업로드 완료는 Resolve 로그로 확인한다.
-
-## 만든 영상을 시청 지속 기준으로 검토하기
-
-[akbun-review-video-for-retention](../plugins/akbun-editvideo/skills/akbun-review-video-for-retention/SKILL.md)은 영상 파일과 제목·썸네일을 받아 시청자가 나갈 수 있는 시각을 찾는다. 첫 60초를 시간·화면·말 표로 옮기고, `measure_pacing.py`로 화면 변화 횟수와 5초 넘는 정지 구간을 잰다. 약속·첫 5초·첫 20초·USP·화면 변화·대비·에너지 주기·미리 보기·끝을 5점으로 채점하고 근거로 시각이나 측정값을 붙인다.
-
-예: `$akbun-review-video-for-retention 이 영상 왜 사람들이 중간에 나가는지 검토하고, 다시 녹음해서 만든다면 어떻게 할지 재구성안 써줘.`
-
-결과는 검토·재구성안 문서 하나다. 재구성안에는 제목 후보, 20초 인트로 대본, 바뀐 챕터 순서와 목표 길이, 정지 구간별 화면 보강, 짧은 끝맺음, 녹음 방법이 들어간다. 시청 지속 그래프를 주지 않으면 숫자는 추정으로 표시한다. 다시 만들 때는 explainer 스킬과 녹음 정리 스킬로 이어 간다.
 
 ## 녹음 숨소리·쉼 정리
 

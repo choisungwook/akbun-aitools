@@ -41,7 +41,7 @@
     {
       "name": "akbun-analysis",
       "source": "./plugins/akbun-analysis",
-      "description": "Codebase analysis skills — evidence-backed service/component relationship JSON with interactive HTML, optional draw.io, and incremental updates",
+      "description": "Code review and change analysis skills — why/how investigation of PRs from git history, diff blast-radius proof by execution, credential authn/authz checks, and adversarial review",
       "strict": true
     },
     {
@@ -65,7 +65,7 @@
     {
       "name": "akbun-editvideo",
       "source": "./plugins/akbun-editvideo",
-      "description": "Video editing skills — DaVinci Resolve vlog edits: speech-free travel vlogs (cut/stabilize, exposure/white balance, face mosaic, Gmarket Sans subtitles, YouTube preset export) and faceless talking developer vlogs (subtitles, project style guide, shot sketches)",
+      "description": "Video editing skills — DaVinci Resolve vlog edits: speech-free travel vlogs (cut/stabilize, exposure/white balance, face mosaic, Gmarket Sans subtitles) and faceless talking developer vlogs (subtitles, project style guide, shot sketches)",
       "strict": true
     },
     {

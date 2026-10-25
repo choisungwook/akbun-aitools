@@ -6,7 +6,7 @@ tools: Read, Glob, Grep
 
 # akbun 스타일 리뷰어
 
-akbun-writing skill로 작성된 문서를 리뷰한다. 기준 문서는 `plugins/akbun-writing/skills/akbun-writing/SKILL.md`이다. 이 파일과 기준이 다르면 SKILL.md를 우선한다. 질문식·설득식 초안은 해당 변형 skill의 자기 검토 항목을 추가로 본다.
+akbun-writing skill로 작성된 문서를 리뷰한다. 기준 문서는 `plugins/akbun-writing/skills/akbun-writing/SKILL.md`이다. 이 파일과 기준이 다르면 SKILL.md를 우선한다. 질문식 초안은 akbun-writing-with-question의 자기 검토 항목을 추가로 본다.
 
 ## 입력 처리
 

@@ -1,6 +1,6 @@
 ---
 name: akbun-davinciresolve-workflow
-description: 말소리 없는 여행 브이로그를 DaVinci Resolve 21.1에서 처음부터 끝까지 편집하는 workflow 오케스트레이터. 미디어 풀 영상 전부를 촬영 시간순 타임라인으로 만드는 것(akbun-davinciresolve-timeline-chrono)이 항상 첫 단계이고, 그 복제본에 비디오·오디오 트랙을 3개씩 준비한 뒤 컷·안정화(davinciresolve-cut-travelflow) → 라벨 노드(EXPOSURE→WB→CST→CONTRAST→SAT) 기본 색보정(logconvert → exposure → whitebalance → contrast → saturation) → 요청된 look skill과 새 LOOK 노드 → 얼굴 모자이크(davinciresolve-face-privacy) → 한글 자막·챕터(travelnote 내용 규칙, 외형 미지정은 akbun-davinciresolve-caption-template의 Cinema) → YouTube 프리셋 출력(davinciresolve-export-youtube) 순서로 각 skill의 SKILL.md를 읽어 직접 수행하고 마커 등록표·단계별 완료 조건·검증·작업 로그를 관리한다. "이 프로젝트 편집 계획 세워서 끝까지 해줘", "영상 전부 시간순으로 놓고 색보정까지 해줘", "타임라인 정리부터 렌더까지" 요청에 사용한다. 사용자가 직접 호출할 때만 실행한다.
+description: 말소리 없는 여행 브이로그를 DaVinci Resolve 21.1에서 처음부터 끝까지 편집하는 workflow 오케스트레이터. 미디어 풀 영상 전부를 촬영 시간순 타임라인으로 만드는 것(akbun-davinciresolve-timeline-chrono)이 항상 첫 단계이고, 그 복제본에 비디오·오디오 트랙을 3개씩 준비한 뒤 컷·안정화(davinciresolve-cut-travelflow) → 라벨 노드(EXPOSURE→WB→CST→CONTRAST→SAT) 기본 색보정(logconvert → exposure → whitebalance → contrast → saturation) → 요청된 look skill과 새 LOOK 노드 → 얼굴 모자이크(davinciresolve-face-privacy) → 한글 자막·챕터(travelnote 내용 규칙, 외형 미지정은 akbun-davinciresolve-caption-template의 Cinema) 순서로 각 skill의 SKILL.md를 읽어 직접 수행하고 마커 등록표·단계별 완료 조건·검증·작업 로그를 관리한다. "이 프로젝트 편집 계획 세워서 끝까지 해줘", "영상 전부 시간순으로 놓고 색보정까지 해줘", "타임라인 정리부터 자막까지" 요청에 사용한다. 사용자가 직접 호출할 때만 실행한다.
 disable-model-invocation: true
 ---
 
@@ -105,7 +105,6 @@ API가 있어도 없는 기능이 있다. 기능별 API 유무·버전 조건·�
 | 13 | 얼굴과 개인정보 모자이크 | `davinciresolve-face-privacy` | 모자이크 클립마다 `PRIVACY_MOSAIC` 클립 마커와 노드 존재 |
 | 14 | 한글 자막과 챕터 마커(외형 미지정은 Cinema) | `davinciresolve-subtitle-travelnote`의 외형 선택 규칙. 기본은 `akbun-davinciresolve-caption-template` | 자막이 `SUBTITLE` 트랙과 안전 영역 안에 있고 V1·다른 트랙·마커가 밀리지 않았으며 챕터 마커가 장소 변경 지점마다 존재 |
 | 15 | YouTube 챕터 마커 최종 정리 | 이 skill | 마커 이름이 장소명·행사명이고 첫 `CHAPTER`가 타임라인 시작(마커 상대 프레임 0)에 있고 `00:00`부터 시간과 장소명이 표시되며 3개 이상 |
-| 16 | YouTube 기본 프리셋 렌더 | `davinciresolve-export-youtube` | 타임라인 해상도에 맞는 프리셋 선택, fps·출력 범위와 렌더 결과 해상도 확인 |
 
 1단계 세부 규칙이다.
 
