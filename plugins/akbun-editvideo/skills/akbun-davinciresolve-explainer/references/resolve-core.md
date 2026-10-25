@@ -1,6 +1,6 @@
 # Explainer 스타일 공통 Resolve 구현
 
-explainer 스타일 스킬(dark-diagram, ember-grid, scribble-black, slate-marker, live-ink)이 장면 클립 구조의 기준으로 쓰는 문서다. 이 스킬(akbun-davinciresolve-explainer) 자체는 `scene.py comp`가 같은 구조를 만들므로 [resolve.md](resolve.md)를 따른다.
+explainer 스타일 스킬(dark-diagram, scribble-black, slate-marker, live-ink)이 장면 클립 구조의 기준으로 쓰는 문서다. 이 스킬(akbun-davinciresolve-explainer) 자체는 `scene.py comp`가 같은 구조를 만들므로 [resolve.md](resolve.md)를 따른다.
 
 - 타임라인: 1920×1080 새 타임라인 하나. 기존 타임라인을 덮어쓰지 않고 새 이름(예: `<주제> v2`)으로 만든다. fps는 사용자 지정값 또는 대상 프로젝트 값, 기준이 없으면 24fps. 기존 프로젝트의 전역 설정을 덮어쓰지 않는다.
 - 마지막 프레임 스틸(`ExportCurrentFrameAsStill`)을 장면마다 뽑아 한 장으로 붙여 한 번에 본다. API 성공 반환만으로 화면 적용을 완료 처리하지 않는다.
