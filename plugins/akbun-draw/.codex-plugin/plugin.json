@@ -1,6 +1,6 @@
 {
   "name": "akbun-draw",
-  "version": "1.0.28",
+  "version": "1.0.29",
   "description": "Image drawing skills by akbun — image-generation prompts and editable SVGs in fixed akbun styles",
   "author": {
     "name": "akbun",
@@ -40,7 +40,6 @@
       "Make a pencil-analogy scene that explains caching with a stick figure, one colored prop and falling tags, timed to my script (akbun-draw-pencil-analogy-graphite)",
       "Make a colored-pencil storybook scene that explains a message queue with characters and a red dashed warning, timed to my script (akbun-draw-storybook-crayon)",
       "Make a hand-drawn motion graphic on a black board that writes this explanation stroke by stroke in white pen: thought clouds, speech bubbles, faceless stick figures, sky-blue inputs and orange results (akbun-draw-scribble-black)",
-      "Make a calm documentary-style motion graphic on a warm black grid: big white numbers, white lines drawing left to right, flat objects, and a finished number shrinking into the next label (akbun-draw-ember-grid)",
       "Make a dark slate-card motion graphic that explains how a request moves through these servers, with hand-lettered captions and one meaning per accent color (akbun-draw-slate-marker)",
       "Make a live-ink motion graphic: write this calculation in thin pen handwriting on a near-black board, one glyph at a time as I say it, with green rules and orange labels (akbun-draw-live-ink)",
       "Make a child-like crayon diagram image prompt (wobbly double outlines, scribble fill, gray dashed standby parts) for this system flow (akbun-draw-crayon-milo)",

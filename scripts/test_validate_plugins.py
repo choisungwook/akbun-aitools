@@ -65,10 +65,10 @@ class RepositoryTests(unittest.TestCase):
       readme = root / "README.md"
       readme.write_text(readme.read_text().replace("| skill | 이럴 때 쓰세요 |", "| skill | 하는 일 |", 1))
       manual = root / "docs/manual_draw.md"
-      manual.write_text(manual.read_text().replace("akbun-draw-ember-grid/SKILL.md", "akbun-draw-gone/SKILL.md"))
+      manual.write_text(manual.read_text().replace("akbun-draw-slate-marker/SKILL.md", "akbun-draw-gone/SKILL.md"))
       errors = plugin_errors(root)
       self.assertTrue(any("머리줄" in error and "하는 일" in error for error in errors))
-      self.assertTrue(any("빠진 skill akbun-draw-ember-grid" in error for error in errors))
+      self.assertTrue(any("빠진 skill akbun-draw-slate-marker" in error for error in errors))
       self.assertTrue(any("존재하지 않는 skill akbun-draw-gone" in error for error in errors))
       readme.write_text(readme.read_text().replace("| 기술 블로그 글을 akbun 말투로 처음부터 쓸 때 |", "| akbun 스타일 기술 글 |", 1)
                         .replace("| skill | 이럴 때 쓰세요 |", "| Skill | 설명 | 비고 |", 1))

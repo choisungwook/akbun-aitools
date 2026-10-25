@@ -27,7 +27,7 @@ Resolve는 한 프레임에 마커 1개만 허용한다. 종류마다 색·대�
 
 | 색 | 이름 | 대상 | 오프셋 | 찍는 skill |
 |---|---|---|---|---|
-| Blue | `CHAPTER <장소명·행사명 또는 비트 이름>` | 타임라인 마커 | 장면·비트 시작 프레임 | `davinciresolve-subtitle-travelnote`, `davinciresolve-style-essay`, `davinciresolve-style-project` |
+| Blue | `CHAPTER <장소명·행사명 또는 비트 이름>` | 타임라인 마커 | 장면·비트 시작 프레임 | `davinciresolve-subtitle-travelnote`, `davinciresolve-style-project` |
 | Purple | `PRIVACY_MOSAIC <파일명> <창 개수>개` | 클립 마커 | +0 | `davinciresolve-face-privacy` |
 | Pink | `PRIVACY_CHECK <파일명> <사유>` | 클립 마커 | +1 | `davinciresolve-face-privacy` |
 | Red | `CUT_DONE <사유>` | 클립 마커 | +2 | `davinciresolve-cut-travelflow` |
