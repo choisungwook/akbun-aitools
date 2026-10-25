@@ -18,7 +18,7 @@ disable-model-invocation: true
 | 순위·목록 페이지에서 하나를 가리킨다 | 목록 카드 하나. 대상 항목에 외곽 상자, 카메라가 그 항목으로 |
 | 페이지 아래쪽으로 이어진다 | 같은 창 자리에 아래쪽을 잘라 낸 두 번째 카드가 0.25초 페이드로 바뀐다(스크롤 대신) |
 
-- 트윗·기사·댓글처럼 여러 출처의 글을 겹쳐 보여 줄 때는 [akbun-edit-quote-cards-lilac](../akbun-edit-quote-cards-lilac/SKILL.md), 터미널·AI 도구 화면 녹화는 [akbun-edit-terminal-callout-amber](../akbun-edit-terminal-callout-amber/SKILL.md)이다. 본편이 계속 보이는 위에 발췌 패널을 띄우는 것은 [akbun-davinciresolve-article-overlay](../akbun-davinciresolve-article-overlay/SKILL.md)다. 이 스킬은 본편을 가리는 전체 화면 장면이다.
+- 트윗·기사·댓글처럼 여러 출처의 글을 겹쳐 보여 줄 때는 [akbun-edit-quote-cards-lilac](../akbun-edit-quote-cards-lilac/SKILL.md), 터미널·AI 도구 화면 녹화는 [akbun-edit-terminal-callout-amber](../akbun-edit-terminal-callout-amber/SKILL.md)이다. 이 스킬은 본편을 가리는 전체 화면 장면이다.
 - 화면은 실제로 찍은 스크린샷만 쓴다. 페이지 내용·숫자를 지어내거나 그려 넣지 않는다. 얼굴 화면(PIP)·인물 촬영은 넣지 않는다.
 
 ## 녹음 전후 시각 맞추기

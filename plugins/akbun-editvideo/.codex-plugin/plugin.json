@@ -1,7 +1,7 @@
 {
   "name": "akbun-editvideo",
-  "version": "1.2.20",
-  "description": "Video editing skills — plan and run DaVinci Resolve vlog edits: speech-free travel vlogs (cut/stabilize, chronological timeline, color-grading workflow (Log LUT, exposure, white balance, contrast, saturation on labeled nodes), four separate creative looks on new LOOK nodes, and a city montage cut style, face mosaic, Gmarket Sans subtitles, audio mix, YouTube preset export, vertical YouTube Shorts) and faceless talking developer vlogs (dialogue/keyword subtitles, Epidemic Sound SFX and BGM selection, essay/project style guides, plus a pre-shoot guide, shot sketches and a storyboard with OBS screen-recording list)",
+  "version": "1.2.21",
+  "description": "Video editing skills — plan and run DaVinci Resolve vlog edits: speech-free travel vlogs (cut/stabilize, chronological timeline, color-grading workflow (Log LUT, exposure, white balance, contrast, saturation on labeled nodes), four separate creative looks on new LOOK nodes, and a city montage cut style, face mosaic, Gmarket Sans subtitles, YouTube preset export, vertical YouTube Shorts) and faceless talking developer vlogs (dialogue/keyword subtitles, project style guide, plus shot sketches)",
   "author": {
     "name": "akbun",
     "url": "https://github.com/choisungwook"
@@ -27,7 +27,7 @@
   "interface": {
     "displayName": "akbun Edit Video",
     "shortDescription": "DaVinci Resolve travel editing, devtalk planning, subtitles, sound design, and YouTube preset export",
-    "longDescription": "Plans and runs a full DaVinci Resolve edit for speech-free travel vlogs shot on iPhone and Insta360 Luna Ultra. The orchestrator (akbun-davinciresolve-workflow) always starts by building a chronological timeline from the media pool, duplicates it, prepares three named video tracks (OVERLAY, GFX, SUBTITLE) and three named audio tracks (AMBIENCE, SFX, MUSIC) on the duplicate, then runs the specialist skills in order: cut editing and stabilization (travelflow style), basic color correction on labeled nodes EXPOSURE/WB/CST/CONTRAST/SAT followed, when requested, by a separate creative look skill on a newly appended LOOK serial node; the four looks cover Japan summer, Tokyo night, Still drama and New York, while city montage cuts are a separate style; scope-based exposure uses time-of-day targets and cut-transition limits, and sky DCTL is standalone, soft wide face mosaic with markers for later review, Gmarket Sans Korean subtitles (travelnote style), location/ambience/SFX/BGM mixing, and YouTube preset export through davinciresolve-export-youtube. Every change is logged with clip file name and timecode; original timeline and media are never modified. Cut and subtitle styles are separate skills so other styles can be added later. For talking developer vlogs, standalone essay/project style guides, subtitles and shared SFX/BGM skills support individual editing tasks. Before filming, akbun-vlog-prepared-devtalk interviews the creator to shape a factual 5–7 minute story, then prepares beats, shots, sketches and a shoot order without showing the creator's face; motion-graphic tools stay undecided. akbun-vlog-shotsketch draws one storyboard frame per camera shot (camera position, posture, frame edge that hides the face) and akbun-vlog-storyboard draws one frame per beat with voice, B-roll, screen-recording content and duration plus an OBS recording list; both return image prompts when no image tool is available. YouTube Shorts candidates duplicate the selected timeline, preserve audio layout and processing, use portrait 2160×3840, fill-screen scaling and Smart Reframe, and mark each short with 15-second handles. If the source is too short for a 60-second short plus handles, ask which constraint to adjust before creating timelines. When no subtitle appearance is specified, use Akbun Cinema from akbun-davinciresolve-caption-template on an upper video track; explicit travelnote/devtalk subtitle styling overrides this default. For document-driven explainer videos, akbun-davinciresolve-explainer builds editable Fusion title scenes from text, PPTX or images, exposes text, visibility, timing and position in the Edit Inspector, and delivers narration, an editing guide and review stills.",
+    "longDescription": "Plans and runs a full DaVinci Resolve edit for speech-free travel vlogs shot on iPhone and Insta360 Luna Ultra. The orchestrator (akbun-davinciresolve-workflow) always starts by building a chronological timeline from the media pool, duplicates it, prepares three named video tracks (OVERLAY, GFX, SUBTITLE) and three named audio tracks (AMBIENCE, SFX, MUSIC) on the duplicate, then runs the specialist skills in order: cut editing and stabilization (travelflow style), basic color correction on labeled nodes EXPOSURE/WB/CST/CONTRAST/SAT followed, when requested, by a separate creative look skill on a newly appended LOOK serial node; the four looks cover Japan summer, Tokyo night, Still drama and New York, while city montage cuts are a separate style; scope-based exposure uses time-of-day targets and cut-transition limits, and sky DCTL is standalone, soft wide face mosaic with markers for later review, Gmarket Sans Korean subtitles (travelnote style), and YouTube preset export through davinciresolve-export-youtube. Every change is logged with clip file name and timecode; original timeline and media are never modified. Cut and subtitle styles are separate skills so other styles can be added later. For talking developer vlogs, a standalone project style guide, and subtitle skills support individual editing tasks. akbun-vlog-shotsketch draws one storyboard frame per camera shot (camera position, posture, frame edge that hides the face), and returns image prompts when no image tool is available. YouTube Shorts candidates duplicate the selected timeline, preserve audio layout and processing, use portrait 2160×3840, fill-screen scaling and Smart Reframe, and mark each short with 15-second handles. If the source is too short for a 60-second short plus handles, ask which constraint to adjust before creating timelines. When no subtitle appearance is specified, use Akbun Cinema from akbun-davinciresolve-caption-template on an upper video track; explicit travelnote/devtalk subtitle styling overrides this default. For document-driven explainer videos, akbun-davinciresolve-explainer builds editable Fusion title scenes from text, PPTX or images, exposes text, visibility, timing and position in the Edit Inspector, and delivers narration, an editing guide and review stills.",
     "developerName": "akbun",
     "category": "Productivity",
     "capabilities": [
@@ -39,7 +39,6 @@
     "termsOfServiceURL": "https://docs.github.com/en/site-policy/github-terms/github-terms-of-service",
     "defaultPrompt": [
       "이 대본을 scribble-black 스타일 설명 영상으로 만들어줘. 검정 보드에 흰 펜으로 한 획씩 써 내려가고 Resolve에서 글씨와 시점을 고칠 수 있게 (akbun-davinciresolve-explainer-scribble-black)",
-      "이 대본을 ember-grid 스타일 설명 영상으로 만들어줘. 검정 격자 위 큰 흰 숫자와 흰 선, 끝난 숫자가 작아지며 다음 라벨이 되게 Resolve에서 고칠 수 있게 (akbun-davinciresolve-explainer-ember-grid)",
       "이 대본을 slate-marker 스타일 설명 영상으로 만들어줘. 검정 배경 카드와 손글씨 캡션으로 요청이 서버를 거치는 과정을 Resolve에서 고칠 수 있게 (akbun-davinciresolve-explainer-slate-marker)",
       "이 대본을 live-ink 스타일 설명 영상으로 만들어줘. 검정 판에 손글씨가 말하는 순서대로 한 글자씩 써지게, Resolve에서 고칠 수 있게 (akbun-davinciresolve-explainer-live-ink)",
       "이 대본을 night-gouache 스타일 설명 영상으로 만들어줘. 그림이 말하는 순서대로 튀어나오고 핵심 대상만 빛나게 (akbun-davinciresolve-explainer-night-gouache)",
@@ -56,15 +55,10 @@
       "얼굴 나오는 장면에 약한 모자이크 넣고 내가 나중에 찾을 수 있게 마커 남겨줘 (davinciresolve-face-privacy)",
       "Gmarket Sans로 장소·시간 전달하는 한글 자막과 챕터 마커 넣어줘 (davinciresolve-subtitle-travelnote)",
       "Pretendard로 대사 자막·키워드 강조 넣어줘, 폰에서도 읽히게 크게 (davinciresolve-subtitle-devtalk)",
-      "현재 타임라인을 복제하고 현장음·효과음·여러 BGM을 편집해줘. 검토 지점은 AUDIO_REVIEW 마커로 남겨줘 (davinciresolve-sfx-epidemicsound)",
-      "Epidemic Sound에서 이야기 비트별 BGM 후보와 선택 이유를 보여주고, 여러 곡·스템·여백으로 연결해줘 (davinciresolve-bgm-epidemicsound)",
-      "아직 촬영 전인데 인터뷰하면서 5–7분 개발자 diary 스토리와 얼굴 없는 촬영·스케치를 같이 준비해줘 (akbun-vlog-prepared-devtalk)",
       "이 장면 카메라 어디 두고 어떻게 앉아서 찍어야 하는지 스케치해줘 (akbun-vlog-shotsketch)",
-      "이 주제로 뭘 말하고 뭘 찍고 OBS로 뭘 녹화할지 컷별 스토리보드 그려줘 (akbun-vlog-storyboard)",
       "이 GitHub 저장소 스크린샷을 창 카드에 넣고 설명 순서대로 카메라가 다가가며 연보라로 짚게 Resolve에 만들어줘 (akbun-edit-page-tour-lilac)",
       "이 글·이슈 스크린샷 세 장을 카드로 겹쳐 쌓고 내가 읽는 구절에 형광펜이 칠해지게 Resolve에 만들어줘 (akbun-edit-quote-cards-lilac)",
       "내 터미널 녹화에서 오류 줄 옆에 노란 손그림 화살표와 라벨을 붙여 Resolve에 만들어줘 (akbun-edit-terminal-callout-amber)",
-      "기술 원리 설명 영상이니까 essay 스타일 컷 리듬·카드 규칙으로 편집해줘 (davinciresolve-style-essay)",
       "내 프로젝트 만드는 과정 영상이니까 project 스타일로 편집해줘 (davinciresolve-style-project)",
       "프로젝트 설정이 4K면 YouTube 2160p, 아니면 YouTube 1080p 기본 템플릿으로 출력해줘 (davinciresolve-export-youtube)",
       "선택 타임라인을 복제해 세로 Shorts 후보를 만들고, 구간별 훅·15초 핸들·Smart Reframe·마커를 설정해줘 (davinciresolve-youtube-shorts)",
@@ -73,7 +67,6 @@
       "기본 보정 뒤 새 LOOK 노드에 자연주의 단편 드라마 룩을 만들어줘 (akbun-davinciresolve-look-still)",
       "기본 보정 뒤 새 LOOK 노드에 따뜻한 뉴욕 도시 필름 룩을 만들어줘 (akbun-davinciresolve-look-new-york)",
       "도시 여행 영상을 와이드·미디엄·디테일과 동작 연결로 몽타주 편집해줘 (akbun-davinciresolve-cut-new-york)",
-      "본문 발췌를 본편 위의 기존 또는 새 오버레이 트랙에 겹쳐 놓고 효과음을 넣어줘. 나중에 위치와 밑줄·원의 크기·색을 직접 고칠 수 있게 남겨줘 (akbun-davinciresolve-article-overlay)",
       "참고 영상처럼 손글씨 타이핑 자막과 노란 키워드 템플릿을 만들고, 선택형 빨간 밑줄·원을 넣어줘 (akbun-davinciresolve-caption-template)",
       "별도 스타일 지정이 없으면 하단 중앙의 정적인 영화식 기본 자막을 만들어줘 (akbun-davinciresolve-caption-template)",
       "이 글·PPTX·이미지를 Resolve Inspector에서 글자와 등장 시점을 고칠 수 있는 설명 영상으로 만들어줘 (akbun-davinciresolve-explainer)",

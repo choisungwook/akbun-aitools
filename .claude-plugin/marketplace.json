@@ -65,7 +65,7 @@
     {
       "name": "akbun-editvideo",
       "source": "./plugins/akbun-editvideo",
-      "description": "Video editing skills — DaVinci Resolve vlog edits: speech-free travel vlogs (cut/stabilize, exposure/white balance, face mosaic, Gmarket Sans subtitles, audio mix, YouTube preset export) and faceless talking developer vlogs (subtitles, Epidemic Sound SFX/BGM, essay/project style guides, pre-shoot guide, shot sketches, storyboard)",
+      "description": "Video editing skills — DaVinci Resolve vlog edits: speech-free travel vlogs (cut/stabilize, exposure/white balance, face mosaic, Gmarket Sans subtitles, YouTube preset export) and faceless talking developer vlogs (subtitles, project style guide, shot sketches)",
       "strict": true
     },
     {

@@ -1,6 +1,6 @@
 ---
 name: davinciresolve-subtitle-devtalk
-description: 말하는 개발자 브이로그의 오버레이 자막을 만드는 devtalk 스타일. 요청된 대사 자막(Resolve CreateSubtitlesFromAudio)과 편집 스타일(essay·project)의 글자 표에 따른 키워드 강조·장면 코멘트·목록 자막(Text+)을 넣고 전사와 대조해 용어를 고친다. 글꼴은 Windows·macOS 어디서나 쓸 수 있는 SIL OFL 한글 글꼴(Pretendard, 없으면 Noto Sans KR)만 쓰고, 자막 글자 높이는 화면 높이의 5% 이상으로 스틸로 재서 지킨다. "대사 자막 넣어줘", "키워드 강조 자막", "장면 코멘트 자막" 요청에 사용한다. 사용자가 직접 호출할 때만 실행한다.
+description: 말하는 개발자 브이로그의 오버레이 자막을 만드는 devtalk 스타일. 요청된 대사 자막(Resolve CreateSubtitlesFromAudio)과 편집 스타일(project)의 글자 표에 따른 키워드 강조·장면 코멘트·목록 자막(Text+)을 넣고 전사와 대조해 용어를 고친다. 글꼴은 Windows·macOS 어디서나 쓸 수 있는 SIL OFL 한글 글꼴(Pretendard, 없으면 Noto Sans KR)만 쓰고, 자막 글자 높이는 화면 높이의 5% 이상으로 스틸로 재서 지킨다. "대사 자막 넣어줘", "키워드 강조 자막", "장면 코멘트 자막" 요청에 사용한다. 사용자가 직접 호출할 때만 실행한다.
 disable-model-invocation: true
 ---
 
@@ -14,7 +14,7 @@ disable-model-invocation: true
 
 자막 스타일 중 하나다. 이름의 devtalk은 "화자가 말한 것만 글자로 얹는다"는 뜻이다. 장소·시간을 적는 여행 자막은 `davinciresolve-subtitle-travelnote`가 맡는다.
 
-`akbun-davinciresolve-workflow`의 기본 원칙(대표 자막 1개 선적용, 작업 로그)을 따른다. essay·project를 명시한 경우 해당 style skill의 글자 표로 종류와 위치를 정한다. 대사 자막을 직접 요청한 경우 아래 대사 자막 규칙을 적용한다. 스타일 표가 없는 대사 자막은 하단 중앙 한 줄을 시작점으로 삼고 대표 자막의 가독성과 실제 발화 시간에 맞춘다. 글꼴과 최소 크기는 style skill보다 이 문서가 우선한다.
+`akbun-davinciresolve-workflow`의 기본 원칙(대표 자막 1개 선적용, 작업 로그)을 따른다. project를 명시한 경우 그 style skill의 글자 표로 종류와 위치를 정한다. 대사 자막을 직접 요청한 경우 아래 대사 자막 규칙을 적용한다. 스타일 표가 없는 대사 자막은 하단 중앙 한 줄을 시작점으로 삼고 대표 자막의 가독성과 실제 발화 시간에 맞춘다. 글꼴과 최소 크기는 style skill보다 이 문서가 우선한다.
 
 ## 글꼴
 

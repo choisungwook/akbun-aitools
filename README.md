@@ -89,7 +89,6 @@ codex plugin list --json
 <td><a href="./plugins/akbun-draw/skills/akbun-draw-live-ink/SKILL.md"><img src="./imgs/akbun-draw-live-ink.jpg" alt="akbun-draw-live-ink" width="400"></a><br><code>akbun-draw-live-ink</code></td>
 </tr>
 <tr>
-<td><a href="./plugins/akbun-draw/skills/akbun-draw-ember-grid/SKILL.md"><img src="./imgs/akbun-draw-ember-grid.jpg" alt="akbun-draw-ember-grid" width="400"></a><br><code>akbun-draw-ember-grid</code></td>
 <td><a href="./plugins/akbun-draw/skills/akbun-draw-scribble-black/SKILL.md"><img src="./imgs/akbun-draw-scribble-black.jpg" alt="akbun-draw-scribble-black" width="400"></a><br><code>akbun-draw-scribble-black</code></td>
 </tr>
 </table>
@@ -155,7 +154,6 @@ codex plugin list --json
 | [akbun-draw-storybook-crayon](./plugins/akbun-draw/skills/akbun-draw-storybook-crayon/) | 색연필 동화책 느낌으로 부드럽게 비유를 들 때 |
 | [akbun-draw-crayon-milo](./plugins/akbun-draw/skills/akbun-draw-crayon-milo/) | 시스템 흐름을 아이 크레용 그림 같은 다이어그램 이미지로 만들 때 |
 | [akbun-draw-scribble-black](./plugins/akbun-draw/skills/akbun-draw-scribble-black/) | 보드에 손으로 써 내려가며 수식·단계·묻고 답하기를 설명할 때 |
-| [akbun-draw-ember-grid](./plugins/akbun-draw/skills/akbun-draw-ember-grid/) | 숫자·선 몇 개로 추상 개념을 차분한 다큐멘터리 느낌으로 풀 때 |
 | [akbun-draw-slate-marker](./plugins/akbun-draw/skills/akbun-draw-slate-marker/) | 요청·메모리 같은 시스템 동작을 카드와 상태 변화로 보여 줄 때 |
 | [akbun-draw-live-ink](./plugins/akbun-draw/skills/akbun-draw-live-ink/) | 계산·공식을 손으로 적어 가며 한 글자씩 풀어 줄 때 |
 | [akbun-generateimage-code](./plugins/akbun-draw/skills/akbun-generateimage-code/) | 블로그에 코드를 짚어 설명하는 그림이 필요할 때 |
@@ -284,25 +282,18 @@ codex plugin list --json
 | [davinciresolve-subtitle-travelnote](./plugins/akbun-editvideo/skills/davinciresolve-subtitle-travelnote/) | 여행 영상에 메모 같은 자막을 넣을 때 |
 | [davinciresolve-subtitle-devtalk](./plugins/akbun-editvideo/skills/davinciresolve-subtitle-devtalk/) | 개발자 말하는 영상에 대사·키워드 자막을 넣을 때 |
 | [akbun-davinciresolve-caption-template](./plugins/akbun-editvideo/skills/akbun-davinciresolve-caption-template/) | 같은 모양의 자막을 여러 영상에서 다시 쓰고 싶을 때 |
-| [davinciresolve-sfx-epidemicsound](./plugins/akbun-editvideo/skills/davinciresolve-sfx-epidemicsound/) | 장면에 효과음·환경음·배경음악을 깔 때 |
-| [davinciresolve-bgm-epidemicsound](./plugins/akbun-editvideo/skills/davinciresolve-bgm-epidemicsound/) | 영상 분위기에 맞는 배경음악을 고를 때 |
 | [davinciresolve-export-youtube](./plugins/akbun-editvideo/skills/davinciresolve-export-youtube/) | YouTube에 올릴 파일을 기본 프리셋으로 뽑을 때 |
 | [davinciresolve-youtube-shorts](./plugins/akbun-editvideo/skills/davinciresolve-youtube-shorts/) | 긴 영상에서 세로 Shorts를 뽑아 렌더·업로드할 때 |
-| [akbun-vlog-prepared-devtalk](./plugins/akbun-editvideo/skills/akbun-vlog-prepared-devtalk/) | 촬영 전에 내 경험을 인터뷰로 개발자 브이로그 이야기로 만들 때 |
 | [akbun-vlog-shotsketch](./plugins/akbun-editvideo/skills/akbun-vlog-shotsketch/) | 한 샷의 구도·카메라 위치·빛을 미리 정할 때 |
-| [akbun-vlog-storyboard](./plugins/akbun-editvideo/skills/akbun-vlog-storyboard/) | 어떤 장면을 어떤 순서로 찍을지 한눈에 보고 싶을 때 |
-| [davinciresolve-style-essay](./plugins/akbun-editvideo/skills/davinciresolve-style-essay/) | 기술을 설명하는 에세이형 영상의 편집 기준이 필요할 때 |
 | [davinciresolve-style-project](./plugins/akbun-editvideo/skills/davinciresolve-style-project/) | 프로젝트 과정을 기록하는 diary형 영상의 편집 기준이 필요할 때 |
 | [akbun-davinciresolve-explainer](./plugins/akbun-editvideo/skills/akbun-davinciresolve-explainer/) | 글·PPTX로 Resolve에서 고칠 수 있는 설명 영상을 만들 때 |
 | [akbun-davinciresolve-explainer-dark-diagram](./plugins/akbun-editvideo/skills/akbun-davinciresolve-explainer-dark-diagram/) | 어두운 다이어그램 설명 영상을 만들고 내 녹음에 맞출 때 |
 | [akbun-davinciresolve-explainer-night-gouache](./plugins/akbun-editvideo/skills/akbun-davinciresolve-explainer-night-gouache/) | 손채색 그림이 말하는 순서대로 튀어나오는 설명 영상을 만들 때 |
 | [akbun-davinciresolve-explainer-scribble-black](./plugins/akbun-editvideo/skills/akbun-davinciresolve-explainer-scribble-black/) | 보드에 써 내려가는 손그림 설명 영상을 Resolve에서 고치며 만들 때 |
-| [akbun-davinciresolve-explainer-ember-grid](./plugins/akbun-editvideo/skills/akbun-davinciresolve-explainer-ember-grid/) | 숫자·선으로 차분히 푸는 설명 영상을 Resolve에서 고치며 만들 때 |
 | [akbun-davinciresolve-explainer-slate-marker](./plugins/akbun-editvideo/skills/akbun-davinciresolve-explainer-slate-marker/) | 카드와 상태 변화로 시스템 동작을 보여 주는 설명 영상을 Resolve에서 고치며 만들 때 |
 | [akbun-davinciresolve-explainer-live-ink](./plugins/akbun-editvideo/skills/akbun-davinciresolve-explainer-live-ink/) | 손글씨로 적어 가는 설명 영상을 Resolve에서 고치며 만들 때 |
 | [akbun-davinciresolve-narration-cleanup](./plugins/akbun-editvideo/skills/akbun-davinciresolve-narration-cleanup/) | 녹음한 내레이션의 숨소리·긴 쉼을 정리할 때 |
 | [akbun-review-video-for-retention](./plugins/akbun-editvideo/skills/akbun-review-video-for-retention/) | 만든 영상이 끝까지 볼 만한지 시청 지속 기준으로 점검할 때 |
-| [akbun-davinciresolve-article-overlay](./plugins/akbun-editvideo/skills/akbun-davinciresolve-article-overlay/) | 본편 위에 기사 문장을 발췌 패널로 보여 줄 때 |
 | [akbun-edit-page-tour-lilac](./plugins/akbun-editvideo/skills/akbun-edit-page-tour-lilac/) | 웹 페이지 스크린샷을 짚어 가며 설명할 때 |
 | [akbun-edit-quote-cards-lilac](./plugins/akbun-editvideo/skills/akbun-edit-quote-cards-lilac/) | 인용 글 카드를 쌓고 형광펜으로 강조할 때 |
 | [akbun-edit-terminal-callout-amber](./plugins/akbun-editvideo/skills/akbun-edit-terminal-callout-amber/) | 터미널 녹화 화면에 화살표·라벨을 붙여 짚을 때 |

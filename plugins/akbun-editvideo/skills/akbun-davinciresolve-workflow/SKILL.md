@@ -1,6 +1,6 @@
 ---
 name: akbun-davinciresolve-workflow
-description: 말소리 없는 여행 브이로그를 DaVinci Resolve 21.1에서 처음부터 끝까지 편집하는 workflow 오케스트레이터. 미디어 풀 영상 전부를 촬영 시간순 타임라인으로 만드는 것(akbun-davinciresolve-timeline-chrono)이 항상 첫 단계이고, 그 복제본에 비디오·오디오 트랙을 3개씩 준비한 뒤 컷·안정화(davinciresolve-cut-travelflow) → 라벨 노드(EXPOSURE→WB→CST→CONTRAST→SAT) 기본 색보정(logconvert → exposure → whitebalance → contrast → saturation) → 요청된 look skill과 새 LOOK 노드 → 얼굴 모자이크(davinciresolve-face-privacy) → 한글 자막·챕터(travelnote 내용 규칙, 외형 미지정은 akbun-davinciresolve-caption-template의 Cinema) → 사운드 디자인(davinciresolve-sfx-epidemicsound)·YouTube 프리셋 출력(davinciresolve-export-youtube) 순서로 각 skill의 SKILL.md를 읽어 직접 수행하고 마커 등록표·단계별 완료 조건·검증·작업 로그를 관리한다. "이 프로젝트 편집 계획 세워서 끝까지 해줘", "영상 전부 시간순으로 놓고 색보정까지 해줘", "타임라인 정리부터 렌더까지" 요청에 사용한다. 사용자가 직접 호출할 때만 실행한다.
+description: 말소리 없는 여행 브이로그를 DaVinci Resolve 21.1에서 처음부터 끝까지 편집하는 workflow 오케스트레이터. 미디어 풀 영상 전부를 촬영 시간순 타임라인으로 만드는 것(akbun-davinciresolve-timeline-chrono)이 항상 첫 단계이고, 그 복제본에 비디오·오디오 트랙을 3개씩 준비한 뒤 컷·안정화(davinciresolve-cut-travelflow) → 라벨 노드(EXPOSURE→WB→CST→CONTRAST→SAT) 기본 색보정(logconvert → exposure → whitebalance → contrast → saturation) → 요청된 look skill과 새 LOOK 노드 → 얼굴 모자이크(davinciresolve-face-privacy) → 한글 자막·챕터(travelnote 내용 규칙, 외형 미지정은 akbun-davinciresolve-caption-template의 Cinema) → YouTube 프리셋 출력(davinciresolve-export-youtube) 순서로 각 skill의 SKILL.md를 읽어 직접 수행하고 마커 등록표·단계별 완료 조건·검증·작업 로그를 관리한다. "이 프로젝트 편집 계획 세워서 끝까지 해줘", "영상 전부 시간순으로 놓고 색보정까지 해줘", "타임라인 정리부터 렌더까지" 요청에 사용한다. 사용자가 직접 호출할 때만 실행한다.
 disable-model-invocation: true
 ---
 
@@ -18,7 +18,7 @@ disable-model-invocation: true
 - 클립 식별자: 클립 번호가 아니라 `파일명 + 작업 타임라인 시작 타임코드`. 클립 번호는 컷이 바뀌면 밀리므로 쓰지 않는다
 - 출력 폴더: 사용자가 시작 시 지정한 폴더. 지정이 없으면 미디어가 있는 폴더 옆의 `<프로젝트 이름>_edit/`. Resolve 프로젝트는 데이터베이스에 저장되므로 "프로젝트 폴더"라는 경로는 없다
 - 작업 로그: 이번 편집에서 바꾼 모든 것을 기록한 Markdown 파일. `<출력 폴더>/edit-log_<YYYYMMDD_HHMM>.md`. 실행마다 새 파일이고 덮어쓰지 않는다
-- 타임라인 마커: 타임라인 자체에 찍는 마커. 클립을 옮겨도 따라가지 않는다. 챕터·그래픽·사운드 검토에 쓴다
+- 타임라인 마커: 타임라인 자체에 찍는 마커. 클립을 옮겨도 따라가지 않는다. 챕터·그래픽에 쓴다
 - 클립 마커: 클립(TimelineItem)에 찍는 마커. 클립과 함께 이동한다. 컷·모자이크 표시에 쓴다
 
 ## 마커 등록표
@@ -27,7 +27,7 @@ Resolve는 한 프레임에 마커 1개만 허용한다. 종류마다 색·대�
 
 | 색 | 이름 | 대상 | 오프셋 | 찍는 skill |
 |---|---|---|---|---|
-| Blue | `CHAPTER <장소명·행사명 또는 비트 이름>` | 타임라인 마커 | 장면·비트 시작 프레임 | `davinciresolve-subtitle-travelnote`, `davinciresolve-style-essay`, `davinciresolve-style-project` |
+| Blue | `CHAPTER <장소명·행사명 또는 비트 이름>` | 타임라인 마커 | 장면·비트 시작 프레임 | `davinciresolve-subtitle-travelnote`, `davinciresolve-style-project` |
 | Purple | `PRIVACY_MOSAIC <파일명> <창 개수>개` | 클립 마커 | +0 | `davinciresolve-face-privacy` |
 | Pink | `PRIVACY_CHECK <파일명> <사유>` | 클립 마커 | +1 | `davinciresolve-face-privacy` |
 | Red | `CUT_DONE <사유>` | 클립 마커 | +2 | `davinciresolve-cut-travelflow` |
@@ -35,11 +35,8 @@ Resolve는 한 프레임에 마커 1개만 허용한다. 종류마다 색·대�
 | Cyan | `GFX <카드 종류> <제목>` | 타임라인 마커 | 카드 시작 프레임 | 그래픽 작업 시 직접 등록 |
 | Lemon | `EXPOSURE_CHECK <파일명> <사유>` | 클립 마커 | +5 | `akbun-davinciresolve-exposure` |
 | Sky | `WB_CHECK <파일명> <사유>` | 클립 마커 | +6 | `akbun-davinciresolve-whitebalance` |
-| Sand | `AUDIO_REVIEW <cue ID> <사유>` | 타임라인 마커 | 검토 구간 시작. 충돌 시 구간 안 가장 가까운 빈 프레임 | `davinciresolve-sfx-epidemicsound` (BGM 작업 포함) |
 
 마커 색은 Resolve가 받는 16색(Blue, Cyan, Green, Yellow, Red, Pink, Purple, Fuchsia, Rose, Lavender, Sky, Mint, Lemon, Sand, Cocoa, Cream)에서만 고른다. Orange처럼 클립 색에만 있는 이름을 넘기면 `AddMarker`가 False를 반환하고 마커가 찍히지 않는다.
-
-사운드 마커의 노트·좌표·충돌 처리·상태는 [사운드 공통 스킬 7절](../davinciresolve-sfx-epidemicsound/SKILL.md#7-사용자-검토-마커)을 따른다. 기존 마커를 덮어쓰지 않는다.
 
 클립 길이가 오프셋보다 짧으면 오프셋을 줄이지 않고 그 클립의 마커를 작업 로그 `확인 필요`에만 적는다.
 
@@ -107,9 +104,8 @@ API가 있어도 없는 기능이 있다. 기능별 API 유무·버전 조건·�
 | 12 | 창작 look | 사용자가 고른 `akbun-davinciresolve-look-*` skill | 기본 보정이 끝난 뒤 해당 style skill을 읽는다. Color 페이지에서 새 Serial 노드를 추가해 `LOOK`으로 라벨하고 이 노드에만 창작 조정을 한다. 룩 LUT를 지정하지 않아도 노드는 새로 만든다. Look을 요청하지 않았으면 적용하지 않는다 |
 | 13 | 얼굴과 개인정보 모자이크 | `davinciresolve-face-privacy` | 모자이크 클립마다 `PRIVACY_MOSAIC` 클립 마커와 노드 존재 |
 | 14 | 한글 자막과 챕터 마커(외형 미지정은 Cinema) | `davinciresolve-subtitle-travelnote`의 외형 선택 규칙. 기본은 `akbun-davinciresolve-caption-template` | 자막이 `SUBTITLE` 트랙과 안전 영역 안에 있고 V1·다른 트랙·마커가 밀리지 않았으며 챕터 마커가 장소 변경 지점마다 존재 |
-| 15 | 현장음·효과음·여러 BGM 사운드 디자인 | `davinciresolve-sfx-epidemicsound` | 오디오 직전 타임라인 복제, 큐시트·검청·`AUDIO_REVIEW` 기록. 새 작업본 ID를 16–17단계에 인계 |
-| 16 | YouTube 챕터 마커 최종 정리 | 이 skill | 마커 이름이 장소명·행사명이고 첫 `CHAPTER`가 타임라인 시작(마커 상대 프레임 0)에 있고 `00:00`부터 시간과 장소명이 표시되며 3개 이상 |
-| 17 | YouTube 기본 프리셋 렌더 | `davinciresolve-export-youtube` | 타임라인 해상도에 맞는 프리셋 선택, fps·출력 범위와 렌더 결과 해상도 확인 |
+| 15 | YouTube 챕터 마커 최종 정리 | 이 skill | 마커 이름이 장소명·행사명이고 첫 `CHAPTER`가 타임라인 시작(마커 상대 프레임 0)에 있고 `00:00`부터 시간과 장소명이 표시되며 3개 이상 |
+| 16 | YouTube 기본 프리셋 렌더 | `davinciresolve-export-youtube` | 타임라인 해상도에 맞는 프리셋 선택, fps·출력 범위와 렌더 결과 해상도 확인 |
 
 1단계 세부 규칙이다.
 
@@ -120,7 +116,7 @@ API가 있어도 없는 기능이 있다. 기능별 API 유무·버전 조건·�
 
 5~11단계(색보정)는 한 단계의 `확인 필요`가 다음 단계를 막지 않지만 마지막 보고에 모두 모은다. 되돌리기는 각 skill의 `--reset`이고, 전체 되돌리기는 B를 버리고 A를 다시 복제하는 것이다.
 
-컷이 바뀌면(4단계 이후 재편집 포함) 자막·효과음·전환·챕터·사운드 검토 타임라인 마커 위치를 다시 맞춘다. 클립 마커는 클립과 함께 움직이므로 다시 찍지 않는다. 순서를 건너뛰거나 바꾸려면 이유를 작업 로그에 적는다.
+컷이 바뀌면(4단계 이후 재편집 포함) 자막·효과음·전환·챕터 타임라인 마커 위치를 다시 맞춘다. 클립 마커는 클립과 함께 움직이므로 다시 찍지 않는다. 순서를 건너뛰거나 바꾸려면 이유를 작업 로그에 적는다.
 
 ## 트랙 준비
 
@@ -131,14 +127,13 @@ API가 있어도 없는 기능이 있다. 기능별 API 유무·버전 조건·�
 | 비디오 | `OVERLAY` | 본편 위에 겹치는 영상 | 컷 skill |
 | 비디오 | `GFX` | 그래픽 카드 | 사용자가 선택한 그래픽 제작 도구 |
 | 비디오 | `SUBTITLE` | 자막·챕터 제목 Text+ | `davinciresolve-subtitle-travelnote` |
-| 오디오 | `AMBIENCE` | 환경음 | `davinciresolve-sfx-epidemicsound` |
-| 오디오 | `SFX` | 효과음 | `davinciresolve-sfx-epidemicsound` |
-| 오디오 | `MUSIC` | BGM | `davinciresolve-sfx-epidemicsound`, `davinciresolve-bgm-epidemicsound` |
+| 오디오 | `AMBIENCE` | 환경음 | 사용자가 직접 배치 |
+| 오디오 | `SFX` | 효과음 | 사용자가 직접 배치 |
+| 오디오 | `MUSIC` | BGM | 사용자가 직접 배치 |
 
 - 비디오 트랙은 표의 순서대로 아래에서 위로 쌓인다. 자막이 영상·그래픽 위에 온다.
 - 기존 트랙의 이름과 내용은 바꾸지 않는다. 클립의 소리가 있는 A1은 현장음 트랙으로 그대로 둔다.
 - 같은 이름의 트랙이 이미 있으면 더하지 않는다. 다시 실행해도 트랙이 늘지 않는다.
-- 사운드 skill이 트랙을 더 필요로 하면 그 skill의 트랙 규칙대로 더한다.
 
 ## 색보정 노드 순서와 실행 순서
 
@@ -258,9 +253,8 @@ python3 scripts/workflow.py nodes --timeline "<작업 타임라인>" --profile "
 사용자가 look을 요청한 경우 선택한 skill 이름과 새 `LOOK` Serial 노드에서 조정한 목적을 기록한다. 요청한 룩 노드가 없거나 기존 노드에 창작 조정이 섞여 있으면 다음 단계로 넘어가지 않는다. 사용자가 요청하지 않았다면 `LOOK 없음`으로 남긴다.
 ## 모자이크                           ← face-privacy
 ## 자막·챕터                          ← subtitle-travelnote
-## 오디오                             ← sfx-epidemicsound
 ## 검증
-## 확인 필요                          ← 각 표의 확인 필요 행과 마커(EXPOSURE_CHECK, WB_CHECK, PRIVACY_CHECK, CUT_REVIEW, AUDIO_REVIEW) 모음
+## 확인 필요                          ← 각 표의 확인 필요 행과 마커(EXPOSURE_CHECK, WB_CHECK, PRIVACY_CHECK, CUT_REVIEW) 모음
 ```
 
 ## 하지 않는 것

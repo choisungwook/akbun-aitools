@@ -35,7 +35,7 @@ def capture_frame(video, seconds, destination):
 
 
 def capture_range(video, start, end, step, metadata):
-  output = Path(tempfile.mkdtemp(prefix="article-overlay-", dir="/tmp"))
+  output = Path(tempfile.mkdtemp(prefix="caption-template-", dir="/tmp"))
   frames = []
   count = math.floor((end - start) / step + 1e-9) + 1
   for index in range(count):
