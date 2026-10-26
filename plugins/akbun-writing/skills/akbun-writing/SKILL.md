@@ -97,7 +97,7 @@ description: "Use only when the user explicitly asks to write a technical blog p
 
 ## 마무리: naturalize와 점검표
 
-다 쓴 뒤 `akbun-writing-naturalize`의 규칙 파일(`references/common-rules.jsonl`, `references/user-rules.jsonl`)과 처리 절차(맞춤법 교정 → 국소 자연화 → 원문 대조)를 호출 모드로 적용한다. 결과는 산출물 파일에 덮어쓴다. `합니다`체와 1인칭 규칙은 보호 영역으로 넘긴다.
+다 쓴 뒤 `akbun-writing-naturalize`의 규칙 파일(`references/grammar-rules.jsonl`, `references/common-rules.jsonl`, `references/user-rules.jsonl`)과 처리 절차(맞춤법 교정 → 국소 자연화 → 원문 대조)를 호출 모드로 적용한다. 결과는 산출물 파일에 덮어쓴다. `합니다`체와 1인칭 규칙은 보호 영역으로 넘긴다.
 
 그다음 점검표를 돈다. 하나라도 아니면 고친다.
 
