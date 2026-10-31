@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080">
+  <defs>
+    <filter id="chalk" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="2"/>
+    </filter>
+  </defs>
+  <rect class="bg" width="1920" height="1080" fill="#1B2A23"/>
+  <g transform="translate(-280 10)">
+
+  <g font-family="Inter, 'Noto Sans KR', sans-serif" fill="#E9EFEA" opacity="0.92">
+    <text x="660" y="200" font-size="40" font-weight="600">EKS Auto Mode</text>
+    <text x="820" y="330" font-size="28" font-weight="500" text-anchor="middle">Pod</text>
+    <text x="820" y="372" font-size="24" font-family="'JetBrains Mono', monospace" text-anchor="middle">cpu: 2  mem: 4Gi</text>
+    <text x="1300" y="332" font-size="28" font-weight="500" text-anchor="middle">Auto Mode</text>
+    <text x="1300" y="366" font-size="28" font-weight="500" text-anchor="middle">Engine</text>
+    <text x="1300" y="620" font-size="24" font-family="'JetBrains Mono', monospace" text-anchor="middle">node.cpu ≥ 2 ∧ node.mem ≥ 4Gi</text>
+    <text x="1300" y="700" font-size="28" font-weight="500" text-anchor="middle">EC2 Node</text>
+    <text x="1170" y="773" font-size="24" font-family="'JetBrains Mono', monospace" text-anchor="middle" fill="#FFE066">pod</text>
+    <text x="1710" y="770" font-size="22" text-anchor="middle" fill="#70C1B3">auto-</text>
+    <text x="1710" y="800" font-size="22" text-anchor="middle" fill="#70C1B3">provisioned</text>
+  </g>
+
+  <g filter="url(#chalk)" opacity="0.9" fill="none" stroke="#E9EFEA" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M660 280 L830 279"/>
+    <path d="M826 279 L980 281"/>
+    <path d="M980 281 L981 400"/>
+    <path d="M981 400 L812 402"/>
+    <path d="M816 402 L660 400"/>
+    <path d="M660 400 L659 280"/>
+
+    <path d="M1000 340 L1092 341"/>
+    <path d="M1088 341 L1180 340"/>
+    <path d="M1180 340 L1166 331"/>
+    <path d="M1180 340 L1166 349"/>
+
+    <path d="M1304 240 C1360 242 1400 290 1400 340 C1400 395 1355 440 1300 440 C1245 440 1200 395 1200 340 C1200 288 1240 244 1299 241"/>
+
+    <path d="M1300 450 L1301 510"/>
+    <path d="M1301 506 L1300 575"/>
+    <path d="M1300 575 L1291 561"/>
+    <path d="M1300 575 L1309 561"/>
+
+    <path d="M1040 720 L1300 721"/>
+    <path d="M1296 721 L1560 720"/>
+    <path d="M1560 720 L1561 900"/>
+    <path d="M1561 900 L1300 901"/>
+    <path d="M1304 901 L1040 900"/>
+    <path d="M1040 900 L1039 720"/>
+    <path d="M1300 721 L1300 900"/>
+    <path d="M1040 810 L1222 811"/>
+    <path d="M1219 811 L1392 810"/>
+    <path d="M1389 810 L1560 810"/>
+
+    <path d="M1600 740 L1712 741" stroke="#70C1B3"/>
+    <path d="M1709 741 L1820 741 L1821 820 L1712 820" stroke="#70C1B3"/>
+    <path d="M1715 820 L1600 820 L1599 740" stroke="#70C1B3"/>
+    <path d="M1570 780 L1596 780" stroke="#70C1B3"/>
+
+    <path d="M1180 640 L1302 641" stroke="#FFE066"/>
+    <path d="M1299 641 L1420 640" stroke="#FFE066"/>
+    <path d="M1060 732 L1172 733" stroke="#FFE066"/>
+    <path d="M1169 733 L1280 733 L1281 798 L1172 798" stroke="#FFE066"/>
+    <path d="M1175 798 L1060 798 L1059 732" stroke="#FFE066"/>
+  </g>
+  </g>
+</svg>

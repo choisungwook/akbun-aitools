@@ -1,0 +1,69 @@
+{
+  "id": "akbun-draw-style-notebook-doodle",
+  "concept": "방안지(모눈종이) 위 파란·빨간 볼펜과 연필로 그린 엔지니어링 핸드노트 낙서",
+  "canvas": {
+    "viewBox": "0 0 1920 1080",
+    "aspectRatio": "16:9",
+    "negativeSpaceRatio": 0.40,
+    "edgeMarginPx": 80,
+    "captionMarginPx": 40,
+    "centerTolerancePx": 40
+  },
+  "colors": {
+    "PAPER": "#F7F7F2",
+    "GRID": "#D6DDE6",
+    "BLUE": "#1F4FBF",
+    "BLUE_FILL": "#DCE6F8",
+    "RED": "#D8403A",
+    "PENCIL": "#6B7280",
+    "PENCIL_FILL": "#E5E7EB"
+  },
+  "colorRoles": {
+    "PAPER": "배경 종이",
+    "GRID": "모눈 선. 40px 간격 1px, class=\"bg\" pattern",
+    "BLUE": "기본 볼펜: 도형 외곽선, 글자, 화살표. BLUE_FILL은 해칭 대신 쓰는 옅은 채움",
+    "RED": "빨간 볼펜: 강조·주의·고칠 곳·밑줄·동그라미 1개 의미",
+    "PENCIL": "연필: 보조 설명, 치수선, 비활성 요소. PENCIL_FILL은 그 옅은 채움"
+  },
+  "typography": {
+    "fonts": {
+      "ui": "Inter, 'Noto Sans KR', sans-serif",
+      "mono": "'JetBrains Mono', monospace"
+    },
+    "sizes": {
+      "title": { "px": 36, "weight": 600, "color": "BLUE" },
+      "name": { "px": 26, "weight": 500, "color": "BLUE" },
+      "body": { "px": 20, "weight": 400, "color": "PENCIL" },
+      "code": { "px": 20, "weight": 400, "color": "BLUE", "font": "mono" }
+    }
+  },
+  "geometry": {
+    "strokeWidths": [1, 1.5, 2.5],
+    "lineCap": "round",
+    "lineJoin": "round",
+    "borderRadius": 6,
+    "gridStepPx": 40,
+    "dash": { "pencilInactive": "5 6", "dimension": "2 4" },
+    "arrowHead": "선 끝 2획(각 12px), 채운 삼각형 없음",
+    "wobble": "직선은 Q 곡선 하나로 가운데를 1~3px 휘게 그린다"
+  },
+  "effects": {
+    "grid": "<pattern id=\"grid\" width=\"40\" height=\"40\" patternUnits=\"userSpaceOnUse\"><path d=\"M40 0H0V40\" fill=\"none\" stroke=\"#D6DDE6\" stroke-width=\"1\"/></pattern> 를 class=\"bg\" 전체 사각형(fill url(#grid))에 쓴다. 배경 PAPER 사각형 위에 겹친다",
+    "allowedDefs": ["pattern #grid 하나"],
+    "forbidden": ["image", "filter", "그라데이션", "드롭 섀도우"]
+  },
+  "rules": [
+    "볼펜 선(BLUE·RED)은 stroke-width 2.5, 연필 선(PENCIL)은 1.5, 모눈은 1. 다른 굵기는 쓰지 않는다.",
+    "도형은 외곽선 + 옅은 채움(BLUE_FILL·PENCIL_FILL) 또는 채움 없음. 진한 색으로 면을 채우지 않는다.",
+    "RED는 한 그림에 의미 하나(주의·고칠 곳·지금 보는 곳)이고 요소 5개 이하. RED 동그라미는 대상 바깥 8px, 시작·끝이 4~8px 어긋난 열린 path.",
+    "치수선·주석은 PENCIL 1.5px dasharray 2 4(dimension)와 20px 글자. 비활성 요소·대기 연결은 PENCIL 1.5px dasharray 5 6(pencilInactive).",
+    "직선은 wobble 규칙대로 Q 곡선 하나로 그려 손으로 그은 느낌을 낸다. 모눈 선은 반듯하게 둔다.",
+    "글자 baseline은 모눈 선(40px 배수) 또는 모눈 중간선(20px 배수) 위에 맞춘다.",
+    "번호·별표·체크 같은 손글씨 기호는 path 3획 이하로 그린다."
+  ],
+  "checks": {
+    "forbidElements": ["image", "filter", "linearGradient", "radialGradient"],
+    "strokeWidthRange": [1, 2.5],
+    "minNegativeSpacePct": 40
+  }
+}

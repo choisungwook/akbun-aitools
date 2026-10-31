@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080">
+<defs><filter id="ao" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="10"/></filter></defs>
+<rect class="bg" width="1920" height="1080" fill="#EEF2F7"/>
+<ellipse cx="564.4" cy="345.0" rx="69" ry="34" fill="#0F172A" opacity="0.14" filter="url(#ao)"/>
+<polygon points="633.7,345.0 564.4,385.0 564.4,305.0 633.7,265.0" fill="#1D4ED8" stroke="#1D4ED8" stroke-width="10" stroke-linejoin="round"/>
+<polygon points="495.2,345.0 564.4,385.0 564.4,305.0 495.2,265.0" fill="#3B82F6" stroke="#3B82F6" stroke-width="10" stroke-linejoin="round"/>
+<polygon points="564.4,225.0 633.7,265.0 564.4,305.0 495.2,265.0" fill="#93C5FD" stroke="#93C5FD" stroke-width="10" stroke-linejoin="round"/>
+<polygon points="624.2,370.5 693.5,410.5 704.7,404.0 720.3,435.0 666.6,426.0 677.9,419.5 608.6,379.5" fill="#3B82F6" stroke="#3B82F6" stroke-width="4" stroke-linejoin="round"/>
+<ellipse cx="806.9" cy="485.0" rx="139" ry="69" fill="#0F172A" opacity="0.14" filter="url(#ao)"/>
+<polygon points="945.5,485.0 806.9,565.0 806.9,445.0 945.5,365.0" fill="#475569" stroke="#475569" stroke-width="10" stroke-linejoin="round"/>
+<polygon points="668.4,485.0 806.9,565.0 806.9,445.0 668.4,365.0" fill="#64748B" stroke="#64748B" stroke-width="10" stroke-linejoin="round"/>
+<polygon points="806.9,285.0 945.5,365.0 806.9,445.0 668.4,365.0" fill="#CBD5E1" stroke="#CBD5E1" stroke-width="10" stroke-linejoin="round"/>
+<polygon points="901.3,530.5 970.6,570.5 981.9,564.0 997.4,595.0 943.7,586.0 955.0,579.5 885.7,539.5" fill="#34D399" stroke="#34D399" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="1430.4,685.0 1153.3,845.0 1153.3,813.0 1430.4,653.0" fill="#475569" stroke="#475569" stroke-width="10" stroke-linejoin="round"/>
+<polygon points="876.2,685.0 1153.3,845.0 1153.3,813.0 876.2,653.0" fill="#64748B" stroke="#64748B" stroke-width="10" stroke-linejoin="round"/>
+<polygon points="1153.3,493.0 1430.4,653.0 1153.3,813.0 876.2,653.0" fill="#CBD5E1" stroke="#CBD5E1" stroke-width="10" stroke-linejoin="round"/>
+<polygon points="1153.3,533.0 1239.9,583.0 1153.3,633.0 1066.7,583.0" fill="#E2E8F0" stroke="#E2E8F0" stroke-width="10" stroke-linejoin="round"/>
+<polygon points="1274.6,603.0 1361.2,653.0 1274.6,703.0 1188.0,653.0" fill="#E2E8F0" stroke="#E2E8F0" stroke-width="10" stroke-linejoin="round"/>
+<polygon points="1032.1,603.0 1118.7,653.0 1032.1,703.0 945.5,653.0" fill="#E2E8F0" stroke="#E2E8F0" stroke-width="10" stroke-linejoin="round"/>
+<polygon points="1153.3,673.0 1239.9,723.0 1153.3,773.0 1066.7,723.0" fill="#E2E8F0" stroke="#E2E8F0" stroke-width="10" stroke-linejoin="round"/>
+<ellipse cx="1153.3" cy="583.0" rx="69" ry="34" fill="#0F172A" opacity="0.14" filter="url(#ao)"/>
+<polygon points="1222.6,583.0 1153.3,623.0 1153.3,543.0 1222.6,503.0" fill="#1D4ED8" stroke="#1D4ED8" stroke-width="10" stroke-linejoin="round"/>
+<polygon points="1084.0,583.0 1153.3,623.0 1153.3,543.0 1084.0,503.0" fill="#3B82F6" stroke="#3B82F6" stroke-width="10" stroke-linejoin="round"/>
+<polygon points="1153.3,463.0 1222.6,503.0 1153.3,543.0 1084.0,503.0" fill="#93C5FD" stroke="#93C5FD" stroke-width="10" stroke-linejoin="round"/>
+<circle cx="1153.3" cy="773.0" r="8" fill="#34D399"/>
+<circle cx="1132.5" cy="785.0" r="8" fill="#34D399"/>
+<circle cx="1111.8" cy="797.0" r="8" fill="#34D399"/>
+<polygon points="806.9,225.0 962.8,315.0 806.9,405.0 651.0,315.0" fill="#FFFFFF" fill-opacity="0.35" stroke="#FFFFFF" stroke-width="2" stroke-opacity="0.7" stroke-linejoin="round"/>
+<text x="806.9" y="323.0" font-family="Inter, 'Noto Sans KR', sans-serif" font-weight="600" font-size="24" fill="#334155" text-anchor="middle">Auto Mode Engine</text>
+<text x="564.4" y="161.0" font-family="Inter, 'Noto Sans KR', sans-serif" font-weight="600" font-size="24" fill="#334155" text-anchor="middle">Pod</text>
+<text x="564.4" y="189.0" font-family="'JetBrains Mono', monospace" font-weight="400" font-size="18" fill="#334155" text-anchor="middle">2 vCPU · 4 GiB</text>
+<line x1="564.4" y1="201.0" x2="564.4" y2="221.0" stroke="#94A3B8" stroke-width="1.5"/>
+<line x1="1153.3" y1="853.0" x2="1153.3" y2="881.0" stroke="#94A3B8" stroke-width="1.5"/>
+<text x="1153.3" y="911.0" font-family="Inter, 'Noto Sans KR', sans-serif" font-weight="600" font-size="24" fill="#334155" text-anchor="middle">EC2 Node</text>
+<text x="1153.3" y="939.0" font-family="Inter, 'Noto Sans KR', sans-serif" font-weight="400" font-size="18" fill="#94A3B8" text-anchor="middle">auto-provisioned</text>
+</svg>

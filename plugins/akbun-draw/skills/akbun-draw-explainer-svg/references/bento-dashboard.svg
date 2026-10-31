@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080">
+  <rect class="bg" width="1920" height="1080" fill="#111317"/>
+  <g transform="translate(-280 86)">
+  <text x="640" y="140" font-family="Inter, 'Noto Sans KR', sans-serif" font-size="32" font-weight="600" fill="#E6E8EB">EKS Auto Mode</text>
+
+  <g font-family="Inter, 'Noto Sans KR', sans-serif">
+    <rect x="640" y="180" width="380" height="300" rx="12" fill="#1A1D23" stroke="#2A2F38" stroke-width="1"/>
+    <text x="664" y="218" font-size="14" font-weight="500" letter-spacing="1" fill="#8B93A1">POD REQUEST</text>
+    <text x="664" y="290" font-family="'JetBrains Mono', monospace" font-size="40" font-weight="600" fill="#E6E8EB">2 vCPU</text>
+    <rect x="664" y="318" width="160" height="36" rx="6" fill="#22262E"/>
+    <text x="744" y="342" font-size="18" fill="#E6E8EB" text-anchor="middle">4 GiB memory</text>
+    <rect x="664" y="400" width="150" height="32" rx="6" fill="#22262E" stroke="#FFB547" stroke-width="1"/>
+    <text x="739" y="422" font-size="18" fill="#FFB547" text-anchor="middle">pending</text>
+
+    <rect x="1036" y="180" width="380" height="300" rx="12" fill="#1A1D23" stroke="#2A2F38" stroke-width="1"/>
+    <text x="1060" y="218" font-size="14" font-weight="500" letter-spacing="1" fill="#8B93A1">AUTO MODE ENGINE</text>
+    <text x="1060" y="266" font-size="22" font-weight="600" fill="#E6E8EB">scheduler</text>
+    <text x="1060" y="298" font-size="18" fill="#8B93A1">watch → fit → provision</text>
+    <rect x="1060" y="330" width="130" height="36" rx="6" fill="#22262E"/>
+    <text x="1125" y="354" font-size="18" fill="#E6E8EB" text-anchor="middle">watch</text>
+    <rect x="1206" y="330" width="90" height="36" rx="6" fill="#22262E"/>
+    <text x="1251" y="354" font-size="18" fill="#E6E8EB" text-anchor="middle">fit</text>
+    <rect x="1060" y="400" width="170" height="32" rx="6" fill="#22262E" stroke="#3DDC97" stroke-width="1"/>
+    <text x="1145" y="422" font-size="18" fill="#3DDC97" text-anchor="middle">provisioning</text>
+
+    <rect x="1432" y="180" width="408" height="620" rx="12" fill="#1A1D23" stroke="#3DDC97" stroke-width="2"/>
+    <text x="1456" y="218" font-size="14" font-weight="500" letter-spacing="1" fill="#8B93A1">EC2 NODE</text>
+    <text x="1456" y="266" font-size="22" font-weight="600" fill="#E6E8EB">auto-provisioned</text>
+    <rect x="1456" y="300" width="170" height="120" rx="6" fill="#22262E" stroke="#4F8CFF" stroke-width="1"/>
+    <text x="1541" y="366" font-size="18" fill="#4F8CFF" text-anchor="middle">pod</text>
+    <rect x="1646" y="300" width="170" height="120" rx="6" fill="#22262E"/>
+    <rect x="1456" y="436" width="170" height="120" rx="6" fill="#22262E"/>
+    <rect x="1646" y="436" width="170" height="120" rx="6" fill="#22262E"/>
+    <text x="1456" y="620" font-size="14" font-weight="500" letter-spacing="1" fill="#8B93A1">CPU 2 / 2</text>
+    <rect x="1456" y="634" width="360" height="8" rx="4" fill="#22262E"/>
+    <rect x="1456" y="634" width="360" height="8" rx="4" fill="#4F8CFF"/>
+    <text x="1456" y="690" font-size="14" font-weight="500" letter-spacing="1" fill="#8B93A1">MEMORY 4 / 8 GiB</text>
+    <rect x="1456" y="704" width="360" height="8" rx="4" fill="#22262E"/>
+    <rect x="1456" y="704" width="180" height="8" rx="4" fill="#4F8CFF"/>
+
+    <rect x="640" y="496" width="776" height="304" rx="12" fill="#1A1D23" stroke="#2A2F38" stroke-width="1"/>
+    <text x="664" y="534" font-size="14" font-weight="500" letter-spacing="1" fill="#8B93A1">TIMELINE</text>
+    <polyline points="664,720 790,712 916,690 1042,620 1168,604 1294,590 1392,588" fill="none" stroke="#3DDC97" stroke-width="2"/>
+    <text x="664" y="764" font-size="18" fill="#8B93A1">declare</text>
+    <text x="916" y="764" font-size="18" fill="#8B93A1" text-anchor="middle">detect</text>
+    <text x="1168" y="764" font-size="18" fill="#8B93A1" text-anchor="middle">provision</text>
+    <text x="1392" y="764" font-size="18" fill="#8B93A1" text-anchor="end">bind</text>
+  </g>
+  </g>
+</svg>

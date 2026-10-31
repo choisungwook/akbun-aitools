@@ -27,7 +27,7 @@
 
 ## 그림 한 장 (이미지 생성 프롬프트·SVG)
 
-이미지 생성 모델(GPT image, nano-banana 등)에 넣을 프롬프트나 편집용 SVG를 만든다.
+이미지 생성 모델(GPT image, nano-banana 등)에 넣을 프롬프트나 편집용 SVG를 만든다. `akbun-draw-explainer-svg`는 프롬프트가 아니라 16:9 SVG 코드를 직접 쓰고, 스타일 토큰 JSON과 검사 스크립트(`check_style_svg.py`)로 색·여백·자막 영역을 검수한다.
 
 | 상황 | 스킬 | 결과물 |
 |---|---|---|
@@ -39,6 +39,7 @@
 | 여행 글에 넣을 썸네일·약도 삽화가 필요함 | [akbun-draw-travel-blog](../plugins/akbun-draw/skills/akbun-draw-travel-blog/SKILL.md) | 썸네일·코스 약도 프롬프트 |
 | IT·여행 글이나 영상의 유튜브·티스토리 썸네일을 포스터처럼 만들고 싶음 | [akbun-draw-thumbnail-retro](../plugins/akbun-draw/skills/akbun-draw-thumbnail-retro/SKILL.md) | 70년대 필름 사진 위 레트로 디스플레이 글자 썸네일 프롬프트(16:9·1:1) |
 | 블로그·유튜브 썸네일을 흰 종이 낙서 그림으로 만들고 싶음 | [akbun-draw-thumbnail-doodle](../plugins/akbun-draw/skills/akbun-draw-thumbnail-doodle/SKILL.md) | 낙서 그림체 썸네일 프롬프트(16:9·4:3), 요청 시 codex로 생성해 ~/Downloads에 저장 |
+| 시스템 구조·개념을 설명 영상·슬라이드용 16:9 그림 한 장으로 만들고 싶음 | [akbun-draw-explainer-svg](../plugins/akbun-draw/skills/akbun-draw-explainer-svg/SKILL.md) | 1920×1080 SVG 코드. `styles/*.json` 토큰 9종(라인아트, 클레이 아이소메트릭, 칠판, 모눈 노트, 네온 와이어프레임, 종이 컷아웃, 벤토 카드, 잉크 해칭 삽화, 마커 와이어프레임) 중 하나를 골라 그림체만 고정하고 배치는 내용이 정함 |
 
 ## 만화·웹툰
 

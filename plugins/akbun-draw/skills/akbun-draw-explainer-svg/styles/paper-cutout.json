@@ -1,0 +1,70 @@
+{
+  "id": "akbun-draw-style-paper-cutout",
+  "concept": "층마다 그림자를 둔 종이 공예 느낌의 레이어드 컷아웃. 추상화 계층(L4/L7, 커널/유저)을 겹친 종이로 보여 준다",
+  "canvas": {
+    "viewBox": "0 0 1920 1080",
+    "aspectRatio": "16:9",
+    "negativeSpaceRatio": 0.30,
+    "edgeMarginPx": 80,
+    "captionMarginPx": 40,
+    "centerTolerancePx": 40
+  },
+  "colors": {
+    "KRAFT": "#F4EFE6",
+    "LAYER_1": "#FFFFFF",
+    "LAYER_2": "#EAE2D3",
+    "LAYER_3": "#D8CBB5",
+    "CORAL": "#E07A5F",
+    "SAGE": "#81B29A",
+    "INK": "#3D405B",
+    "SHADOW": "#3D405B"
+  },
+  "colorRoles": {
+    "KRAFT": "배경 종이",
+    "LAYER_1": "가장 위(앞) 종이 층",
+    "LAYER_2": "중간 종이 층",
+    "LAYER_3": "가장 아래(뒤) 종이 층. 층이 2개면 LAYER_1·LAYER_3",
+    "CORAL": "강조색 1: 지금 설명하는 층·요소·화살표",
+    "SAGE": "강조색 2: 정상·보조·비교 대상",
+    "INK": "글자, 얇은 구분선",
+    "SHADOW": "feDropShadow flood-color(flood-opacity 0.18)"
+  },
+  "typography": {
+    "fonts": {
+      "ui": "Inter, 'Noto Sans KR', sans-serif",
+      "mono": "'JetBrains Mono', monospace"
+    },
+    "sizes": {
+      "title": { "px": 38, "weight": 700, "color": "INK" },
+      "name": { "px": 26, "weight": 600, "color": "INK" },
+      "body": { "px": 20, "weight": 400, "color": "INK" },
+      "code": { "px": 20, "weight": 400, "color": "INK", "font": "mono" }
+    }
+  },
+  "geometry": {
+    "strokeWidths": [0],
+    "borderRadius": { "sheet": 18, "chip": 10, "pill": "높이의 절반" },
+    "layerOffsetPx": [12, 40],
+    "shapes": "둥근 사각형(rx 10~18), 원, 가위로 오린 듯한 6~8각 다각형(한 변이 2~4도 기울어도 된다)",
+    "arrow": "CORAL 또는 SAGE 채운 화살표 polygon(몸통 폭 16, 머리 폭 40, 머리 길이 36), 선 없음"
+  },
+  "effects": {
+    "shadow": "<filter id=\"paper\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"130%\"><feDropShadow dx=\"0\" dy=\"6\" stdDeviation=\"6\" flood-color=\"#3D405B\" flood-opacity=\"0.18\"/></filter>",
+    "shadowTarget": "종이 조각(층·칩·화살표)마다 filter=\"url(#paper)\". 글자에는 걸지 않는다",
+    "allowedDefs": ["filter #paper 하나"],
+    "forbidden": ["image", "stroke(외곽선)", "그라데이션", "질감 패턴"]
+  },
+  "rules": [
+    "모든 조각은 외곽선 없이 채움만 있고 #paper 그림자를 가진다. 겹친 층은 위 층이 아래 층보다 12~40px 안쪽으로 들어가거나 어긋나게 둔다.",
+    "층 색은 위에서부터 LAYER_1 → LAYER_2 → LAYER_3 순서. 층이 4개 이상이면 LAYER 3색을 반복하지 말고 그림을 나눈다.",
+    "강조색 조각(CORAL·SAGE)은 화살표를 뺀 전체 조각 수의 1/3 이하이고 의미 하나에 하나. 화살표는 항상 강조색이고 이 비율에 세지 않는다.",
+    "글자는 INK로 조각 위 또는 KRAFT 배경 위에 수평으로 둔다. 강조색 조각 위 글자만 LAYER_1 색.",
+    "화살표는 채운 polygon 하나로 그리고 꺾임은 한 번까지. 선 화살표를 쓰지 않는다.",
+    "얇은 구분선이 필요하면 INK 2px 짧은 사각형(stroke 아님)으로 그린다."
+  ],
+  "checks": {
+    "forbidElements": ["image", "linearGradient", "radialGradient", "pattern"],
+    "strokeWidthRange": null,
+    "minNegativeSpacePct": 30
+  }
+}

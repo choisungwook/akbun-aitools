@@ -1,0 +1,75 @@
+{
+  "id": "akbun-draw-style-ink-hatch",
+  "concept": "따뜻한 흰 종이 위 검정 잉크 펜 한 자루. 외곽선은 살짝 떨리고 면은 45도 해칭(빗금)으로 채우며, 손글씨 자막과 반짝임 표시로 분위기를 더하는 에디토리얼 만화 삽화",
+  "canvas": {
+    "viewBox": "0 0 1920 1080",
+    "aspectRatio": "16:9",
+    "negativeSpaceRatio": 0.40,
+    "edgeMarginPx": 80,
+    "captionMarginPx": 40,
+    "centerTolerancePx": 40
+  },
+  "colors": {
+    "PAPER": "#FBFAF6",
+    "INK": "#1A1A1A",
+    "INK_SOFT": "#6F6F6F",
+    "WASH": "#E6E4DD"
+  },
+  "colorRoles": {
+    "PAPER": "배경 종이",
+    "INK": "모든 선·글자·해칭. 색은 이것 하나다",
+    "INK_SOFT": "연한 보조 선: 바닥 그림자 빗금(1.2px), 비활성 요소·대기 연결(2px, stroke-dasharray 6 6), 지시선(1.2px)",
+    "WASH": "옅은 회색 면. 그림자·바닥·뒤 배경 조각에만, 해칭 대신 쓸 수 있다"
+  },
+  "typography": {
+    "fonts": {
+      "ui": "Gaegu, 'Nanum Pen Script', cursive",
+      "mono": "'JetBrains Mono', monospace"
+    },
+    "sizes": {
+      "title": { "px": 40, "weight": 700, "color": "INK" },
+      "name": { "px": 28, "weight": 700, "color": "INK" },
+      "body": { "px": 24, "weight": 400, "color": "INK", "note": "손글씨 자막·축 라벨. 한 줄 16글자 이하, 두 줄까지" },
+      "code": { "px": 20, "weight": 400, "color": "INK", "font": "mono" }
+    }
+  },
+  "geometry": {
+    "strokeWidths": [1.2, 2, 3],
+    "lineCap": "round",
+    "lineJoin": "round",
+    "borderRadius": 0,
+    "wobble": "직선은 Q 곡선 하나로 가운데를 2~4px 휘게, 긴 변(200px 이상)은 조각 하나가 200px 이하가 되게 2개 이상으로 나눠 끝을 2~4px 겹친다. 모서리에서 선 끝이 2~4px 삐져나와도 된다",
+    "hatch": {
+      "dense": "<pattern id=\"hatch-dense\" width=\"7\" height=\"7\" patternUnits=\"userSpaceOnUse\" patternTransform=\"rotate(45)\"><line x1=\"0\" y1=\"0\" x2=\"0\" y2=\"7\" stroke=\"#1A1A1A\" stroke-width=\"1.2\"/></pattern>",
+      "sparse": "<pattern id=\"hatch-sparse\" width=\"14\" height=\"14\" patternUnits=\"userSpaceOnUse\" patternTransform=\"rotate(45)\"><line x1=\"0\" y1=\"0\" x2=\"0\" y2=\"14\" stroke=\"#1A1A1A\" stroke-width=\"1.2\"/></pattern>",
+      "cross": "<pattern id=\"hatch-cross\" width=\"9\" height=\"9\" patternUnits=\"userSpaceOnUse\"><path d=\"M0 0 L9 9 M9 0 L0 9\" stroke=\"#1A1A1A\" stroke-width=\"1\"/></pattern>"
+    },
+    "sparkle": "4각 별 path(가로·세로 획 2개, 12~20px, INK 2px). 강조 대상 하나의 모서리 바깥 8~16px에 2~3개, 한 그림에 3개 이하. 화살표·선 옆에는 두지 않는다",
+    "arrowHead": "선 끝 2획(각 14px), 채운 삼각형 없음",
+    "groundShadow": "기본으로 넣지 않는다. 떠 있음·놓여 있음이 설명에 필요할 때만 요소 아래 WASH 타원 하나"
+  },
+  "effects": {
+    "allowedDefs": ["pattern hatch-dense·hatch-sparse·hatch-cross"],
+    "forbidden": ["image", "filter", "그라데이션", "색상(INK·INK_SOFT·WASH·PAPER 밖)", "채운 검정 면 200px² 초과"]
+  },
+  "shapeChoices": {
+    "구성 요소": ["떨리는 사각형", "둥근 말풍선 모양", "모니터·상자·원통 같은 단순 사물 외곽선"],
+    "양·수치": ["해칭 밀도가 다른 막대", "칸을 채운 점 격자", "쌓인 상자"],
+    "사람·주체": ["얼굴 없는 막대 인물", "뒷모습 인물", "손만"],
+    "강조": ["반짝임 2~5개", "이중 외곽선", "dense 해칭"]
+  },
+  "rules": [
+    "색은 INK 하나다. 밝고 어두움은 해칭 밀도(없음 → sparse → dense → cross)로 낸다. 같은 그림에서 같은 의미는 같은 밀도.",
+    "외곽선 2px, 해칭 1.2px, 강조 외곽선(이중선 바깥) 3px. 다른 굵기는 쓰지 않는다.",
+    "모든 외곽선은 wobble 규칙대로 그린다. 반듯한 rect·line을 그대로 두지 않는다(글자 밑줄 제외).",
+    "글자는 Gaegu 손글씨. 영어 대소문자는 그림 하나에서 하나로 통일한다. 자막은 24px 두 줄까지.",
+    "사람을 그리면 shapeChoices의 선택지 중 하나이고 얼굴 표정·머리 모양·옷을 정하지 않는다. 눈·입을 그리지 않는다.",
+    "반짝임은 강조 대상 하나의 모서리 바깥에만 2~3개. 화살표 머리 옆처럼 다른 요소로 읽힐 자리에는 두지 않는다.",
+    "그림자·바닥선 같은 장식은 기본으로 넣지 않는다. 뜻이 있을 때만 groundShadow 하나. 드롭 섀도우·회색 그라데이션 없음."
+  ],
+  "checks": {
+    "forbidElements": ["image", "filter", "linearGradient", "radialGradient"],
+    "strokeWidthRange": [1, 3],
+    "minNegativeSpacePct": 40
+  }
+}

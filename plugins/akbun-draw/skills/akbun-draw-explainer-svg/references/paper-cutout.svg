@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080">
+  <defs>
+    <filter id="paper" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="6" stdDeviation="6" flood-color="#3D405B" flood-opacity="0.18"/>
+    </filter>
+  </defs>
+  <rect class="bg" width="1920" height="1080" fill="#F4EFE6"/>
+  <g transform="translate(-290 -15)">
+
+  <polygon points="1242,150 1258,150 1258,214 1270,214 1250,250 1230,214 1242,214" fill="#E07A5F" filter="url(#paper)"/>
+  <text x="1290" y="196" font-family="Inter, 'Noto Sans KR', sans-serif" font-size="20" fill="#3D405B">Pod request: 2 vCPU, 4 GiB</text>
+
+  <rect x="680" y="270" width="1140" height="690" rx="18" fill="#D8CBB5" filter="url(#paper)"/>
+  <text x="720" y="318" font-family="Inter, 'Noto Sans KR', sans-serif" font-size="26" font-weight="600" fill="#3D405B">EKS Control Plane</text>
+
+  <rect x="720" y="340" width="1060" height="580" rx="18" fill="#EAE2D3" filter="url(#paper)"/>
+  <text x="760" y="388" font-family="Inter, 'Noto Sans KR', sans-serif" font-size="26" font-weight="600" fill="#3D405B">Auto Mode Engine</text>
+  <text x="1120" y="388" font-family="Inter, 'Noto Sans KR', sans-serif" font-size="20" fill="#3D405B">detects pod, picks node size</text>
+
+  <rect x="760" y="410" width="980" height="470" rx="18" fill="#FFFFFF" filter="url(#paper)"/>
+  <text x="800" y="458" font-family="Inter, 'Noto Sans KR', sans-serif" font-size="26" font-weight="600" fill="#3D405B">EC2 Node</text>
+  <rect x="1520" y="432" width="180" height="36" rx="18" fill="#81B29A" filter="url(#paper)"/>
+  <text x="1610" y="457" font-family="Inter, 'Noto Sans KR', sans-serif" font-size="20" font-weight="600" fill="#FFFFFF" text-anchor="middle">provisioned</text>
+
+  <rect x="800" y="500" width="430" height="160" rx="10" fill="#E07A5F" filter="url(#paper)"/>
+  <text x="1015" y="572" font-family="Inter, 'Noto Sans KR', sans-serif" font-size="26" font-weight="600" fill="#FFFFFF" text-anchor="middle">Pod</text>
+  <text x="1015" y="610" font-family="'JetBrains Mono', monospace" font-size="20" fill="#FFFFFF" text-anchor="middle">2 vCPU · 4 GiB</text>
+
+  <rect x="1270" y="500" width="430" height="160" rx="10" fill="#EAE2D3" filter="url(#paper)"/>
+  <rect x="800" y="690" width="430" height="160" rx="10" fill="#EAE2D3" filter="url(#paper)"/>
+  <rect x="1270" y="690" width="430" height="160" rx="10" fill="#EAE2D3" filter="url(#paper)"/>
+  </g>
+</svg>

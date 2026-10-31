@@ -1,6 +1,6 @@
 {
   "name": "akbun-draw",
-  "version": "1.0.32",
+  "version": "1.0.33",
   "description": "Image drawing skills by akbun — image-generation prompts and editable SVGs in fixed akbun styles",
   "author": {
     "name": "akbun",
@@ -22,7 +22,7 @@
   "interface": {
     "displayName": "akbun Draw",
     "shortDescription": "Image drawing skills in fixed akbun styles",
-    "longDescription": "Image drawing skills that turn any subject, story, or code into image-generation prompts (GPT image, nano-banana, etc.) and Figma/Canva-editable SVGs, each in a fixed akbun illustration style — webtoons, posters, card news, hand-drawn doodle motion graphics and 2/4/6-panel doodle comics, and the akbun whale mascot spec.",
+    "longDescription": "Image drawing skills that turn any subject, story, or code into image-generation prompts (GPT image, nano-banana, etc.) and Figma/Canva-editable SVGs, each in a fixed akbun illustration style — webtoons, posters, card news, hand-drawn doodle motion graphics and 2/4/6-panel doodle comics, 16:9 explainer SVGs routed through 9 design-token styles, and the akbun whale mascot spec.",
     "developerName": "akbun",
     "category": "Writing",
     "capabilities": [
@@ -53,7 +53,8 @@
       "Turn this paper or study material into minimal black-and-white 16:9 explainer images with Korean talk-track",
       "Make travel blog thumbnail and illustrated course map image prompts from this travel post draft (akbun-draw-travel-blog)",
       "Read this post and make retro film-poster YouTube 16:9 and Tistory 1:1 thumbnail prompts with a retro display word over a 1970s film photo (akbun-draw-thumbnail-retro)",
-      "Make doodle-style blog and YouTube thumbnail prompts (16:9 and 4:3) for this title and post, and generate them with codex into ~/Downloads only if I ask (akbun-draw-thumbnail-doodle)"
+      "Make doodle-style blog and YouTube thumbnail prompts (16:9 and 4:3) for this title and post, and generate them with codex into ~/Downloads only if I ask (akbun-draw-thumbnail-doodle)",
+      "Draw this system flow as a 16:9 explainer SVG in one of 9 token styles (tech-minimal, clay-isometric, chalkboard-math, notebook-doodle, cyber-wireframe, paper-cutout, bento-dashboard, ink-hatch, marker-wireframe) (akbun-draw-explainer-svg)"
     ],
     "brandColor": "#0F766E",
     "screenshots": []

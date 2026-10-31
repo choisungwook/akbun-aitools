@@ -1,0 +1,75 @@
+{
+  "id": "akbun-draw-style-marker-wireframe",
+  "concept": "연회색 종이 위 검정 마커로 그린 제품·화면 와이어프레임 스케치. 글자 자리는 물결 낙서로, 설명은 손글씨와 회색 곡선 화살표로, 강조는 초록·주황 틀 하나씩",
+  "canvas": {
+    "viewBox": "0 0 1920 1080",
+    "aspectRatio": "16:9",
+    "negativeSpaceRatio": 0.35,
+    "edgeMarginPx": 80,
+    "captionMarginPx": 40,
+    "centerTolerancePx": 40
+  },
+  "colors": {
+    "PAPER": "#F2F2F0",
+    "MARKER": "#111111",
+    "GRAY": "#9A9A9A",
+    "GRAY_FILL": "#C9C9C6",
+    "GREEN": "#3DB54A",
+    "ORANGE": "#E8923A"
+  },
+  "colorRoles": {
+    "PAPER": "배경 종이",
+    "MARKER": "틀·구획선·제목·물결 낙서",
+    "GRAY": "주석 화살표와 지시선. GRAY_FILL은 그림자·눌린 면·탭 같은 옅은 채움",
+    "GREEN": "강조색 1: 현재 위치·선택된 것·정상. 틀(stroke)로만",
+    "ORANGE": "강조색 2: 옮겨 놓은 것·새로 생긴 것·주의. 틀(stroke)과 안쪽 물결로만"
+  },
+  "typography": {
+    "fonts": {
+      "ui": "'Patrick Hand', Gaegu, cursive",
+      "mono": "'JetBrains Mono', monospace"
+    },
+    "sizes": {
+      "title": { "px": 56, "weight": 400, "color": "MARKER" },
+      "name": { "px": 26, "weight": 400, "color": "MARKER", "note": "구획 머리글" },
+      "body": { "px": 24, "weight": 400, "color": "MARKER", "note": "주석, 한 줄 4단어 이하, 세 줄까지" },
+      "code": { "px": 18, "weight": 400, "color": "MARKER", "font": "mono" }
+    },
+    "letterCase": "영어 대소문자는 그림마다 하나로 통일한다(원래 대소문자 또는 전부 대문자). 한국어는 그대로"
+  },
+  "geometry": {
+    "strokeWidths": [2, 3],
+    "lineCap": "round",
+    "lineJoin": "round",
+    "borderRadius": 0,
+    "frame": "구획·카드는 MARKER 3px 사각형. 반듯하되 모서리가 1~2px 어긋나도 된다",
+    "squiggle": "글자 자리 표시. MARKER 2px 물결 path(진폭 4px, 파장 24px) 1~2줄, 길이는 칸 폭의 40~70%",
+    "annotationArrow": "GRAY 2px, Q 곡선 하나로 굽은 선 + 끝 2획(각 12px). 대상 바깥 8px에서 멈춘다",
+    "highlightFrame": "GREEN 또는 ORANGE 3px 사각형, 대상 안쪽 또는 대상과 같은 크기. 채움 없음",
+    "iconDoodle": "MARKER 2px 기본 도형 6개 이하(원·선·사각형)로 그린 낙서 아이콘, 24~48px"
+  },
+  "effects": {
+    "allowedDefs": [],
+    "forbidden": ["image", "filter", "그라데이션", "둥근 모서리", "강조색 채움"]
+  },
+  "shapeChoices": {
+    "화면·패널": ["사각 틀 + 위쪽 머리줄", "탭이 있는 틀", "카드 격자"],
+    "글자 자리": ["물결 1줄", "물결 2줄", "짧은 가로선"],
+    "요소·항목": ["낙서 아이콘", "작은 사각형", "원 + 선"],
+    "주석": ["곡선 화살표 + 라벨", "번호 원 + 라벨"]
+  },
+  "rules": [
+    "틀·구획선은 MARKER 3px, 그 밖의 선(물결·아이콘·화살표·강조 틀 안쪽)은 2px 또는 3px.",
+    "글자가 들어갈 자리는 실제 글자 대신 squiggle로 표시한다. 읽혀야 하는 글자(제목·머리글·주석·값·식별자)만 글자로 쓴다.",
+    "주석은 대상 바깥에 두고 GRAY 곡선 화살표로 잇는다. 주석 라벨은 24px, 한 줄 4단어 이하 세 줄까지.",
+    "강조 틀은 GREEN 1개, ORANGE 1개까지. 각각 의미 하나. 강조색으로 면을 채우거나 글자를 쓰지 않는다. ORANGE 틀 안의 물결은 ORANGE로 그려도 된다.",
+    "채움은 GRAY_FILL만, 그림자·눌린 면·탭에 한정한다. 흰색 채움 없음(PAPER가 비친다).",
+    "격자·표를 그리면 칸 선은 3px, 칸 번호·머리글은 손글씨로 쓴다. 칸 수·배치는 내용이 정한다.",
+    "사람·캐릭터는 원 + 선 낙서 아이콘(얼굴 없음)으로만 그린다."
+  ],
+  "checks": {
+    "forbidElements": ["image", "filter", "linearGradient", "radialGradient", "pattern"],
+    "strokeWidthRange": [2, 3],
+    "minNegativeSpacePct": 35
+  }
+}
