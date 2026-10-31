@@ -94,7 +94,7 @@ Apple Notes는 macOS에서만 된다. 스크립트가 exit 2면 md 파일만 남
 
 ### 자연화
 
-일기를 다 쓴 뒤 저장하기 전에 `akbun-writing-advisor-writing`의 규칙 파일(`references/grammar-rules.jsonl`, `references/common-rules.jsonl`, `references/user-rules.jsonl`)과 처리 절차(맞춤법 교정 → 국소 자연화 → 원문 대조)를 호출 모드로 적용해 AI가 쓴 듯한 표현을 걷어낸다.
+일기를 다 쓴 뒤 저장하기 전에 `akbun-writing-advisor-naturalize`의 규칙 파일(`references/grammar-rules.jsonl`, `references/common-rules.jsonl`, `references/user-rules.jsonl`)과 처리 절차(맞춤법 교정 → 국소 자연화 → 원문 대조)를 호출 모드로 적용해 AI가 쓴 듯한 표현을 걷어낸다.
 
 - 결과는 호출 모드 기본대로 **일기 파일 하나에만 담는다**. 3단계 저장은 자연화된 본문으로 한다.
 - 사용자가 말한 표현과 어미, `(?)` 표시, `XXX` 마스킹, 표의 `볼 것`·`언제` 값은 보호 영역으로 두고 바꾸지 않는다.
