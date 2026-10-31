@@ -1,6 +1,6 @@
 {
   "name": "akbun-writing",
-  "version": "1.0.74",
+  "version": "1.0.75",
   "description": "Writing, review, and blog support skills by akbun",
   "author": {
     "name": "akbun",
@@ -35,7 +35,8 @@
       "Correct language and terminology in this Korean technical document without changing its structure or style",
       "Convert this Obsidian markdown post for publishing",
       "Write this in 다정한 말투/warm form (akbun-writing-style-warm)",
-      "Naturalize this Korean text while preserving the author's voice (akbun-writing-naturalize)",
+      "Naturalize this Korean text while preserving the author's voice (akbun-writing-advisor-writing)",
+      "Find the AI-made look in this UI screen and fix effects, spacing, and type hierarchy (akbun-writing-advisor-design)",
       "Listen to my day by voice, write a diary, save it, and schedule study topics on the weekend (akbun-voice-diary)",
       "Review this YouTube thumbnail with the six click checks and explain why each fix matters (akbun-thumbnail-review)",
       "이 여행 메모와 사진 목록으로 여행블로그 글을 쓰고 사진 자리에 사진삽입 주석을 남겨줘 (akbun-writing-travel-blog)"

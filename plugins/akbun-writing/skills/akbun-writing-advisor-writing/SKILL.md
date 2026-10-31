@@ -1,5 +1,5 @@
 ---
-name: akbun-writing-naturalize
+name: akbun-writing-advisor-writing
 description: Use only when the user explicitly asks to correct and naturalize an existing Korean text, including choosing more precise words, while preserving the original author's voice, meaning, and Markdown structure.
 disable-model-invocation: true
 ---
