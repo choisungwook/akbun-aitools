@@ -1,0 +1,73 @@
+{
+  "id": "akbun-draw-style-bento-dashboard",
+  "concept": "다크 그레이 배경 위 둥근 모서리 분할 카드로 정보를 모듈처럼 정돈한 벤토 그리드 시스템 카드",
+  "canvas": {
+    "viewBox": "0 0 1920 1080",
+    "aspectRatio": "16:9",
+    "negativeSpaceRatio": 0.25,
+    "edgeMarginPx": 80,
+    "captionMarginPx": 40,
+    "centerTolerancePx": 40
+  },
+  "colors": {
+    "BASE": "#111317",
+    "CARD": "#1A1D23",
+    "CARD_EDGE": "#2A2F38",
+    "CARD_RAISED": "#22262E",
+    "TEXT": "#E6E8EB",
+    "TEXT_SOFT": "#8B93A1",
+    "BLUE": "#4F8CFF",
+    "GREEN": "#3DDC97",
+    "AMBER": "#FFB547"
+  },
+  "colorRoles": {
+    "BASE": "배경",
+    "CARD": "카드 채움. CARD_EDGE는 카드 1px 테두리, CARD_RAISED는 카드 안 작은 칩·슬롯",
+    "TEXT": "제목·값. TEXT_SOFT는 라벨·단위·설명",
+    "BLUE": "강조색 1: 입력·주 지표·선택된 카드 테두리",
+    "GREEN": "강조색 2: 정상·성공·완료",
+    "AMBER": "강조색 3: 주의·대기·진행 중"
+  },
+  "typography": {
+    "fonts": {
+      "ui": "Inter, 'Noto Sans KR', sans-serif",
+      "mono": "'JetBrains Mono', monospace"
+    },
+    "sizes": {
+      "title": { "px": 32, "weight": 600, "color": "TEXT" },
+      "name": { "px": 22, "weight": 600, "color": "TEXT" },
+      "body": { "px": 18, "weight": 400, "color": "TEXT_SOFT" },
+      "code": { "px": 40, "weight": 600, "color": "TEXT", "font": "mono", "note": "큰 값 표시" },
+      "label": { "px": 14, "weight": 500, "color": "TEXT_SOFT", "letterSpacing": 1, "note": "카드 머리 라벨. 영어 대소문자는 그림마다 하나로 통일(원래 대소문자 또는 전부 대문자)" }
+    }
+  },
+  "geometry": {
+    "strokeWidths": [1, 2],
+    "borderRadius": { "card": 12, "chip": 6, "badge": 6 },
+    "gridGapPx": 16,
+    "cardPadding": 24,
+    "densityNote": "카드 간격·안쪽 여백은 16~24px 사이 한 값으로 통일하고 그보다 넓히지 않는다",
+    "cardMinSize": 160,
+    "relation": "카드 사이에 선을 긋지 않는다. 관계·상태는 카드 안 칩·알약·막대로 표시한다",
+    "chip": "CARD_RAISED 둥근 사각형(rx 6) 안 TEXT 18px. 상태 칩은 CARD_RAISED 채움 + 강조색 1px 테두리 + 같은 강조색 글자. 강조색으로 면을 채우지 않는다",
+    "progressBar": "높이 8px, CARD_RAISED 바탕 + 강조색 채움, rx 4",
+    "sparkline": "강조색 2px polyline, 점 5~12개, 카드 안쪽 여백 안"
+  },
+  "effects": {
+    "allowedDefs": [],
+    "forbidden": ["image", "filter", "그라데이션", "드롭 섀도우", "외곽선 1px 초과(선택 카드 2px 제외)", "알약 모양(rx가 높이의 절반)인 넓은 블록"]
+  },
+  "rules": [
+    "카드는 CARD 채움 + CARD_EDGE 1px, rx 12, 안쪽 여백 24px. 카드끼리 간격 16px로 서로 붙여 하나의 판처럼 놓는다. 카드 수와 크기 비율은 내용이 정한다.",
+    "선택·강조 카드 하나만 테두리를 강조색 2px으로 바꾼다.",
+    "카드 안 구조: 위 왼쪽에 14px 라벨(TEXT_SOFT, letter-spacing 1), 그 아래 이름 22px 또는 큰 값 40px mono, 아래에 칩·막대·스파크라인 중 하나.",
+    "강조색은 의미 하나에 하나이고 한 그림에 3색까지. 강조색은 칩 테두리·글자, 막대 채움, 스파크라인, 선택 카드 테두리에만 쓰고 넓은 면을 채우지 않는다.",
+    "카드 밖에는 제목과 보조 설명만 둔다. 카드 사이에 연결선을 긋지 않는다.",
+    "아이콘은 TEXT_SOFT 2px 선 아이콘, 한 변 24~32px, 기본 도형 6개 이하."
+  ],
+  "checks": {
+    "forbidElements": ["image", "filter", "linearGradient", "radialGradient"],
+    "strokeWidthRange": [1, 2],
+    "minNegativeSpacePct": 25
+  }
+}

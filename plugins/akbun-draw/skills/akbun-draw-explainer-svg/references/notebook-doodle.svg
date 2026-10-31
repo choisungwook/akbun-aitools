@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080">
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#D6DDE6" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect class="bg" width="1920" height="1080" fill="#F7F7F2"/>
+  <rect class="bg" width="1920" height="1080" fill="url(#grid)"/>
+  <g transform="translate(-288 -30)">
+
+  <text x="660" y="180" font-family="Inter, 'Noto Sans KR', sans-serif" font-size="36" font-weight="600" fill="#1F4FBF">EKS Auto Mode</text>
+
+  <g fill="#DCE6F8" stroke="#1F4FBF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M660 260 Q810 257 960 260 Q963 340 960 420 Q810 423 660 420 Q657 340 660 260 Z"/>
+    <path d="M1120 420 Q1280 417 1440 420 Q1443 500 1440 580 Q1280 583 1120 580 Q1117 500 1120 420 Z"/>
+    <path d="M1500 620 Q1668 617 1836 620 Q1839 770 1836 920 Q1668 923 1500 920 Q1497 770 1500 620 Z"/>
+    <path d="M1524 660 Q1594 658 1664 660 Q1666 710 1664 760 Q1594 762 1524 760 Q1522 710 1524 660 Z"/>
+  </g>
+
+  <g font-family="Inter, 'Noto Sans KR', sans-serif" fill="#1F4FBF">
+    <text x="810" y="322" font-size="26" font-weight="500" text-anchor="middle">Pod</text>
+    <text x="810" y="364" font-size="20" font-family="'JetBrains Mono', monospace" text-anchor="middle">cpu: 2 / mem: 4Gi</text>
+    <text x="1280" y="490" font-size="26" font-weight="500" text-anchor="middle">Auto Mode Engine</text>
+    <text x="1280" y="530" font-size="20" fill="#6B7280" text-anchor="middle">watches pending pods</text>
+    <text x="1524" y="650" font-size="26" font-weight="500">EC2 Node</text>
+    <text x="1594" y="718" font-size="20" font-family="'JetBrains Mono', monospace" text-anchor="middle">pod</text>
+    <text x="1670" y="990" font-size="20" fill="#6B7280" text-anchor="middle">2 vCPU · 8 GiB</text>
+    <text x="1000" y="300" font-size="20" fill="#D8403A">needs a node!</text>
+    <text x="1540" y="600" font-size="20">auto-provisioned</text>
+  </g>
+
+  <g fill="none" stroke="#D8403A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M892 336 Q944 330 950 356 Q946 384 890 382 Q840 384 844 356 Q848 332 896 334"/>
+  </g>
+  <g fill="none" stroke="#1F4FBF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M1504 598 L1514 608"/>
+    <path d="M1514 608 L1532 584"/>
+  </g>
+
+  <g fill="none" stroke="#1F4FBF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M960 340 Q1040 345 1120 500"/>
+    <path d="M1120 500 L1104 494"/>
+    <path d="M1120 500 L1114 484"/>
+    <path d="M1440 500 Q1480 505 1500 770"/>
+    <path d="M1500 770 L1490 757"/>
+    <path d="M1500 770 L1510 758"/>
+  </g>
+
+  <g fill="none" stroke="#6B7280" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="5 6">
+    <path d="M1684 660 Q1754 658 1824 660 Q1826 710 1824 760 Q1754 762 1684 760 Q1682 710 1684 660 Z"/>
+    <path d="M1524 780 Q1594 778 1664 780 Q1666 830 1664 880 Q1594 882 1524 880 Q1522 830 1524 780 Z"/>
+    <path d="M1684 780 Q1754 778 1824 780 Q1826 830 1824 880 Q1754 882 1684 880 Q1682 830 1684 780 Z"/>
+  </g>
+
+  <g fill="none" stroke="#6B7280" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="2 4">
+    <path d="M1500 950 L1836 950"/>
+    <path d="M1500 940 L1500 960"/>
+    <path d="M1836 940 L1836 960"/>
+  </g>
+  </g>
+</svg>

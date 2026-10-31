@@ -37,6 +37,14 @@ applyTo: "plugins/**/skills/**/*.md,plugins/**/skills/**/*.svg,plugins/**/skills
 - 작업 흐름 단계의 목록(장면 종류, 검수 항목)이 위쪽 표의 항목과 어긋나면 지적한다.
 - SKILL.md가 설명하는 spec 키·SVG 속성·명령 옵션이 같은 skill의 `scripts/`에 실제로 없거나, 스크립트에 있는데 SKILL.md에 없으면 지적한다.
 
+### 스타일 토큰(akbun-draw-explainer-svg/styles)
+
+- 정적 16:9 SVG 그림체가 `styles/<이름>.json` 토큰이 아니라 새 skill 디렉터리로 추가되면 지적한다. 모션·영상·이미지 프롬프트 스타일은 예외다.
+- 토큰에 `id`·`concept`·`canvas`·`colors`·`colorRoles`·`typography`·`geometry`·`effects`·`rules`·`checks` 중 빠진 키가 있으면 지적한다.
+- 토큰 `rules`에 요소 수·순서·위치·흐름 방향을 정하는 문장(예: "왼쪽에서 오른쪽으로", "제목 아래에 A → B")이 있으면 지적한다. 여백·간격·크기 범위 같은 소재 무관 수치는 지적하지 않는다.
+- 토큰을 추가·수정했는데 같은 PR에 `references/<이름>.svg`, 라우터 표 한 줄, `imgs/akbun-draw-explainer-svg/<이름>.png`와 README 예시 목록 한 줄이 없으면 지적한다.
+- 토큰 `colors`·`effects` 밖의 hex 값이 `references/<이름>.svg`에 있거나, `typography.fonts`에 SIL OFL이 아닌 글꼴이 있으면 지적한다.
+
 ## 지적하지 않는다
 
 - 사용자가 지정한 자체 마스코트 스펙(예: `plugins/akbun-draw/skills/akbun-mascot-whale/`)을 참조해 그 캐릭터를 그대로 쓰는 것은 지적하지 않는다.

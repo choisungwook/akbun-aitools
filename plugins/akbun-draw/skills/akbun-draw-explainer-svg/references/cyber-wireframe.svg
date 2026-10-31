@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080">
+  <defs>
+    <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M60 0H0V60" fill="none" stroke="#00F0FF" stroke-width="1" opacity="0.06"/>
+    </pattern>
+    <filter id="neon-magenta" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="0" stdDeviation="5" flood-color="#FF007A" flood-opacity="0.6"/>
+    </filter>
+  </defs>
+  <rect class="bg" width="1920" height="1080" fill="#05050A"/>
+  <rect class="bg" width="1920" height="1080" fill="url(#grid)"/>
+  <g transform="translate(-285 83)">
+
+  <g font-family="'JetBrains Mono', monospace" fill="#00F0FF" opacity="0.9">
+    <text x="660" y="180" font-family="Inter, 'Noto Sans KR', sans-serif" font-size="36" font-weight="600" letter-spacing="2">EKS AUTO MODE</text>
+    <text x="770" y="522" font-size="24" font-weight="500" letter-spacing="1" text-anchor="middle">POD</text>
+    <text x="770" y="556" font-size="18" text-anchor="middle">2 vCPU / 4 GiB</text>
+    <text x="1200" y="522" font-size="24" font-weight="500" letter-spacing="1" text-anchor="middle">AUTO MODE</text>
+    <text x="1200" y="556" font-size="18" text-anchor="middle">ENGINE</text>
+    <text x="1680" y="402" font-size="24" font-weight="500" letter-spacing="1" text-anchor="middle">NODE-A</text>
+    <text x="1680" y="430" font-size="18" text-anchor="middle">running</text>
+    <text x="1540" y="330" font-size="18" fill="#7928CA">node group</text>
+    <text x="1680" y="676" font-size="24" font-weight="500" letter-spacing="1" text-anchor="middle" fill="#1F2A33">NODE-C</text>
+    <text x="1680" y="704" font-size="18" text-anchor="middle" fill="#1F2A33">standby</text>
+    <text x="1445" y="508" font-size="18" text-anchor="middle" fill="#FF007A">provision</text>
+    <text x="1716" y="546" font-size="24" font-weight="500" letter-spacing="1" text-anchor="middle" fill="#FF007A">NODE-B</text>
+    <text x="1716" y="574" font-size="18" text-anchor="middle" fill="#FF007A">new</text>
+    <text x="1604" y="556" font-size="18" text-anchor="middle" fill="#FF007A">pod</text>
+  </g>
+
+  <g fill="#00F0FF" fill-opacity="0.03" stroke="#00F0FF" stroke-width="1.5" stroke-linecap="square">
+    <rect x="660" y="460" width="220" height="140"/>
+    <path d="M660 472 L660 460 L672 460 M868 460 L880 460 L880 472 M880 588 L880 600 L868 600 M672 600 L660 600 L660 588" fill="none"/>
+    <polygon points="1200,400 1313,465 1313,595 1200,660 1087,595 1087,465"/>
+  </g>
+
+  <g fill="#00F0FF" fill-opacity="0.03" stroke="#00F0FF" stroke-width="1.5" stroke-linecap="square">
+    <rect x="1560" y="360" width="240" height="110"/>
+    <path d="M1560 372 L1560 360 L1572 360 M1788 360 L1800 360 L1800 372 M1800 458 L1800 470 L1788 470 M1572 470 L1560 470 L1560 458" fill="none"/>
+  </g>
+
+  <g fill="none" stroke="#00F0FF" stroke-width="1.5" stroke-linecap="square">
+    <line x1="880" y1="530" x2="1075" y2="530"/>
+    <polygon points="1087,530 1075,525 1075,535"/>
+    <rect x="920" y="522" width="16" height="16"/>
+    <rect x="960" y="522" width="16" height="16"/>
+    <rect x="1000" y="522" width="16" height="16"/>
+  </g>
+
+  <g filter="url(#neon-magenta)" fill="none" stroke="#FF007A" stroke-width="1.5" stroke-linecap="square">
+    <line x1="1313" y1="530" x2="1548" y2="530"/>
+    <polygon points="1560,530 1548,525 1548,535"/>
+    <rect x="1560" y="480" width="240" height="110" fill="#FF007A" fill-opacity="0.03"/>
+    <path d="M1560 492 L1560 480 L1572 480 M1788 480 L1800 480 L1800 492 M1800 578 L1800 590 L1788 590 M1572 590 L1560 590 L1560 578"/>
+    <rect x="1578" y="516" width="52" height="52"/>
+  </g>
+
+  <g fill="none" stroke="#1F2A33" stroke-width="1.5" stroke-linecap="square" stroke-dasharray="4 6">
+    <rect x="1560" y="620" width="240" height="110"/>
+  </g>
+
+  <rect x="1520" y="300" width="310" height="470" fill="none" stroke="#7928CA" stroke-width="1.5" stroke-dasharray="10 8"/>
+  </g>
+</svg>

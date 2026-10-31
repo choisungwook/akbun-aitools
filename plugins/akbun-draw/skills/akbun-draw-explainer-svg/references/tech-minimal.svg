@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080">
+  <defs>
+    <marker id="arrow-ink" markerWidth="12" markerHeight="12" refX="12" refY="6" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L12,6 L0,12 Z" fill="#212529"/>
+    </marker>
+    <marker id="arrow-emerald" markerWidth="12" markerHeight="12" refX="12" refY="6" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L12,6 L0,12 Z" fill="#10B981"/>
+    </marker>
+    <symbol id="pod-icon" viewBox="0 0 64 64">
+      <polygon points="32,6 54,19 54,45 32,58 10,45 10,19" fill="none" stroke="#0EA5E9" stroke-width="2" stroke-linejoin="round"/>
+      <polygon points="32,22 44,29 44,41 32,48 20,41 20,29" fill="none" stroke="#0EA5E9" stroke-width="2" stroke-linejoin="round"/>
+    </symbol>
+  </defs>
+
+  <rect class="bg" width="1920" height="1080" fill="#FFFFFF"/>
+  <g transform="translate(-280 83)">
+
+  <text x="640" y="190" font-family="Inter, 'Noto Sans KR', sans-serif" font-weight="600" font-size="36" fill="#212529">EKS Auto Mode</text>
+
+  <g font-family="Inter, 'Noto Sans KR', sans-serif" font-size="20" fill="#212529" text-anchor="middle">
+    <circle cx="770" cy="260" r="18" fill="#FFFFFF" stroke="#212529" stroke-width="2"/>
+    <text x="770" y="267">1</text>
+    <text x="770" y="312" fill="#495057">declare</text>
+    <circle cx="1170" cy="260" r="18" fill="#FFFFFF" stroke="#212529" stroke-width="2"/>
+    <text x="1170" y="267">2</text>
+    <text x="1170" y="312" fill="#495057">detect &amp; size</text>
+    <circle cx="1640" cy="260" r="18" fill="#FFFFFF" stroke="#212529" stroke-width="2"/>
+    <text x="1640" y="267">3</text>
+    <text x="1640" y="312" fill="#495057">provision &amp; bind</text>
+  </g>
+
+  <g>
+    <rect x="640" y="400" width="260" height="280" rx="12" fill="#FFFFFF" stroke="#212529" stroke-width="2"/>
+    <use href="#pod-icon" x="738" y="430" width="64" height="64"/>
+    <text x="770" y="548" font-family="Inter, 'Noto Sans KR', sans-serif" font-weight="600" font-size="26" fill="#212529" text-anchor="middle">Pod</text>
+    <text x="770" y="592" font-family="'JetBrains Mono', monospace" font-size="20" fill="#495057" text-anchor="middle">cpu: 2</text>
+    <text x="770" y="622" font-family="'JetBrains Mono', monospace" font-size="20" fill="#495057" text-anchor="middle">memory: 4Gi</text>
+  </g>
+
+  <line x1="900" y1="540" x2="1020" y2="540" stroke="#212529" stroke-width="2" marker-end="url(#arrow-ink)"/>
+  <text x="960" y="522" font-family="Inter, 'Noto Sans KR', sans-serif" font-size="20" fill="#495057" text-anchor="middle">detect</text>
+
+  <g>
+    <rect x="1020" y="400" width="300" height="280" rx="12" fill="#FFFFFF" stroke="#212529" stroke-width="2"/>
+    <circle cx="1170" cy="462" r="38" fill="none" stroke="#212529" stroke-width="2" stroke-dasharray="10 8"/>
+    <circle cx="1170" cy="462" r="26" fill="none" stroke="#212529" stroke-width="2"/>
+    <circle cx="1170" cy="462" r="9" fill="none" stroke="#212529" stroke-width="2"/>
+    <text x="1170" y="548" font-family="Inter, 'Noto Sans KR', sans-serif" font-weight="600" font-size="26" fill="#212529" text-anchor="middle">Auto Mode Engine</text>
+    <text x="1170" y="592" font-family="'JetBrains Mono', monospace" font-size="20" fill="#495057" text-anchor="middle">scheduler</text>
+    <text x="1170" y="622" font-family="'JetBrains Mono', monospace" font-size="20" fill="#495057" text-anchor="middle">fit: 2 vCPU / 4 GiB</text>
+  </g>
+
+  <line x1="1320" y1="540" x2="1440" y2="540" stroke="#10B981" stroke-width="2" marker-end="url(#arrow-emerald)"/>
+  <text x="1380" y="522" font-family="Inter, 'Noto Sans KR', sans-serif" font-size="20" fill="#10B981" text-anchor="middle">provision</text>
+
+  <g>
+    <rect x="1440" y="340" width="400" height="420" rx="12" fill="#FFFFFF" stroke="#212529" stroke-width="2"/>
+    <rect x="1468" y="366" width="40" height="28" rx="4" fill="none" stroke="#212529" stroke-width="2"/>
+    <line x1="1476" y1="380" x2="1488" y2="380" stroke="#212529" stroke-width="2" stroke-linecap="round"/>
+    <circle cx="1499" cy="380" r="2" fill="#212529"/>
+    <text x="1524" y="389" font-family="Inter, 'Noto Sans KR', sans-serif" font-weight="600" font-size="26" fill="#212529">EC2 Node</text>
+    <rect x="1464" y="420" width="208" height="32" rx="16" fill="none" stroke="#10B981" stroke-width="2"/>
+    <text x="1568" y="443" font-family="Inter, 'Noto Sans KR', sans-serif" font-weight="500" font-size="20" fill="#10B981" text-anchor="middle">auto-provisioned</text>
+
+    <rect x="1464" y="480" width="160" height="112" rx="8" fill="#E0F2FE" stroke="#0EA5E9" stroke-width="2"/>
+    <use href="#pod-icon" x="1524" y="492" width="40" height="40"/>
+    <text x="1544" y="572" font-family="'JetBrains Mono', monospace" font-size="20" fill="#0EA5E9" text-anchor="middle">pod</text>
+
+    <rect x="1656" y="480" width="160" height="112" rx="8" fill="none" stroke="#ADB5BD" stroke-width="1.5" stroke-dasharray="6 6"/>
+    <rect x="1464" y="624" width="160" height="112" rx="8" fill="none" stroke="#ADB5BD" stroke-width="1.5" stroke-dasharray="6 6"/>
+    <rect x="1656" y="624" width="160" height="112" rx="8" fill="none" stroke="#ADB5BD" stroke-width="1.5" stroke-dasharray="6 6"/>
+  </g>
+  </g>
+</svg>

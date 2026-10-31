@@ -1,0 +1,68 @@
+{
+  "id": "akbun-draw-style-chalkboard-math",
+  "concept": "다크 그린 무광 칠판 위 거친 분필 선과 두 가지 색분필로 수식·이론의 직관을 설명",
+  "canvas": {
+    "viewBox": "0 0 1920 1080",
+    "aspectRatio": "16:9",
+    "negativeSpaceRatio": 0.45,
+    "edgeMarginPx": 80,
+    "captionMarginPx": 40,
+    "centerTolerancePx": 40
+  },
+  "colors": {
+    "BOARD": "#1B2A23",
+    "CHALK": "#E9EFEA",
+    "YELLOW": "#FFE066",
+    "TEAL": "#70C1B3",
+    "SURFACE": "#FFFFFF"
+  },
+  "colorRoles": {
+    "BOARD": "배경(칠판). 테두리·나무 틀은 그리지 않는다",
+    "CHALK": "기본 선, 글자, 화살표, 도형 외곽선",
+    "YELLOW": "강조색 1: 지금 설명하는 값·결과·밑줄",
+    "TEAL": "강조색 2: 보조 개념·비교 대상·주석",
+    "SURFACE": "칠판 위 옅은 지우개 자국·판 영역. fill-opacity 0.05로만 쓴다"
+  },
+  "typography": {
+    "fonts": {
+      "ui": "Inter, 'Noto Sans KR', sans-serif",
+      "mono": "'JetBrains Mono', monospace"
+    },
+    "sizes": {
+      "title": { "px": 40, "weight": 600, "color": "CHALK" },
+      "name": { "px": 28, "weight": 500, "color": "CHALK" },
+      "body": { "px": 22, "weight": 400, "color": "CHALK" },
+      "code": { "px": 24, "weight": 400, "color": "CHALK", "font": "mono" }
+    },
+    "textOpacity": 0.92
+  },
+  "geometry": {
+    "strokeWidths": [2.2],
+    "lineCap": "round",
+    "lineJoin": "round",
+    "roughness": 2,
+    "borderRadius": 6,
+    "dash": { "sketch": "1 0", "hint": "6 8" },
+    "arrowHead": "선 끝 2획(각 14px, 두 획 사이 각 50도 = 선에서 ±25도), 채운 삼각형 없음"
+  },
+  "effects": {
+    "chalk": "<filter id=\"chalk\" x=\"-5%\" y=\"-5%\" width=\"110%\" height=\"110%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\"0.9\" numOctaves=\"2\" result=\"n\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"n\" scale=\"2\"/></filter>",
+    "chalkPowderEffect": "선·도형을 담은 g에 filter=\"url(#chalk)\"와 opacity 0.9. 글자에는 filter를 걸지 않고 opacity 0.92만",
+    "allowedDefs": ["filter #chalk 하나"],
+    "forbidden": ["image", "그라데이션", "채운 면(fill-opacity 0.05 SURFACE 제외)", "드롭 섀도우"]
+  },
+  "rules": [
+    "모든 선은 CHALK·YELLOW·TEAL 중 하나, stroke-width 2.2, round cap/join. 도형은 외곽선만 그리고 채우지 않는다(SURFACE 0.05 제외).",
+    "거칠기: 긴 직선(200px 이상)은 한 번에 긋지 않고 2~3개의 path로 나눠 끝이 2~4px 겹치게 그린다. 원은 시작점과 끝점이 3~6px 어긋나는 열린 path로 그린다.",
+    "수식·코드는 mono 글꼴 24px CHALK. 강조 항은 YELLOW 글자 또는 YELLOW 밑줄(2.2px, baseline 아래 8px, 글자 길이와 같게).",
+    "화살표 머리는 삼각형 marker가 아니라 선 끝 2획으로 그린다.",
+    "말풍선·메모는 TEAL 열린 사각형(모서리 6) 안에 TEAL 글자.",
+    "한 그림에 YELLOW와 TEAL은 각각 의미 하나에만 쓴다. 강조색 묶음 수는 전체 묶음의 1/3 이하. 묶음 = 구성 요소 하나를 이루는 path·text 전체(상자 하나, 화살표 하나, 글줄 하나).",
+    "지우개 자국(class=\"bg\" SURFACE fill-opacity 0.05 사각형, rx 40)은 기본으로 넣지 않는다. 넣으면 1개, 요소와 겹치지 않는 빈 곳에."
+  ],
+  "checks": {
+    "forbidElements": ["image", "linearGradient", "radialGradient"],
+    "strokeWidthRange": [2.2, 2.2],
+    "minNegativeSpacePct": 45
+  }
+}

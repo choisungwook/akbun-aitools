@@ -35,6 +35,7 @@ plugin의 버전을 올린다. 사용자에게 버전 업데이트 여부를 묻
   더 올리지 말고 그대로 둔다.
 - skill을 새로 추가하면, 해당 plugin manifest의 `interface.defaultPrompt`에 그 skill을 부르는 예시 한 줄을 추가한다.
 - 스타일을 고정하는 skill(그림체·편집 스타일 등)은 이름 끝에 그 스타일을 대표하는 쉬운 영어 한 단어를 붙인다(예: `akbun-draw-code-window-lilac`, `akbun-edit-terminal-callout-amber`). 같은 종류의 다른 스타일은 끝 단어만 바꿔 나란히 추가한다.
+- 정적 그림(16:9 SVG)의 그림체는 새 skill이 아니라 `plugins/akbun-draw/skills/akbun-draw-explainer-svg/styles/<짧은 이름>.json` 디자인 토큰 하나로 추가한다. `styles/chalkboard-math.json`을 복사해 같은 키(`id`·`concept`·`canvas`·`colors`·`colorRoles`·`typography`·`geometry`·`effects`·`rules`·`checks`)를 채운다. 토큰은 색(hex)·선 굵기(px)·글꼴(SIL OFL)·효과(defs 문자열)·여백 비율만 고정하고, 요소 수·배치·화살표 방향 같은 구도 문장은 `rules`에 넣지 않는다. 같은 변경에서 `references/<짧은 이름>.svg` 예시 1장(`check_style_svg.py --style <짧은 이름>` 통과), 라우터 표 한 줄, `imgs/akbun-draw-explainer-svg/<짧은 이름>.png`와 README 예시 목록 한 줄을 더한다. 검사 스크립트는 고치지 않는다(`--selftest`가 모든 토큰의 필수 키를 확인한다). 모션·영상 스타일과 이미지 생성 프롬프트 스타일은 기존대로 skill로 만든다. 근거는 `docs/adr/0007`.
 - `README.md`에는 plugin·skill 개수처럼 skill을 추가·삭제할 때마다 고쳐야 하는 숫자를 쓰지 않는다.
 - `README.md`는 처음 읽는 사람이 1분 안에 훑는 존댓말(-습니다) 문서다. 설치·재설치 명령은 링크로 넘기지 않고 본문에 쓴다. AGENTS.md·배포 가이드와 겹치는 절은 두지 않는다. skill을 추가했는데 그 plugin에 `### <plugin> 예시` 표가 있으면 `imgs/<skill 이름>.jpg`를 그 skill의 `SKILL.md` 링크로 넣는다. 예시 헤더는 `## plugin 목록`의 `### <plugin>` 헤더와 이름이 겹치지 않게 한다.
 - 기존 skill의 동작을 바꿀 때는 새 절·불릿을 덧붙이지 않고 그 규칙이 원래 있던 문장을 고친다. 바뀐 규칙과 같은 말을 하거나 어긋나는 문장은 같은 변경에서 지운다. 덧붙이기만 하면 skill이 계속 길어지고 규칙끼리 충돌해 망가진다.
@@ -70,7 +71,7 @@ plugin의 버전을 올린다. 사용자에게 버전 업데이트 여부를 묻
   규칙이 모호하거나 충돌해 추측한 곳을 목록으로 보고하라고 지시한다. 보고를 SKILL.md에 반영한 뒤 2라운드를 돌린다.
   부모 agent는 결과를 한 장으로 붙여 한 번만 본다.
 - 그리기 skill의 수치 규칙은 값만 쓰지 않고 세는 법, 단위, 반올림 방향, 경계 포함 여부까지 쓴다.
-- "~를 그려줘" 요청을 처리하는 skill을 새로 만들 때도 같은 원칙으로 설계한다. 특정 구도가 아니라
+- "~를 그려줘" 요청을 처리하는 skill이나 스타일 토큰을 새로 만들 때도 같은 원칙으로 설계한다. 특정 구도가 아니라
   그림체·색감(스타일)을 고정하고, 무엇을 그릴지(소재·구도)는 입력에 맞춰 자유롭게 정하도록 만든다.
   gold reference 예시는 참고 이미지와 다른 구도로 만들어 스타일이 소재와 무관하게 재사용됨을 보인다.
 - Figma/Canva 편집이 필요하면 이미지 프롬프트와 함께, 기본 요소만 쓰고 텍스트를 편집 가능한 `text`로

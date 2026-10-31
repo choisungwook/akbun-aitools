@@ -1,0 +1,90 @@
+{
+  "id": "akbun-draw-style-clay-isometric",
+  "concept": "30도 아이소메트릭 투영의 무광 클레이 블록(3면 평면 음영, 둥근 모서리, 접촉 그림자)과 투명 아크릴 판",
+  "canvas": {
+    "viewBox": "0 0 1920 1080",
+    "aspectRatio": "16:9",
+    "negativeSpaceRatio": 0.30,
+    "edgeMarginPx": 80,
+    "captionMarginPx": 40,
+    "centerTolerancePx": 40
+  },
+  "colors": {
+    "CANVAS": "#EEF2F7",
+    "CANVAS_ALT": "#E2E8F0",
+    "WHITE": "#FFFFFF",
+    "SHADOW": "#0F172A",
+    "TEXT": "#334155",
+    "TEXT_SOFT": "#94A3B8",
+    "SLATE_TOP": "#CBD5E1",
+    "SLATE_SIDE": "#64748B",
+    "SLATE_DARK": "#475569",
+    "COBALT_TOP": "#93C5FD",
+    "COBALT_SIDE": "#3B82F6",
+    "COBALT_DARK": "#1D4ED8",
+    "MINT_TOP": "#A7F3D0",
+    "MINT_SIDE": "#34D399",
+    "MINT_DARK": "#059669"
+  },
+  "colorRoles": {
+    "CANVAS": "배경. 그라데이션·격자·텍스처 없음",
+    "CANVAS_ALT": "바닥 판 위 홈(슬롯) 바닥, 보조 면",
+    "WHITE": "아크릴 판 채움(fill-opacity 0.35)·테두리(stroke-opacity 0.7)",
+    "SHADOW": "접촉 그림자(opacity 0.14, 공중 블록은 0.08)",
+    "TEXT": "이름·설명 글자. TEXT_SOFT는 보조 글자와 지시선",
+    "SLATE": "바닥 판, 틀, 중립 구성 요소(TOP·SIDE·DARK 3면)",
+    "COBALT": "주체·입력·지금 옮겨지는 것(TOP·SIDE·DARK 3면)",
+    "MINT": "결과·성공·자동으로 생긴 것(TOP·SIDE·DARK 3면)"
+  },
+  "typography": {
+    "fonts": {
+      "ui": "Inter, 'Noto Sans KR', sans-serif",
+      "mono": "'JetBrains Mono', monospace"
+    },
+    "sizes": {
+      "title": { "px": 36, "weight": 600, "color": "TEXT" },
+      "name": { "px": 24, "weight": 600, "color": "TEXT" },
+      "body": { "px": 18, "weight": 400, "color": "TEXT_SOFT" },
+      "code": { "px": 18, "weight": 400, "color": "TEXT", "font": "mono" }
+    }
+  },
+  "projection": {
+    "angleDeg": 30,
+    "formula": "x = OX + (u - v) * 0.8660 ; y = OY + (u + v) * 0.5 - z",
+    "faces": {
+      "top": { "vertices": "(u,v,z0+h) (u+w,v,z0+h) (u+w,v+d,z0+h) (u,v+d,z0+h)", "color": "TOP" },
+      "left": { "vertices": "(u,v+d,z0) (u+w,v+d,z0) (u+w,v+d,z0+h) (u,v+d,z0+h)", "color": "SIDE" },
+      "right": { "vertices": "(u+w,v,z0) (u+w,v+d,z0) (u+w,v+d,z0+h) (u+w,v,z0+h)", "color": "DARK" }
+    },
+    "drawOrder": "블록 원점 u+v 오름차순(뒤에서 앞). 한 블록 안은 그림자 → 오른쪽면 → 왼쪽면 → 윗면",
+    "transform": "translate만 허용. matrix·skew로 투영하지 않는다"
+  },
+  "geometry": {
+    "roundedCorner": "각 면 polygon에 같은 색 stroke, stroke-width 10, stroke-linejoin round",
+    "blockSize": { "small": [60, 100], "medium": [120, 200], "plateHeight": [24, 40] },
+    "contactShadow": "블록 바닥 중심에 ellipse SHADOW opacity 0.14, rx = (w+d)*0.866*0.5, ry = rx*0.5, filter #ao(feGaussianBlur stdDeviation 10). 바닥 판(h ≤ 40이고 긴 변 ≥ 300)에는 그림자를 두지 않는다",
+    "slot": "바닥 판 윗면 위 CANVAS_ALT 윗면 모양 polygon(둥근 모서리 규칙 동일). 채워진 홈에는 작은 블록을 z0 = 판 윗면 높이로 올린다",
+    "acrylic": "WHITE fill-opacity 0.35 + WHITE stroke-width 2 stroke-opacity 0.7 윗면 모양 polygon 또는 세워 둔 둥근 사각형. 한 그림에 2장 이하",
+    "floorArrow": "바닥 평면(z = 그 판의 윗면 높이) 위에 누운 polygon. 몸통 폭 18, 머리 폭 44, 머리 길이 40, 같은 색 stroke-width 4 round join. 색은 의미 계열의 SIDE. 비활성 흐름은 SLATE_SIDE",
+    "airArrow": "같은 색 stroke-width 4 stroke-dasharray 10 10 선 + 끝 삼각형(밑변 20, 높이 18). 글자와 24px 이상 띄운다",
+    "statusDot": "블록 윗면 위 지름 16px 원, 계열 SIDE 색, 한 블록에 3개 이하",
+    "leaderLine": "TEXT_SOFT stroke-width 1.5 직선 하나, 꺾임 없음"
+  },
+  "effects": {
+    "allowedDefs": ["filter #ao(feGaussianBlur stdDeviation 10) 하나"],
+    "forbidden": ["image", "면 그라데이션·하이라이트·질감", "격자·텍스처 배경"]
+  },
+  "rules": [
+    "블록 하나는 한 계열(SLATE·COBALT·MINT)의 TOP·SIDE·DARK 3색만 쓴다(무광).",
+    "강조 계열(COBALT·MINT) 블록 수는 전체 블록 수(바닥 판 포함, 홈 제외)의 절반 이하.",
+    "블록은 3~9개. 10개 이상이면 바닥 판 하나로 묶거나 그림을 나눈다.",
+    "글자는 투영하지 않고 화면에 수평으로 둔다. 블록 이름은 윗면 위 가운데(윗면 화면 폭 안에 들어가게) 또는 아크릴 판 안.",
+    "블록이 4개 이상이면 출력 폴더에 생성 스크립트(Python)를 만들어 꼭짓점을 계산한다. 손으로 계산하지 않는다.",
+    "사람·동물·식물은 그리지 않는다."
+  ],
+  "checks": {
+    "forbidElements": ["image"],
+    "strokeWidthRange": null,
+    "minNegativeSpacePct": 30
+  }
+}

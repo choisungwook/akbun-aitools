@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080">
+  <defs>
+    <pattern id="hatch-dense" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="7" stroke="#1A1A1A" stroke-width="1.2"/></pattern>
+    <pattern id="hatch-sparse" width="14" height="14" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="14" stroke="#1A1A1A" stroke-width="1.2"/></pattern>
+  </defs>
+  <rect class="bg" width="1920" height="1080" fill="#FBFAF6"/>
+  <g transform="translate(-288 -31)">
+
+  <g fill="none" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M660 300 Q790 297 920 302"/>
+    <path d="M918 302 Q922 390 918 480"/>
+    <path d="M918 480 Q790 484 662 478"/>
+    <path d="M662 478 Q657 390 660 300"/>
+    <path d="M740 340 Q790 318 840 340 Q842 380 840 420 Q790 442 740 420 Q738 380 740 340"/>
+    <path d="M740 340 Q790 362 840 340"/>
+    <path d="M790 362 L790 442"/>
+
+    <path d="M960 390 Q1030 386 1100 390"/>
+    <path d="M1100 390 L1084 380"/>
+    <path d="M1100 390 L1085 401"/>
+
+    <path d="M1150 258 Q1290 254 1430 262"/>
+    <path d="M1430 262 Q1434 390 1428 518"/>
+    <path d="M1428 518 Q1290 522 1152 516"/>
+    <path d="M1152 516 Q1148 390 1150 258"/>
+    <path d="M1290 310 Q1352 312 1352 372 Q1352 432 1290 432 Q1228 432 1228 372 Q1228 312 1288 310"/>
+    <path d="M1290 345 Q1318 347 1318 372 Q1318 397 1290 397 Q1262 397 1262 372 Q1262 347 1288 345"/>
+    <path d="M1290 296 L1290 310 M1290 432 L1290 446 M1214 372 L1228 372 M1352 372 L1366 372 M1236 318 L1246 328 M1334 416 L1344 426 M1344 318 L1334 328 M1246 416 L1236 426"/>
+
+    <path d="M1470 390 Q1540 386 1610 390"/>
+    <path d="M1610 390 L1594 380"/>
+    <path d="M1610 390 L1595 401"/>
+
+    <path d="M1650 220 Q1750 216 1840 222"/>
+    <path d="M1840 222 Q1840 420 1836 620"/>
+    <path d="M1836 620 Q1745 624 1652 618"/>
+    <path d="M1652 618 Q1646 420 1650 220"/>
+    <path d="M1650 292 Q1745 290 1840 294"/>
+    <path d="M1690 330 Q1745 328 1800 332 Q1802 380 1800 430 Q1745 433 1690 430 Q1688 380 1690 330"/>
+    <path d="M1690 470 Q1745 468 1800 472 Q1802 520 1800 570 Q1745 573 1690 570 Q1688 520 1690 470" stroke="#6F6F6F" stroke-dasharray="6 6"/>
+
+    <path d="M1626 300 L1626 322 M1615 311 L1637 311"/>
+    <path d="M1620 640 L1620 660 M1610 650 L1630 650"/>
+  </g>
+
+  <path d="M740 340 Q790 362 840 340 Q842 380 840 420 Q790 442 740 420 Q738 380 740 340" fill="url(#hatch-sparse)"/>
+  <path d="M1690 330 Q1745 328 1800 332 Q1802 380 1800 430 Q1745 433 1690 430 Q1688 380 1690 330" fill="url(#hatch-dense)"/>
+  <path d="M1650 222 Q1745 218 1840 222 L1840 292 Q1745 290 1650 292 Z" fill="url(#hatch-sparse)"/>
+
+  <g font-family="Gaegu, 'Nanum Pen Script', cursive" fill="#1A1A1A" text-anchor="middle">
+    <text x="790" y="580" font-size="28" font-weight="700">Pod</text>
+    <text x="790" y="612" font-size="20" font-family="'JetBrains Mono', monospace">2 vCPU · 4 GiB</text>
+    <text x="1290" y="620" font-size="28" font-weight="700">Auto Mode Engine</text>
+    <text x="1745" y="268" font-size="24">EC2 Node</text>
+    <text x="1745" y="720" font-size="24" font-weight="700">새로 생긴 노드</text>
+  </g>
+  <g font-family="Gaegu, 'Nanum Pen Script', cursive" fill="#1A1A1A" font-size="24">
+    <text x="660" y="880">Pod를 올리면 엔진이 크기를 재고,</text>
+    <text x="660" y="920">맞는 EC2 노드를 만들어 끼워요.</text>
+  </g>
+  </g>
+</svg>
