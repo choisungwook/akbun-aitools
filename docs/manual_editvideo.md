@@ -93,6 +93,7 @@ Look 수치는 참고 영상에서 프레임을 복제한 절대값이 아니라
 | 웹 페이지·GitHub 저장소를 둘러보며 요소를 짚기 | [akbun-edit-page-tour-lilac](../plugins/akbun-editvideo/skills/akbun-edit-page-tour-lilac/SKILL.md): 2배 스크린샷을 창 카드에 넣고 카메라가 요소마다 짧게 다가가 머물며 연보라 형광펜·외곽 상자로 짚는 전체 화면 장면을 만든다. 본편을 밀지 않는 새 트랙에 놓고, 노드 라벨로 Fusion 페이지에서 위치·색을 고친다. |
 | 여러 글·게시물·이슈를 겹쳐 보여주며 구절 짚기 | [akbun-edit-quote-cards-lilac](../plugins/akbun-editvideo/skills/akbun-edit-quote-cards-lilac/SKILL.md): 실제 출처 스크린샷 카드 2~4장을 겹쳐 쌓고 읽는 구절에 형광펜을 쓸어 칠한다. |
 | 터미널·AI 도구 화면 녹화에 주석 달기 | [akbun-edit-terminal-callout-amber](../plugins/akbun-editvideo/skills/akbun-edit-terminal-callout-amber/SKILL.md): 실제 녹화를 어두운 창 카드에 넣고 오류 줄 옆에 노란 손그림 화살표·라벨, 토큰 하이라이트를 붙인다. 출력을 지어내지 않는다. |
+| 내레이션 영상의 사진·영상 컷을 모션그래픽으로 바꾸기 | [akbun-davinciresolve-motion-stamp](../plugins/akbun-editvideo/skills/akbun-davinciresolve-motion-stamp/SKILL.md): 레퍼런스 영상의 스타일을 분석하고 장면마다 내레이션 내용에 맞춰 카드·칩·숫자 타일·도장·막대그래프 배치를 정한다. ProRes 4444 알파 MOV로 렌더해 복제한 타임라인에 놓고 전환·효과음까지 넣는다. 화면에는 자막과 다른 키워드·숫자만 쓴다. |
 | 영화식 기본 자막·타이핑 자막을 재사용 템플릿으로 만들기 | [akbun-davinciresolve-caption-template](../plugins/akbun-editvideo/skills/akbun-davinciresolve-caption-template/SKILL.md): 외형 지정이 없으면 하단 중앙의 정적 Cinema를 사용하고, 요청 시 타이핑·키워드·밑줄·원을 만든다. DRFX를 Downloads에 생성하고 macOS 설치법을 안내한다. |
 | YouTube Shorts 후보 만들기 | [davinciresolve-youtube-shorts](../plugins/akbun-editvideo/skills/davinciresolve-youtube-shorts/SKILL.md): 선택한 타임라인에서 세로 영상 후보를 만들고 원본과 오디오 구성을 보존한다. |
 
