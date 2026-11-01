@@ -24,7 +24,6 @@
 | 어두운 다이어그램 스타일로 설명 영상을 만들고 녹음에 맞추고 싶음 | [akbun-davinciresolve-explainer-dark-diagram](../plugins/akbun-editvideo/skills/akbun-davinciresolve-explainer-dark-diagram/SKILL.md) | 대본을 읽기 시간 기준으로 장면화하고 자막 트랙을 보며 녹음하게 한다. 녹음 후 테이크를 내용으로 장면에 배정해 장면 길이·등장 시점·자막을 실제 목소리에 맞춘다. |
 | 보드에 손으로 써 내려가며 수식·단계·질문과 답을 설명하는 영상을 Resolve에서 고치며 만들고 싶음 | [akbun-davinciresolve-explainer-scribble-black](../plugins/akbun-editvideo/skills/akbun-davinciresolve-explainer-scribble-black/SKILL.md) | akbun-draw-scribble-black의 색·선·도형·글씨 규칙을 그대로 쓰고, 글씨는 Text+ 써지기로, 도형 획은 투명 레이어 PNG를 긋는 방향으로 드러낸다. 한 번에 한 획만 그려지고, 첫 시점을 옮기면 뒤 획이 같이 밀린다. |
 | 검정 배경 카드와 손글씨 캡션으로 요청·메모리 같은 시스템 동작을 설명하는 영상을 Resolve에서 고치며 만들고 싶음 | [akbun-davinciresolve-explainer-slate-marker](../plugins/akbun-editvideo/skills/akbun-davinciresolve-explainer-slate-marker/SKILL.md) | akbun-draw-slate-marker의 색·글꼴·부품 표를 그대로 쓰고, 카드·칩·선을 Fusion 도형으로 그려 Inspector에서 글자·등장 시점을 고친다. 배치는 장면마다 내용이 정하고, 장면 전환은 하드 컷이다. |
-| 계산 과정·공식을 손으로 적으며 설명하듯, 손글씨가 말하는 순서대로 한 글자씩 써지는 영상을 Resolve에서 고치며 만들고 싶음 | [akbun-davinciresolve-explainer-live-ink](../plugins/akbun-editvideo/skills/akbun-davinciresolve-explainer-live-ink/SKILL.md) | akbun-draw-live-ink의 색·글꼴·써지기 규칙을 그대로 쓰고, Text+에 왼쪽부터 넓어지는 사각 마스크를 걸어 글자가 펜이 지나가듯 드러나게 한다. 한 번에 하나만 쓰고 지우지 않으며, Inspector에서 글자·써지는 시점을 고친다. |
 | 대본으로 그림이 자막에 맞춰 튀어나오는 설명 영상을 만들고, 색 조합·도형 스타일을 고르고 싶음 | [akbun-davinciresolve-explainer](../plugins/akbun-editvideo/skills/akbun-davinciresolve-explainer/SKILL.md) | akbun-draw-night-gouache로 장면 그림을 등장 단위 레이어로 만들고, 장면마다 Fusion 클립 하나에서 팝·자라기·페이드·펀치 인으로 움직인다. 발광·후광 없이 색 대비로 강조하고, 코드는 `cat` 프롬프트가 있는 터미널 카드로 보여 준다. `#202020` 단색 배경 위 하드 컷과 Pretendard 자막 트랙(Position Y 85)을 쓴다. |
 | 녹음의 숨소리와 빈 시간을 덜어 내고 싶음 | [akbun-davinciresolve-narration-cleanup](../plugins/akbun-editvideo/skills/akbun-davinciresolve-narration-cleanup/SKILL.md) | 주파수 프로필로 숨소리를 찾아 지우고 긴 쉼을 줄인 장면별 음성 파일과 지운 구간 보고서를 만든다. 애매한 구간은 남긴다. |
 | 한 단계만 처리하고 싶음 | 아래의 해당 작업별 스킬 | 전체 workflow를 쓰지 않고 필요한 색보정·컷·자막·오디오·출력만 따로 요청한다. |
@@ -166,18 +165,6 @@ Inspector에서 문구·위치·크기와 밑줄/원의 Visibility를 조절한�
 3. 대표 장면 하나로 삽입·매크로·점선·선 그리기를 확인한 뒤 나머지 장면을 만든다.
 4. 녹음이 오면 단어 시각으로 등장 시점과 장면 길이를 다시 맞춘다.
 5. 등장 직후·상태 변화 직후·마지막 프레임 스틸을 10항목 채점표로 채점하고, 내보낸 comp의 색 값을 색 표와 대조한다.
-
-## 손글씨 설명 영상 (live-ink)
-
-[akbun-davinciresolve-explainer-live-ink](../plugins/akbun-editvideo/skills/akbun-davinciresolve-explainer-live-ink/SKILL.md)은 클립 구조를 공통 Resolve 구현에서, 색·글꼴·써지는 속도와 순서를 [akbun-draw-live-ink](../plugins/akbun-draw/skills/akbun-draw-live-ink/SKILL.md)에서 가져온다. 거의 검정인 판 위에 Nanum Pen 손글씨가 흰 본문·초록 규칙·주황 이름표·분홍 비교 예시로 써진다. 펜은 한 자루라 두 곳을 동시에 쓰지 않고, 쓴 것은 장면 끝까지 남는다. 상자·카메라·페이드 없이 글자와 밑줄·화살표뿐이다.
-
-예: `$akbun-davinciresolve-explainer-live-ink 이 대본으로 지수 백오프 재시도 간격이 두 배씩 늘어나는 과정을 손글씨 설명 영상으로 만들어줘.`
-
-1. 대본을 장면 표(빌드 순서·색·신호 단어·써지는 시점과 길이)로 나누고 확인받는다. 시각은 draw skill의 신호 단어 규칙으로 잡는다.
-2. 다른 작업이 연 프로젝트를 건드리지 않고 새 타임라인을 만든다. Nanum Pen 설치를 확인한다.
-3. 대표 장면 하나로 삽입·매크로·마스크 써지기·글자 간격을 확인한 뒤 나머지 장면을 만든다.
-4. 녹음이 오면 단어 시각으로 써지는 시점과 장면 길이를 다시 맞춘다.
-5. 반쯤 써진 순간·마지막 프레임 스틸을 10항목 채점표로 채점하고, 내보낸 comp의 색 값과 빌드 겹침을 확인한다.
 
 ## 설명 영상을 녹음에 맞추기 (dark-diagram)
 

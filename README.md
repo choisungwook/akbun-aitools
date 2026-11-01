@@ -86,14 +86,13 @@ codex plugin list --json
 </tr>
 <tr>
 <td><a href="./plugins/akbun-draw/skills/akbun-draw-slate-marker/SKILL.md"><img src="./imgs/akbun-draw-slate-marker.jpg" alt="akbun-draw-slate-marker" width="400"></a><br><code>akbun-draw-slate-marker</code></td>
-<td><a href="./plugins/akbun-draw/skills/akbun-draw-live-ink/SKILL.md"><img src="./imgs/akbun-draw-live-ink.jpg" alt="akbun-draw-live-ink" width="400"></a><br><code>akbun-draw-live-ink</code></td>
-</tr>
-<tr>
 <td><a href="./plugins/akbun-draw/skills/akbun-draw-scribble-black/SKILL.md"><img src="./imgs/akbun-draw-scribble-black.jpg" alt="akbun-draw-scribble-black" width="400"></a><br><code>akbun-draw-scribble-black</code></td>
-<td><a href="./plugins/akbun-draw/skills/akbun-draw-thumbnail-retro/SKILL.md"><img src="./imgs/akbun-draw-thumbnail-retro.jpg" alt="akbun-draw-thumbnail-retro" width="400"></a><br><code>akbun-draw-thumbnail-retro</code></td>
 </tr>
 <tr>
+<td><a href="./plugins/akbun-draw/skills/akbun-draw-thumbnail-retro/SKILL.md"><img src="./imgs/akbun-draw-thumbnail-retro.jpg" alt="akbun-draw-thumbnail-retro" width="400"></a><br><code>akbun-draw-thumbnail-retro</code></td>
 <td><a href="./plugins/akbun-draw/skills/akbun-draw-thumbnail-doodle/SKILL.md"><img src="./imgs/akbun-draw-thumbnail-doodle.jpg" alt="akbun-draw-thumbnail-doodle" width="400"></a><br><code>akbun-draw-thumbnail-doodle</code></td>
+</tr>
+<tr>
 <td valign="top"><a href="./plugins/akbun-draw/skills/akbun-draw-explainer-svg/SKILL.md"><code>akbun-draw-explainer-svg</code></a> 스타일 9종
 
 - `tech-minimal`<br><a href="./plugins/akbun-draw/skills/akbun-draw-explainer-svg/styles/tech-minimal.json"><img src="./imgs/akbun-draw-explainer-svg/tech-minimal.png" alt="akbun-draw-explainer-svg tech-minimal" width="400"></a>
@@ -107,10 +106,7 @@ codex plugin list --json
 - `marker-wireframe`<br><a href="./plugins/akbun-draw/skills/akbun-draw-explainer-svg/styles/marker-wireframe.json"><img src="./imgs/akbun-draw-explainer-svg/marker-wireframe.png" alt="akbun-draw-explainer-svg marker-wireframe" width="400"></a>
 
 </td>
-</tr>
-<tr>
 <td><a href="./plugins/akbun-draw/skills/akbun-draw-style-bori/SKILL.md"><img src="./imgs/akbun-draw-style-bori.jpg" alt="akbun-draw-style-bori" width="400"></a><br><code>akbun-draw-style-bori</code></td>
-<td></td>
 </tr>
 </table>
 
@@ -194,7 +190,6 @@ $akbun-davinciresolve-explainer 이 대본을 fiery-ocean 색, akbun 도형으�
 | [akbun-draw-crayon-milo](./plugins/akbun-draw/skills/akbun-draw-crayon-milo/) | 시스템 흐름을 아이 크레용 그림 같은 다이어그램 이미지로 만들 때 |
 | [akbun-draw-scribble-black](./plugins/akbun-draw/skills/akbun-draw-scribble-black/) | 보드에 손으로 써 내려가며 수식·단계·묻고 답하기를 설명할 때 |
 | [akbun-draw-slate-marker](./plugins/akbun-draw/skills/akbun-draw-slate-marker/) | 요청·메모리 같은 시스템 동작을 카드와 상태 변화로 보여 줄 때 |
-| [akbun-draw-live-ink](./plugins/akbun-draw/skills/akbun-draw-live-ink/) | 계산·공식을 손으로 적어 가며 한 글자씩 풀어 줄 때 |
 | [akbun-generateimage-code](./plugins/akbun-draw/skills/akbun-generateimage-code/) | 블로그에 코드를 짚어 설명하는 그림이 필요할 때 |
 | [akbun-draw-webtoon-b](./plugins/akbun-draw/skills/akbun-draw-webtoon-b/) | 이미지·글로 파스텔 동물 캐릭터 웹툰 페이지를 만들 때 |
 | [akbun-draw-webtoon-d](./plugins/akbun-draw/skills/akbun-draw-webtoon-d/) | 이야기를 흑백 다큐툰 장면으로 그릴 때 |
@@ -325,7 +320,6 @@ $akbun-davinciresolve-explainer 이 대본을 fiery-ocean 색, akbun 도형으�
 | [akbun-davinciresolve-explainer](./plugins/akbun-editvideo/skills/akbun-davinciresolve-explainer/) | 대본을 그림이 자막에 맞춰 튀어나오는 설명 영상으로 만들고, 색 조합·도형 스타일을 골라 쓰고 싶을 때 |
 | [akbun-davinciresolve-explainer-scribble-black](./plugins/akbun-editvideo/skills/akbun-davinciresolve-explainer-scribble-black/) | 보드에 써 내려가는 손그림 설명 영상을 Resolve에서 고치며 만들 때 |
 | [akbun-davinciresolve-explainer-slate-marker](./plugins/akbun-editvideo/skills/akbun-davinciresolve-explainer-slate-marker/) | 카드와 상태 변화로 시스템 동작을 보여 주는 설명 영상을 Resolve에서 고치며 만들 때 |
-| [akbun-davinciresolve-explainer-live-ink](./plugins/akbun-editvideo/skills/akbun-davinciresolve-explainer-live-ink/) | 손글씨로 적어 가는 설명 영상을 Resolve에서 고치며 만들 때 |
 | [akbun-davinciresolve-motion-stamp](./plugins/akbun-editvideo/skills/akbun-davinciresolve-motion-stamp/) | 내레이션 영상의 사진 컷을 숫자·키워드 모션그래픽으로 바꿀 때 |
 | [akbun-davinciresolve-narration-cleanup](./plugins/akbun-editvideo/skills/akbun-davinciresolve-narration-cleanup/) | 녹음한 내레이션의 숨소리·긴 쉼을 정리할 때 |
 | [akbun-edit-page-tour-lilac](./plugins/akbun-editvideo/skills/akbun-edit-page-tour-lilac/) | 웹 페이지 스크린샷을 짚어 가며 설명할 때 |
