@@ -1,0 +1,15 @@
+Painterly 2D digital painting, square 1:1, like a single frame from a hand-drawn theatrical animated short film.
+
+CAMERA: Locked-off wide shot at eye level; the whole place is readable and characters are each about 25-45% of the frame height.
+
+SCENE: At sunrise on neighboring apartment balconies, the tired engineer steps out while an early-rising neighbor tends plants. Setting: two narrow balconies side by side above a hazy city at dawn.
+
+CHARACTERS (2): 1. a thirty-something man, short with a stocky build, a round face and brown skin, short tight curls and thin wire glasses, wearing a baggy hooded sweatshirt and soft sweatpants mainly in dusty plum #7A5C6E, leans on the railing holding a pale coffee mug. 2. an elderly woman, very tall with a thin, bony build, a long face and very light skin, a long white braid over one shoulder, wearing a long quilted vest over a knit dress mainly in grey-green #6E7F6A, waters potted plants on the next balcony. The attached character sheet images show these people in the same order; match each one's face, hair, body shape and clothes exactly.
+
+PROPS: iron balcony railings, potted plants, hazy rooftops and water towers, laundry line.
+
+COLOR PALETTE: build the whole image mainly from these colors: sky low #F6D28A; sky high #CCDEE4; peach #EAAE66; haze #CCC6C2; steel #8A96A2; deep teal #24483E; ink silhouette #0A1414.
+
+STYLE: No outlines at all: every form is defined only by where flat color shapes meet. Large shapes are simple and slightly angular; small details are small painted color patches inside the large shapes. Subtle gouache brush texture and fine paper grain inside every shape. Walls and sky carry one broad, soft value shift; objects have only a lit side and a shadow side. Characters are original stylized people whose proportions exaggerate their own body type: tall people get extra-long legs, arms and neck, short or round people become extra compact; hands and feet stay small. Faces are minimal: dot eyes, a short line mouth, one small nose shape. Clothing reads as one or two big flat color masses. Strong atmospheric depth: foreground forms are darkest and most contrasted; everything fades into pale blue-grey haze with distance, and far buildings become flat silhouettes without detail. Low, hazy golden-hour light with long soft shadows, plus one warm source (the low sun) that tints nearby surfaces amber and leaves a thin warm rim light along the edges of nearby characters. Exactly one small saturated red object in the frame, a red watering can, in red #A81C1C; every other color stays muted. Quiet, observational mood of a dialogue-free animated short: exaggeration lives in the pose and gesture, faces stay calm and understated.
+
+DO NOT: no outlines or ink lines, no photorealism, no 3D render, no anime big shiny eyes, no chibi, no existing film, cartoon or brand characters, no written words, letters or captions anywhere, no watermark.
