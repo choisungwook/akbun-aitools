@@ -134,7 +134,7 @@ def put_text(resolve, project, tl, fps, track_name, template, at, frames, inputs
   pool = pool_clips(mp)
   source = next((c for c in pool if c.GetName() == template and c.GetClipProperty("Type") == "Fusion Title"), None)
   if not source:
-    sys.exit("미디어 풀에 Fusion Title 항목 `%s`이 없음. API로는 만들 수 없으니 davinciresolve-subtitle-travelnote SKILL.md의 'Text+ 템플릿 준비' 절차를 Resolve 화면에서 한 번 한 뒤 다시 실행한다" % template)
+    sys.exit("미디어 풀에 Fusion Title 항목 `%s`이 없음. API로는 만들 수 없으니 akbun-davinciresolve-make-caption SKILL.md의 템플릿 준비 절차를 Resolve 화면에서 한 번 한 뒤 다시 실행한다" % template)
   project.SetCurrentTimeline(tl)
   resolve.OpenPage("edit")
   track = named_track(tl, "video", track_name)

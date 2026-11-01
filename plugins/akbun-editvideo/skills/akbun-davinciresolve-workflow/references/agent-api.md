@@ -168,7 +168,7 @@ interface VideoEditorAgentAPI {
 | `privacy.createPowerWindow`, `setWindowSoftness`, `applyMosaic` | 화면 | Color 페이지 Window·OpenFX 패널 |
 | `stabilization.apply` | 있음(파라미터 없음) | `TimelineItem.Stabilize()`는 현재 Inspector 값으로 실행. Mode·Cropping Ratio·Smooth는 화면 |
 | `stabilization.analyze`, `preview` | 없음 | 아래 "없는 기능" 표 |
-| `titles.addText`, `setFont` | 있음 | `davinciresolve-subtitle-travelnote`의 `scripts/textplus.py place`. `Timeline.InsertFusionTitleIntoTimeline("Text+")`은 항상 V1 재생헤드에 끼워 넣어 V1 클립을 자르고 모든 트랙·마커를 밀므로(21.1 실측) 쓰지 않는다. 미디어 풀의 Fusion Title 항목 `HOOK_TEXT_TEMPLATE`을 `AppendToTimeline`으로 `SUBTITLE` 트랙에 놓고 `TimelineItem.GetFusionCompByIndex(1)`로 Text+ 툴 입력을 설정한다 |
+| `titles.addText`, `setFont` | 있음 | `akbun-davinciresolve-make-caption`의 `scripts/textplus.py place`. `Timeline.InsertFusionTitleIntoTimeline("Text+")`은 항상 V1 재생헤드에 끼워 넣어 V1 클립을 자르고 모든 트랙·마커를 밀므로(21.1 실측) 쓰지 않는다. 미디어 풀의 Fusion Title 항목 `HOOK_TEXT_TEMPLATE`을 `AppendToTimeline`으로 `SUBTITLE` 트랙에 놓고 `TimelineItem.GetFusionCompByIndex(1)`로 Text+ 툴 입력을 설정한다 |
 | `titles.setSafeArea` | 화면 | Text+ `Center`·레이아웃 값을 Fusion 툴 입력으로 설정하고 스틸로 확인 |
 | `titles.retimeTitlesAfterEdit` | 있음 | 자막 클립 이동 API 없음. `textplus.py remove`로 옛 것을 지우고 새 위치에 `place` |
 | `audio.analyzeLoudness` | 화면 | Fairlight 라우드니스 미터 또는 렌더 파일에 `ffmpeg -af ebur128` |

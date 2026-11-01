@@ -312,9 +312,7 @@ $akbun-davinciresolve-explainer 이 대본을 fiery-ocean 색, akbun 도형으�
 | [akbun-davinciresolve-look-new-york](./plugins/akbun-editvideo/skills/akbun-davinciresolve-look-new-york/) | 도시적인 뉴욕 룩을 입힐 때 |
 | [davinciresolve-face-privacy](./plugins/akbun-editvideo/skills/davinciresolve-face-privacy/) | 얼굴이 보이는 장면을 넓고 약하게 가릴 때 |
 | [davinciresolve-face-mosaic](./plugins/akbun-editvideo/skills/davinciresolve-face-mosaic/) | 필요한 영역만 얼굴 모자이크하고 배경은 그대로 둘 때 |
-| [davinciresolve-subtitle-travelnote](./plugins/akbun-editvideo/skills/davinciresolve-subtitle-travelnote/) | 여행 영상에 메모 같은 자막을 넣을 때 |
-| [davinciresolve-subtitle-devtalk](./plugins/akbun-editvideo/skills/davinciresolve-subtitle-devtalk/) | 개발자 말하는 영상에 대사·키워드 자막을 넣을 때 |
-| [akbun-davinciresolve-caption-template](./plugins/akbun-editvideo/skills/akbun-davinciresolve-caption-template/) | 같은 모양의 자막을 여러 영상에서 다시 쓰고 싶을 때 |
+| [akbun-davinciresolve-make-caption](./plugins/akbun-editvideo/skills/akbun-davinciresolve-make-caption/) | 영상에 자막·챕터 제목을 넣거나 같은 모양의 자막을 다시 쓰고 싶을 때 |
 | [davinciresolve-youtube-shorts](./plugins/akbun-editvideo/skills/davinciresolve-youtube-shorts/) | 긴 영상에서 세로 Shorts를 뽑아 렌더·업로드할 때 |
 | [akbun-vlog-shotsketch](./plugins/akbun-editvideo/skills/akbun-vlog-shotsketch/) | 한 샷의 구도·카메라 위치·빛을 미리 정할 때 |
 | [davinciresolve-style-project](./plugins/akbun-editvideo/skills/davinciresolve-style-project/) | 프로젝트 과정을 기록하는 diary형 영상의 편집 기준이 필요할 때 |

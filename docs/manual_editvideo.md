@@ -49,7 +49,6 @@
 | 편집할 문제 | 스킬이 하는 일 |
 |---|---|
 | 프로젝트 진행이나 개발자 일상을 기록 | [davinciresolve-style-project](../plugins/akbun-editvideo/skills/davinciresolve-style-project/SKILL.md): 목표·장애·선택·결과의 변화를 화면과 내레이션으로 보여준다. |
-| 대사 자막, 키워드, 장면 설명 추가 | [davinciresolve-subtitle-devtalk](../plugins/akbun-editvideo/skills/davinciresolve-subtitle-devtalk/SKILL.md): 전사와 대조해 대사 자막과 필요한 강조·코멘트를 넣는다. 키워드·코멘트 Text+는 본편을 밀지 않고 `SUBTITLE` 트랙에 놓는다. |
 
 ## 말소리 없는 여행 영상
 
@@ -60,7 +59,6 @@
 | 클립을 촬영 시각 순서로 새 타임라인에 배치 | [akbun-davinciresolve-timeline-chrono](../plugins/akbun-editvideo/skills/akbun-davinciresolve-timeline-chrono/SKILL.md): 기존 타임라인을 수정하지 않고 촬영 시각 메타데이터로 배열한다. |
 | 빈 화면·불량 구간 컷, 흔들림 보정 | [davinciresolve-cut-travelflow](../plugins/akbun-editvideo/skills/davinciresolve-cut-travelflow/SKILL.md): 여행 장면과 자연음의 흐름을 기준으로 정리하고 삭제 전 검토 표시를 남긴다. |
 | 도시 장면을 와이드·미디엄·디테일로 엮어 몽타주 구성 | [akbun-davinciresolve-cut-new-york](../plugins/akbun-editvideo/skills/akbun-davinciresolve-cut-new-york/SKILL.md): 건축·교통·거리의 움직임과 음악 리듬을 활용해 컷을 제안한다. 장면 삭제는 이유를 설명하고 사용자가 확인한 뒤 진행한다. |
-| 여행 자막과 장소·시간 챕터 | [davinciresolve-subtitle-travelnote](../plugins/akbun-editvideo/skills/davinciresolve-subtitle-travelnote/SKILL.md): 장소·시간·분위기를 짧은 한글 자막과 챕터로 전달한다. 자막 Text+는 본편과 마커를 밀지 않고 `SUBTITLE` 트랙에 놓는다. |
 
 ## 색보정은 무엇을 고를까
 
@@ -94,7 +92,7 @@ Look 수치는 참고 영상에서 프레임을 복제한 절대값이 아니라
 | 여러 글·게시물·이슈를 겹쳐 보여주며 구절 짚기 | [akbun-edit-quote-cards-lilac](../plugins/akbun-editvideo/skills/akbun-edit-quote-cards-lilac/SKILL.md): 실제 출처 스크린샷 카드 2~4장을 겹쳐 쌓고 읽는 구절에 형광펜을 쓸어 칠한다. |
 | 터미널·AI 도구 화면 녹화에 주석 달기 | [akbun-edit-terminal-callout-amber](../plugins/akbun-editvideo/skills/akbun-edit-terminal-callout-amber/SKILL.md): 실제 녹화를 어두운 창 카드에 넣고 오류 줄 옆에 노란 손그림 화살표·라벨, 토큰 하이라이트를 붙인다. 출력을 지어내지 않는다. |
 | 내레이션 영상의 사진·영상 컷을 모션그래픽으로 바꾸기 | [akbun-davinciresolve-motion-stamp](../plugins/akbun-editvideo/skills/akbun-davinciresolve-motion-stamp/SKILL.md): 레퍼런스 영상의 스타일을 분석하고 장면마다 내레이션 내용에 맞춰 카드·칩·숫자 타일·도장·막대그래프 배치를 정한다. ProRes 4444 알파 MOV로 렌더해 복제한 타임라인에 놓고 전환·효과음까지 넣는다. 화면에는 자막과 다른 키워드·숫자만 쓴다. |
-| 영화식 기본 자막·타이핑 자막을 재사용 템플릿으로 만들기 | [akbun-davinciresolve-caption-template](../plugins/akbun-editvideo/skills/akbun-davinciresolve-caption-template/SKILL.md): 외형 지정이 없으면 하단 중앙의 정적 Cinema를 사용하고, 요청 시 타이핑·키워드·밑줄·원을 만든다. DRFX를 Downloads에 생성하고 macOS 설치법을 안내한다. |
+| 자막·챕터 제목 넣기, 재사용 자막 템플릿 만들기 | [akbun-davinciresolve-make-caption](../plugins/akbun-editvideo/skills/akbun-davinciresolve-make-caption/SKILL.md): 자막 Text+는 본편과 마커를 밀지 않고 `SUBTITLE` 트랙에 놓는다. 외형 지정이 없으면 하단 중앙의 정적 Cinema를 사용하고, 요청 시 타이핑·키워드·밑줄·원을 만든다. DRFX를 Downloads에 생성하고 macOS 설치법을 안내한다. |
 | YouTube Shorts 후보 만들기 | [davinciresolve-youtube-shorts](../plugins/akbun-editvideo/skills/davinciresolve-youtube-shorts/SKILL.md): 선택한 타임라인에서 세로 영상 후보를 만들고 원본과 오디오 구성을 보존한다. |
 
 ### 창 카드 장면 사용 (page-tour, quote-cards, terminal-callout)
@@ -123,7 +121,7 @@ Look 수치는 참고 영상에서 프레임을 복제한 절대값이 아니라
 
 ## 재사용 자막 템플릿
 
-`$akbun-davinciresolve-caption-template`에 문구·표시 시간을 준다. 외형 지정이 없으면 `Akbun Cinema`가 기본이다. 하단 중앙·흰 글자·검은 외곽선이며 애니메이션·효과음은 없다. Source Han Sans KR Regular, 한 줄 우선·최대 두 줄을 사용하고 대표 자막의 가독성을 확인한다. workflow의 자동 스타일 선택만으로 이 기본값을 바꾸지 않는다. 타이핑·키워드를 요청하면 참고 영상/구간을 줄 수 있다. AI가 `/tmp`에 직접 캡처해 글자 공개 순서·정렬·색을 분석한다. 문장형 `Akbun Typewriter`와 큰 세리프 키워드형 `Akbun Keyword`는 Text+·도형으로 구성해 문구와 강조를 다시 편집할 수 있다.
+`$akbun-davinciresolve-make-caption`에 문구·표시 시간을 준다. 외형 지정이 없으면 `Akbun Cinema`가 기본이다. 하단 중앙·흰 글자·검은 외곽선이며 애니메이션·효과음은 없다. Source Han Sans KR Regular, 한 줄 우선·최대 두 줄을 사용하고 대표 자막의 가독성을 확인한다. workflow의 자동 스타일 선택만으로 이 기본값을 바꾸지 않는다. 타이핑·키워드를 요청하면 참고 영상/구간을 줄 수 있다. AI가 `/tmp`에 직접 캡처해 글자 공개 순서·정렬·색을 분석한다. 문장형 `Akbun Typewriter`와 큰 세리프 키워드형 `Akbun Keyword`는 Text+·도형으로 구성해 문구와 강조를 다시 편집할 수 있다.
 
 템플릿만 요청하면 `~/Downloads/Akbun-Caption/<내용해시>/`의 `.drfx`·setting 3개·`readme.md` 사용설명서를 받는다. Finder에서 더블클릭해 Resolve에 설치하고 Edit → Effects → Titles에서 찾아 본편 위의 별도 비디오 트랙에 드래그한다. 이 설치는 다음 프로젝트에도 유지되며 폰트는 별도다. 원본 패키지는 백업한다.
 
@@ -131,7 +129,7 @@ Inspector에서 문구·위치·크기와 밑줄/원의 Visibility를 조절한�
 
 "자막 트랙", "SRT", "렌더 시 자막 굽기"를 말하면 Text+ 대신 Resolve Subtitle 트랙을 쓴다. 전사를 표준어로 다듬고 1초 미만 cue는 이웃 cue와 합쳐 최대 2줄로 표시한다. Track 스타일(Gmarket Sans Medium, Position Y 175, 반투명 검정 배경)을 트랙 전체에 적용한다. 빈 최종 타임라인에 SRT를 먼저 넣고 편집본을 중첩하며, 내부 타임라인 자막은 지워 이중 burn-in을 막는다.
 
-호출명 변경: `davinciresolve-caption-template` → `akbun-davinciresolve-caption-template`. 이전 호출명 대신 새 이름을 사용한다.
+호출명 변경: `davinciresolve-caption-template`·`akbun-davinciresolve-caption-template` → `akbun-davinciresolve-make-caption`. 여행 자막 `davinciresolve-subtitle-travelnote`와 대사 자막 `davinciresolve-subtitle-devtalk`는 이 스킬로 합쳤다. 이전 호출명 대신 새 이름을 사용한다.
 
 ## 대본에서 설명 영상 만들기
 
