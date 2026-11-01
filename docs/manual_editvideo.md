@@ -128,6 +128,8 @@ Look 수치는 참고 영상에서 프레임을 복제한 절대값이 아니라
 
 Inspector에서 문구·위치·크기와 밑줄/원의 Visibility를 조절한다. 문장형 Reveal Duration은 클립 길이에 대한 비율이며 기본 0.65다. 타이핑·키워드의 글꼴은 오뮤 다예쁨체·나눔명조를 기본으로 확인하고 OFL 대안으로 나눔손글씨 펜을 안내한다. 문구 변경 뒤 강조 위치는 다시 맞춘다. Epidemic Sound 연결이 안 되면 효과음의 분·초·길이·검색어·오디오 트랙을 채팅으로 받는다.
 
+"자막 트랙", "SRT", "렌더 시 자막 굽기"를 말하면 Text+ 대신 Resolve Subtitle 트랙을 쓴다. 전사를 표준어로 다듬고 1초 미만 cue는 이웃 cue와 합쳐 최대 2줄로 표시한다. Track 스타일(Gmarket Sans Medium, Position Y 175, 반투명 검정 배경)을 트랙 전체에 적용한다. 빈 최종 타임라인에 SRT를 먼저 넣고 편집본을 중첩하며, 내부 타임라인 자막은 지워 이중 burn-in을 막는다.
+
 호출명 변경: `davinciresolve-caption-template` → `akbun-davinciresolve-caption-template`. 이전 호출명 대신 새 이름을 사용한다.
 
 ## 대본에서 설명 영상 만들기
