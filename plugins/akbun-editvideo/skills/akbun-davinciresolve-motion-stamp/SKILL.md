@@ -14,7 +14,7 @@ disable-model-invocation: true
 - `<프로젝트>/mg/out/events.json`: 장면별 효과음 큐
 - 완료 보고: 장면 타이밍 대조표, 미삽입 SFX, 짧게 들어간 전환 목록
 
-출력 형식은 항상 ProRes 4444 알파 MOV다. 오버레이 장면은 사진·영상 위에 겹치므로 알파가 필요하고, 전체 화면 장면도 같은 형식으로 맞춰 import·교체 절차를 하나로 유지한다. H.264(MP4)는 알파를 담지 못한다. 완료 보고에 이 이유를 한 줄로 적는다.
+출력 형식은 항상 ProRes 4444 알파 MOV다. 사용자가 "결과는 알파 포함 MG 클립"으로 지정한 형식이다. 오버레이 장면은 사진·영상 위에 겹치므로 알파가 필요하고, 전체 화면 장면도 같은 형식으로 맞춰 import·교체 절차를 하나로 유지한다. H.264(MP4)는 알파를 담지 못한다. 완료 보고에 이 이유를 한 줄로 적는다.
 
 ## 레이아웃 원칙
 
@@ -50,7 +50,7 @@ disable-model-invocation: true
 | 부품 간격 | 동시에 보이는 부품끼리 24px 이상 |
 | 좌표 기준 | `x`, `y`는 부품의 가운데. `box`·`arrow`는 화면 절대 좌표 |
 
-렌더 스크립트는 안전 여백 침범, 자막 영역 침범, 24px 안쪽 겹침, 글자가 부품 폭을 넘는 경우를 `경고:`로 출력하고 종료 코드 1을 낸다. 경고가 남으면 배치를 고쳐 다시 렌더한다. `box`·`arrow`는 절대 좌표 표시라 이 검사를 받지 않으므로 스틸로 자막 영역·대상 위치를 확인한다.
+렌더 스크립트는 그림자를 뺀 보이는 영역 기준으로 안전 여백 침범, 자막 영역 침범, 24px 안쪽 겹침, 글자가 부품 폭을 넘는 경우를 `경고:`로 출력하고 종료 코드 1을 낸다. 경고가 남으면 배치를 고쳐 다시 렌더한다. `box`·`arrow`는 절대 좌표 표시라 이 검사를 받지 않으므로 스틸로 자막 영역·대상 위치를 확인한다.
 
 ## 스타일
 
@@ -165,7 +165,7 @@ ffmpeg -i "$HOME/Downloads/ref_<영상ID>/ref.mp4" -vf "fps=2,scale=320:-1,tile=
 ### 3. MG 문구 작성
 
 - MG에는 키워드·숫자만 쓴다. 자막과 같은 문장을 화면에 또 쓰지 않는다. 같은 시각에 MG 문구와 자막이 같은 말을 하면 고친다.
-- 문구는 `/akbun-writing:akbun-writing-naturalize` 기준으로 다듬어 AI 말투를 뺀다.
+- 문구는 `/akbun-writing:akbun-writing-advisor-naturalize` 기준으로 다듬어 AI 말투를 뺀다.
 - 확인되지 않은 이야기(투어 해설의 일화)는 "~라는", "전해지는"으로 쓴다. 단정하지 않는다.
 - 장면 표와 문구로 "레이아웃 원칙 > 배치를 정하는 순서"를 장면마다 따라 `<프로젝트>/mg/scenes.json`을 쓴다. `example_scenes.json`의 좌표를 복사하지 않는다.
 
@@ -179,21 +179,21 @@ ffmpeg -i "$HOME/Downloads/ref_<영상ID>/ref.mp4" -vf "fps=2,scale=320:-1,tile=
 uv run -q --python 3.12 <스킬 폴더>/scripts/render_mg.py --spec <프로젝트>/mg/scenes.json --fps <타임라인 fps> --out <프로젝트>/mg/out --pic <프로젝트>/photos --stills S01 S02
 ```
 
-`<프로젝트>/mg/out/stills/contact.jpg` 한 장을 열어 보고 경고와 함께 배치를 고친 뒤 MOV를 렌더한다. `--stills`는 시작·중간·끝 프레임에 보이는 요소만 검사하고 `events.json`을 쓰지 않는다. 그 사이에만 보이는 요소가 있으면 MOV 렌더의 경고까지 확인한다.
+`<프로젝트>/mg/out/stills/contact.jpg` 한 장을 열어 보고 경고와 함께 배치를 고친 뒤 MOV를 렌더한다. `--stills`도 요소마다 등장 0.45초 뒤 프레임을 따로 그려 모든 요소의 배치를 검사한다. `events.json`은 쓰지 않는다.
 
 ```bash
 uv run -q --python 3.12 <스킬 폴더>/scripts/render_mg.py --spec <프로젝트>/mg/scenes.json --fps <타임라인 fps> --out <프로젝트>/mg/out --pic <프로젝트>/photos S01 S02
 ```
 
 - 장면 ID를 비우면 전체 장면을 렌더한다. 같은 이름 MOV가 있으면 건너뛰고, 덮어쓰려면 `--force`.
-- 스크립트는 렌더 뒤 ffprobe로 프레임 수(= `round(duration × fps)`)와 ProRes 4444 알파 여부를 확인하고, 다르면 실패한다. `events.json`은 렌더한 장면만 갱신한다.
+- 스크립트는 렌더 뒤 ffprobe로 프레임 수(= `round(duration × fps)`)와 ProRes 4444 알파 여부를 확인하고, 다르면 실패한다. `events.json`은 이번에 인코딩한 장면만 갱신하고(건너뛴 장면은 그대로), 장면마다 렌더 fps를 함께 적는다.
 - 전체 화면 장면(`bg.type`이 `color`·`stripe`·`star`·`photo`)과 오버레이 장면(`bg` 생략 또는 `bg.type: none`, 사진 위에 칩·화살표)을 구분한다.
 - 사진 배경 장면은 `crop`으로 고정 크롭하고 강조 대상을 `box` + `arrow` + `chip`으로 가리킨다. 강조할 대상의 위치가 모호하면 추측하지 말고 사진 캡처를 보여 주며 사용자에게 먼저 확인한다. 오른쪽 담장을 잘못 강조했다가 가운데 마루로 고친 사례가 있다.
 - 재렌더로 길이가 바뀌면 `version`을 올려(`v2`) 새 이름으로 렌더하고 다시 import한다. `ReplaceClip`은 캐시 때문에 바뀐 길이가 반영되지 않는다.
 
 ### 5. 배치
 
-- 전체 화면 MG는 메인 트랙(V2)에, 오버레이는 그 위 `MG_OVERLAY` 트랙에 놓는다. 트랙이 없으면 새로 만든다. 장면 표에서 줄이거나 지우기로 한 컷을 먼저 처리한 뒤 빈 자리에만 놓고, 그 밖의 클립은 덮어쓰지 않는다.
+- 사용자가 지정한 대로 전체 화면 MG는 메인 트랙(V2)의 기존 컷을 대체한다. 이 대체는 2단계의 복제 타임라인에서만 하고, 원본 타임라인의 V2 클립 수가 그대로인지 배치 뒤 다시 읽어 확인한다. 전체 화면 MG는 V2에, 오버레이는 그 위 `MG_OVERLAY` 트랙에 놓는다. 트랙이 없으면 새로 만든다. 장면 표에서 줄이거나 지우기로 한 컷을 먼저 처리한 뒤 빈 자리에만 놓고, 그 밖의 클립은 덮어쓰지 않는다.
 - 오버레이 클립의 Composite/Alpha mode는 Straight로 둔다.
 - MG 장면은 해당 내레이션이 끝날 때까지 유지한다. 내레이션보다 먼저 장면이 바뀌면 `duration`을 늘려 다시 렌더한다(3초 늘린 사례가 있다).
 - 장면 표의 훅 구간(보통 앞 약 50초)에도 MG 오버레이를 넣는다.
@@ -201,7 +201,7 @@ uv run -q --python 3.12 <스킬 폴더>/scripts/render_mg.py --spec <프로젝�
 
 ### 6. 전환
 
-- 훅 끝: Fusion 전환(예: mJourney Transition 09). duration 1초(타임라인 fps만큼의 프레임, 24fps면 24), alignment right로 넣어야 제 길이로 들어간다.
+- 훅 끝: 사용자가 설치한 Fusion 전환(예: mJourney Transition 09). 설치되어 있지 않으면 Cross Dissolve로 대체하고 보고한다. duration 1초(타임라인 fps만큼의 프레임, 24fps면 24), alignment right로 넣어야 제 길이로 들어간다.
 - 장면 사이: Cross Dissolve 0.3초(24fps면 7프레임), alignment center. 소스 여유가 한쪽만 있으면 그쪽에 맞춘 정렬로 다시 넣는다.
 - API: `TimelineItem.AddTransition({"type": <이름>, "category": "simple"|"fusion", "position": "end", "alignment": <정렬>, "duration": <프레임>})`.
 - 넣은 뒤 전환 길이를 다시 읽는다. 소스 여유가 없어 1~2프레임만 들어간 전환은 목록으로 보고한다.
@@ -227,7 +227,7 @@ uv run -q --python 3.12 <스킬 폴더>/scripts/render_mg.py --spec <프로젝�
 | `DeleteClips` | 현재 타임라인에서만 동작한다. `SetCurrentTimeline` 먼저. 지우기 직전에 다시 읽은 핸들만 쓴다 |
 | DRT import로 타임라인 교체 | Resolve가 세그폴트로 종료된다. 시도하지 않는다 |
 | 백그라운드 raw 키 입력 | Resolve 단축키로 처리될 수 있다. UI 조작은 AX 기반 `app_*` 도구로 한다 |
-| 자막 겹침·이중 표시 | [akbun-davinciresolve-caption-template](../akbun-davinciresolve-caption-template/SKILL.md)의 자막 트랙 배치 규칙을 따른다 |
+| 자막 겹침·이중 표시 | [akbun-davinciresolve-caption-template의 자막 트랙 모드](../akbun-davinciresolve-caption-template/SKILL.md#자막-트랙-모드)를 따른다 |
 
 ## 완료 검증
 
@@ -244,5 +244,5 @@ uv run -q --python 3.12 <스킬 폴더>/scripts/render_mg.py --spec <프로젝�
 
 | 명령 | 하는 일 |
 |---|---|
-| `render_mg.py --selftest` | easing·pop 곡선, 등장·퇴장, fps 파싱, 효과음 큐, 자막 영역(bar 포함)·겹침 경고, 공백 글리프 검사, 12프레임 MOV 인코딩·ffprobe 확인 |
+| `render_mg.py --selftest` | easing·pop 곡선, 등장·퇴장, fps 파싱, 효과음 큐, 자막 영역(bar 포함)·겹침 경고, 안전 여백·글자 넘침 경고, 공백 글리프 검사(시스템에 wqy-zenhei가 있을 때), 12프레임 MOV 인코딩·ffprobe 확인 |
 | `render_mg.py --spec ... --fps ... --out ... [--pic DIR(기본 .)] [--font-bold P] [--font-medium P] [--stills] [--force] [ID...]` | 장면 렌더 또는 contact sheet. 종료 코드 0 정상, 1 레이아웃 경고(`경고:` 줄), 2 글꼴·인자·없는 장면 ID, 3 spec·렌더 오류(중복 id, 모르는 type, `at` ≥ 길이, ffmpeg 실패, 프레임 수·형식 불일치) |

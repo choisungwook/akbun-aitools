@@ -161,6 +161,7 @@ def with_shadow(img, theme, radius=16, offset=8):
   out.alpha_composite(shadow, (pad, pad + offset))
   out = out.filter(ImageFilter.GaussianBlur(radius))
   out.alpha_composite(img, (pad, pad))
+  out.info["pad"] = pad
   return out
 
 
@@ -399,15 +400,16 @@ def check_layout(scene, el, img, cx, cy, placed):
   if el["type"] in ABSOLUTE:
     return
   name = f"{scene['id']}/{el.get('name', el['type'])}"
-  box = (cx - img.width / 2, cy - img.height / 2, cx + img.width / 2, cy + img.height / 2)
+  pad = img.info.get("pad", 0)
+  box = (cx - img.width / 2 + pad, cy - img.height / 2 + pad, cx + img.width / 2 - pad, cy + img.height / 2 - pad)
   span = (el.get("at", 0.0), el.get("out") or scene["duration"])
   for other, obox, ospan in placed:
     if span[0] < ospan[1] and ospan[0] < span[1] and overlaps(box, obox):
       WARNINGS.append(f"{name}: {other}와 24px 안쪽으로 겹침")
   placed.append((name, box, span))
-  if cx - img.width / 2 < SAFE_X or cx + img.width / 2 > W - SAFE_X:
+  if box[0] < SAFE_X or box[2] > W - SAFE_X:
     WARNINGS.append(f"{name}: 좌우 안전 여백 {SAFE_X}px 침범")
-  if scene.get("captions", True) and cy + img.height / 2 > CAPTION_TOP:
+  if scene.get("captions", True) and box[3] > CAPTION_TOP:
     WARNINGS.append(f"{name}: 아래쪽이 y={CAPTION_TOP} 자막 영역을 침범")
 
 
@@ -490,6 +492,9 @@ def contact_sheet(scenes, fps, ctx, path):
   for row, scene in enumerate(scenes):
     last = frame_count(scene["duration"], fps) - 1
     bg, cache = background(scene, ctx), {}
+    for el in scene["elements"]:
+      probe = min(el.get("at", 0.0) + 0.45, (el.get("out") or scene["duration"]) - 0.01, scene["duration"] - 0.01)
+      render_frame(scene, probe, scene["duration"], bg, ctx, cache)
     for col, (tag, i) in enumerate((("start", 0), ("mid", last // 2), ("end", last))):
       frame = render_frame(scene, float(i / fps), scene["duration"], bg, ctx, cache).resize((tw, th), Image.LANCZOS)
       base = checker((tw, th))
@@ -502,9 +507,8 @@ def contact_sheet(scenes, fps, ctx, path):
 
 def merge_events(path, scenes, fps):
   data = json.loads(path.read_text()) if path.exists() else {}
-  data["fps"] = str(fps)
   for scene in scenes:
-    data[scene["id"]] = {"file": out_name(scene), "frames": frame_count(scene["duration"], fps), "events": scene_events(scene, fps)}
+    data[scene["id"]] = {"file": out_name(scene), "fps": str(fps), "frames": frame_count(scene["duration"], fps), "events": scene_events(scene, fps)}
   path.write_text(json.dumps(data, ensure_ascii=False, indent=2))
 
 
@@ -553,6 +557,20 @@ def selftest():
   for t in (0.0, 0.6):
     render_frame(crowded, t, 1.0, background(crowded, ctx), ctx, cache)
   assert [w for w in WARNINGS if "겹침" in w] == ["C/chip: C/chip와 24px 안쪽으로 겹침"], WARNINGS
+  WARNINGS.clear()
+  edge = {"id": "E", "duration": 1.0, "elements": [
+    {"type": "card", "x": 350, "y": 300, "w": 600, "h": 200, "title": "가" * 40},
+    {"type": "chip", "text": "B", "x": 1700, "y": 300}]}
+  render_frame(edge, 0.5, 1.0, background(edge, ctx), ctx, {})
+  assert any("E/card" in w and "안전 여백" in w for w in WARNINGS), WARNINGS
+  assert any("card" in w and "폭" in w for w in WARNINGS), WARNINGS
+  assert not any("E/chip" in w for w in WARNINGS), WARNINGS
+  with tempfile.TemporaryDirectory() as tmp:
+    events = Path(tmp) / "events.json"
+    merge_events(events, [scene], Fraction(24000, 1001))
+    merge_events(events, [edge], Fraction(24))
+    data = json.loads(events.read_text())
+    assert data["T"]["fps"] == "24000/1001" and data["E"]["fps"] == "24" and "fps" not in data
   WARNINGS.clear()
   low_bar = {"id": "L", "duration": 1.0, "elements": [{"type": "bar", "x": 960, "y": 860, "items": [{"label": "a", "value": 1}]}]}
   render_frame(low_bar, 0.0, 1.0, background(low_bar, ctx), ctx, {})
@@ -626,14 +644,17 @@ def run(args, bold, medium):
     contact_sheet(scenes, fps, ctx, out / "stills" / "contact.jpg")
     print(out / "stills" / "contact.jpg")
   else:
+    encoded = []
     for scene in scenes:
       path = out / out_name(scene)
       if path.exists() and not args.force:
         print(f"건너뜀(이미 있음): {path.name}")
         continue
       frames = encode(scene, fps, ctx, path)
+      encoded.append(scene)
       print(f"{path.name}: {frames}프레임 @ {fps}fps")
-    merge_events(out / "events.json", scenes, fps)
+    if encoded:
+      merge_events(out / "events.json", encoded, fps)
   for warning in dict.fromkeys(WARNINGS):
     print(f"경고: {warning}")
   return 1 if WARNINGS else 0

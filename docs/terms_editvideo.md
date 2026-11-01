@@ -129,6 +129,7 @@
 | DRFX | Edit/Titles 등의 폴더 구조를 가진 Fusion 템플릿 설치용 ZIP 패키지. 더블클릭해 설치하며 영상 미디어나 프로젝트 파일과 구분한다. |
 | Reveal Duration / Delay | 타이핑 템플릿의 공개 시간·시작 지연을 클립 전체 길이에 대한 0~1 비율로 정한 값. 초·프레임 값이 아니다. |
 | CAPTION 트랙 | 영화식·타이핑 자막 템플릿을 본편보다 위에 겹쳐 놓는 비디오 트랙의 역할 이름. subtitle 트랙과 구분한다. |
+| Subtitle 트랙 (Resolve 자막 트랙) | Resolve 기본 자막 트랙. SRT를 넣고 Inspector Track 탭 스타일을 트랙 전체에 적용한다. 렌더 설정 `ExportSubtitle`·`SubtitleFormat=BurnIn`으로 영상에 굽는다. 이름이 비슷한 SUBTITLE 비디오 트랙과 다르다. |
 | SUBTITLE 트랙 | 자막·챕터 제목·키워드 Text+만 놓는 비디오 트랙. 번호가 아니라 이름으로 찾는다. Text+를 타임라인 중간에 바로 삽입하면 V1에 끼어들어 모든 트랙과 마커를 밀기 때문에, 미디어 풀의 `HOOK_TEXT_TEMPLATE`을 이 트랙에 놓아 자막마다 일반 Text+ 클립 하나를 만든다. |
 | 밑줄 / 원 표시 / 형광 강조 | 글자 아래의 선(underline) / 단어를 둘러싼 원·타원(circle callout) / 글자 뒤 색 띠(highlight). 선택한 부분을 강조하며 글자와 같은 좌표계로 움직인다. |
 | Write-on | 선이나 획이 시간에 따라 그려지는 효과. 밑줄·원 표시의 시작과 완성을 효과음에 맞출 수 있다. |
