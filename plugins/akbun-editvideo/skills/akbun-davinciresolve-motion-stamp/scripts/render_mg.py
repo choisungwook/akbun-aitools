@@ -421,10 +421,9 @@ def render_frame(scene, t, duration, bg, ctx, cache):
     key = id(el)
     if el["type"] in GROWING or key not in cache:
       img = DRAW[el["type"]](el, t - el.get("at", 0.0), ctx)
-      if el["type"] not in GROWING:
-        cache[key] = img
-        cx, cy = el.get("x", W / 2), el.get("y", H / 2)
-        check_layout(scene, el, img, cx, cy, cache.setdefault("placed", []))
+      if key not in cache:
+        cache[key] = None if el["type"] in GROWING else img
+        check_layout(scene, el, img, el.get("x", W / 2), el.get("y", H / 2), cache.setdefault("placed", []))
     else:
       img = cache[key]
     if scale != 1.0:
@@ -554,6 +553,10 @@ def selftest():
   for t in (0.0, 0.6):
     render_frame(crowded, t, 1.0, background(crowded, ctx), ctx, cache)
   assert [w for w in WARNINGS if "겹침" in w] == ["C/chip: C/chip와 24px 안쪽으로 겹침"], WARNINGS
+  WARNINGS.clear()
+  low_bar = {"id": "L", "duration": 1.0, "elements": [{"type": "bar", "x": 960, "y": 860, "items": [{"label": "a", "value": 1}]}]}
+  render_frame(low_bar, 0.0, 1.0, background(low_bar, ctx), ctx, {})
+  assert any("L/bar" in w and "자막 영역" in w for w in WARNINGS), WARNINGS
   full = dict(scene, bg={"type": "stripe"})
   assert render_frame(full, 0.0, 0.5, background(full, ctx), ctx, {}).getpixel((0, 0))[3] == 255
   if shutil.which("ffmpeg") and shutil.which("ffprobe"):
@@ -598,6 +601,14 @@ def main():
     print(f"공백 글리프가 비어 있지 않은 글꼴(띄어쓰기가 네모로 그려짐): {broken}. 웹용 woff 대신 TTF/OTF를 쓴다.", file=sys.stderr)
     return 2
 
+  try:
+    return run(args, bold, medium)
+  except (ValueError, KeyError, RuntimeError, OSError, subprocess.CalledProcessError) as error:
+    print(f"spec·렌더 오류: {error!r}", file=sys.stderr)
+    return 3
+
+
+def run(args, bold, medium):
   spec = load_spec(args.spec)
   fps = parse_fps(args.fps)
   ctx = {"theme": {**THEME, **spec.get("theme", {})}, "fonts": Fonts(bold, medium), "pic": args.pic}

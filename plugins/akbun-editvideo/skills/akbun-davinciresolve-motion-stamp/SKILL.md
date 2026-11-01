@@ -37,7 +37,7 @@ disable-model-invocation: true
 
 1. 장면에서 화면에 남길 정보를 키워드·숫자로 1~4개 고른다. 한 화면에 동시에 보이는 부품은 5개 이하로 둔다.
 2. 정보 사이의 관계(나열·비교·원인과 결과·주인공 하나)를 정하고, 관계에 맞게 배치한다. 나열이면 같은 크기를 한 줄 또는 한 열로, 비교면 나란히, 주인공 하나면 크게 두고 나머지는 작게 둔다.
-3. 내레이션에서 그 정보가 나오는 순서대로 `at`을 정한다. 말보다 먼저 나오지 않게 단어 시각 0.1초 전을 기준으로 한다.
+3. 내레이션에서 그 정보가 나오는 순서대로 `at`을 정한다. cues json의 단어(없으면 구간) 시작 시각에서 장면 시작 시각을 빼고 0.1초를 더 뺀 값이다. 0보다 작으면 0.
 4. 사진 배경 장면은 강조 대상의 위치를 먼저 정하고, 칩·카드는 대상을 가리지 않는 빈 쪽에 둔다.
 5. 이어지는 두 장면이 같은 배치가 되지 않게 한다. 직전 장면과 정렬(가운데·왼쪽·오른쪽)이나 부품 배열 방향 중 하나 이상을 바꾼다.
 
@@ -50,7 +50,7 @@ disable-model-invocation: true
 | 부품 간격 | 동시에 보이는 부품끼리 24px 이상 |
 | 좌표 기준 | `x`, `y`는 부품의 가운데. `box`·`arrow`는 화면 절대 좌표 |
 
-렌더 스크립트는 안전 여백 침범, 자막 영역 침범, 24px 안쪽 겹침, 글자가 부품 폭을 넘는 경우를 `경고:`로 출력하고 종료 코드 1을 낸다. 경고가 남으면 배치를 고쳐 다시 렌더한다. `bar`·`arrow`는 자라는 부품이라 겹침 검사에서 빠지므로 스틸로 확인한다.
+렌더 스크립트는 안전 여백 침범, 자막 영역 침범, 24px 안쪽 겹침, 글자가 부품 폭을 넘는 경우를 `경고:`로 출력하고 종료 코드 1을 낸다. 경고가 남으면 배치를 고쳐 다시 렌더한다. `box`·`arrow`는 절대 좌표 표시라 이 검사를 받지 않으므로 스틸로 자막 영역·대상 위치를 확인한다.
 
 ## 스타일
 
@@ -78,12 +78,16 @@ disable-model-invocation: true
 |---|---|
 | `chapter` | 번호 Bold 150px(accent), 제목 Bold 88px, 아래 강조 막대 120×12px |
 | `card` | 720×360px, 모서리 28px, 제목 Bold 64px, 본문 Medium 40px, 안쪽 여백 40px |
-| `chip` | 글자 Medium 44px, 높이 64px 이상, 좌우 여백 28px, 알약 모양 |
+| `chip` | 글자 Medium 44px, 높이 64px 이상, 좌우 여백 28px, 알약 모양, 그림자 아래 4px·blur 10px |
 | `tile` | 240×240px, 모서리 32px, 위쪽 accent 띠 16px, 숫자 Bold 42%, 라벨 Medium 15% |
 | `stamp` | 지름 260px, 바깥 원 8px + 안쪽 원 3px, -12° 기울임, 글자 Bold 20% |
-| `bar` | 폭 1100px, 행 96px, 막대 두께 48px, 라벨 Medium 38px, 값 Bold 40px. 강조 행만 accent |
+| `bar` | 폭 1100px, 행 96px, 라벨 칸 260px, 값 칸 180px, 막대 두께 48px, 라벨 Medium 38px, 값 Bold 40px. 강조 행만 accent |
 | `box` | 테두리 8px accent, 채움 accent 20%, 모서리 12px |
 | `arrow` | 선 10px, 머리 34px, accent |
+| `dot` | 반지름 14px, accent |
+| `text` | Bold 64px, ink |
+
+색 값(`fill`·`color`·`ink`)은 hex 또는 theme 키 이름(예: `"accent"`)을 쓴다. `size`는 부품마다 뜻이 다르다. `chip`·`text`는 글자 px, `tile`은 한 변 px, `stamp`는 지름 px다.
 
 ### 모션
 
@@ -100,14 +104,15 @@ disable-model-invocation: true
 
 ## 장면 spec
 
-장면 spec은 `{"theme": {...}, "scenes": [...]}` JSON이다. 예시는 [scripts/example_scenes.json](scripts/example_scenes.json)이고, 이 예시의 배치는 형식을 보여 주는 한 가지 선택일 뿐이다. 새 장면은 위 "배치를 정하는 순서"로 정한다.
+장면 spec은 `{"theme": {...}, "scenes": [{"id": ..., "duration": ..., "bg": {...}, "elements": [...]}]}` JSON이다. 예시는 [scripts/example_scenes.json](scripts/example_scenes.json)이고, 이 예시의 배치는 형식을 보여 주는 한 가지 선택일 뿐이다. 새 장면은 위 "배치를 정하는 순서"로 정한다.
 
 | 키 | 위치 | 뜻 |
 |---|---|---|
 | `id` | 장면 | 장면 ID. 출력 파일 이름 |
 | `duration` | 장면 | 초. 내레이션 끝까지 덮는 길이 |
 | `version` | 장면 | 있으면 `<id>_<version>.mov`로 출력(예: `v2`) |
-| `bg` | 장면 | `{"type": "none"}`이면 투명 오버레이. `color`(`color`), `stripe`, `star`, `photo`(`file`, `crop` [x,y,w,h] 원본 픽셀, `zoom`, `pan`) |
+| `bg` | 장면 | 생략하거나 `{"type": "none"}`이면 투명 오버레이. `color`(`color`, 기본 theme `bg`), `stripe`, `star`, `photo`(`file`은 `--pic` 기준, `crop` [x,y,w,h] 원본 픽셀·생략하면 가운데 16:9, `zoom`, `pan`) |
+| `elements` | 장면 | 요소 배열(필수). 아래 "요소" 키를 가진 객체 목록 |
 | `captions` | 장면 | 기본 `true`. 자막 영역 검사 여부 |
 | `type` | 요소 | `card`, `chip`, `tile`, `stamp`, `dot`, `chapter`, `bar`, `box`, `arrow`, `text` |
 | `name` | 요소 | 경고·효과음 큐에 쓰는 이름 |
@@ -121,7 +126,7 @@ disable-model-invocation: true
 | `text`, `size`, `color`, `angle`, `text_size` | `stamp` | |
 | `r`, `color` | `dot` | |
 | `number`, `title`, `title_size`, `ink` | `chapter` | |
-| `items` [{`label`, `value`, `text`, `hi`}], `w`, `row`, `label_w`, `max` | `bar` | `text`는 값 대신 표시할 글자, `hi`는 강조 행 |
+| `items` [{`label`, `value`, `text`, `hi`}], `w`, `row`, `label_w`, `max` | `bar` | `value`(숫자)는 필수이고 막대 길이를 정함. `text`는 값 대신 표시할 글자, `hi`는 강조 행 |
 | `rect` [x,y,w,h], `color` | `box` | |
 | `from` [x,y], `to` [x,y], `color` | `arrow` | |
 | `text`, `size`, `weight`(`bold`/`medium`), `color` | `text` | |
@@ -134,18 +139,25 @@ disable-model-invocation: true
 
 ```bash
 mkdir -p "$HOME/Downloads/ref_<영상ID>/frames"
-yt-dlp -f "bv*[height<=1080]+ba/b" -o "$HOME/Downloads/ref_<영상ID>/ref.%(ext)s" "<URL>"
+yt-dlp -f "bv*[height<=1080]+ba/b" --merge-output-format mp4 -o "$HOME/Downloads/ref_<영상ID>/ref.%(ext)s" "<URL>"
 ffmpeg -i "$HOME/Downloads/ref_<영상ID>/ref.mp4" -vf fps=2 "$HOME/Downloads/ref_<영상ID>/frames/%05d.jpg"
 ```
 
-- 프레임을 contact sheet로 묶어 직접 열어 본다. 기록할 것: 배경색, 카드·칩·숫자 타일·도장·그래프의 모양과 hex, 등장 애니메이션 종류와 길이, 장면 길이, 스토리라인(훅 → 챕터 → 정보 → 마무리), 효과음이 들리는 시점.
+프레임 48장씩 한 장으로 묶은 contact sheet를 만든다.
+
+```bash
+ffmpeg -i "$HOME/Downloads/ref_<영상ID>/ref.mp4" -vf "fps=2,scale=320:-1,tile=8x6" "$HOME/Downloads/ref_<영상ID>/sheet_%03d.jpg"
+```
+
+- 레퍼런스 URL이 없으면 사용자에게 받는다. 받지 못하면 기본 theme으로 진행한다고 알리고 2단계로 간다.
+- contact sheet를 직접 열어 보고, 자세히 볼 구간만 `frames/`의 낱장을 연다. 기록할 것: 배경색, 카드·칩·숫자 타일·도장·그래프의 모양과 hex, 등장 애니메이션 종류와 길이, 장면 길이, 스토리라인(훅 → 챕터 → 정보 → 마무리), 효과음이 들리는 시점.
 - 기록은 `ref_<영상ID>/notes.md`에 스타일 규칙(hex, px, 초)으로 남긴다. 레퍼런스의 문구·장면 구성·배치는 옮기지 않는다. 배치는 우리 내레이션을 보고 새로 정한다.
 - 분석이 끝나면 `ref.mp4`는 지우고 `notes.md`와 contact sheet만 남긴다. 디스크가 부족했던 적이 있다.
 - 산출물(spec, MG, 보고)에 레퍼런스 URL·영상 ID·채널 이름을 넣지 않는다.
 
 ### 2. 타임라인 준비
 
-- 마지막 작업 타임라인을 `DuplicateTimeline`으로 복제해 복제본에서만 작업한다. 원본은 고치지 않는다.
+- 마지막 작업 타임라인(현재 열린 타임라인. 불분명하면 타임라인 목록을 보여 주고 사용자에게 확인)을 `DuplicateTimeline`으로 복제해 복제본에서만 작업한다. 원본은 고치지 않는다.
 - 복제본의 fps를 읽는다(`GetSetting("timelineFrameRate")`). 렌더 `--fps`에 같은 값을 넣는다. 23.976·29.97·59.94는 지원하며 `--fps 23.976`처럼 넘긴다. 렌더 결과 fps와 타임라인 fps가 다르면 배치하지 않고 멈춘다.
 - 내레이션 전사(cues json)를 기준으로 장면을 나눈다. 장면 하나 = 내레이션 주제 하나. 장면 표(장면ID, 시작 TC, 끝 TC, 내레이션 요약)를 먼저 만든다.
 - 장면마다 기존 사진·영상 컷을 줄일지, 지울지, 오버레이 배경으로 남길지 표에 적는다.
@@ -155,41 +167,42 @@ ffmpeg -i "$HOME/Downloads/ref_<영상ID>/ref.mp4" -vf fps=2 "$HOME/Downloads/re
 - MG에는 키워드·숫자만 쓴다. 자막과 같은 문장을 화면에 또 쓰지 않는다. 같은 시각에 MG 문구와 자막이 같은 말을 하면 고친다.
 - 문구는 `/akbun-writing:akbun-writing-naturalize` 기준으로 다듬어 AI 말투를 뺀다.
 - 확인되지 않은 이야기(투어 해설의 일화)는 "~라는", "전해지는"으로 쓴다. 단정하지 않는다.
+- 장면 표와 문구로 "레이아웃 원칙 > 배치를 정하는 순서"를 장면마다 따라 `<프로젝트>/mg/scenes.json`을 쓴다. `example_scenes.json`의 좌표를 복사하지 않는다.
 
 ### 4. 렌더
 
-먼저 글꼴을 확인한다. Gmarket Sans Bold·Medium이 없으면 렌더하지 않고 설치를 안내한 뒤 멈춘다. 스크립트는 `~/Library/Fonts`, `/Library/Fonts`, `~/.local/share/fonts`, `/usr/share/fonts`에서 찾고, 띄어쓰기가 네모로 그려지는 웹용 woff는 거부한다(종료 코드 2).
+먼저 글꼴을 확인한다. Gmarket Sans Bold·Medium이 없으면 렌더하지 않고 설치를 안내한 뒤 멈춘다. 스크립트는 `~/Library/Fonts`, `/Library/Fonts`, `~/.local/share/fonts`, `~/.fonts`, `/usr/share/fonts`, `/usr/local/share/fonts`에서 찾는다. 다른 위치면 `--font-bold <경로> --font-medium <경로>`로 넘긴다. 띄어쓰기 글리프가 비어 있지 않은 글꼴(웹용 woff 변환본 등)은 띄어쓰기가 네모로 그려지므로 거부한다(종료 코드 2).
 
-배치 확인용 contact sheet(장면마다 시작·중간·끝)를 먼저 만든다.
+`<스킬 폴더>`는 이 SKILL.md가 있는 폴더의 절대 경로, `<타임라인 fps>`는 2단계에서 읽은 값이다. 배치 확인용 contact sheet(장면마다 시작·중간·끝)를 먼저 만든다.
 
 ```bash
-uv run -q --python 3.12 scripts/render_mg.py --spec <프로젝트>/mg/scenes.json --fps 24 --out <프로젝트>/mg/out --pic <프로젝트>/photos --stills S01 S02
+uv run -q --python 3.12 <스킬 폴더>/scripts/render_mg.py --spec <프로젝트>/mg/scenes.json --fps <타임라인 fps> --out <프로젝트>/mg/out --pic <프로젝트>/photos --stills S01 S02
 ```
 
-`<프로젝트>/mg/out/stills/contact.jpg` 한 장을 열어 보고 경고와 함께 배치를 고친 뒤 MOV를 렌더한다.
+`<프로젝트>/mg/out/stills/contact.jpg` 한 장을 열어 보고 경고와 함께 배치를 고친 뒤 MOV를 렌더한다. `--stills`는 시작·중간·끝 프레임에 보이는 요소만 검사하고 `events.json`을 쓰지 않는다. 그 사이에만 보이는 요소가 있으면 MOV 렌더의 경고까지 확인한다.
 
 ```bash
-uv run -q --python 3.12 scripts/render_mg.py --spec <프로젝트>/mg/scenes.json --fps 24 --out <프로젝트>/mg/out --pic <프로젝트>/photos S01 S02
+uv run -q --python 3.12 <스킬 폴더>/scripts/render_mg.py --spec <프로젝트>/mg/scenes.json --fps <타임라인 fps> --out <프로젝트>/mg/out --pic <프로젝트>/photos S01 S02
 ```
 
 - 장면 ID를 비우면 전체 장면을 렌더한다. 같은 이름 MOV가 있으면 건너뛰고, 덮어쓰려면 `--force`.
 - 스크립트는 렌더 뒤 ffprobe로 프레임 수(= `round(duration × fps)`)와 ProRes 4444 알파 여부를 확인하고, 다르면 실패한다. `events.json`은 렌더한 장면만 갱신한다.
-- 전체 화면 장면(`bg`가 있음)과 오버레이 장면(`bg.type: none`, 사진 위에 칩·화살표)을 구분한다.
+- 전체 화면 장면(`bg.type`이 `color`·`stripe`·`star`·`photo`)과 오버레이 장면(`bg` 생략 또는 `bg.type: none`, 사진 위에 칩·화살표)을 구분한다.
 - 사진 배경 장면은 `crop`으로 고정 크롭하고 강조 대상을 `box` + `arrow` + `chip`으로 가리킨다. 강조할 대상의 위치가 모호하면 추측하지 말고 사진 캡처를 보여 주며 사용자에게 먼저 확인한다. 오른쪽 담장을 잘못 강조했다가 가운데 마루로 고친 사례가 있다.
 - 재렌더로 길이가 바뀌면 `version`을 올려(`v2`) 새 이름으로 렌더하고 다시 import한다. `ReplaceClip`은 캐시 때문에 바뀐 길이가 반영되지 않는다.
 
 ### 5. 배치
 
-- 전체 화면 MG는 메인 트랙(V2)에, 오버레이는 그 위 `MG_OVERLAY` 트랙에 놓는다. 트랙이 없으면 새로 만들고, 다른 클립을 덮어쓰지 않는다.
+- 전체 화면 MG는 메인 트랙(V2)에, 오버레이는 그 위 `MG_OVERLAY` 트랙에 놓는다. 트랙이 없으면 새로 만든다. 장면 표에서 줄이거나 지우기로 한 컷을 먼저 처리한 뒤 빈 자리에만 놓고, 그 밖의 클립은 덮어쓰지 않는다.
 - 오버레이 클립의 Composite/Alpha mode는 Straight로 둔다.
 - MG 장면은 해당 내레이션이 끝날 때까지 유지한다. 내레이션보다 먼저 장면이 바뀌면 `duration`을 늘려 다시 렌더한다(3초 늘린 사례가 있다).
-- 훅(앞 약 50초)에도 MG 오버레이를 넣는다.
+- 장면 표의 훅 구간(보통 앞 약 50초)에도 MG 오버레이를 넣는다.
 - 놓은 뒤 클립마다 시작 프레임과 트랙별 클립 수를 다시 읽어 장면 표와 대조한다.
 
 ### 6. 전환
 
-- 훅 끝: Fusion 전환(예: mJourney Transition 09). duration 24, alignment right로 넣어야 제 길이로 들어간다.
-- 장면 사이: Cross Dissolve 0.3초(24fps면 7프레임).
+- 훅 끝: Fusion 전환(예: mJourney Transition 09). duration 1초(타임라인 fps만큼의 프레임, 24fps면 24), alignment right로 넣어야 제 길이로 들어간다.
+- 장면 사이: Cross Dissolve 0.3초(24fps면 7프레임), alignment center. 소스 여유가 한쪽만 있으면 그쪽에 맞춘 정렬로 다시 넣는다.
 - API: `TimelineItem.AddTransition({"type": <이름>, "category": "simple"|"fusion", "position": "end", "alignment": <정렬>, "duration": <프레임>})`.
 - 넣은 뒤 전환 길이를 다시 읽는다. 소스 여유가 없어 1~2프레임만 들어간 전환은 목록으로 보고한다.
 
@@ -201,7 +214,7 @@ uv run -q --python 3.12 scripts/render_mg.py --spec <프로젝트>/mg/scenes.jso
 
 ### 8. 정리
 
-- 새 버전 MG·영상을 만들면 이전 버전 파일은 지운다. 사용자가 용량 부족을 말한 적이 있다.
+- 새 버전 MG·영상을 만들면 이전 버전 파일(`<프로젝트>/mg/out/`의 이전 `version` MOV, 이전 렌더 영상)은 지운다. 사용자가 용량 부족을 말한 적이 있다.
 - 지우기 전에 미디어 풀에서 그 파일을 쓰는 클립이 없는지 확인한다. 쓰는 타임라인이 있으면 지우지 않고 보고한다.
 
 ## Resolve 21.1 주의사항
@@ -231,5 +244,5 @@ uv run -q --python 3.12 scripts/render_mg.py --spec <프로젝트>/mg/scenes.jso
 
 | 명령 | 하는 일 |
 |---|---|
-| `render_mg.py --selftest` | easing·pop 곡선, 등장·퇴장, fps 파싱, 효과음 큐, 자막 영역·겹침 경고, 공백 글리프 검사, 12프레임 MOV 인코딩·ffprobe 확인 |
-| `render_mg.py --spec ... --fps ... --out ... [--pic ...] [--stills] [--force] [ID...]` | 장면 렌더 또는 contact sheet. 종료 코드 0 정상, 1 레이아웃 경고 있음, 2 글꼴·인자 오류 |
+| `render_mg.py --selftest` | easing·pop 곡선, 등장·퇴장, fps 파싱, 효과음 큐, 자막 영역(bar 포함)·겹침 경고, 공백 글리프 검사, 12프레임 MOV 인코딩·ffprobe 확인 |
+| `render_mg.py --spec ... --fps ... --out ... [--pic DIR(기본 .)] [--font-bold P] [--font-medium P] [--stills] [--force] [ID...]` | 장면 렌더 또는 contact sheet. 종료 코드 0 정상, 1 레이아웃 경고(`경고:` 줄), 2 글꼴·인자·없는 장면 ID, 3 spec·렌더 오류(중복 id, 모르는 type, `at` ≥ 길이, ffmpeg 실패, 프레임 수·형식 불일치) |
