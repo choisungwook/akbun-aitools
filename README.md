@@ -129,6 +129,9 @@ codex plugin list --json
 <td><a href="./plugins/akbun-editvideo/skills/akbun-edit-terminal-callout-amber/SKILL.md"><img src="./imgs/akbun-edit-terminal-callout-amber.jpg" alt="akbun-edit-terminal-callout-amber" width="400"></a><br><code>akbun-edit-terminal-callout-amber</code></td>
 <td><a href="./plugins/akbun-editvideo/skills/akbun-davinciresolve-explainer/SKILL.md"><img src="./imgs/akbun-davinciresolve-explainer.gif" alt="akbun-davinciresolve-explainer" width="400"></a><br><code>akbun-davinciresolve-explainer</code></td>
 </tr>
+<tr>
+<td><a href="./plugins/akbun-editvideo/skills/akbun-davinciresolve-motion-stamp/SKILL.md"><img src="./imgs/akbun-davinciresolve-motion-stamp.jpg" alt="akbun-davinciresolve-motion-stamp" width="400"></a><br><code>akbun-davinciresolve-motion-stamp</code></td>
+</tr>
 </table>
 
 ### explainer 색 조합과 도형 스타일
@@ -320,6 +323,7 @@ $akbun-davinciresolve-explainer 이 대본을 fiery-ocean 색, akbun 도형으�
 | [akbun-davinciresolve-explainer-scribble-black](./plugins/akbun-editvideo/skills/akbun-davinciresolve-explainer-scribble-black/) | 보드에 써 내려가는 손그림 설명 영상을 Resolve에서 고치며 만들 때 |
 | [akbun-davinciresolve-explainer-slate-marker](./plugins/akbun-editvideo/skills/akbun-davinciresolve-explainer-slate-marker/) | 카드와 상태 변화로 시스템 동작을 보여 주는 설명 영상을 Resolve에서 고치며 만들 때 |
 | [akbun-davinciresolve-explainer-live-ink](./plugins/akbun-editvideo/skills/akbun-davinciresolve-explainer-live-ink/) | 손글씨로 적어 가는 설명 영상을 Resolve에서 고치며 만들 때 |
+| [akbun-davinciresolve-motion-stamp](./plugins/akbun-editvideo/skills/akbun-davinciresolve-motion-stamp/) | 내레이션 영상의 사진 컷을 숫자·키워드 모션그래픽으로 바꿀 때 |
 | [akbun-davinciresolve-narration-cleanup](./plugins/akbun-editvideo/skills/akbun-davinciresolve-narration-cleanup/) | 녹음한 내레이션의 숨소리·긴 쉼을 정리할 때 |
 | [akbun-edit-page-tour-lilac](./plugins/akbun-editvideo/skills/akbun-edit-page-tour-lilac/) | 웹 페이지 스크린샷을 짚어 가며 설명할 때 |
 | [akbun-edit-quote-cards-lilac](./plugins/akbun-editvideo/skills/akbun-edit-quote-cards-lilac/) | 인용 글 카드를 쌓고 형광펜으로 강조할 때 |

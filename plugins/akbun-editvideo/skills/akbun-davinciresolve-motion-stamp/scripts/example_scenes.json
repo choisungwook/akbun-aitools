@@ -1,0 +1,98 @@
+{
+  "theme": {},
+  "scenes": [
+    {
+      "id": "S01",
+      "duration": 4.0,
+      "bg": {
+        "type": "stripe"
+      },
+      "elements": [
+        {
+          "type": "chapter",
+          "name": "chapter",
+          "number": "01",
+          "title": "둘레길",
+          "x": 560,
+          "y": 420,
+          "at": 0.0,
+          "anim": "rise"
+        },
+        {
+          "type": "tile",
+          "name": "distance",
+          "value": "3.2",
+          "label": "km",
+          "x": 1160,
+          "y": 300,
+          "at": 1.0,
+          "anim": "pop"
+        },
+        {
+          "type": "tile",
+          "name": "time",
+          "value": "90",
+          "label": "분",
+          "x": 1160,
+          "y": 680,
+          "at": 1.4,
+          "anim": "pop"
+        },
+        {
+          "type": "stamp",
+          "name": "stamp",
+          "text": "완주",
+          "x": 1530,
+          "y": 560,
+          "at": 2.4,
+          "anim": "pop"
+        }
+      ]
+    },
+    {
+      "id": "S02",
+      "duration": 3.0,
+      "bg": {
+        "type": "none"
+      },
+      "elements": [
+        {
+          "type": "box",
+          "name": "target",
+          "rect": [
+            820,
+            360,
+            360,
+            240
+          ],
+          "at": 0.2,
+          "anim": "fade",
+          "sfx": "pop"
+        },
+        {
+          "type": "arrow",
+          "name": "pointer",
+          "from": [
+            520,
+            240
+          ],
+          "to": [
+            800,
+            420
+          ],
+          "at": 0.5,
+          "sfx": "whoosh"
+        },
+        {
+          "type": "chip",
+          "name": "label",
+          "text": "전망대",
+          "x": 420,
+          "y": 200,
+          "at": 0.8,
+          "anim": "pop"
+        }
+      ]
+    }
+  ]
+}
