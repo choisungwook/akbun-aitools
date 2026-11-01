@@ -108,6 +108,10 @@ codex plugin list --json
 
 </td>
 </tr>
+<tr>
+<td><a href="./plugins/akbun-draw/skills/akbun-draw-style-bori/SKILL.md"><img src="./imgs/akbun-draw-style-bori.jpg" alt="akbun-draw-style-bori" width="400"></a><br><code>akbun-draw-style-bori</code></td>
+<td></td>
+</tr>
 </table>
 
 ### akbun-presentation 예시
@@ -196,6 +200,7 @@ $akbun-davinciresolve-explainer 이 대본을 fiery-ocean 색, akbun 도형으�
 | [akbun-draw-webtoon-d](./plugins/akbun-draw/skills/akbun-draw-webtoon-d/) | 이야기를 흑백 다큐툰 장면으로 그릴 때 |
 | [akbun-draw-sketchbook-card](./plugins/akbun-draw/skills/akbun-draw-sketchbook-card/) | 개념 하나를 스케치북 카드 한 장으로 정리할 때 |
 | [akbun-draw-quiet-pencil](./plugins/akbun-draw/skills/akbun-draw-quiet-pencil/) | 여백 많은 조용한 연필 장면 그림이 필요할 때 |
+| [akbun-draw-style-bori](./plugins/akbun-draw/skills/akbun-draw-style-bori/) | 아늑한 배경 속 동글동글한 동물들의 일상 장면 그림이 필요할 때 |
 | [akbun-draw-learning-mono](./plugins/akbun-draw/skills/akbun-draw-learning-mono/) | 논문·학습 자료를 흑백 16:9 학습 이미지와 대본으로 바꿀 때 |
 | [akbun-draw-travel-blog](./plugins/akbun-draw/skills/akbun-draw-travel-blog/) | 여행 글에 넣을 썸네일·약도 삽화가 필요할 때 |
 | [akbun-draw-thumbnail-retro](./plugins/akbun-draw/skills/akbun-draw-thumbnail-retro/) | IT·여행 글과 영상의 썸네일을 레트로 포스터처럼 만들고 싶을 때 |

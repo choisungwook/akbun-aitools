@@ -1,0 +1,39 @@
+{
+  "palette": "overcast",
+  "composition": "vista",
+  "season": "spring",
+  "scene": "Three neighbors spend a cloudy spring morning looking after a shared rooftop vegetable garden.",
+  "setting": "the flat roof of an old apartment building with raised wooden planters and the city spreading out beyond a low brick parapet",
+  "characters": [
+    {
+      "id": "mole",
+      "action": "digs a small hole for seedlings in a planter"
+    },
+    {
+      "id": "goat",
+      "action": "waters lettuce with a dented tin watering can"
+    },
+    {
+      "id": "sheep",
+      "action": "rests on a folding stool under a striped canvas awning"
+    }
+  ],
+  "props": [
+    "raised wooden planters with lettuce and tomato vines",
+    "a striped canvas awning on poles",
+    "terracotta pots of herbs",
+    "a wheelbarrow of soil",
+    "a laundry line with towels",
+    "a rooftop water tank",
+    "a low brick parapet",
+    "distant apartment blocks and a radio tower",
+    "seed packets on a crate",
+    "a tiny greenhouse frame"
+  ],
+  "lights": [
+    "soft diffused daylight through thin clouds"
+  ],
+  "signs": [
+    "HERBS"
+  ]
+}
