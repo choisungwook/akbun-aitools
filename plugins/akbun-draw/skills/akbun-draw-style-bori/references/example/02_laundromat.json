@@ -1,0 +1,45 @@
+{
+  "palette": "lamp-interior",
+  "composition": "wide-room",
+  "season": "autumn",
+  "scene": "Neighbors wait for their laundry together in a quiet corner laundromat on a rainy evening.",
+  "setting": "a small corner laundromat with a row of round-door washing machines and rain-streaked windows",
+  "characters": [
+    {
+      "id": "raccoon",
+      "action": "folds a striped towel on the long counter"
+    },
+    {
+      "id": "frog",
+      "action": "reads a paperback on a wooden bench"
+    },
+    {
+      "id": "seal",
+      "action": "watches a machine spin with its nose close to the glass"
+    },
+    {
+      "id": "red-panda",
+      "action": "carries a wicker basket of socks toward a dryer"
+    }
+  ],
+  "props": [
+    "round-door washing machines",
+    "stacked dryers",
+    "a long folding counter",
+    "a wooden bench",
+    "a coin changer on the wall",
+    "potted pothos hanging from the ceiling",
+    "a bulletin board with notes",
+    "a vending machine of detergent",
+    "plastic laundry baskets",
+    "a radio on a shelf",
+    "rain-streaked windows with a street outside"
+  ],
+  "lights": [
+    "warm pendant lamps",
+    "the glow from the vending machine"
+  ],
+  "signs": [
+    "WASH & DRY"
+  ]
+}

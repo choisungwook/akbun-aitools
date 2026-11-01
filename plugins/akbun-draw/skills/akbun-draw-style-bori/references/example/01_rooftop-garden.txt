@@ -1,0 +1,19 @@
+Cozy hand-drawn 2D digital illustration, landscape 16:9, like a still frame from a fresh lo-fi slice-of-life animation.
+
+COMPOSITION: Outdoor vista: one large foreground element (tree, wall, railing or tent) fills one side of the frame, characters work or rest near it, and a distant landscape with the horizon in the upper third opens on the other side.
+
+SCENE: Three neighbors spend a cloudy spring morning looking after a shared rooftop vegetable garden. Setting: the flat roof of an old apartment building with raised wooden planters and the city spreading out beyond a low brick parapet.
+
+CHARACTERS (3): 1. a round cocoa-brown mole (#6E5446) with a pink nose, tiny eyes behind small spectacles and oversized work gloves, digs a small hole for seedlings in a planter. 2. a round off-white goat (#EFE6D6) with small curved horns, a chin tuft and a brass bell on a ribbon collar, waters lettuce with a dented tin watering can. 3. a cloud-shaped sheep with fluffy cream fleece (#F2EBDD), a dark grey face and dark grey legs, rests on a folding stool under a striped canvas awning.
+
+PROPS: raised wooden planters with lettuce and tomato vines, a striped canvas awning on poles, terracotta pots of herbs, a wheelbarrow of soil, a laundry line with towels, a rooftop water tank, a low brick parapet, distant apartment blocks and a radio tower, seed packets on a crate, a tiny greenhouse frame.
+
+LIGHT: soft diffused daylight through thin clouds.
+
+SIGNS: A small hand-lettered sign reads "HERBS". Screens, boards, books, papers and labels show only simple shapes, never letters.
+
+COLOR PALETTE (soft overcast daytime): build the whole image mainly from these colors: white #F6F9F8; mist #DCE8E6; sage #9DBFB3; slate teal #7BA1A6; coral #E8907F; butter #F2DE9C; deep #3F5F66.
+
+STYLE: Every shape, including the whole background, is outlined with one bold, even, slightly wobbly hand-drawn line in deep teal ink (#2F4858), about 4 px at 1280 px width, with rounded ends. Inner details use the same ink, thinner. Never pure black lines, no sketchy hatching or texture strokes. Shapes are simplified and chunky like a picture book. Flat cel coloring: each surface has one base color, one hard-edged shadow tone and a few small highlight shapes. Foliage is outlined leaf clumps, clouds are flat outlined puffs. No soft airbrush shading, no 3D rendering, no glossy reflections on floors or glass. Only the sky may use a smooth vertical gradient. A very faint paper grain over the whole image; colors are fresh and soft in a mint and coral family, never neon. Browns appear only on small wooden details; walls, floors, sky and other large surfaces use the palette colors. The background is as detailed as the characters: a lived-in place full of small props (plants, lamps, books, jars, frames, signs, furniture), drawn with the same outline and flat colors. Architecture is straight and tidy. No blur or depth of field; distance is shown only by smaller scale and lighter, hazier color. Warm light sources (lamps, candles, string lights, windows, low sun) each have a soft round butter-yellow glow that lightly tints nearby surfaces. Weather, if any, stays flat: rain is short straight streaks and flat puddle shapes, snow is flat round dots and outlined snow caps on roofs. Characters are original small round chibi animals: head about half of the total height, short stubby limbs, tiny black dot eyes, a small simple mouth, optional faint pink blush, a slightly fluffy outline on fur. They keep the size the composition gives them, never bigger, and behave calmly like ordinary people. Warm, cozy, gently humorous everyday moment in spring; characters may be busy but never frantic.
+
+DO NOT: no photorealism, no 3D, no anime-style big shiny eyes, no thick black outlines, no heavy gradients on objects, no humans, no dogs, no cats, no hamsters, no existing mascots or brand characters, no watermark, no captions; written words only on the listed signs.

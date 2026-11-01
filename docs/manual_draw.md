@@ -35,6 +35,7 @@
 | 시스템 흐름을 아이가 그린 듯한 다이어그램으로 보여 주고 싶음 | [akbun-draw-crayon-milo](../plugins/akbun-draw/skills/akbun-draw-crayon-milo/SKILL.md) | 크레용 다이어그램 프롬프트 |
 | 개념 하나를 카드 한 장으로 정리하고 싶음 | [akbun-draw-sketchbook-card](../plugins/akbun-draw/skills/akbun-draw-sketchbook-card/SKILL.md) | 스파이럴 스케치북 카드 프롬프트 |
 | 여백 많은 조용한 일상 장면 그림이 필요함 | [akbun-draw-quiet-pencil](../plugins/akbun-draw/skills/akbun-draw-quiet-pencil/SKILL.md) | 크림 배경 연필 장면 프롬프트 |
+| 소품 가득한 아늑한 배경 속 동물 캐릭터 일상 장면이 필요함 | [akbun-draw-style-bori](../plugins/akbun-draw/skills/akbun-draw-style-bori/SKILL.md) | 갈색 손그림 선·셀 채색 장면 프롬프트(spec을 스크립트가 조립·채점) |
 | 논문·학습 자료를 이미지와 설명 대본으로 바꾸고 싶음 | [akbun-draw-learning-mono](../plugins/akbun-draw/skills/akbun-draw-learning-mono/SKILL.md) | 흑백 16:9 학습 이미지와 대본 |
 | 여행 글에 넣을 썸네일·약도 삽화가 필요함 | [akbun-draw-travel-blog](../plugins/akbun-draw/skills/akbun-draw-travel-blog/SKILL.md) | 썸네일·코스 약도 프롬프트 |
 | IT·여행 글이나 영상의 유튜브·티스토리 썸네일을 포스터처럼 만들고 싶음 | [akbun-draw-thumbnail-retro](../plugins/akbun-draw/skills/akbun-draw-thumbnail-retro/SKILL.md) | 70년대 필름 사진 위 레트로 디스플레이 글자 썸네일 프롬프트(16:9·1:1) |
