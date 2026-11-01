@@ -1,0 +1,52 @@
+{
+  "title": "새벽 세 시의 알림",
+  "cast": [
+    {"id": "p-engineer", "gender": "man", "age": "thirties", "height": "short", "build": "stocky", "face": "round", "skin": "brown",
+     "hair": "short tight curls and thin wire glasses", "outfit": "a baggy hooded sweatshirt and soft sweatpants", "color": "plum"},
+    {"id": "p-neighbor", "gender": "woman", "age": "elderly", "height": "very-tall", "build": "thin", "face": "long", "skin": "very-light",
+     "hair": "a long white braid over one shoulder", "outfit": "a long quilted vest over a knit dress", "color": "grey-green"}
+  ],
+  "shots": [
+    {
+      "id": "night-alert", "palette": "night-blue", "camera": "locked-wide",
+      "scene": "In a dark studio apartment a phone lights up on the nightstand while its owner sleeps.",
+      "setting": "a small studio apartment at 3 a.m. with a tall window over a foggy city",
+      "characters": [{"id": "p-engineer", "action": "sleeps curled under a thick blanket"}],
+      "props": ["narrow bed with a rumpled blanket", "nightstand", "glowing phone", "tall window with distant city lights", "stack of books on the floor"],
+      "accent": "a red alarm clock",
+      "caption": ["새벽 세 시,", "휴대폰만 홀로 깨어 있습니다…"],
+      "seconds": 3.3,
+      "poses": [
+        "The stocky man in the plum hoodie lifts his head from the pillow and squints toward the glowing phone.",
+        "The stocky man in the plum hoodie pushes himself up on one elbow and grabs the glowing phone.",
+        "The stocky man in the plum hoodie sits on the edge of the bed, holding the glowing phone close to his face."
+      ]
+    },
+    {
+      "id": "kitchen-fix", "palette": "amber-interior", "camera": "close-detail",
+      "scene": "Close on hands typing fast on a laptop at a kitchen table under a single hanging lamp.",
+      "setting": "a cramped kitchen table late at night",
+      "characters": [{"id": "p-engineer", "action": "types quickly on the laptop keys"}],
+      "props": ["open laptop with a glowing screen", "hanging lamp", "crumpled sticky notes", "plate with half a cracker"],
+      "accent": "a red coffee mug",
+      "caption": ["식은 커피 옆에서", "손가락만 바쁘게 움직이고"],
+      "seconds": 3.3,
+      "poses": ["The hands stop typing; one hand lifts off the keys and wraps around the red coffee mug."]
+    },
+    {
+      "id": "dawn-balcony", "palette": "dawn-haze", "camera": "locked-wide",
+      "scene": "At sunrise on neighboring apartment balconies, the tired engineer steps out while an early-rising neighbor tends plants.",
+      "setting": "two narrow balconies side by side above a hazy city at dawn",
+      "characters": [{"id": "p-engineer", "action": "leans on the railing holding a pale coffee mug"}, {"id": "p-neighbor", "action": "waters potted plants on the next balcony"}],
+      "props": ["iron balcony railings", "potted plants", "hazy rooftops and water towers", "laundry line"],
+      "accent": "a red watering can",
+      "caption": ["해가 뜰 무렵, 도시는", "아무 일 없던 얼굴입니다"],
+      "seconds": 3.4,
+      "poses": [
+        "The stocky man in the plum hoodie sets the mug on the railing and starts to raise his arms.",
+        "The stocky man in the plum hoodie stretches both arms high while the tall old woman looks over at him.",
+        "The tall old woman in the grey-green vest waves at the stretching man, who waves back with one hand."
+      ]
+    }
+  ]
+}

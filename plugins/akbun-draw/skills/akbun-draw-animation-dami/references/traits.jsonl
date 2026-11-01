@@ -1,0 +1,7 @@
+{"id": "gender", "ko": "성별", "options": {"woman": "woman", "man": "man"}}
+{"id": "age", "ko": "나이", "options": {"teen": "teenage", "twenties": "young", "thirties": "thirty-something", "middle-aged": "middle-aged", "elderly": "elderly"}}
+{"id": "height", "ko": "키", "options": {"very-short": "very short", "short": "short", "average": "average-height", "tall": "tall", "very-tall": "very tall"}}
+{"id": "build", "ko": "체격", "options": {"thin": "thin, bony", "slim": "slim", "average": "medium", "stocky": "stocky", "round": "round, soft", "broad": "broad-shouldered"}}
+{"id": "face", "ko": "얼굴형", "options": {"round": "round", "long": "long", "square": "square-jawed", "heart": "heart-shaped", "angular": "sharp, angular"}}
+{"id": "skin", "ko": "피부", "options": {"very-light": "very light", "light": "light", "olive": "olive", "tan": "tan", "brown": "brown", "deep-brown": "deep brown"}}
+{"id": "color", "ko": "옷 주색(붉은색 제외, 붉은색은 accent 전용)", "options": {"mustard": "mustard #C9A04A", "grey-green": "grey-green #6E7F6A", "teal": "teal #3E6E66", "pale-grey": "pale grey #B8BCC0", "camel": "camel #B08A5E", "cream": "cream #E4DCC8", "slate-blue": "slate blue #5A6B80", "olive": "olive #7A7448", "plum": "dusty plum #7A5C6E", "charcoal": "charcoal #3A3F44", "sand": "sand #CDB898"}}
