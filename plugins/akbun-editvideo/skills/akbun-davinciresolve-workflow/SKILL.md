@@ -1,6 +1,6 @@
 ---
 name: akbun-davinciresolve-workflow
-description: 말소리 없는 여행 브이로그를 DaVinci Resolve 21.1에서 처음부터 끝까지 편집하는 workflow 오케스트레이터. 미디어 풀 영상 전부를 촬영 시간순 타임라인으로 만드는 것(akbun-davinciresolve-timeline-chrono)이 항상 첫 단계이고, 그 복제본에 비디오·오디오 트랙을 3개씩 준비한 뒤 컷·안정화(davinciresolve-cut-travelflow) → 라벨 노드(EXPOSURE→WB→CST→CONTRAST→SAT) 기본 색보정(logconvert → exposure → whitebalance → contrast → saturation) → 요청된 look skill과 새 LOOK 노드 → 얼굴 모자이크(davinciresolve-face-privacy) → 한글 자막·챕터(travelnote 내용 규칙, 외형 미지정은 akbun-davinciresolve-caption-template의 Cinema) 순서로 각 skill의 SKILL.md를 읽어 직접 수행하고 마커 등록표·단계별 완료 조건·검증·작업 로그를 관리한다. "이 프로젝트 편집 계획 세워서 끝까지 해줘", "영상 전부 시간순으로 놓고 색보정까지 해줘", "타임라인 정리부터 자막까지" 요청에 사용한다. 사용자가 직접 호출할 때만 실행한다.
+description: 말소리 없는 여행 브이로그를 DaVinci Resolve 21.1에서 처음부터 끝까지 편집하는 workflow 오케스트레이터. 미디어 풀 영상 전부를 촬영 시간순 타임라인으로 만드는 것(akbun-davinciresolve-timeline-chrono)이 항상 첫 단계이고, 그 복제본에 비디오·오디오 트랙을 3개씩 준비한 뒤 컷·안정화(davinciresolve-cut-travelflow) → 라벨 노드(EXPOSURE→WB→CST→CONTRAST→SAT) 기본 색보정(logconvert → exposure → whitebalance → contrast → saturation) → 요청된 look skill과 새 LOOK 노드 → 얼굴 모자이크(davinciresolve-face-privacy) → 한글 자막·챕터(akbun-davinciresolve-make-caption, 외형 미지정은 Cinema) 순서로 각 skill의 SKILL.md를 읽어 직접 수행하고 마커 등록표·단계별 완료 조건·검증·작업 로그를 관리한다. "이 프로젝트 편집 계획 세워서 끝까지 해줘", "영상 전부 시간순으로 놓고 색보정까지 해줘", "타임라인 정리부터 자막까지" 요청에 사용한다. 사용자가 직접 호출할 때만 실행한다.
 disable-model-invocation: true
 ---
 
@@ -27,7 +27,7 @@ Resolve는 한 프레임에 마커 1개만 허용한다. 종류마다 색·대�
 
 | 색 | 이름 | 대상 | 오프셋 | 찍는 skill |
 |---|---|---|---|---|
-| Blue | `CHAPTER <장소명·행사명 또는 비트 이름>` | 타임라인 마커 | 장면·비트 시작 프레임 | `davinciresolve-subtitle-travelnote`, `davinciresolve-style-project` |
+| Blue | `CHAPTER <장소명·행사명 또는 비트 이름>` | 타임라인 마커 | 장면·비트 시작 프레임 | `akbun-davinciresolve-make-caption`, `davinciresolve-style-project` |
 | Purple | `PRIVACY_MOSAIC <파일명> <창 개수>개` | 클립 마커 | +0 | `davinciresolve-face-privacy` |
 | Pink | `PRIVACY_CHECK <파일명> <사유>` | 클립 마커 | +1 | `davinciresolve-face-privacy` |
 | Red | `CUT_DONE <사유>` | 클립 마커 | +2 | `davinciresolve-cut-travelflow` |
@@ -103,7 +103,7 @@ API가 있어도 없는 기능이 있다. 기능별 API 유무·버전 조건·�
 | 11 | 채도 | `akbun-davinciresolve-saturation` | 대역 미달 없음 |
 | 12 | 창작 look | 사용자가 고른 `akbun-davinciresolve-look-*` skill | 기본 보정이 끝난 뒤 해당 style skill을 읽는다. Color 페이지에서 새 Serial 노드를 추가해 `LOOK`으로 라벨하고 이 노드에만 창작 조정을 한다. 룩 LUT를 지정하지 않아도 노드는 새로 만든다. Look을 요청하지 않았으면 적용하지 않는다 |
 | 13 | 얼굴과 개인정보 모자이크 | `davinciresolve-face-privacy` | 모자이크 클립마다 `PRIVACY_MOSAIC` 클립 마커와 노드 존재 |
-| 14 | 한글 자막과 챕터 마커(외형 미지정은 Cinema) | `davinciresolve-subtitle-travelnote`의 외형 선택 규칙. 기본은 `akbun-davinciresolve-caption-template` | 자막이 `SUBTITLE` 트랙과 안전 영역 안에 있고 V1·다른 트랙·마커가 밀리지 않았으며 챕터 마커가 장소 변경 지점마다 존재 |
+| 14 | 한글 자막과 챕터 마커(외형 미지정은 Cinema) | `akbun-davinciresolve-make-caption`. 외형 미지정은 Cinema | 자막이 `SUBTITLE` 트랙과 안전 영역 안에 있고 V1·다른 트랙·마커가 밀리지 않았으며 챕터 마커가 장소 변경 지점마다 존재 |
 | 15 | YouTube 챕터 마커 최종 정리 | 이 skill | 마커 이름이 장소명·행사명이고 첫 `CHAPTER`가 타임라인 시작(마커 상대 프레임 0)에 있고 `00:00`부터 시간과 장소명이 표시되며 3개 이상 |
 
 1단계 세부 규칙이다.
@@ -125,7 +125,7 @@ API가 있어도 없는 기능이 있다. 기능별 API 유무·버전 조건·�
 |---|---|---|---|
 | 비디오 | `OVERLAY` | 본편 위에 겹치는 영상 | 컷 skill |
 | 비디오 | `GFX` | 그래픽 카드 | 사용자가 선택한 그래픽 제작 도구 |
-| 비디오 | `SUBTITLE` | 자막·챕터 제목 Text+ | `davinciresolve-subtitle-travelnote` |
+| 비디오 | `SUBTITLE` | 자막·챕터 제목 Text+ | `akbun-davinciresolve-make-caption` |
 | 오디오 | `AMBIENCE` | 환경음 | 사용자가 직접 배치 |
 | 오디오 | `SFX` | 효과음 | 사용자가 직접 배치 |
 | 오디오 | `MUSIC` | BGM | 사용자가 직접 배치 |
@@ -251,7 +251,7 @@ python3 scripts/workflow.py nodes --timeline "<작업 타임라인>" --profile "
 
 사용자가 look을 요청한 경우 선택한 skill 이름과 새 `LOOK` Serial 노드에서 조정한 목적을 기록한다. 요청한 룩 노드가 없거나 기존 노드에 창작 조정이 섞여 있으면 다음 단계로 넘어가지 않는다. 사용자가 요청하지 않았다면 `LOOK 없음`으로 남긴다.
 ## 모자이크                           ← face-privacy
-## 자막·챕터                          ← subtitle-travelnote
+## 자막·챕터                          ← make-caption
 ## 검증
 ## 확인 필요                          ← 각 표의 확인 필요 행과 마커(EXPOSURE_CHECK, WB_CHECK, PRIVACY_CHECK, CUT_REVIEW) 모음
 ```

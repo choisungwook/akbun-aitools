@@ -16,7 +16,7 @@
 2. 사용할 글꼴을 설치한다. 아래 글꼴 표를 참고한다.
 3. Finder에서 `.drfx`를 더블클릭하고 Resolve의 설치 창에서 설치한다. 일반 미디어 Import가 아니다.
 4. Edit → Effects → Titles에서 `Akbun Cinema`를 검색한다. 목록에 없으면 프로젝트를 저장하고 Resolve를 재실행한다.
-5. 본편 위의 비어 있는 별도 비디오 트랙(`SUBTITLE` 또는 `CAPTION`)에 드래그한다. 기존 클립 사이에 끼워 넣지 않는다.
+5. 본편 위의 비어 있는 별도 비디오 트랙(`SUBTITLE`)에 드래그한다. 기존 클립 사이에 끼워 넣지 않는다.
 
 설치는 현재 macOS 사용자 라이브러리에 남아 다음 프로젝트에서도 쓸 수 있다. 사용자 계정·설치 폴더 삭제나 포맷 후에는 다시 설치한다. 이 폴더를 백업으로 보관한다. 같은 제목의 수동 `.setting`과 DRFX를 중복 설치하지 않는다.
 
@@ -60,9 +60,9 @@
 ## AI agent 호출
 
 ```text
-$akbun-davinciresolve-caption-template로 이 문장을 기본 영화식 자막으로 만들어줘.
-$akbun-davinciresolve-caption-template로 0분 12초부터 3초간 본편 위 비디오 트랙에 자막을 넣어줘.
-$akbun-davinciresolve-caption-template로 타이핑 자막과 빨간 밑줄을 만들어줘.
+$akbun-davinciresolve-make-caption로 이 문장을 기본 영화식 자막으로 만들어줘.
+$akbun-davinciresolve-make-caption로 0분 12초부터 3초간 본편 위 비디오 트랙에 자막을 넣어줘.
+$akbun-davinciresolve-make-caption로 타이핑 자막과 빨간 밑줄을 만들어줘.
 ```
 
 플러그인 설치 후 새 호출명을 사용한다. 대사 자막에는 전사 또는 자막 문구·시간을 함께 준다. 템플릿만 요청하면 프로젝트 본편에 자동 배치하지 않는다.

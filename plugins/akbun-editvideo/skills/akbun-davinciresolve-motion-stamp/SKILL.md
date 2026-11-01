@@ -208,7 +208,7 @@ uv run -q --python 3.12 <스킬 폴더>/scripts/render_mg.py --spec <프로젝�
 
 ### 7. 효과음
 
-- Epidemic Sound MCP의 `SearchSoundEffects` → `DownloadSoundEffect`로 pop·whoosh·stamp·rise를 받아 `<프로젝트>/audio-assets/sfx/`에 저장한다. 연결·검색·라이선스 확인 절차는 [akbun-davinciresolve-caption-template의 효과음 절](../akbun-davinciresolve-caption-template/SKILL.md#효과음)을 따른다.
+- Epidemic Sound MCP의 `SearchSoundEffects` → `DownloadSoundEffect`로 pop·whoosh·stamp·rise를 받아 `<프로젝트>/audio-assets/sfx/`에 저장한다. 연결·검색·라이선스 확인 절차는 [akbun-davinciresolve-make-caption의 효과음 절](../akbun-davinciresolve-make-caption/SKILL.md#효과음)을 따른다.
 - `events.json`의 장면별 `frame`(장면 시작 기준) + 그 장면 클립의 타임라인 시작 프레임 위치에 A4 `SFX` 트랙으로 놓는다.
 - 내레이션을 가리지 않게 gain을 내린다. 내레이션 구간과 겹치는 효과음은 내레이션보다 작게 들리는지 들어 보고 조절한다.
 
@@ -227,7 +227,7 @@ uv run -q --python 3.12 <스킬 폴더>/scripts/render_mg.py --spec <프로젝�
 | `DeleteClips` | 현재 타임라인에서만 동작한다. `SetCurrentTimeline` 먼저. 지우기 직전에 다시 읽은 핸들만 쓴다 |
 | DRT import로 타임라인 교체 | Resolve가 세그폴트로 종료된다. 시도하지 않는다 |
 | 백그라운드 raw 키 입력 | Resolve 단축키로 처리될 수 있다. UI 조작은 AX 기반 `app_*` 도구로 한다 |
-| 자막 겹침·이중 표시 | [akbun-davinciresolve-caption-template의 자막 트랙 모드](../akbun-davinciresolve-caption-template/SKILL.md#자막-트랙-모드)를 따른다 |
+| 자막 겹침·이중 표시 | [akbun-davinciresolve-make-caption의 자막 트랙 모드](../akbun-davinciresolve-make-caption/SKILL.md#자막-트랙-모드)를 따른다 |
 
 ## 완료 검증
 
