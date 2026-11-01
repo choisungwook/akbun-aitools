@@ -27,7 +27,7 @@
 
 ## 그림 한 장 (이미지 생성 프롬프트·SVG)
 
-이미지 생성 모델(GPT image, nano-banana 등)에 넣을 프롬프트나 편집용 SVG를 만든다. `akbun-draw-explainer-svg`는 프롬프트가 아니라 16:9 SVG 코드를 직접 쓰고, 스타일 토큰 JSON과 검사 스크립트(`check_style_svg.py`)로 색·여백·자막 영역을 검수한다.
+이미지 생성 모델에 넣을 프롬프트나 편집용 SVG를 만든다. `akbun-draw-explainer-svg`는 프롬프트가 아니라 16:9 SVG 코드를 직접 쓰고, 스타일 토큰 JSON과 검사 스크립트(`check_style_svg.py`)로 색·여백·자막 영역을 검수한다.
 
 | 상황 | 스킬 | 결과물 |
 |---|---|---|

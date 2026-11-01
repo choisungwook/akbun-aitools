@@ -8,7 +8,7 @@ disable-model-invocation: true
 
 ## 목적
 
-아무 장소·순간을 bori 그림체로 그리는 16:9 영어 이미지 생성 프롬프트를 만든다. GPT image·nano-banana 같은 모델에 그대로 붙여 넣는다. 이 skill이 고정하는 것은 선·채색·색감·배경 밀도·빛·캐릭터 그림체이고, 무엇을 그릴지(장소·사건·소품)는 입력에 맞춰 정한다.
+아무 장소·순간을 bori 그림체로 그리는 16:9 영어 이미지 생성 프롬프트를 만든다. 이미지 생성 도구에 그대로 붙여 넣는다. 이 skill이 고정하는 것은 선·채색·색감·배경 밀도·빛·캐릭터 그림체이고, 무엇을 그릴지(장소·사건·소품)는 입력에 맞춰 정한다.
 
 모델은 프롬프트 문장을 직접 쓰지 않는다. 장면 spec만 쓰고, 스타일 문장은 스크립트가 라이브러리에서 가져온다. 그래서 몇 장을 만들어도 같은 그림체가 나온다.
 
@@ -65,12 +65,12 @@ uv run --python 3.12 python -I <skill>/scripts/bori_prompt.py --selftest
 
 ### 4. 이미지 생성과 확인
 
-사용자가 이미지까지 요청했을 때만 프롬프트 파일 전문을 그대로 넣어 만든다. codex CLI를 쓰면 `gpt-6.1-terra` 모델, 추론 medium으로 돌린다.
+사용자가 이미지까지 요청했을 때만 프롬프트 파일 전문을 그대로 넣어 만든다.
 
-프롬프트 파일이 있는 폴더에서 codex 내장 이미지 생성으로 PNG를 만드는 명령이다.
+codex CLI를 쓸 때, 프롬프트 파일이 있는 폴더에서 내장 이미지 생성으로 PNG를 만드는 명령이다. 모델은 사용자 설정의 기본값을 쓴다.
 
 ```bash
-cd bori-output/<작업명> && codex exec --skip-git-repo-check -s workspace-write -m gpt-6.1-terra -c model_reasoning_effort=medium "Read 01_<id>.txt. Use your built-in image generation tool with that file's full text as the prompt, exactly, landscape 16:9. Save the result as 01_<id>.png here. Reply with the path only." < /dev/null
+cd bori-output/<작업명> && codex exec --skip-git-repo-check -s workspace-write "Read 01_<id>.txt. Use your built-in image generation tool with that file's full text as the prompt, exactly, landscape 16:9. Save the result as 01_<id>.png here. Reply with the path only." < /dev/null
 ```
 
 `< /dev/null`이 없으면 codex가 입력을 기다리며 멈춘다. 여러 장은 장마다 이 명령을 따로 돌린다.

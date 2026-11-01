@@ -22,7 +22,7 @@
   "interface": {
     "displayName": "akbun Draw",
     "shortDescription": "Image drawing skills in fixed akbun styles",
-    "longDescription": "Image drawing skills that turn any subject, story, or code into image-generation prompts (GPT image, nano-banana, etc.) and Figma/Canva-editable SVGs, each in a fixed akbun illustration style — webtoons, posters, card news, hand-drawn doodle motion graphics and 2/4/6-panel doodle comics, 16:9 explainer SVGs routed through 9 design-token styles, and the akbun whale mascot spec.",
+    "longDescription": "Image drawing skills that turn any subject, story, or code into image-generation prompts and Figma/Canva-editable SVGs, each in a fixed akbun illustration style — webtoons, posters, card news, hand-drawn doodle motion graphics and 2/4/6-panel doodle comics, 16:9 explainer SVGs routed through 9 design-token styles, and the akbun whale mascot spec.",
     "developerName": "akbun",
     "category": "Writing",
     "capabilities": [
