@@ -1,0 +1,3 @@
+{"id": "box", "ko": "사각형: 서비스·앱·API·외부 시스템", "prompt": "a rectangle"}
+{"id": "cylinder", "ko": "원통: 저장소·DB·큐·볼트", "prompt": "an upright cylinder"}
+{"id": "circle", "ko": "원: 사용자·이벤트·시작/끝 점", "prompt": "a circle"}
