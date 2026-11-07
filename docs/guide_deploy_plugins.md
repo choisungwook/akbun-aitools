@@ -1,6 +1,6 @@
-# Claude/Codex plugin 배포 정리
+# Claude/Codex/Antigravity plugin 배포 정리
 
-이 저장소의 plugin을 Claude Code와 Codex 양쪽에 맞춰 배포할 때 필요한 작업을 정리합니다.
+이 저장소의 plugin을 Claude Code, Codex, Antigravity에 맞춰 배포할 때 필요한 작업을 정리합니다.
 
 ## 메타데이터 위치
 
@@ -16,6 +16,12 @@
 - plugin manifest: `plugins/<plugin-name>/.codex-plugin/plugin.json`
 - marketplace entry는 `policy.installation`, `policy.authentication`, `category`를 항상 포함
 
+### Antigravity
+
+- plugin manifest: `plugins/<plugin-name>/.antigravity-plugin/plugin.json`
+- marketplace 파일은 없음. Antigravity는 Google 공식 marketplace만 받으므로 사용자는 저장소를 받아 `agy plugin install <plugin 폴더>`로 설치한다
+- manifest가 없으면 `agy plugin install`이 Claude plugin으로 보고 변환해 설치하지만, `agy plugin validate`는 실패한다
+
 ## 1. 처음 생성
 
 새 plugin을 처음 만들 때 기본 구조:
@@ -24,6 +30,7 @@
 plugins/<plugin-name>/
 ├── .claude-plugin/plugin.json
 ├── .codex-plugin/plugin.json
+├── .antigravity-plugin/plugin.json
 ├── skills/
 └── agents/   # option, currently Claude-oriented docs
 ```
@@ -74,6 +81,12 @@ claude plugin validate .
 claude --plugin-dir ./plugins/<plugin-name>
 ```
 
+Antigravity 검증. 로더가 건너뛰는 파일과 필드를 보여 준다:
+
+```bash
+agy plugin validate ./plugins/<plugin-name>
+```
+
 Codex 쪽은 우선 JSON 유효성과 경로 일관성을 확인한다:
 
 - `plugins/<plugin-name>/.codex-plugin/plugin.json`
@@ -81,7 +94,7 @@ Codex 쪽은 우선 JSON 유효성과 경로 일관성을 확인한다:
 
 ### 저장소 전체 정합성 검사
 
-모든 plugin의 manifest 두 파일 version 일치, `SKILL.md` frontmatter `name`, `README.md`의 `## plugin 목록`을 검사한다. `--base`를 주면 그 ref와 비교해 파일이 바뀐 plugin의 version이 한 번만 올랐는지도 검사한다.
+모든 plugin의 manifest 세 파일 version 일치, `SKILL.md` frontmatter `name`, `README.md`의 `## plugin 목록`을 검사한다. `--base`를 주면 그 ref와 비교해 파일이 바뀐 plugin의 version이 한 번만 올랐는지도 검사한다.
 
 ```bash
 uv run --python 3.12 scripts/validate_plugins.py --base origin/main
@@ -108,13 +121,14 @@ uv run --python 3.12 --with PyYAML==6.0.3 python -m unittest discover -s scripts
 기존 plugin 내용을 수정해 다시 배포할 때 순서:
 
 1. 해당 plugin root 아래 리소스 수정
-2. 양쪽 manifest 버전을 항상 같이 증가시킨다 (필수). skill/agent 추가·수정·삭제는 모두 버전 업데이트 대상이다. 기본은 patch 증가
+2. manifest 세 파일의 버전을 항상 같이 증가시킨다 (필수). skill/agent 추가·수정·삭제는 모두 버전 업데이트 대상이다. 기본은 patch 증가
 
 수정 대상:
 
 ```text
 plugins/<plugin-name>/.claude-plugin/plugin.json
 plugins/<plugin-name>/.codex-plugin/plugin.json
+plugins/<plugin-name>/.antigravity-plugin/plugin.json
 ```
 
 1. marketplace description/category가 바뀌면 해당 marketplace 파일도 함께 수정

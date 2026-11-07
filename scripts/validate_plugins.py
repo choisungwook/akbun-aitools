@@ -14,7 +14,7 @@ import yaml
 
 
 ROOT = Path(__file__).resolve().parents[1]
-MANIFESTS = (".claude-plugin/plugin.json", ".codex-plugin/plugin.json")
+MANIFESTS = (".claude-plugin/plugin.json", ".codex-plugin/plugin.json", ".antigravity-plugin/plugin.json")
 VERSION = re.compile(r"\d+\.\d+\.\d+")
 
 
@@ -46,8 +46,8 @@ def manifest_versions(plugin):
       errors.append(f"{plugin.name}: {rel} JSON 오류: {error}")
       continue
     versions.append(data.get("version"))
-  if len(versions) == 2 and (versions[0] != versions[1] or not isinstance(versions[0], str) or not VERSION.fullmatch(versions[0])):
-    errors.append(f"{plugin.name}: manifest 두 파일의 version이 다르거나 형식 오류 {versions}")
+  if len(versions) == len(MANIFESTS) and (any(v != versions[0] for v in versions) or not isinstance(versions[0], str) or not VERSION.fullmatch(versions[0])):
+    errors.append(f"{plugin.name}: manifest {len(MANIFESTS)}개 파일의 version이 다르거나 형식 오류 {versions}")
   return errors
 
 

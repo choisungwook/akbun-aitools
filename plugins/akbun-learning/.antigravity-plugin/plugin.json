@@ -1,0 +1,24 @@
+{
+  "name": "akbun-learning",
+  "displayName": "akbun Learning",
+  "version": "1.2.5",
+  "description": "Study and learning helpers — English and Japanese practice tools, plus YouTube and X (Twitter) video transcript Markdown conversion",
+  "author": {
+    "name": "akbun",
+    "url": "https://github.com/choisungwook"
+  },
+  "homepage": "https://github.com/choisungwook/akbun-aitools",
+  "repository": "https://github.com/choisungwook/akbun-aitools",
+  "license": "MIT",
+  "keywords": [
+    "learning",
+    "study",
+    "english",
+    "pronunciation",
+    "japanese",
+    "youtube",
+    "twitter",
+    "transcript",
+    "worksheet"
+  ]
+}

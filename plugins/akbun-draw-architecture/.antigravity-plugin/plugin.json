@@ -1,0 +1,21 @@
+{
+  "name": "akbun-draw-architecture",
+  "displayName": "akbun Draw Architecture",
+  "version": "1.0.5",
+  "description": "Architecture drawing skills by akbun — AWS VPC draw.io diagrams and flat boundary architecture SVGs",
+  "author": {
+    "name": "akbun",
+    "url": "https://github.com/choisungwook"
+  },
+  "homepage": "https://github.com/choisungwook/akbun-aitools",
+  "repository": "https://github.com/choisungwook/akbun-aitools",
+  "license": "MIT",
+  "keywords": [
+    "architecture",
+    "diagram",
+    "drawio",
+    "aws",
+    "network",
+    "svg"
+  ]
+}

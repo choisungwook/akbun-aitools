@@ -25,8 +25,8 @@ Agent는 이 저장소의 plugin skill을 만들고 유지보수한다. 실행 �
 `plugins/<plugin-name>/` 아래에서 skill이나 agent를 추가, 수정, 삭제하면 사용자가 따로 말하지 않아도 해당
 plugin의 버전을 올린다. 사용자에게 버전 업데이트 여부를 묻지 않는다.
 
-- 버전을 올리는 파일: `plugins/<plugin-name>/.claude-plugin/plugin.json`, `plugins/<plugin-name>/.codex-plugin/plugin.json`
-- 두 파일의 `version`은 항상 동일하게 맞춘다.
+- 버전을 올리는 파일: `plugins/<plugin-name>/.claude-plugin/plugin.json`, `plugins/<plugin-name>/.codex-plugin/plugin.json`, `plugins/<plugin-name>/.antigravity-plugin/plugin.json`
+- 세 파일의 `version`은 항상 동일하게 맞춘다.
 - 기본은 patch 증가(예: `1.0.14` -> `1.0.15`). 새 skill/agent 추가도 patch로 본다. 동작이 크게 바뀌거나
   호환이 깨지면 minor 증가.
 - 버전은 **배포된 마지막 버전에서 +1** 한 값이다. 한 PR/작업 안에서 같은 plugin을 여러 번 고쳐도 매번
@@ -126,7 +126,7 @@ agent가 PR을 머지하면 그 PR이 링크한 기록용 Issue를 같은 작업
 
 | 바꾼 것 | 돌리는 것 | 보는 것 |
 |---|---|---|
-| `plugins/**` 전부, `README.md`, `docs/manual_draw.md` | `uv run --python 3.12 scripts/validate_plugins.py --base origin/main` | manifest 두 파일의 version 일치와 base에서 +1, frontmatter `name`, `README.md` 목록·표 머리줄·행 끝 "때", `docs/manual_draw.md` skill 목록·로컬 링크 |
+| `plugins/**` 전부, `README.md`, `docs/manual_draw.md` | `uv run --python 3.12 scripts/validate_plugins.py --base origin/main` | manifest 세 파일의 version 일치와 base에서 +1, frontmatter `name`, `README.md` 목록·표 머리줄·행 끝 "때", `docs/manual_draw.md` skill 목록·로컬 링크 |
 | `plugins/akbun-editvideo/**`, `docs/**` | `uv run --python 3.12 scripts/validate_editvideo.py` | 매뉴얼·용어사전·defaultPrompt 정합성 |
 | `scripts/**/*.py`, skill의 `scripts/` | 그 스크립트의 `--selftest` 또는 `test_*.py` | 바꾼 분기를 검사가 실제로 지나는지 |
 | `SKILL.md`의 동작·수치·흐름 | 그 skill을 실제 입력 하나로 끝까지 실행 | 결과 파일 또는 출력 요약과 틀린 곳 |
@@ -276,6 +276,6 @@ Scope: {plugin / skill, 저장소 전체면 repo}
 - 바뀐 것에 해당하는 검사(검증 표)를 돌리고 출력을 PR 검증 절에 옮겼는가?
 - 새 컨텍스트 리뷰를 돌리고 지적마다 고치거나 이유를 적었는가?
 - 리스크 등급이 바뀐 경로와 맞고, 검사가 못 보는 것을 적었는가?
-- plugin manifest 두 파일의 버전을 올렸고 `README.md` 표를 갱신했는가?
+- plugin manifest 세 파일의 버전을 올렸고 `README.md` 표를 갱신했는가?
 - 결정 기록은 세 조건을 모두 만족할 때만 만들었는가?
 - PR을 머지했다면 링크한 기록용 Issue(와 Discussion)를 닫았는가?
