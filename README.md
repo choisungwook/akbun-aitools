@@ -236,7 +236,7 @@ $akbun-davinciresolve-explainer 이 대본을 fiery-ocean 색, akbun 도형으�
 | [akbun-draw-style-bori](./plugins/akbun-draw/skills/akbun-draw-style-bori/) | 아늑한 배경 속 동글동글한 동물들의 일상 장면 그림이 필요할 때 |
 | [akbun-draw-illust-wash](./plugins/akbun-draw/skills/akbun-draw-illust-wash/) | 흰 종이 여백이 넓은 펜 선·수채 칠 동물 장면 그림이 필요할 때 |
 | [akbun-draw-faded-film](./plugins/akbun-draw/skills/akbun-draw-faded-film/) | 사람 없는 장면을 바랜 옛 필름 사진처럼 담은 이미지가 필요할 때 |
-| [akbun-draw-street-matte](./plugins/akbun-draw/skills/akbun-draw-street-matte/) | 여행지 거리를 무광 색감의 카메라 스냅처럼 담은 이미지가 필요할 때 |
+| [akbun-draw-street-matte](./plugins/akbun-draw/skills/akbun-draw-street-matte/) | 여행지 거리를 무광 색감의 카메라 스냅 사진이나 고정 카메라 반복 영상으로 담고 싶을 때 |
 | [akbun-draw-gag-deadpan](./plugins/akbun-draw/skills/akbun-draw-gag-deadpan/) | 다정한 제목과 그 뒤 웃긴 속사정을 보여 주는 개그 한 컷이 필요할 때 |
 | [akbun-draw-comic-wash](./plugins/akbun-draw/skills/akbun-draw-comic-wash/) | 펜 선·수채 그림체로 4컷 만화·인스타툰·유튜브 커뮤니티 만화를 만들 때 |
 | [akbun-draw-animation-dami](./plugins/akbun-draw/skills/akbun-draw-animation-dami/) | 짧은 이야기를 회화풍 세로 애니메이션 쇼츠로 만들 때 |

@@ -14,6 +14,11 @@ REF = Path(__file__).resolve().parent.parent / "references"
 # 모델이 쓴 글에 나오면 안 되는 말. 얼굴·인물 사진(사람은 figures에서 뒷모습·실루엣으로만), 스타일을 깨는 표현.
 BANNED_FACE = r"\b(faces?|facial|portraits?|selfies?|smil\w*|eyes|looking at (the )?camera|close-?up)\b"
 FIGURE_VIEW = r"\b(behind|back|silhouett\w*|blurr\w*)\b"
+# 카메라는 고정. motion에 카메라 이동 낱말이 있으면 칸마다 화면이 달라져 영상이 끊긴다.
+CAMERA_MOVE = r"\b(pans?|panning|zoom\w*|dolly|tracking|handheld|orbit\w*|tilts?)\b"
+SHEET = ("A single image laid out as an animation sprite sheet: exactly 4 sequential frames in a precise 2-column by "
+         "2-row grid, read left-to-right then top-to-bottom. Every panel is landscape 16:9 with identical dimensions "
+         "and meets its neighbours edge to edge with no gutters or borders. Each panel is the same photograph: ")
 BANNED_STYLE = (r"\b(3d|cgi|render(ed)?|illustration|cartoon|anime|vector|neon|hdr|4k|8k|ultra|sharp|"
                 r"cinematic|cyberpunk)\b")
 DONT = ("DO NOT: no visible or in-focus human face, no posed portrait, no one looking at the camera; no illustration, "
@@ -28,11 +33,11 @@ def load(name):
 def check(spec):
     """(항목, 통과 여부, 이유) 목록. 항목 하나 = 1점, 점수 = 통과 수 / 항목 수 × 100(내림)."""
     props = spec.get("props", [])
-    figures = spec.get("figures", "")
-    text = " ".join([spec.get("scene", ""), spec.get("setting", ""), figures] + props)
+    figures, motion = spec.get("figures", ""), spec.get("motion", "")
+    text = " ".join([spec.get("scene", ""), spec.get("setting", ""), figures, motion] + props)
     words = len(spec.get("scene", "").split())
     palettes = load("palettes.jsonl")
-    return [
+    rows = [
         ("palette", spec.get("palette") in palettes, f"palettes.jsonl id: {sorted(palettes)}"),
         ("scene length", 6 <= words <= 40, f"scene {words}단어, 6~40단어(공백으로 나눈 수, 경계 포함)"),
         ("setting", bool(spec.get("setting", "").strip()), "setting은 빈칸 불가, 장소 한 구절"),
@@ -45,6 +50,11 @@ def check(spec):
         ("no banned style", not re.search(BANNED_STYLE, text, re.I),
          "3d·cgi·render·illustration·cartoon·anime·vector·neon·hdr·4k·8k·ultra·sharp·cinematic·cyberpunk 금지"),
     ]
+    if "motion" in spec:
+        n = len(motion.split())
+        rows.append(("motion", 4 <= n <= 30 and not re.search(CAMERA_MOVE, motion, re.I),
+                     f"motion {n}단어, 4~30단어(경계 포함), pan·zoom·dolly·tracking·handheld·orbit·tilt 금지"))
+    return rows
 
 
 def score(rows):
@@ -54,15 +64,20 @@ def score(rows):
 def build(spec):
     style, p = load("style.jsonl"), load("palettes.jsonl")[spec["palette"]]
     colors = "; ".join(f"{k} {v}" for k, v in p["colors"].items())
-    rules = " ".join(style[k]["prompt"] for k in style if k != "medium")
+    motion = (spec.get("motion") or "").rstrip(". ")
+    rules = " ".join(style[k]["prompt"] for k in style if k not in ("medium", "motion") or (k == "motion" and motion))
+    head = SHEET + style["medium"]["prompt"] if motion else style["medium"]["prompt"]
+    moving = (f"MOTION: {motion}. Frames 1 to 4 show it in clear, even steps and frame 4 leads smoothly back to frame 1. "
+              "Everything else (background, light, signs, camera position) stays identical in all four frames.")
     return "\n\n".join([
-        style["medium"]["prompt"],
+        head,
         f"SCENE: {spec['scene']} Setting: {spec['setting']}.",
         f"OBJECTS (only these as the readable subjects): {', '.join(spec['props'])}.",
         f"FIGURES: {spec.get('figures') or 'none, the place is empty of people'}.",
         f"COLOR GRADE ({p['prompt']}): the whole frame is graded toward these colors: {colors}.",
+        *([moving] if motion else []),
         f"STYLE: {rules}",
-        DONT,
+        DONT + (" No gutters, borders or panel numbers between frames." if motion else ""),
     ])
 
 
@@ -93,6 +108,13 @@ def selftest():
     out = build(good)
     assert "#D2A06A" in out and "Matte color grade" in out and "{" not in out
     assert "empty of people" in build(dict(good, figures=""))
+    assert "sprite sheet" not in out and "tripod" not in out
+    sheet = json.loads((REF / "example" / "02_overpass-night-motion.json").read_text())
+    assert score(check(sheet)) == 100, check(sheet)
+    sout = build(sheet)
+    assert "2-column by 2-row" in sout and "tripod" in sout and "MOTION:" in sout and "panel numbers" in sout
+    assert sout.strip() == (REF / "example" / "02_overpass-night-motion.txt").read_text().strip(), "예시 txt를 다시 build 하세요"
+    assert {n for n, ok, _ in check(dict(sheet, motion="slow zoom on the lights")) if not ok} == {"motion"}
     assert out.strip() == (REF / "example" / "01_fish-market-dawn.txt").read_text().strip(), "예시 txt를 다시 build 하세요"
     bad = dict(good, palette="neon", scene="A smiling face.", setting="", props=["x"] * 7, figures="a tall man")
     failed = {n for n, ok, _ in check(bad) if not ok}
