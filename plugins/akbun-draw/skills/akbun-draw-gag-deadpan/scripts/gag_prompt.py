@@ -46,7 +46,7 @@ def build(spec):
     setting = spec.get("setting") or "no particular place, just the white page"
     return "\n\n".join([
         w.load("style.jsonl")["medium"]["prompt"],
-        "STAGING: " + " ".join(staging[k]["prompt"] for k in staging),
+        "STAGING: " + " ".join(staging[k]["prompt"] for k in staging if k not in g.get("skip", [])),
         "GAG: " + g["prompt"].format(prop=spec.get("prop", "")),
         f"ENDURING CHARACTER: {chars[e['id']]['prompt']}, {e['action']}.",
         f"UNAWARE CHARACTER: {chars[u['id']]['prompt']}, {u['action']}.",
@@ -65,6 +65,7 @@ def selftest():
     out = build(good)
     assert "cast-iron frying pan" in out and "#FCFAF6" in out and "deadpan" in out and "{" not in out
     assert w.score(check(dict(good, gag="sealed-mouth", prop=""))) == 100
+    assert "cannot see it" in out and "cannot see it" not in build(dict(good, gag="mutual-hold"))
     bad = dict(good, title="Waiting", gag="sealed-mouth", unaware={"id": "hedgehog", "action": "x"})
     failed = {n for n, ok, _ in check(bad) if not ok}
     assert {"title", "prop", "character ids", "actions"} <= failed, failed

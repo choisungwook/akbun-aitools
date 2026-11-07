@@ -1,10 +1,10 @@
 Single-panel hand-drawn illustration, landscape 16:9: black pen-and-ink linework with light transparent watercolor and colored-pencil washes on white drawing paper.
 
-STAGING: One panel, two full-body characters at the same scale, standing on the white page together as one compact group that takes about 55-75% of the frame height, with generous empty white paper all around. At most two small background objects. The joke is a contrast of awareness: the unaware character calmly keeps doing a small everyday habit, while the enduring character, right behind or beside them, is frozen in an exaggerated gesture. The unaware one cannot see it. Neither looks at the viewer. Acting: the enduring character's eyes and brows stay flat and deadpan, with only one sweat drop and two or three short trembling lines; no angry brows, no bared teeth, no steam. Only the body is exaggerated. Timing: the instant before anything happens, frozen; nobody is hit or hurt.
+STAGING: One panel, two full-body characters at the same scale, standing on the white page together as one compact group that takes about 55-75% of the frame height, with generous empty white paper all around. At most two small background objects. Acting: the enduring character's eyes and brows stay flat and deadpan, with only one sweat drop and two or three short trembling lines; no angry brows, no bared teeth, no steam. Only the body is exaggerated. Timing: the instant before anything happens, frozen; nobody is hit or hurt.
 
 GAG: Twist: both characters are enduring each other. They stand face to face, politely, each hiding a rolled-up newspaper the size of a baseball bat behind their back where only the viewer can see it.
 
-ENDURING CHARACTER: a person-sized crow standing upright with blue-tinged black feathers (#2A2E38) and a grey beak, shakes hands warmly and smiles stiffly.
+ENDURING CHARACTER: a person-sized crow standing upright with blue-tinged black feathers (#2A2E38) and a grey beak, shakes hands warmly with a rigid, upright back.
 
 UNAWARE CHARACTER: an upright tortoise with an olive shell (#7D7A48) and a wrinkled grey-green neck, shakes hands warmly and nods slowly.
 

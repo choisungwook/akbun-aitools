@@ -3,8 +3,6 @@
   build <spec.json> [-o prompt.txt]   채점 후 100점이면 프롬프트를 쓴다(없으면 stdout)
   check <spec.json>                   채점표만 출력
   --selftest                          자체 검사
-
-akbun-draw-gag-deadpan의 스크립트가 이 파일의 load·style_block·common_rows를 가져다 쓴다.
 """
 import json
 import re
@@ -41,7 +39,7 @@ def who(cast):
 
 
 def common_rows(spec, cast, text):
-    """두 skill이 같이 쓰는 항목: 팔레트, 캐릭터 id·행동, 영어, 금지 낱말."""
+    """팔레트, 캐릭터 id·행동, 영어, 금지 낱말 항목."""
     chars = load("characters.jsonl")
     ids = [x.get("id") for x in cast]
     return [
@@ -94,7 +92,7 @@ def report(rows):
 
 
 def run(argv, check, build, selftest):
-    """build/check/--selftest 공용 진입점. gag 스크립트도 이걸 쓴다."""
+    """build/check/--selftest 진입점. check·build·selftest 함수를 받는다."""
     if argv[:1] == ["--selftest"]:
         return selftest()
     if len(argv) < 2 or argv[0] not in ("build", "check"):
