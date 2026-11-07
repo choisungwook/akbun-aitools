@@ -36,6 +36,8 @@
 | 여백 많은 조용한 일상 장면 그림이 필요함 | [akbun-draw-quiet-pencil](../plugins/akbun-draw/skills/akbun-draw-quiet-pencil/SKILL.md) | 크림 배경 연필 장면 프롬프트 |
 | 소품 가득한 아늑한 배경 속 동물 캐릭터 일상 장면이 필요함 | [akbun-draw-style-bori](../plugins/akbun-draw/skills/akbun-draw-style-bori/SKILL.md) | 갈색 손그림 선·셀 채색 장면 프롬프트(spec을 스크립트가 조립·채점) |
 | 흰 종이 여백이 넓은 펜 선·수채 칠 장면이 필요함 | [akbun-draw-illust-wash](../plugins/akbun-draw/skills/akbun-draw-illust-wash/SKILL.md) | 끊어 겹친 펜 선·옅은 수채 칠·무표정 동물 장면 프롬프트(spec을 스크립트가 조립·채점) |
+| 사람 없는 장면을 바랜 옛 필름 사진처럼 보여 주고 싶음 | [akbun-draw-faded-film](../plugins/akbun-draw/skills/akbun-draw-faded-film/SKILL.md) | 필름 입자·무른 초점·실제 광원·아날로그 사물 사진 프롬프트(spec을 스크립트가 조립·채점) |
+| 여행지 거리를 카메라 스냅처럼 보여 주고 싶음 | [akbun-draw-street-matte](../plugins/akbun-draw/skills/akbun-draw-street-matte/SKILL.md) | 무광 베이지·올리브 색 보정, 얼굴 없는 뒷모습 인물 거리 스냅 프롬프트(spec을 스크립트가 조립·채점) |
 | 다정한 제목 한 줄과 그 뒤 웃긴 속사정을 보여 주는 개그 한 컷이 필요함 | [akbun-draw-gag-deadpan](../plugins/akbun-draw/skills/akbun-draw-gag-deadpan/SKILL.md) | 한국어 제목과 두 캐릭터 무표정 개그 한 컷 프롬프트(illust-wash 그림체, spec을 스크립트가 조립·채점) |
 | 논문·학습 자료를 이미지와 설명 대본으로 바꾸고 싶음 | [akbun-draw-learning-mono](../plugins/akbun-draw/skills/akbun-draw-learning-mono/SKILL.md) | 흑백 16:9 학습 이미지와 대본 |
 | 여행 글에 넣을 썸네일·약도 삽화가 필요함 | [akbun-draw-travel-blog](../plugins/akbun-draw/skills/akbun-draw-travel-blog/SKILL.md) | 썸네일·코스 약도 프롬프트 |

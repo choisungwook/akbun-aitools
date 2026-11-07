@@ -1,0 +1,3 @@
+{"id": "overcast-beige", "use": "기본. 흐린 날·한낮·눈 오는 날의 실외와 창가", "prompt": "matte overcast beige", "colors": {"cream highlight": "#CCC0A8", "beige": "#C6B49C", "khaki": "#A2845A", "olive shadow": "#4A5040", "teal shadow": "#2F3E3C", "brick brown": "#7E4E36"}}
+{"id": "dusk-amber", "use": "해 질 녘·해 뜰 녘, 낮은 햇빛이 드는 거리·전망", "prompt": "matte dusk amber", "colors": {"sun amber": "#D2A06A", "warm sand": "#CCAE8A", "dusty rose": "#B48878", "slate blue": "#56606E", "shadow umber": "#2A221E"}}
+{"id": "night-signs", "use": "밤 거리·역·골목처럼 간판·가로등이 켜진 장면", "prompt": "matte night signs", "colors": {"sodium orange": "#E0A050", "lantern cream": "#E8D8B8", "muted sign red": "#B0483A", "deep teal": "#1C2A2E", "lifted black": "#141414"}}
