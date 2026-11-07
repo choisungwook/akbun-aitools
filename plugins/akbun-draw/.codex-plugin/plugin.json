@@ -57,7 +57,8 @@
       "Turn this short story into a 10-second painterly vertical animated short with a new cast and narration captions (akbun-draw-animation-dami)",
       "Draw this request flow as a hand-drawn white-canvas diagram image prompt with hollow-head arrows and handwritten labels (akbun-draw-diagram-haru)",
       "Draw a quiet balcony morning with deadpan animals in pen ink and pale watercolor on mostly white paper (akbun-draw-illust-wash)",
-      "Turn this topic into a gentle Korean title plus a one-panel deadpan gag where one character quietly endures the other (akbun-draw-gag-deadpan)"
+      "Turn this topic into a gentle Korean title plus a one-panel deadpan gag where one character quietly endures the other (akbun-draw-gag-deadpan)",
+      "Turn this short story into a 4-panel Instagram comic in pen ink and pale watercolor with Korean speech bubbles (akbun-draw-comic-wash)"
     ],
     "brandColor": "#0F766E",
     "screenshots": []
