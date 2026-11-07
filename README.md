@@ -98,11 +98,9 @@ codex plugin list --json
 - `tech-minimal`<br><a href="./plugins/akbun-draw/skills/akbun-draw-explainer-svg/styles/tech-minimal.json"><img src="./imgs/akbun-draw-explainer-svg/tech-minimal.png" alt="akbun-draw-explainer-svg tech-minimal" width="400"></a>
 - `clay-isometric`<br><a href="./plugins/akbun-draw/skills/akbun-draw-explainer-svg/styles/clay-isometric.json"><img src="./imgs/akbun-draw-explainer-svg/clay-isometric.png" alt="akbun-draw-explainer-svg clay-isometric" width="400"></a>
 - `chalkboard-math`<br><a href="./plugins/akbun-draw/skills/akbun-draw-explainer-svg/styles/chalkboard-math.json"><img src="./imgs/akbun-draw-explainer-svg/chalkboard-math.png" alt="akbun-draw-explainer-svg chalkboard-math" width="400"></a>
-- `notebook-doodle`<br><a href="./plugins/akbun-draw/skills/akbun-draw-explainer-svg/styles/notebook-doodle.json"><img src="./imgs/akbun-draw-explainer-svg/notebook-doodle.png" alt="akbun-draw-explainer-svg notebook-doodle" width="400"></a>
 - `cyber-wireframe`<br><a href="./plugins/akbun-draw/skills/akbun-draw-explainer-svg/styles/cyber-wireframe.json"><img src="./imgs/akbun-draw-explainer-svg/cyber-wireframe.png" alt="akbun-draw-explainer-svg cyber-wireframe" width="400"></a>
 - `paper-cutout`<br><a href="./plugins/akbun-draw/skills/akbun-draw-explainer-svg/styles/paper-cutout.json"><img src="./imgs/akbun-draw-explainer-svg/paper-cutout.png" alt="akbun-draw-explainer-svg paper-cutout" width="400"></a>
 - `bento-dashboard`<br><a href="./plugins/akbun-draw/skills/akbun-draw-explainer-svg/styles/bento-dashboard.json"><img src="./imgs/akbun-draw-explainer-svg/bento-dashboard.png" alt="akbun-draw-explainer-svg bento-dashboard" width="400"></a>
-- `ink-hatch`<br><a href="./plugins/akbun-draw/skills/akbun-draw-explainer-svg/styles/ink-hatch.json"><img src="./imgs/akbun-draw-explainer-svg/ink-hatch.png" alt="akbun-draw-explainer-svg ink-hatch" width="400"></a>
 - `marker-wireframe`<br><a href="./plugins/akbun-draw/skills/akbun-draw-explainer-svg/styles/marker-wireframe.json"><img src="./imgs/akbun-draw-explainer-svg/marker-wireframe.png" alt="akbun-draw-explainer-svg marker-wireframe" width="400"></a>
 
 </td>

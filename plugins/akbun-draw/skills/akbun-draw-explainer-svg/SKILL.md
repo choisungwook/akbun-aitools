@@ -1,6 +1,6 @@
 ---
 name: akbun-draw-explainer-svg
-description: 시스템 아키텍처·기술 개념을 설명 영상·슬라이드·블로그용 16:9(1920×1080) raw SVG로 그리는 라우터 skill. 요청한 스타일 식별자(akbun-draw-style-tech-minimal, clay-isometric, chalkboard-math, notebook-doodle, cyber-wireframe, paper-cutout, bento-dashboard, ink-hatch, marker-wireframe)에 맞는 styles/*.json 디자인 토큰을 읽어 색·선·글꼴·효과·여백(스타일)만 고정하고, 요소 수·배치·화살표 방향(구도)은 입력 내용에 맞춰 자유롭게 정한다. 결과는 Claude Artifacts나 브라우저에서 바로 여는 SVG 코드 또는 디자인 토큰 맵이다. 사용자가 직접 호출할 때만 실행한다.
+description: 시스템 아키텍처·기술 개념을 설명 영상·슬라이드·블로그용 16:9(1920×1080) raw SVG로 그리는 라우터 skill. 요청한 스타일 식별자(akbun-draw-style-tech-minimal, clay-isometric, chalkboard-math, cyber-wireframe, paper-cutout, bento-dashboard, marker-wireframe)에 맞는 styles/*.json 디자인 토큰을 읽어 색·선·글꼴·효과·여백(스타일)만 고정하고, 요소 수·배치·화살표 방향(구도)은 입력 내용에 맞춰 자유롭게 정한다. 결과는 Claude Artifacts나 브라우저에서 바로 여는 SVG 코드 또는 디자인 토큰 맵이다. 사용자가 직접 호출할 때만 실행한다.
 disable-model-invocation: true
 ---
 
@@ -20,11 +20,9 @@ disable-model-invocation: true
 | `akbun-draw-style-tech-minimal` | tech-minimal | 흰 배경 2D 클린 라인아트, 강조색 2개 | [styles/tech-minimal.json](styles/tech-minimal.json) | [references/tech-minimal.svg](references/tech-minimal.svg) |
 | `akbun-draw-style-clay-isometric` | clay-isometric | 30도 아이소메트릭 무광 클레이 블록 | [styles/clay-isometric.json](styles/clay-isometric.json) | [references/clay-isometric.svg](references/clay-isometric.svg), 생성 스크립트 [references/make_clay_isometric.py](references/make_clay_isometric.py) |
 | `akbun-draw-style-chalkboard-math` | chalkboard-math | 다크 그린 칠판 위 분필 선, 수식·이론 | [styles/chalkboard-math.json](styles/chalkboard-math.json) | [references/chalkboard-math.svg](references/chalkboard-math.svg) |
-| `akbun-draw-style-notebook-doodle` | notebook-doodle | 모눈종이 위 파란·빨간 볼펜 핸드노트 | [styles/notebook-doodle.json](styles/notebook-doodle.json) | [references/notebook-doodle.svg](references/notebook-doodle.svg) |
 | `akbun-draw-style-cyber-wireframe` | cyber-wireframe | 피치 블랙 위 시안·마젠타 네온 와이어프레임 | [styles/cyber-wireframe.json](styles/cyber-wireframe.json) | [references/cyber-wireframe.svg](references/cyber-wireframe.svg) |
 | `akbun-draw-style-paper-cutout` | paper-cutout | 그림자로 층을 나눈 종이 컷아웃, 추상화 계층 | [styles/paper-cutout.json](styles/paper-cutout.json) | [references/paper-cutout.svg](references/paper-cutout.svg) |
 | `akbun-draw-style-bento-dashboard` | bento-dashboard | 다크 그레이 위 둥근 분할 카드 | [styles/bento-dashboard.json](styles/bento-dashboard.json) | [references/bento-dashboard.svg](references/bento-dashboard.svg) |
-| `akbun-draw-style-ink-hatch` | ink-hatch | 흰 종이 위 검정 잉크 한 색, 떨리는 외곽선과 45도 해칭, 손글씨 자막 | [styles/ink-hatch.json](styles/ink-hatch.json) | [references/ink-hatch.svg](references/ink-hatch.svg) |
 | `akbun-draw-style-marker-wireframe` | marker-wireframe | 회색 종이 위 마커 와이어프레임, 물결 낙서 글자 자리, 회색 곡선 주석, 초록·주황 틀 | [styles/marker-wireframe.json](styles/marker-wireframe.json) | [references/marker-wireframe.svg](references/marker-wireframe.svg) |
 
 - 사용자는 식별자 전체 또는 짧은 이름으로 스타일을 고른다. 스타일이 없으면 이 표를 보여 주고 고르게 한다. 내용으로 추측해 고르지 않는다.
@@ -107,4 +105,4 @@ disable-model-invocation: true
 akbun-draw-style-tech-minimal로 EKS Auto Mode 동작 원리를 그려줘. 개발자가 Pod(2 CPU, 4GB)를 배포하면 엔진이 감지해서 EC2 노드를 자동으로 만들고 슬롯에 결합해.
 ```
 
-같은 입력을 9개 스타일로 그린 결과가 라우터 표의 `references/*.svg`다(자막 영역 없이 캔버스 가운데 정렬). 스타일마다 배치가 다른 것(한 줄, 분기, 층, 카드 격자)은 의도한 것이다. 스타일은 색·선·효과에서만 드러나야 하고 배치는 내용과 모델이 정한다.
+같은 입력을 7개 스타일로 그린 결과가 라우터 표의 `references/*.svg`다(자막 영역 없이 캔버스 가운데 정렬). 스타일마다 배치가 다른 것(한 줄, 분기, 층, 카드 격자)은 의도한 것이다. 스타일은 색·선·효과에서만 드러나야 하고 배치는 내용과 모델이 정한다.

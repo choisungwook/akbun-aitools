@@ -52,7 +52,7 @@
       "Make travel blog thumbnail and illustrated course map image prompts from this travel post draft (akbun-draw-travel-blog)",
       "Read this post and make retro film-poster YouTube 16:9 and Tistory 1:1 thumbnail prompts with a retro display word over a 1970s film photo (akbun-draw-thumbnail-retro)",
       "Make doodle-style blog and YouTube thumbnail prompts (16:9 and 4:3) for this title and post, and generate them with codex into ~/Downloads only if I ask (akbun-draw-thumbnail-doodle)",
-      "Draw this system flow as a 16:9 explainer SVG in one of 9 token styles (tech-minimal, clay-isometric, chalkboard-math, notebook-doodle, cyber-wireframe, paper-cutout, bento-dashboard, ink-hatch, marker-wireframe) (akbun-draw-explainer-svg)",
+      "Draw this system flow as a 16:9 explainer SVG in one of 7 token styles (tech-minimal, clay-isometric, chalkboard-math, cyber-wireframe, paper-cutout, bento-dashboard, marker-wireframe) (akbun-draw-explainer-svg)",
       "Draw a cozy rainy-evening laundromat scene with round chibi animals as a bori-style image prompt (akbun-draw-style-bori)",
       "Turn this short story into a 10-second painterly vertical animated short with a new cast and narration captions (akbun-draw-animation-dami)",
       "Draw this request flow as a hand-drawn white-canvas diagram image prompt with hollow-head arrows and handwritten labels (akbun-draw-diagram-haru)"
