@@ -109,6 +109,10 @@ codex plugin list --json
 <td><a href="./plugins/akbun-draw/skills/akbun-draw-style-bori/SKILL.md"><img src="./imgs/akbun-draw-style-bori.jpg" alt="akbun-draw-style-bori" width="400"></a><br><code>akbun-draw-style-bori</code></td>
 <td><a href="./plugins/akbun-draw/skills/akbun-draw-animation-dami/SKILL.md"><img src="./imgs/akbun-draw-animation-dami.jpg" alt="akbun-draw-animation-dami" width="400"></a><br><code>akbun-draw-animation-dami</code></td>
 </tr>
+<tr>
+<td><a href="./plugins/akbun-draw/skills/akbun-draw-diagram-haru/SKILL.md"><img src="./imgs/akbun-draw-diagram-haru.jpg" alt="akbun-draw-diagram-haru" width="400"></a><br><code>akbun-draw-diagram-haru</code></td>
+<td></td>
+</tr>
 </table>
 
 ### akbun-presentation 예시
