@@ -51,11 +51,18 @@ class RepositoryTests(unittest.TestCase):
       data = json.loads(manifest.read_text())
       data["version"] = "9.9.9"
       manifest.write_text(json.dumps(data))
+      antigravity = root / "plugins/akbun-draw/.antigravity-plugin/plugin.json"
+      data = json.loads(antigravity.read_text())
+      data["version"] = "9.9.9"
+      antigravity.write_text(json.dumps(data))
+      (root / "plugins/akbun-pulse/.antigravity-plugin/plugin.json").unlink()
       errors = plugin_errors(root)
       self.assertTrue(any("디렉터리 이름과 다름" in error for error in errors))
       self.assertTrue(any("'## plugin 목록'에 없는 skill" in error for error in errors))
       self.assertTrue(any("존재하지 않는 skill 링크" in error for error in errors))
       self.assertTrue(any("akbun-writing: manifest" in error for error in errors))
+      self.assertTrue(any("akbun-draw: manifest" in error for error in errors))
+      self.assertIn("akbun-pulse: .antigravity-plugin/plugin.json 없음", errors)
 
 
   def test_old_table_header_and_manual_gaps_are_rejected(self):

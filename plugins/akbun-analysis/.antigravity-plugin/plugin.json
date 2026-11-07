@@ -1,0 +1,23 @@
+{
+  "name": "akbun-analysis",
+  "displayName": "akbun Analysis",
+  "version": "1.2.12",
+  "description": "Code review and change analysis skills — why/how investigation of PRs from git history, diff blast-radius proof by execution, credential authn/authz checks, and adversarial review",
+  "author": {
+    "name": "akbun",
+    "url": "https://github.com/choisungwook"
+  },
+  "homepage": "https://github.com/choisungwook/akbun-aitools",
+  "repository": "https://github.com/choisungwook/akbun-aitools",
+  "license": "MIT",
+  "keywords": [
+    "analysis",
+    "code-review",
+    "git",
+    "pull-request",
+    "blast-radius",
+    "security",
+    "credential",
+    "adversarial-review"
+  ]
+}

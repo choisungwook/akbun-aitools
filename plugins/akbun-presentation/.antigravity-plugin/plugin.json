@@ -1,0 +1,22 @@
+{
+  "name": "akbun-presentation",
+  "displayName": "akbun Presentation",
+  "version": "1.2.2",
+  "description": "Technical presentation decks (pptx) and speaker scripts (md): fixed dark design plus paper-style light-sandwich and dark-step styles",
+  "author": {
+    "name": "akbun",
+    "url": "https://github.com/choisungwook"
+  },
+  "homepage": "https://github.com/choisungwook/akbun-aitools",
+  "repository": "https://github.com/choisungwook/akbun-aitools",
+  "license": "MIT",
+  "keywords": [
+    "presentation",
+    "slides",
+    "pptx",
+    "deck",
+    "korean",
+    "speaker-script",
+    "diagram"
+  ]
+}

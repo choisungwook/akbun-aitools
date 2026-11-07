@@ -1,6 +1,6 @@
 # akbun-aitools
 
-akbun(악분)이 매일 쓰는 AI skill을 Claude Code와 Codex plugin으로 묶었습니다.
+akbun(악분)이 매일 쓰는 AI skill을 Claude Code, Codex, Antigravity plugin으로 묶었습니다.
 
 ## 설치
 
@@ -19,6 +19,14 @@ Codex에서 marketplace를 등록하고 plugin을 설치하는 명령입니다.
 ```bash
 codex plugin marketplace add choisungwook/akbun-aitools --json
 codex plugin add akbun-draw@akbun-aitools --json
+```
+
+Antigravity는 Google 공식 marketplace만 등록할 수 있어서 저장소를 받은 뒤 plugin 폴더를 지정해 설치합니다. 설치하면 `~/.gemini/config/plugins/`로 복사되므로 받은 폴더는 지워도 됩니다. 새 agent 세션부터 skill이 보입니다.
+
+```bash
+rm -rf /tmp/akbun-aitools
+git clone --depth 1 https://github.com/choisungwook/akbun-aitools /tmp/akbun-aitools
+agy plugin install /tmp/akbun-aitools/plugins/akbun-draw
 ```
 
 ## 재설치
@@ -43,6 +51,17 @@ rm -rf ~/.codex/plugins/cache/akbun-aitools ~/.codex/.tmp/marketplaces/akbun-ait
 codex plugin marketplace add choisungwook/akbun-aitools --json
 codex plugin add $P@akbun-aitools --json
 codex plugin list --json
+```
+
+Antigravity의 plugin 하나를 지우고 남은 복사본까지 비운 뒤 저장소를 새로 받아 다시 설치하는 터미널 명령입니다. 끝나면 agent 세션을 새로 엽니다.
+
+```bash
+P=akbun-draw
+agy plugin uninstall $P
+rm -rf ~/.gemini/config/plugins/$P /tmp/akbun-aitools
+git clone --depth 1 https://github.com/choisungwook/akbun-aitools /tmp/akbun-aitools
+agy plugin install /tmp/akbun-aitools/plugins/$P
+agy plugin list --json
 ```
 
 ## plugin

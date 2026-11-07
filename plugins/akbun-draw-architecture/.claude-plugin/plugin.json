@@ -1,7 +1,7 @@
 {
   "name": "akbun-draw-architecture",
   "description": "Architecture drawing skills by akbun — AWS VPC draw.io diagrams and flat boundary architecture SVGs",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "author": {
     "name": "akbun"
   },
