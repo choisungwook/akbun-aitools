@@ -39,6 +39,7 @@
 | 사람 없는 장면을 바랜 옛 필름 사진처럼 보여 주고 싶음 | [akbun-draw-faded-film](../plugins/akbun-draw/skills/akbun-draw-faded-film/SKILL.md) | 필름 입자·무른 초점·실제 광원·아날로그 사물 사진 프롬프트(spec을 스크립트가 조립·채점) |
 | 여행지 거리를 카메라 스냅 사진이나 짧은 반복 영상으로 보여 주고 싶음 | [akbun-draw-street-matte](../plugins/akbun-draw/skills/akbun-draw-street-matte/SKILL.md) | 무광 베이지·올리브 색 보정, 얼굴 없는 뒷모습 인물 거리 스냅 프롬프트와 2×2 시트를 이은 mp4(spec을 스크립트가 조립·채점) |
 | 다정한 제목 한 줄과 그 뒤 웃긴 속사정을 보여 주는 개그 한 컷이 필요함 | [akbun-draw-gag-deadpan](../plugins/akbun-draw/skills/akbun-draw-gag-deadpan/SKILL.md) | 한국어 제목과 두 캐릭터 무표정 개그 한 컷 프롬프트(illust-wash 그림체, spec을 스크립트가 조립·채점) |
+| 흐린 날 도시 벽 앞에서 찍은 듯한 담담한 인물 사진이 필요함 | [akbun-draw-human-overcast](../plugins/akbun-draw/skills/akbun-draw-human-overcast/SKILL.md) | 부드러운 확산광·낮은 채도의 실사 인물 스트리트 스냅 프롬프트(spec을 스크립트가 조립·채점) |
 | 논문·학습 자료를 이미지와 설명 대본으로 바꾸고 싶음 | [akbun-draw-learning-mono](../plugins/akbun-draw/skills/akbun-draw-learning-mono/SKILL.md) | 흑백 16:9 학습 이미지와 대본 |
 | 여행 글에 넣을 썸네일·약도 삽화가 필요함 | [akbun-draw-travel-blog](../plugins/akbun-draw/skills/akbun-draw-travel-blog/SKILL.md) | 썸네일·코스 약도 프롬프트 |
 | IT·여행 글이나 영상의 유튜브·티스토리 썸네일을 포스터처럼 만들고 싶음 | [akbun-draw-thumbnail-retro](../plugins/akbun-draw/skills/akbun-draw-thumbnail-retro/SKILL.md) | 70년대 필름 사진 위 레트로 디스플레이 글자 썸네일 프롬프트(16:9·1:1) |
