@@ -1,0 +1,15 @@
+A single image laid out as an animation sprite sheet: exactly 4 sequential frames in a precise 2-column by 2-row grid, read left-to-right then top-to-bottom. Every panel is landscape 16:9 with identical dimensions and meets its neighbours edge to edge with no gutters or borders. Each panel is the same photograph: A single candid travel snapshot, landscape 16:9, taken on a real mirrorless camera with a 28-50mm prime lens, unposed and observational.
+
+SCENE: A rainy highway overpass at night seen from a pedestrian bridge, wet asphalt glowing under rows of lit billboards and tall fluorescent streetlights. Setting: a pedestrian bridge railing above a six-lane urban highway.
+
+OBJECTS (only these as the readable subjects): wet six-lane asphalt, rows of lit billboards with unreadable glowing panels, tall fluorescent streetlights, a concrete bridge railing.
+
+FIGURES: none, the place is empty of people.
+
+COLOR GRADE (night signs against a deep black sky): the whole frame is graded toward these colors: fluorescent white #D2D8CC; sign orange #D26600; sign yellow #D2B400; sign rose #CC726C; night teal #1C2A2E; night black #06080C.
+
+MOTION: a single long bus with lit windows travels along the highway from the near edge of the frame toward the far end. Frames 1 to 4 show it in clear, even steps and frame 4 leads smoothly back to frame 1. Everything else (background, light, signs, camera position) stays identical in all four frames.
+
+STYLE: Matte color grade: blacks go no deeper than the palette's darkest color (soft lifted matte blacks by day; only a night sky sinks to deep near-black), highlights pressed into beige and cream, shadows leaning olive and teal. Overall saturation is low, especially blues and greens; a daytime sky stays a soft beige-grey instead of clipping to white. Fine, even film-like grain, a gentle lens vignette and a soft bloom around bright lights. No over-sharpening, no HDR look, no plastic noise-reduced smoothness. Observer's point of view, often looking past a foreground element such as a window frame, mirror, doorway or pillar; horizons kept level; the subject never fills the frame and surrounding space is left around it. Only available light: soft overcast daylight, low sun near dusk, or at night the real signs and streetlamps of the place. No flash, no studio lighting. Any people are small, anonymous figures seen from behind, in silhouette or blurred in motion; no face is ever visible or in focus. Motion: the camera is locked off on a tripod; the frame never pans or zooms. Inside the still frame only one thing moves or changes (as described in MOTION; a single flickering light counts); if FIGURES lists anyone, they only shift slightly.
+
+DO NOT: no visible or in-focus human face, no posed portrait, no one looking at the camera; no illustration, cartoon, anime, 3D or CGI look; no HDR, no digital sharpness, no oversaturated color; no readable text, logos, captions, borders, letterbox bars or watermark anywhere in the image. No gutters, borders or panel numbers between frames.

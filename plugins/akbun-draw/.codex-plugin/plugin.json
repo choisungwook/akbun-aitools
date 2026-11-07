@@ -1,6 +1,6 @@
 {
   "name": "akbun-draw",
-  "version": "1.0.39",
+  "version": "1.0.40",
   "description": "Image drawing skills by akbun — image-generation prompts and editable SVGs in fixed akbun styles",
   "author": {
     "name": "akbun",
@@ -33,6 +33,8 @@
     "privacyPolicyURL": "https://docs.github.com/site-policy/privacy-policies/github-general-privacy-statement",
     "termsOfServiceURL": "https://docs.github.com/en/site-policy/github-terms/github-terms-of-service",
     "defaultPrompt": [
+      "Make a faded-film photo prompt of an empty 1980s diner at dusk",
+      "Make a street-matte travel snapshot prompt of a rainy train platform",
       "Draw this script as night-gouache explainer scenes (dark painted illustrations with one glowing highlight) and export the layers for Resolve",
       "Make an image prompt that explains this code as a blog figure",
       "Make a hand-drawn doodle motion graphic (pose swaps, draw-on lines and text) as MP4 or transparent MOV and place it on my Resolve timeline at 12s",
