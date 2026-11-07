@@ -48,26 +48,30 @@
       "from": "manifest",
       "to": "api",
       "kind": "main",
-      "label": "apply"
+      "label": "apply",
+      "step": 1
     },
     {
       "from": "api",
       "to": "ctl",
       "kind": "call",
       "label": "watch",
-      "icon": "eye"
+      "icon": "eye",
+      "step": 2
     },
     {
       "from": "ctl",
       "to": "pods",
       "kind": "call",
-      "label": "create/delete"
+      "label": "create/delete",
+      "step": 3
     },
     {
       "from": "pods",
       "to": "api",
       "kind": "sync",
-      "label": "status"
+      "label": "status",
+      "step": 4
     },
     {
       "from": "api",

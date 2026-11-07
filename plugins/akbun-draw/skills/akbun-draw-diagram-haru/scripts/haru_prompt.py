@@ -38,6 +38,7 @@ def check(spec):
     ids = [n.get("id") for n in nodes]
     names = [name(n) for n in nodes]
     labeled = [e for e in es if e.get("label")]
+    steps = [e["step"] for e in es if "step" in e]
     linked = {e.get("from") for e in es} | {e.get("to") for e in es}
     words = len(spec.get("subject", "").split())
     free = " ".join([spec.get("subject", "")] + names + [e.get("label", "") for e in es] + [x.get("text", "") for x in notes])
@@ -64,6 +65,8 @@ def check(spec):
         ("main count", 1 <= sum(e.get("kind") == "main" for e in es) <= 3, "main 화살표 1~3개(경계 포함)"),
         ("edge labels", len(labeled) <= 5 and all(text_ok(e["label"], 14) for e in labeled),
          f"이름 붙은 화살표 {len(labeled)}개, 0~5개, 각 1~14자"),
+        ("steps", all(type(n) is int for n in steps) and sorted(steps) == list(range(1, len(steps) + 1)) and len(steps) != 1,
+         f"step {steps}: 없거나, 2개 이상이면 1부터 빠짐없이 이어지는 정수"),
         ("edge icons", all(e.get("label") and e["icon"] in icons for e in es if "icon" in e), "화살표 아이콘은 label이 있을 때만, icons.jsonl id"),
         ("all linked", set(ids) <= linked, f"화살표가 닿지 않은 도형: {sorted(set(ids) - linked)}"),
         ("notes", len(notes) <= 2 and all(x.get("node") in ids and text_ok(x.get("text", ""), 32) for x in notes),
@@ -94,6 +97,8 @@ def build(spec):
     def arrow(i, e):
         line = edges[e["kind"]]["prompt"].format(**p)
         out = f"{i}. from {q(by_id[e['from']])} to {q(by_id[e['to']])}: {line}"
+        if "step" in e:
+            out += f', with a small hollow {p["ink"]} circle holding the number "{e["step"]}" in {p["ink"]} near the middle of the line'
         if e.get("label"):
             out += f', labeled "{e["label"]}" in small {p["accent"]} lettering beside the line'
             if "icon" in e:
@@ -165,6 +170,12 @@ def selftest():
     assert "tiers" in {n for n, ok, _ in check(dict(tiered, layout="hub"))  if not ok}
     assert "labels" in {n for n, ok, _ in check(dict(good, nodes=[dict(good["nodes"][1], label="DB")] + good["nodes"][2:] + good["nodes"][:1])) if not ok}
     assert "halves" in {n for n, ok, _ in check(dict(twin, nodes=[dict(n, half="left") for n in twin["nodes"]])) if not ok}
+    numbered = dict(good, edges=[dict(e, step=i) for i, e in enumerate(good["edges"][:2], 1)] + good["edges"][2:])
+    assert score(check(numbered)) == 100, check(numbered)
+    assert 'circle holding the number "2"' in build(numbered) and "circle holding" not in build(good)
+    for bad_steps in ((1, 3), (2, 3), (1, 1), (1,)):
+        e2 = [dict(e, step=n) for e, n in zip(good["edges"], bad_steps)] + good["edges"][len(bad_steps):]
+        assert "steps" in {n for n, ok, _ in check(dict(good, edges=e2)) if not ok}, bad_steps
     assert "main count" in {n for n, ok, _ in check(dict(good, edges=[dict(e, kind="sync") for e in good["edges"]])) if not ok}
     print("selftest ok")
 
