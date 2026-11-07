@@ -79,6 +79,7 @@ def plugin_errors(root):
   errors.extend(f"README.md: '## plugin 목록'에 없는 skill {rel}" for rel in sorted(found - listed))
   errors.extend(f"README.md: 존재하지 않는 skill 링크 {rel}" for rel in sorted(listed - found))
   errors.extend(table_errors(index))
+  errors.extend(example_errors(readme))
   errors.extend(manual_errors(root, found))
   return errors
 
@@ -95,6 +96,14 @@ def table_errors(index):
     if not text.strip().endswith("때"):
       errors.append(f"README.md: {name} 행은 쓰면 좋은 상황을 '~할 때'로 끝내야 함 ('{text.strip()}')")
   return errors
+
+
+def example_errors(readme):
+  """'## plugin 예시' 표는 칼럼 하나: 행(<tr>)마다 칸(<td>) 1개."""
+  _, _, rest = readme.partition("## plugin 예시")
+  section = rest.split("\n## ", 1)[0]
+  return [f"README.md: plugin 예시 표는 행마다 칸 1개여야 함 ({n}칸: {re.sub(r'<[^>]+>', ' ', row).split()[0] if re.sub(r'<[^>]+>', ' ', row).split() else '빈 행'})"
+          for row in re.findall(r"<tr>.*?</tr>", section, re.S) if (n := row.count("<td")) != 1]
 
 
 def manual_errors(root, found):
