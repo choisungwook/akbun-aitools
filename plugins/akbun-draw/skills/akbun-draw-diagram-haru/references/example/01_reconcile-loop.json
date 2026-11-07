@@ -1,0 +1,88 @@
+{
+  "palette": "ink-green",
+  "layout": "loop",
+  "subject": "A Kubernetes controller watches desired state, compares it with running pods, and creates or deletes pods until both match.",
+  "nodes": [
+    {
+      "id": "api",
+      "label": [
+        "API Server"
+      ],
+      "shape": "box"
+    },
+    {
+      "id": "ctl",
+      "label": [
+        "Controller"
+      ],
+      "shape": "box",
+      "icon": "gear"
+    },
+    {
+      "id": "pods",
+      "label": [
+        "Pods"
+      ],
+      "shape": "box",
+      "icon": "box-stack"
+    },
+    {
+      "id": "manifest",
+      "label": [
+        "Deployment",
+        "YAML"
+      ],
+      "shape": "box",
+      "icon": "document"
+    },
+    {
+      "id": "etcd",
+      "label": [
+        "etcd"
+      ],
+      "shape": "cylinder"
+    }
+  ],
+  "edges": [
+    {
+      "from": "manifest",
+      "to": "api",
+      "kind": "main",
+      "label": "apply",
+      "step": 1
+    },
+    {
+      "from": "api",
+      "to": "ctl",
+      "kind": "call",
+      "label": "watch",
+      "icon": "eye",
+      "step": 2
+    },
+    {
+      "from": "ctl",
+      "to": "pods",
+      "kind": "call",
+      "label": "create/delete",
+      "step": 3
+    },
+    {
+      "from": "pods",
+      "to": "api",
+      "kind": "sync",
+      "label": "status",
+      "step": 4
+    },
+    {
+      "from": "api",
+      "to": "etcd",
+      "kind": "sync-pair"
+    }
+  ],
+  "notes": [
+    {
+      "node": "etcd",
+      "text": "원하는 상태와 실제 상태"
+    }
+  ]
+}

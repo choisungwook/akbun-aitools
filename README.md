@@ -109,6 +109,10 @@ codex plugin list --json
 <td><a href="./plugins/akbun-draw/skills/akbun-draw-style-bori/SKILL.md"><img src="./imgs/akbun-draw-style-bori.jpg" alt="akbun-draw-style-bori" width="400"></a><br><code>akbun-draw-style-bori</code></td>
 <td><a href="./plugins/akbun-draw/skills/akbun-draw-animation-dami/SKILL.md"><img src="./imgs/akbun-draw-animation-dami.jpg" alt="akbun-draw-animation-dami" width="400"></a><br><code>akbun-draw-animation-dami</code></td>
 </tr>
+<tr>
+<td><a href="./plugins/akbun-draw/skills/akbun-draw-diagram-haru/SKILL.md"><img src="./imgs/akbun-draw-diagram-haru.jpg" alt="akbun-draw-diagram-haru" width="400"></a><br><code>akbun-draw-diagram-haru</code></td>
+<td></td>
+</tr>
 </table>
 
 ### akbun-presentation 예시
@@ -190,6 +194,7 @@ $akbun-davinciresolve-explainer 이 대본을 fiery-ocean 색, akbun 도형으�
 | [akbun-draw-pencil-analogy-graphite](./plugins/akbun-draw/skills/akbun-draw-pencil-analogy-graphite/) | 연필 막대 인물로 개념을 일상 비유로 풀어 줄 때 |
 | [akbun-draw-storybook-crayon](./plugins/akbun-draw/skills/akbun-draw-storybook-crayon/) | 색연필 동화책 느낌으로 부드럽게 비유를 들 때 |
 | [akbun-draw-crayon-milo](./plugins/akbun-draw/skills/akbun-draw-crayon-milo/) | 시스템 흐름을 아이 크레용 그림 같은 다이어그램 이미지로 만들 때 |
+| [akbun-draw-diagram-haru](./plugins/akbun-draw/skills/akbun-draw-diagram-haru/) | 시스템 구조·요청 흐름을 흰 바탕 손그림 다이어그램 이미지로 만들 때 |
 | [akbun-draw-scribble-black](./plugins/akbun-draw/skills/akbun-draw-scribble-black/) | 보드에 손으로 써 내려가며 수식·단계·묻고 답하기를 설명할 때 |
 | [akbun-draw-slate-marker](./plugins/akbun-draw/skills/akbun-draw-slate-marker/) | 요청·메모리 같은 시스템 동작을 카드와 상태 변화로 보여 줄 때 |
 | [akbun-generateimage-code](./plugins/akbun-draw/skills/akbun-generateimage-code/) | 블로그에 코드를 짚어 설명하는 그림이 필요할 때 |

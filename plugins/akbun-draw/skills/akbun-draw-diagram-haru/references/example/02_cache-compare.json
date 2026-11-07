@@ -1,0 +1,78 @@
+{
+  "palette": "ink-blue",
+  "layout": "split",
+  "subject": "Before and after adding a cache: every read hits the database in 120 ms versus most reads served from cache in 8 ms.",
+  "nodes": [
+    {
+      "id": "app1",
+      "label": [
+        "App",
+        "(before)"
+      ],
+      "shape": "box",
+      "half": "left"
+    },
+    {
+      "id": "db1",
+      "label": [
+        "DB"
+      ],
+      "shape": "cylinder",
+      "half": "left"
+    },
+    {
+      "id": "app2",
+      "label": [
+        "App",
+        "(after)"
+      ],
+      "shape": "box",
+      "half": "right"
+    },
+    {
+      "id": "cache",
+      "label": [
+        "Cache"
+      ],
+      "shape": "cylinder",
+      "icon": "bolt",
+      "half": "right"
+    },
+    {
+      "id": "db2",
+      "label": [
+        "DB"
+      ],
+      "shape": "cylinder",
+      "half": "right"
+    }
+  ],
+  "edges": [
+    {
+      "from": "app1",
+      "to": "db1",
+      "kind": "main",
+      "label": "120ms",
+      "icon": "clock"
+    },
+    {
+      "from": "app2",
+      "to": "cache",
+      "kind": "main",
+      "label": "8ms",
+      "icon": "clock"
+    },
+    {
+      "from": "cache",
+      "to": "db2",
+      "kind": "sync",
+      "label": "miss only"
+    }
+  ],
+  "notes": [
+    {
+      "node": "cache",
+      "text": "읽기의 90%를 여기서 처리"
+    }
+  ]
+}
