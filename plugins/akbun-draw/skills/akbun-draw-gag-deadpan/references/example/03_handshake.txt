@@ -1,0 +1,17 @@
+Single-panel hand-drawn illustration, landscape 16:9: black pen-and-ink linework with light transparent watercolor and colored-pencil washes on white drawing paper.
+
+STAGING: One panel, two full-body characters at the same scale, standing on the white page together as one compact group that takes about 55-75% of the frame height, with generous empty white paper all around. At most two small background objects. Acting: the enduring character's eyes and brows stay flat and deadpan, with only one sweat drop and two or three short trembling lines; no angry brows, no bared teeth, no steam. Only the body is exaggerated. Timing: the instant before anything happens, frozen; nobody is hit or hurt.
+
+GAG: Twist: both characters are enduring each other. They stand face to face, politely, each hiding a rolled-up newspaper the size of a baseball bat behind their back where only the viewer can see it.
+
+ENDURING CHARACTER: a person-sized crow standing upright with blue-tinged black feathers (#2A2E38) and a grey beak, shakes hands warmly with a rigid, upright back.
+
+UNAWARE CHARACTER: an upright tortoise with an olive shell (#7D7A48) and a wrinkled grey-green neck, shakes hands warmly and nods slowly.
+
+SETTING: no particular place, just the white page.
+
+COLOR PALETTE (muted everyday wash): build clothes, objects and shadows mostly from these colors as thin washes: paper #FCFCFA; ink #151515; shade grey #A8A8A8; light grey #DEDEDE; tan #C6A872; olive #9C9A62; rust red #B4553F; dusty blue #8AA6BF. Each character keeps its own listed fur, skin or feather color.
+
+STYLE: The ground is near-white paper (#FCFCFA); at least 60% of the canvas stays unpainted white. No background box, no full sky or wall fill. If a place is needed, draw only the few objects that identify it, and let lines and washes break off and fade into white paper toward the edges. The floor is just a pale grey wash shadow under the feet and a few short ink strokes. Lines are near-black pen ink (#151515), about 1.5-3 px at 1280 px width with natural pressure variation. Contours are built from short, slightly broken, overlapping strokes, never one smooth vector line. Fur and cloth folds get sparse parallel hatching and light cross-hatching in shadow. Fur edges are short jagged tuft strokes. Color is one or two uneven layers of transparent, low-saturation watercolor wash that slightly overshoots the lines, with white paper showing through. Shadows are a second wash layer or a cool grey wash. A little colored-pencil grain shows over the washes. No hard-edged cel shading, no glossy highlights. Characters are original animals with fairly natural proportions (head about a quarter to a third of body height), standing and acting like people, sometimes wearing ordinary clothes. Small dark eyes, an almost unchanging deadpan face; feelings show through posture and small comic marks (a sweat drop, motion lines), not through big facial expressions. Mood: dry, understated humor; absurd situations drawn with a completely straight face.
+
+DO NOT: no photorealism, no 3D, no anime or chibi proportions, no clean vector lines, no hard cel shading, no filled background, no humans, no dogs, no cats, no white fluffy animals, no existing mascots or known cartoon characters, no written words, captions, speech text or watermark anywhere in the image.
