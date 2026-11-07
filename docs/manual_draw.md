@@ -31,7 +31,6 @@
 | 상황 | 스킬 | 결과물 |
 |---|---|---|
 | 블로그에 코드를 짚어 설명하는 그림이 필요함 | [akbun-generateimage-code](../plugins/akbun-draw/skills/akbun-generateimage-code/SKILL.md) | 코드 위 강조 박스·화살표·콜아웃이 들어간 그림 프롬프트 |
-| 시스템 흐름을 아이가 그린 듯한 다이어그램으로 보여 주고 싶음 | [akbun-draw-crayon-milo](../plugins/akbun-draw/skills/akbun-draw-crayon-milo/SKILL.md) | 크레용 다이어그램 프롬프트 |
 | 시스템 구조·요청 흐름을 흰 바탕 손그림 다이어그램 이미지로 보여 주고 싶음 | [akbun-draw-diagram-haru](../plugins/akbun-draw/skills/akbun-draw-diagram-haru/SKILL.md) | 검정 외곽선 빈 도형·속 빈 화살표·손글씨 이름 다이어그램 프롬프트(spec을 스크립트가 조립·채점) |
 | 개념 하나를 카드 한 장으로 정리하고 싶음 | [akbun-draw-sketchbook-card](../plugins/akbun-draw/skills/akbun-draw-sketchbook-card/SKILL.md) | 스파이럴 스케치북 카드 프롬프트 |
 | 여백 많은 조용한 일상 장면 그림이 필요함 | [akbun-draw-quiet-pencil](../plugins/akbun-draw/skills/akbun-draw-quiet-pencil/SKILL.md) | 크림 배경 연필 장면 프롬프트 |

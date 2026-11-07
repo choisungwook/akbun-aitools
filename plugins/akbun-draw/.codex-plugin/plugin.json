@@ -1,6 +1,6 @@
 {
   "name": "akbun-draw",
-  "version": "1.0.37",
+  "version": "1.0.38",
   "description": "Image drawing skills by akbun — image-generation prompts and editable SVGs in fixed akbun styles",
   "author": {
     "name": "akbun",
@@ -41,7 +41,6 @@
       "Make a colored-pencil storybook scene that explains a message queue with characters and a red dashed warning, timed to my script (akbun-draw-storybook-crayon)",
       "Make a hand-drawn motion graphic on a black board that writes this explanation stroke by stroke in white pen: thought clouds, speech bubbles, faceless stick figures, sky-blue inputs and orange results (akbun-draw-scribble-black)",
       "Make a dark slate-card motion graphic that explains how a request moves through these servers, with hand-lettered captions and one meaning per accent color (akbun-draw-slate-marker)",
-      "Make a child-like crayon diagram image prompt (wobbly double outlines, scribble fill, gray dashed standby parts) for this system flow (akbun-draw-crayon-milo)",
       "Make a pastel animal-character webtoon page (image prompts + Figma/Canva SVG) from these images and story",
       "Make a 4-panel doodle comic from this story as Instagram carousel images (1080x1350) with reading-order numbers",
       "Make a grayscale documentary-style webtoon with subtitle narration (per-scene image prompts) from my story",
@@ -53,7 +52,7 @@
       "Make travel blog thumbnail and illustrated course map image prompts from this travel post draft (akbun-draw-travel-blog)",
       "Read this post and make retro film-poster YouTube 16:9 and Tistory 1:1 thumbnail prompts with a retro display word over a 1970s film photo (akbun-draw-thumbnail-retro)",
       "Make doodle-style blog and YouTube thumbnail prompts (16:9 and 4:3) for this title and post, and generate them with codex into ~/Downloads only if I ask (akbun-draw-thumbnail-doodle)",
-      "Draw this system flow as a 16:9 explainer SVG in one of 9 token styles (tech-minimal, clay-isometric, chalkboard-math, notebook-doodle, cyber-wireframe, paper-cutout, bento-dashboard, ink-hatch, marker-wireframe) (akbun-draw-explainer-svg)",
+      "Draw this system flow as a 16:9 explainer SVG in one of 7 token styles (tech-minimal, clay-isometric, chalkboard-math, cyber-wireframe, paper-cutout, bento-dashboard, marker-wireframe) (akbun-draw-explainer-svg)",
       "Draw a cozy rainy-evening laundromat scene with round chibi animals as a bori-style image prompt (akbun-draw-style-bori)",
       "Turn this short story into a 10-second painterly vertical animated short with a new cast and narration captions (akbun-draw-animation-dami)",
       "Draw this request flow as a hand-drawn white-canvas diagram image prompt with hollow-head arrows and handwritten labels (akbun-draw-diagram-haru)"

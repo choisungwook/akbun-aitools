@@ -82,7 +82,7 @@ codex plugin list --json
 </tr>
 <tr>
 <td><a href="./plugins/akbun-draw/skills/akbun-draw-night-gouache/SKILL.md"><img src="./imgs/akbun-draw-night-gouache.jpg" alt="akbun-draw-night-gouache" width="400"></a><br><code>akbun-draw-night-gouache</code></td>
-<td><a href="./plugins/akbun-draw/skills/akbun-draw-crayon-milo/SKILL.md"><img src="./imgs/akbun-draw-crayon-milo.jpg" alt="akbun-draw-crayon-milo" width="400"></a><br><code>akbun-draw-crayon-milo</code></td>
+<td><a href="./plugins/akbun-draw/skills/akbun-draw-animation-dami/SKILL.md"><img src="./imgs/akbun-draw-animation-dami.jpg" alt="akbun-draw-animation-dami" width="400"></a><br><code>akbun-draw-animation-dami</code></td>
 </tr>
 <tr>
 <td><a href="./plugins/akbun-draw/skills/akbun-draw-slate-marker/SKILL.md"><img src="./imgs/akbun-draw-slate-marker.jpg" alt="akbun-draw-slate-marker" width="400"></a><br><code>akbun-draw-slate-marker</code></td>
@@ -98,16 +98,14 @@ codex plugin list --json
 - `tech-minimal`<br><a href="./plugins/akbun-draw/skills/akbun-draw-explainer-svg/styles/tech-minimal.json"><img src="./imgs/akbun-draw-explainer-svg/tech-minimal.png" alt="akbun-draw-explainer-svg tech-minimal" width="400"></a>
 - `clay-isometric`<br><a href="./plugins/akbun-draw/skills/akbun-draw-explainer-svg/styles/clay-isometric.json"><img src="./imgs/akbun-draw-explainer-svg/clay-isometric.png" alt="akbun-draw-explainer-svg clay-isometric" width="400"></a>
 - `chalkboard-math`<br><a href="./plugins/akbun-draw/skills/akbun-draw-explainer-svg/styles/chalkboard-math.json"><img src="./imgs/akbun-draw-explainer-svg/chalkboard-math.png" alt="akbun-draw-explainer-svg chalkboard-math" width="400"></a>
-- `notebook-doodle`<br><a href="./plugins/akbun-draw/skills/akbun-draw-explainer-svg/styles/notebook-doodle.json"><img src="./imgs/akbun-draw-explainer-svg/notebook-doodle.png" alt="akbun-draw-explainer-svg notebook-doodle" width="400"></a>
 - `cyber-wireframe`<br><a href="./plugins/akbun-draw/skills/akbun-draw-explainer-svg/styles/cyber-wireframe.json"><img src="./imgs/akbun-draw-explainer-svg/cyber-wireframe.png" alt="akbun-draw-explainer-svg cyber-wireframe" width="400"></a>
 - `paper-cutout`<br><a href="./plugins/akbun-draw/skills/akbun-draw-explainer-svg/styles/paper-cutout.json"><img src="./imgs/akbun-draw-explainer-svg/paper-cutout.png" alt="akbun-draw-explainer-svg paper-cutout" width="400"></a>
 - `bento-dashboard`<br><a href="./plugins/akbun-draw/skills/akbun-draw-explainer-svg/styles/bento-dashboard.json"><img src="./imgs/akbun-draw-explainer-svg/bento-dashboard.png" alt="akbun-draw-explainer-svg bento-dashboard" width="400"></a>
-- `ink-hatch`<br><a href="./plugins/akbun-draw/skills/akbun-draw-explainer-svg/styles/ink-hatch.json"><img src="./imgs/akbun-draw-explainer-svg/ink-hatch.png" alt="akbun-draw-explainer-svg ink-hatch" width="400"></a>
 - `marker-wireframe`<br><a href="./plugins/akbun-draw/skills/akbun-draw-explainer-svg/styles/marker-wireframe.json"><img src="./imgs/akbun-draw-explainer-svg/marker-wireframe.png" alt="akbun-draw-explainer-svg marker-wireframe" width="400"></a>
 
 </td>
 <td><a href="./plugins/akbun-draw/skills/akbun-draw-style-bori/SKILL.md"><img src="./imgs/akbun-draw-style-bori.jpg" alt="akbun-draw-style-bori" width="400"></a><br><code>akbun-draw-style-bori</code></td>
-<td><a href="./plugins/akbun-draw/skills/akbun-draw-animation-dami/SKILL.md"><img src="./imgs/akbun-draw-animation-dami.jpg" alt="akbun-draw-animation-dami" width="400"></a><br><code>akbun-draw-animation-dami</code></td>
+<td><a href="./plugins/akbun-draw/skills/akbun-draw-learning-mono/SKILL.md"><img src="./imgs/akbun-draw-learning-mono.jpg" alt="akbun-draw-learning-mono" width="400"></a><br><code>akbun-draw-learning-mono</code></td>
 </tr>
 <tr>
 <td><a href="./plugins/akbun-draw/skills/akbun-draw-diagram-haru/SKILL.md"><img src="./imgs/akbun-draw-diagram-haru.jpg" alt="akbun-draw-diagram-haru" width="400"></a><br><code>akbun-draw-diagram-haru</code></td>
@@ -193,7 +191,6 @@ $akbun-davinciresolve-explainer 이 대본을 fiery-ocean 색, akbun 도형으�
 | [akbun-draw-night-gouache](./plugins/akbun-draw/skills/akbun-draw-night-gouache/) | 어두운 배경 손채색 그림으로 비유·대화를 보여 주는 설명 장면이 필요할 때 |
 | [akbun-draw-pencil-analogy-graphite](./plugins/akbun-draw/skills/akbun-draw-pencil-analogy-graphite/) | 연필 막대 인물로 개념을 일상 비유로 풀어 줄 때 |
 | [akbun-draw-storybook-crayon](./plugins/akbun-draw/skills/akbun-draw-storybook-crayon/) | 색연필 동화책 느낌으로 부드럽게 비유를 들 때 |
-| [akbun-draw-crayon-milo](./plugins/akbun-draw/skills/akbun-draw-crayon-milo/) | 시스템 흐름을 아이 크레용 그림 같은 다이어그램 이미지로 만들 때 |
 | [akbun-draw-diagram-haru](./plugins/akbun-draw/skills/akbun-draw-diagram-haru/) | 시스템 구조·요청 흐름을 흰 바탕 손그림 다이어그램 이미지로 만들 때 |
 | [akbun-draw-scribble-black](./plugins/akbun-draw/skills/akbun-draw-scribble-black/) | 보드에 손으로 써 내려가며 수식·단계·묻고 답하기를 설명할 때 |
 | [akbun-draw-slate-marker](./plugins/akbun-draw/skills/akbun-draw-slate-marker/) | 요청·메모리 같은 시스템 동작을 카드와 상태 변화로 보여 줄 때 |
