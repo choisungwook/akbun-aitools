@@ -105,7 +105,7 @@ codex plugin list --json
 
 </td>
 <td><a href="./plugins/akbun-draw/skills/akbun-draw-style-bori/SKILL.md"><img src="./imgs/akbun-draw-style-bori.jpg" alt="akbun-draw-style-bori" width="400"></a><br><code>akbun-draw-style-bori</code></td>
-<td></td>
+<td><a href="./plugins/akbun-draw/skills/akbun-draw-learning-mono/SKILL.md"><img src="./imgs/akbun-draw-learning-mono.jpg" alt="akbun-draw-learning-mono" width="400"></a><br><code>akbun-draw-learning-mono</code></td>
 </tr>
 <tr>
 <td><a href="./plugins/akbun-draw/skills/akbun-draw-diagram-haru/SKILL.md"><img src="./imgs/akbun-draw-diagram-haru.jpg" alt="akbun-draw-diagram-haru" width="400"></a><br><code>akbun-draw-diagram-haru</code></td>
