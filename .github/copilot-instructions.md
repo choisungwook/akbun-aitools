@@ -27,7 +27,7 @@
 
 ## 이 저장소에서 버그란
 
-이 저장소는 Claude Code·Codex 플러그인 skill 모음이다. 실행 지침의 원본은 각 `plugins/<plugin>/skills/<skill>/SKILL.md`다. 문서가 주 산출물이므로 버그는 코드가 아니라 문서가 틀리는 모양으로 나타난다.
+이 저장소는 Claude Code·Codex·Antigravity 플러그인 skill 모음이다. 실행 지침의 원본은 각 `plugins/<plugin>/skills/<skill>/SKILL.md`다. 문서가 주 산출물이므로 버그는 코드가 아니라 문서가 틀리는 모양으로 나타난다.
 
 - `SKILL.md`가 거짓말한다: 설명하는 옵션·키·단계가 같은 skill의 `scripts/`·`references/`에 없거나 다르게 동작하면 지적한다.
 - 문서끼리 어긋난다: 같은 값이 표와 본문에서 다르거나, `README.md`·`docs/`가 `SKILL.md`와 다른 이름·흐름을 말하면 지적한다.
