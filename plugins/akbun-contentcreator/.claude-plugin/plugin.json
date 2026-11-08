@@ -1,0 +1,21 @@
+{
+  "name": "akbun-contentcreator",
+  "description": "Content creation skills for the faceless study channel 악분일상 — pick experiment-sized video topics, turn Obsidian study notes into problem→expectation→experiment→result scripts with 15-second hooks, make honest titles and thumbnail text, convert scripts to Tistory posts cross-linked with the video, cut under-60-second Shorts from result moments, and read YouTube Studio numbers into three concrete fixes for the next video",
+  "version": "1.0.0",
+  "author": {
+    "name": "akbun"
+  },
+  "repository": "https://github.com/choisungwook/akbun-aitools",
+  "license": "MIT",
+  "keywords": [
+    "youtube",
+    "content",
+    "script",
+    "title",
+    "thumbnail",
+    "shorts",
+    "tistory",
+    "obsidian",
+    "analytics"
+  ]
+}
