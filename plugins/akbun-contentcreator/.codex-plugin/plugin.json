@@ -1,7 +1,7 @@
 {
   "name": "akbun-contentcreator",
   "version": "1.0.0",
-  "description": "Content creation skills for the faceless study channel 악분일상 — pick experiment-sized video topics, turn Obsidian study notes into problem→expectation→experiment→result scripts with 15-second hooks, make honest titles and thumbnail text, convert scripts to Tistory posts cross-linked with the video, cut under-60-second Shorts from result moments, and read YouTube Studio numbers into three concrete fixes for the next video",
+  "description": "Content creation skills for the faceless study channel 악분일상 — pick experiment-sized video topics, turn Obsidian study notes into problem→expectation→experiment→result scripts with 15-second hooks, and build the upload kit from a finished script: honest titles and thumbnail text, a Tistory post cross-linked with the video, and under-60-second Shorts",
   "author": {
     "name": "akbun",
     "url": "https://github.com/choisungwook"
@@ -17,14 +17,13 @@
     "thumbnail",
     "shorts",
     "tistory",
-    "obsidian",
-    "analytics"
+    "obsidian"
   ],
   "skills": "./skills/",
   "interface": {
     "displayName": "akbun Content Creator",
-    "shortDescription": "Topics, scripts, titles, blog posts, Shorts and performance reviews for the faceless study channel 악분일상",
-    "longDescription": "Helps produce the YouTube channel 악분일상, a faceless study channel whose strength is checking official documentation by direct experiment. Every skill keeps the problem → expectation → experiment → result structure, never invents numbers, and links each video with its Tistory post. akbun-contentcreator-topic-finder scans official docs, security news and the blog's popular posts for five video candidates that fit one problem and one experiment. akbun-contentcreator-script-builder turns an Obsidian study note into a script in that order and writes three 15-second hooks. akbun-contentcreator-title-thumbnail makes five titles and three thumbnail phrases from a script and filters exaggerated or clickbait wording against the coaching document's title examples. akbun-contentcreator-blog-converter rewrites the script as a Tistory post with the video link at the top and a blog link line for the video description. akbun-contentcreator-shorts-cutter picks the result moments of the main video and writes two or three Shorts scripts under 60 seconds. akbun-contentcreator-performance-review reads YouTube Studio numbers the creator pastes in and returns three fixes to apply to the next video, asking for missing data instead of guessing.",
+    "shortDescription": "Topics, scripts, and the upload kit (titles, Tistory post, Shorts) for the faceless study channel 악분일상",
+    "longDescription": "Helps produce the YouTube channel 악분일상, a faceless study channel whose strength is checking official documentation by direct experiment. Every skill keeps the problem → expectation → experiment → result structure, never invents numbers, and links each video with its Tistory post. akbun-contentcreator-topic-finder scans official docs, security news and the blog's popular posts for five video candidates that fit one problem and one experiment. akbun-contentcreator-script-builder turns an Obsidian study note into a script in that order and writes three 15-second hooks. akbun-contentcreator-publish-kit takes the finished script and makes any or all of: five titles and three thumbnail phrases filtered against the coaching document's title examples, a Tistory post with the video link at the top and a blog link line for the video description, and two or three Shorts scripts under 60 seconds cut from the result moments.",
     "developerName": "akbun",
     "category": "Productivity",
     "capabilities": [
@@ -37,10 +36,8 @@
     "defaultPrompt": [
       "공식 문서·보안 뉴스·내 블로그 인기 글을 훑어서 '문제 하나, 실험 하나'로 풀 수 있는 영상 후보 5개 뽑아줘 (akbun-contentcreator-topic-finder)",
       "이 옵시디언 공부 노트를 문제→예상→실험→결과 순서의 영상 대본으로 바꾸고 첫 15초 훅 3개 만들어줘 (akbun-contentcreator-script-builder)",
-      "이 대본으로 제목 5개와 썸네일 문구 3개 만들고 낚시성 표현은 걸러줘 (akbun-contentcreator-title-thumbnail)",
-      "이 영상 대본을 티스토리 글로 바꾸고 영상 링크와 블로그 링크를 서로 넣어줘 (akbun-contentcreator-blog-converter)",
-      "이 본편 대본에서 실험 결과가 나오는 순간을 골라 60초 이하 쇼츠 대본 2~3개 만들어줘 (akbun-contentcreator-shorts-cutter)",
-      "유튜브 스튜디오 숫자를 붙여 넣을게. 다음 영상에 바로 쓸 개선점 3가지로 정리해줘 (akbun-contentcreator-performance-review)"
+      "이 대본으로 제목 5개·썸네일 문구 3개, 티스토리 글, 60초 쇼츠 대본까지 업로드 준비물 한 번에 만들어줘 (akbun-contentcreator-publish-kit)",
+      "이 대본으로 티스토리 글만 써 주고 영상 링크와 블로그 링크를 서로 넣어줘 (akbun-contentcreator-publish-kit)"
     ],
     "brandColor": "#DC2626",
     "screenshots": []

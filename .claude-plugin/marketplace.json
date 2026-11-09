@@ -77,7 +77,7 @@
     {
       "name": "akbun-contentcreator",
       "source": "./plugins/akbun-contentcreator",
-      "description": "Content creation skills for the faceless study channel 악분일상 — experiment-sized topics, problem→expectation→experiment→result scripts with hooks, honest titles and thumbnail text, Tistory posts cross-linked with the video, under-60-second Shorts, and YouTube Studio numbers read into three fixes for the next video",
+      "description": "Content creation skills for the faceless study channel 악분일상 — experiment-sized topics, problem→expectation→experiment→result scripts with hooks, and an upload kit from the finished script: honest titles and thumbnail text, a Tistory post cross-linked with the video, and under-60-second Shorts",
       "strict": true
     }
   ]
