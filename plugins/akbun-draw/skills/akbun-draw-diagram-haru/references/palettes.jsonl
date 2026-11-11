@@ -1,3 +1,3 @@
-{"id": "ink-blue", "use": "기본. 대부분의 시스템 흐름·외부 호출", "ink": "#1E1E1E", "accent": "#4A90D0", "icon": "#7A5AC8", "muted": "#8A8A8A", "bg": "#FFFFFF"}
-{"id": "ink-green", "use": "배포·성공·데이터 흐름이 주제일 때", "ink": "#1E1E1E", "accent": "#2E9E6B", "icon": "#D9822B", "muted": "#8A8A8A", "bg": "#FFFFFF"}
-{"id": "ink-red", "use": "장애·공격·위험 경로가 주제일 때(비밀값·인증 흐름 자체는 ink-blue)", "ink": "#1E1E1E", "accent": "#D9534F", "icon": "#4A90D0", "muted": "#8A8A8A", "bg": "#FFFFFF"}
+{"id": "ink-blue", "use": "기본. 대부분의 시스템 흐름·외부 호출", "ink": "#1E1E1E", "accent": "#4A90D0", "bg": "#FFFFFF"}
+{"id": "ink-green", "use": "배포·성공·데이터 흐름이 주제일 때", "ink": "#1E1E1E", "accent": "#2E9E6B", "bg": "#FFFFFF"}
+{"id": "ink-red", "use": "장애·공격·위험 경로가 주제일 때(비밀값·인증 흐름 자체는 ink-blue)", "ink": "#1E1E1E", "accent": "#D9534F", "bg": "#FFFFFF"}
