@@ -4,7 +4,7 @@
 """akbun-draw-explainer-svg가 만든 SVG를 styles/<style>.json 토큰으로 숫자 검수한다.
 
 사용법:
-  uv run --python 3.12 check_style_svg.py --style tech-minimal [--caption-left 30] out.svg
+  uv run --python 3.12 check_style_svg.py --style marker-wireframe [--caption-left 30] out.svg
   uv run --python 3.12 check_style_svg.py --style path/to/custom.json out.svg
   uv run --python 3.12 check_style_svg.py --selftest
 
@@ -232,16 +232,16 @@ def check(svg_text, style, caption_left=0):
 
 
 def selftest():
-  style = load_style("tech-minimal")
+  style = load_style("marker-wireframe")
   body = (
-    '<rect x="760" y="440" width="300" height="200" rx="12" fill="#FFFFFF" stroke="#212529" stroke-width="2"/>'
-    '<line x1="1060" y1="540" x2="1160" y2="540" stroke="#212529" stroke-width="2" marker-end="url(#add)"/>'
-    '<text x="910" y="540" font-family="Inter, sans-serif" font-size="28" text-anchor="middle" fill="#212529">Pod</text>'
+    '<rect x="760" y="440" width="300" height="200" rx="12" fill="#F2F2F0" stroke="#111111" stroke-width="2"/>'
+    '<line x1="1060" y1="540" x2="1160" y2="540" stroke="#111111" stroke-width="2" marker-end="url(#add)"/>'
+    '<text x="910" y="540" font-family="Patrick Hand, cursive" font-size="28" text-anchor="middle" fill="#111111">Pod</text>'
   )
   head = (
     '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080">'
-    '<defs><marker id="add" markerWidth="12" markerHeight="12"><path d="M0,0 L12,6 L0,12 Z" fill="#212529"/></marker></defs>'
-    '<rect class="bg" width="1920" height="1080" fill="#FFFFFF"/>'
+    '<defs><marker id="add" markerWidth="12" markerHeight="12"><path d="M0,0 L12,6 L0,12 Z" fill="#111111"/></marker></defs>'
+    '<rect class="bg" width="1920" height="1080" fill="#F2F2F0"/>'
   )
   ok_min = head + body + "</svg>"
   errors, info = check(ok_min, style)
@@ -257,32 +257,32 @@ def selftest():
   assert any("자막 영역(x<576)" in e for e in errors), errors
   errors, _ = check(head + '<g transform="translate(-160 0)">' + body + "</g></svg>", style, caption_left=30)
   assert any("경계에서 40px" in e for e in errors), errors
-  bad = ok_min.replace('stroke-width="2"', 'stroke-width="4"').replace('fill="#212529">', 'fill="#FF0000">')
+  bad = ok_min.replace('stroke-width="2"', 'stroke-width="4"').replace('fill="#111111">', 'fill="#FF0000">')
   bad = bad.replace("</svg>", '<filter id="f"/><text x="900" y="1050" font-family="Comic Sans" font-size="20">x</text></svg>')
   errors, _ = check(bad, style)
   joined = "\n".join(errors)
   for needle in ("금지 요소 <filter>", "팔레트 밖 색 #FF0000", "허용 밖 글꼴 'Comic Sans'", "stroke-width 4", "가장자리 80px"):
     assert needle in joined, (needle, joined)
-  big = head + '<rect x="260" y="70" width="1400" height="940" fill="#FFFFFF" stroke="#212529" stroke-width="2"/></svg>'
+  big = head + '<rect x="160" y="70" width="1600" height="940" fill="#F2F2F0" stroke="#111111" stroke-width="2"/></svg>'
   errors, info = check(big, style)
   assert any("여백" in e for e in errors), (errors, info)
   errors, _ = check(ok_min.replace('viewBox="0 0 1920 1080"', 'viewBox="0 0 1080 1920"'), style)
   assert any("viewBox" in e for e in errors), errors
-  inherited = head + '<g text-anchor="end" font-size="28"><text x="1110" y="540" font-family="Inter, sans-serif" fill="#212529">Pod</text></g>' + body + "</svg>"
+  inherited = head + '<g text-anchor="end" font-size="28"><text x="1110" y="540" font-family="Patrick Hand, cursive" fill="#111111">Pod</text></g>' + body + "</svg>"
   errors, _ = check(inherited, style)
   assert errors == [], errors
-  korean = head + '<text x="1800" y="540" font-family="Inter, sans-serif" font-size="28" fill="#212529">노드하나</text>' + body + "</svg>"
+  korean = head + '<text x="1800" y="540" font-family="Patrick Hand, cursive" font-size="28" fill="#111111">노드하나</text>' + body + "</svg>"
   errors, _ = check(korean, style)
   assert any("가장자리" in e for e in errors), errors
-  paper = load_style("paper-cutout")
+  chalk = load_style("chalkboard-math")
   svg = (
     '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080"><defs>'
-    '<filter id="paper"><feDropShadow dx="0" dy="6" stdDeviation="6" flood-color="#3D405B" flood-opacity="0.18"/></filter></defs>'
-    '<rect class="bg" width="1920" height="1080" fill="#F4EFE6"/>'
-    '<g transform="translate(960 540)"><circle cx="0" cy="0" r="100" fill="#E07A5F" filter="url(#paper)"/></g>'
+    '<filter id="chalk"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" result="n"/></filter></defs>'
+    '<rect class="bg" width="1920" height="1080" fill="#1B2A23"/>'
+    '<g transform="translate(960 540)"><circle cx="0" cy="0" r="100" fill="none" stroke="#E9EFEA" stroke-width="2.2" filter="url(#chalk)"/></g>'
     '<path d="M940 540 Q960 510 980 540" fill="none"/><path d="M940 560 h 40" fill="none"/></svg>'
   )
-  errors, info = check(svg, paper)
+  errors, info = check(svg, chalk)
   assert errors == [], errors
   assert info["skipped"] == ["path"], info
   for name in sorted(p.stem for p in STYLES_DIR.glob("*.json")):
@@ -296,7 +296,7 @@ def selftest():
 def main():
   parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
   parser.add_argument("svg", nargs="?", type=Path)
-  parser.add_argument("--style", help="styles/ 아래 토큰 이름(예: tech-minimal) 또는 .json 경로")
+  parser.add_argument("--style", help="styles/ 아래 토큰 이름(예: marker-wireframe) 또는 .json 경로")
   parser.add_argument("--caption-left", type=float, default=0, help="왼쪽에서 비워 둘 자막 영역 비율(%%)")
   parser.add_argument("--selftest", action="store_true")
   args = parser.parse_args()
