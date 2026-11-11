@@ -35,7 +35,6 @@
         "Cache"
       ],
       "shape": "cylinder",
-      "icon": "bolt",
       "half": "right"
     },
     {
@@ -51,16 +50,14 @@
     {
       "from": "app1",
       "to": "db1",
-      "kind": "main",
-      "label": "120ms",
-      "icon": "clock"
+      "kind": "call",
+      "label": "120ms"
     },
     {
       "from": "app2",
       "to": "cache",
-      "kind": "main",
-      "label": "8ms",
-      "icon": "clock"
+      "kind": "call",
+      "label": "8ms"
     },
     {
       "from": "cache",

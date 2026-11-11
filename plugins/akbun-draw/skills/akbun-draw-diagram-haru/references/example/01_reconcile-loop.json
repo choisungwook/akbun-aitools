@@ -15,16 +15,14 @@
       "label": [
         "Controller"
       ],
-      "shape": "box",
-      "icon": "gear"
+      "shape": "box"
     },
     {
       "id": "pods",
       "label": [
         "Pods"
       ],
-      "shape": "box",
-      "icon": "box-stack"
+      "shape": "box"
     },
     {
       "id": "manifest",
@@ -32,8 +30,7 @@
         "Deployment",
         "YAML"
       ],
-      "shape": "box",
-      "icon": "document"
+      "shape": "box"
     },
     {
       "id": "etcd",
@@ -47,7 +44,7 @@
     {
       "from": "manifest",
       "to": "api",
-      "kind": "main",
+      "kind": "call",
       "label": "apply",
       "step": 1
     },
@@ -56,7 +53,6 @@
       "to": "ctl",
       "kind": "call",
       "label": "watch",
-      "icon": "eye",
       "step": 2
     },
     {
