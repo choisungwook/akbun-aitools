@@ -121,7 +121,7 @@ def build(spec):
   def arrow(i, e):
     out = f"{i}. from {ref(e['from'])} to {ref(e['to'])}: {LIB['edges'][e['kind']]['prompt'].format(**p)}"
     if "step" in e:
-      out += f', with a small hollow {p["ink"]} circle holding the number "{e["step"]}" in {p["ink"]} near the middle of the line'
+      out += f', with a small hollow {p["accent"]} circle holding the number "{e["step"]}" in {p["accent"]} near the middle of the line'
     if e.get("label"):
       out += f', labeled "{e["label"]}" in small {p["accent"]} lettering beside the line'
     return out + "."
@@ -212,6 +212,7 @@ def selftest():
   numbered = dict(good, edges=[dict(e, step=i) for i, e in enumerate(good["edges"][:2], 1)] + good["edges"][2:])
   assert score(check(numbered)) == 100, check(numbered)
   assert 'circle holding the number "2"' in build(numbered) and "circle holding" not in out
+  assert "#1E1E1E" not in build(numbered).split("ARROWS")[1].split("NOTES")[0]
   for bad_steps in ((1, 3), (2, 3), (1, 1), (1,)):
     e2 = [dict(e, step=n) for e, n in zip(good["edges"], bad_steps)] + good["edges"][len(bad_steps):]
     assert "steps" in failed(dict(good, edges=e2)), bad_steps
