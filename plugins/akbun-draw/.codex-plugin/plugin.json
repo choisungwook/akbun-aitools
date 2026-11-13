@@ -1,6 +1,6 @@
 {
   "name": "akbun-draw",
-  "version": "1.0.46",
+  "version": "1.0.47",
   "description": "Image drawing skills by akbun — image-generation prompts and editable SVGs in fixed akbun styles",
   "author": {
     "name": "akbun",
@@ -33,6 +33,7 @@
     "privacyPolicyURL": "https://docs.github.com/site-policy/privacy-policies/github-general-privacy-statement",
     "termsOfServiceURL": "https://docs.github.com/en/site-policy/github-terms/github-terms-of-service",
     "defaultPrompt": [
+      "Put yellow hand-drawn arrows and labels next to the error lines in my terminal recording as a Resolve Fusion scene (akbun-draw-code-nari)",
       "Make a faded-film photo prompt of an empty 1980s diner at dusk",
       "Make a street-matte travel snapshot prompt of a rainy train platform",
       "Draw this script as night-gouache explainer scenes (dark painted illustrations with one glowing highlight) and export the layers for Resolve",

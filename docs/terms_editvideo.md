@@ -274,7 +274,7 @@ explainer 스킬들과 [공통 Resolve 구현](../plugins/akbun-editvideo/skills
 
 ## 창 카드 장면
 
-`akbun-edit-page-tour-lilac`, `akbun-edit-quote-cards-lilac`, `akbun-edit-terminal-callout-amber`에서 쓰는 용어다.
+`akbun-edit-page-tour-lilac`, `akbun-edit-quote-cards-lilac`, `akbun-draw-code-nari`에서 쓰는 용어다.
 
 | 용어 | 뜻 |
 |---|---|

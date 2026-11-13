@@ -19,7 +19,7 @@ disable-model-invocation: true
 | 두 코드를 비교한다 | 코드 창 두 개. 다른 줄에만 줄 띠 |
 | 함수 하나가 여러 곳으로 이어진다 | 코드 창 + 점선 연결선 2~3개 + 작은 정보 카드 2~3개 |
 
-- 실제 터미널·AI 도구 출력은 그리지 않는다. 실제 화면 녹화를 쓰는 [akbun-edit-terminal-callout-amber](../../../akbun-editvideo/skills/akbun-edit-terminal-callout-amber/SKILL.md)의 범위다.
+- 실제 터미널·AI 도구 출력은 그리지 않는다. 실제 화면 녹화를 쓰는 [akbun-draw-code-nari](../akbun-draw-code-nari/SKILL.md)의 범위다.
 - 코드는 사용자가 준 코드나 실제 저장소의 코드를 쓴다. 없는 API·출력값을 지어내지 않는다. 예시가 필요하면 짧고 동작하는 코드를 직접 쓰고 "예시 코드"라고 알린다.
 
 ## 녹음 전후 시각 맞추기
