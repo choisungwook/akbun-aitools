@@ -16,10 +16,12 @@
 | 캐릭터가 연기하는 짧은 낙서 장면이 필요함 | [akbun-draw-motion-doodle](../plugins/akbun-draw/skills/akbun-draw-motion-doodle/SKILL.md) | 흰 종이 검은 잉크 낙서, 포즈 교체로 움직이는 캐릭터. 다른 모션 스킬이 쓰는 렌더러도 여기 있음 | - |
 | 개념을 일상 비유로 풀고 싶고 연필 느낌이 맞음 | [akbun-draw-pencil-analogy-graphite](../plugins/akbun-draw/skills/akbun-draw-pencil-analogy-graphite/SKILL.md) | 연필 막대 인물, 색 소품 하나 | - |
 | 짧은 이야기를 내레이션 자막이 붙은 세로 애니메이션 쇼츠로 보여 주고 싶음 | [akbun-draw-animation-dami](../plugins/akbun-draw/skills/akbun-draw-animation-dami/SKILL.md) | 외곽선 없는 회화풍 그림, 안개 낀 원경·앰버 빛·붉은 물체 하나, 이야기마다 새 배역(캐릭터 시트로 컷 사이 생김새 유지), 컷당 1–4장 자세 넘김과 하드컷, 흰 바탕 아래 2줄 자막. 결과는 프롬프트·codex.sh·그림과 9:16 MP4(spec을 스크립트가 조립·채점·렌더) | - |
+| 짧은 이야기를 대사 없이 연출·사운드까지 갖춘 가로 애니메이션으로 보여 주고 싶음 | [akbun-draw-animation-garnet](../plugins/akbun-draw/skills/akbun-draw-animation-garnet/SKILL.md) | 얇고 고른 짙은 선·1단 셀 음영·테두리 빛, 컷마다 한 색 계열, 이야기마다 새 배역. 막 구조·조각에서 전체로·절정으로 짧아지는 컷·막 사이 검정 숨·긴 여운을 채점하고, 박자에 맞춘 컷과 임시 사운드(지속음·energy 4단계·효과음)를 합성. 결과는 프롬프트·codex.sh·큐 시트·그림과 사운드 든 16:9 MP4·GIF(spec을 스크립트가 조립·채점·렌더) | - |
 
 비슷한 스킬끼리 고르는 기준:
 
 - **밝은 화면 vs 어두운 화면**: 밝은 화면은 code-window-lilac·motion-doodle·pencil-analogy-graphite, 실제 터미널 녹화는 code-nari, 어두운 화면은 night-gouache.
+- **세로 vs 가로 애니메이션**: 조용한 회화풍 세로 쇼츠와 자막은 animation-dami, 선 있는 셀 그림·박자에 맞춘 컷·사운드까지 있는 가로 영상은 animation-garnet.
 
 ## 그림 한 장 (이미지 생성 프롬프트·SVG)
 
