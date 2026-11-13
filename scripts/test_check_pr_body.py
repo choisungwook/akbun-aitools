@@ -33,6 +33,11 @@ class TierTests(unittest.TestCase):
       with self.subTest(path=path):
         self.assertEqual(risk_tier([path])[0], "높음")
 
+  def test_git_quoted_non_ascii_path(self):
+    # git diff --name-only가 core.quotepath 기본값으로 낸 scripts/검사.py, plugins/한글.md
+    self.assertEqual(risk_tier(['"scripts/\\352\\262\\200\\354\\202\\254.py"'])[0], "높음")
+    self.assertEqual(risk_tier(['"plugins/\\355\\225\\234\\352\\270\\200.md"'])[0], "중간")
+
 
 class BodyTests(unittest.TestCase):
   def test_complete_body_passes(self):
