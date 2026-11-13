@@ -36,6 +36,7 @@
 | 굵은 잉크 선·단색 면으로 동물·사물의 엉뚱한 한 순간을 그리고 싶음 | [akbun-draw-ink-moss](../plugins/akbun-draw/skills/akbun-draw-ink-moss/SKILL.md) | 올리브 잉크 선·그늘 없는 단색·단색 배경·강조색 하나 그림 프롬프트(spec을 스크립트가 조립·채점) |
 | 흰 종이 여백이 넓은 펜 선·수채 칠 장면이 필요함 | [akbun-draw-illust-wash](../plugins/akbun-draw/skills/akbun-draw-illust-wash/SKILL.md) | 끊어 겹친 펜 선·옅은 수채 칠·무표정 동물 장면 프롬프트(spec을 스크립트가 조립·채점) |
 | 사람 없는 장면을 바랜 옛 필름 사진처럼 보여 주고 싶음 | [akbun-draw-faded-film](../plugins/akbun-draw/skills/akbun-draw-faded-film/SKILL.md) | 필름 입자·무른 초점·실제 광원·아날로그 사물 사진 프롬프트(spec을 스크립트가 조립·채점) |
+| 사물·동물 장면을 옛 그림책 삽화처럼 보여 주고 싶음 | [akbun-draw-storybook-vintage](../plugins/akbun-draw/skills/akbun-draw-storybook-vintage/SKILL.md) | 갈색 연필 윤곽·겹친 수채·한 색 얼룩 바탕·바랜 종이결 삽화 프롬프트(spec을 스크립트가 조립·채점) |
 | 여행지 거리를 카메라 스냅 사진이나 짧은 반복 영상으로 보여 주고 싶음 | [akbun-draw-street-matte](../plugins/akbun-draw/skills/akbun-draw-street-matte/SKILL.md) | 무광 베이지·올리브 색 보정, 얼굴 없는 뒷모습 인물 거리 스냅 프롬프트와 2×2 시트를 이은 mp4(spec을 스크립트가 조립·채점) |
 | 다정한 제목 한 줄과 그 뒤 웃긴 속사정을 보여 주는 개그 한 컷이 필요함 | [akbun-draw-gag-deadpan](../plugins/akbun-draw/skills/akbun-draw-gag-deadpan/SKILL.md) | 한국어 제목과 두 캐릭터 무표정 개그 한 컷 프롬프트(illust-wash 그림체, spec을 스크립트가 조립·채점) |
 | 흐린 날 도시 벽 앞에서 찍은 듯한 담담한 인물 사진이 필요함 | [akbun-draw-human-overcast](../plugins/akbun-draw/skills/akbun-draw-human-overcast/SKILL.md) | 부드러운 확산광·낮은 채도의 실사 인물 스트리트 스냅 프롬프트(spec을 스크립트가 조립·채점) |
