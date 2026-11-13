@@ -44,7 +44,7 @@
 
 | 상황 | 스킬 | 결과물 |
 |---|---|---|
-| 펜 선·수채 그림체로 2·4·6컷 만화(블로그·인스타툰·유튜브 커뮤니티)를 만들고 싶음 | [akbun-draw-comic-wash](../plugins/akbun-draw/skills/akbun-draw-comic-wash/SKILL.md) | 컷 그림 프롬프트(글자 없음)와, 생성된 컷에 한글 말풍선·번호를 얹어 묶은 PNG |
+| 펜 선·수채 그림체로 2·4·6컷 만화(블로그·인스타툰·유튜브 커뮤니티)를 만들고 싶음 | [akbun-draw-comic-wash](../plugins/akbun-draw/skills/akbun-draw-comic-wash/SKILL.md) | 한글 말풍선·컷 번호까지 그림에 직접 그리는 컷 프롬프트와, 생성된 컷을 테두리 둘러 묶은 PNG |
 | 짧은 이야기를 2·4·6컷 만화로 올리고 싶음 | [akbun-draw-doodle-comic](../plugins/akbun-draw/skills/akbun-draw-doodle-comic/SKILL.md) | 낙서 그림체 만화 PNG(블로그용 한 장 또는 인스타툰 컷별) |
 
 ## 기준 스킬

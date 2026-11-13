@@ -2,7 +2,11 @@ Single-panel hand-drawn illustration, portrait 4:5: black pen-and-ink linework w
 
 COMIC PANEL 1 of 4. Every panel shows the same characters with exactly the same species, colors and outfits.
 
-FRAME: portrait 4:5. Keep the top 28% of the image completely empty white paper; speech bubbles are added there later. Medium shot: characters from the knees up.
+FRAME: portrait 4:5. Keep the top 28% of the image as white paper for speech bubbles only. Medium shot: characters from the knees up.
+
+PANEL NUMBER: in the top-left corner, a small solid ink circle with the white numeral 1 hand-drawn inside.
+
+SPEECH BUBBLES: inside the top band, hand-drawn white rounded speech bubbles with a thin pen outline, in reading order (bubble 1 first, upper or further left); a " / " marks a line break. Bubble 1: "오늘부터 / 식물 키워", its short tail pointing down to the character on the left. Bubble 2: "물은 조금만", its short tail pointing down to the character on the right. Letter every bubble by hand in the same dark pen ink as the drawing: simple, rounded, slightly uneven handwritten Korean strokes, evenly spaced, large enough to read at phone size. Spell every character exactly as given inside the quotes, keep the given line breaks, and write no other words anywhere.
 
 SCENE: The pig proudly shows the tortoise a tiny new houseplant in a clay pot. Setting: a sunny windowsill.
 
@@ -12,4 +16,4 @@ COLOR PALETTE (muted everyday wash): build clothes, objects and shadows mostly f
 
 STYLE: The ground is near-white paper (#FCFCFA); at least 60% of the canvas stays unpainted white. No background box, no full sky or wall fill. If a place is needed, draw only the few objects that identify it, and let lines and washes break off and fade into white paper toward the edges. The floor is just a pale grey wash shadow under the feet and a few short ink strokes. Lines are near-black pen ink (#151515), about 1.5-3 px at 1280 px width with natural pressure variation. Contours are built from short, slightly broken, overlapping strokes, never one smooth vector line. Fur and cloth folds get sparse parallel hatching and light cross-hatching in shadow. Fur edges are short jagged tuft strokes. Color is one or two uneven layers of transparent, low-saturation watercolor wash that slightly overshoots the lines, with white paper showing through. Shadows are a second wash layer or a cool grey wash. A little colored-pencil grain shows over the washes. No hard-edged cel shading, no glossy highlights. Characters are original animals with fairly natural proportions (head about a quarter to a third of body height), standing and acting like people, sometimes wearing ordinary clothes. Small dark eyes, an almost unchanging deadpan face; feelings show through posture and small comic marks (a sweat drop, motion lines), not through big facial expressions. Mood: dry, understated humor; absurd situations drawn with a completely straight face.
 
-DO NOT: no photorealism, no 3D, no anime or chibi proportions, no clean vector lines, no hard cel shading, no filled background, no humans, no dogs, no cats, no white fluffy animals, no existing mascots or known cartoon characters, no written words, captions, speech text or watermark anywhere in the image. No speech bubbles, no panel border, no panel number.
+DO NOT: no photorealism, no 3D, no anime or chibi proportions, no clean vector lines, no hard cel shading, no filled background, no humans, no dogs, no cats, no white fluffy animals, no existing mascots or known cartoon characters, no captions, signs or watermark; no words except the speech bubbles and panel number described above. No panel border.

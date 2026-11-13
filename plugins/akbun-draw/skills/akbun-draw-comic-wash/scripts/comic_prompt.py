@@ -1,12 +1,12 @@
-"""wash 그림체 2·4·6컷 만화: 컷 프롬프트를 쓰고, 생성된 컷 그림에 말풍선·대사·번호를 얹어 묶는다.
+"""wash 그림체 2·4·6컷 만화: 말풍선·대사·번호까지 그리는 컷 프롬프트를 쓰고, 생성된 컷을 테두리 둘러 묶는다.
 
   build <comic.json>     채점 후 100점이면 comic.json 옆에 panel_01.txt … 를 쓴다
   check <comic.json>     채점표만 출력
-  compose <comic.json>   panel_01.png … 에 말풍선·번호·테두리를 얹어 comic.png(page) 또는 comic_01.png …(1장씩)
+  compose <comic.json>   panel_01.png … 에 테두리를 둘러 comic.png(page) 또는 comic_01.png …(1장씩)
   --selftest             자체 검사
 
 그림체·팔레트·캐릭터는 akbun-draw-illust-wash의 라이브러리와 스크립트를 그대로 쓴다.
-대사는 이미지 모델이 아니라 이 스크립트가 SIL OFL 글꼴(Gaegu)로 쓴다.
+말풍선·대사·컷 번호는 폰트로 얹지 않고 이미지 모델이 컷 그림 안에 직접 그린다.
 """
 import json
 import sys
@@ -27,11 +27,12 @@ SHOTS = {
     "medium": "Medium shot: characters from the knees up.",
     "close": "Close-up: one character's head and shoulders fill the lower part of the frame.",
 }
-POS = {"left": 0.22, "center": 0.5, "right": 0.78}  # 캐릭터 가로 위치(컷 폭 비율). 말풍선 꼬리도 여기를 가리킨다
-BAND = 0.28  # 말풍선 자리: 컷 위쪽 28%는 그림 없이 비운다
+POS = {"left": "left", "center": "middle", "right": "right"}  # 캐릭터 가로 위치. 말풍선 꼬리도 여기를 가리킨다
+BAND = 0.28  # 말풍선 자리: 컷 위쪽 28%
 INK, PAPER = (21, 21, 21), (252, 252, 250)
-FONT_DIRS = [Path.home() / "Library/Fonts", Path("/Library/Fonts"), Path("/usr/share/fonts")]
-FONT_FILE = "Gaegu-Bold.ttf"
+LETTERING = ("Letter every bubble by hand in the same dark pen ink as the drawing: simple, rounded, slightly uneven "
+             "handwritten Korean strokes, evenly spaced, large enough to read at phone size. Spell every character exactly "
+             "as given inside the quotes, keep the given line breaks, and write no other words anywhere.")
 MAX_CHARS, MAX_LINES = 12, 2  # 대사 한 줄 글자 수(공백 포함), 말풍선 하나의 줄 수
 
 
@@ -79,60 +80,42 @@ def prompts(spec):
         out.append("\n\n".join([
             style,
             f"COMIC PANEL {i} of {len(spec['panels'])}. Every panel shows the same characters with exactly the same species, colors and outfits.",
-            f"FRAME: {f['aspect']}. Keep the top {round(BAND * 100)}% of the image completely empty white paper; speech bubbles are added there later. "
+            f"FRAME: {f['aspect']}. Keep the top {round(BAND * 100)}% of the image as white paper for speech bubbles only. "
             + SHOTS[p["shot"]],
+            f"PANEL NUMBER: in the top-left corner, a small solid ink circle with the white numeral {i} hand-drawn inside.",
+            bubbles(p),
             f"SCENE: {p['scene']} Setting: {p.get('setting') or 'just the white page'}.",
             f"CHARACTERS: {who}",
             *w.style_block(spec["palette"]),
-            w.DONT + " No speech bubbles, no panel border, no panel number.",
+            w.DONT.replace("no written words, captions, speech text or watermark anywhere in the image",
+                           "no captions, signs or watermark; no words except the speech bubbles and panel number described above")
+            + " No panel border.",
         ]))
     return out
 
 
-def font(size):
-    for d in FONT_DIRS:
-        for path in d.rglob(FONT_FILE) if d.exists() else []:
-            from PIL import ImageFont
-            return ImageFont.truetype(str(path), size)
-    sys.exit(f"{FONT_FILE}(SIL OFL)가 없습니다. Google Fonts 공식 배포처에서 Gaegu를 설치한 뒤 다시 실행하세요")
+def bubbles(p):
+    if not p.get("lines"):
+        return "SPEECH BUBBLES: none in this panel; leave the top band as plain white paper."
+    pos = {c["id"]: POS[c["pos"]] for c in p["chars"]}
+    each = " ".join(f'Bubble {k}: "{ln["text"].replace(chr(10), " / ")}", its short tail pointing down to the character on the {pos[ln["who"]]}.'
+                    for k, ln in enumerate(p["lines"], 1))
+    return (f"SPEECH BUBBLES: inside the top band, hand-drawn white rounded speech bubbles with a thin pen outline, "
+            f"in reading order (bubble 1 first, upper or further left); a \" / \" marks a line break. {each} {LETTERING}")
 
 
-def panel_image(src, size, number, lines, chars):
-    """컷 그림을 size로 채워 자르고, 위 띠에 말풍선, 왼쪽 위에 번호, 테두리를 그린다."""
+def panel_image(src, size):
+    """컷 그림을 size로 채워 자르고 테두리를 두른다. 글자는 그림 안에 이미 있다."""
     from PIL import Image, ImageDraw, ImageOps
-    W, H = size
     img = ImageOps.fit(Image.open(src).convert("RGB"), size)
-    d = ImageDraw.Draw(img)
-    fs = round(W * 0.048)
-    fnt, pad = font(fs), round(fs * 0.5)
-    xs = {c["id"]: POS[c["pos"]] * W for c in chars}
-    left = round(W * 0.14)  # 번호 자리를 비운 뒤부터 말풍선을 놓는다
-    for k, ln in enumerate(lines):
-        text = ln["text"]
-        tw = max(d.textlength(t, font=fnt) for t in text.split("\n"))
-        th = fs * 1.15 * len(text.split("\n"))
-        bw, bh = tw + 2 * pad, th + 2 * pad
-        cx = min(max(xs[ln["who"]], left + bw / 2), W - 16 - bw / 2)
-        top = H * 0.03 + k * (H * BAND - H * 0.03) / max(len(lines), 1) * 0.55
-        box = (cx - bw / 2, top, cx + bw / 2, top + bh)
-        base = min(max(xs[ln["who"]], box[0] + bw * 0.25), box[2] - bw * 0.25)
-        tip = (base + max(-fs, min(fs, xs[ln["who"]] - base)), box[3] + fs * 1.3)  # 짧은 꼬리, 말하는 쪽으로 기움
-        d.polygon([(base - fs * 0.35, box[3] - 2), (base + fs * 0.35, box[3] - 2), tip], fill=PAPER, outline=INK)
-        d.rounded_rectangle(box, radius=round(bh / 2), fill=PAPER, outline=INK, width=3)
-        d.line([(base - fs * 0.35 + 2, box[3] - 1), (base + fs * 0.35 - 2, box[3] - 1)], fill=PAPER, width=4)
-        d.multiline_text((cx, top + pad), text, font=fnt, fill=INK, anchor="ma", align="center", spacing=fs * 0.15)
-    r = round(W * 0.035)
-    d.ellipse((r, r, 3 * r, 3 * r), fill=INK)
-    d.text((2 * r, 2 * r), str(number), font=font(round(r * 1.3)), fill=PAPER, anchor="mm")
-    d.rectangle((0, 0, W - 1, H - 1), outline=INK, width=3)
+    ImageDraw.Draw(img).rectangle((0, 0, size[0] - 1, size[1] - 1), outline=INK, width=3)
     return img
 
 
 def compose(spec, folder):
     from PIL import Image
     f = FORMATS[spec["format"]]
-    tiles = [panel_image(folder / f"panel_{i:02}.png", f["panel"], i, p.get("lines", []), p["chars"])
-             for i, p in enumerate(spec["panels"], 1)]
+    tiles = [panel_image(folder / f"panel_{i:02}.png", f["panel"]) for i in range(1, len(spec["panels"]) + 1)]
     if spec["format"] != "page":
         for i, t in enumerate(tiles, 1):
             t.save(folder / f"comic_{i:02}.png")
@@ -156,6 +139,8 @@ def selftest():
     assert w.score(check(good)) == 100, check(good)
     ps = prompts(good)
     assert len(ps) == 4 and "portrait 4:5" in ps[0] and "landscape 16:9" not in ps[0] and "mustard knit vest" in ps[3] and "{" not in ps[0]
+    assert '"아직... / 10분 남았대"' in ps[0] and "character on the right" in ps[0] and "numeral 1 " in ps[0] and "speech text" not in ps[0]
+    assert "none in this panel" in prompts(dict(good, panels=[dict(p, lines=[]) for p in good["panels"]]))[0]
     bad = json.loads(json.dumps(good))
     bad["panels"][0]["lines"][0]["text"] = "열두 글자가 넘는 아주 긴 대사"
     bad["panels"][1]["chars"][1]["pos"] = "left"
@@ -172,7 +157,7 @@ def selftest():
         out = compose(good, t)
         img = Image.open(out[0])
         assert len(out) == 4 and img.size == (1080, 1350)
-        assert img.getpixel((1, 600)) == INK and img.crop((0, 0, 1080, 378)).convert("L").getextrema()[0] < 50  # 테두리, 말풍선 선
+        assert img.getpixel((1, 600)) == INK and img.getpixel((540, 600)) == (250, 250, 250)  # 테두리만, 그림 위에 얹은 것 없음
         page = compose(dict(good, format="page"), t)
         assert Image.open(page[0]).size == (2 * 960 + 72, 2 * 540 + 72)
     print("selftest ok")

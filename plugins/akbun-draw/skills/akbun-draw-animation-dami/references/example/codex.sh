@@ -1,9 +1,12 @@
 #!/bin/bash
 # dami.py prompts가 만든 파일. 출력 폴더에서 bash codex.sh로 돌린다. 잘못 나온 그림은 PNG를 지우고 다시 돌린다.
 cd "$(dirname "$0")"
-echo '배역 시트 2장'
+echo '배역 시트·자막 5장'
 [ -s cast_p-engineer.png ] || codex exec --skip-git-repo-check -s workspace-write "Read cast_p-engineer.txt. Use your built-in image generation tool with that file's full text as the prompt, square 1:1. Save the result as cast_p-engineer.png here. Reply with the path only." < /dev/null > cast_p-engineer.log 2>&1 &
 [ -s cast_p-neighbor.png ] || codex exec --skip-git-repo-check -s workspace-write "Read cast_p-neighbor.txt. Use your built-in image generation tool with that file's full text as the prompt, square 1:1. Save the result as cast_p-neighbor.png here. Reply with the path only." < /dev/null > cast_p-neighbor.log 2>&1 &
+[ -s 01_night-alert_caption.png ] || codex exec --skip-git-repo-check -s workspace-write "Read 01_night-alert_caption.txt. Use your built-in image generation tool with that file's full text as the prompt, landscape 16:9. Save the result as 01_night-alert_caption.png here. Reply with the path only." < /dev/null > 01_night-alert_caption.log 2>&1 &
+[ -s 02_kitchen-fix_caption.png ] || codex exec --skip-git-repo-check -s workspace-write "Read 02_kitchen-fix_caption.txt. Use your built-in image generation tool with that file's full text as the prompt, landscape 16:9. Save the result as 02_kitchen-fix_caption.png here. Reply with the path only." < /dev/null > 02_kitchen-fix_caption.log 2>&1 &
+[ -s 03_dawn-balcony_caption.png ] || codex exec --skip-git-repo-check -s workspace-write "Read 03_dawn-balcony_caption.txt. Use your built-in image generation tool with that file's full text as the prompt, landscape 16:9. Save the result as 03_dawn-balcony_caption.png here. Reply with the path only." < /dev/null > 03_dawn-balcony_caption.log 2>&1 &
 wait
 echo '컷 첫 장 3장'
 [ -s 01_night-alert.png ] || codex exec --skip-git-repo-check -s workspace-write "Read 01_night-alert.txt. Use your built-in image generation tool with that file's full text as the prompt, square 1:1. Save the result as 01_night-alert.png here. Reply with the path only." -i cast_p-engineer.png < /dev/null > 01_night-alert.log 2>&1 &
@@ -19,5 +22,5 @@ echo '자세 7장'
 [ -s 03_dawn-balcony_3.png ] || codex exec --skip-git-repo-check -s workspace-write "Read 03_dawn-balcony_3.txt. Use your built-in image generation tool to edit the attached images with that file's full text as the prompt, square 1:1. Save the result as 03_dawn-balcony_3.png here. Reply with the path only." -i 03_dawn-balcony.png -i cast_p-engineer.png -i cast_p-neighbor.png < /dev/null > 03_dawn-balcony_3.log 2>&1 &
 [ -s 03_dawn-balcony_4.png ] || codex exec --skip-git-repo-check -s workspace-write "Read 03_dawn-balcony_4.txt. Use your built-in image generation tool to edit the attached images with that file's full text as the prompt, square 1:1. Save the result as 03_dawn-balcony_4.png here. Reply with the path only." -i 03_dawn-balcony.png -i cast_p-engineer.png -i cast_p-neighbor.png < /dev/null > 03_dawn-balcony_4.log 2>&1 &
 wait
-for f in cast_p-engineer cast_p-neighbor 01_night-alert 01_night-alert_2 01_night-alert_3 01_night-alert_4 02_kitchen-fix 02_kitchen-fix_2 03_dawn-balcony 03_dawn-balcony_2 03_dawn-balcony_3 03_dawn-balcony_4; do [ -s $f.png ] || { echo "없음: $f.png ($f.log 확인)"; exit 1; }; done
+for f in cast_p-engineer cast_p-neighbor 01_night-alert 01_night-alert_2 01_night-alert_3 01_night-alert_4 01_night-alert_caption 02_kitchen-fix 02_kitchen-fix_2 02_kitchen-fix_caption 03_dawn-balcony 03_dawn-balcony_2 03_dawn-balcony_3 03_dawn-balcony_4 03_dawn-balcony_caption; do [ -s $f.png ] || { echo "없음: $f.png ($f.log 확인)"; exit 1; }; done
 echo '모든 그림 완료'

@@ -4,7 +4,7 @@ disable-model-invocation: true
 description: >
   IT 기술·여행 글이나 영상 대본을 읽고 유튜브(16:9)·티스토리(1:1) 썸네일을 레트로 필름 포스터
   스타일로 만드는 영어 이미지 생성 프롬프트를 작성한다. 70년대 필름 사진 한 장 위에 크림·버터색
-  레트로 디스플레이 글자를 얹은 그림체를 고정하고, 핵심 키워드·비유 소재·구도는 글 내용으로 정한다.
+  레트로 디스플레이 글자를 그려 넣은 그림체를 고정하고, 핵심 키워드·비유 소재·구도는 글 내용으로 정한다.
   사진과 서체는 생성 모델이 새로 만들게 해 저작권을 피한다. Trigger on: "레트로 썸네일",
   "썸네일 프롬프트", "유튜브 썸네일 그려", "티스토리 썸네일", "retro thumbnail prompt".
 ---
@@ -112,7 +112,7 @@ description: >
 
 - **사진**은 생성 모델이 새로 만든다. 프롬프트에 사진가·영화·감독·미술 작품·유명인 이름, 유명한 사진·영화 장면 묘사를 쓰지 않는다. 물건에 실제 상표·로고·간판을 넣지 않고 "unbranded"로 쓴다. 실제 제품 모양이 뚜렷한 탈것·기기는 "generic 1970s ..."로 쓴다.
 - **서체**는 위 서체 절대로 모양만 묘사한다.
-- 이미지 안 글자에 한글이 있거나 사용자가 글자를 나중에 고치려면, 비율마다 무문자 프롬프트(아래 템플릿 절)도 함께 낸다. 생성된 한글이 깨지면 무문자 이미지를 쓰고 글자는 SIL OFL 서체로 따로 얹는다. 서체는 가로세로 비율을 바꾸지 않고 크기만 조절하며, 사진과 같은 필름 입자를 글자 위에도 입혀 붙인 티가 나지 않게 한다. 얹는 서체는 SIL OFL처럼 상업적 사용이 허락된 것이면 무엇이든 된다(예: 메인 글자 Bagel Fat One·Black Han Sans·Gasoek One, 작은 글 Pretendard·Noto Sans KR). 서체 파일은 Google Fonts나 서체 공식 저장소에서 받는다.
+- 글자는 한글이든 라틴이든 이미지 모델이 그림 안에 직접 그린다. 폰트 파일로 얹지 않는다. 한글이 깨지면 같은 프롬프트에 철자 강조를 더해 다시 생성한다.
 
 ## 프롬프트 템플릿
 
@@ -153,12 +153,6 @@ no extra text, no UI elements, no borders or frames.
 
 작은 글이 없으면 `SMALL TEXT` 단락을 지우고 `SIGNATURE`는 그대로 둔다. 작은 글이 하나면 해당 자리만 남긴다.
 
-무문자 프롬프트는 비율마다 하나씩 만든다. 첫 문장의 `with bold display lettering printed over it`을 `with empty space reserved for lettering`으로, `DISPLAY WORD`·`SMALL TEXT`·`SIGNATURE` 세 단락을 아래 한 단락으로 바꾸고(서명도 나중에 얹는다), `LAYOUT`의 `The text sits over ... reads clearly.`와 여백 문장은 지운다. 글자 자리는 `TEXT` 단락이 비워 둔다. `FINISH`의 lettering 언급은 지우고, `DO NOT`의 `no extra text`는 `no text`로 바꾼다.
-
-```text
-TEXT: No letters, numbers or symbols anywhere. Leave <low-detail zone> empty for lettering
-that will be added later.
-```
 
 ## 예시 (gold reference)
 
@@ -211,14 +205,11 @@ no recognizable real people or celebrities, no recreation of film stills or famo
 no extra text, no UI elements, no borders or frames.
 ```
 
-꼬리말이 한글이므로 결과물에는 무문자 프롬프트(첫 문장·`LAYOUT`·`FINISH`·`DO NOT`을 위 규칙대로 바꾸고 `TEXT: ... Leave the plain tiled wall above the dispenser empty ...`)와 OFL 조판 지시(`REDIS` Bagel Fat One, `CACHE STAMPEDE`·`만료가 몰릴 때` Pretendard, `by akbun` Pretendard, 위치는 위 프롬프트와 같음)도 함께 낸다.
-
 ## 결과물
 
 1. 1단계 구조 결정 표(한국어).
 2. 플랫폼마다 완성 영어 프롬프트 한 개씩, 각각 `text` 코드 블록.
-3. 이미지 안 글자에 한글이 있으면 비율마다 무문자 프롬프트 하나와 OFL 서체로 얹을 글자·위치를 함께 적는다.
-4. 이미지를 생성하지 않았으면 `프롬프트 작성까지만 완료`로 보고한다. 생성했다면 결과를 두 단계로 확인한다. 이미지 모델은 글자 크기 수치를 정확히 따르지 않으므로 글자 높이·너비는 프롬프트의 목표값이고, 벗어나면 측정값만 보고한다. 반면 철자 오류, 각 변 6% 여백 침범, 유튜브 오른쪽 아래 영역 침범, 폭 200px에서 메인 글자나 원인 요소가 안 보이는 경우는 실패이므로 같은 프롬프트에 그 항목을 강조해 다시 생성한다.
+3. 이미지를 생성하지 않았으면 `프롬프트 작성까지만 완료`로 보고한다. 생성했다면 결과를 두 단계로 확인한다. 이미지 모델은 글자 크기 수치를 정확히 따르지 않으므로 글자 높이·너비는 프롬프트의 목표값이고, 벗어나면 측정값만 보고한다. 반면 철자 오류, 각 변 6% 여백 침범, 유튜브 오른쪽 아래 영역 침범, 폭 200px에서 메인 글자나 원인 요소가 안 보이는 경우는 실패이므로 같은 프롬프트에 그 항목을 강조해 다시 생성한다.
 
 ## 완료 전 확인
 
@@ -227,5 +218,5 @@ no extra text, no UI elements, no borders or frames.
 - 비유 소재가 주제의 뻔한 상징(자물쇠·금고·구름 등)이 아니고, 색 쌍이 주제가 아니라 소재가 놓인 장소의 빛으로 골라졌는가?
 - 글자 크기·너비·여백·유튜브 오른쪽 아래 비움이 표의 범위 안인가? 글자 요소가 3개 이하인가? `by akbun` 서명이 허용된 모서리에 있는가?
 - 프롬프트에 서체 이름, 사진가·영화·유명인 이름, 상표가 없는가?
-- 비율마다 따로 프롬프트를 만들었는가? 한글 글자가 있으면 무문자 프롬프트도 냈는가?
+- 비율마다 따로 프롬프트를 만들었는가? 글자를 폰트로 얹지 않고 모두 프롬프트에 넣었는가?
 - 생성한 결과가 알려진 영화 장면·포스터·사진과 닮지 않았는가? 닮았으면 비유 소재나 구도를 바꿔 다시 만든다.
