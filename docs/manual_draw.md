@@ -2,7 +2,7 @@
 
 이 문서는 `akbun-draw` 플러그인의 스킬을 어떤 상황에 고르는지 안내한다. 실제 작업 지침과 세부 조건은 연결된 `SKILL.md`가 기준이다.
 
-스킬은 이름을 직접 불러 사용한다. 예: `$akbun-draw-slate-marker 이 대본으로 HTTP 캐시를 설명하는 장면을 만들어줘.` 스타일 스킬은 그림체·색·움직임만 고정하고, 무엇을 어디에 그릴지는 입력 내용에 맞춰 정한다.
+스킬은 이름을 직접 불러 사용한다. 예: `$akbun-draw-code-window-lilac 이 코드로 HTTP 캐시 헤더를 짚는 장면을 만들어줘.` 스타일 스킬은 그림체·색·움직임만 고정하고, 무엇을 어디에 그릴지는 입력 내용에 맞춰 정한다.
 
 ## 설명 영상 장면
 
@@ -10,8 +10,6 @@
 
 | 상황 | 스킬 | 화면과 결과물 | Resolve 짝 |
 |---|---|---|---|
-| 요청·메모리·프로세스처럼 보이지 않는 시스템 동작을 카드와 상태 변화로 보여 주고 싶음 | [akbun-draw-slate-marker](../plugins/akbun-draw/skills/akbun-draw-slate-marker/SKILL.md) | 순검정 배경, 어두운 카드, 손글씨 캡션, 의미마다 하나씩 정한 강조색 | [explainer-slate-marker](../plugins/akbun-editvideo/skills/akbun-davinciresolve-explainer-slate-marker/SKILL.md) |
-| 보드에 손으로 써 내려가듯 수식·단계·묻고 답하기를 설명하고 싶음 | [akbun-draw-scribble-black](../plugins/akbun-draw/skills/akbun-draw-scribble-black/SKILL.md) | 검정 보드, 흰 펜 선, 생각 구름·말풍선·얼굴 없는 막대 인물, 한 번에 한 획 | [explainer-scribble-black](../plugins/akbun-editvideo/skills/akbun-davinciresolve-explainer-scribble-black/SKILL.md) |
 | 비유·대화를 어두운 배경 위 손채색 그림으로 보여 주고 싶음 | [akbun-draw-night-gouache](../plugins/akbun-draw/skills/akbun-draw-night-gouache/SKILL.md) | 외곽선 없는 손채색 사물·인물·막대 인물·말풍선, 핵심 대상 하나만 빛남. 결과는 스틸과 레이어 PNG | - |
 | 코드를 한 줄씩 타이핑하며 짚어 주고 싶음 | [akbun-draw-code-window-lilac](../plugins/akbun-draw/skills/akbun-draw-code-window-lilac/SKILL.md) | 연회색 캔버스, 흰 코드 에디터 창, 연보라 줄 띠·토큰 상자 | - |
 | 캐릭터가 연기하는 짧은 낙서 장면이 필요함 | [akbun-draw-motion-doodle](../plugins/akbun-draw/skills/akbun-draw-motion-doodle/SKILL.md) | 흰 종이 검은 잉크 낙서, 포즈 교체로 움직이는 캐릭터. 다른 모션 스킬이 쓰는 렌더러도 여기 있음 | - |
@@ -20,8 +18,7 @@
 
 비슷한 스킬끼리 고르는 기준:
 
-- **누가 묻고 답하는지가 요점**: 손으로 써 내려가는 속도감이 필요하면 scribble-black, 그림 한 장면의 분위기가 중요하면 night-gouache의 막대 인물·말풍선.
-- **밝은 화면 vs 어두운 화면**: 밝은 화면은 code-window-lilac·motion-doodle·pencil-analogy-graphite, 어두운 화면은 slate-marker·scribble-black·night-gouache.
+- **밝은 화면 vs 어두운 화면**: 밝은 화면은 code-window-lilac·motion-doodle·pencil-analogy-graphite, 어두운 화면은 night-gouache.
 
 ## 그림 한 장 (이미지 생성 프롬프트·SVG)
 

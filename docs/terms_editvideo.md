@@ -253,30 +253,6 @@ explainer 스킬들과 [공통 Resolve 구현](../plugins/akbun-editvideo/skills
 | 코드 카드 | 터미널 창 모양 레이어. 첫 줄은 `$ cat <php 파일 이름>`, 그 아래는 실제 파일에서 뽑은 줄만 쓰고 건너뛴 자리는 `...`로 표시한다. 코드 글자는 D2Coding 29px(기본 24px의 1.2배). |
 | 펀치 인 | 장면의 핵심 순간에 강조 대상 중심으로 화면 전체를 0.2초 만에 1.3~1.8배 확대하는 움직임. 장면당 한 번까지이고, 확대한 대상이 자막 자리(y 860)를 덮지 않는 배율까지만 쓴다. |
 
-## 검정 보드 손그림 설명 영상
-
-[akbun-davinciresolve-explainer-scribble-black](../plugins/akbun-editvideo/skills/akbun-davinciresolve-explainer-scribble-black/SKILL.md)에서 사용하는 용어다.
-
-| 용어 | 뜻 |
-|---|---|
-| 한 번에 한 획 | 손이 하나라서 두 곳이 동시에 그려지지 않는다는 규칙. 다음 빌드는 앞 빌드가 끝난 뒤 0.1초 이상 지나서 시작한다. |
-| 획 레이어 | 한 번에 긋는 선이나 도형 하나만 담은 투명 PNG. 마스크를 긋는 방향으로 늘려 드러낸다. |
-| 생각 구름 | 크기가 다른 혹 6~9개를 이은 외곽선과, 생각하는 대상 쪽으로 작아지는 원 세 개 꼬리. 같은 크기 혹을 줄지어 붙이지 않는다. |
-| 막대 인물 | 빈 원 머리와 선 몇 개로 그린 사람. 얼굴·손·옷을 그리지 않는다. |
-| 시점 이어 밀기 | 둘째 빌드부터 시작 시점을 앞 빌드 끝 + 0.15초 표현식으로 두어, 첫 시점만 옮겨도 뒤가 같이 밀리게 하는 구성. |
-
-## 슬레이트 카드 설명 영상
-
-[akbun-davinciresolve-explainer-slate-marker](../plugins/akbun-editvideo/skills/akbun-davinciresolve-explainer-slate-marker/SKILL.md)에서 사용하는 용어다.
-
-| 용어 | 뜻 |
-|---|---|
-| 슬레이트 카드 | 순검정 배경 위 어두운 회색 채움과 한 단계 밝은 테두리로 그린 둥근 사각형. 깊이는 그림자 없이 카드와 칸의 밝기 차이로만 낸다. |
-| 강조색 의미 | 청록 정상, 코랄 위험, 노랑 지금 보는 곳, 라벤더 참조, 초록 성공처럼 색 하나에 의미 하나를 묶는 규칙. 포즈당 3가지까지 쓴다. |
-| 흐름 선과 연결 화살표 | 흐름 선은 실제로 오가는 것(요청·응답)을 흰 실선과 끝 삼각형으로, 연결 화살표는 오가는 것 없는 가리킴(참조·포인터)을 강조색 점선으로 그린다. |
-| 초점 점선 | 지금 설명하는 대상 바깥 6px에 두르는 노랑 점선 테두리. |
-| 포즈 | 한 장면 안에서 상태가 바뀌기 전까지의 화면. 상태 변화는 새 포즈로 즉시 바뀐다. |
-
 ## 녹음 정리와 녹음 맞춤
 
 [akbun-davinciresolve-narration-cleanup](../plugins/akbun-editvideo/skills/akbun-davinciresolve-narration-cleanup/SKILL.md)과 [akbun-davinciresolve-explainer-dark-diagram](../plugins/akbun-editvideo/skills/akbun-davinciresolve-explainer-dark-diagram/SKILL.md)에서 사용하는 용어다.
