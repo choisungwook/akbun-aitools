@@ -10,6 +10,7 @@ Agent는 이 저장소의 plugin skill을 만들고 유지보수한다. 실행 �
 2. 작업 대상 skill의 `SKILL.md`와 그것이 참조하는 `references/`, `scripts/`.
 3. `docs/adr/README.md`의 결정 표. 작업 대상 plugin·skill에 해당하는 결정이 있으면 그 파일까지 읽는다. 결정을 뒤집는 변경은 새 결정 기록 없이 하지 않는다.
 4. plugin을 추가·배포하거나 manifest를 만질 때 `docs/guide_deploy_plugins.md`.
+5. 저장소 전체 맥락(plugin 역할, 규칙, 결정, 검사)이 필요하면 `knowledges/index.md`(OKF v0.2 bundle). plugin·규칙·결정을 바꾸면 해당 concept의 본문과 `generated`를 같은 변경에서 고치고, 사람이 확인했으면 `verified`에 `human:<id>`를 남긴다.
 
 `README.md`의 `## plugin 목록`은 사람용 색인이다. 규칙의 원본이 아니다.
 
