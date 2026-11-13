@@ -1,6 +1,6 @@
 # Reference Image Is Not a Pixel Target
 
-Scope: repo (모든 그리기 skill과 `akbun-draw-explainer-svg`의 스타일 토큰)
+Scope: repo (모든 그리기 skill과 `akbun-draw-chalkboard`의 스타일 토큰)
 
 ## Decision
 

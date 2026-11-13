@@ -8,4 +8,5 @@
 | [0004](0004-md-to-notion-sync-prefers-cli-with-mcp-fallback.md) | akbun-md-to-notion | Notion 동기화는 CLI 우선, MCP는 대체 |
 | [0005](0005-describe-youtube-transcript-output-is-transcript-grounded.md) | akbun-describe-youtube-transcript | 출력은 자막에 근거한 시간순 대본 |
 | [0006](0006-travel-vlog-orchestrator-is-the-color-workflow-skill.md) | akbun-editvideo / akbun-davinciresolve-workflow | 여행 브이로그 오케스트레이터는 색보정 workflow skill 하나. 촬영 시간순 타임라인이 항상 첫 단계, 하늘은 workflow 밖 |
-| [0007](0007-draw-styles-are-design-tokens-not-skills.md) | akbun-draw / akbun-draw-explainer-svg | 정적 그림체는 skill이 아니라 `styles/*.json` 디자인 토큰. 토큰은 구도를 고정하지 않음 |
+| [0007](0007-draw-styles-are-design-tokens-not-skills.md) | akbun-draw / akbun-draw-explainer-svg | 정적 그림체는 skill이 아니라 `styles/*.json` 디자인 토큰. 토큰은 구도를 고정하지 않음. 0008이 대체 |
+| [0008](0008-explainer-svg-router-reduced-to-chalkboard-skill.md) | akbun-draw / akbun-draw-chalkboard | 설명 SVG 라우터를 칠판 그림체 skill 하나로 줄이고 나머지 토큰 삭제 |

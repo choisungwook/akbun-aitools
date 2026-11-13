@@ -1,6 +1,6 @@
 {
   "name": "akbun-draw",
-  "version": "1.0.48",
+  "version": "1.0.49",
   "description": "Image drawing skills by akbun — image-generation prompts and editable SVGs in fixed akbun styles",
   "author": {
     "name": "akbun",
@@ -52,7 +52,7 @@
       "Make travel blog thumbnail and illustrated course map image prompts from this travel post draft (akbun-draw-travel-blog)",
       "Read this post and make retro film-poster YouTube 16:9 and Tistory 1:1 thumbnail prompts with a retro display word over a 1970s film photo (akbun-draw-thumbnail-retro)",
       "Make doodle-style blog and YouTube thumbnail prompts (16:9 and 4:3) for this title and post, and generate them with codex into ~/Downloads only if I ask (akbun-draw-thumbnail-doodle)",
-      "Draw this system flow as a 16:9 explainer SVG in one of the token styles (clay-isometric, chalkboard-math, marker-wireframe) (akbun-draw-explainer-svg)",
+      "Draw this system flow as a 16:9 chalk-on-dark-green-chalkboard explainer SVG (akbun-draw-chalkboard)",
       "Draw a cozy rainy-evening laundromat scene with round chibi animals as a bori-style image prompt (akbun-draw-style-bori)",
       "Draw a deadpan houseplant watching the washing machine spin as an ink-moss image prompt with one moss-green accent (akbun-draw-ink-moss)",
       "Turn this short story into a 10-second painterly vertical animated short with a new cast and narration captions (akbun-draw-animation-dami)",
