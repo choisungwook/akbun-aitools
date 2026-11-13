@@ -98,6 +98,9 @@ agy plugin list --json
 <td><a href="./plugins/akbun-draw/skills/akbun-draw-code-window-lilac/SKILL.md"><img src="./imgs/akbun-draw-code-window-lilac.jpg" alt="akbun-draw-code-window-lilac" width="400"></a><br><code>akbun-draw-code-window-lilac</code></td>
 </tr>
 <tr>
+<td><a href="./plugins/akbun-draw/skills/akbun-draw-code-nari/SKILL.md"><img src="./imgs/akbun-draw-code-nari.jpg" alt="akbun-draw-code-nari" width="400"></a><br><code>akbun-draw-code-nari</code></td>
+</tr>
+<tr>
 <td><a href="./plugins/akbun-draw/skills/akbun-draw-pencil-analogy-graphite/SKILL.md"><img src="./imgs/akbun-draw-pencil-analogy-graphite.jpg" alt="akbun-draw-pencil-analogy-graphite" width="400"></a><br><code>akbun-draw-pencil-analogy-graphite</code></td>
 </tr>
 <tr>
@@ -171,9 +174,6 @@ agy plugin list --json
 <td><a href="./plugins/akbun-editvideo/skills/akbun-edit-quote-cards-lilac/SKILL.md"><img src="./imgs/akbun-edit-quote-cards-lilac.jpg" alt="akbun-edit-quote-cards-lilac" width="400"></a><br><code>akbun-edit-quote-cards-lilac</code></td>
 </tr>
 <tr>
-<td><a href="./plugins/akbun-editvideo/skills/akbun-edit-terminal-callout-amber/SKILL.md"><img src="./imgs/akbun-edit-terminal-callout-amber.jpg" alt="akbun-edit-terminal-callout-amber" width="400"></a><br><code>akbun-edit-terminal-callout-amber</code></td>
-</tr>
-<tr>
 <td><a href="./plugins/akbun-editvideo/skills/akbun-davinciresolve-explainer/SKILL.md"><img src="./imgs/akbun-davinciresolve-explainer.gif" alt="akbun-davinciresolve-explainer" width="400"></a><br><code>akbun-davinciresolve-explainer</code></td>
 </tr>
 <tr>
@@ -232,6 +232,7 @@ $akbun-davinciresolve-explainer 이 대본을 fiery-ocean 색, akbun 도형으�
 | [akbun-draw-motion-doodle](./plugins/akbun-draw/skills/akbun-draw-motion-doodle/) | 흰 종이 낙서 캐릭터가 연기하는 짧은 모션그래픽이 필요할 때 |
 | [akbun-draw-doodle-comic](./plugins/akbun-draw/skills/akbun-draw-doodle-comic/) | 낙서 그림체로 2·4·6컷 만화(블로그·인스타툰)를 만들 때 |
 | [akbun-draw-code-window-lilac](./plugins/akbun-draw/skills/akbun-draw-code-window-lilac/) | 코드를 한 줄씩 타이핑하며 짚어 주는 영상 장면이 필요할 때 |
+| [akbun-draw-code-nari](./plugins/akbun-draw/skills/akbun-draw-code-nari/) | 터미널·AI 도구 화면 녹화에 화살표·라벨을 붙여 짚는 영상 장면이 필요할 때 |
 | [akbun-draw-night-gouache](./plugins/akbun-draw/skills/akbun-draw-night-gouache/) | 어두운 배경 손채색 그림으로 비유·대화를 보여 주는 설명 장면이 필요할 때 |
 | [akbun-draw-pencil-analogy-graphite](./plugins/akbun-draw/skills/akbun-draw-pencil-analogy-graphite/) | 연필 막대 인물로 개념을 일상 비유로 풀어 줄 때 |
 | [akbun-draw-presentation](./plugins/akbun-draw/skills/akbun-draw-presentation/) | 개념·흐름을 논문형식 발표 슬라이드 한 장처럼 보이는 그림으로 만들 때 |
@@ -375,7 +376,6 @@ $akbun-davinciresolve-explainer 이 대본을 fiery-ocean 색, akbun 도형으�
 | [akbun-davinciresolve-narration-cleanup](./plugins/akbun-editvideo/skills/akbun-davinciresolve-narration-cleanup/) | 녹음한 내레이션의 숨소리·긴 쉼을 정리할 때 |
 | [akbun-edit-page-tour-lilac](./plugins/akbun-editvideo/skills/akbun-edit-page-tour-lilac/) | 웹 페이지 스크린샷을 짚어 가며 설명할 때 |
 | [akbun-edit-quote-cards-lilac](./plugins/akbun-editvideo/skills/akbun-edit-quote-cards-lilac/) | 인용 글 카드를 쌓고 형광펜으로 강조할 때 |
-| [akbun-edit-terminal-callout-amber](./plugins/akbun-editvideo/skills/akbun-edit-terminal-callout-amber/) | 터미널 녹화 화면에 화살표·라벨을 붙여 짚을 때 |
 
 </details>
 

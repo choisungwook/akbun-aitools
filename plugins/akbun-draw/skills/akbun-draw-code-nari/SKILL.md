@@ -1,10 +1,10 @@
 ---
-name: akbun-edit-terminal-callout-amber
+name: akbun-draw-code-nari
 description: 실제 터미널·AI 코딩 도구 화면 녹화를 연회색 캔버스 위 어두운 창 카드에 넣고, 오류 줄·결과 줄 옆에 노란 손그림 화살표와 손글씨 라벨, 토큰 하이라이트를 붙이는 터미널 주석 장면 terminal-callout을 DaVinci Resolve 안에서 Fusion 노드로 만든다. 터미널·AI 출력은 지어내지 않고 사용자가 녹화한 실제 화면, 또는 사용자가 요청하면 직접 실행한 실제 명령 출력만 쓴다. 사용자가 Fusion 페이지에서 화살표·라벨·하이라이트의 위치·색·글자를 고칠 수 있게 노드에 이름을 붙이고, 녹음 후에는 단어 시각으로 시점만 다시 맞춘다. 사용자가 직접 호출할 때만 실행한다.
 disable-model-invocation: true
 ---
 
-# akbun-edit-terminal-callout-amber
+# akbun-draw-code-nari
 
 ## 언제 쓰나
 
@@ -17,7 +17,7 @@ disable-model-invocation: true
 | 출력 속 값 하나를 강조한다 | 터미널 카드 + 값 토큰에 하이라이트, 카메라가 그 줄로 다가감 |
 | 명령과 결과를 차례로 설명한다 | 녹화가 흐르는 동안 명령 줄 → 결과 줄 순서로 라벨 1~3개가 차례로 나타남 |
 
-- 터미널·AI 출력은 **사용자가 녹화한 실제 화면만** 쓴다. 출력 글자를 지어내지 않는다. 녹화가 없으면 녹화를 요청한다. 예외는 사용자가 "코드를 네가 찾아서 보여 달라"고 할 때다. 저장소를 `git clone --depth 1`로 받고 실제 명령(`sed -n`, `cat`)을 실행한 출력을 Fusion 카드로 렌더한다. 프롬프트 줄은 사용자가 원하는 명령(예: `cat 파일명`)을 쓰되 출력은 실제 줄만 쓰고, 줄을 생략하면 `...`로 표시한다. 완료 보고에 "화면 녹화가 아니라 실제 명령 출력을 Fusion 카드로 렌더함"과 커밋 해시를 적는다. 코드를 그림으로 설명할 때는 [akbun-draw-code-window-lilac](../../../akbun-draw/skills/akbun-draw-code-window-lilac/SKILL.md)를 쓴다.
+- 터미널·AI 출력은 **사용자가 녹화한 실제 화면만** 쓴다. 출력 글자를 지어내지 않는다. 녹화가 없으면 녹화를 요청한다. 예외는 사용자가 "코드를 네가 찾아서 보여 달라"고 할 때다. 저장소를 `git clone --depth 1`로 받고 실제 명령(`sed -n`, `cat`)을 실행한 출력을 Fusion 카드로 렌더한다. 프롬프트 줄은 사용자가 원하는 명령(예: `cat 파일명`)을 쓰되 출력은 실제 줄만 쓰고, 줄을 생략하면 `...`로 표시한다. 완료 보고에 "화면 녹화가 아니라 실제 명령 출력을 Fusion 카드로 렌더함"과 커밋 해시를 적는다. 코드를 그림으로 설명할 때는 [akbun-draw-code-window-lilac](../akbun-draw-code-window-lilac/SKILL.md)를 쓴다.
 - 얼굴 화면(PIP)·웹캠·인물 촬영은 넣지 않는다. 녹화에 웹캠 창이 있으면 Crop으로 뺀다.
 - 녹화에 비밀값(토큰·키·비밀번호·개인 경로의 사용자 이름)이 보이면 쓰기 전에 사용자에게 알리고 가림 또는 다시 녹화를 받는다.
 
@@ -75,7 +75,7 @@ disable-model-invocation: true
 
 ## 작업 흐름
 
-`<page-tour>`는 [akbun-edit-page-tour-lilac](../akbun-edit-page-tour-lilac/SKILL.md) 디렉터리다. 스크립트·plan 형식·노드 구성·21.1.1 실측·검증은 [fusion-cards.md](../akbun-edit-page-tour-lilac/references/fusion-cards.md)를 먼저 읽고 따른다.
+`<page-tour>`는 [akbun-edit-page-tour-lilac](../../../akbun-editvideo/skills/akbun-edit-page-tour-lilac/SKILL.md) 디렉터리다. 스크립트·plan 형식·노드 구성·21.1.1 실측·검증은 [fusion-cards.md](../../../akbun-editvideo/skills/akbun-edit-page-tour-lilac/references/fusion-cards.md)를 먼저 읽고 따른다.
 
 1. **녹화 확인**: 녹화 파일의 해상도·fps·길이를 `ffprobe`로 재고, 가리킬 줄이 나타나는 시각과 프레임 픽셀 위치를 잰다. 프레임을 볼 때는 필요한 시각 몇 장을 한 장으로 붙여 한 번만 본다.
 2. **장면 표**: 장면마다 "언제 쓰나"의 행, 녹화 `trim_in`, 라벨·하이라이트와 신호 단어·시각을 적는다.
@@ -107,7 +107,7 @@ Edit 페이지에서 `TERMINAL_CALLOUT` 트랙의 클립을 고르고 Fusion 페
 
 캔버스 클립 모드에서는 Edit 페이지 Inspector에 이 값들이 나오지 않는다(21.1.1 실측).
 
-**Edit Inspector에서 고치고 싶을 때(title 모드)**: plan에 `"mode": "title"`을 넣고 `build`하면 장면이 장면 전용 타임라인(`title_timeline`) 끝에 Fusion 타이틀로 붙는다. 그 클립을 고르고 Inspector → Video → Title 탭에서 `Mark 01 Color`·`Mark 01 Position`·`Mark 01 Width/Height`·`Card 01 Position/Size`·`Callout 01 Text/Position`을 바로 바꾼다. 대가는 장면이 본편 위 트랙이 아니라 별도 타임라인에 있어 사용자가 본편으로 복사해 붙여야 하고, `retime`이 안 돼 녹음 후에는 클립을 지우고 다시 `build`한다는 점이다(Inspector에서 고친 값은 plan 값으로 돌아간다). 자세한 절차는 [fusion-cards.md의 Edit Inspector 모드](../akbun-edit-page-tour-lilac/references/fusion-cards.md#edit-inspector-모드-title)다.
+**Edit Inspector에서 고치고 싶을 때(title 모드)**: plan에 `"mode": "title"`을 넣고 `build`하면 장면이 장면 전용 타임라인(`title_timeline`) 끝에 Fusion 타이틀로 붙는다. 그 클립을 고르고 Inspector → Video → Title 탭에서 `Mark 01 Color`·`Mark 01 Position`·`Mark 01 Width/Height`·`Card 01 Position/Size`·`Callout 01 Text/Position`을 바로 바꾼다. 대가는 장면이 본편 위 트랙이 아니라 별도 타임라인에 있어 사용자가 본편으로 복사해 붙여야 하고, `retime`이 안 돼 녹음 후에는 클립을 지우고 다시 `build`한다는 점이다(Inspector에서 고친 값은 plan 값으로 돌아간다). 자세한 절차는 [fusion-cards.md의 Edit Inspector 모드](../../../akbun-editvideo/skills/akbun-edit-page-tour-lilac/references/fusion-cards.md#edit-inspector-모드-title)다.
 
 완료 보고에 어느 모드로 만들었는지와 해당 표(또는 Inspector 컨트롤 목록)를 적는다.
 

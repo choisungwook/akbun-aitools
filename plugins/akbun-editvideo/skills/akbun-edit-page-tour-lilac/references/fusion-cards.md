@@ -1,6 +1,6 @@
 # Fusion 창 카드 공용 참조
 
-`akbun-edit-page-tour-lilac`, `akbun-edit-quote-cards-lilac`, `akbun-edit-terminal-callout-amber`가 같이 쓴다. 장면은 [scripts/resolve_cards.py](../scripts/resolve_cards.py)가 Resolve 외부 스크립팅 API로 만든다. 실행 전에 Resolve Studio가 켜져 있고 Preferences → System → General → External scripting using이 `Local`이어야 한다.
+`akbun-edit-page-tour-lilac`, `akbun-edit-quote-cards-lilac`, `akbun-draw-code-nari`가 같이 쓴다. 장면은 [scripts/resolve_cards.py](../scripts/resolve_cards.py)가 Resolve 외부 스크립팅 API로 만든다. 실행 전에 Resolve Studio가 켜져 있고 Preferences → System → General → External scripting using이 `Local`이어야 한다.
 
 ## 장면 하나 = 클립 하나
 
