@@ -1,0 +1,3 @@
+{"id": "moss", "use": "기본값. 세이지 종이·올리브 잉크·이끼 초록 강조", "colors": {"paper": "#E4E8D2", "cloud": "#C6C0AE", "ink": "#36301E", "white": "#FCFCF6", "accent": "#9CB436", "accent_shade": "#6C8424"}}
+{"id": "brick", "use": "따뜻한 주제(음식·불·가을). 귀리색 종이·벽돌 강조", "colors": {"paper": "#EDE4D2", "cloud": "#CDBFA8", "ink": "#3A2A20", "white": "#FCFAF4", "accent": "#C8573A", "accent_shade": "#8E3A26"}}
+{"id": "pond", "use": "차가운 주제(물·밤·겨울·기술). 회청 종이·청록 강조", "colors": {"paper": "#DEE5E3", "cloud": "#B8C2C0", "ink": "#22302E", "white": "#FAFCFB", "accent": "#3E9C93", "accent_shade": "#26706A"}}

@@ -1,0 +1,11 @@
+{
+  "palette": "pond",
+  "canvas": "portrait",
+  "moment": "A penguin and a laptop share one umbrella and wait for the rain to stop.",
+  "subjects": [
+    {"what": "a short penguin with flat feet", "doing": "holds the umbrella over the laptop"},
+    {"what": "an open laptop with a small face on the screen", "doing": "looks up at the raindrops"}
+  ],
+  "props": ["an umbrella", "a few raindrops"],
+  "accent_on": "an umbrella"
+}

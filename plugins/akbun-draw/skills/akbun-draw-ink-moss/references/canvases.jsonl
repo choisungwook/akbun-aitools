@@ -1,0 +1,4 @@
+{"id": "wide", "use": "블로그 본문·영상 장면", "prompt": "landscape 16:9"}
+{"id": "square", "use": "SNS 게시물·아이콘", "prompt": "square 1:1"}
+{"id": "badge", "use": "프로필 사진(원형으로 잘림). 소재는 원 안쪽 80%에 둔다", "prompt": "square 1:1 artwork inside a centered circle on a plain white page, with all subjects kept within the inner 80% of the circle"}
+{"id": "portrait", "use": "인스타그램 세로 게시물", "prompt": "portrait 4:5"}
