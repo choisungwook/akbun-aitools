@@ -1,6 +1,6 @@
 {
   "name": "akbun-draw",
-  "version": "1.0.46",
+  "version": "1.0.47",
   "description": "Image drawing skills by akbun — image-generation prompts and editable SVGs in fixed akbun styles",
   "author": {
     "name": "akbun",
@@ -58,7 +58,8 @@
       "Draw a quiet balcony morning with deadpan animals in pen ink and pale watercolor on mostly white paper (akbun-draw-illust-wash)",
       "Turn this topic into a gentle Korean title plus a one-panel deadpan gag where one character quietly endures the other (akbun-draw-gag-deadpan)",
       "Turn this short story into a 4-panel Instagram comic in pen ink and pale watercolor with Korean speech bubbles (akbun-draw-comic-wash)",
-      "Make a calm overcast street-snap portrait prompt of an original adult by a weathered concrete wall (akbun-draw-human-overcast)"
+      "Make a calm overcast street-snap portrait prompt of an original adult by a weathered concrete wall (akbun-draw-human-overcast)",
+      "Draw this concept as one akbun paper-style presentation slide image prompt with a numbered header, bullets and a thin black-line diagram (akbun-draw-presentation)"
     ],
     "brandColor": "#0F766E",
     "screenshots": []
