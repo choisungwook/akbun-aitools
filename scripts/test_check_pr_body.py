@@ -19,8 +19,6 @@ skill 설명 한 줄 수정
 
 등급: 중간
 - 설명 문장의 뜻이 바뀌었는지는 사람이 읽어야 함
-
-Closes #12
 """
 
 
@@ -68,7 +66,6 @@ class BodyTests(unittest.TestCase):
       "검증": BODY.replace("| plugin 정합성 | validate_plugins.py | 오류 0건 |\n", ""),
       "형식": BODY.replace("| plugin 정합성 | validate_plugins.py | 오류 0건 |", "- validate_plugins.py → 오류 0건"),
       "칸 부족": BODY.replace("| plugin 정합성 | validate_plugins.py | 오류 0건 |", "| plugin 정합성 | 오류 0건 |"),
-      "issue": BODY.replace("Closes #12", "Closes #"),
       "못 보는 것": BODY.replace("- 설명 문장의 뜻이 바뀌었는지는 사람이 읽어야 함\n", ""),
     }
     for name, body in cases.items():

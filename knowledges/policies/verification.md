@@ -9,7 +9,7 @@ sources:
   - id: agents
     resource: ../../AGENTS.md
     title: AGENTS.md
-    last_modified: 2026-11-13T15:30:00Z
+    last_modified: 2026-11-13T16:00:00Z
 ---
 
 Run the checks matching the changed paths while editing and put commands and output in the PR verification table.

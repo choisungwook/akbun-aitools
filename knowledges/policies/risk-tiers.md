@@ -9,11 +9,11 @@ sources:
   - id: agents
     resource: ../../AGENTS.md
     title: AGENTS.md
-    last_modified: 2026-11-13T15:30:00Z
+    last_modified: 2026-11-13T16:00:00Z
   - id: checker
     resource: ../../scripts/check_pr_body.py
     title: check_pr_body.py
-    last_modified: 2026-11-13T13:29:35Z
+    last_modified: 2026-11-13T16:00:00Z
 ---
 
 Changed paths set the PR risk tier; agents never merge high-tier PRs.

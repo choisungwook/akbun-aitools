@@ -9,7 +9,7 @@ sources:
   - id: agents
     resource: ../../AGENTS.md
     title: AGENTS.md
-    last_modified: 2026-11-13T15:30:00Z
+    last_modified: 2026-11-13T16:00:00Z
 ---
 
 From reference images extract only the style; never copy subjects, scenes or text.
