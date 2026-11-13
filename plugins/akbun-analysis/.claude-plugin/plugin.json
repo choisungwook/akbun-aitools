@@ -1,7 +1,7 @@
 {
   "name": "akbun-analysis",
   "description": "Code review and change analysis skills — why/how investigation of PRs from git history, diff blast-radius proof by execution, credential authn/authz checks, and adversarial review",
-  "version": "1.2.12",
+  "version": "1.2.13",
   "author": {
     "name": "akbun"
   },
