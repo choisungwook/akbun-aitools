@@ -1,0 +1,11 @@
+{
+  "palette": "moss",
+  "canvas": "wide",
+  "moment": "A tortoise and a toaster wait together, very patiently, for the bread to pop up on a slow morning.",
+  "subjects": [
+    {"what": "a small tortoise with a domed shell", "doing": "stares at the toaster without blinking"},
+    {"what": "a boxy toaster with a tiny face", "doing": "glances back at the tortoise"}
+  ],
+  "props": ["a slice of bread", "a mug"],
+  "accent_on": "a mug"
+}

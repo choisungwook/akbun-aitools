@@ -1,0 +1,10 @@
+{
+  "palette": "brick",
+  "canvas": "square",
+  "moment": "A raccoon carries one hot dumpling across the table with chopsticks, as if it were a precious jewel.",
+  "subjects": [
+    {"what": "a chubby raccoon with a striped tail", "doing": "holds chopsticks with both paws, eyes fixed on the dumpling"}
+  ],
+  "props": ["a bamboo steamer", "a round dumpling", "a small soy sauce dish"],
+  "accent_on": "a bamboo steamer"
+}

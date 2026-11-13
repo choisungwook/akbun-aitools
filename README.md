@@ -131,6 +131,9 @@ agy plugin list --json
 <td><a href="./plugins/akbun-draw/skills/akbun-draw-style-bori/SKILL.md"><img src="./imgs/akbun-draw-style-bori.jpg" alt="akbun-draw-style-bori" width="400"></a><br><code>akbun-draw-style-bori</code></td>
 </tr>
 <tr>
+<td><a href="./plugins/akbun-draw/skills/akbun-draw-ink-moss/SKILL.md"><img src="./imgs/akbun-draw-ink-moss/toaster-morning.jpg" alt="akbun-draw-ink-moss toaster-morning" width="400"></a><br><a href="./plugins/akbun-draw/skills/akbun-draw-ink-moss/SKILL.md"><img src="./imgs/akbun-draw-ink-moss/dumpling-carry.jpg" alt="akbun-draw-ink-moss dumpling-carry" width="400"></a><br><a href="./plugins/akbun-draw/skills/akbun-draw-ink-moss/SKILL.md"><img src="./imgs/akbun-draw-ink-moss/rain-umbrella.jpg" alt="akbun-draw-ink-moss rain-umbrella" width="400"></a><br><code>akbun-draw-ink-moss</code></td>
+</tr>
+<tr>
 <td><a href="./plugins/akbun-draw/skills/akbun-draw-learning-mono/SKILL.md"><img src="./imgs/akbun-draw-learning-mono.jpg" alt="akbun-draw-learning-mono" width="400"></a><br><code>akbun-draw-learning-mono</code></td>
 </tr>
 <tr>
@@ -243,6 +246,7 @@ $akbun-davinciresolve-explainer 이 대본을 fiery-ocean 색, akbun 도형으�
 | [akbun-draw-sketchbook-card](./plugins/akbun-draw/skills/akbun-draw-sketchbook-card/) | 개념 하나를 스케치북 카드 한 장으로 정리할 때 |
 | [akbun-draw-quiet-pencil](./plugins/akbun-draw/skills/akbun-draw-quiet-pencil/) | 여백 많은 조용한 연필 장면 그림이 필요할 때 |
 | [akbun-draw-style-bori](./plugins/akbun-draw/skills/akbun-draw-style-bori/) | 아늑한 배경 속 동글동글한 동물들의 일상 장면 그림이 필요할 때 |
+| [akbun-draw-ink-moss](./plugins/akbun-draw/skills/akbun-draw-ink-moss/) | 굵은 잉크 선·단색 면에 강조색 하나만 칠한 엉뚱한 한 컷이 필요할 때 |
 | [akbun-draw-illust-wash](./plugins/akbun-draw/skills/akbun-draw-illust-wash/) | 흰 종이 여백이 넓은 펜 선·수채 칠 동물 장면 그림이 필요할 때 |
 | [akbun-draw-faded-film](./plugins/akbun-draw/skills/akbun-draw-faded-film/) | 사람 없는 장면을 바랜 옛 필름 사진처럼 담은 이미지가 필요할 때 |
 | [akbun-draw-street-matte](./plugins/akbun-draw/skills/akbun-draw-street-matte/) | 여행지 거리를 무광 색감의 카메라 스냅 사진이나 고정 카메라 반복 영상으로 담고 싶을 때 |

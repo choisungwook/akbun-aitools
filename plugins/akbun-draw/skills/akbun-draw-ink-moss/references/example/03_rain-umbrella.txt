@@ -1,0 +1,17 @@
+Hand-drawn flat 2D digital illustration, simple and tidy like a calm webcomic panel, portrait 4:5.
+
+MOMENT: A penguin and a laptop share one umbrella and wait for the rain to stop.
+
+SUBJECTS (2): 1. a short penguin with flat feet, holds the umbrella over the laptop. 2. an open laptop with a small face on the screen, looks up at the raindrops.
+
+PROPS: an umbrella, a few raindrops.
+
+ACCENT: only an umbrella is colored #3E9C93.
+
+COLOR PALETTE: use only these five colors: paper #DEE5E3; ink #22302E; white #FAFCFB; accent #3E9C93; accent shade #26706A.
+
+STYLE: Every shape is outlined with one bold, even, smooth ink line in #22302E, about 5 px at 1280 px width, with rounded ends and no wobble. Inner details use the same ink, thinner (about 3 px). Never pure black, no hatching, no sketchy strokes. Flat fills only: each area is one solid color with no shading, no highlights and no gradients. Dark masses such as hair, dark fur or deep shadows are filled solid with the ink color #22302E; light areas are #FAFCFB. Exactly one small element in the picture is colored with the accent #3E9C93, with its veins or folds drawn in #26706A. Everything else uses only ink, white and the paper color. The background is one solid flat #DEE5E3 color filling the whole canvas, with no clouds, no patterns, no doodles, no perspective, no floor and no scenery behind the subjects. Faces, if any, are simple and deadpan, drawn with a few ink marks; no blush, no sparkles in the eyes. Subjects are original animals, plants or everyday objects, never humans; objects and plants may have small faces. Each shape is reduced to a few large simple forms. No paper grain, no noise, no gloss: clean vector-like surfaces. Quiet, slightly whimsical mood; expressions stay deadpan and calm.
+
+TEXT: No written words, letters or numbers anywhere in the image.
+
+DO NOT: no humans, no photorealism, no 3D, no gradients or soft shading, no extra accent colors, no clouds or background patterns, no detailed scenery, no existing mascots or brand characters, no watermark, no captions.
