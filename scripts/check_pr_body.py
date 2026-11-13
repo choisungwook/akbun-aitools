@@ -14,7 +14,15 @@ MEDIUM_RISK = ("plugins/",)
 MAX_LINES = 40
 
 
+def unquote_git_path(path):
+  # core.quotepath가 켜진 git은 비ASCII 경로를 "scripts/\352..."처럼 따옴표와 8진수 바이트로 낸다
+  if len(path) < 2 or not (path.startswith('"') and path.endswith('"')):
+    return path
+  return path[1:-1].encode().decode("unicode_escape").encode("latin-1").decode("utf-8")
+
+
 def risk_tier(files):
+  files = [unquote_git_path(path) for path in files]
   high = [path for path in files if path.startswith(HIGH_RISK)]
   if high:
     return "높음", high
