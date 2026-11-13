@@ -95,11 +95,9 @@ description: "Use only when the user explicitly asks to write a technical blog p
 
 > `budget.mjs`는 `budget.json`의 예산을 읽고 proto를 import하는 파일 수를 셉니다. 개수가 예산을 넘으면 CI가 실패합니다. `budget.mjs --write`는 예산을 낮출 때만 실행합니다.
 
-## 마무리: advisor-naturalize와 점검표
+## 마무리: 점검표
 
-다 쓴 뒤 `akbun-writing-advisor-naturalize`의 규칙 파일(`references/grammar-rules.jsonl`, `references/common-rules.jsonl`, `references/user-rules.jsonl`)과 처리 절차(맞춤법 교정 → 국소 자연화 → 원문 대조)를 호출 모드로 적용한다. 결과는 산출물 파일에 덮어쓴다. `합니다`체와 1인칭 규칙은 보호 영역으로 넘긴다.
-
-그다음 점검표를 돈다. 하나라도 아니면 고친다.
+다 쓴 뒤 점검표를 돈다. 하나라도 아니면 고친다.
 
 1. 글이 설명 모드 하나인가. 실습 절은 분리돼 있는가.
 2. 주장이 수치·설정 이름·근거 문서로 못박혀 있는가. 확인 못 한 것은 `확인 필요`로 남았는가.
