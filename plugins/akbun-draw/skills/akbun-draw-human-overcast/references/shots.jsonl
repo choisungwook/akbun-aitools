@@ -1,3 +1,0 @@
-{"id": "half-body", "use": "기본. 표정·손동작·상의가 중요할 때", "prompt": "framed from the head to about the hips"}
-{"id": "full-body", "use": "옷 전체·서 있는 자세·주변 표면이 중요할 때", "prompt": "framed head to toe with a little ground visible under the feet"}
-{"id": "close-up", "use": "얼굴·머리·작은 소품이 중요할 때", "prompt": "framed from the head to about the chest"}

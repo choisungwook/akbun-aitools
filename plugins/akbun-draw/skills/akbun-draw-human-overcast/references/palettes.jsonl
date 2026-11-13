@@ -1,4 +1,0 @@
-{"id": "concrete-grey", "use": "기본. 콘크리트·회벽 골목, 흐린 날", "colors": {"concrete grey": "#9CA2A2", "warm taupe": "#7E786C", "near black": "#121818", "skin warm": "#C09C7E", "off white": "#E6E4DE"}}
-{"id": "brick-ochre", "use": "벽돌·황토색 벽, 오래된 상가 골목처럼 따뜻한 표면", "colors": {"faded brick": "#9A6A58", "ochre": "#B89A6A", "near black": "#161414", "skin warm": "#C09C7E", "dusty cream": "#E2D8C6"}}
-{"id": "leaf-shade", "use": "가로수·공원 옆 길처럼 초록이 보이는 흐린 날", "colors": {"muted leaf": "#7E8A6A", "pavement grey": "#A2A4A0", "near black": "#141816", "skin warm": "#C09C7E", "pale sky": "#DADEDC"}}
-{"id": "warm-concrete", "use": "거푸집 구멍이 찍힌 베이지 노출 콘크리트 벽 앞", "prompt": "warm beige exposed concrete with small form-tie holes, the soft light slightly warm", "colors": {"beige concrete": "#9C7E54", "light sand": "#B49678", "deep shadow": "#120C06", "skin warm": "#E8C2A8", "soft slate": "#7C8696"}}
