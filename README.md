@@ -110,12 +110,6 @@ agy plugin list --json
 <td><a href="./plugins/akbun-draw/skills/akbun-draw-animation-dami/SKILL.md"><img src="./imgs/akbun-draw-animation-dami.jpg" alt="akbun-draw-animation-dami" width="400"></a><br><code>akbun-draw-animation-dami</code></td>
 </tr>
 <tr>
-<td><a href="./plugins/akbun-draw/skills/akbun-draw-slate-marker/SKILL.md"><img src="./imgs/akbun-draw-slate-marker.jpg" alt="akbun-draw-slate-marker" width="400"></a><br><code>akbun-draw-slate-marker</code></td>
-</tr>
-<tr>
-<td><a href="./plugins/akbun-draw/skills/akbun-draw-scribble-black/SKILL.md"><img src="./imgs/akbun-draw-scribble-black.jpg" alt="akbun-draw-scribble-black" width="400"></a><br><code>akbun-draw-scribble-black</code></td>
-</tr>
-<tr>
 <td><a href="./plugins/akbun-draw/skills/akbun-draw-thumbnail-retro/SKILL.md"><img src="./imgs/akbun-draw-thumbnail-retro.jpg" alt="akbun-draw-thumbnail-retro" width="400"></a><br><code>akbun-draw-thumbnail-retro</code></td>
 </tr>
 <tr>
@@ -241,8 +235,6 @@ $akbun-davinciresolve-explainer 이 대본을 fiery-ocean 색, akbun 도형으�
 | [akbun-draw-night-gouache](./plugins/akbun-draw/skills/akbun-draw-night-gouache/) | 어두운 배경 손채색 그림으로 비유·대화를 보여 주는 설명 장면이 필요할 때 |
 | [akbun-draw-pencil-analogy-graphite](./plugins/akbun-draw/skills/akbun-draw-pencil-analogy-graphite/) | 연필 막대 인물로 개념을 일상 비유로 풀어 줄 때 |
 | [akbun-draw-diagram-haru](./plugins/akbun-draw/skills/akbun-draw-diagram-haru/) | 시스템 구조·요청 흐름을 흰 바탕 손그림 다이어그램 이미지로 만들 때 |
-| [akbun-draw-scribble-black](./plugins/akbun-draw/skills/akbun-draw-scribble-black/) | 보드에 손으로 써 내려가며 수식·단계·묻고 답하기를 설명할 때 |
-| [akbun-draw-slate-marker](./plugins/akbun-draw/skills/akbun-draw-slate-marker/) | 요청·메모리 같은 시스템 동작을 카드와 상태 변화로 보여 줄 때 |
 | [akbun-generateimage-code](./plugins/akbun-draw/skills/akbun-generateimage-code/) | 블로그에 코드를 짚어 설명하는 그림이 필요할 때 |
 | [akbun-draw-webtoon-b](./plugins/akbun-draw/skills/akbun-draw-webtoon-b/) | 이미지·글로 파스텔 동물 캐릭터 웹툰 페이지를 만들 때 |
 | [akbun-draw-webtoon-d](./plugins/akbun-draw/skills/akbun-draw-webtoon-d/) | 이야기를 흑백 다큐툰 장면으로 그릴 때 |
@@ -378,8 +370,6 @@ $akbun-davinciresolve-explainer 이 대본을 fiery-ocean 색, akbun 도형으�
 | [davinciresolve-style-project](./plugins/akbun-editvideo/skills/davinciresolve-style-project/) | 프로젝트 과정을 기록하는 diary형 영상의 편집 기준이 필요할 때 |
 | [akbun-davinciresolve-explainer-dark-diagram](./plugins/akbun-editvideo/skills/akbun-davinciresolve-explainer-dark-diagram/) | 어두운 다이어그램 설명 영상을 만들고 내 녹음에 맞출 때 |
 | [akbun-davinciresolve-explainer](./plugins/akbun-editvideo/skills/akbun-davinciresolve-explainer/) | 대본을 그림이 자막에 맞춰 튀어나오는 설명 영상으로 만들고, 색 조합·도형 스타일을 골라 쓰고 싶을 때 |
-| [akbun-davinciresolve-explainer-scribble-black](./plugins/akbun-editvideo/skills/akbun-davinciresolve-explainer-scribble-black/) | 보드에 써 내려가는 손그림 설명 영상을 Resolve에서 고치며 만들 때 |
-| [akbun-davinciresolve-explainer-slate-marker](./plugins/akbun-editvideo/skills/akbun-davinciresolve-explainer-slate-marker/) | 카드와 상태 변화로 시스템 동작을 보여 주는 설명 영상을 Resolve에서 고치며 만들 때 |
 | [akbun-davinciresolve-motion-stamp](./plugins/akbun-editvideo/skills/akbun-davinciresolve-motion-stamp/) | 내레이션 영상의 사진 컷을 숫자·키워드 모션그래픽으로 바꿀 때 |
 | [akbun-davinciresolve-narration-cleanup](./plugins/akbun-editvideo/skills/akbun-davinciresolve-narration-cleanup/) | 녹음한 내레이션의 숨소리·긴 쉼을 정리할 때 |
 | [akbun-edit-page-tour-lilac](./plugins/akbun-editvideo/skills/akbun-edit-page-tour-lilac/) | 웹 페이지 스크린샷을 짚어 가며 설명할 때 |
