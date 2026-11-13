@@ -79,6 +79,7 @@ agy plugin list --json
 | [akbun-pulse](#akbun-pulse) | GitHub·Readwise 하루·기간 요약 |
 | [akbun-editvideo](#akbun-editvideo) | DaVinci Resolve 영상 편집 |
 | [akbun-youtube](#akbun-youtube) | 채널·영상 설정과 분석 |
+| [akbun-contentcreator](#akbun-contentcreator) | 악분일상 영상 주제·대본·업로드 준비물(제목·블로그·쇼츠) |
 
 ## plugin 예시
 
@@ -398,5 +399,17 @@ $akbun-davinciresolve-explainer 이 대본을 fiery-ocean 색, akbun 도형으�
 | [akbun-youtube-translate-title-description](./plugins/akbun-youtube/skills/akbun-youtube-translate-title-description/) | 제목·설명을 여러 언어로 등록할 때 |
 | [akbun-youtube-analyze-my-videos](./plugins/akbun-youtube/skills/akbun-youtube-analyze-my-videos/) | 내 영상들의 지표를 비교해 볼 때 |
 | [akbun-youtube-analyze-my-style](./plugins/akbun-youtube/skills/akbun-youtube-analyze-my-style/) | 내 영상 스타일을 정리해 다음 영상에 쓰고 싶을 때 |
+
+</details>
+
+### akbun-contentcreator
+
+<details><summary>악분일상 영상 주제·대본·업로드 준비물(제목·블로그·쇼츠)</summary>
+
+| skill | 이럴 때 쓰세요 |
+|---|---|
+| [akbun-contentcreator-topic-finder](./plugins/akbun-contentcreator/skills/akbun-contentcreator-topic-finder/) | 다음 영상 주제를 공식 문서·보안 뉴스·블로그 인기 글에서 찾을 때 |
+| [akbun-contentcreator-script-builder](./plugins/akbun-contentcreator/skills/akbun-contentcreator-script-builder/) | 옵시디언 공부 노트를 문제→예상→실험→결과 대본과 15초 훅으로 바꿀 때 |
+| [akbun-contentcreator-publish-kit](./plugins/akbun-contentcreator/skills/akbun-contentcreator-publish-kit/) | 확정된 대본으로 제목·썸네일 문구, 티스토리 글, 쇼츠 대본을 한 번에 또는 골라서 만들 때 |
 
 </details>

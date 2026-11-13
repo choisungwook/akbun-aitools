@@ -136,6 +136,18 @@
         "authentication": "ON_INSTALL"
       },
       "category": "Productivity"
+    },
+    {
+      "name": "akbun-contentcreator",
+      "source": {
+        "source": "local",
+        "path": "./plugins/akbun-contentcreator"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
     }
   ]
 }
