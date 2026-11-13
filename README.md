@@ -148,9 +148,6 @@ agy plugin list --json
 <td><a href="./plugins/akbun-draw/skills/akbun-draw-street-matte/SKILL.md"><img src="./imgs/akbun-draw-street-matte.jpg" alt="akbun-draw-street-matte" width="400"></a><br><code>akbun-draw-street-matte</code></td>
 </tr>
 <tr>
-<td><a href="./plugins/akbun-draw/skills/akbun-draw-human-overcast/SKILL.md"><img src="./imgs/akbun-draw-human-overcast.jpg" alt="akbun-draw-human-overcast" width="400"></a><br><code>akbun-draw-human-overcast</code></td>
-</tr>
-<tr>
 <td><a href="./plugins/akbun-draw/skills/akbun-draw-storybook-vintage/SKILL.md"><img src="./imgs/akbun-draw-storybook-vintage.jpg" alt="akbun-draw-storybook-vintage" width="400"></a><br><code>akbun-draw-storybook-vintage</code></td>
 </tr>
 </table>
@@ -234,13 +231,7 @@ $akbun-davinciresolve-explainer 이 대본을 fiery-ocean 색, akbun 도형으�
 | [akbun-draw-code-nari](./plugins/akbun-draw/skills/akbun-draw-code-nari/) | 터미널·AI 도구 화면 녹화에 화살표·라벨을 붙여 짚는 영상 장면이 필요할 때 |
 | [akbun-draw-night-gouache](./plugins/akbun-draw/skills/akbun-draw-night-gouache/) | 어두운 배경 손채색 그림으로 비유·대화를 보여 주는 설명 장면이 필요할 때 |
 | [akbun-draw-pencil-analogy-graphite](./plugins/akbun-draw/skills/akbun-draw-pencil-analogy-graphite/) | 연필 막대 인물로 개념을 일상 비유로 풀어 줄 때 |
-| [akbun-draw-presentation](./plugins/akbun-draw/skills/akbun-draw-presentation/) | 개념·흐름을 논문형식 발표 슬라이드 한 장처럼 보이는 그림으로 만들 때 |
 | [akbun-draw-diagram-haru](./plugins/akbun-draw/skills/akbun-draw-diagram-haru/) | 시스템 구조·요청 흐름을 흰 바탕 손그림 다이어그램 이미지로 만들 때 |
-| [akbun-generateimage-code](./plugins/akbun-draw/skills/akbun-generateimage-code/) | 블로그에 코드를 짚어 설명하는 그림이 필요할 때 |
-| [akbun-draw-webtoon-b](./plugins/akbun-draw/skills/akbun-draw-webtoon-b/) | 이미지·글로 파스텔 동물 캐릭터 웹툰 페이지를 만들 때 |
-| [akbun-draw-webtoon-d](./plugins/akbun-draw/skills/akbun-draw-webtoon-d/) | 이야기를 흑백 다큐툰 장면으로 그릴 때 |
-| [akbun-draw-sketchbook-card](./plugins/akbun-draw/skills/akbun-draw-sketchbook-card/) | 개념 하나를 스케치북 카드 한 장으로 정리할 때 |
-| [akbun-draw-quiet-pencil](./plugins/akbun-draw/skills/akbun-draw-quiet-pencil/) | 여백 많은 조용한 연필 장면 그림이 필요할 때 |
 | [akbun-draw-style-bori](./plugins/akbun-draw/skills/akbun-draw-style-bori/) | 아늑한 배경 속 동글동글한 동물들의 일상 장면 그림이 필요할 때 |
 | [akbun-draw-ink-moss](./plugins/akbun-draw/skills/akbun-draw-ink-moss/) | 굵은 잉크 선·단색 면에 강조색 하나만 칠한 엉뚱한 한 컷이 필요할 때 |
 | [akbun-draw-illust-wash](./plugins/akbun-draw/skills/akbun-draw-illust-wash/) | 흰 종이 여백이 넓은 펜 선·수채 칠 동물 장면 그림이 필요할 때 |
@@ -249,10 +240,8 @@ $akbun-davinciresolve-explainer 이 대본을 fiery-ocean 색, akbun 도형으�
 | [akbun-draw-street-matte](./plugins/akbun-draw/skills/akbun-draw-street-matte/) | 여행지 거리를 무광 색감의 카메라 스냅 사진이나 고정 카메라 반복 영상으로 담고 싶을 때 |
 | [akbun-draw-gag-deadpan](./plugins/akbun-draw/skills/akbun-draw-gag-deadpan/) | 다정한 제목과 그 뒤 웃긴 속사정을 보여 주는 개그 한 컷이 필요할 때 |
 | [akbun-draw-comic-wash](./plugins/akbun-draw/skills/akbun-draw-comic-wash/) | 펜 선·수채 그림체로 4컷 만화·인스타툰·유튜브 커뮤니티 만화를 만들 때 |
-| [akbun-draw-human-overcast](./plugins/akbun-draw/skills/akbun-draw-human-overcast/) | 흐린 날 도시 벽 앞에서 찍은 듯한 담담한 인물 사진이 필요할 때 |
 | [akbun-draw-animation-dami](./plugins/akbun-draw/skills/akbun-draw-animation-dami/) | 짧은 이야기를 회화풍 세로 애니메이션 쇼츠로 만들 때 |
 | [akbun-draw-learning-mono](./plugins/akbun-draw/skills/akbun-draw-learning-mono/) | 논문·학습 자료를 흑백 16:9 학습 이미지와 대본으로 바꿀 때 |
-| [akbun-draw-travel-blog](./plugins/akbun-draw/skills/akbun-draw-travel-blog/) | 여행 글에 넣을 썸네일·약도 삽화가 필요할 때 |
 | [akbun-draw-thumbnail-retro](./plugins/akbun-draw/skills/akbun-draw-thumbnail-retro/) | IT·여행 글과 영상의 썸네일을 레트로 포스터처럼 만들고 싶을 때 |
 | [akbun-draw-thumbnail-doodle](./plugins/akbun-draw/skills/akbun-draw-thumbnail-doodle/) | 블로그·유튜브 썸네일을 낙서 그림체 한 장(16:9·4:3)으로 만들 때 |
 | [akbun-draw-chalkboard](./plugins/akbun-draw/skills/akbun-draw-chalkboard/) | 시스템 구조·개념을 칠판 분필 그림체 16:9 SVG 한 장으로 설명 영상·슬라이드에 넣을 때 |
