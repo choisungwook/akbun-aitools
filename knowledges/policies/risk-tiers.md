@@ -9,7 +9,7 @@ sources:
   - id: agents
     resource: ../../AGENTS.md
     title: AGENTS.md
-    last_modified: 2026-11-13T15:00:00Z
+    last_modified: 2026-11-13T15:30:00Z
   - id: checker
     resource: ../../scripts/check_pr_body.py
     title: check_pr_body.py

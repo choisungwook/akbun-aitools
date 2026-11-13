@@ -9,7 +9,7 @@ sources:
   - id: agents
     resource: ../../AGENTS.md
     title: AGENTS.md
-    last_modified: 2026-11-13T15:00:00Z
+    last_modified: 2026-11-13T15:30:00Z
   - id: template
     resource: ../../.github/pull_request_template.md
     title: PR template
