@@ -165,7 +165,6 @@ ffmpeg -i "$HOME/Downloads/ref_<영상ID>/ref.mp4" -vf "fps=2,scale=320:-1,tile=
 ### 3. MG 문구 작성
 
 - MG에는 키워드·숫자만 쓴다. 자막과 같은 문장을 화면에 또 쓰지 않는다. 같은 시각에 MG 문구와 자막이 같은 말을 하면 고친다.
-- 문구는 `/akbun-writing:akbun-writing-advisor-naturalize` 기준으로 다듬어 AI 말투를 뺀다.
 - 확인되지 않은 이야기(투어 해설의 일화)는 "~라는", "전해지는"으로 쓴다. 단정하지 않는다.
 - 장면 표와 문구로 "레이아웃 원칙 > 배치를 정하는 순서"를 장면마다 따라 `<프로젝트>/mg/scenes.json`을 쓴다. `example_scenes.json`의 좌표를 복사하지 않는다.
 

@@ -206,12 +206,8 @@ $akbun-davinciresolve-explainer 이 대본을 fiery-ocean 색, akbun 도형으�
 |---|---|
 | [akbun-writing](./plugins/akbun-writing/skills/akbun-writing/) | 기술 블로그 글을 akbun 말투로 처음부터 쓸 때 |
 | [akbun-writing-with-question](./plugins/akbun-writing/skills/akbun-writing-with-question/) | 독자가 질문을 따라가며 개념을 익히는 학습형 글이 필요할 때 |
-| [akbun-writing-style-warm](./plugins/akbun-writing/skills/akbun-writing-style-warm/) | 초보 독자에게 해요체 경험담 말투로 다가가고 싶을 때 |
 | [akbun-writing-humanize](./plugins/akbun-writing/skills/akbun-writing-humanize/) | AI가 쓴 부연스러운 글을 내가 고른 견본 문체로 자연스럽게 다시 쓰고 싶을 때 |
-| [akbun-writing-advisor-naturalize](./plugins/akbun-writing/skills/akbun-writing-advisor-naturalize/) | 원문 말투는 지키고 맞춤법·어색한 문장만 다듬고 싶을 때 |
-| [akbun-writing-advisor-design](./plugins/akbun-writing/skills/akbun-writing-advisor-design/) | AI로 만든 화면이 효과만 화려하고 어수선해 보일 때 |
 | [akbun-docs-review](./plugins/akbun-writing/skills/akbun-docs-review/) | 기술 문서의 용어가 들쭉날쭉하거나 사실 확인이 필요할 때 |
-| [akbun-writing-travel-blog](./plugins/akbun-writing/skills/akbun-writing-travel-blog/) | 여행 메모와 사진을 블로그 글로 옮길 때 |
 | [akbun-voice-diary](./plugins/akbun-writing/skills/akbun-voice-diary/) | 말로 한 하루를 일기로 남기고 공부 일정까지 잡고 싶을 때 |
 | [akbun-thumbnail-review](./plugins/akbun-writing/skills/akbun-thumbnail-review/) | 올리기 전 유튜브 썸네일이 잘 읽히는지 점검할 때 |
 | [akbun-markdown-to-html-pandoc](./plugins/akbun-writing/skills/akbun-markdown-to-html-pandoc/) | markdown 글을 블로그에 붙일 HTML로 바꿀 때 |
