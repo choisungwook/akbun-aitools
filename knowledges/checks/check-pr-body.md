@@ -10,7 +10,7 @@ sources:
   - id: script
     resource: ../../scripts/check_pr_body.py
     title: check_pr_body.py
-    last_modified: 2026-11-13T13:29:35Z
+    last_modified: 2026-11-13T16:00:00Z
   - id: workflow
     resource: ../../.github/workflows/validate-pr.yml
     title: validate-pr.yml

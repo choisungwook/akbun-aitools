@@ -16,7 +16,7 @@ disable-model-invocation: true
 2. **플러그인**: 기본은 짝으로 둘 다 만든다. `akbun-draw`에 스타일 원본(그림·모션그래픽 렌더), `akbun-editvideo`에 그 스타일을 Resolve 타임라인으로 만드는 짝(`akbun-davinciresolve-explainer-<스타일>`, 글자는 Text+, 그림은 렌더러로 뽑은 투명 레이어 PNG)이다. 사용자가 한쪽만 말하면 그쪽만 만든다.
 3. **이름**: `akbun-`으로 시작하고, 고유명사처럼 다른 skill과 한눈에 구분돼야 한다. 스타일 skill은 끝에 스타일을 대표하는 쉬운 영어 한 단어를 붙인다(AGENTS.md). 만들기 전에 `ls plugins/*/skills`로 겹치는 단어가 없는지 본다.
 4. **스타일만 묘사**: 색·글자 획 모양·선·부품 모양·질감·모션을 규칙으로 쓴다. 이미지 생성 모델이 그리는 skill은 글자도 폰트 없이 그림에 직접 그리게 하고, 폰트 이름 대신 획 모양(세리프 유무·획 대비·끝 모양)·굵기·자간으로 묘사한다. SVG `<text>`·렌더러·Text+처럼 글자를 조판하는 skill만 AGENTS.md대로 SIL OFL 글꼴을 쓴다. **레이아웃(무엇을 어디에 몇 개 두는지, 화면 구도)은 쓰지 않는다.** 상황마다 배치는 달라지기 때문이다. "왼쪽에서 오른쪽으로 그려지는 선"처럼 한 방향을 기본으로 끄는 표현도 쓰지 않고 "흐름의 시작에서 끝으로"라고 쓴다. 원본의 장면 순서·문구·캐릭터 조합도 옮기지 않는다. 사람 얼굴·그리는 손·실사 인물 컷은 원본에 있어도 넣지 않는다.
-5. **출처를 남기지 않음**: skill 파일, 커밋 메시지, PR 본문, GitHub Issue 어디에도 원본 영상 링크·채널·제목·사진 파일명을 쓰지 않는다. 다운로드 폴더 이름에도 영상 ID를 넣지 않는다.
+5. **출처를 남기지 않음**: skill 파일, 커밋 메시지, PR 본문, GitHub Discussion 어디에도 원본 영상 링크·채널·제목·사진 파일명을 쓰지 않는다. 다운로드 폴더 이름에도 영상 ID를 넣지 않는다.
 6. **README 샘플**: 결과 예시를 `imgs/<skill 이름>.jpg`로 저장하고 루트 `README.md`의 `### <plugin> 예시` 표와 `## plugin 목록` 표에 넣는다.
 
 ## 절차
@@ -69,4 +69,4 @@ uv run --python 3.12 --with pillow python -I .claude/scripts/sample_palette.py <
 - 다른 모델 2개 이상으로 시험한다(AGENTS.md 이미지 작업 규칙). 시험 agent에게는 원본 assets를 주지 않고 skill만 준다.
 - plugin manifest 두 파일 버전을 `origin/main`에서 +1, `interface.defaultPrompt`에 한 줄 추가.
 - `uv run --python 3.12 scripts/validate_plugins.py --base origin/main`. editvideo면 `docs/manual_editvideo.md`·`docs/terms_editvideo.md`를 같은 변경에서 갱신하고 `validate_editvideo.py`도 돌린다.
-- 기록용 Issue → PR. 올리기 전 `git diff origin/main | grep -iE "youtu|<영상 ID>"`가 아무것도 출력하지 않는지 본다(규칙 5).
+- PR. 올리기 전 `git diff origin/main | grep -iE "youtu|<영상 ID>"`가 아무것도 출력하지 않는지 본다(규칙 5).

@@ -42,7 +42,7 @@ def sections(body):
       current = heading[1]
       result.setdefault(current, [])
       continue
-    if current is not None and line.strip() and not line.startswith("Closes #"):
+    if current is not None and line.strip():
       result[current].append(line.strip())
   return result, text
 
@@ -70,8 +70,6 @@ def body_errors(body, tier):
     errors.append("# 구현: 무엇이 달라지는지 한 줄 필요")
   if table_rows(found.get("검증", [])) < 1:
     errors.append("# 검증: '| 대상 | 방법 | 결과 |' 표에 실제로 돌린 것 한 줄 이상 필요")
-  if not re.search(r"Closes #\d+", text):
-    errors.append("Closes #<issue 번호> 필요")
   risk = found.get("리스크", [])
   declared = next((re.match(r"등급:\s*(\S+)", line)[1] for line in risk if re.match(r"등급:\s*(\S+)", line)), None)
   if declared and declared != tier:
