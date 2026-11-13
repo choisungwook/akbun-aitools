@@ -119,13 +119,7 @@ agy plugin list --json
 <td><a href="./plugins/akbun-draw/skills/akbun-draw-thumbnail-doodle/SKILL.md"><img src="./imgs/akbun-draw-thumbnail-doodle.jpg" alt="akbun-draw-thumbnail-doodle" width="400"></a><br><code>akbun-draw-thumbnail-doodle</code></td>
 </tr>
 <tr>
-<td valign="top"><a href="./plugins/akbun-draw/skills/akbun-draw-explainer-svg/SKILL.md"><code>akbun-draw-explainer-svg</code></a> 스타일
-
-- `clay-isometric`<br><a href="./plugins/akbun-draw/skills/akbun-draw-explainer-svg/styles/clay-isometric.json"><img src="./imgs/akbun-draw-explainer-svg/clay-isometric.png" alt="akbun-draw-explainer-svg clay-isometric" width="400"></a>
-- `chalkboard-math`<br><a href="./plugins/akbun-draw/skills/akbun-draw-explainer-svg/styles/chalkboard-math.json"><img src="./imgs/akbun-draw-explainer-svg/chalkboard-math.png" alt="akbun-draw-explainer-svg chalkboard-math" width="400"></a>
-- `marker-wireframe`<br><a href="./plugins/akbun-draw/skills/akbun-draw-explainer-svg/styles/marker-wireframe.json"><img src="./imgs/akbun-draw-explainer-svg/marker-wireframe.png" alt="akbun-draw-explainer-svg marker-wireframe" width="400"></a>
-
-</td>
+<td><a href="./plugins/akbun-draw/skills/akbun-draw-chalkboard/SKILL.md"><img src="./imgs/akbun-draw-chalkboard.png" alt="akbun-draw-chalkboard" width="400"></a><br><code>akbun-draw-chalkboard</code></td>
 </tr>
 <tr>
 <td><a href="./plugins/akbun-draw/skills/akbun-draw-style-bori/SKILL.md"><img src="./imgs/akbun-draw-style-bori.jpg" alt="akbun-draw-style-bori" width="400"></a><br><code>akbun-draw-style-bori</code></td>
@@ -258,7 +252,7 @@ $akbun-davinciresolve-explainer 이 대본을 fiery-ocean 색, akbun 도형으�
 | [akbun-draw-travel-blog](./plugins/akbun-draw/skills/akbun-draw-travel-blog/) | 여행 글에 넣을 썸네일·약도 삽화가 필요할 때 |
 | [akbun-draw-thumbnail-retro](./plugins/akbun-draw/skills/akbun-draw-thumbnail-retro/) | IT·여행 글과 영상의 썸네일을 레트로 포스터처럼 만들고 싶을 때 |
 | [akbun-draw-thumbnail-doodle](./plugins/akbun-draw/skills/akbun-draw-thumbnail-doodle/) | 블로그·유튜브 썸네일을 낙서 그림체 한 장(16:9·4:3)으로 만들 때 |
-| [akbun-draw-explainer-svg](./plugins/akbun-draw/skills/akbun-draw-explainer-svg/) | 시스템 구조·개념을 9가지 그림체 중 하나의 16:9 SVG 한 장으로 설명 영상·슬라이드에 넣을 때 |
+| [akbun-draw-chalkboard](./plugins/akbun-draw/skills/akbun-draw-chalkboard/) | 시스템 구조·개념을 칠판 분필 그림체 16:9 SVG 한 장으로 설명 영상·슬라이드에 넣을 때 |
 | [akbun-mascot-whale](./plugins/akbun-draw/skills/akbun-mascot-whale/) | 다른 그림에 akbun 고래 마스코트를 같은 모습으로 넣어야 할 때 |
 
 </details>
