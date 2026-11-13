@@ -91,9 +91,6 @@ agy plugin list --json
 <td><a href="./plugins/akbun-draw/skills/akbun-draw-motion-doodle/SKILL.md"><img src="./imgs/akbun-draw-motion-doodle.png" alt="akbun-draw-motion-doodle" width="400"></a><br><code>akbun-draw-motion-doodle</code></td>
 </tr>
 <tr>
-<td><a href="./plugins/akbun-draw/skills/akbun-draw-doodle-comic/SKILL.md"><img src="./imgs/akbun-draw-doodle-comic.png" alt="akbun-draw-doodle-comic" width="400"></a><br><code>akbun-draw-doodle-comic</code></td>
-</tr>
-<tr>
 <td><a href="./plugins/akbun-draw/skills/akbun-draw-code-window-lilac/SKILL.md"><img src="./imgs/akbun-draw-code-window-lilac.jpg" alt="akbun-draw-code-window-lilac" width="400"></a><br><code>akbun-draw-code-window-lilac</code></td>
 </tr>
 <tr>
@@ -139,7 +136,7 @@ agy plugin list --json
 <td><a href="./plugins/akbun-draw/skills/akbun-draw-gag-deadpan/SKILL.md"><img src="./imgs/akbun-draw-gag-deadpan.jpg" alt="akbun-draw-gag-deadpan" width="400"></a><br><code>akbun-draw-gag-deadpan</code></td>
 </tr>
 <tr>
-<td><a href="./plugins/akbun-draw/skills/akbun-draw-comic-wash/SKILL.md"><img src="./imgs/akbun-draw-comic-wash.jpg" alt="akbun-draw-comic-wash" width="400"></a><br><code>akbun-draw-comic-wash</code></td>
+<td><a href="./plugins/akbun-draw/skills/akbun-draw-template-cartoon/SKILL.md"><img src="./imgs/akbun-draw-template-cartoon.jpg" alt="akbun-draw-template-cartoon" width="400"></a><br><code>akbun-draw-template-cartoon</code></td>
 </tr>
 <tr>
 <td><a href="./plugins/akbun-draw/skills/akbun-draw-faded-film/SKILL.md"><img src="./imgs/akbun-draw-faded-film.jpg" alt="akbun-draw-faded-film" width="400"></a><br><code>akbun-draw-faded-film</code></td>
@@ -225,7 +222,6 @@ $akbun-davinciresolve-explainer 이 대본을 fiery-ocean 색, akbun 도형으�
 | skill | 이럴 때 쓰세요 |
 |---|---|
 | [akbun-draw-motion-doodle](./plugins/akbun-draw/skills/akbun-draw-motion-doodle/) | 흰 종이 낙서 캐릭터가 연기하는 짧은 모션그래픽이 필요할 때 |
-| [akbun-draw-doodle-comic](./plugins/akbun-draw/skills/akbun-draw-doodle-comic/) | 낙서 그림체로 2·4·6컷 만화(블로그·인스타툰)를 만들 때 |
 | [akbun-draw-code-window-lilac](./plugins/akbun-draw/skills/akbun-draw-code-window-lilac/) | 코드를 한 줄씩 타이핑하며 짚어 주는 영상 장면이 필요할 때 |
 | [akbun-draw-code-nari](./plugins/akbun-draw/skills/akbun-draw-code-nari/) | 터미널·AI 도구 화면 녹화에 화살표·라벨을 붙여 짚는 영상 장면이 필요할 때 |
 | [akbun-draw-night-gouache](./plugins/akbun-draw/skills/akbun-draw-night-gouache/) | 어두운 배경 손채색 그림으로 비유·대화를 보여 주는 설명 장면이 필요할 때 |
@@ -239,7 +235,7 @@ $akbun-davinciresolve-explainer 이 대본을 fiery-ocean 색, akbun 도형으�
 | [akbun-draw-title-nib](./plugins/akbun-draw/skills/akbun-draw-title-nib/) | 이미 있는 그림에 옛 그림책 표지 같은 손글씨 제목을 그려 넣고 싶을 때 |
 | [akbun-draw-street-matte](./plugins/akbun-draw/skills/akbun-draw-street-matte/) | 여행지 거리를 무광 색감의 카메라 스냅 사진이나 고정 카메라 반복 영상으로 담고 싶을 때 |
 | [akbun-draw-gag-deadpan](./plugins/akbun-draw/skills/akbun-draw-gag-deadpan/) | 다정한 제목과 그 뒤 웃긴 속사정을 보여 주는 개그 한 컷이 필요할 때 |
-| [akbun-draw-comic-wash](./plugins/akbun-draw/skills/akbun-draw-comic-wash/) | 펜 선·수채 그림체로 4컷 만화·인스타툰·유튜브 커뮤니티 만화를 만들 때 |
+| [akbun-draw-template-cartoon](./plugins/akbun-draw/skills/akbun-draw-template-cartoon/) | 쓰던 그림체 그대로 4컷 만화·인스타툰·유튜브 커뮤니티 만화를 만들 때 |
 | [akbun-draw-animation-dami](./plugins/akbun-draw/skills/akbun-draw-animation-dami/) | 짧은 이야기를 회화풍 세로 애니메이션 쇼츠로 만들 때 |
 | [akbun-draw-learning-mono](./plugins/akbun-draw/skills/akbun-draw-learning-mono/) | 논문·학습 자료를 흑백 16:9 학습 이미지와 대본으로 바꿀 때 |
 | [akbun-draw-thumbnail-retro](./plugins/akbun-draw/skills/akbun-draw-thumbnail-retro/) | IT·여행 글과 영상의 썸네일을 레트로 포스터처럼 만들고 싶을 때 |
