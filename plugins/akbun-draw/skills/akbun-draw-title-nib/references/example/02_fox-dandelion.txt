@@ -1,0 +1,6 @@
+Edit the attached illustration: paint a hand-lettered title directly onto it, in the manner of an old storybook cover, as if by the same illustrator. The letters are drawn, not typeset.
+
+LETTERING: Main title: large, high-contrast classic serif letterforms with thin hairlines, thick stems and small bracketed serifs; for Korean, brush-drawn myeongjo-like strokes with thin horizontals, thick verticals and small hooked stroke ends, never a plain sans or gothic stroke. Edges slightly uneven, like paint. Subtitle: about one third of the title height, the same stroke style and ink, wide and even letter spacing, on its own line directly under the title. No outline, no drop shadow, no glow, no box, banner or ribbon behind the text; the letters look like ink painted onto the existing paper texture. Place the text block on the calmest, emptiest area of the background so it never covers the main subject. Spell every character exactly as given inside the quotes, add no other words anywhere, and keep the illustration itself unchanged: same composition, colors and painting style. Ink color for all letters: deep ink-navy #2A3050.
+
+TITLE: "민들레 바람"
+SUBTITLE: "작은 여우의 아침 이야기"

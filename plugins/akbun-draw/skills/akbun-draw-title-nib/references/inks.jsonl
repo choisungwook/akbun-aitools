@@ -1,0 +1,3 @@
+{"id": "navy", "use": "기본. 밝은 그림", "hex": "#2A3050", "prompt": "deep ink-navy"}
+{"id": "sepia", "use": "밝고 따뜻한 배경(주황·갈색 기운)에서 남색이 튀어 보일 때", "hex": "#4A2E1E", "prompt": "dark sepia-brown"}
+{"id": "cream", "use": "어두운 그림", "hex": "#F4EAD8", "prompt": "warm cream-white"}
