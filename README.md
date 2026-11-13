@@ -74,7 +74,6 @@ agy plugin list --json
 | [akbun-presentation](#akbun-presentation) | 발표 덱과 대본 |
 | [akbun-learning](#akbun-learning) | 개념 학습, 영상 대본, 발음, Anki |
 | [akbun-analysis](#akbun-analysis) | 코드 변경 조사와 리뷰 |
-| [akbun-refactoring](#akbun-refactoring) | 자동 검증을 통과시키며 고치기 |
 | [akbun-agent-ops](#akbun-agent-ops) | agent 기억과 세션 맥락 |
 | [akbun-pulse](#akbun-pulse) | GitHub·Readwise 하루·기간 요약 |
 | [akbun-editvideo](#akbun-editvideo) | DaVinci Resolve 영상 편집 |
@@ -305,16 +304,6 @@ $akbun-davinciresolve-explainer 이 대본을 fiery-ocean 색, akbun 도형으�
 | [akbun-analysis-gitdiff-blast-radius](./plugins/akbun-analysis/skills/akbun-analysis-gitdiff-blast-radius/) | 머지 전에 이 변경이 어디를 깨뜨릴지 확인할 때 |
 | [akbun-analysis-adversarial-review](./plugins/akbun-analysis/skills/akbun-analysis-adversarial-review/) | 코드나 주장이 정말 맞는지 반례로 흔들어 볼 때 |
 | [akbun-analysis-token-credential](./plugins/akbun-analysis/skills/akbun-analysis-token-credential/) | 토큰·API 키를 누가 발급하고 누가 읽는지 따져 볼 때 |
-
-</details>
-
-### akbun-refactoring
-
-<details><summary>자동 검증을 통과시키며 고치기</summary>
-
-| skill | 이럴 때 쓰세요 |
-|---|---|
-| [akbun-refactoring-autoverify](./plugins/akbun-refactoring/skills/akbun-refactoring-autoverify/) | 검증을 돌려 가며 고치고 사람 판단이 필요한 것만 받고 싶을 때 |
 
 </details>
 
