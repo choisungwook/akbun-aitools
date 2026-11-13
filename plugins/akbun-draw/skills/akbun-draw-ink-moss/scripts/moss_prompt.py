@@ -70,11 +70,11 @@ def build(spec):
         f"SUBJECTS ({len(spec['subjects'])}): {subs}",
         props,
         f"ACCENT: only {spec['accent_on']} is colored {c['accent']}.",
-        f"COLOR PALETTE: use only these six colors: {colors}.",
+        f"COLOR PALETTE: use only these five colors: {colors}.",
         f"STYLE: {rules}",
         f"TEXT: {NO_TEXT}",
         "DO NOT: no humans, no photorealism, no 3D, no gradients or soft shading, no extra accent colors, "
-        "no detailed scenery, no existing mascots or brand characters, no watermark, no captions.",
+        "no clouds or background patterns, no detailed scenery, no existing mascots or brand characters, no watermark, no captions.",
     ])
 
 
