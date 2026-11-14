@@ -1,6 +1,6 @@
 {
   "name": "akbun-draw",
-  "version": "1.0.56",
+  "version": "1.0.57",
   "description": "Image drawing skills by akbun — image-generation prompts and editable SVGs in fixed akbun styles",
   "author": {
     "name": "akbun",
@@ -38,6 +38,7 @@
       "Make a storybook-vintage illustration prompt of a hedgehog asleep under a mushroom",
       "Draw a quiet harbour street at night as a gaon line drawing prompt, pale lines on indigo paper (akbun-draw-gaon)",
       "Add a title-nib hand-lettered title 바다 편지 onto this illustration",
+      "Add a title-pastel crayon hand-lettered title 퇴근길 일기 onto this picture",
       "Make a street-matte travel snapshot prompt of a rainy train platform",
       "Draw this script as night-gouache explainer scenes (dark painted illustrations with one glowing highlight) and export the layers for Resolve",
       "Make a hand-drawn doodle motion graphic (pose swaps, draw-on lines and text) as MP4 or transparent MOV and place it on my Resolve timeline at 12s",

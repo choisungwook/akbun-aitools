@@ -153,6 +153,9 @@ agy plugin list --json
 <tr>
 <td><a href="./plugins/akbun-draw/skills/akbun-draw-gaon/SKILL.md"><img src="./imgs/akbun-draw-gaon.jpg" alt="akbun-draw-gaon" width="400"></a><br><code>akbun-draw-gaon</code></td>
 </tr>
+<tr>
+<td><a href="./plugins/akbun-draw/skills/akbun-draw-title-pastel/SKILL.md"><img src="./imgs/akbun-draw-title-pastel.jpg" alt="akbun-draw-title-pastel" width="400"></a><br><code>akbun-draw-title-pastel</code></td>
+</tr>
 </table>
 
 ### akbun-presentation 예시
@@ -237,6 +240,7 @@ $akbun-davinciresolve-explainer 이 대본을 fiery-ocean 색, akbun 도형으�
 | [akbun-draw-storybook-vintage](./plugins/akbun-draw/skills/akbun-draw-storybook-vintage/) | 사물·동물 장면을 옛 그림책 수채 삽화처럼 그린 이미지가 필요할 때 |
 | [akbun-draw-gaon](./plugins/akbun-draw/skills/akbun-draw-gaon/) | 가는 펜 선으로 세부 많은 건물과 얼굴 없는 작은 인물이 있는 거리·장소 풍경을 낮이나 밤으로 그리고 싶을 때 |
 | [akbun-draw-title-nib](./plugins/akbun-draw/skills/akbun-draw-title-nib/) | 이미 있는 그림에 옛 그림책 표지 같은 손글씨 제목을 그려 넣고 싶을 때 |
+| [akbun-draw-title-pastel](./plugins/akbun-draw/skills/akbun-draw-title-pastel/) | 그림이나 사진 위에 크레용으로 덧그린 듯한 굵은 손글씨 제목을 넣고 싶을 때 |
 | [akbun-draw-street-matte](./plugins/akbun-draw/skills/akbun-draw-street-matte/) | 여행지 거리를 무광 색감의 카메라 스냅 사진이나 고정 카메라 반복 영상으로 담고 싶을 때 |
 | [akbun-draw-gag-deadpan](./plugins/akbun-draw/skills/akbun-draw-gag-deadpan/) | 다정한 제목과 그 뒤 웃긴 속사정을 보여 주는 개그 한 컷이 필요할 때 |
 | [akbun-draw-template-cartoon](./plugins/akbun-draw/skills/akbun-draw-template-cartoon/) | 쓰던 그림체 그대로 4컷 만화·인스타툰·유튜브 커뮤니티 만화를 만들 때 |
