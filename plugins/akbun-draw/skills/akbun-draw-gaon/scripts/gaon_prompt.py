@@ -1,4 +1,4 @@
-"""facade-hairline 스타일 이미지 생성 프롬프트를 spec(JSON)에서 조립하고 채점한다.
+"""gaon 스타일 이미지 생성 프롬프트를 spec(JSON)에서 조립하고 채점한다.
 
   build <spec.json> [-o prompt.txt]   채점 후 100점이면 프롬프트를 쓴다(없으면 stdout)
   check <spec.json>                   채점표만 출력

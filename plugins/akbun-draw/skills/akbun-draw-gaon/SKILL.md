@@ -1,14 +1,14 @@
 ---
-name: akbun-draw-facade-hairline
-description: 따뜻한 미색 종이 위 굵기 하나인 가는 펜 선, 원근 없이 정면으로 그린 세부 많은 건물, 얼굴 없이 팔다리를 두 줄로 연 길쭉한 작은 인물, 좁은 곳에만 칠한 강조색 1~2개, 밤이면 남색 종이에 옅은 선으로 뒤집히는 라인 드로잉 이미지 생성 프롬프트 스타일 facade-hairline. 모델은 spec(JSON)만 쓰고, 스크립트가 references의 스타일·시간대·강조색·캔버스·펜 라이브러리로 영어 프롬프트를 조립하고 채점한다. 사용자가 직접 호출할 때만 실행한다.
+name: akbun-draw-gaon
+description: 따뜻한 미색 종이 위 굵기 하나인 가는 펜 선, 원근 없이 정면으로 그린 세부 많은 건물, 얼굴 없이 팔다리를 두 줄로 연 길쭉한 작은 인물, 좁은 곳에만 칠한 강조색 1~2개, 밤이면 남색 종이에 옅은 선으로 뒤집히는 라인 드로잉 이미지 생성 프롬프트 스타일 gaon. 모델은 spec(JSON)만 쓰고, 스크립트가 references의 스타일·시간대·강조색·캔버스·펜 라이브러리로 영어 프롬프트를 조립하고 채점한다. 사용자가 직접 호출할 때만 실행한다.
 disable-model-invocation: true
 ---
 
-# akbun-draw-facade-hairline
+# akbun-draw-gaon
 
 ## 목적
 
-아무 장소·장면을 facade-hairline 그림체로 그리는 영어 이미지 생성 프롬프트를 만든다. 이 skill이 고정하는 것은 선 굵기·채움·건물 그리는 법·인물과 동물 그리는 법·여백·색 쓰는 법·밤 반전이고, 무엇을 그릴지(장소·구조물·사람·소품)와 구도는 입력에 맞춰 정한다.
+아무 장소·장면을 gaon 그림체로 그리는 영어 이미지 생성 프롬프트를 만든다. 이 skill이 고정하는 것은 선 굵기·채움·건물 그리는 법·인물과 동물 그리는 법·여백·색 쓰는 법·밤 반전이고, 무엇을 그릴지(장소·구조물·사람·소품)와 구도는 입력에 맞춰 정한다.
 
 모델은 프롬프트 문장을 직접 쓰지 않는다. spec만 쓰고, 스타일 문장은 스크립트가 라이브러리에서 가져온다. 그래서 몇 장을 만들어도 같은 그림체가 나온다.
 
@@ -30,7 +30,7 @@ disable-model-invocation: true
 
 ### 1. spec 쓰기
 
-입력에서 장면 하나를 정한다(여러 장이면 장마다). 출력 폴더는 사용자가 정한 곳, 없으면 작업 디렉터리 아래 `hairline-output/<작업명>/`, 파일 이름은 `01_<id>.json`. `<작업명>`과 `<id>`는 장면을 줄인 영어 소문자·하이픈 말이다.
+입력에서 장면 하나를 정한다(여러 장이면 장마다). 출력 폴더는 사용자가 정한 곳, 없으면 작업 디렉터리 아래 `gaon-output/<작업명>/`, 파일 이름은 `01_<id>.json`. `<작업명>`과 `<id>`는 장면을 줄인 영어 소문자·하이픈 말이다.
 
 배치(어디에 무엇을 두는지)는 쓰지 않는다. 구도는 이미지 모델이 정한다. 단어 수는 공백으로 나눈 덩어리 수다. a·the도 세고, 하이픈으로 이은 말은 한 단어다. 범위는 모두 경계를 포함한다.
 
@@ -50,7 +50,7 @@ disable-model-invocation: true
 spec을 채점하고 프롬프트 파일을 쓰는 명령이다. `<skill>`은 이 `SKILL.md`가 있는 디렉터리다. 100점이 아니면 프롬프트를 쓰지 않고 FAIL 항목을 보여 준다. 고쳐서 다시 돌린다.
 
 ```bash
-uv run --python 3.12 python -I <skill>/scripts/hairline_prompt.py build hairline-output/<작업명>/01_<id>.json -o hairline-output/<작업명>/01_<id>.txt
+uv run --python 3.12 python -I <skill>/scripts/gaon_prompt.py build gaon-output/<작업명>/01_<id>.json -o gaon-output/<작업명>/01_<id>.txt
 ```
 
 채점표만 보려면 `build` 대신 `check`를 쓴다. 채점은 위 표의 수치 외에 이것도 본다: 키마다 형식(문자열·문자열 목록·객체 목록)이 맞을 것(틀리면 0점), 모델이 쓴 글은 영어(ASCII)만, 금지 낱말이 없을 것. 금지 낱말의 전체 목록은 스크립트 위쪽 `BANNED_FACE`(얼굴: face·eyes·nose·mouth·lips·smile·grin·frown·expression), `BANNED_STYLE`(스타일을 깨는 말: 3d·photo·realistic·anime·cartoon·gradient·neon·shading·shadow·glossy·watercolor·bold·thick·hatch·crosshatch·perspective·isometric·vanishing), `BANNED_TEXT`(글자를 부르는 말: text·letter·lettering·word·written·logo·says·number·digit·caption·label, 큰따옴표, 낱말 밖의 작은따옴표), `BANNED_LAYOUT`(배치: left·right·foreground·background·center·middle·corner·top·bottom)이다. 낱말 단위로 찾고 하이픈으로 이은 말은 한 낱말이라 signal·top-down·baker's는 걸리지 않는다. 간판·포스터는 글자 없이 비워 둔다.
@@ -58,7 +58,7 @@ uv run --python 3.12 python -I <skill>/scripts/hairline_prompt.py build hairline
 스크립트나 jsonl을 고쳤으면 자체 검사가 `selftest ok`를 내는지 먼저 본다.
 
 ```bash
-uv run --python 3.12 python -I <skill>/scripts/hairline_prompt.py --selftest
+uv run --python 3.12 python -I <skill>/scripts/gaon_prompt.py --selftest
 ```
 
 ### 3. 이미지 생성과 확인
@@ -68,7 +68,7 @@ uv run --python 3.12 python -I <skill>/scripts/hairline_prompt.py --selftest
 codex CLI를 쓸 때, 프롬프트 파일이 있는 폴더에서 내장 이미지 생성으로 PNG를 만드는 명령이다. 모델은 사용자 설정의 기본값을 쓴다. `<비율>`은 캔버스의 `aspect`다.
 
 ```bash
-cd hairline-output/<작업명> && codex exec --skip-git-repo-check -s workspace-write "Read 01_<id>.txt. Use your built-in image generation tool with that file's full text as the prompt, exactly, aspect <비율>. Save the result as 01_<id>.png here. Reply with the path only." < /dev/null
+cd gaon-output/<작업명> && codex exec --skip-git-repo-check -s workspace-write "Read 01_<id>.txt. Use your built-in image generation tool with that file's full text as the prompt, exactly, aspect <비율>. Save the result as 01_<id>.png here. Reply with the path only." < /dev/null
 ```
 
 `< /dev/null`이 없으면 codex가 입력을 기다리며 멈춘다. 여러 장은 장마다 따로 돌린다.

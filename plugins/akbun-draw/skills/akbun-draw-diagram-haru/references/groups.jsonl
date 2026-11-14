@@ -1,0 +1,1 @@
+{"id": "boundary", "ko": "경계: 여러 도형을 감싸는 얇은 점선 사각형(VPC·subnet·프로세스·호스트 경계). 이름은 왼쪽 위 안쪽에 작게", "prompt": "a large rectangle with a thin dashed {ink} outline, empty and white inside, with its name \"{label}\" written small in {ink} at the top-left corner just inside the outline"}

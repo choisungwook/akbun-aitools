@@ -2,7 +2,7 @@
 
 ## 2026-11-14
 
-* **Updated**: akbun-draw gains akbun-draw-facade-hairline (fine-line street drawing prompts with a day/night inversion); manifest version 1.0.55.
+* **Updated**: akbun-draw gains akbun-draw-gaon (fine-line street drawing prompts with a day/night inversion); manifest version 1.0.56.
 
 ## 2026-11-13
 
