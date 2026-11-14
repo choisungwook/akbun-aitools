@@ -1,0 +1,77 @@
+{
+  "time": "day",
+  "weather": "clear",
+  "canvas": "wide",
+  "pen": "steady",
+  "scene": "Noon at a small hill-town bus depot, where the midday bus has just pulled in and a few passengers step down.",
+  "structures": [
+    {
+      "what": "a brick bus garage",
+      "details": [
+        "a tall arched doorway",
+        "a gabled tin roof",
+        "rows of small window panes",
+        "a downpipe"
+      ]
+    },
+    {
+      "what": "a narrow timetable kiosk",
+      "details": [
+        "a sloped canopy",
+        "a blank board",
+        "a stool",
+        "a potted fern"
+      ]
+    },
+    {
+      "what": "a short city bus seen from the side",
+      "details": [
+        "a row of windows",
+        "a folding door",
+        "a stripe along the body"
+      ]
+    }
+  ],
+  "figures": [
+    {
+      "who": "a driver",
+      "head": "a flat cap",
+      "garment": "a short work jacket and trousers",
+      "doing": "stretches beside the bus door"
+    },
+    {
+      "who": "a girl",
+      "head": "two short braids",
+      "garment": "a pinafore dress",
+      "doing": "hops down the bus step"
+    },
+    {
+      "who": "an old man",
+      "head": "a felt hat",
+      "garment": "a long overcoat",
+      "doing": "walks off with a cane"
+    }
+  ],
+  "animals": [
+    {
+      "what": "a scruffy dog",
+      "doing": "dozes under the kiosk stool"
+    }
+  ],
+  "props": [
+    "a wooden bench",
+    "a bicycle against the wall",
+    "a milk crate"
+  ],
+  "lights": [],
+  "accents": [
+    {
+      "color": "mustard",
+      "on": "stripe"
+    },
+    {
+      "color": "indigo",
+      "on": "work jacket"
+    }
+  ]
+}

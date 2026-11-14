@@ -1,5 +1,9 @@
 # Update log
 
+## 2026-11-14
+
+* **Updated**: akbun-draw gains akbun-draw-gaon (fine-line street drawing prompts with a day/night inversion); manifest version 1.0.56.
+
 ## 2026-11-13
 
 * **Updated**: tracking-Issue step removed; pull-request policy rewritten, AGENTS.md/template/check_pr_body.py `last_modified` refreshed.

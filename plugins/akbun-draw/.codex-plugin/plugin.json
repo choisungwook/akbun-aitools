@@ -1,6 +1,6 @@
 {
   "name": "akbun-draw",
-  "version": "1.0.55",
+  "version": "1.0.56",
   "description": "Image drawing skills by akbun — image-generation prompts and editable SVGs in fixed akbun styles",
   "author": {
     "name": "akbun",
@@ -36,6 +36,7 @@
       "Put yellow hand-drawn arrows and labels next to the error lines in my terminal recording as a Resolve Fusion scene (akbun-draw-code-nari)",
       "Make a faded-film photo prompt of an empty 1980s diner at dusk",
       "Make a storybook-vintage illustration prompt of a hedgehog asleep under a mushroom",
+      "Draw a quiet harbour street at night as a gaon line drawing prompt, pale lines on indigo paper (akbun-draw-gaon)",
       "Add a title-nib hand-lettered title 바다 편지 onto this illustration",
       "Make a street-matte travel snapshot prompt of a rainy train platform",
       "Draw this script as night-gouache explainer scenes (dark painted illustrations with one glowing highlight) and export the layers for Resolve",

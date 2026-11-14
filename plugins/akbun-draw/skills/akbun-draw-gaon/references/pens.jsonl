@@ -1,0 +1,2 @@
+{"id": "steady", "use": "기본값. 고르고 매끈한 펜 선", "prompt": "The line is steady and smooth, drawn with an even hand."}
+{"id": "wobble", "use": "사용자가 손맛·떨림·잉크 느낌을 원할 때. 아주 약하게 떨리는 펜 선", "prompt": "The line has a very slight hand-drawn wobble like a real ink pen on paper, subtle, never sketchy or doubled."}

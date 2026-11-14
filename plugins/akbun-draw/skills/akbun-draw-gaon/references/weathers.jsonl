@@ -1,0 +1,3 @@
+{"id": "clear", "use": "기본값. 맑음·흐림", "prompt": "WEATHER: clear; the sky stays mostly plain paper."}
+{"id": "rain", "use": "비·소나기·장마", "prompt": "WEATHER: rain, drawn only as many short thin slanting pen strokes across the sky and a few short horizontal strokes on wet ground; umbrellas are open simple domes in thin line. No mist, no blur, no reflections painted as gradients."}
+{"id": "snow", "use": "눈·겨울 눈 쌓인 장면", "prompt": "WEATHER: snow, shown as plain paper: snow on roofs, ledges and ground is simply unfilled paper with a soft thin top edge, and falling snow is a scatter of small round dots. No gray tones or shading on the snow."}

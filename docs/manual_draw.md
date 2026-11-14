@@ -33,6 +33,7 @@
 | 흰 종이 여백이 넓은 펜 선·수채 칠 장면이 필요함 | [akbun-draw-illust-wash](../plugins/akbun-draw/skills/akbun-draw-illust-wash/SKILL.md) | 끊어 겹친 펜 선·옅은 수채 칠·무표정 동물 장면 프롬프트(spec을 스크립트가 조립·채점) |
 | 사람 없는 장면을 바랜 옛 필름 사진처럼 보여 주고 싶음 | [akbun-draw-faded-film](../plugins/akbun-draw/skills/akbun-draw-faded-film/SKILL.md) | 필름 입자·무른 초점·실제 광원·아날로그 사물 사진 프롬프트(spec을 스크립트가 조립·채점) |
 | 사물·동물 장면을 옛 그림책 삽화처럼 보여 주고 싶음 | [akbun-draw-storybook-vintage](../plugins/akbun-draw/skills/akbun-draw-storybook-vintage/SKILL.md) | 갈색 연필 윤곽·겹친 수채·한 색 얼룩 바탕·바랜 종이결 삽화 프롬프트(spec을 스크립트가 조립·채점) |
+| 거리·역·부두 같은 장소를 가는 펜 선 라인 드로잉으로 보여 주고 싶음 | [akbun-draw-gaon](../plugins/akbun-draw/skills/akbun-draw-gaon/SKILL.md) | 미색 종이 위 굵기 하나인 가는 선, 원근 없는 정면 건물의 촘촘한 세부, 얼굴 없이 팔다리를 두 줄로 연 길쭉한 인물, 강조색 1~2개, 밤이면 남색 종이에 옅은 선으로 반전하는 그림 프롬프트(spec을 스크립트가 조립·채점) |
 | 이미 있는 그림에 제목을 손글씨처럼 그려 넣고 싶음 | [akbun-draw-title-nib](../plugins/akbun-draw/skills/akbun-draw-title-nib/SKILL.md) | 폰트 없이 이미지 모델이 그림 위에 그리는 세리프 제목·부제 편집 프롬프트(spec을 스크립트가 조립·채점) |
 | 여행지 거리를 카메라 스냅 사진이나 짧은 반복 영상으로 보여 주고 싶음 | [akbun-draw-street-matte](../plugins/akbun-draw/skills/akbun-draw-street-matte/SKILL.md) | 무광 베이지·올리브 색 보정, 얼굴 없는 뒷모습 인물 거리 스냅 프롬프트와 2×2 시트를 이은 mp4(spec을 스크립트가 조립·채점) |
 | 다정한 제목 한 줄과 그 뒤 웃긴 속사정을 보여 주는 개그 한 컷이 필요함 | [akbun-draw-gag-deadpan](../plugins/akbun-draw/skills/akbun-draw-gag-deadpan/SKILL.md) | 한국어 제목과 두 캐릭터 무표정 개그 한 컷 프롬프트(illust-wash 그림체, spec을 스크립트가 조립·채점) |
