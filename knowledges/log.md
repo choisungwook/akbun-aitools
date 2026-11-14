@@ -1,5 +1,10 @@
 # Update log
 
+## 2026-11-14
+
+* **Updated**: akbun-draw gains akbun-draw-gaon (fine-line street drawing prompts with a day/night inversion); manifest version 1.0.56.
+* **Updated**: akbun-draw-animation-garnet lands after akbun-draw-gaon; manifest version 1.0.57, plugin `generated` refreshed.
+
 ## 2026-11-13
 
 * **Updated**: akbun-draw gains akbun-draw-animation-garnet (cel style, act/beat direction rules, synthesized temp sound); plugin `generated` refreshed.

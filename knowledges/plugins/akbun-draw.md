@@ -4,7 +4,7 @@ title: akbun-draw
 description: "Image drawing skills by akbun — image-generation prompts and editable SVGs in fixed akbun styles"
 resource: ../../plugins/akbun-draw/
 tags: [plugin]
-generated: { by: claude-code/claude-opus-5-5, at: 2026-11-13T16:00:00Z }
+generated: { by: claude-code/claude-opus-5-5, at: 2026-11-14T05:00:00Z }
 stale_after: 2027-02-13T00:00:00Z
 sources:
   - id: manifest
