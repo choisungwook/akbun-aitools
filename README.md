@@ -88,73 +88,43 @@ agy plugin list --json
 
 <table>
 <tr>
-<td><a href="./plugins/akbun-draw/skills/akbun-draw-motion-doodle/SKILL.md"><img src="./imgs/akbun-draw-motion-doodle.png" alt="akbun-draw-motion-doodle" width="400"></a><br><code>akbun-draw-motion-doodle</code></td>
+<td><a href="./plugins/akbun-draw/skills/akbun-draw-motion-doodle/SKILL.md"><img src="./imgs/akbun-draw-motion-doodle.png" alt="akbun-draw-motion-doodle" width="260"></a><br><code>akbun-draw-motion-doodle</code></td>
+<td><a href="./plugins/akbun-draw/skills/akbun-draw-code-window-lilac/SKILL.md"><img src="./imgs/akbun-draw-code-window-lilac.jpg" alt="akbun-draw-code-window-lilac" width="260"></a><br><code>akbun-draw-code-window-lilac</code></td>
+<td><a href="./plugins/akbun-draw/skills/akbun-draw-code-nari/SKILL.md"><img src="./imgs/akbun-draw-code-nari.jpg" alt="akbun-draw-code-nari" width="260"></a><br><code>akbun-draw-code-nari</code></td>
 </tr>
 <tr>
-<td><a href="./plugins/akbun-draw/skills/akbun-draw-code-window-lilac/SKILL.md"><img src="./imgs/akbun-draw-code-window-lilac.jpg" alt="akbun-draw-code-window-lilac" width="400"></a><br><code>akbun-draw-code-window-lilac</code></td>
+<td><a href="./plugins/akbun-draw/skills/akbun-draw-raon/SKILL.md"><img src="./imgs/akbun-draw-raon.jpg" alt="akbun-draw-raon" width="260"></a><br><code>akbun-draw-raon</code></td>
+<td><a href="./plugins/akbun-draw/skills/akbun-mascot-whale/SKILL.md"><img src="./imgs/akbun-mascot-whale.png" alt="akbun-mascot-whale" width="260"></a><br><code>akbun-mascot-whale</code></td>
+<td><a href="./plugins/akbun-draw/skills/akbun-draw-night-gouache/SKILL.md"><img src="./imgs/akbun-draw-night-gouache.jpg" alt="akbun-draw-night-gouache" width="260"></a><br><code>akbun-draw-night-gouache</code></td>
 </tr>
 <tr>
-<td><a href="./plugins/akbun-draw/skills/akbun-draw-code-nari/SKILL.md"><img src="./imgs/akbun-draw-code-nari.jpg" alt="akbun-draw-code-nari" width="400"></a><br><code>akbun-draw-code-nari</code></td>
+<td><a href="./plugins/akbun-draw/skills/akbun-draw-animation-dami/SKILL.md"><img src="./imgs/akbun-draw-animation-dami.jpg" alt="akbun-draw-animation-dami" width="260"></a><br><code>akbun-draw-animation-dami</code></td>
+<td><a href="./plugins/akbun-draw/skills/akbun-draw-thumbnail-retro/SKILL.md"><img src="./imgs/akbun-draw-thumbnail-retro.jpg" alt="akbun-draw-thumbnail-retro" width="260"></a><br><code>akbun-draw-thumbnail-retro</code></td>
+<td><a href="./plugins/akbun-draw/skills/akbun-draw-thumbnail-doodle/SKILL.md"><img src="./imgs/akbun-draw-thumbnail-doodle.jpg" alt="akbun-draw-thumbnail-doodle" width="260"></a><br><code>akbun-draw-thumbnail-doodle</code></td>
 </tr>
 <tr>
-<td><a href="./plugins/akbun-draw/skills/akbun-draw-raon/SKILL.md"><img src="./imgs/akbun-draw-raon.jpg" alt="akbun-draw-raon" width="400"></a><br><code>akbun-draw-raon</code></td>
+<td><a href="./plugins/akbun-draw/skills/akbun-draw-chalkboard/SKILL.md"><img src="./imgs/akbun-draw-chalkboard.png" alt="akbun-draw-chalkboard" width="260"></a><br><code>akbun-draw-chalkboard</code></td>
+<td><a href="./plugins/akbun-draw/skills/akbun-draw-bori/SKILL.md"><img src="./imgs/akbun-draw-bori.jpg" alt="akbun-draw-bori" width="260"></a><br><code>akbun-draw-bori</code></td>
+<td><a href="./plugins/akbun-draw/skills/akbun-draw-moss/SKILL.md"><img src="./imgs/akbun-draw-moss/toaster-morning.jpg" alt="akbun-draw-moss toaster-morning" width="260"></a><br><a href="./plugins/akbun-draw/skills/akbun-draw-moss/SKILL.md"><img src="./imgs/akbun-draw-moss/dumpling-carry.jpg" alt="akbun-draw-moss dumpling-carry" width="260"></a><br><a href="./plugins/akbun-draw/skills/akbun-draw-moss/SKILL.md"><img src="./imgs/akbun-draw-moss/rain-umbrella.jpg" alt="akbun-draw-moss rain-umbrella" width="260"></a><br><code>akbun-draw-moss</code></td>
 </tr>
 <tr>
-<td><a href="./plugins/akbun-draw/skills/akbun-mascot-whale/SKILL.md"><img src="./imgs/akbun-mascot-whale.png" alt="akbun-mascot-whale" width="400"></a><br><code>akbun-mascot-whale</code></td>
+<td><a href="./plugins/akbun-draw/skills/akbun-draw-learning-mono/SKILL.md"><img src="./imgs/akbun-draw-learning-mono.jpg" alt="akbun-draw-learning-mono" width="260"></a><br><code>akbun-draw-learning-mono</code></td>
+<td><a href="./plugins/akbun-draw/skills/akbun-draw-diagram-haru/SKILL.md"><img src="./imgs/akbun-draw-diagram-haru.jpg" alt="akbun-draw-diagram-haru" width="260"></a><br><code>akbun-draw-diagram-haru</code></td>
+<td><a href="./plugins/akbun-draw/skills/akbun-draw-wash/SKILL.md"><img src="./imgs/akbun-draw-wash.jpg" alt="akbun-draw-wash" width="260"></a><br><code>akbun-draw-wash</code></td>
 </tr>
 <tr>
-<td><a href="./plugins/akbun-draw/skills/akbun-draw-night-gouache/SKILL.md"><img src="./imgs/akbun-draw-night-gouache.jpg" alt="akbun-draw-night-gouache" width="400"></a><br><code>akbun-draw-night-gouache</code></td>
+<td><a href="./plugins/akbun-draw/skills/akbun-draw-template-comedy/SKILL.md"><img src="./imgs/akbun-draw-template-comedy.jpg" alt="akbun-draw-template-comedy" width="260"></a><br><code>akbun-draw-template-comedy</code></td>
+<td><a href="./plugins/akbun-draw/skills/akbun-draw-template-cartoon/SKILL.md"><img src="./imgs/akbun-draw-template-cartoon.jpg" alt="akbun-draw-template-cartoon" width="260"></a><br><code>akbun-draw-template-cartoon</code></td>
+<td><a href="./plugins/akbun-draw/skills/akbun-draw-sena/SKILL.md"><img src="./imgs/akbun-draw-sena.jpg" alt="akbun-draw-sena" width="260"></a><br><code>akbun-draw-sena</code></td>
 </tr>
 <tr>
-<td><a href="./plugins/akbun-draw/skills/akbun-draw-animation-dami/SKILL.md"><img src="./imgs/akbun-draw-animation-dami.jpg" alt="akbun-draw-animation-dami" width="400"></a><br><code>akbun-draw-animation-dami</code></td>
+<td><a href="./plugins/akbun-draw/skills/akbun-draw-juno/SKILL.md"><img src="./imgs/akbun-draw-juno.jpg" alt="akbun-draw-juno" width="260"></a><br><code>akbun-draw-juno</code></td>
+<td><a href="./plugins/akbun-draw/skills/akbun-draw-storybook-vintage/SKILL.md"><img src="./imgs/akbun-draw-storybook-vintage.jpg" alt="akbun-draw-storybook-vintage" width="260"></a><br><code>akbun-draw-storybook-vintage</code></td>
+<td><a href="./plugins/akbun-draw/skills/akbun-draw-title-nib/SKILL.md"><img src="./imgs/akbun-draw-title-nib.jpg" alt="akbun-draw-title-nib" width="260"></a><br><code>akbun-draw-title-nib</code></td>
 </tr>
 <tr>
-<td><a href="./plugins/akbun-draw/skills/akbun-draw-thumbnail-retro/SKILL.md"><img src="./imgs/akbun-draw-thumbnail-retro.jpg" alt="akbun-draw-thumbnail-retro" width="400"></a><br><code>akbun-draw-thumbnail-retro</code></td>
-</tr>
-<tr>
-<td><a href="./plugins/akbun-draw/skills/akbun-draw-thumbnail-doodle/SKILL.md"><img src="./imgs/akbun-draw-thumbnail-doodle.jpg" alt="akbun-draw-thumbnail-doodle" width="400"></a><br><code>akbun-draw-thumbnail-doodle</code></td>
-</tr>
-<tr>
-<td><a href="./plugins/akbun-draw/skills/akbun-draw-chalkboard/SKILL.md"><img src="./imgs/akbun-draw-chalkboard.png" alt="akbun-draw-chalkboard" width="400"></a><br><code>akbun-draw-chalkboard</code></td>
-</tr>
-<tr>
-<td><a href="./plugins/akbun-draw/skills/akbun-draw-bori/SKILL.md"><img src="./imgs/akbun-draw-bori.jpg" alt="akbun-draw-bori" width="400"></a><br><code>akbun-draw-bori</code></td>
-</tr>
-<tr>
-<td><a href="./plugins/akbun-draw/skills/akbun-draw-moss/SKILL.md"><img src="./imgs/akbun-draw-moss/toaster-morning.jpg" alt="akbun-draw-moss toaster-morning" width="400"></a><br><a href="./plugins/akbun-draw/skills/akbun-draw-moss/SKILL.md"><img src="./imgs/akbun-draw-moss/dumpling-carry.jpg" alt="akbun-draw-moss dumpling-carry" width="400"></a><br><a href="./plugins/akbun-draw/skills/akbun-draw-moss/SKILL.md"><img src="./imgs/akbun-draw-moss/rain-umbrella.jpg" alt="akbun-draw-moss rain-umbrella" width="400"></a><br><code>akbun-draw-moss</code></td>
-</tr>
-<tr>
-<td><a href="./plugins/akbun-draw/skills/akbun-draw-learning-mono/SKILL.md"><img src="./imgs/akbun-draw-learning-mono.jpg" alt="akbun-draw-learning-mono" width="400"></a><br><code>akbun-draw-learning-mono</code></td>
-</tr>
-<tr>
-<td><a href="./plugins/akbun-draw/skills/akbun-draw-diagram-haru/SKILL.md"><img src="./imgs/akbun-draw-diagram-haru.jpg" alt="akbun-draw-diagram-haru" width="400"></a><br><code>akbun-draw-diagram-haru</code></td>
-</tr>
-<tr>
-<td><a href="./plugins/akbun-draw/skills/akbun-draw-wash/SKILL.md"><img src="./imgs/akbun-draw-wash.jpg" alt="akbun-draw-wash" width="400"></a><br><code>akbun-draw-wash</code></td>
-</tr>
-<tr>
-<td><a href="./plugins/akbun-draw/skills/akbun-draw-template-comedy/SKILL.md"><img src="./imgs/akbun-draw-template-comedy.jpg" alt="akbun-draw-template-comedy" width="400"></a><br><code>akbun-draw-template-comedy</code></td>
-</tr>
-<tr>
-<td><a href="./plugins/akbun-draw/skills/akbun-draw-template-cartoon/SKILL.md"><img src="./imgs/akbun-draw-template-cartoon.jpg" alt="akbun-draw-template-cartoon" width="400"></a><br><code>akbun-draw-template-cartoon</code></td>
-</tr>
-<tr>
-<td><a href="./plugins/akbun-draw/skills/akbun-draw-sena/SKILL.md"><img src="./imgs/akbun-draw-sena.jpg" alt="akbun-draw-sena" width="400"></a><br><code>akbun-draw-sena</code></td>
-</tr>
-<tr>
-<td><a href="./plugins/akbun-draw/skills/akbun-draw-juno/SKILL.md"><img src="./imgs/akbun-draw-juno.jpg" alt="akbun-draw-juno" width="400"></a><br><code>akbun-draw-juno</code></td>
-</tr>
-<tr>
-<td><a href="./plugins/akbun-draw/skills/akbun-draw-storybook-vintage/SKILL.md"><img src="./imgs/akbun-draw-storybook-vintage.jpg" alt="akbun-draw-storybook-vintage" width="400"></a><br><code>akbun-draw-storybook-vintage</code></td>
-</tr>
-<tr>
-<td><a href="./plugins/akbun-draw/skills/akbun-draw-title-nib/SKILL.md"><img src="./imgs/akbun-draw-title-nib.jpg" alt="akbun-draw-title-nib" width="400"></a><br><code>akbun-draw-title-nib</code></td>
-</tr>
-<tr>
-<td><a href="./plugins/akbun-draw/skills/akbun-draw-gaon/SKILL.md"><img src="./imgs/akbun-draw-gaon.jpg" alt="akbun-draw-gaon" width="400"></a><br><code>akbun-draw-gaon</code></td>
-</tr>
-<tr>
-<td><a href="./plugins/akbun-draw/skills/akbun-draw-title-pastel/SKILL.md"><img src="./imgs/akbun-draw-title-pastel.jpg" alt="akbun-draw-title-pastel" width="400"></a><br><code>akbun-draw-title-pastel</code></td>
+<td><a href="./plugins/akbun-draw/skills/akbun-draw-gaon/SKILL.md"><img src="./imgs/akbun-draw-gaon.jpg" alt="akbun-draw-gaon" width="260"></a><br><code>akbun-draw-gaon</code></td>
+<td><a href="./plugins/akbun-draw/skills/akbun-draw-title-pastel/SKILL.md"><img src="./imgs/akbun-draw-title-pastel.jpg" alt="akbun-draw-title-pastel" width="260"></a><br><code>akbun-draw-title-pastel</code></td>
 </tr>
 </table>
 

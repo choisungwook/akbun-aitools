@@ -99,11 +99,11 @@ def table_errors(index):
 
 
 def example_errors(readme):
-  """'## plugin 예시' 표는 칼럼 하나: 행(<tr>)마다 칸(<td>) 1개."""
+  """'## plugin 예시' 표는 행(<tr>)마다 칸(<td>) 1~3개."""
   _, _, rest = readme.partition("## plugin 예시")
   section = rest.split("\n## ", 1)[0]
-  return [f"README.md: plugin 예시 표는 행마다 칸 1개여야 함 ({n}칸: {re.sub(r'<[^>]+>', ' ', row).split()[0] if re.sub(r'<[^>]+>', ' ', row).split() else '빈 행'})"
-          for row in re.findall(r"<tr>.*?</tr>", section, re.S) if (n := row.count("<td")) != 1]
+  return [f"README.md: plugin 예시 표는 행마다 칸 1~3개여야 함 ({n}칸: {re.sub(r'<[^>]+>', ' ', row).split()[0] if re.sub(r'<[^>]+>', ' ', row).split() else '빈 행'})"
+          for row in re.findall(r"<tr>.*?</tr>", section, re.S) if not 1 <= (n := row.count("<td")) <= 3]
 
 
 def manual_errors(root, found):
