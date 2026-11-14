@@ -11,10 +11,11 @@ from pathlib import Path
 
 REF = Path(__file__).resolve().parent.parent / "references"
 
-BANNED_FACE = r"\b(faces?|eyes?|nose|mouths?|smil\w*|grin\w*|frown\w*|expressions?|lips)\b"
-BANNED_STYLE = r"\b(3d|photo\w*|realistic|anime|cartoon\w*|gradients?|neon|shad(ing|ed|ow|ows)|glossy|watercolou?r|bold|thick|crosshatch\w*|hatch\w*|perspective|isometric|vanishing)\b"
-BANNED_TEXT = r"\b(texts?|letter(s|ing)?|words?|written|logos?|says|reading|numbers?|digits?|captions?|labels?)\b|[\"']"
-BANNED_LAYOUT = r"\b(left|right|foreground|background|cent(er|re)|middle|corner|top|bottom)\b"
+B, E = r"(?<![\w-])", r"(?![\w-])"  # 낱말 단위: 하이픈으로 이은 말은 한 낱말
+BANNED_FACE = B + r"(faces?|eyes?|nose|mouths?|smil\w*|grin\w*|frown\w*|expressions?|lips)" + E
+BANNED_STYLE = B + r"(3d|photo\w*|realistic|anime|cartoon\w*|gradients?|neon|shad(ing|ed|ow|ows)|glossy|watercolou?r|bold|thick|crosshatch\w*|hatch\w*|perspective|isometric|vanishing)" + E
+BANNED_TEXT = B + r"(texts?|letter(s|ing)?|words?|written|logos?|says|numbers?|digits?|captions?|labels?)" + E + r"|\"|(?<!\w)'|'(?!\w)"
+BANNED_LAYOUT = B + r"(left|right|foreground|background|cent(er|re)|middle|corner|top|bottom)" + E
 NO_TEXT = "No written words, letters or numbers anywhere; signboards, posters and labels stay blank."
 
 
@@ -50,8 +51,26 @@ def free_text(spec):
     return " ".join(map(str, parts))
 
 
+def shape_ok(spec):
+    """키마다 형식(문자열·문자열 목록·객체 목록)이 맞는지. 틀리면 나머지 채점을 하지 않는다."""
+    def strs(v):
+        return isinstance(v, list) and all(isinstance(x, str) for x in v)
+
+    def objs(key, fields, listfield=None):
+        v = spec.get(key, [])
+        return isinstance(v, list) and all(isinstance(o, dict) and all(isinstance(o.get(k, ""), str) for k in fields)
+                                           and (listfield is None or strs(o.get(listfield, []))) for o in v)
+    return (isinstance(spec, dict) and all(isinstance(spec.get(k, ""), str) for k in ("time", "weather", "canvas", "pen", "scene"))
+            and strs(spec.get("props", [])) and strs(spec.get("lights", []))
+            and objs("structures", ("what",), "details") and objs("figures", ("who", "head", "garment", "doing"))
+            and objs("animals", ("what", "doing")) and objs("accents", ("color", "on")))
+
+
 def check(spec):
     """(항목, 통과 여부, 이유) 목록. 항목 하나 = 1점, 점수 = 통과 수 / 항목 수 × 100(내림)."""
+    if not shape_ok(spec):
+        return [("types", False, "time·weather·canvas·pen·scene은 문자열, props·lights·details는 문자열 목록, "
+                                 "structures·figures·animals·accents는 객체 목록이고 그 안의 값은 문자열")]
     tim, can, pen, acc = load("times.jsonl"), load("canvases.jsonl"), load("pens.jsonl"), load("accents.jsonl")
     wea = load("weathers.jsonl")
     sts, figs, ans, props = lst(spec, "structures"), lst(spec, "figures"), lst(spec, "animals"), lst(spec, "props")
@@ -62,7 +81,7 @@ def check(spec):
     def has(term):
         """on은 강조색을 칠할 항목 정확히 하나에만 낱말 단위로 들어 있어야 한다."""
         t = str(term).lower().strip()
-        return t not in ("", "a", "an", "the") and sum(bool(re.search(rf"\b{re.escape(t)}\b", n)) for n in names) == 1
+        return t not in ("", "a", "an", "the") and sum(bool(re.search(B + re.escape(t) + E, n)) for n in names) == 1
     return [
         ("time", spec.get("time") in tim, f"times.jsonl id: {sorted(tim)}"),
         ("canvas", spec.get("canvas") in can, f"canvases.jsonl id: {sorted(can)}"),
@@ -171,6 +190,12 @@ def selftest():
     assert score(check(dict(good, props=["a Red buoy", "a red buoy"]))) < 100
     assert score(check(dict(good, scene="A ferry landing with a kiosk on the left side of the pier."))) < 100
     assert score(check(dict(good, weather="fog"))) < 100
+    for broken in (dict(good, structures=["a shop"]), dict(good, time=["day"]), dict(good, props="coiled ropes"),
+                   dict(good, figures="abc"), dict(good, structures=[{"what": "a shop", "details": [1, 2]}]), ["x"]):
+        assert score(check(broken)) == 0
+    assert score(check(dict(good, props=["a baker's cart", "a top-down crate"], accents=[{"color": "brick", "on": "cart"}]))) == 100
+    assert score(check(dict(good, props=["a sign with 'OPEN'"]))) < 100
+    assert score(check(dict(good, scene="An old man reading a paper by the ferry office at dawn."))) == 100
     bad = dict(good, canvas="x", figures=[{"who": "woman", "head": "a bun", "garment": "a coat", "doing": "waits here"}], scene="A smiling bold face.", props=["a", "a"],
                structures=[{"what": "shop", "details": ["a sign that says OPEN"]}])
     failed = {n for n, ok, _ in check(bad) if not ok}

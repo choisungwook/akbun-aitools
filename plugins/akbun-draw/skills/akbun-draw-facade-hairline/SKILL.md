@@ -22,7 +22,7 @@ disable-model-invocation: true
 | 강조색 | [references/accents.jsonl](references/accents.jsonl) | 1~2개. 사용자가 색을 말하면 가장 가까운 `id`, 아니면 장면에서 눈이 갈 물건 1~2개를 고른다. 물건 이름이 어떤 `use`에 있으면 그 `id`(여럿이면 파일에서 위의 줄), 없으면 그 물건의 실제 색에 가장 가까운 `id`. `night`에서는 `indigo`를 쓰지 않는다 |
 | 캔버스 | [references/canvases.jsonl](references/canvases.jsonl) | 사용자가 비율이나 쓰임(SNS·포스터·파노라마)을 말하면 그 `id`, 아니면 장면 내용과 상관없이 `wide` |
 | 펜 | [references/pens.jsonl](references/pens.jsonl) | 사용자가 손맛·떨림·잉크 느낌을 말하면 `wobble`, 아니면 `steady` |
-| spec 형식 예시 | [references/example/](references/example/) | 형식만 본다. 장소·인물을 그대로 쓰지 않는다 |
+| spec 형식 예시 | [references/example/](references/example/) | 형식만 본다. 장소·인물을 그대로 쓰지 않는다. `sheet.jpg`는 세 예시를 그린 결과다 |
 
 라이브러리에 없는 색·캔버스가 필요하면 spec에 지어내지 말고, jsonl에 한 줄을 더하는 변경으로 사용자에게 제안한다.
 
@@ -53,7 +53,7 @@ spec을 채점하고 프롬프트 파일을 쓰는 명령이다. `<skill>`은 �
 uv run --python 3.12 python -I <skill>/scripts/hairline_prompt.py build hairline-output/<작업명>/01_<id>.json -o hairline-output/<작업명>/01_<id>.txt
 ```
 
-채점표만 보려면 `build` 대신 `check`를 쓴다. 채점은 위 표의 수치 외에 이것도 본다: 모델이 쓴 글은 영어(ASCII)만, 얼굴을 뜻하는 낱말(face·eyes·nose·mouth·smile·expression 등), 스타일을 깨는 낱말(3d·photo·realistic·anime·cartoon·gradient·neon·shading·shadow·glossy·watercolor·bold·thick·hatch·perspective·isometric), 글자를 부르는 낱말(text·letters·words·logo·number·label·caption)과 따옴표, 배치 낱말(left·right·foreground·background·center·middle·corner·top·bottom)이 없을 것. 낱말은 모두 낱말 단위로 찾는다(signal은 걸리지 않는다). 간판·포스터는 글자 없이 비워 둔다.
+채점표만 보려면 `build` 대신 `check`를 쓴다. 채점은 위 표의 수치 외에 이것도 본다: 키마다 형식(문자열·문자열 목록·객체 목록)이 맞을 것(틀리면 0점), 모델이 쓴 글은 영어(ASCII)만, 금지 낱말이 없을 것. 금지 낱말의 전체 목록은 스크립트 위쪽 `BANNED_FACE`(얼굴: face·eyes·nose·mouth·lips·smile·grin·frown·expression), `BANNED_STYLE`(스타일을 깨는 말: 3d·photo·realistic·anime·cartoon·gradient·neon·shading·shadow·glossy·watercolor·bold·thick·hatch·crosshatch·perspective·isometric·vanishing), `BANNED_TEXT`(글자를 부르는 말: text·letter·lettering·word·written·logo·says·number·digit·caption·label, 큰따옴표, 낱말 밖의 작은따옴표), `BANNED_LAYOUT`(배치: left·right·foreground·background·center·middle·corner·top·bottom)이다. 낱말 단위로 찾고 하이픈으로 이은 말은 한 낱말이라 signal·top-down·baker's는 걸리지 않는다. 간판·포스터는 글자 없이 비워 둔다.
 
 스크립트나 jsonl을 고쳤으면 자체 검사가 `selftest ok`를 내는지 먼저 본다.
 
@@ -76,6 +76,7 @@ cd hairline-output/<작업명> && codex exec --skip-git-repo-check -s workspace-
 결과마다(여러 장이면 한 장으로 붙여 한 번만 보고) 아래를 확인한다. 어긋난 장은 같은 프롬프트로 다시 생성한다.
 
 - 선이 굵기 하나로 가늘고, 굵은 외곽선·빗금 그늘이 없다.
+- 하늘·땅·물의 빈 종이가 화면의 큰 부분을 차지한다(눈대중, 측정하지 않음).
 - 건물이 원근 없이 정면이고, 세부가 촘촘하다.
 - 인물에 얼굴이 없고, 팔다리가 열린 두 줄이다.
 - 강조색이 `accents`의 `on`에만 있다.
