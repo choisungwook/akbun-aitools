@@ -1,0 +1,25 @@
+{
+  "age": {
+    "child": {"ko": "어린이(8살쯤, 4.5등신)", "prompt": "about 8 years old, about 4.5 heads tall", "noun": ["girl", "boy", "child"]},
+    "teen": {"ko": "십대(15살쯤, 6등신)", "prompt": "about 15 years old, about 6 heads tall", "noun": ["teenage girl", "teenage boy", "teenager"]},
+    "young-adult": {"ko": "20대(7등신)", "prompt": "in their twenties, about 7 heads tall", "noun": ["young woman", "young man", "young adult"]},
+    "adult": {"ko": "30~40대(7등신)", "prompt": "in their late thirties to forties, about 7 heads tall", "noun": ["woman", "man", "adult"]},
+    "senior": {"ko": "60대 이상(6.5등신, 옅은 주름)", "prompt": "in their late sixties, about 6.5 heads tall, with gentle wrinkles", "noun": ["older woman", "older man", "older person"]}
+  },
+  "gender": ["female", "male", "neutral"],
+  "build": {
+    "slim": "slim build",
+    "average": "average build",
+    "sturdy": "sturdy, broad-shouldered build",
+    "round": "soft, round build",
+    "tall": "tall, long-limbed build"
+  },
+  "accent": {
+    "tangerine": "#F08A3C",
+    "scarlet": "#D0453E",
+    "sunflower": "#F6C24A",
+    "rose": "#C66C7E",
+    "tomato": "#E8604A",
+    "coral": "#EE7F6E"
+  }
+}

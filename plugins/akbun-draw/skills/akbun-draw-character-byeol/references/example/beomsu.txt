@@ -1,0 +1,11 @@
+Character illustration of one figure alone, portrait 3:4, polished 2D anime style, clean and carefully colored like a character sheet.
+
+CHARACTER: Beomsu, an original older man in their late sixties, about 6.5 heads tall, with gentle wrinkles, slim build, works as a secondhand bookshop owner: hair thin silver grey, neatly combed back, dark brown eyes, round reading glasses and a short grey mustache; wearing a sunflower-yellow knit vest over a white shirt with rolled sleeves, brown corduroy trousers and leather slippers, with the main garment in sunflower (#F6C24A); carries a stack of old hardcover books. The character keeps exactly this look.
+
+POSE: seen from the front, hugs the books to his chest and smiles gently, head tilted. Anything held is small and drawn in the same style.
+
+BACKGROUND: plain pure white (#FFFFFF) filling the whole frame. No scenery, no floor line, no cast shadow, no glow motes or sparkles, no patterns, no frame. The full body is visible from head to feet with empty white space on every side.
+
+STYLE: Every shape is outlined with a thin, crisp, even line in dark indigo-violet ink (#3B2F4F), about 2 px at 1280 px width. Hair strands and cloth folds use the same ink, finer. Never pure black lines, no rough sketch lines, no thick outlines. Cel coloring: each surface has one base color, one hard-edged shadow tone tinted cool teal or indigo, and small crisp highlights. Hair has glossy band-shaped highlights; cheeks have a faint blush. No airbrushed volume, no 3D rendering. Figures are original anime-style characters: large eyes with two white highlights, a small nose, a simple mouth, hair drawn in clear strands, small neat hands and feet.
+
+DO NOT: no background scene, no other characters, no text, no watermark, no photorealism, no 3D, no chibi proportions, no thick or pure black outlines, no real people, no existing anime, game or brand characters.

@@ -1,6 +1,6 @@
 {
   "name": "akbun-draw",
-  "version": "1.1.3",
+  "version": "1.1.4",
   "description": "Image drawing skills by akbun — image-generation prompts and editable SVGs in fixed akbun styles",
   "author": {
     "name": "akbun",
@@ -45,6 +45,7 @@
       "Make a hand-drawn doodle motion graphic (pose swaps, draw-on lines and text) as MP4 or transparent MOV and place it on my Resolve timeline at 12s",
       "Make a code-window motion graphic: type this function line by line in a white editor window and highlight the line I talk about (akbun-draw-code-window-lilac)",
       "Make a raon-style pencil analogy scene that explains caching with a stick figure, one colored prop and falling tags, timed to my script (akbun-draw-raon)",
+      "Turn this persona into a character and draw them alone on a white background: a retired sailor who now runs a tiny ramen stall (akbun-draw-character-byeol)",
       "Describe the akbun whale mascot character spec for use in another drawing skill",
       "Turn this paper or study material into minimal black-and-white 16:9 explainer images with Korean talk-track",
       "Read this post and make retro film-poster YouTube 16:9 and Tistory 1:1 thumbnail prompts with a retro display word over a 1970s film photo (akbun-draw-thumbnail-retro)",
