@@ -63,15 +63,7 @@ uv run --python 3.12 python -I <skill>/scripts/gaon_prompt.py --selftest
 
 ### 3. 이미지 생성과 확인
 
-사용자가 이미지까지 요청했을 때만 프롬프트 파일 전문을 그대로 넣어 만든다.
-
-codex CLI를 쓸 때, 프롬프트 파일이 있는 폴더에서 내장 이미지 생성으로 PNG를 만드는 명령이다. 모델은 사용자 설정의 기본값을 쓴다. `<비율>`은 캔버스의 `aspect`다.
-
-```bash
-cd gaon-output/<작업명> && codex exec --skip-git-repo-check -s workspace-write "Read 01_<id>.txt. Use your built-in image generation tool with that file's full text as the prompt, exactly, aspect <비율>. Save the result as 01_<id>.png here. Reply with the path only." < /dev/null
-```
-
-`< /dev/null`이 없으면 codex가 입력을 기다리며 멈춘다. 여러 장은 장마다 따로 돌린다.
+사용자가 이미지까지 요청했을 때만, 사용자가 쓰는 이미지 생성 도구와 기본 모델에 `gaon-output/<작업명>/01_<id>.txt` 전문을 그대로 넣어 캔버스 `aspect` 비율로 만들고 같은 폴더에 `01_<id>.png`로 저장한다. 여러 장은 장마다 따로 만든다.
 
 결과마다(여러 장이면 한 장으로 붙여 한 번만 보고) 아래를 확인한다. 어긋난 장은 같은 프롬프트로 다시 생성한다.
 

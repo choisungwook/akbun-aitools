@@ -15,7 +15,7 @@
 | 터미널·AI 도구 화면 녹화의 오류 줄·결과 줄을 짚어 주고 싶음 | [akbun-draw-code-nari](../plugins/akbun-draw/skills/akbun-draw-code-nari/SKILL.md) | 연회색 캔버스 위 어두운 창 카드에 실제 녹화, 노란 손그림 화살표·손글씨 라벨·토큰 하이라이트. 결과는 Resolve Fusion 장면 | - |
 | 캐릭터가 연기하는 짧은 낙서 장면이 필요함 | [akbun-draw-motion-doodle](../plugins/akbun-draw/skills/akbun-draw-motion-doodle/SKILL.md) | 흰 종이 검은 잉크 낙서, 포즈 교체로 움직이는 캐릭터. 다른 모션 스킬이 쓰는 렌더러도 여기 있음 | - |
 | 개념을 일상 비유로 풀고 싶고 연필 느낌이 맞음 | [akbun-draw-raon](../plugins/akbun-draw/skills/akbun-draw-raon/SKILL.md) | 연필 막대 인물, 색 소품 하나 | - |
-| 짧은 이야기를 내레이션 자막이 붙은 세로 애니메이션 쇼츠로 보여 주고 싶음 | [akbun-draw-animation-dami](../plugins/akbun-draw/skills/akbun-draw-animation-dami/SKILL.md) | 외곽선 없는 회화풍 그림, 안개 낀 원경·앰버 빛·붉은 물체 하나, 이야기마다 새 배역(캐릭터 시트로 컷 사이 생김새 유지), 컷당 1–4장 자세 넘김과 하드컷, 흰 바탕 아래 2줄 자막. 결과는 프롬프트·codex.sh·그림과 9:16 MP4(spec을 스크립트가 조립·채점·렌더) | - |
+| 짧은 이야기를 내레이션 자막이 붙은 세로 애니메이션 쇼츠로 보여 주고 싶음 | [akbun-draw-animation-dami](../plugins/akbun-draw/skills/akbun-draw-animation-dami/SKILL.md) | 외곽선 없는 회화풍 그림, 안개 낀 원경·앰버 빛·붉은 물체 하나, 이야기마다 새 배역(캐릭터 시트로 컷 사이 생김새 유지), 컷당 1–4장 자세 넘김과 하드컷, 흰 바탕 아래 2줄 자막. 결과는 프롬프트·생성 순서·그림과 9:16 MP4(spec을 스크립트가 조립·채점·렌더) | - |
 
 비슷한 스킬끼리 고르는 기준:
 
@@ -41,7 +41,7 @@
 | 다정한 제목 한 줄과 그 뒤 웃긴 속사정을 보여 주는 개그 한 컷을 원하는 그림체로 그리고 싶음 | [akbun-draw-template-comedy](../plugins/akbun-draw/skills/akbun-draw-template-comedy/SKILL.md) | 고른 akbun-draw 그림체로 한국어 제목과 두 캐릭터 무표정 개그 한 컷 프롬프트(spec을 스크립트가 조립·검사) |
 | 논문·학습 자료를 이미지와 설명 대본으로 바꾸고 싶음 | [akbun-draw-learning-mono](../plugins/akbun-draw/skills/akbun-draw-learning-mono/SKILL.md) | 흑백 16:9 학습 이미지와 대본 |
 | IT·여행 글이나 영상의 유튜브·티스토리 썸네일을 포스터처럼 만들고 싶음 | [akbun-draw-thumbnail-retro](../plugins/akbun-draw/skills/akbun-draw-thumbnail-retro/SKILL.md) | 70년대 필름 사진 위 레트로 디스플레이 글자 썸네일 프롬프트(16:9·1:1) |
-| 블로그·유튜브 썸네일을 흰 종이 낙서 그림으로 만들고 싶음 | [akbun-draw-thumbnail-doodle](../plugins/akbun-draw/skills/akbun-draw-thumbnail-doodle/SKILL.md) | 낙서 그림체 썸네일 프롬프트(16:9·4:3), 요청 시 codex로 생성해 ~/Downloads에 저장 |
+| 블로그·유튜브 썸네일을 흰 종이 낙서 그림으로 만들고 싶음 | [akbun-draw-thumbnail-doodle](../plugins/akbun-draw/skills/akbun-draw-thumbnail-doodle/SKILL.md) | 낙서 그림체 썸네일 프롬프트(16:9·4:3), 요청 시 이미지 생성 도구로 만들어 ~/Downloads에 저장 |
 | 시스템 구조·개념을 설명 영상·슬라이드용 16:9 그림 한 장으로 만들고 싶음 | [akbun-draw-chalkboard](../plugins/akbun-draw/skills/akbun-draw-chalkboard/SKILL.md) | 1920×1080 SVG 코드. 다크 그린 칠판 위 분필 선 그림체(`styles/chalkboard.json`)만 고정하고 배치는 내용이 정함 |
 
 ## 만화·웹툰

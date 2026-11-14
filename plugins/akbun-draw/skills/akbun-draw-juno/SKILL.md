@@ -61,15 +61,7 @@ uv run --python 3.12 python -I <skill>/scripts/matte_prompt.py --selftest
 
 ### 4. 이미지 생성과 확인
 
-사용자가 이미지까지 요청했을 때만 프롬프트 파일 전문을 그대로 넣어 만든다.
-
-codex CLI를 쓸 때, 프롬프트 파일이 있는 폴더에서 내장 이미지 생성으로 PNG를 만드는 명령이다. 모델은 사용자 설정의 기본값을 쓴다. 이미지 도구가 품질(quality)·복잡도(complexity)를 받으면 둘 다 low로 요청해 빨리 만든다. 이 스타일은 장면 계획이 단순하고 고운 입자·무광 보정이 세부를 덮어 low로도 충분하다.
-
-```bash
-cd matte-output/<작업명> && codex exec --skip-git-repo-check -s workspace-write "Read 01_<id>.txt. Use your built-in image generation tool with that file's full text as the prompt, exactly, landscape 16:9, low quality and low complexity for speed. Save the result as 01_<id>.png here. Reply with the path only." < /dev/null
-```
-
-`< /dev/null`이 없으면 codex가 입력을 기다리며 멈춘다. 여러 장은 장마다 이 명령을 따로 돌리고, 서로 기다리지 않게 동시에 돌려도 된다.
+사용자가 이미지까지 요청했을 때만, 사용자가 쓰는 이미지 생성 도구와 기본 모델에 `matte-output/<작업명>/01_<id>.txt` 전문을 그대로 넣어 16:9 가로로 만들고 같은 폴더에 `01_<id>.png`로 저장한다. 여러 장은 장마다 따로, 동시에 만들어도 된다.
 
 `motion`이 있는 spec이면 시트 PNG를 칸 4개로 잘라 반복 영상으로 잇는다. 이미지 도구는 PNG만 돌려주므로 움직이는 gif도 이 스크립트로 만든다. 칸마다 `--hold`(기본 1.0)초에 `--fade`(기본 0.6)초를 더한 만큼 머물고 다음 칸으로 겹쳐 넘어가며, 끝 장면이 첫 장면으로 돌아온다. 길이는 4 × (hold + fade) + fade초로 기본 7.0초다. 큰 이동은 겹쳐 보이므로 느리게 하려면 `--hold`를 늘린다. `-o`를 `.gif`로 주면 10fps·무한 반복·폭 640px gif(기본값 기준 약 3MB)가 나온다.
 
