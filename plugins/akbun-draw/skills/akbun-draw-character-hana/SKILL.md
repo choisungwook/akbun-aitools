@@ -67,23 +67,9 @@ uv run --python 3.12 python -I <skill>/scripts/hana_prompt.py --selftest
 
 ### 4. 이미지 생성과 확인
 
-사용자가 이미지까지 요청했을 때만 프롬프트 파일 전문을 그대로 넣어 만든다. 모델은 사용자 설정의 기본값을 쓴다.
+사용자가 이미지까지 요청했을 때만 만든다. 사용자가 쓰는 이미지 생성 도구에 프롬프트 파일 전문을 고치지 않고 그대로 넣고, 비율은 spec의 `aspect`, 바탕은 투명 PNG로 `NN_<id>.png`에 저장한다. 도구와 모델은 사용자 설정의 기본값을 쓴다. 여러 장은 장마다 따로 만든다.
 
-codex CLI로 프롬프트 파일이 있는 폴더에서 내장 이미지 생성으로 PNG를 만드는 명령이다. `<비율>`은 spec의 `aspect`다.
-
-```bash
-cd hana-output/<작업명> && codex exec --skip-git-repo-check -s workspace-write "Read 01_<id>.txt. Use your built-in image generation tool with that file's full text as the prompt, exactly, aspect ratio <비율>, transparent background. Save the result as 01_<id>.png here. Reply with the path only." < /dev/null
-```
-
-Antigravity CLI(`agy`)로 같은 일을 하는 명령이다. `-p`는 바로 뒤 값을 프롬프트로 먹으므로 다른 옵션을 `-p` 앞에 둔다.
-
-```bash
-cd hana-output/<작업명> && agy --print-timeout 600s --mode accept-edits -p "Read 01_<id>.txt. Use your image generation tool with that file's full text as the prompt, exactly, aspect ratio <비율>, transparent background. Save the result as 01_<id>.png in this folder. Reply with the path only." < /dev/null
-```
-
-`< /dev/null`이 없으면 CLI가 입력을 기다리며 멈출 수 있다. 여러 장은 장마다 따로, 동시에 돌려도 된다.
-
-결과를 한 장으로 붙여 한 번만 보고 아래를 확인한다. 어긋난 장은 같은 프롬프트로 다시 생성하되 장마다 처음 생성을 포함해 최대 3번까지 하고, 그래도 어긋나면 그 항목을 결과 보고에 적는다.
+여러 장이면 결과를 한 장으로 붙여 한 번만 보고 아래를 확인한다. 어긋난 장은 같은 프롬프트로 다시 생성하되 장마다 처음 생성을 포함해 최대 3번까지 하고, 그래도 어긋나면 그 항목을 결과 보고에 적는다.
 
 - 인물 칠이 바탕색과 칼같은 그늘색 두 단이고, 피부·옷에 그라데이션·광택이 없다.
 - 선이 가늘고 고른 짙은 잉크다.
