@@ -1,6 +1,6 @@
 {
   "name": "akbun-draw",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Image drawing skills by akbun — image-generation prompts and editable SVGs in fixed akbun styles",
   "author": {
     "name": "akbun",
@@ -40,7 +40,7 @@
       "Add a title-nib hand-lettered title 바다 편지 onto this illustration",
       "Add a title-pastel crayon hand-lettered title 퇴근길 일기 onto this picture",
       "Make a juno-style travel snapshot prompt of a rainy train platform",
-      "Draw this script as night-gouache explainer scenes (dark painted illustrations with one glowing highlight) and export the layers for Resolve",
+      "Draw this script as explain-sora explainer scenes (dark painted illustrations with one glowing highlight) and export the layers for Resolve",
       "Make a hand-drawn doodle motion graphic (pose swaps, draw-on lines and text) as MP4 or transparent MOV and place it on my Resolve timeline at 12s",
       "Make a code-window motion graphic: type this function line by line in a white editor window and highlight the line I talk about (akbun-draw-code-window-lilac)",
       "Make a raon-style pencil analogy scene that explains caching with a stick figure, one colored prop and falling tags, timed to my script (akbun-draw-raon)",

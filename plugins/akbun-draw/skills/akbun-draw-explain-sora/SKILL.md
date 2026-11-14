@@ -1,10 +1,10 @@
 ---
-name: akbun-draw-night-gouache
-description: 거의 검은 비네트 배경 위에 외곽선 없는 손채색(과슈·크레용 입자) 그림이 떠 있고, 핵심 대상 하나만 빛나는 설명 영상용 장면 그림 스타일 night-gouache. 모델은 장면마다 SVG 그림만 쓰고, 스크립트가 배경·질감 필터·자막 미리보기·키워드 태그를 붙여 확인용 스틸 PNG와 등장 단위별 투명 레이어 PNG(+layers.json)를 만든다. 레이어는 akbun-davinciresolve-explainer가 Resolve에서 움직인다. 데이터 차트는 밝은 구김 종이 변형을 쓴다. 사용자가 직접 호출할 때만 실행한다.
+name: akbun-draw-explain-sora
+description: 거의 검은 비네트 배경 위에 외곽선 없는 손채색(과슈·크레용 입자) 그림이 떠 있고, 핵심 대상 하나만 빛나는 설명 영상용 장면 그림 스타일 explain-sora. 모델은 장면마다 SVG 그림만 쓰고, 스크립트가 배경·질감 필터·자막 미리보기·키워드 태그를 붙여 확인용 스틸 PNG와 등장 단위별 투명 레이어 PNG(+layers.json)를 만든다. 레이어는 akbun-davinciresolve-explainer가 Resolve에서 움직인다. 데이터 차트는 밝은 구김 종이 변형을 쓴다. 사용자가 직접 호출할 때만 실행한다.
 disable-model-invocation: true
 ---
 
-# akbun-draw-night-gouache
+# akbun-draw-explain-sora
 
 ## 목적
 

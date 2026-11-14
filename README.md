@@ -95,7 +95,7 @@ agy plugin list --json
 <tr>
 <td><a href="./plugins/akbun-draw/skills/akbun-draw-raon/SKILL.md"><img src="./imgs/akbun-draw-raon.jpg" alt="akbun-draw-raon" width="260"></a><br><code>akbun-draw-raon</code></td>
 <td><a href="./plugins/akbun-draw/skills/akbun-mascot-whale/SKILL.md"><img src="./imgs/akbun-mascot-whale.png" alt="akbun-mascot-whale" width="260"></a><br><code>akbun-mascot-whale</code></td>
-<td><a href="./plugins/akbun-draw/skills/akbun-draw-night-gouache/SKILL.md"><img src="./imgs/akbun-draw-night-gouache.jpg" alt="akbun-draw-night-gouache" width="260"></a><br><code>akbun-draw-night-gouache</code></td>
+<td><a href="./plugins/akbun-draw/skills/akbun-draw-explain-sora/SKILL.md"><img src="./imgs/akbun-draw-explain-sora.jpg" alt="akbun-draw-explain-sora" width="260"></a><br><code>akbun-draw-explain-sora</code></td>
 </tr>
 <tr>
 <td><a href="./plugins/akbun-draw/skills/akbun-draw-animation-dami/SKILL.md"><img src="./imgs/akbun-draw-animation-dami.jpg" alt="akbun-draw-animation-dami" width="260"></a><br><code>akbun-draw-animation-dami</code></td>
@@ -200,7 +200,7 @@ $akbun-davinciresolve-explainer 이 대본을 fiery-ocean 색, akbun 도형으�
 | [akbun-draw-motion-doodle](./plugins/akbun-draw/skills/akbun-draw-motion-doodle/) | 흰 종이 낙서 캐릭터가 연기하는 짧은 모션그래픽이 필요할 때 |
 | [akbun-draw-code-window-lilac](./plugins/akbun-draw/skills/akbun-draw-code-window-lilac/) | 코드를 한 줄씩 타이핑하며 짚어 주는 영상 장면이 필요할 때 |
 | [akbun-draw-code-nari](./plugins/akbun-draw/skills/akbun-draw-code-nari/) | 터미널·AI 도구 화면 녹화에 화살표·라벨을 붙여 짚는 영상 장면이 필요할 때 |
-| [akbun-draw-night-gouache](./plugins/akbun-draw/skills/akbun-draw-night-gouache/) | 어두운 배경 손채색 그림으로 비유·대화를 보여 주는 설명 장면이 필요할 때 |
+| [akbun-draw-explain-sora](./plugins/akbun-draw/skills/akbun-draw-explain-sora/) | 어두운 배경 손채색 그림으로 비유·대화를 보여 주는 설명 장면이 필요할 때 |
 | [akbun-draw-raon](./plugins/akbun-draw/skills/akbun-draw-raon/) | 연필 막대 인물로 개념을 일상 비유로 풀어 줄 때 |
 | [akbun-draw-diagram-haru](./plugins/akbun-draw/skills/akbun-draw-diagram-haru/) | 시스템 구조·요청 흐름을 흰 바탕 손그림 다이어그램 이미지로 만들 때 |
 | [akbun-draw-bori](./plugins/akbun-draw/skills/akbun-draw-bori/) | 아늑한 배경 속 동글동글한 동물들의 일상 장면 그림이 필요할 때 |

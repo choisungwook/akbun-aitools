@@ -2,7 +2,7 @@
 # requires-python = ">=3.12"
 # dependencies = ["resvg-py", "numpy", "pillow"]
 # ///
-"""night-gouache 장면 SVG를 PNG로 렌더한다.
+"""explain-sora 장면 SVG를 PNG로 렌더한다.
 
 모델은 장면 그림만 SVG로 쓰고, 스타일에서 숫자로 고정된 부분은 이 스크립트가 맡는다.
 

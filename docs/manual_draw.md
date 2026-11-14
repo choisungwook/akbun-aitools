@@ -6,11 +6,11 @@
 
 ## 설명 영상 장면
 
-대본에 맞춘 설명 장면을 만든다. 대부분 MP4·MOV로 렌더하고, night-gouache는 스틸과 Resolve용 레이어 PNG를 만든다. Resolve에서 글자·시점을 고칠 수 있는 타임라인이 필요하면 표 오른쪽의 editvideo 짝을 쓴다([영상 편집 매뉴얼](manual_editvideo.md)).
+대본에 맞춘 설명 장면을 만든다. 대부분 MP4·MOV로 렌더하고, explain-sora는 스틸과 Resolve용 레이어 PNG를 만든다. Resolve에서 글자·시점을 고칠 수 있는 타임라인이 필요하면 표 오른쪽의 editvideo 짝을 쓴다([영상 편집 매뉴얼](manual_editvideo.md)).
 
 | 상황 | 스킬 | 화면과 결과물 | Resolve 짝 |
 |---|---|---|---|
-| 비유·대화를 어두운 배경 위 손채색 그림으로 보여 주고 싶음 | [akbun-draw-night-gouache](../plugins/akbun-draw/skills/akbun-draw-night-gouache/SKILL.md) | 외곽선 없는 손채색 사물·인물·막대 인물·말풍선, 핵심 대상 하나만 빛남. 결과는 스틸과 레이어 PNG | - |
+| 비유·대화를 어두운 배경 위 손채색 그림으로 보여 주고 싶음 | [akbun-draw-explain-sora](../plugins/akbun-draw/skills/akbun-draw-explain-sora/SKILL.md) | 외곽선 없는 손채색 사물·인물·막대 인물·말풍선, 핵심 대상 하나만 빛남. 결과는 스틸과 레이어 PNG | - |
 | 코드를 한 줄씩 타이핑하며 짚어 주고 싶음 | [akbun-draw-code-window-lilac](../plugins/akbun-draw/skills/akbun-draw-code-window-lilac/SKILL.md) | 연회색 캔버스, 흰 코드 에디터 창, 연보라 줄 띠·토큰 상자 | - |
 | 터미널·AI 도구 화면 녹화의 오류 줄·결과 줄을 짚어 주고 싶음 | [akbun-draw-code-nari](../plugins/akbun-draw/skills/akbun-draw-code-nari/SKILL.md) | 연회색 캔버스 위 어두운 창 카드에 실제 녹화, 노란 손그림 화살표·손글씨 라벨·토큰 하이라이트. 결과는 Resolve Fusion 장면 | - |
 | 캐릭터가 연기하는 짧은 낙서 장면이 필요함 | [akbun-draw-motion-doodle](../plugins/akbun-draw/skills/akbun-draw-motion-doodle/SKILL.md) | 흰 종이 검은 잉크 낙서, 포즈 교체로 움직이는 캐릭터. 다른 모션 스킬이 쓰는 렌더러도 여기 있음 | - |
@@ -19,7 +19,7 @@
 
 비슷한 스킬끼리 고르는 기준:
 
-- **밝은 화면 vs 어두운 화면**: 밝은 화면은 code-window-lilac·motion-doodle·raon, 실제 터미널 녹화는 code-nari, 어두운 화면은 night-gouache.
+- **밝은 화면 vs 어두운 화면**: 밝은 화면은 code-window-lilac·motion-doodle·raon, 실제 터미널 녹화는 code-nari, 어두운 화면은 explain-sora.
 
 ## 그림 한 장 (이미지 생성 프롬프트·SVG)
 
