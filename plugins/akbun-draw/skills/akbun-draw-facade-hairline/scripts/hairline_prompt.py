@@ -32,12 +32,12 @@ def lst(spec, key):
 
 
 def named(spec):
-    """강조색을 칠할 수 있는 이름들: 구조물·세부·사람의 머리와 옷·동물·소품."""
+    """강조색을 칠할 수 있는 이름들: 구조물·세부·사람의 머리·옷·든 물건(doing)·동물·소품."""
     out = []
     for s in lst(spec, "structures"):
         out += [s.get("what", "")] + list(s.get("details", []))
     for f in lst(spec, "figures"):
-        out += [f.get("head", ""), f.get("garment", "")]
+        out += [f.get("head", ""), f.get("garment", ""), f.get("doing", "")]
     out += [a.get("what", "") for a in lst(spec, "animals")] + lst(spec, "props")
     return [str(n).lower() for n in out]
 
@@ -45,7 +45,7 @@ def named(spec):
 def free_text(spec):
     """모델이 직접 쓴 글만 모은다."""
     parts = [spec.get("scene", "")] + lst(spec, "lights") + named(spec)
-    parts += [f.get("who", "") + " " + f.get("doing", "") for f in lst(spec, "figures")]
+    parts += [f.get("who", "") for f in lst(spec, "figures")]
     parts += [a.get("doing", "") for a in lst(spec, "animals")] + [a.get("on", "") for a in lst(spec, "accents")]
     return " ".join(map(str, parts))
 
@@ -81,7 +81,7 @@ def check(spec):
         ("accents", 1 <= len(accents) <= 2 and len({a.get("color") for a in accents}) == len(accents)
          and all(a.get("color") in acc and has(a.get("on", "")) for a in accents)
          and not (night and any(a.get("color") == "indigo" for a in accents)),
-         f"강조색 1~2개(색 중복 없이, night면 indigo 제외), color는 accents.jsonl id {sorted(acc)}, on은 structures·figures head/garment·animals·props 중 정확히 한 항목에 낱말 단위로 든 말"),
+         f"강조색 1~2개(색 중복 없이, night면 indigo 제외), color는 accents.jsonl id {sorted(acc)}, on은 structures·figures head/garment/doing·animals·props 중 정확히 한 항목에 낱말 단위로 든 말"),
         ("english", text.isascii(), "모델이 쓴 글은 영어(ASCII)만"),
         ("no faces", not re.search(BANNED_FACE, text, re.I), "face·eyes·nose·mouth·smile·expression 금지"),
         ("no banned style", not re.search(BANNED_STYLE, text, re.I),
@@ -166,6 +166,7 @@ def selftest():
     assert score(check(dict(good, accents=[{"color": "teal", "on": "buoy"}, {"color": "teal", "on": "coat"}]))) < 100
     assert score(check(dict(good, props=["a red buoy", "a buoy rack"], accents=[{"color": "teal", "on": "buoy"}]))) < 100  # on이 두 항목에 걸림
     assert score(check(dict(night, accents=[{"color": "indigo", "on": "coat"}]))) < 100
+    assert score(check(dict(good, accents=[{"color": "brick", "on": "basket"}]))) == 100  # 든 물건(doing)도 강조 대상
     assert score(check(dict(good, accents=[{"color": "indigo", "on": "coat"}]))) == 100
     assert score(check(dict(good, props=["a Red buoy", "a red buoy"]))) < 100
     assert score(check(dict(good, scene="A ferry landing with a kiosk on the left side of the pier."))) < 100
