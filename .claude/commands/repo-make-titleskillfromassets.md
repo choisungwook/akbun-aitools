@@ -19,7 +19,7 @@ disable-model-invocation: true
    - title 설명: skill 문서·예시·description·프롬프트에 특정 브랜드·로고·작품·책·출판사·폰트를 가리키는 말을 쓰지 않는다. "옛 그림책 표지 같은 손글씨 세리프 제목"처럼 일반 말로 쓴다.
    - 문구: 예시 title 문구는 원본 문구와 다른, 지어낸 문구로 한다. 원본 로고·레터링 모양을 그대로 그리게 하는 묘사(특정 글자의 장식, 특정 배치 조합)를 쓰지 않는다.
 4. **스타일만 묘사**: 획(세리프 유무·획 대비·끝 모양), 굵기, 대소문자, 자간, 제목과 부제의 크기 비율, 색(hex), 질감(그림과 같은 붓질·번짐), 효과(없음이면 "테두리·그림자·배경 박스 없음")를 규칙으로 쓴다. 제목 위치는 고정하지 않고 "주 소재를 가리지 않는 가장 비고 고른 곳"으로 모델에 맡긴다. 프롬프트에는 "철자를 주어진 그대로, 다른 글자 없이"와 "그림 자체는 구도·색·화풍을 그대로"를 늘 넣는다.
-5. **출처를 남기지 않음**: [repo-make-skillfromassets](repo-make-skillfromassets.md) 규칙 5와 같다.
+5. **출처를 남기지 않음**: [repo-make-skillfromassets](repo-make-skillfromassets.md) 규칙 5와 같다. 참고 assets는 스타일을 뽑을 때만 보고, 그 내용(인물·앱 아이콘·배경·문구)이나 존재 자체를 skill·문서·커밋·PR·Issue·Discussion에 쓰지 않는다. 새 skill은 다른 skill을 참조하지 않는다. 다른 skill 이름·경로·그림을 링크하거나 "~처럼"으로 가리키지 않고, 필요한 규칙과 스크립트는 새 skill 안에 둔다.
 
 ## 절차
 
@@ -29,7 +29,7 @@ disable-model-invocation: true
 
 ### 3. skill 쓰기
 
-- 구조는 `akbun-draw-faded-film`처럼 SKILL.md는 라우팅 표, 글자 스타일 문장은 `references/style.jsonl`, 프롬프트 조립과 채점은 `scripts/`가 맡는다. 모델은 spec(JSON: 입력 이미지 경로, 제목, 부제)만 쓴다.
+- 구조: SKILL.md는 라우팅 표, 글자 스타일 문장은 `references/style.jsonl`, 프롬프트 조립과 채점은 `scripts/`가 맡는다. 모델은 spec(JSON: 입력 이미지 경로, 제목, 부제)만 쓴다.
 - 채점은 제목·부제가 비어 있지 않은지, 길이(제목 1~20자, 부제 0~40자, 공백 포함 글자 수, 경계 포함), 금지 낱말(폰트 이름·브랜드를 가리키는 말 목록)이 없는지 본다. 스크립트에 `--selftest`를 둔다.
 - frontmatter에 `disable-model-invocation: true`. 수치 규칙은 세는 법·단위·반올림까지 쓴다.
 

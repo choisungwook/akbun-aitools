@@ -1,0 +1,166 @@
+"""pastel 스타일 title을 그림 위에 직접 그리게 하는 이미지 편집 프롬프트를 spec(JSON)에서 조립하고 채점한다.
+글자는 폰트로 얹지 않는다. 이미지 생성 모델이 그림 위에 손으로 그린다.
+
+  build <spec.json> [-o prompt.txt]   채점 후 100점이면 프롬프트를 쓴다(없으면 stdout)
+  check <spec.json>                   채점표만 출력
+  --selftest                          자체 검사
+
+spec의 image 경로는 spec 파일이 있는 폴더 기준이다.
+"""
+import json
+import re
+import sys
+import tempfile
+import unicodedata
+from pathlib import Path
+
+REF = Path(__file__).resolve().parent.parent / "references"
+# 폰트·브랜드를 가리키는 말. 글씨체는 획 모양으로만 묘사한다.
+BANNED = (r"\b(fonts?|typefaces?|garamond|helvetica|arial|times new roman|baskerville|bodoni|futura|didot|comic sans|"
+          r"nanum|pretendard|gaegu|logos?|trademarks?)\b|폰트|글꼴|서체|로고|™|®|©")
+ORDER = ("title", "texture", "subtitle", "underline", "finish", "placement", "keep")
+
+
+def load(name):
+    return {r["id"]: r for r in (json.loads(line) for line in (REF / name).read_text().splitlines() if line.strip())}
+
+
+def luminance(rgb):
+    """WCAG 상대 휘도(0~1)."""
+    def ch(c):
+        c /= 255
+        return c / 12.92 if c <= 0.04045 else ((c + 0.055) / 1.055) ** 2.4
+    r, g, b = map(ch, rgb)
+    return 0.2126 * r + 0.7152 * g + 0.0722 * b
+
+
+def contrast(a, b):
+    hi, lo = max(a, b), min(a, b)
+    return (hi + 0.05) / (lo + 0.05)
+
+
+def mean_luminance(path):
+    from PIL import Image
+    return luminance(Image.open(path).convert("RGB").resize((1, 1), Image.BOX).getpixel((0, 0)))
+
+
+def hex_rgb(h):
+    return tuple(int(h[i:i + 2], 16) for i in (1, 3, 5))
+
+
+def check(spec, base=Path(".")):
+    """(항목, 통과 여부, 이유). 점수 = 통과 수 / 항목 수 × 100(내림)."""
+    title, sub = spec.get("title"), spec.get("subtitle", "")
+    if not (isinstance(title, str) and isinstance(sub, str) and isinstance(spec.get("image"), str)):
+        return [("shape", False, "image·title·subtitle은 문자열")]
+    title, sub = (unicodedata.normalize("NFC", x) for x in (title, sub))
+    pals = load("palettes.jsonl")
+    img = base / spec["image"]
+    rows = [
+        ("image", img.is_file(), f"{img} 파일이 있어야 함"),
+        ("palette", isinstance(spec.get("palette"), str) and spec["palette"] in pals, f"palettes.jsonl id: {sorted(pals)}"),
+        ("title length", 1 <= len(title.strip()) <= 20, f"제목 {len(title.strip())}자, 1~20자(공백 포함, 앞뒤 공백 제외, 경계 포함)"),
+        ("subtitle length", len(sub.strip()) <= 40, f"부제 {len(sub.strip())}자, 0~40자(공백 포함, 앞뒤 공백 제외, 경계 포함)"),
+        ("underline flag", isinstance(spec.get("underline", False), bool), "underline은 true/false, 없으면 false"),
+        ("one line each", "\n" not in title + sub, "제목·부제는 각각 한 줄"),
+        ("no quotes", '"' not in title + sub, "큰따옴표 금지(프롬프트의 인용 표시와 겹침)"),
+        ("no font or brand", not re.search(BANNED, title + " " + sub, re.I), "폰트·브랜드·로고를 가리키는 말 금지"),
+    ]
+    if rows[0][1] and rows[1][1]:
+        try:
+            lum = mean_luminance(img)
+        except OSError:
+            return rows + [("title contrast", False, f"{img}를 그림으로 열 수 없음")]
+        c = contrast(lum, luminance(hex_rgb(pals[spec["palette"]]["title_hex"])))
+        rows.append(("title contrast", c >= 3, f"제목색과 그림 평균색의 명도 대비 {c:.2f}:1, 3:1 이상(표시는 소수 둘째 자리 반올림, 비교는 반올림 전 값)"))
+    return rows
+
+
+def score(rows):
+    return sum(ok for _, ok, _ in rows) * 100 // len(rows)
+
+
+def build(spec):
+    style, pal = load("style.jsonl"), load("palettes.jsonl")[spec["palette"]]
+    sub, line = spec.get("subtitle", "").strip(), spec.get("underline", False)
+    color = f"Title color: {pal['title']} {pal['title_hex']}."
+    uses = " and ".join(n for n, on in (("subtitle", sub), ("underline", line)) if on)
+    if uses:
+        color += f" Accent color for the {uses}: {pal['accent']} {pal['accent_hex']}."
+    keys = [k for k in ORDER if k != "subtitle" or sub]
+    rules = " ".join(style[k if k != "underline" or line else "no_underline"]["prompt"] for k in keys)
+    # 영문 제목은 대문자로 넘긴다. 한글은 upper()에 영향받지 않는다.
+    title = unicodedata.normalize("NFC", spec["title"].strip()).upper()
+    text = f'TITLE: "{title}"\n' + (f'SUBTITLE: "{sub}"' if sub else "No subtitle.")
+    return "\n\n".join([style["medium"]["prompt"], f"LETTERING: {rules} {color}", text])
+
+
+def main(argv):
+    if argv[:1] == ["--selftest"]:
+        return selftest()
+    if len(argv) < 2 or argv[0] not in ("build", "check"):
+        sys.exit(__doc__)
+    path = Path(argv[1])
+    spec = json.loads(path.read_text())
+    rows = check(spec, path.parent)
+    for name, ok, why in rows:
+        print(f"{'PASS' if ok else 'FAIL'}  {name:16} {why}")
+    print(f"score {score(rows)}")
+    if argv[0] == "check":
+        sys.exit(0 if score(rows) == 100 else 1)
+    if score(rows) < 100:
+        sys.exit("FAIL 항목을 고친 뒤 다시 build 하세요")
+    out = build(spec)
+    if "-o" in argv:
+        Path(argv[argv.index("-o") + 1]).write_text(out + "\n")
+    else:
+        print(out)
+
+
+def selftest():
+    from PIL import Image
+    assert round(contrast(luminance((255, 255, 255)), luminance((0, 0, 0))), 1) == 21.0
+    with tempfile.TemporaryDirectory() as tmp:
+        t = Path(tmp)
+        Image.new("RGB", (64, 36), (235, 235, 230)).save(t / "light.png")
+        Image.new("RGB", (64, 36), (30, 30, 40)).save(t / "dark.png")
+        fails = lambda s: {n for n, ok, _ in check(s, t) if not ok}  # noqa: E731
+        good = {"image": "dark.png", "palette": "butter", "title": "빨래는 기다림", "subtitle": "새벽 세 시의 회전"}
+        assert score(check(good, t)) == 100, check(good, t)
+        out = build(good)
+        assert '"빨래는 기다림"' in out and '"새벽 세 시의 회전"' in out and "#F7EF9E" in out and "#F0A8A4" in out
+        assert "monoline" in out and "Accent color for the subtitle:" in out
+        assert "No underline" in out and "wavy underline" not in out
+        lined = build(dict(good, underline=True))
+        assert "wavy underline" in lined and "No underline" not in lined and "subtitle and underline" in lined
+        assert "Accent color for the underline:" in build(dict(good, subtitle="", underline=True))
+        assert "Accent color" not in build(dict(good, subtitle=""))
+        assert '"TINY WISHES"' in build(dict(good, title="Tiny Wishes", subtitle="slow days")) and '"slow days"' in build(dict(good, title="Tiny Wishes", subtitle="slow days"))
+        assert '"API 응답 지연"' in build(dict(good, title="api 응답 지연"))
+        assert "underline flag" in fails(dict(good, underline="yes"))
+        bare = build(dict(good, subtitle=""))
+        assert "No subtitle." in bare and "half of the title" not in bare and "subtitle and" not in bare
+        assert "title contrast" in fails(dict(good, image="light.png"))
+        assert not fails(dict(good, image="light.png", palette="cocoa"))
+        assert "palette" in fails(dict(good, palette="neon"))
+        assert "image" in fails(dict(good, image="missing.png"))
+        assert "title length" in fails(dict(good, title="가" * 21)) and not fails(dict(good, title="가" * 20))
+        assert "title length" in fails(dict(good, title="   "))
+        assert "subtitle length" in fails(dict(good, subtitle="가" * 41)) and not fails(dict(good, subtitle="가" * 40))
+        assert "no quotes" in fails(dict(good, title='"제목"'))
+        assert "no font or brand" in fails(dict(good, subtitle="Helvetica 느낌"))
+        assert not fails(dict(good, title="Fontaine Road")) and not fails(dict(good, title="나눔의 계절"))
+        assert "palette" in fails(dict(good, palette=["butter"]))
+        assert not fails(dict(good, title=unicodedata.normalize("NFD", "가" * 20)))
+        (t / "broken.png").write_text("not an image")
+        assert "title contrast" in fails(dict(good, image="broken.png"))
+        assert "one line each" in fails(dict(good, title="두 줄\n제목"))
+        assert check(dict(good, title=3), t)[0][0] == "shape"
+    for spec_path in sorted((REF / "example").glob("*.json")):
+        assert build(json.loads(spec_path.read_text())).strip() == spec_path.with_suffix(".txt").read_text().strip(), \
+            f"{spec_path.name}: 예시 txt를 다시 build 하세요"
+    print("selftest ok")
+
+
+if __name__ == "__main__":
+    main(sys.argv[1:])
