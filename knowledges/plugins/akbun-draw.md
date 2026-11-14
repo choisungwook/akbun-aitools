@@ -4,7 +4,7 @@ title: akbun-draw
 description: "Image drawing skills by akbun — image-generation prompts and editable SVGs in fixed akbun styles"
 resource: ../../plugins/akbun-draw/
 tags: [plugin]
-generated: { by: claude-code/claude-opus-5-5, at: 2026-11-14T03:30:00Z }
+generated: { by: claude-code/claude-opus-5-5, at: 2026-11-14T05:00:00Z }
 stale_after: 2027-02-13T00:00:00Z
 sources:
   - id: manifest
@@ -25,6 +25,7 @@ Image drawing skills by akbun — image-generation prompts and editable SVGs in 
 - Three manifests (`.claude-plugin`, `.codex-plugin`, `.antigravity-plugin`), same `version`. Rules: [plugin-versioning](../policies/plugin-versioning.md)
 - Skill list and when to use each: README `## plugin 목록` → `### akbun-draw` table (source of truth)[^readme]
 - Choosing a draw skill: [docs/manual_draw.md](../../docs/manual_draw.md)
+- Animation skills keep style in `references/*.jsonl` and a script scores, prompts and renders the model's story spec; garnet also scores direction (`direction.jsonl`) and synthesizes a temp sound (`sound.jsonl`)
 - Decisions: [0002](../decisions/0002-reference-image-is-not-pixel-target.md), [0008](../decisions/0008-explainer-svg-reduced-to-chalkboard.md)
 
 [^manifest]: akbun-draw Claude manifest
