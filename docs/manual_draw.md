@@ -41,7 +41,7 @@
 | 다정한 제목 한 줄과 그 뒤 웃긴 속사정을 보여 주는 개그 한 컷을 원하는 그림체로 그리고 싶음 | [akbun-draw-template-comedy](../plugins/akbun-draw/skills/akbun-draw-template-comedy/SKILL.md) | 고른 akbun-draw 그림체로 한국어 제목과 두 캐릭터 무표정 개그 한 컷 프롬프트(spec을 스크립트가 조립·검사) |
 | 논문·학습 자료를 이미지와 설명 대본으로 바꾸고 싶음 | [akbun-draw-learning-mono](../plugins/akbun-draw/skills/akbun-draw-learning-mono/SKILL.md) | 흑백 16:9 학습 이미지와 대본 |
 | IT·여행 글이나 영상의 유튜브·티스토리 썸네일을 포스터처럼 만들고 싶음 | [akbun-draw-thumbnail-retro](../plugins/akbun-draw/skills/akbun-draw-thumbnail-retro/SKILL.md) | 70년대 필름 사진 위 레트로 디스플레이 글자 썸네일 프롬프트(16:9·1:1) |
-| 블로그·유튜브 썸네일을 흰 종이 낙서 그림으로 만들고 싶음 | [akbun-draw-thumbnail-doodle](../plugins/akbun-draw/skills/akbun-draw-thumbnail-doodle/SKILL.md) | 낙서 그림체 썸네일 프롬프트(16:9·4:3), 요청 시 codex로 생성해 ~/Downloads에 저장 |
+| 블로그·유튜브 썸네일을 흰 종이 낙서 그림으로 만들고 싶음 | [akbun-draw-thumbnail-doodle](../plugins/akbun-draw/skills/akbun-draw-thumbnail-doodle/SKILL.md) | 낙서 그림체 썸네일 프롬프트(16:9·4:3), 요청 시 이미지 생성 도구로 만들어 ~/Downloads에 저장 |
 | 시스템 구조·개념을 설명 영상·슬라이드용 16:9 그림 한 장으로 만들고 싶음 | [akbun-draw-chalkboard](../plugins/akbun-draw/skills/akbun-draw-chalkboard/SKILL.md) | 1920×1080 SVG 코드. 다크 그린 칠판 위 분필 선 그림체(`styles/chalkboard.json`)만 고정하고 배치는 내용이 정함 |
 
 ## 만화·웹툰

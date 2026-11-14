@@ -96,7 +96,7 @@ uv run --python 3.12 python -I <skill>/scripts/cartoon_prompt.py --selftest
 
 사용자가 이미지까지 요청했을 때만 만든다. 프롬프트 파일 전문을 그대로 넣고, 비율은 템플릿 표대로 적는다. 도구와 모델은 사용자의 기본값을 쓴다.
 
-사용자가 쓰는 이미지 생성 도구로 `cartoon-output/<작업명>/cartoon.txt`를 만들어 같은 폴더에 `cartoon.png`로 저장한다. 1장씩 템플릿은 `cartoon_01.txt`부터 파일마다 만들고, 2번 컷부터는 `cartoon_01.png`를 참고 이미지로 붙여 인물을 그 그림과 똑같이 그리게 한다.
+`cartoon-output/<작업명>/cartoon.txt`로 만들어 같은 폴더에 `cartoon.png`로 저장한다. 1장씩 템플릿은 `cartoon_01.txt`부터 파일마다 만들고, 2번 컷부터는 `cartoon_01.png`를 참고 이미지로 붙여 인물을 그 그림과 똑같이 그리게 한다.
 
 ### 5. 검수
 
