@@ -87,7 +87,7 @@ class RepositoryTests(unittest.TestCase):
       manual.unlink()
       self.assertIn("docs/manual_draw.md 없음", plugin_errors(root))
       readme.write_text(readme.read_text().replace("</td>\n</tr>\n<tr>\n<td>", "</td>\n<td>", 1))
-      self.assertTrue(any("plugin 예시 표는 행마다 칸 1개" in error for error in plugin_errors(root)))
+      self.assertTrue(any("plugin 예시 표는 행마다 칸 1~3개" in error for error in plugin_errors(root)))
 
 
 if __name__ == "__main__":
