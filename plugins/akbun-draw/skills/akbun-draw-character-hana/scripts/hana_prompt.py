@@ -10,8 +10,7 @@ import sys
 from pathlib import Path
 
 REF = Path(__file__).resolve().parent.parent / "references"
-BACKDROPS = {"white": "a plain solid pure white (#FFFFFF) backdrop",
-             "transparent": "a fully transparent background (PNG with an alpha channel, no backdrop color at all)"}
+BACKDROP = "a fully transparent background (PNG with an alpha channel, no backdrop color at all)"
 ASPECTS = {"3:4": "3:4 portrait", "1:1": "1:1 square", "16:9": "16:9 landscape"}
 # 인물 칸마다 (최소, 최대) 단어 수. 공백으로 나눈 수, 하이픈으로 이은 말은 한 단어, 경계 포함.
 WORDS = {"who": (2, 10), "eye_color": (1, 4), "hair": (3, 15), "outfit": (3, 20), "expression": (2, 10), "pose": (3, 20)}
@@ -44,7 +43,7 @@ def check(spec):
         ("palette", spec.get("palette") in pal, f"palettes.jsonl id: {sorted(pal)}"),
         ("framing", spec.get("framing") in fr, f"framings.jsonl id: {sorted(fr)}"),
         ("aspect", spec.get("aspect") in ASPECTS, f"aspect: {sorted(ASPECTS)}"),
-        ("backdrop", spec.get("backdrop") in BACKDROPS, f"backdrop: {sorted(BACKDROPS)}"),
+        ("no backdrop key", "backdrop" not in spec, "배경은 늘 투명이므로 backdrop 키 금지"),
         ("eyes", ch.get("eyes") in ey, f"eyes.jsonl id: {sorted(ey)}"),
     ]
     for k, (lo, hi) in WORDS.items():
@@ -71,7 +70,7 @@ def score(rows):
 def build(spec):
     style, pal, fr, ey = load("style.jsonl"), load("palettes.jsonl"), load("framings.jsonl"), load("eyes.jsonl")
     p, ch = pal[spec["palette"]], spec["character"]
-    fill = {"aspect": ASPECTS[spec["aspect"]], "ink": p["colors"]["ink"], "paper": p["colors"]["paper"], "backdrop": BACKDROPS[spec["backdrop"]]}
+    fill = {"aspect": ASPECTS[spec["aspect"]], "ink": p["colors"]["ink"], "paper": p["colors"]["paper"], "backdrop": BACKDROP}
     colors = "; ".join(f"{k} {v}" for k, v in p["colors"].items())
     rules = " ".join(style[k]["prompt"].format(**fill) for k in style if k != "medium")
     return "\n\n".join([
@@ -97,7 +96,7 @@ def report(rows):
 
 def selftest():
     good = {
-        "palette": "lamp-amber", "framing": "knee", "aspect": "3:4", "backdrop": "white",
+        "palette": "lamp-amber", "framing": "knee", "aspect": "3:4",
         "character": {"who": "a man in his fifties", "eyes": "droopy", "eye_color": "dark brown", "hair": "short grey crew cut with a receding hairline",
                       "outfit": "a navy work jacket over a knit vest", "expression": "tired but kind half smile",
                       "pose": "stands holding a paper cup of coffee in one hand"},
@@ -105,11 +104,10 @@ def selftest():
     }
     assert score(check(good)) == 100, check(good)
     out = build(good)
-    assert "#966C54" in out and "#241E18" in out and "#EDE0CC" in out and "3:4 portrait" in out and "{" not in out and "Knee-up" in out and "BACKGROUND" not in out and "droopy eyes" in out and "never black" in out and "#FFFFFF" in out
-    assert "alpha channel" in build(dict(good, backdrop="transparent"))
+    assert "#966C54" in out and "#241E18" in out and "#EDE0CC" in out and "3:4 portrait" in out and "{" not in out and "Knee-up" in out and "BACKGROUND" not in out and "droopy eyes" in out and "never black" in out and "alpha channel" in out
     assert score(check(dict(good, character=dict(good["character"], eyes="sparkly")))) < 100
     assert "#1E1E24" in build(dict(good, palette="cold-dawn"))
-    for k, v in [("backdrop", "grey"), ("aspect", "4:3"), ("framing", "close"), ("palette", "pink")]:
+    for k, v in [("backdrop", "white"), ("aspect", "4:3"), ("framing", "close"), ("palette", "pink")]:
         assert score(check(dict(good, **{k: v}))) < 100, k
     bad_ch = dict(good["character"], hair="black", pose='holds a sign "OPEN" with a glossy 3D look')
     failed = {n for n, ok, _ in check(dict(good, character=bad_ch, light="a café lamp in the style of someone")) if not ok}

@@ -1,6 +1,6 @@
 ---
 name: akbun-draw-character-hana
-description: 1990년대 TV 셀 애니메이션 한 프레임 같은 오리지널 인물 한 명을 배경 없이 흰색 또는 투명 바탕에 그리는 이미지 생성 프롬프트 스타일 hana. 가늘고 고른 짙은 잉크 선, 바탕색과 칼같은 그늘색 두 단의 셀 채색, 눈가를 가로지르는 넓은 그림자 띠, 인물마다 고르는 눈 모양, 끝이 뾰족한 머리 덩어리, 바랜 필름 색과 고운 노이즈, 장소·소품 배경 없이 흰색 또는 투명 바탕. 모델은 인물 spec(JSON)만 쓰고, 스크립트가 references 라이브러리로 영어 프롬프트를 조립하고 채점한다. 사용자가 직접 호출할 때만 실행한다.
+description: 1990년대 TV 셀 애니메이션 한 프레임 같은 오리지널 인물 한 명을 배경 없이 투명 바탕(PNG)에 그리는 이미지 생성 프롬프트 스타일 hana. 가늘고 고른 짙은 잉크 선, 바탕색과 칼같은 그늘색 두 단의 셀 채색, 눈가를 가로지르는 넓은 그림자 띠, 인물마다 고르는 눈 모양, 끝이 뾰족한 머리 덩어리, 바랜 필름 색과 고운 노이즈, 장소·소품 배경 없는 투명 바탕. 모델은 인물 spec(JSON)만 쓰고, 스크립트가 references 라이브러리로 영어 프롬프트를 조립하고 채점한다. 사용자가 직접 호출할 때만 실행한다.
 disable-model-invocation: true
 ---
 
@@ -8,7 +8,7 @@ disable-model-invocation: true
 
 ## 목적
 
-사용자가 준 인물 페르소나(직업·성격·외모 묘사)에 맞는 오리지널 인물 한 명을 hana 그림체로 그리는 영어 이미지 생성 프롬프트를 만든다. 그림에는 인물만 있고 뒤는 순백(#FFFFFF) 또는 투명이다. 장소·하늘·가구·바닥 그림자는 그리지 않아서 결과를 다른 장면에 오려 붙이기 쉽다. 이 skill이 고정하는 것은 선·채색·얼굴과 머리 그림법·색감·질감·빈 바탕이고, 누구를 어떤 차림·표정·자세로 그릴지는 입력에 맞춰 정한다.
+사용자가 준 인물 페르소나(직업·성격·외모 묘사)에 맞는 오리지널 인물 한 명을 hana 그림체로 그리는 영어 이미지 생성 프롬프트를 만든다. 그림에는 인물만 있고 뒤는 투명(PNG 알파)이다. 장소·하늘·가구·바닥 그림자는 그리지 않아서 결과를 다른 장면에 오려 붙이기 쉽다. 이 skill이 고정하는 것은 선·채색·얼굴과 머리 그림법·색감·질감·빈 바탕이고, 누구를 어떤 차림·표정·자세로 그릴지는 입력에 맞춰 정한다.
 
 모델은 프롬프트 문장을 직접 쓰지 않는다. 인물 spec만 쓰고, 스타일 문장은 스크립트가 라이브러리에서 가져온다. 그래서 몇 장을 만들어도 같은 그림체가 나온다.
 
@@ -35,7 +35,6 @@ disable-model-invocation: true
 | 키 | 값 |
 |---|---|
 | `palette`, `framing` | jsonl의 `id` |
-| `backdrop` | `white`(순백 #FFFFFF) 또는 `transparent`(투명 PNG). 사용자가 정하지 않으면 `transparent`. 이미지 도구가 투명을 못 만들면 `white`로 바꿔 다시 build 한다 |
 | `aspect` | `3:4`·`1:1`·`16:9` 중 하나. 사용자가 정하지 않으면 `3:4` |
 | `character.who` | 누구인지 영어 2~10단어(나이대·성별·직업 등) |
 | `character.eyes` | eyes.jsonl의 `id` |
@@ -46,7 +45,7 @@ disable-model-invocation: true
 | `character.pose` | 자세·손 동작 영어 3~20단어. 기대거나 앉을 가구·장소 없이 혼자 서서 하는 동작으로 쓴다 |
 | `light` | 인물에 닿는 빛의 색과 방향 영어 3~15단어. 그림자 띠가 생기도록 한쪽에서 오는 빛으로 쓴다 |
 
-배경 키(`setting`)는 없다. spec에 넣으면 채점에서 떨어진다.
+배경 키(`setting`)와 바탕 키(`backdrop`)는 없다. 바탕은 늘 투명이고, 이 키를 spec에 넣으면 채점에서 떨어진다.
 
 ### 3. 프롬프트 조립
 
@@ -73,13 +72,13 @@ uv run --python 3.12 python -I <skill>/scripts/hana_prompt.py --selftest
 codex CLI로 프롬프트 파일이 있는 폴더에서 내장 이미지 생성으로 PNG를 만드는 명령이다. `<비율>`은 spec의 `aspect`다.
 
 ```bash
-cd hana-output/<작업명> && codex exec --skip-git-repo-check -s workspace-write "Read 01_<id>.txt. Use your built-in image generation tool with that file's full text as the prompt, exactly, aspect ratio <비율>, transparent background if the spec backdrop is transparent. Save the result as 01_<id>.png here. Reply with the path only." < /dev/null
+cd hana-output/<작업명> && codex exec --skip-git-repo-check -s workspace-write "Read 01_<id>.txt. Use your built-in image generation tool with that file's full text as the prompt, exactly, aspect ratio <비율>, transparent background. Save the result as 01_<id>.png here. Reply with the path only." < /dev/null
 ```
 
 Antigravity CLI(`agy`)로 같은 일을 하는 명령이다. `-p`는 바로 뒤 값을 프롬프트로 먹으므로 다른 옵션을 `-p` 앞에 둔다.
 
 ```bash
-cd hana-output/<작업명> && agy --print-timeout 600s --mode accept-edits -p "Read 01_<id>.txt. Use your image generation tool with that file's full text as the prompt, exactly, aspect ratio <비율>, transparent background if the spec backdrop is transparent. Save the result as 01_<id>.png in this folder. Reply with the path only." < /dev/null
+cd hana-output/<작업명> && agy --print-timeout 600s --mode accept-edits -p "Read 01_<id>.txt. Use your image generation tool with that file's full text as the prompt, exactly, aspect ratio <비율>, transparent background. Save the result as 01_<id>.png in this folder. Reply with the path only." < /dev/null
 ```
 
 `< /dev/null`이 없으면 CLI가 입력을 기다리며 멈출 수 있다. 여러 장은 장마다 따로, 동시에 돌려도 된다.
@@ -88,7 +87,7 @@ cd hana-output/<작업명> && agy --print-timeout 600s --mode accept-edits -p "R
 
 - 인물 칠이 바탕색과 칼같은 그늘색 두 단이고, 피부·옷에 그라데이션·광택이 없다.
 - 선이 가늘고 고른 짙은 잉크다.
-- 인물 뒤가 `backdrop`대로(순백 한 색이면 네 모서리 화소가 모두 RGB 각 250 이상, 투명이면 네 모서리 알파가 0)이고, 장소·가구·바닥 그림자·무늬가 없다. 인물 몸이 화면 가장자리에서 잘리는 것은 `framing`대로일 때만이다.
+- 인물 뒤가 투명(PNG 네 모서리 화소의 알파가 모두 0)이고, 장소·가구·바닥 그림자·무늬가 없다. 인물 몸이 화면 가장자리에서 잘리는 것은 `framing`대로일 때만이다.
 - 눈이 spec의 `eyes` 모양이고, 큰 반짝이는 눈·치비 비율이 아니다.
 - 턱 아래 목·얼굴 아래에 검거나 짙은 그림자 덩어리가 없다. 그늘은 바탕보다 한 단계 어두운 중간 톤이다.
 - 인물 칠이 팔레트 쪽으로 바래 있고 고운 노이즈가 보인다. 옷의 흰 부분도 순백이 아니다. 형광색이 없다.
