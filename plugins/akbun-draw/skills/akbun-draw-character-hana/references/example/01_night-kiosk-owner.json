@@ -1,0 +1,16 @@
+{
+  "palette": "lamp-amber",
+  "framing": "full",
+  "aspect": "3:4",
+  "backdrop": "transparent",
+  "character": {
+    "who": "a man in his fifties who runs a night kiosk",
+    "eyes": "droopy",
+    "eye_color": "dark brown",
+    "hair": "short grey crew cut with a receding hairline and thick eyebrows",
+    "outfit": "a navy work jacket over a ribbed knit vest, sleeves pushed up, canvas shoes",
+    "expression": "tired but kind half smile",
+    "pose": "stands holding a paper cup of coffee in one hand, other hand in pocket"
+  },
+  "light": "a single warm bulb from the upper left"
+}
