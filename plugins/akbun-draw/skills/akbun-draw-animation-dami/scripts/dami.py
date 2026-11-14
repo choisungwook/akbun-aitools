@@ -2,10 +2,10 @@
 # requires-python = ">=3.12"
 # dependencies = ["pillow"]
 # ///
-"""dami 애니메이션: 이야기 spec(JSON)을 채점하고, 배역 시트·컷·자세 프롬프트와 codex.sh를 쓰고, 9:16 영상으로 렌더한다.
+"""dami 애니메이션: 이야기 spec(JSON)을 채점하고, 배역 시트·컷·자세 프롬프트와 생성 순서 order.txt를 쓰고, 9:16 영상으로 렌더한다.
 
   check <story.json>                 채점표만 출력(100점이 아니면 종료 코드 1)
-  prompts <story.json>               100점이면 spec 옆에 cast_<id>.txt, NN_<id>.txt, NN_<id>_<k>.txt, codex.sh를 쓴다
+  prompts <story.json>               100점이면 spec 옆에 cast_<id>.txt, NN_<id>.txt, NN_<id>_<k>.txt, order.txt를 쓴다
   render <story.json> [-o out.mp4]   spec 옆 PNG들로 영상과 sheet.jpg를 만든다
   --selftest                         자체 검사
 """
@@ -183,30 +183,27 @@ def keys(name, s):
     return [name] + [f"{name}_{k}" for k in range(2, len(s.get("poses", [])) + 2)]
 
 
-def codex_script(story):
-    """3단계(배역 시트 → 컷 첫 장 → 자세)를 단계마다 동시에 돌리는 codex.sh. 이미 있는 PNG는 건너뛴다.
+def order_list(story):
+    """3단계(배역 시트·자막 → 컷 첫 장 → 자세)의 생성 순서 order.txt. 한 줄이 그림 한 장이다.
     파일 이름은 채점을 통과한 id(영어 소문자·숫자·하이픈)로만 만든다."""
-    def line(stem, task, attach, aspect="square 1:1"):
-        files = "".join(f" -i {a}.png" for a in attach)  # -i는 값을 여러 개 받으므로 프롬프트 뒤에 둔다
-        return (f'[ -s {stem}.png ] || codex exec --skip-git-repo-check -s workspace-write "Read {stem}.txt. Use your built-in '
-                f'image generation tool{" " + task if task else ""} with that file\'s full text as the prompt, {aspect}. Save the result as '
-                f'{stem}.png here. Reply with the path only."{files} < /dev/null > {stem}.log 2>&1 &')
+    def line(stem, aspect="1:1", edit=None, refs=()):
+        parts = [f"{stem}.txt -> {stem}.png", aspect]
+        if edit:
+            parts.append(f"편집: {edit}.png")
+        if refs:
+            parts.append("참조: " + ", ".join(f"{r}.png" for r in refs))
+        return " | ".join(parts)
     sheets = [f"cast_{c['id']}" for c in story["cast"]]
-    captions = [f"{n}_caption" for n in shot_names(story)]
-    stage1 = [line(n, "", []) for n in sheets] + [line(n, "", [], "landscape 16:9") for n in captions]
-    stage2, stage3, every = [], [], list(sheets)
+    stage1 = [line(n) for n in sheets] + [line(f"{n}_caption", "16:9") for n in shot_names(story)]
+    stage2, stage3 = [], []
     for name, s in zip(shot_names(story), story["shots"]):
         refs = [f"cast_{x['id']}" for x in s["characters"]]
-        stage2.append(line(name, "", refs))
-        stage3 += [line(k, "to edit the attached images", [name] + refs) for k in keys(name, s)[1:]]
-        every += keys(name, s) + [f"{name}_caption"]
-    out = ["#!/bin/bash", "# dami.py prompts가 만든 파일. 출력 폴더에서 bash codex.sh로 돌린다. 잘못 나온 그림은 PNG를 지우고 다시 돌린다.",
-           'cd "$(dirname "$0")"']
-    for title, stage in (("배역 시트·자막", stage1), ("컷 첫 장", stage2), ("자세", stage3)):
+        stage2.append(line(name, refs=refs))
+        stage3 += [line(k, edit=name, refs=refs) for k in keys(name, s)[1:]]
+    out = ["# dami.py prompts가 만든 생성 순서. 단계는 차례로, 단계 안의 그림은 동시에 만든다. 이미 있는 PNG는 건너뛴다."]
+    for title, stage in (("1. 배역 시트·자막", stage1), ("2. 컷 첫 장", stage2), ("3. 자세", stage3)):
         if stage:
-            out += [f"echo '{title} {len(stage)}장'", *stage, "wait"]
-    out += [f"for f in {' '.join(every)}; do [ -s $f.png ] || {{ echo \"없음: $f.png ($f.log 확인)\"; exit 1; }}; done",
-            "echo '모든 그림 완료'"]
+            out += [f"## {title}", *stage]
     return "\n".join(out) + "\n"
 
 
@@ -313,10 +310,10 @@ def selftest():
     for s0 in starts:  # 넘길 때마다 정확히 FADE 프레임, 비율 1/4·2/4·3/4
         assert [plan[s0 + k][1] for k in range(FADE + 1)] == [0.25, 0.5, 0.75, None]
     assert schedule(30, 1) == ([(0, None)] * 30, {15})
-    sh = codex_script(good)
+    sh = order_list(good)
     assert sh.index("cast_p-commuter.txt") < sh.index("01_late-bus.txt") < sh.index("02_walk_2.txt")
-    assert "-i 02_walk.png -i cast_p-commuter.png" in sh and sh.count("wait") == 3
-    assert sh.index("01_late-bus_caption.txt") < sh.index("01_late-bus.txt") and "landscape 16:9. Save the result as 01_late-bus_caption.png" in sh
+    assert "02_walk_2.txt -> 02_walk_2.png | 1:1 | 편집: 02_walk.png | 참조: cast_p-commuter.png" in sh and sh.count("## ") == 3
+    assert sh.index("01_late-bus_caption.txt") < sh.index("01_late-bus.txt") and "01_late-bus_caption.png | 16:9\n" in sh
     assert '"막차는 이미 / 떠난 뒤였습니다…"' in caption_prompt(shot) and "#1A1A1A" in caption_prompt(shot)
     assert "Change only the pose to this: The tall man" in pose_prompt("02_walk", walk["poses"][0])
     # 실패해야 하는 것
@@ -360,8 +357,8 @@ def main(argv):
             (path.parent / f"{name}_caption.txt").write_text(caption_prompt(s) + "\n")
             for k, pose in zip(keys(name, s)[1:], s.get("poses", [])):
                 (path.parent / f"{k}.txt").write_text(pose_prompt(name, pose) + "\n")
-        (path.parent / "codex.sh").write_text(codex_script(story))
-        print(path.parent / "codex.sh")
+        (path.parent / "order.txt").write_text(order_list(story))
+        print(path.parent / "order.txt")
     elif argv[0] == "render":
         out = Path(argv[argv.index("-o") + 1]) if "-o" in argv else path.parent / "dami.mp4"
         render(story, path.parent, out)

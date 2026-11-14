@@ -1,0 +1,19 @@
+# dami.py prompts가 만든 생성 순서. 단계는 차례로, 단계 안의 그림은 동시에 만든다. 이미 있는 PNG는 건너뛴다.
+## 1. 배역 시트·자막
+cast_p-engineer.txt -> cast_p-engineer.png | 1:1
+cast_p-neighbor.txt -> cast_p-neighbor.png | 1:1
+01_night-alert_caption.txt -> 01_night-alert_caption.png | 16:9
+02_kitchen-fix_caption.txt -> 02_kitchen-fix_caption.png | 16:9
+03_dawn-balcony_caption.txt -> 03_dawn-balcony_caption.png | 16:9
+## 2. 컷 첫 장
+01_night-alert.txt -> 01_night-alert.png | 1:1 | 참조: cast_p-engineer.png
+02_kitchen-fix.txt -> 02_kitchen-fix.png | 1:1 | 참조: cast_p-engineer.png
+03_dawn-balcony.txt -> 03_dawn-balcony.png | 1:1 | 참조: cast_p-engineer.png, cast_p-neighbor.png
+## 3. 자세
+01_night-alert_2.txt -> 01_night-alert_2.png | 1:1 | 편집: 01_night-alert.png | 참조: cast_p-engineer.png
+01_night-alert_3.txt -> 01_night-alert_3.png | 1:1 | 편집: 01_night-alert.png | 참조: cast_p-engineer.png
+01_night-alert_4.txt -> 01_night-alert_4.png | 1:1 | 편집: 01_night-alert.png | 참조: cast_p-engineer.png
+02_kitchen-fix_2.txt -> 02_kitchen-fix_2.png | 1:1 | 편집: 02_kitchen-fix.png | 참조: cast_p-engineer.png
+03_dawn-balcony_2.txt -> 03_dawn-balcony_2.png | 1:1 | 편집: 03_dawn-balcony.png | 참조: cast_p-engineer.png, cast_p-neighbor.png
+03_dawn-balcony_3.txt -> 03_dawn-balcony_3.png | 1:1 | 편집: 03_dawn-balcony.png | 참조: cast_p-engineer.png, cast_p-neighbor.png
+03_dawn-balcony_4.txt -> 03_dawn-balcony_4.png | 1:1 | 편집: 03_dawn-balcony.png | 참조: cast_p-engineer.png, cast_p-neighbor.png

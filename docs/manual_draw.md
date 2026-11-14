@@ -15,7 +15,7 @@
 | 터미널·AI 도구 화면 녹화의 오류 줄·결과 줄을 짚어 주고 싶음 | [akbun-draw-code-nari](../plugins/akbun-draw/skills/akbun-draw-code-nari/SKILL.md) | 연회색 캔버스 위 어두운 창 카드에 실제 녹화, 노란 손그림 화살표·손글씨 라벨·토큰 하이라이트. 결과는 Resolve Fusion 장면 | - |
 | 캐릭터가 연기하는 짧은 낙서 장면이 필요함 | [akbun-draw-motion-doodle](../plugins/akbun-draw/skills/akbun-draw-motion-doodle/SKILL.md) | 흰 종이 검은 잉크 낙서, 포즈 교체로 움직이는 캐릭터. 다른 모션 스킬이 쓰는 렌더러도 여기 있음 | - |
 | 개념을 일상 비유로 풀고 싶고 연필 느낌이 맞음 | [akbun-draw-raon](../plugins/akbun-draw/skills/akbun-draw-raon/SKILL.md) | 연필 막대 인물, 색 소품 하나 | - |
-| 짧은 이야기를 내레이션 자막이 붙은 세로 애니메이션 쇼츠로 보여 주고 싶음 | [akbun-draw-animation-dami](../plugins/akbun-draw/skills/akbun-draw-animation-dami/SKILL.md) | 외곽선 없는 회화풍 그림, 안개 낀 원경·앰버 빛·붉은 물체 하나, 이야기마다 새 배역(캐릭터 시트로 컷 사이 생김새 유지), 컷당 1–4장 자세 넘김과 하드컷, 흰 바탕 아래 2줄 자막. 결과는 프롬프트·codex.sh·그림과 9:16 MP4(spec을 스크립트가 조립·채점·렌더) | - |
+| 짧은 이야기를 내레이션 자막이 붙은 세로 애니메이션 쇼츠로 보여 주고 싶음 | [akbun-draw-animation-dami](../plugins/akbun-draw/skills/akbun-draw-animation-dami/SKILL.md) | 외곽선 없는 회화풍 그림, 안개 낀 원경·앰버 빛·붉은 물체 하나, 이야기마다 새 배역(캐릭터 시트로 컷 사이 생김새 유지), 컷당 1–4장 자세 넘김과 하드컷, 흰 바탕 아래 2줄 자막. 결과는 프롬프트·생성 순서·그림과 9:16 MP4(spec을 스크립트가 조립·채점·렌더) | - |
 
 비슷한 스킬끼리 고르는 기준:
 

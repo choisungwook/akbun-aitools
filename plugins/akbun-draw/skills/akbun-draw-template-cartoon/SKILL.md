@@ -94,21 +94,9 @@ uv run --python 3.12 python -I <skill>/scripts/cartoon_prompt.py --selftest
 
 ### 4. 이미지 생성
 
-사용자가 이미지까지 요청했을 때만 만든다. 프롬프트 파일 전문을 그대로 넣고, 비율은 템플릿 표대로 적는다. 모델은 사용자 설정의 기본값을 쓴다.
+사용자가 이미지까지 요청했을 때만 만든다. 프롬프트 파일 전문을 그대로 넣고, 비율은 템플릿 표대로 적는다. 도구와 모델은 사용자의 기본값을 쓴다.
 
-codex CLI로 한 장 템플릿을 생성하는 명령이다. 1장씩 템플릿은 `cartoon_01`부터 파일마다 돌린다.
-
-```bash
-cd cartoon-output/<작업명> && codex exec --skip-git-repo-check -s workspace-write "Read cartoon.txt. Use your built-in image generation tool with that file's full text as the prompt, exactly, portrait 2:3. Save the result as cartoon.png here. Reply with the path only." < /dev/null
-```
-
-1장씩 템플릿의 2번 컷부터는 1번 컷을 참고 이미지로 붙인다. 프롬프트를 `-i` 앞에 둔다. `-i`는 값을 여러 개 받아서 뒤에 두면 프롬프트까지 이미지 경로로 먹는다.
-
-```bash
-cd cartoon-output/<작업명> && codex exec --skip-git-repo-check -s workspace-write "Read cartoon_02.txt. Use your built-in image generation tool with that file's full text as the prompt, exactly, portrait 4:5. Draw the characters exactly as they look in the attached image. Save the result as cartoon_02.png here. Reply with the path only." -i cartoon_01.png < /dev/null
-```
-
-`< /dev/null`이 없으면 codex가 입력을 기다리며 멈춘다.
+사용자가 쓰는 이미지 생성 도구로 `cartoon-output/<작업명>/cartoon.txt`를 만들어 같은 폴더에 `cartoon.png`로 저장한다. 1장씩 템플릿은 `cartoon_01.txt`부터 파일마다 만들고, 2번 컷부터는 `cartoon_01.png`를 참고 이미지로 붙여 인물을 그 그림과 똑같이 그리게 한다.
 
 ### 5. 검수
 
