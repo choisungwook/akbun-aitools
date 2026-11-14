@@ -18,7 +18,7 @@ REF = Path(__file__).resolve().parent.parent / "references"
 # 폰트·브랜드를 가리키는 말. 글씨체는 획 모양으로만 묘사한다.
 BANNED = (r"\b(fonts?|typefaces?|garamond|helvetica|arial|times new roman|baskerville|bodoni|futura|didot|comic sans|"
           r"nanum|pretendard|gaegu|logos?|trademarks?)\b|폰트|글꼴|서체|로고|™|®|©")
-ORDER = ("title", "texture", "subtitle", "accent", "finish", "placement", "keep")
+ORDER = ("title", "texture", "subtitle", "underline", "finish", "placement", "keep")
 
 
 def load(name):
@@ -61,6 +61,7 @@ def check(spec, base=Path(".")):
         ("palette", isinstance(spec.get("palette"), str) and spec["palette"] in pals, f"palettes.jsonl id: {sorted(pals)}"),
         ("title length", 1 <= len(title.strip()) <= 20, f"제목 {len(title.strip())}자, 1~20자(공백 포함, 앞뒤 공백 제외, 경계 포함)"),
         ("subtitle length", len(sub.strip()) <= 40, f"부제 {len(sub.strip())}자, 0~40자(공백 포함, 앞뒤 공백 제외, 경계 포함)"),
+        ("underline flag", isinstance(spec.get("underline", False), bool), "underline은 true/false, 없으면 false"),
         ("one line each", "\n" not in title + sub, "제목·부제는 각각 한 줄"),
         ("no quotes", '"' not in title + sub, "큰따옴표 금지(프롬프트의 인용 표시와 겹침)"),
         ("no font or brand", not re.search(BANNED, title + " " + sub, re.I), "폰트·브랜드·로고를 가리키는 말 금지"),
@@ -81,11 +82,16 @@ def score(rows):
 
 def build(spec):
     style, pal = load("style.jsonl"), load("palettes.jsonl")[spec["palette"]]
-    sub = spec.get("subtitle", "").strip()
-    color = (f"Title color: {pal['title']} {pal['title_hex']}. "
-             f"Accent color for the {'subtitle and ' if sub else ''}underline: {pal['accent']} {pal['accent_hex']}.")
-    rules = " ".join(style[k]["prompt"] for k in ORDER if k != "subtitle" or sub)
-    text = f'TITLE: "{spec["title"].strip()}"\n' + (f'SUBTITLE: "{sub}"' if sub else "No subtitle.")
+    sub, line = spec.get("subtitle", "").strip(), spec.get("underline", False)
+    color = f"Title color: {pal['title']} {pal['title_hex']}."
+    uses = " and ".join(n for n, on in (("subtitle", sub), ("underline", line)) if on)
+    if uses:
+        color += f" Accent color for the {uses}: {pal['accent']} {pal['accent_hex']}."
+    keys = [k for k in ORDER if k != "subtitle" or sub]
+    rules = " ".join(style[k if k != "underline" or line else "no_underline"]["prompt"] for k in keys)
+    # 영문 제목은 대문자로 넘긴다. 한글은 upper()에 영향받지 않는다.
+    title = unicodedata.normalize("NFC", spec["title"].strip()).upper()
+    text = f'TITLE: "{title}"\n' + (f'SUBTITLE: "{sub}"' if sub else "No subtitle.")
     return "\n\n".join([style["medium"]["prompt"], f"LETTERING: {rules} {color}", text])
 
 
@@ -118,14 +124,22 @@ def selftest():
         t = Path(tmp)
         Image.new("RGB", (64, 36), (235, 235, 230)).save(t / "light.png")
         Image.new("RGB", (64, 36), (30, 30, 40)).save(t / "dark.png")
+        fails = lambda s: {n for n, ok, _ in check(s, t) if not ok}  # noqa: E731
         good = {"image": "dark.png", "palette": "butter", "title": "빨래는 기다림", "subtitle": "새벽 세 시의 회전"}
         assert score(check(good, t)) == 100, check(good, t)
         out = build(good)
         assert '"빨래는 기다림"' in out and '"새벽 세 시의 회전"' in out and "#F7EF9E" in out and "#F0A8A4" in out
-        assert "monoline" in out and "subtitle and underline" in out
+        assert "monoline" in out and "Accent color for the subtitle:" in out
+        assert "No underline" in out and "wavy underline" not in out
+        lined = build(dict(good, underline=True))
+        assert "wavy underline" in lined and "No underline" not in lined and "subtitle and underline" in lined
+        assert "Accent color for the underline:" in build(dict(good, subtitle="", underline=True))
+        assert "Accent color" not in build(dict(good, subtitle=""))
+        assert '"TINY WISHES"' in build(dict(good, title="Tiny Wishes", subtitle="slow days")) and '"slow days"' in build(dict(good, title="Tiny Wishes", subtitle="slow days"))
+        assert '"API 응답 지연"' in build(dict(good, title="api 응답 지연"))
+        assert "underline flag" in fails(dict(good, underline="yes"))
         bare = build(dict(good, subtitle=""))
         assert "No subtitle." in bare and "half of the title" not in bare and "subtitle and" not in bare
-        fails = lambda s: {n for n, ok, _ in check(s, t) if not ok}  # noqa: E731
         assert "title contrast" in fails(dict(good, image="light.png"))
         assert not fails(dict(good, image="light.png", palette="cocoa"))
         assert "palette" in fails(dict(good, palette="neon"))
