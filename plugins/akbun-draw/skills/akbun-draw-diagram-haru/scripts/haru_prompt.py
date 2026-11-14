@@ -122,8 +122,9 @@ def check(spec):
     ("cols", group_ok(nodes, "col", (1, 2, 3, 4), 2, layout == "columns"),
      "columns면 모든 도형에 col(1~4, 1이 맨 왼쪽), 2개 열 이상, 아니면 col 없음"),
     ("edge count", 1 <= len(es) <= 12, f"화살표 {len(es)}개, 1~12개"),
-    ("edge ends", all(e.get("from") in ends and e.get("to") in ends and e["from"] != e["to"] for e in es),
-     "from·to는 서로 다른 도형·묶음 id"),
+    ("edge ends", all(e.get("from") in ends and e.get("to") in ends and e["from"] != e["to"]
+                      and e["to"] not in ancestors(spec, e["from"]) and e["from"] not in ancestors(spec, e["to"]) for e in es),
+     "from·to는 서로 다른 도형·묶음 id, 자기를 감싼 묶음과는 잇지 않음"),
     ("groups", groups_ok(spec), "묶음 0~4개, 이름 1줄 1~20자, 멤버는 도형·묶음 id로 한 곳에만, 3단계 중첩까지"),
     ("edge kinds", all(e.get("kind") in kinds for e in es), f"edges.jsonl id: {sorted(kinds)}"),
     ("edge labels", len(labeled) <= 5 and all(text_ok(e["label"], 14) for e in labeled),
@@ -310,6 +311,7 @@ def selftest():
   assert "groups" in failed(dict(nested, groups=nested["groups"] + [{"id": "x2", "label": ["X"], "members": ["db"]}]))
   assert "groups" in failed(dict(nested, groups=[dict(nested["groups"][0], members=["outer"])]))
   assert "edge ends" in failed(dict(nested, edges=good["edges"][:2] + [{"from": "nope", "to": "spec", "kind": "sync"}]))
+  assert failed(dict(nested, edges=nested["edges"] + [{"from": "db", "to": "outer", "kind": "sync"}])) == {"edge ends"}
   assert "GROUPS" not in out and nb.count('"Storage"') == 2 and "named \"Storage\"" not in nb
 
   cols = dict(tiered, layout="columns", nodes=[{**{k: v for k, v in n.items() if k != "tier"}, "col": n["tier"]} for n in tiered["nodes"]])
