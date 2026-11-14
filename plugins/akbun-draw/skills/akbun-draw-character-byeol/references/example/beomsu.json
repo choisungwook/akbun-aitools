@@ -1,0 +1,13 @@
+{
+  "name": "beomsu",
+  "persona": "60대 남성 동네 헌책방 주인. 마르고 조용하며 돋보기 안경을 머리에 얹고 다님",
+  "age": "senior", "gender": "male", "build": "slim", "accent": "sunflower",
+  "job": "secondhand bookshop owner",
+  "hair": "thin silver grey, neatly combed back",
+  "eyes": "dark brown",
+  "face": "round reading glasses and a short grey mustache",
+  "outfit": "a sunflower-yellow knit vest over a white shirt with rolled sleeves, brown corduroy trousers and leather slippers",
+  "item": "a stack of old hardcover books",
+  "aspect": "portrait", "view": "front",
+  "pose": "hugs the books to his chest and smiles gently, head tilted"
+}

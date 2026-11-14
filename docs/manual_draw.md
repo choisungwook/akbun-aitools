@@ -37,6 +37,7 @@
 | 이미 있는 그림에 제목을 손글씨처럼 그려 넣고 싶음 | [akbun-draw-title-nib](../plugins/akbun-draw/skills/akbun-draw-title-nib/SKILL.md) | 폰트 없이 이미지 모델이 그림 위에 그리는 세리프 제목·부제 편집 프롬프트(spec을 스크립트가 조립·채점) |
 | 그림·사진 위에 크레용으로 덧그린 듯한 굵은 손글씨 제목을 넣고 싶음 | [akbun-draw-title-pastel](../plugins/akbun-draw/skills/akbun-draw-title-pastel/SKILL.md) | 폰트 없이 이미지 모델이 그리는 굵고 둥근 크레용 질감 제목·부제 편집 프롬프트(spec을 스크립트가 조립·채점) |
 | 1990년대 TV 셀 애니메이션 느낌의 오리지널 인물 그림이 필요함 | [akbun-draw-character-hana](../plugins/akbun-draw/skills/akbun-draw-character-hana/SKILL.md) | 가는 잉크 선·두 단 셀 채색·바랜 필름 색의 인물을 투명 바탕에 그리는 프롬프트(spec을 스크립트가 조립·채점) |
+| 직업·외모 같은 페르소나로 캐릭터 그림을 만들고 싶음 | [akbun-draw-character-byeol](../plugins/akbun-draw/skills/akbun-draw-character-byeol/SKILL.md) | 페르소나를 오리지널 캐릭터로 바꿔 흰 바탕(또는 투명 PNG)에 한 명만 그리는 가는 남보라 선·셀 채색 캐릭터 컷 프롬프트, 배경 비었는지 숫자 검사(spec을 스크립트가 조립·채점) |
 | 여행지 거리를 카메라 스냅 사진이나 짧은 반복 영상으로 보여 주고 싶음 | [akbun-draw-juno](../plugins/akbun-draw/skills/akbun-draw-juno/SKILL.md) | 무광 베이지·올리브 색 보정, 얼굴 없는 뒷모습 인물 거리 스냅 프롬프트와 2×2 시트를 이은 mp4(spec을 스크립트가 조립·채점) |
 | 다정한 제목 한 줄과 그 뒤 웃긴 속사정을 보여 주는 개그 한 컷을 원하는 그림체로 그리고 싶음 | [akbun-draw-template-comedy](../plugins/akbun-draw/skills/akbun-draw-template-comedy/SKILL.md) | 고른 akbun-draw 그림체로 한국어 제목과 두 캐릭터 무표정 개그 한 컷 프롬프트(spec을 스크립트가 조립·검사) |
 | 논문·학습 자료를 이미지와 설명 대본으로 바꾸고 싶음 | [akbun-draw-learning-mono](../plugins/akbun-draw/skills/akbun-draw-learning-mono/SKILL.md) | 흑백 16:9 학습 이미지와 대본 |

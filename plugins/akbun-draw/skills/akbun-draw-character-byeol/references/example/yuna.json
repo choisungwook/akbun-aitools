@@ -1,0 +1,13 @@
+{
+  "name": "yuna",
+  "persona": "30대 여성 소방관. 키 크고 다부지며 늘 씩씩하게 웃음. 짧은 머리, 볼에 작은 흉터",
+  "age": "adult", "gender": "female", "build": "sturdy", "accent": "scarlet",
+  "job": "firefighter",
+  "hair": "short dark brown pixie cut, slightly messy",
+  "eyes": "bright hazel",
+  "face": "a small scar on her left cheek",
+  "outfit": "a scarlet fire-resistant jacket with reflective stripes, navy work trousers and black boots",
+  "item": "a yellow helmet tucked under one arm",
+  "aspect": "portrait", "view": "three-quarter",
+  "pose": "stands with one fist on her hip and gives a confident thumbs-up, grinning"
+}

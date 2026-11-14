@@ -130,6 +130,9 @@ agy plugin list --json
 <td><a href="./plugins/akbun-draw/skills/akbun-draw-title-pastel/SKILL.md"><img src="./imgs/akbun-draw-title-pastel.jpg" alt="akbun-draw-title-pastel" width="260"></a><br><code>akbun-draw-title-pastel</code></td>
 <td><a href="./plugins/akbun-draw/skills/akbun-draw-character-hana/SKILL.md"><img src="./imgs/akbun-draw-character-hana.png" alt="akbun-draw-character-hana" width="260"></a><br><code>akbun-draw-character-hana</code></td>
 </tr>
+<tr>
+<td><a href="./plugins/akbun-draw/skills/akbun-draw-character-byeol/SKILL.md"><img src="./imgs/akbun-draw-character-byeol/mira.png" alt="akbun-draw-character-byeol mira" width="84"></a><a href="./plugins/akbun-draw/skills/akbun-draw-character-byeol/SKILL.md"><img src="./imgs/akbun-draw-character-byeol/yuna.png" alt="akbun-draw-character-byeol yuna" width="84"></a><a href="./plugins/akbun-draw/skills/akbun-draw-character-byeol/SKILL.md"><img src="./imgs/akbun-draw-character-byeol/beomsu.png" alt="akbun-draw-character-byeol beomsu" width="84"></a><br><code>akbun-draw-character-byeol</code></td>
+</tr>
 </table>
 
 ### akbun-presentation 예시
@@ -216,6 +219,7 @@ $akbun-davinciresolve-explainer 이 대본을 fiery-ocean 색, akbun 도형으�
 | [akbun-draw-title-nib](./plugins/akbun-draw/skills/akbun-draw-title-nib/) | 이미 있는 그림에 옛 그림책 표지 같은 손글씨 제목을 그려 넣고 싶을 때 |
 | [akbun-draw-title-pastel](./plugins/akbun-draw/skills/akbun-draw-title-pastel/) | 그림이나 사진 위에 크레용으로 덧그린 듯한 굵은 손글씨 제목을 넣고 싶을 때 |
 | [akbun-draw-character-hana](./plugins/akbun-draw/skills/akbun-draw-character-hana/) | 1990년대 TV 셀 애니메이션 느낌의 오리지널 인물 그림이 필요할 때 |
+| [akbun-draw-character-byeol](./plugins/akbun-draw/skills/akbun-draw-character-byeol/) | 직업·외모 같은 페르소나로 배경 없는 캐릭터 그림을 만들 때 |
 | [akbun-draw-juno](./plugins/akbun-draw/skills/akbun-draw-juno/) | 여행지 거리를 무광 색감의 카메라 스냅 사진이나 고정 카메라 반복 영상으로 담고 싶을 때 |
 | [akbun-draw-template-comedy](./plugins/akbun-draw/skills/akbun-draw-template-comedy/) | 다정한 제목과 그 뒤 웃긴 속사정을 보여 주는 개그 한 컷을 원하는 그림체로 만들 때 |
 | [akbun-draw-template-cartoon](./plugins/akbun-draw/skills/akbun-draw-template-cartoon/) | 쓰던 그림체 그대로 4컷 만화·인스타툰·유튜브 커뮤니티 만화를 만들 때 |
