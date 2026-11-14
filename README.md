@@ -132,6 +132,8 @@ agy plugin list --json
 </tr>
 <tr>
 <td><a href="./plugins/akbun-draw/skills/akbun-draw-character-byeol/SKILL.md"><img src="./imgs/akbun-draw-character-byeol/mira.png" alt="akbun-draw-character-byeol mira" width="84"></a><a href="./plugins/akbun-draw/skills/akbun-draw-character-byeol/SKILL.md"><img src="./imgs/akbun-draw-character-byeol/yuna.png" alt="akbun-draw-character-byeol yuna" width="84"></a><a href="./plugins/akbun-draw/skills/akbun-draw-character-byeol/SKILL.md"><img src="./imgs/akbun-draw-character-byeol/beomsu.png" alt="akbun-draw-character-byeol beomsu" width="84"></a><br><code>akbun-draw-character-byeol</code></td>
+<td><a href="./plugins/akbun-draw/skills/akbun-draw-dotori/SKILL.md"><img src="./imgs/akbun-draw-dotori.jpg" alt="akbun-draw-dotori" width="260"></a><br><code>akbun-draw-dotori</code></td>
+<td><a href="./plugins/akbun-draw/skills/akbun-draw-template-cartoon-maru/SKILL.md"><img src="./imgs/akbun-draw-template-cartoon-maru.jpg" alt="akbun-draw-template-cartoon-maru" width="260"></a><br><code>akbun-draw-template-cartoon-maru</code></td>
 </tr>
 </table>
 
@@ -212,6 +214,7 @@ $akbun-davinciresolve-explainer 이 대본을 fiery-ocean 색, akbun 도형으�
 | [akbun-draw-diagram-haru](./plugins/akbun-draw/skills/akbun-draw-diagram-haru/) | 시스템 구조·요청 흐름을 흰 바탕 손그림 다이어그램 이미지로 만들 때 |
 | [akbun-draw-bori](./plugins/akbun-draw/skills/akbun-draw-bori/) | 아늑한 배경 속 동글동글한 동물들의 일상 장면 그림이 필요할 때 |
 | [akbun-draw-moss](./plugins/akbun-draw/skills/akbun-draw-moss/) | 굵은 잉크 선·단색 면에 강조색 하나만 칠한 엉뚱한 한 컷이 필요할 때 |
+| [akbun-draw-dotori](./plugins/akbun-draw/skills/akbun-draw-dotori/) | 붓펜 선 2.5등신 캐릭터가 빈 미색 종이 위에 있는 일상툰 그림이 필요할 때 |
 | [akbun-draw-wash](./plugins/akbun-draw/skills/akbun-draw-wash/) | 흰 종이 여백이 넓은 펜 선·수채 칠 동물 장면 그림이 필요할 때 |
 | [akbun-draw-sena](./plugins/akbun-draw/skills/akbun-draw-sena/) | 사람 없는 장면을 바랜 옛 필름 사진처럼 담은 이미지가 필요할 때 |
 | [akbun-draw-storybook-vintage](./plugins/akbun-draw/skills/akbun-draw-storybook-vintage/) | 사물·동물 장면을 옛 그림책 수채 삽화처럼 그린 이미지가 필요할 때 |
@@ -223,6 +226,7 @@ $akbun-davinciresolve-explainer 이 대본을 fiery-ocean 색, akbun 도형으�
 | [akbun-draw-juno](./plugins/akbun-draw/skills/akbun-draw-juno/) | 여행지 거리를 무광 색감의 카메라 스냅 사진이나 고정 카메라 반복 영상으로 담고 싶을 때 |
 | [akbun-draw-template-comedy](./plugins/akbun-draw/skills/akbun-draw-template-comedy/) | 다정한 제목과 그 뒤 웃긴 속사정을 보여 주는 개그 한 컷을 원하는 그림체로 만들 때 |
 | [akbun-draw-template-cartoon](./plugins/akbun-draw/skills/akbun-draw-template-cartoon/) | 쓰던 그림체 그대로 4컷 만화·인스타툰·유튜브 커뮤니티 만화를 만들 때 |
+| [akbun-draw-template-cartoon-maru](./plugins/akbun-draw/skills/akbun-draw-template-cartoon-maru/) | 짧은 일상 이야기를 말풍선 연출이 살아 있는 세로 인스타툰 캐러셀로 만들 때 |
 | [akbun-draw-animation-dami](./plugins/akbun-draw/skills/akbun-draw-animation-dami/) | 짧은 이야기를 회화풍 세로 애니메이션 쇼츠로 만들 때 |
 | [akbun-draw-learning-mono](./plugins/akbun-draw/skills/akbun-draw-learning-mono/) | 논문·학습 자료를 흑백 16:9 학습 이미지와 대본으로 바꿀 때 |
 | [akbun-draw-thumbnail-retro](./plugins/akbun-draw/skills/akbun-draw-thumbnail-retro/) | IT·여행 글과 영상의 썸네일을 레트로 포스터처럼 만들고 싶을 때 |

@@ -1,0 +1,105 @@
+{
+  "style": "akbun-draw-dotori",
+  "cast": [
+    {
+      "name": "jun",
+      "look": "a young man with a messy black bowl cut in a red pajama top",
+      "bubble": "#FBE1C8"
+    },
+    {
+      "name": "mom",
+      "look": "a short mom with a round curly perm in a green cardigan",
+      "bubble": "#DCE8D2"
+    },
+    {
+      "name": "boss",
+      "look": "a bald manager with tiny round glasses"
+    }
+  ],
+  "beats": [
+    {
+      "shot": "object",
+      "place": "a small desk in jun's bedroom",
+      "scene": "A big laptop on the desk shows a video call grid; jun sits small beside it with a satisfied face, one finger on the trackpad.",
+      "caption": "재택 첫날,\n첫 화상회의",
+      "lines": [
+        {
+          "who": "jun",
+          "text": "음소거 했고..."
+        }
+      ]
+    },
+    {
+      "shot": "closeup",
+      "place": "a small desk in jun's bedroom",
+      "scene": "Close-up of jun leaning back proudly with arms crossed, a tiny sparkle beside his head.",
+      "lines": [
+        {
+          "who": "jun",
+          "text": "오늘은 금방\n끝나겠다"
+        },
+        {
+          "who": "narrator",
+          "kind": "box",
+          "text": "마이크 켜져 있음"
+        }
+      ]
+    },
+    {
+      "shot": "rapid-fire",
+      "place": "a small desk in jun's bedroom",
+      "scene": "Mom opens the door holding a ladle while jun waves both hands at her from the desk chair.",
+      "lines": [
+        {
+          "who": "mom",
+          "text": "밥 먹어!"
+        },
+        {
+          "who": "jun",
+          "text": "나 회의 중!"
+        },
+        {
+          "who": "mom",
+          "text": "회의는 무슨"
+        },
+        {
+          "who": "jun",
+          "kind": "shout",
+          "text": "진짜라고!!"
+        }
+      ]
+    },
+    {
+      "shot": "reaction",
+      "place": "a small desk in jun's bedroom",
+      "scene": "Jun jolts upright in the chair, staring at the laptop, burst lines around him.",
+      "lines": [
+        {
+          "who": "boss",
+          "kind": "offscreen",
+          "text": "준 씨...\n다 들려요"
+        }
+      ],
+      "sfx": "헉"
+    },
+    {
+      "shot": "over-shoulder",
+      "place": "a small desk in jun's bedroom",
+      "scene": "The back of mom's curly head fills the foreground; jun in the background turns to her with a sweat drop, pointing at the laptop.",
+      "lines": [
+        {
+          "who": "jun",
+          "text": "엄마...\n다 들렸대"
+        },
+        {
+          "who": "mom",
+          "text": "어머 안녕하세요~"
+        }
+      ]
+    },
+    {
+      "shot": "caption-only",
+      "caption": "그날 회의록 첫 줄은\n\"밥 먹어\"였다"
+    }
+  ]
+}

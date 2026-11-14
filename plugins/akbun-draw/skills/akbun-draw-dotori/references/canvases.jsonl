@@ -1,0 +1,3 @@
+{"id": "portrait", "use": "기본값. 인스타그램 세로 게시물", "prompt": "portrait 4:5"}
+{"id": "square", "use": "SNS 게시물·유튜브 커뮤니티", "prompt": "square 1:1"}
+{"id": "wide", "use": "블로그 본문·영상 장면", "prompt": "landscape 16:9"}

@@ -30,6 +30,7 @@
 | 시스템 구조·요청 흐름을 흰 바탕 손그림 다이어그램 이미지로 보여 주고 싶음 | [akbun-draw-diagram-haru](../plugins/akbun-draw/skills/akbun-draw-diagram-haru/SKILL.md) | 검정 외곽선 빈 도형·강조색 속 빈 화살표·손글씨 이름을 아이콘 없이 화면 가운데에 놓는 다이어그램 프롬프트(spec을 스크립트가 조립·채점) |
 | 소품 가득한 아늑한 배경 속 동물 캐릭터 일상 장면이 필요함 | [akbun-draw-bori](../plugins/akbun-draw/skills/akbun-draw-bori/SKILL.md) | 갈색 손그림 선·셀 채색 장면 프롬프트(spec을 스크립트가 조립·채점) |
 | 굵은 잉크 선·단색 면으로 동물·사물의 엉뚱한 한 순간을 그리고 싶음 | [akbun-draw-moss](../plugins/akbun-draw/skills/akbun-draw-moss/SKILL.md) | 올리브 잉크 선·그늘 없는 단색·단색 배경·강조색 하나 그림 프롬프트(spec을 스크립트가 조립·채점) |
+| 콩 눈·사선 볼터치를 단 2.5등신 캐릭터로 소소한 일상 한 순간을 일상툰처럼 그리고 싶음 | [akbun-draw-dotori](../plugins/akbun-draw/skills/akbun-draw-dotori/SKILL.md) | 붓펜 선·차분한 단색·색 면 없는 미색 종이 배경 그림 프롬프트(spec을 스크립트가 조립·채점) |
 | 흰 종이 여백이 넓은 펜 선·수채 칠 장면이 필요함 | [akbun-draw-wash](../plugins/akbun-draw/skills/akbun-draw-wash/SKILL.md) | 끊어 겹친 펜 선·옅은 수채 칠·무표정 동물 장면 프롬프트(spec을 스크립트가 조립·채점) |
 | 사람 없는 장면을 바랜 옛 필름 사진처럼 보여 주고 싶음 | [akbun-draw-sena](../plugins/akbun-draw/skills/akbun-draw-sena/SKILL.md) | 필름 입자·무른 초점·실제 광원·아날로그 사물 사진 프롬프트(spec을 스크립트가 조립·채점) |
 | 사물·동물 장면을 옛 그림책 삽화처럼 보여 주고 싶음 | [akbun-draw-storybook-vintage](../plugins/akbun-draw/skills/akbun-draw-storybook-vintage/SKILL.md) | 갈색 연필 윤곽·겹친 수채·한 색 얼룩 바탕·바랜 종이결 삽화 프롬프트(spec을 스크립트가 조립·채점) |
@@ -50,6 +51,7 @@
 | 상황 | 스킬 | 결과물 |
 |---|---|---|
 | 쓰던 akbun-draw 그림체 그대로 짧은 이야기를 4컷·격자·인스타툰·유튜브 커뮤니티 만화로 만들고 싶음 | [akbun-draw-template-cartoon](../plugins/akbun-draw/skills/akbun-draw-template-cartoon/SKILL.md) | 템플릿(4koma·grid·instagram·youtube) 이미지 생성 프롬프트. 대사·번호도 이미지 모델이 손글씨로 직접 쓴다 |
+| 짧은 일상 이야기를 한 박자 한 장씩 넘기는 세로 인스타툰으로 만들고 싶음 | [akbun-draw-template-cartoon-maru](../plugins/akbun-draw/skills/akbun-draw-template-cartoon-maru/SKILL.md) | 고른 그림체로 내레이션·말풍선 구도·샷을 정한 4:5 장별 이미지 생성 프롬프트(spec을 스크립트가 조립·검사) |
 
 ## 기준 스킬
 

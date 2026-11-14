@@ -1,0 +1,19 @@
+{
+ "palette": "soda",
+ "canvas": "portrait",
+ "moment": "Two friends squeeze under one tiny umbrella in the rain, each with one shoulder completely soaked.",
+ "characters": [
+  {
+   "what": "a tall kid with spiky hair in a yellow raincoat",
+   "doing": "holds the tiny umbrella high"
+  },
+  {
+   "what": "a round white bunny with long ears",
+   "doing": "leans in with a soaked shoulder"
+  }
+ ],
+ "props": [
+  "a tiny blue umbrella"
+ ],
+ "accent_on": "tiny blue umbrella"
+}

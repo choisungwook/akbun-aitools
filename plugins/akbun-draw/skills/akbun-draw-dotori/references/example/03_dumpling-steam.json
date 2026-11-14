@@ -1,0 +1,19 @@
+{
+ "palette": "peach",
+ "canvas": "portrait",
+ "moment": "A grandma and a child blow on one steaming dumpling together, cheeks puffed, waiting for it to cool.",
+ "characters": [
+  {
+   "what": "a grandma with a grey bun and round glasses",
+   "doing": "blows on the dumpling"
+  },
+  {
+   "what": "a small child in an orange apron",
+   "doing": "holds chopsticks with puffed cheeks"
+  }
+ ],
+ "props": [
+  "a steaming dumpling"
+ ],
+ "accent_on": "orange apron"
+}

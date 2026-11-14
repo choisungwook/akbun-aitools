@@ -1,0 +1,17 @@
+Hand-drawn flat 2D doodle comic art, drawn with a soft brush pen, light and simple like a casual everyday diary comic. portrait 4:5.
+
+MOMENT: A grandma and a child blow on one steaming dumpling together, cheeks puffed, waiting for it to cool.
+
+CHARACTERS (2): 1. a grandma with a grey bun and round glasses, blows on the dumpling. 2. a small child in an orange apron, holds chopsticks with puffed cheeks.
+
+PROPS: a steaming dumpling.
+
+ACCENT: only orange apron is colored #4C7FC0.
+
+COLOR PALETTE: build the picture from these colors: paper #FFF8EF; ink #503A2C; blush #EE8E6E; accent #4C7FC0; soft1 #FFE0CC; soft2 #FBEFC2; soft3 #E3EDD3; soft4 #F1E2D3. Any other color stays soft and pastel.
+
+STYLE: All lines are a soft brush-pen line in warm #503A2C, about 3 px at 1080 px width, never pure black, with slight pressure variation, rounded ends and a few small breaks. No hatching, no doubled sketch strokes. Characters are about two and a half heads tall: the head is round and a little wider than it is tall, and the body is about one and a half times the head's height. Eyes are two small vertical bean shapes, the mouth is tiny, no nose. Each cheek has three short diagonal #EE8E6E strokes instead of a filled oval. Arms are short with simple rounded hands. Hair is one simple shape filled solid with a color, with no strands. Flat fills only: each area is one solid color with no shading, no highlights and no gradients. Clothes and props use soft muted colors such as #FFE0CC, #FBEFC2, #E3EDD3 and #F1E2D3; the saturated accent #4C7FC0 appears on only one thing in the picture, such as one shirt or one object. The page is plain #FFF8EF paper: no colored patch, panel or shape behind the characters and no scenery, only one or two simple props and one short ground stroke under the feet; no perspective. Comic marks are few and small: a handful of short motion strokes, tiny exclamation marks, a single sweat drop, all in the same #503A2C brush-pen line. A very faint, even print grain over the color fills; no gloss, no paper wrinkles. Mood: cozy, slightly awkward everyday humor; small, understated expressions.
+
+TEXT: No written words, letters, numbers or speech bubbles anywhere in the image.
+
+DO NOT: no realistic proportions or faces, no 3D, no gradients or soft shading, no detailed scenery, no colored patch or panel behind the characters, no thick heavy outlines, no existing mascots or known cartoon characters, no watermark.

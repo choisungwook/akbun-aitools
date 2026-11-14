@@ -1,0 +1,17 @@
+Hand-drawn flat 2D doodle comic art, drawn with a soft brush pen, light and simple like a casual everyday diary comic. portrait 4:5.
+
+MOMENT: Two friends squeeze under one tiny umbrella in the rain, each with one shoulder completely soaked.
+
+CHARACTERS (2): 1. a tall kid with spiky hair in a yellow raincoat, holds the tiny umbrella high. 2. a round white bunny with long ears, leans in with a soaked shoulder.
+
+PROPS: a tiny blue umbrella.
+
+ACCENT: only tiny blue umbrella is colored #E8743B.
+
+COLOR PALETTE: build the picture from these colors: paper #F7F9FA; ink #2F3A4A; blush #F0A3A0; accent #E8743B; soft1 #D3EEF0; soft2 #DCE3F7; soft3 #E7F3DA; soft4 #F2E6F7. Any other color stays soft and pastel.
+
+STYLE: All lines are a soft brush-pen line in warm #2F3A4A, about 3 px at 1080 px width, never pure black, with slight pressure variation, rounded ends and a few small breaks. No hatching, no doubled sketch strokes. Characters are about two and a half heads tall: the head is round and a little wider than it is tall, and the body is about one and a half times the head's height. Eyes are two small vertical bean shapes, the mouth is tiny, no nose. Each cheek has three short diagonal #F0A3A0 strokes instead of a filled oval. Arms are short with simple rounded hands. Hair is one simple shape filled solid with a color, with no strands. Flat fills only: each area is one solid color with no shading, no highlights and no gradients. Clothes and props use soft muted colors such as #D3EEF0, #DCE3F7, #E7F3DA and #F2E6F7; the saturated accent #E8743B appears on only one thing in the picture, such as one shirt or one object. The page is plain #F7F9FA paper: no colored patch, panel or shape behind the characters and no scenery, only one or two simple props and one short ground stroke under the feet; no perspective. Comic marks are few and small: a handful of short motion strokes, tiny exclamation marks, a single sweat drop, all in the same #2F3A4A brush-pen line. A very faint, even print grain over the color fills; no gloss, no paper wrinkles. Mood: cozy, slightly awkward everyday humor; small, understated expressions.
+
+TEXT: No written words, letters, numbers or speech bubbles anywhere in the image.
+
+DO NOT: no realistic proportions or faces, no 3D, no gradients or soft shading, no detailed scenery, no colored patch or panel behind the characters, no thick heavy outlines, no existing mascots or known cartoon characters, no watermark.
