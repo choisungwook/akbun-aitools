@@ -1,19 +1,71 @@
 {
   "time": "night",
+  "weather": "clear",
   "canvas": "wide",
   "pen": "steady",
   "scene": "Late night on a hillside street, where one laundromat is still open and a few neighbours pass by.",
   "structures": [
-    {"what": "a two-storey laundromat building", "details": ["a long shop window with round washer doors", "an awning", "a tiled roof", "a drainpipe", "a small balcony"]},
-    {"what": "a closed bakery", "details": ["a half-lowered roller shutter", "a corrugated canopy", "flower pots"]},
-    {"what": "a stone stairway between buildings", "details": ["a metal handrail", "worn steps", "an overhead wire"]}
+    {
+      "what": "a two-storey laundromat building",
+      "details": [
+        "a long shop window with round washer doors",
+        "an awning",
+        "a tiled roof",
+        "a drainpipe",
+        "a small balcony"
+      ]
+    },
+    {
+      "what": "a closed bakery",
+      "details": [
+        "a half-lowered roller shutter",
+        "a corrugated canopy",
+        "flower pots"
+      ]
+    },
+    {
+      "what": "a stone stairway between buildings",
+      "details": [
+        "a metal handrail",
+        "worn steps",
+        "an overhead wire"
+      ]
+    }
   ],
   "figures": [
-    {"who": "woman", "head": "a loose ponytail", "garment": "a cardigan and long skirt", "doing": "climbs the stairs with a laundry basket"},
-    {"who": "cyclist", "head": "a knit cap", "garment": "a short jacket", "doing": "rides slowly past the shop"}
+    {
+      "who": "a woman",
+      "head": "a loose ponytail",
+      "garment": "a cardigan and long skirt",
+      "doing": "climbs the stairs with a laundry basket"
+    },
+    {
+      "who": "a cyclist",
+      "head": "a knit cap",
+      "garment": "a short jacket",
+      "doing": "rides slowly past the shop"
+    }
   ],
-  "animals": [{"what": "a black cat", "doing": "sits on the balcony rail"}],
-  "props": ["a bench outside the laundromat", "a stack of crates"],
-  "lights": ["the laundromat window", "a street lamp by the stairway", "the bicycle lamp", "one upstairs window"],
-  "accents": [{"color": "teal", "on": "awning"}]
+  "animals": [
+    {
+      "what": "a black cat",
+      "doing": "sits on the balcony rail"
+    }
+  ],
+  "props": [
+    "a bench outside the laundromat",
+    "a stack of crates"
+  ],
+  "lights": [
+    "the laundromat window",
+    "a street lamp by the stairway",
+    "the bicycle lamp",
+    "one upstairs window"
+  ],
+  "accents": [
+    {
+      "color": "teal",
+      "on": "awning"
+    }
+  ]
 }

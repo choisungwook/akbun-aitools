@@ -1,18 +1,63 @@
 {
   "time": "day",
+  "weather": "clear",
   "canvas": "square",
   "pen": "wobble",
   "scene": "A breezy afternoon on an apartment rooftop garden, where neighbours tend plants above the city.",
   "structures": [
-    {"what": "an apartment block rooftop", "details": ["a parapet wall", "a water tank on legs", "a stairwell hut with a door", "a television antenna"]},
-    {"what": "a small glass greenhouse", "details": ["thin window grids", "a ridge vent", "shelves of seedlings"]}
+    {
+      "what": "an apartment block rooftop",
+      "details": [
+        "a parapet wall",
+        "a water tank on legs",
+        "a stairwell hut with a door",
+        "a television antenna"
+      ]
+    },
+    {
+      "what": "a small glass greenhouse",
+      "details": [
+        "thin window grids",
+        "a ridge vent",
+        "shelves of seedlings"
+      ]
+    }
   ],
   "figures": [
-    {"who": "man", "head": "a straw hat", "garment": "rolled-up sleeves and an apron", "doing": "waters tomato plants with a can"},
-    {"who": "boy", "head": "a baseball cap", "garment": "a striped shirt and shorts", "doing": "carries a small pot"}
+    {
+      "who": "a man",
+      "head": "a straw hat",
+      "garment": "rolled-up sleeves and an apron",
+      "doing": "waters tomato plants with a can"
+    },
+    {
+      "who": "a boy",
+      "head": "a baseball cap",
+      "garment": "a striped shirt and shorts",
+      "doing": "carries a small pot"
+    }
   ],
-  "animals": [{"what": "two pigeons", "doing": "perch on the parapet"}],
-  "props": ["terracotta pots", "a washing line with sheets", "a folding chair", "a watering can"],
+  "animals": [
+    {
+      "what": "two pigeons",
+      "doing": "perch on the parapet"
+    }
+  ],
+  "props": [
+    "terracotta pots",
+    "a washing line with sheets",
+    "a folding chair",
+    "a watering can"
+  ],
   "lights": [],
-  "accents": [{"color": "brick", "on": "terracotta pots"}, {"color": "sage", "on": "apron"}]
+  "accents": [
+    {
+      "color": "brick",
+      "on": "terracotta pots"
+    },
+    {
+      "color": "sage",
+      "on": "apron"
+    }
+  ]
 }
