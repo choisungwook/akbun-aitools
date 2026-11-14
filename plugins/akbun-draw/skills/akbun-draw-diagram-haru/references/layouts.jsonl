@@ -4,3 +4,4 @@
 {"id": "layers", "ko": "층: 가로 띠 2~4개, 띠마다 한 계층(예: 클라이언트·서비스·데이터). 도형마다 tier로 띠를 정함", "nodes": [4, 9], "prompt": "The shapes sit in horizontal tiers stacked from top to bottom, one tier per layer, with arrows running between tiers."}
 {"id": "loop", "ko": "고리: 대략 원 위에 놓이고 화살표가 한 바퀴 돌아 처음으로 돌아옴", "nodes": [3, 6], "prompt": "The shapes sit roughly on a circle and the arrows go around it, returning to the first shape."}
 {"id": "split", "ko": "비교: 좌우 두 판(전·후 또는 A·B), 판마다 자기 도형. 도형마다 half로 판을 정함", "nodes": [4, 10], "prompt": "Two side-by-side halves compare two situations (before and after, or A and B), each half with its own shapes; a thin vertical gap separates them."}
+{"id": "columns", "ko": "열: 세로 띠 2~4개를 왼쪽에서 오른쪽으로(mermaid flowchart LR처럼), 띠마다 한 단계·계층. 도형마다 col로 띠를 정함", "nodes": [4, 9], "prompt": "The shapes sit in vertical columns placed from left to right, one column per stage, with arrows running between columns."}

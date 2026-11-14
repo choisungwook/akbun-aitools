@@ -1,0 +1,23 @@
+{
+  "palette": "ink-blue",
+  "layout": "columns",
+  "subject": "A web request enters an AWS VPC through a load balancer in the public subnet and reaches the app and database in the private subnet.",
+  "nodes": [
+    {"id": "user", "label": ["User"], "shape": "circle", "col": 1},
+    {"id": "logs", "label": ["CloudWatch", "Logs"], "shape": "cylinder", "col": 1},
+    {"id": "alb", "label": ["ALB"], "shape": "box", "col": 2},
+    {"id": "app", "label": ["App"], "shape": "box", "col": 3},
+    {"id": "rds", "label": ["RDS"], "shape": "cylinder", "col": 4}
+  ],
+  "groups": [
+    {"id": "vpc", "label": ["VPC 10.0.0.0/16"], "members": ["pub", "priv"]},
+    {"id": "pub", "label": ["Public subnet"], "members": ["alb"]},
+    {"id": "priv", "label": ["Private subnet"], "members": ["app", "rds"]}
+  ],
+  "edges": [
+    {"from": "user", "to": "alb", "kind": "call", "label": "HTTPS", "step": 1},
+    {"from": "alb", "to": "app", "kind": "call", "step": 2},
+    {"from": "app", "to": "rds", "kind": "call", "label": "SQL", "step": 3},
+    {"from": "vpc", "to": "logs", "kind": "sync", "label": "flow logs"}
+  ]
+}
