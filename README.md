@@ -4,7 +4,7 @@ akbun(악분)이 매일 쓰는 AI skill을 Claude Code, Codex, Antigravity plugi
 
 ## 설치
 
-아래 명령의 `akbun-draw`를 설치할 plugin 이름으로 바꿔 실행합니다. plugin 이름은 아래 표에 있습니다.
+Claude Code와 Codex 명령의 `akbun-draw`를 설치할 plugin 이름으로 바꿔 실행합니다. plugin 이름은 아래 표에 있습니다.
 
 Claude Code 입력창에서 marketplace를 등록하고 plugin을 설치하는 명령입니다.
 
@@ -21,12 +21,12 @@ codex plugin marketplace add choisungwook/akbun-aitools --json
 codex plugin add akbun-draw@akbun-aitools --json
 ```
 
-Antigravity는 Google 공식 marketplace만 등록할 수 있어서 저장소를 받은 뒤 plugin 폴더를 지정해 설치합니다. 설치하면 `~/.gemini/config/plugins/`로 복사되므로 받은 폴더는 지워도 됩니다. 새 agent 세션부터 skill이 보입니다.
+Antigravity는 Google 공식 marketplace만 등록할 수 있어서 저장소를 받은 뒤 plugin 폴더를 지정해 설치합니다. 아래 명령은 이 저장소의 모든 plugin을 한 번에 설치합니다. 설치하면 `~/.gemini/config/plugins/`로 복사되므로 받은 폴더는 지워도 됩니다. 새 agent 세션부터 skill이 보입니다.
 
 ```bash
 rm -rf /tmp/akbun-aitools
 git clone --depth 1 https://github.com/choisungwook/akbun-aitools /tmp/akbun-aitools
-agy plugin install /tmp/akbun-aitools/plugins/akbun-draw
+for d in /tmp/akbun-aitools/plugins/*/; do agy plugin install "${d%/}"; done
 ```
 
 ## 재설치
@@ -53,14 +53,17 @@ codex plugin add $P@akbun-aitools --json
 codex plugin list --json
 ```
 
-Antigravity의 plugin 하나를 지우고 남은 복사본까지 비운 뒤 저장소를 새로 받아 다시 설치하는 터미널 명령입니다. 끝나면 agent 세션을 새로 엽니다.
+Antigravity의 모든 plugin을 지우고 남은 복사본까지 비운 뒤 저장소를 새로 받아 다시 설치하는 터미널 명령입니다. 끝나면 agent 세션을 새로 엽니다.
 
 ```bash
-P=akbun-draw
-agy plugin uninstall $P
-rm -rf ~/.gemini/config/plugins/$P /tmp/akbun-aitools
+rm -rf /tmp/akbun-aitools
 git clone --depth 1 https://github.com/choisungwook/akbun-aitools /tmp/akbun-aitools
-agy plugin install /tmp/akbun-aitools/plugins/$P
+for d in /tmp/akbun-aitools/plugins/*/; do
+  P=$(basename "$d")
+  agy plugin uninstall "$P"
+  rm -rf ~/.gemini/config/plugins/"$P"
+  agy plugin install "${d%/}"
+done
 agy plugin list --json
 ```
 
