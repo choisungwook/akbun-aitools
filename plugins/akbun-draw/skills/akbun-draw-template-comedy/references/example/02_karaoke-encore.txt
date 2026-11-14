@@ -1,0 +1,15 @@
+FORMAT: a single-panel illustration, landscape 16:9.
+
+STAGING: One panel, two full-body characters at the same scale, standing together as one compact group that takes about 55-75% of the frame height near the center. Draw as much background as the style asks for, but keep both characters' gestures clearly readable against it. The joke is a contrast of awareness: the unaware character calmly keeps doing a small everyday habit, while the enduring character, right behind or beside them, is frozen in an exaggerated gesture. The unaware one cannot see it. Neither looks at the viewer. Acting: the enduring character's eyes and brows stay flat and deadpan, with only one sweat drop and two or three short trembling lines; no angry brows, no bared teeth, no steam. Only the body is exaggerated. Timing: the instant before anything happens, frozen; nobody is hit or hurt.
+
+GAG: The enduring character presses both hands or paws hard over their own mouth, cheeks puffed, swallowing what they want to say, standing right beside the unaware one.
+
+ENDURING CHARACTER: a round rabbit in a mustard cardigan, holds back a review of the third encore.
+
+UNAWARE CHARACTER: a plump pig in a red bow tie, sings off-key into a microphone with closed eyes.
+
+SETTING: no particular place, the background follows the style.
+
+STYLE: Hand-drawn flat 2D digital illustration, simple and tidy like a calm webcomic panel. Every shape is outlined with one bold, even, smooth ink line in #36301E, about 5 px at 1280 px width, with rounded ends and no wobble. Inner details use the same ink, thinner (about 3 px). Never pure black, no hatching, no sketchy strokes. Flat fills only: each area is one solid color with no shading, no highlights and no gradients. Dark masses such as hair, dark fur or deep shadows are filled solid with the ink color #36301E; light areas are #FCFCF6. Exactly one small element in the picture is colored with the accent #9CB436, with its veins or folds drawn in #6C8424. Everything else uses only ink, white and the paper color. The background is one solid flat #E4E8D2 color filling the whole canvas, with no clouds, no patterns, no doodles, no perspective, no floor and no scenery behind the subjects. Faces, if any, are simple and deadpan, drawn with a few ink marks; no blush, no sparkles in the eyes. Subjects are original animals, plants or everyday objects, never humans; objects and plants may have small faces. Each shape is reduced to a few large simple forms. No paper grain, no noise, no gloss: clean vector-like surfaces. Quiet, slightly whimsical mood; expressions stay deadpan and calm. COLOR PALETTE: paper #E4E8D2; ink #36301E; white #FCFCF6; accent #9CB436; accent_shade #6C8424.
+
+DO NOT: no existing mascots or known cartoon characters, nobody is hit or hurt, no blood or weapons, no written words, captions, speech text, signatures or watermark anywhere in the image.
