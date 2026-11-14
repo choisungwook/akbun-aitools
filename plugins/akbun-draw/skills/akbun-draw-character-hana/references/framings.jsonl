@@ -1,0 +1,3 @@
+{"id": "full", "ko": "전신: 머리끝부터 발끝까지 다 보임. 인물이 화면 높이의 80~90%. 서 있는 자세", "prompt": "Full-body shot from the top of the head to the feet, all visible; the character fills about 80-90% of the frame height, standing."}
+{"id": "knee", "ko": "무릎 위: 차림과 손 동작이 함께 보임. 인물이 화면 높이의 90~100%", "prompt": "Knee-up shot showing both the outfit and the hands; the character fills about 90-100% of the frame height."}
+{"id": "bust", "ko": "가슴 위: 머리와 어깨가 화면 높이의 70~90%.", "prompt": "Bust shot: head and shoulders fill about 70-90% of the frame height."}
