@@ -26,7 +26,7 @@ disable-model-invocation: true
 
 ## 실행
 
-이 스킬 디렉터리에서 `uv run --python 3.12`로 돌린다. 레이어 PNG 렌더는 [akbun-draw-night-gouache](../../../akbun-draw/skills/akbun-draw-night-gouache/SKILL.md)의 `render_gouache.py`를 불러 쓴다.
+이 스킬 디렉터리에서 `uv run --python 3.12`로 돌린다. 레이어 PNG 렌더는 [akbun-draw-explain-sora](../../../akbun-draw/skills/akbun-draw-explain-sora/SKILL.md)의 `render_gouache.py`를 불러 쓴다.
 
 장면마다 자막 시각을 얻고 spec을 빌드한 뒤, 장면 전체를 한 번에 채점하고, 통과하면 타임라인 fps로 comp를 만드는 명령이다.
 

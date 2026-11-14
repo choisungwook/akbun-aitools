@@ -245,7 +245,7 @@ explainer 스킬들과 [공통 Resolve 구현](../plugins/akbun-editvideo/skills
 | 색 조합(팔레트) | `references/palettes.jsonl`의 한 줄. 모든 팔레트가 같은 색 키(BG, LINE, EMPH, COMPUTE …)를 가져서 어떤 도형과도 섞어 쓸 수 있다. 기본은 `night`. |
 | 도형 스타일 | `references/shape-styles.jsonl`의 한 줄. `gouache`(기본, 손채색 질감·붓 화살표)와 `akbun`(akbun-presentation-paper의 테두리 상자·곧은 화살표). |
 | 검사표 | `references/checklist.jsonl`. 장면별(S)·장면 사이(X) 항목을 `scene.py check`가 참/거짓으로 채점하고, 95% 이상이어야 통과다. |
-| 레이어 PNG | `scene.py build`가 akbun-draw-night-gouache 렌더러로 등장 단위(대상·화살표·태그·코드 카드·점선 강조 상자)마다 만든 화면 전체 크기의 투명 PNG. 위치 정보가 그림 안에 있어 Fusion에서는 크기 변화의 중심(Pivot)만 준다. |
+| 레이어 PNG | `scene.py build`가 akbun-draw-explain-sora 렌더러로 등장 단위(대상·화살표·태그·코드 카드·점선 강조 상자)마다 만든 화면 전체 크기의 투명 PNG. 위치 정보가 그림 안에 있어 Fusion에서는 크기 변화의 중심(Pivot)만 준다. |
 | layers.json | 레이어 순서, 파일 이름, 그림 영역(bbox), 크기 변화 중심(pivot, Fusion 좌표), 태그 글자, 자막을 적은 파일. |
 | 팝 | 대상 중심에서 0.3초 동안 0.6배 → 약 1.04배 → 1.0배로 넘쳤다 돌아오며 나타나는 등장. |
 | 자라기 | 화살표·연결선이 0.25초 동안 0.85배에서 1.0배로 커지며 나타나는 등장. 넘침이 없다. |

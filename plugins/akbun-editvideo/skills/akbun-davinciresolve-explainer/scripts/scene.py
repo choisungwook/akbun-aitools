@@ -19,7 +19,7 @@ from pathlib import Path
 
 SKILL = Path(__file__).resolve().parents[1]
 REF = SKILL / "references"
-RENDER = SKILL.parents[2] / "akbun-draw/skills/akbun-draw-night-gouache/scripts/render_gouache.py"
+RENDER = SKILL.parents[2] / "akbun-draw/skills/akbun-draw-explain-sora/scripts/render_gouache.py"
 NS = "http://www.w3.org/2000/svg"
 FPS = 24
 
