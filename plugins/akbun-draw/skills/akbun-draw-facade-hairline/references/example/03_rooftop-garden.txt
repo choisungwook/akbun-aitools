@@ -1,0 +1,23 @@
+A fine-line pen drawing on paper, like a careful architectural sketchbook page with small figures, square 1:1. Not a cartoon, not vector clip art.
+
+DAYLIGHT: dark ink on warm off-white paper #FDFCF8, never pure white; the sky is plain paper or a very faint warm wash.
+
+SCENE: A breezy afternoon on an apartment rooftop garden, where neighbours tend plants above the city.
+
+STRUCTURES (2): 1. an apartment block rooftop, with a parapet wall, a water tank on legs, a stairwell hut with a door, a television antenna. 2. a small glass greenhouse, with thin window grids, a ridge vent, shelves of seedlings.
+
+PEOPLE (2): 1. a man with a straw hat, wearing rolled-up sleeves and an apron, waters tomato plants with a can. 2. a boy with a baseball cap, wearing a striped shirt and shorts, carries a small pot.
+
+ANIMALS (1): 1. two pigeons, perch on the parapet.
+
+PROPS: terracotta pots, a washing line with sheets, a folding chair, a watering can.
+
+ACCENT COLORS: #C9643A only on terracotta pots; #8AA67A only on apron. No other color anywhere.
+
+BASE COLORS: paper #FDFCF8, ink #1C1C1C.
+
+STYLE: One single thin hairline pen weight everywhere, about 1-2 px at 1600 px width, the same for buildings, people and animals; fine details such as tiles, slats, grids and railings use an even thinner line, about half as thick. All lines are #1C1C1C, with round caps and round joins. Never bold outlines, never crosshatched or hatched shadows. Shapes are filled with the paper color #FDFCF8, so nearer things hide farther things like a drawing; only small dark parts such as hair, shoes and hats are solid #1C1C1C. Accent colors are flat single colors; no gradients or shading on any object. Buildings and structures are drawn straight-on as flat elevations with no perspective and no vanishing points, and carry rich fine detail: roofing courses, window frames and grids, slatted shutters, railings, gutters, pipes, wires, crates and pots. Density belongs on the structures. People are small, tall and slender: a small faceless oval head with no eyes, nose or mouth, character shown only through hair and hats; a short neck of two open strokes; a simple boxy garment silhouette; every arm and leg drawn as two separate open parallel strokes with paper between them, never a closed tube, ending in small solid wedge shoes. Adults are about 9.5 heads tall, children about 6 heads tall; an adult stands about three quarters of a doorway's height. Animals are drawn with open strokes: a back line and a separate belly line, single-stroke legs ending in fat ink-dot feet, a small head with an ear. Keep large areas of plain empty paper: about half of the frame is open sky, ground or water. The sky holds only a few thin curly wind-line clouds; water is plain paper with a few short thin horizontal strokes. Color is used sparingly: only the colors listed under ACCENT COLORS, each on its named items in small areas; everything else is ink on paper. The line has a very slight hand-drawn wobble like a real ink pen on paper, subtle, never sketchy or doubled.
+
+TEXT: No written words, letters or numbers anywhere; signboards, posters and labels stay blank.
+
+DO NOT: no faces or facial features, no thick or bold outlines, no hatching or cast shadows, no perspective or isometric views, no gradients on objects, no extra accent colors, no busy sky, no photorealism, no 3D, no anime, no existing characters or brands, no frame or border, no watermark, no captions.

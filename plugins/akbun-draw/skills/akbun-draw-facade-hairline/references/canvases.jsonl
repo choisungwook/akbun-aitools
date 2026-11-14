@@ -1,0 +1,4 @@
+{"id": "wide", "use": "기본값. 블로그 본문·영상 장면", "prompt": "landscape 16:9", "aspect": "16:9"}
+{"id": "panorama", "use": "길게 늘어선 거리·부두·기찻길 같은 가로로 긴 장면", "prompt": "wide panoramic landscape 2:1", "aspect": "2:1"}
+{"id": "square", "use": "SNS 게시물", "prompt": "square 1:1", "aspect": "1:1"}
+{"id": "portrait", "use": "세로 게시물·포스터", "prompt": "portrait 4:5", "aspect": "4:5"}

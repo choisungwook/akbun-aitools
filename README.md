@@ -150,6 +150,9 @@ agy plugin list --json
 <tr>
 <td><a href="./plugins/akbun-draw/skills/akbun-draw-title-nib/SKILL.md"><img src="./imgs/akbun-draw-title-nib.jpg" alt="akbun-draw-title-nib" width="400"></a><br><code>akbun-draw-title-nib</code></td>
 </tr>
+<tr>
+<td><a href="./plugins/akbun-draw/skills/akbun-draw-facade-hairline/SKILL.md"><img src="./imgs/akbun-draw-facade-hairline.jpg" alt="akbun-draw-facade-hairline" width="400"></a><br><code>akbun-draw-facade-hairline</code></td>
+</tr>
 </table>
 
 ### akbun-presentation 예시
@@ -232,6 +235,7 @@ $akbun-davinciresolve-explainer 이 대본을 fiery-ocean 색, akbun 도형으�
 | [akbun-draw-illust-wash](./plugins/akbun-draw/skills/akbun-draw-illust-wash/) | 흰 종이 여백이 넓은 펜 선·수채 칠 동물 장면 그림이 필요할 때 |
 | [akbun-draw-faded-film](./plugins/akbun-draw/skills/akbun-draw-faded-film/) | 사람 없는 장면을 바랜 옛 필름 사진처럼 담은 이미지가 필요할 때 |
 | [akbun-draw-storybook-vintage](./plugins/akbun-draw/skills/akbun-draw-storybook-vintage/) | 사물·동물 장면을 옛 그림책 수채 삽화처럼 그린 이미지가 필요할 때 |
+| [akbun-draw-facade-hairline](./plugins/akbun-draw/skills/akbun-draw-facade-hairline/) | 가는 펜 선으로 세부 많은 건물과 얼굴 없는 작은 인물이 있는 거리·장소 풍경을 낮이나 밤으로 그리고 싶을 때 |
 | [akbun-draw-title-nib](./plugins/akbun-draw/skills/akbun-draw-title-nib/) | 이미 있는 그림에 옛 그림책 표지 같은 손글씨 제목을 그려 넣고 싶을 때 |
 | [akbun-draw-street-matte](./plugins/akbun-draw/skills/akbun-draw-street-matte/) | 여행지 거리를 무광 색감의 카메라 스냅 사진이나 고정 카메라 반복 영상으로 담고 싶을 때 |
 | [akbun-draw-gag-deadpan](./plugins/akbun-draw/skills/akbun-draw-gag-deadpan/) | 다정한 제목과 그 뒤 웃긴 속사정을 보여 주는 개그 한 컷이 필요할 때 |
