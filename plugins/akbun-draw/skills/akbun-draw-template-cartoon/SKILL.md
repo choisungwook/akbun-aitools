@@ -8,7 +8,7 @@ disable-model-invocation: true
 
 ## 목적
 
-짧은 이야기를 만화로 만든다. 그림체는 새로 정하지 않고 사용자가 고른 akbun-draw 스타일 skill(예: [akbun-draw-illust-wash](../akbun-draw-illust-wash/SKILL.md), [akbun-draw-ink-moss](../akbun-draw-ink-moss/SKILL.md), [akbun-draw-storybook-vintage](../akbun-draw-storybook-vintage/SKILL.md))의 것을 그대로 쓴다. 이 skill이 정하는 것은 만화 템플릿(컷 수·비율·배치·컷 역할)과 글자 규칙이다.
+짧은 이야기를 만화로 만든다. 그림체는 새로 정하지 않고 사용자가 고른 akbun-draw 스타일 skill(예: [akbun-draw-wash](../akbun-draw-wash/SKILL.md), [akbun-draw-moss](../akbun-draw-moss/SKILL.md), [akbun-draw-storybook-vintage](../akbun-draw-storybook-vintage/SKILL.md))의 것을 그대로 쓴다. 이 skill이 정하는 것은 만화 템플릿(컷 수·비율·배치·컷 역할)과 글자 규칙이다.
 
 글자는 [.claude/rules/image-lettering.md](../../../../.claude/rules/image-lettering.md)를 따른다. 대사·효과음·컷 번호는 이미지 생성 모델이 그림과 같은 펜으로 직접 쓰고, 폰트 파일·Pillow·SVG `<text>`로 얹지 않는다.
 
@@ -50,7 +50,7 @@ disable-model-invocation: true
 | `template` | 템플릿 표의 이름 |
 | `style` | 스타일 skill 이름(`akbun-draw-…`). 스크립트가 그 skill의 `references/style.jsonl`을 그림체 문장으로 넣는다 |
 | `palette` | 스타일 skill `palettes.jsonl`의 `id`. 빼면 첫 줄(기본 팔레트) |
-| `fill` | 팔레트가 채우지 못한 `{자리표시자}` 값. 검사가 "fill에 값 필요"로 알려 줄 때만 쓴다(예: style-bori의 `season`, `line`) |
+| `fill` | 팔레트가 채우지 못한 `{자리표시자}` 값. 검사가 "fill에 값 필요"로 알려 줄 때만 쓴다(예: bori의 `season`, `line`) |
 | `style_text` | 스타일 skill에 `references/style.jsonl`이 없을 때만. 그 skill의 그림체·선·색·질감 규칙을 영어 문장으로 옮긴다 |
 | `cast` | `[{"name", "look"}]` 1~3명, `name` 중복 없이 영어 한 단어. `look`은 종·색·옷을 담은 영어 4단어 이상. 모든 컷에 글자 그대로 들어간다 |
 | `panels` | 읽는 순서대로 |
@@ -60,12 +60,12 @@ disable-model-invocation: true
 
 이미지 모델이 한글을 정확히 쓰도록 대사는 짧게 한다. 영어 문장에 폰트 이름·`font`·`typeface`를 쓰지 않는다. 글씨 모양은 스크립트의 LETTERING 문장이 획으로 묘사한다.
 
-4koma로 illust-wash 그림체를 쓰는 spec 예시다. 형식만 보고 이야기를 그대로 쓰지 않는다.
+4koma로 wash 그림체를 쓰는 spec 예시다. 형식만 보고 이야기를 그대로 쓰지 않는다.
 
 ```json
 {
   "template": "4koma",
-  "style": "akbun-draw-illust-wash",
+  "style": "akbun-draw-wash",
   "cast": [{"name": "otter", "look": "a small brown otter in a mustard knit vest"}],
   "panels": [
     {"scene": "The otter stands at a bus stop holding a paper cup, looking down the empty road.", "lines": [{"who": "otter", "text": "버스 언제 와"}]},

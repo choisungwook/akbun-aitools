@@ -1,0 +1,15 @@
+FORMAT: a single-panel illustration, landscape 16:9.
+
+STAGING: One panel, two full-body characters at the same scale, standing together as one compact group that takes about 55-75% of the frame height near the center. Draw as much background as the style asks for, but keep both characters' gestures clearly readable against it. Acting: the enduring character's eyes and brows stay flat and deadpan, with only one sweat drop and two or three short trembling lines; no angry brows, no bared teeth, no steam. Only the body is exaggerated. Timing: the instant before anything happens, frozen; nobody is hit or hurt.
+
+GAG: Twist: both characters are enduring each other. They stand face to face, politely, each hiding a rolled-up newspaper the size of a baseball bat behind their back where only the viewer can see it.
+
+ENDURING CHARACTER: a tall glossy black crow with a grey beak, shakes hands warmly with a rigid, upright back.
+
+UNAWARE CHARACTER: an old tortoise with a mossy green shell, shakes hands warmly and nods slowly.
+
+SETTING: no particular place, the background follows the style.
+
+STYLE: A single hand-painted color plate from an early-to-mid 20th century children's storybook, reproduced as a soft vintage print. Not a photograph, not 3D, not a modern digital illustration. Fine, warm sepia-brown pencil and pen contours of uneven weight that break off in places; no heavy black outlines anywhere. Layered transparent watercolor glazes model every form with soft, rounded gradients; touches of opaque white gouache only on the brightest highlights. Fur, fabric and grass get their texture from fine, short brush hatching. The background is an even, softly mottled watercolor wash in the palette's ground color, with little perspective detail, so the subjects sit on it like a painted plate. Soft, diffuse light with only a gentle direction; shadows are thin washes of the palette's darkest colors. No hard cast shadows, no rim light, no glow or bloom. The whole image looks printed on slightly aged paper: saturation pulled down one step, a fine paper tooth visible across the entire frame, colors a little chalky. Mood: a quiet, gentle moment from an old bedtime tale; no people appear anywhere. COLOR PALETTE: sage ground #B8C4A8; pale mint #E2EAD8; paper white #FAF8F0; buttercup #E0C070; fox ochre #C8844E; moss #7E8E5A; sepia line #6E4A34.
+
+DO NOT: no existing mascots or known cartoon characters, nobody is hit or hurt, no blood or weapons, no written words, captions, speech text, signatures or watermark anywhere in the image.

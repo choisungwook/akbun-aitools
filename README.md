@@ -97,7 +97,7 @@ agy plugin list --json
 <td><a href="./plugins/akbun-draw/skills/akbun-draw-code-nari/SKILL.md"><img src="./imgs/akbun-draw-code-nari.jpg" alt="akbun-draw-code-nari" width="400"></a><br><code>akbun-draw-code-nari</code></td>
 </tr>
 <tr>
-<td><a href="./plugins/akbun-draw/skills/akbun-draw-pencil-analogy-graphite/SKILL.md"><img src="./imgs/akbun-draw-pencil-analogy-graphite.jpg" alt="akbun-draw-pencil-analogy-graphite" width="400"></a><br><code>akbun-draw-pencil-analogy-graphite</code></td>
+<td><a href="./plugins/akbun-draw/skills/akbun-draw-raon/SKILL.md"><img src="./imgs/akbun-draw-raon.jpg" alt="akbun-draw-raon" width="400"></a><br><code>akbun-draw-raon</code></td>
 </tr>
 <tr>
 <td><a href="./plugins/akbun-draw/skills/akbun-mascot-whale/SKILL.md"><img src="./imgs/akbun-mascot-whale.png" alt="akbun-mascot-whale" width="400"></a><br><code>akbun-mascot-whale</code></td>
@@ -118,10 +118,10 @@ agy plugin list --json
 <td><a href="./plugins/akbun-draw/skills/akbun-draw-chalkboard/SKILL.md"><img src="./imgs/akbun-draw-chalkboard.png" alt="akbun-draw-chalkboard" width="400"></a><br><code>akbun-draw-chalkboard</code></td>
 </tr>
 <tr>
-<td><a href="./plugins/akbun-draw/skills/akbun-draw-style-bori/SKILL.md"><img src="./imgs/akbun-draw-style-bori.jpg" alt="akbun-draw-style-bori" width="400"></a><br><code>akbun-draw-style-bori</code></td>
+<td><a href="./plugins/akbun-draw/skills/akbun-draw-bori/SKILL.md"><img src="./imgs/akbun-draw-bori.jpg" alt="akbun-draw-bori" width="400"></a><br><code>akbun-draw-bori</code></td>
 </tr>
 <tr>
-<td><a href="./plugins/akbun-draw/skills/akbun-draw-ink-moss/SKILL.md"><img src="./imgs/akbun-draw-ink-moss/toaster-morning.jpg" alt="akbun-draw-ink-moss toaster-morning" width="400"></a><br><a href="./plugins/akbun-draw/skills/akbun-draw-ink-moss/SKILL.md"><img src="./imgs/akbun-draw-ink-moss/dumpling-carry.jpg" alt="akbun-draw-ink-moss dumpling-carry" width="400"></a><br><a href="./plugins/akbun-draw/skills/akbun-draw-ink-moss/SKILL.md"><img src="./imgs/akbun-draw-ink-moss/rain-umbrella.jpg" alt="akbun-draw-ink-moss rain-umbrella" width="400"></a><br><code>akbun-draw-ink-moss</code></td>
+<td><a href="./plugins/akbun-draw/skills/akbun-draw-moss/SKILL.md"><img src="./imgs/akbun-draw-moss/toaster-morning.jpg" alt="akbun-draw-moss toaster-morning" width="400"></a><br><a href="./plugins/akbun-draw/skills/akbun-draw-moss/SKILL.md"><img src="./imgs/akbun-draw-moss/dumpling-carry.jpg" alt="akbun-draw-moss dumpling-carry" width="400"></a><br><a href="./plugins/akbun-draw/skills/akbun-draw-moss/SKILL.md"><img src="./imgs/akbun-draw-moss/rain-umbrella.jpg" alt="akbun-draw-moss rain-umbrella" width="400"></a><br><code>akbun-draw-moss</code></td>
 </tr>
 <tr>
 <td><a href="./plugins/akbun-draw/skills/akbun-draw-learning-mono/SKILL.md"><img src="./imgs/akbun-draw-learning-mono.jpg" alt="akbun-draw-learning-mono" width="400"></a><br><code>akbun-draw-learning-mono</code></td>
@@ -130,19 +130,19 @@ agy plugin list --json
 <td><a href="./plugins/akbun-draw/skills/akbun-draw-diagram-haru/SKILL.md"><img src="./imgs/akbun-draw-diagram-haru.jpg" alt="akbun-draw-diagram-haru" width="400"></a><br><code>akbun-draw-diagram-haru</code></td>
 </tr>
 <tr>
-<td><a href="./plugins/akbun-draw/skills/akbun-draw-illust-wash/SKILL.md"><img src="./imgs/akbun-draw-illust-wash.jpg" alt="akbun-draw-illust-wash" width="400"></a><br><code>akbun-draw-illust-wash</code></td>
+<td><a href="./plugins/akbun-draw/skills/akbun-draw-wash/SKILL.md"><img src="./imgs/akbun-draw-wash.jpg" alt="akbun-draw-wash" width="400"></a><br><code>akbun-draw-wash</code></td>
 </tr>
 <tr>
-<td><a href="./plugins/akbun-draw/skills/akbun-draw-gag-deadpan/SKILL.md"><img src="./imgs/akbun-draw-gag-deadpan.jpg" alt="akbun-draw-gag-deadpan" width="400"></a><br><code>akbun-draw-gag-deadpan</code></td>
+<td><a href="./plugins/akbun-draw/skills/akbun-draw-template-comedy/SKILL.md"><img src="./imgs/akbun-draw-template-comedy.jpg" alt="akbun-draw-template-comedy" width="400"></a><br><code>akbun-draw-template-comedy</code></td>
 </tr>
 <tr>
 <td><a href="./plugins/akbun-draw/skills/akbun-draw-template-cartoon/SKILL.md"><img src="./imgs/akbun-draw-template-cartoon.jpg" alt="akbun-draw-template-cartoon" width="400"></a><br><code>akbun-draw-template-cartoon</code></td>
 </tr>
 <tr>
-<td><a href="./plugins/akbun-draw/skills/akbun-draw-faded-film/SKILL.md"><img src="./imgs/akbun-draw-faded-film.jpg" alt="akbun-draw-faded-film" width="400"></a><br><code>akbun-draw-faded-film</code></td>
+<td><a href="./plugins/akbun-draw/skills/akbun-draw-sena/SKILL.md"><img src="./imgs/akbun-draw-sena.jpg" alt="akbun-draw-sena" width="400"></a><br><code>akbun-draw-sena</code></td>
 </tr>
 <tr>
-<td><a href="./plugins/akbun-draw/skills/akbun-draw-street-matte/SKILL.md"><img src="./imgs/akbun-draw-street-matte.jpg" alt="akbun-draw-street-matte" width="400"></a><br><code>akbun-draw-street-matte</code></td>
+<td><a href="./plugins/akbun-draw/skills/akbun-draw-juno/SKILL.md"><img src="./imgs/akbun-draw-juno.jpg" alt="akbun-draw-juno" width="400"></a><br><code>akbun-draw-juno</code></td>
 </tr>
 <tr>
 <td><a href="./plugins/akbun-draw/skills/akbun-draw-storybook-vintage/SKILL.md"><img src="./imgs/akbun-draw-storybook-vintage.jpg" alt="akbun-draw-storybook-vintage" width="400"></a><br><code>akbun-draw-storybook-vintage</code></td>
@@ -228,17 +228,17 @@ $akbun-davinciresolve-explainer 이 대본을 fiery-ocean 색, akbun 도형으�
 | [akbun-draw-code-window-lilac](./plugins/akbun-draw/skills/akbun-draw-code-window-lilac/) | 코드를 한 줄씩 타이핑하며 짚어 주는 영상 장면이 필요할 때 |
 | [akbun-draw-code-nari](./plugins/akbun-draw/skills/akbun-draw-code-nari/) | 터미널·AI 도구 화면 녹화에 화살표·라벨을 붙여 짚는 영상 장면이 필요할 때 |
 | [akbun-draw-night-gouache](./plugins/akbun-draw/skills/akbun-draw-night-gouache/) | 어두운 배경 손채색 그림으로 비유·대화를 보여 주는 설명 장면이 필요할 때 |
-| [akbun-draw-pencil-analogy-graphite](./plugins/akbun-draw/skills/akbun-draw-pencil-analogy-graphite/) | 연필 막대 인물로 개념을 일상 비유로 풀어 줄 때 |
+| [akbun-draw-raon](./plugins/akbun-draw/skills/akbun-draw-raon/) | 연필 막대 인물로 개념을 일상 비유로 풀어 줄 때 |
 | [akbun-draw-diagram-haru](./plugins/akbun-draw/skills/akbun-draw-diagram-haru/) | 시스템 구조·요청 흐름을 흰 바탕 손그림 다이어그램 이미지로 만들 때 |
-| [akbun-draw-style-bori](./plugins/akbun-draw/skills/akbun-draw-style-bori/) | 아늑한 배경 속 동글동글한 동물들의 일상 장면 그림이 필요할 때 |
-| [akbun-draw-ink-moss](./plugins/akbun-draw/skills/akbun-draw-ink-moss/) | 굵은 잉크 선·단색 면에 강조색 하나만 칠한 엉뚱한 한 컷이 필요할 때 |
-| [akbun-draw-illust-wash](./plugins/akbun-draw/skills/akbun-draw-illust-wash/) | 흰 종이 여백이 넓은 펜 선·수채 칠 동물 장면 그림이 필요할 때 |
-| [akbun-draw-faded-film](./plugins/akbun-draw/skills/akbun-draw-faded-film/) | 사람 없는 장면을 바랜 옛 필름 사진처럼 담은 이미지가 필요할 때 |
+| [akbun-draw-bori](./plugins/akbun-draw/skills/akbun-draw-bori/) | 아늑한 배경 속 동글동글한 동물들의 일상 장면 그림이 필요할 때 |
+| [akbun-draw-moss](./plugins/akbun-draw/skills/akbun-draw-moss/) | 굵은 잉크 선·단색 면에 강조색 하나만 칠한 엉뚱한 한 컷이 필요할 때 |
+| [akbun-draw-wash](./plugins/akbun-draw/skills/akbun-draw-wash/) | 흰 종이 여백이 넓은 펜 선·수채 칠 동물 장면 그림이 필요할 때 |
+| [akbun-draw-sena](./plugins/akbun-draw/skills/akbun-draw-sena/) | 사람 없는 장면을 바랜 옛 필름 사진처럼 담은 이미지가 필요할 때 |
 | [akbun-draw-storybook-vintage](./plugins/akbun-draw/skills/akbun-draw-storybook-vintage/) | 사물·동물 장면을 옛 그림책 수채 삽화처럼 그린 이미지가 필요할 때 |
 | [akbun-draw-gaon](./plugins/akbun-draw/skills/akbun-draw-gaon/) | 가는 펜 선으로 세부 많은 건물과 얼굴 없는 작은 인물이 있는 거리·장소 풍경을 낮이나 밤으로 그리고 싶을 때 |
 | [akbun-draw-title-nib](./plugins/akbun-draw/skills/akbun-draw-title-nib/) | 이미 있는 그림에 옛 그림책 표지 같은 손글씨 제목을 그려 넣고 싶을 때 |
-| [akbun-draw-street-matte](./plugins/akbun-draw/skills/akbun-draw-street-matte/) | 여행지 거리를 무광 색감의 카메라 스냅 사진이나 고정 카메라 반복 영상으로 담고 싶을 때 |
-| [akbun-draw-gag-deadpan](./plugins/akbun-draw/skills/akbun-draw-gag-deadpan/) | 다정한 제목과 그 뒤 웃긴 속사정을 보여 주는 개그 한 컷이 필요할 때 |
+| [akbun-draw-juno](./plugins/akbun-draw/skills/akbun-draw-juno/) | 여행지 거리를 무광 색감의 카메라 스냅 사진이나 고정 카메라 반복 영상으로 담고 싶을 때 |
+| [akbun-draw-template-comedy](./plugins/akbun-draw/skills/akbun-draw-template-comedy/) | 다정한 제목과 그 뒤 웃긴 속사정을 보여 주는 개그 한 컷을 원하는 그림체로 만들 때 |
 | [akbun-draw-template-cartoon](./plugins/akbun-draw/skills/akbun-draw-template-cartoon/) | 쓰던 그림체 그대로 4컷 만화·인스타툰·유튜브 커뮤니티 만화를 만들 때 |
 | [akbun-draw-animation-dami](./plugins/akbun-draw/skills/akbun-draw-animation-dami/) | 짧은 이야기를 회화풍 세로 애니메이션 쇼츠로 만들 때 |
 | [akbun-draw-learning-mono](./plugins/akbun-draw/skills/akbun-draw-learning-mono/) | 논문·학습 자료를 흑백 16:9 학습 이미지와 대본으로 바꿀 때 |

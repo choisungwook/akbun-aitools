@@ -42,12 +42,20 @@ def style_parts(spec):
     pals = [json.loads(ln) for ln in (ref / "palettes.jsonl").read_text().splitlines() if ln.strip()] if (ref / "palettes.jsonl").is_file() else []
     pal = next((p for p in pals if p["id"] == spec.get("palette")), pals[0] if pals else {})
     fill = {k: v for k, v in pal.items() if isinstance(v, str)} | pal.get("colors", {}) | spec.get("fill", {})
-    text = " ".join(ASPECT.sub("", r["prompt"]) for r in rows)
+    text = " ".join(r["prompt"] for r in rows)
     missing = sorted(set(re.findall(r"\{(\w+)\}", text)) - set(fill))
-    text = re.sub(r"\{(\w+)\}", lambda m: fill.get(m[1], m[0]), text)
+    text = ASPECT.sub("", re.sub(r"\{(\w+)\}", lambda m: fill.get(m[1], m[0]), text))
     if pal.get("colors"):
         text += " COLOR PALETTE: " + "; ".join(f"{k} {v}" for k, v in pal["colors"].items()) + "."
     return text, missing
+
+
+def bad_palette(spec):
+    """palette를 적었는데 스타일 skill palettes.jsonl에 그 id가 없으면 True. 빼면 첫 줄을 쓰므로 False."""
+    f = SKILLS / spec.get("style", "") / "references" / "palettes.jsonl"
+    if not spec.get("palette") or not f.is_file():
+        return False
+    return spec["palette"] not in {json.loads(ln)["id"] for ln in f.read_text().splitlines() if ln.strip()}
 
 
 def check(spec):
@@ -64,6 +72,8 @@ def check(spec):
         out.append("style skill에 references/style.jsonl이 없으면 style_text(영어 10단어 이상)로 그림체를 적는다")
     if missing:
         out.append(f"fill에 값 필요: {missing}")
+    if bad_palette(spec):
+        out.append(f"palette는 스타일 skill palettes.jsonl의 id: {spec.get('palette')}")
     if len(panels) not in t:
         out.append(f"{spec['template']} 컷 수는 {sorted(t)} 중 하나: {len(panels)}")
     if not 1 <= len(cast) <= 3 or len(names) != len(cast) or any(len(c.get("look", "").split()) < 4 for c in cast):
@@ -113,7 +123,7 @@ def prompts(spec):
 
 
 def selftest():
-    good = {"template": "4koma", "style": "akbun-draw-illust-wash",
+    good = {"template": "4koma", "style": "akbun-draw-wash",
             "cast": [{"name": "otter", "look": "a small brown otter in a mustard knit vest"},
                      {"name": "bear", "look": "a big grey bear in a denim jacket"}],
             "panels": [{"scene": f"The otter and the bear wait at a quiet bus stop, moment {i}.",
@@ -133,8 +143,11 @@ def selftest():
     assert all(k in errs for k in ("컷 수", "줄마다", "who는", "폰트")), errs
     assert "style_text" in " ".join(check(dict(good, style="akbun-draw-motion-doodle")))
     assert check(dict(good, style="akbun-draw-motion-doodle", style_text="black ink doodle lines on white paper with flat orange fills and grey shadow ellipses")) == []
-    assert "fill" in " ".join(check(dict(good, style="akbun-draw-style-bori")))  # season 같은 값은 spec이 채운다
-    assert check(dict(good, style="akbun-draw-style-bori", fill={"season": "autumn", "line": "#5A4636"})) == []
+    assert "fill" in " ".join(check(dict(good, style="akbun-draw-bori")))  # season 같은 값은 spec이 채운다
+    assert check(dict(good, style="akbun-draw-bori", fill={"season": "autumn", "line": "#5A4636"})) == []
+    assert "palette" in " ".join(check(dict(good, palette="no-such")))
+    moss = prompts(dict(good, style="akbun-draw-moss", palette="moss", fill={"canvas": "landscape 16:9"}))[0][1]
+    assert "16:9" not in moss, "자리표시자로 들어온 비율도 지운다"
     print("selftest ok")
 
 
