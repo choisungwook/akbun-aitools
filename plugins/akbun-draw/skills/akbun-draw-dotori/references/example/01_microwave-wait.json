@@ -1,0 +1,15 @@
+{
+ "palette": "dotori",
+ "canvas": "portrait",
+ "moment": "A kid waits in front of a humming microwave, both hands pressed on the door, counting the last seconds.",
+ "characters": [
+  {
+   "what": "a small kid with a round bob in a red hoodie",
+   "doing": "presses both mittens on the microwave door"
+  }
+ ],
+ "props": [
+  "a microwave"
+ ],
+ "accent_on": "red hoodie"
+}

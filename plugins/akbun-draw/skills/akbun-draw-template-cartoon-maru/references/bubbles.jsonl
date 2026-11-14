@@ -1,0 +1,4 @@
+{"id": "say", "ko": "보통 대사. 모서리가 둥근 사각형 말풍선", "prompt": "a rounded-rectangle speech bubble"}
+{"id": "shout", "ko": "외침. 외곽선이 짧은 지그재그 요철로 된 조금 큰 말풍선, 그림자를 조금 더 밀어 깐다", "prompt": "a slightly larger shout bubble whose outline is a row of short zigzag bumps, with its shadow shifted a little further"}
+{"id": "offscreen", "ko": "그림 밖 화자. 장면 영역 가장자리에 붙고 갈고리 꼬리가 그림 밖을 가리킨다. 화자는 그리지 않는다", "prompt": "a rounded-rectangle bubble at the edge of the scene area whose hook tail points out of the image, because the speaker is off-screen and not drawn"}
+{"id": "box", "ko": "속사정 메모. 장면 영역 위쪽 구석에 비스듬히 붙은, 한 모서리가 접힌 작은 메모지. 꼬리 없음. who는 narrator", "prompt": "a small sticky note with one folded corner, stuck slightly tilted in an upper corner of the scene area, with no tail: an aside from the narrator"}

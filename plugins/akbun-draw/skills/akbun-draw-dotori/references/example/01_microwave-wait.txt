@@ -1,0 +1,17 @@
+Hand-drawn flat 2D doodle comic art, drawn with a soft brush pen, light and simple like a casual everyday diary comic. portrait 4:5.
+
+MOMENT: A kid waits in front of a humming microwave, both hands pressed on the door, counting the last seconds.
+
+CHARACTERS (1): 1. a small kid with a round bob in a red hoodie, presses both mittens on the microwave door.
+
+PROPS: a microwave.
+
+ACCENT: only red hoodie is colored #2E9E8F.
+
+COLOR PALETTE: build the picture from these colors: paper #FAF6EE; ink #4A3B33; blush #F2A07B; accent #2E9E8F; soft1 #DCE8D2; soft2 #FBE1C8; soft3 #D6E2F0; soft4 #F3DCE4. Any other color stays soft and pastel.
+
+STYLE: All lines are a soft brush-pen line in warm #4A3B33, about 3 px at 1080 px width, never pure black, with slight pressure variation, rounded ends and a few small breaks. No hatching, no doubled sketch strokes. Characters are about two and a half heads tall: the head is round and a little wider than it is tall, and the body is about one and a half times the head's height. Eyes are two small vertical bean shapes, the mouth is tiny, no nose. Each cheek has three short diagonal #F2A07B strokes instead of a filled oval. Arms are short with simple rounded hands. Hair is one simple shape filled solid with a color, with no strands. Flat fills only: each area is one solid color with no shading, no highlights and no gradients. Clothes and props use soft muted colors such as #DCE8D2, #FBE1C8, #D6E2F0 and #F3DCE4; the saturated accent #2E9E8F appears on only one thing in the picture, such as one shirt or one object. The page is plain #FAF6EE paper: no colored patch, panel or shape behind the characters and no scenery, only one or two simple props and one short ground stroke under the feet; no perspective. Comic marks are few and small: a handful of short motion strokes, tiny exclamation marks, a single sweat drop, all in the same #4A3B33 brush-pen line. A very faint, even print grain over the color fills; no gloss, no paper wrinkles. Mood: cozy, slightly awkward everyday humor; small, understated expressions.
+
+TEXT: No written words, letters, numbers or speech bubbles anywhere in the image.
+
+DO NOT: no realistic proportions or faces, no 3D, no gradients or soft shading, no detailed scenery, no colored patch or panel behind the characters, no thick heavy outlines, no existing mascots or known cartoon characters, no watermark.

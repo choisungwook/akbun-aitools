@@ -1,6 +1,6 @@
 {
   "name": "akbun-draw",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "description": "Image drawing skills by akbun — image-generation prompts and editable SVGs in fixed akbun styles",
   "author": {
     "name": "akbun",
@@ -57,7 +57,9 @@
       "Draw this request flow as a centered, icon-free hand-drawn white-canvas diagram image prompt with accent-colored hollow-head arrows and handwritten labels (akbun-draw-diagram-haru)",
       "Draw a quiet balcony morning with deadpan animals in pen ink and pale watercolor on mostly white paper (akbun-draw-wash)",
       "Turn this topic into a gentle Korean title plus a one-panel deadpan gag in the moss style where one character quietly endures the other (akbun-draw-template-comedy)",
-      "Turn this short story into a 4-panel 4koma comic in the wash style with hand-lettered Korean speech bubbles (akbun-draw-template-cartoon)"
+      "Turn this short story into a 4-panel 4koma comic in the wash style with hand-lettered Korean speech bubbles (akbun-draw-template-cartoon)",
+      "Draw a cozy everyday moment in the dotori style: two-and-a-half-head characters, warm brush-pen lines on plain cream paper (akbun-draw-dotori)",
+      "Turn this short daily-life story into a vertical instatoon carousel with narration captions and zigzag speech bubbles in the dotori style (akbun-draw-template-cartoon-maru)"
     ],
     "brandColor": "#0F766E",
     "screenshots": []
