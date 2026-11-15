@@ -1,6 +1,6 @@
 {
   "name": "akbun-youtube",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "YouTube skills written as YAML for people and AI — a channel settings sheet that follows official YouTube documentation, Codex computer-use skills that set an uploaded video's metadata and register AI-translated titles and descriptions (English, Japanese, French, Simplified Chinese), analysis of your own videos' metrics and style, and a storyboard (editable pptx) and script from an idea or quote",
   "author": {
     "name": "akbun",
@@ -44,7 +44,8 @@
       "업로드한 영상의 한국어 제목과 설명을 영어·일본어·프랑스어·중국어로 번역해서 YouTube Studio 언어 화면에 등록해줘 (akbun-youtube-translate-title-description)",
       "내 최근 영상 12개를 나란히 놓고 잘된 것과 안된 것을 비교해서 다음에 바꿀 한 가지를 알려줘 (akbun-youtube-analyze-my-videos)",
       "내 영상 4개에서 지금 스타일을 뽑아 스타일 프로필로 정리하고 아키타입과 어긋나는 곳을 알려줘 (akbun-youtube-analyze-my-style)",
-      "이 아이디어로 얼굴 없는 영상 스토리보드와 대본을 만들어줘. 컷별 스케치 자리, 타임라인, 후시녹음 구간까지 (akbun-youtube-storyboard-dami)"
+      "이 아이디어로 얼굴 없는 영상 스토리보드와 대본을 만들어줘. 컷별 스케치 자리, 타임라인, 후시녹음 구간까지 (akbun-youtube-storyboard-dami)",
+      "만든 스토리보드를 detail 모드로 바꿔줘. 컷마다 초 단위 비트, 실제 명령·화면 문구, 녹화 방법, AI 영상 프롬프트까지 (akbun-youtube-storyboard-dami-detail)"
     ],
     "brandColor": "#DC2626",
     "screenshots": []

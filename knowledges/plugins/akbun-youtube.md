@@ -4,21 +4,25 @@ title: akbun-youtube
 description: "YouTube skills written as YAML for people and AI — a channel settings sheet that follows official YouTube documentation, Codex computer-use skills that set an uploaded video's metadata and register AI-translated titles and descriptions (English, Japanese, French, Simplified Chinese), analysis of your own videos' metrics and style, and a storyboard (editable pptx) and script from an idea or quote"
 resource: ../../plugins/akbun-youtube/
 tags: [plugin]
-generated: { by: claude-code/claude-fable-5-2, at: 2026-11-15T03:25:00Z }
+generated: { by: claude-code/claude-opus-5-5, at: 2026-11-15T05:20:00Z }
 stale_after: 2027-02-13T00:00:00Z
 sources:
   - id: manifest
     resource: ../../plugins/akbun-youtube/.claude-plugin/plugin.json
     title: akbun-youtube Claude manifest
-    last_modified: 2026-11-15T03:25:00Z
+    last_modified: 2026-11-15T05:20:00Z
   - id: readme
     resource: ../../README.md
     title: README plugin list
-    last_modified: 2026-11-15T03:25:00Z
+    last_modified: 2026-11-15T05:20:00Z
   - id: dami-decisions
     resource: ../../plugins/akbun-youtube/skills/akbun-youtube-storyboard-dami/references/decisions.md
     title: akbun-youtube-storyboard-dami design decisions
-    last_modified: 2026-11-15T03:25:00Z
+    last_modified: 2026-11-15T05:20:00Z
+  - id: dami-detail
+    resource: ../../plugins/akbun-youtube/skills/akbun-youtube-storyboard-dami-detail/references/detail.md
+    title: akbun-youtube-storyboard-dami-detail keys, checks and design decisions
+    last_modified: 2026-11-15T05:20:00Z
 ---
 
 YouTube skills written as YAML for people and AI — a channel settings sheet that follows official YouTube documentation, Codex computer-use skills that set an uploaded video's metadata and register AI-translated titles and descriptions (English, Japanese, French, Simplified Chinese), analysis of your own videos' metrics and style, and a storyboard (editable pptx) and script from an idea or quote[^manifest]
@@ -43,8 +47,10 @@ Turns an idea or a quote into a storyboard and a script for a faceless channel (
 - First trial finding: with the first cut attached as a style reference, hands from that cut leaked into most other sketches. The prompt now says to copy only line weight and shading, and people/hands are drawn only when the scene asks.
 - Only the overview is length-limited (one slide). The timeline continues on further slides every 120 seconds, and sound tables and storyboard slides grow freely (owner's request). pptx files are gitignored; `scripts/slides_to_png.py` (macOS Quick Look, notes stripped because they hang it) exports the example PNGs.
 - Not recorded as a `docs/adr` entry: the choices are reversible, so they stay in the skill's `references/decisions.md`.
+- Two modes. akbun-youtube-storyboard-dami is the default **summary** mode and ends its report by offering **detail** mode. Detail is a separate skill, akbun-youtube-storyboard-dami-detail, that links to the summary docs instead of copying them and runs the summary `check` before its own. It adds per-cut keys to the same `storyboard.json`: `beats` (relative `0–2초` intervals that must chain from 0 to `dur`), `record` (required for screen recordings and stills), and `ai_prompt` (English scene only, required for motion graphics and live shots). The script prepends the top-level `motion_style` to motion-graphic prompts and appends the no-text/no-face sentence and the duration. Output is `detail.pptx`, one slide per cut.[^dami-detail] Rejected: a mode switch inside the summary skill, because it would mix two rule sets in one SKILL.md.
 - Open at creation time: sketch style was tested with one image model only, and `hook_max`/`cut_dur` per genre are starting values chosen without measurement.
 
 [^manifest]: akbun-youtube Claude manifest
 [^dami-decisions]: akbun-youtube-storyboard-dami design decisions
 [^readme]: README plugin list
+[^dami-detail]: akbun-youtube-storyboard-dami-detail keys, checks and design decisions
