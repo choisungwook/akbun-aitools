@@ -1,0 +1,229 @@
+{
+  "title": "DNS 캐시가 왜 필요한가 (가제)",
+  "genre": "it-message",
+  "message": "DNS 캐시는 같은 이름 조회를 내 컴퓨터가 기억해서 매번 먼 서버까지 가는 시간을 줄여 준다.",
+  "audience": "웹 개발을 막 시작했고 DNS라는 말은 들어 봤지만 캐시와 어떻게 이어지는지 모르는 입문자",
+  "intent": "질문으로 시작해 비유 없이 그림 하나로 원리를 보이고, 터미널 조회 시간 비교로 눈에 보이는 증거를 남긴 뒤 다음 주제로 잇는다.",
+  "source_summary": "입력은 'DNS 캐시는 왜 있는지 쉽게 설명하고 싶다'는 한 줄이다. 이름을 주소로 바꾸는 과정, 캐시가 있을 때와 없을 때의 차이, TTL의 뜻, 조회 시간 비교 순서로 구성한다.",
+  "answer_cut": 10,
+  "reaction": {
+    "cut": 11,
+    "text": "내 컴퓨터 DNS 캐시에 지금 무엇이 들어 있는지 조회해 보고 댓글로 알려 달라는 질문"
+  },
+  "parts": [
+    {
+      "id": "hook",
+      "title": "훅"
+    },
+    {
+      "id": "problem",
+      "title": "문제"
+    },
+    {
+      "id": "mechanism",
+      "title": "원리"
+    },
+    {
+      "id": "proof",
+      "title": "확인"
+    },
+    {
+      "id": "wrap",
+      "title": "마무리"
+    }
+  ],
+  "music": [
+    {
+      "id": "bgm1",
+      "from_cut": 1,
+      "to_cut": 5,
+      "mood": "호기심",
+      "genre": "미니멀 일렉트로닉",
+      "bpm": 92,
+      "instruments": "부드러운 신스 패드, 가벼운 퍼커션",
+      "energy": "낮게 시작해 문제 파트 끝에서 한 단계 올림",
+      "search_keywords": "curious, minimal electronic, soft synth pad, light percussion, 92 bpm",
+      "generation_prompt": "Instrumental minimal electronic track, curious mood, 92 BPM, soft synth pad and light percussion, starts low and rises one step near the end, no vocals, 35 seconds."
+    },
+    {
+      "id": "bgm2",
+      "from_cut": 6,
+      "to_cut": 11,
+      "mood": "차분함",
+      "genre": "로파이",
+      "bpm": 80,
+      "instruments": "일렉트릭 피아노, 낮은 베이스",
+      "energy": "원리 파트에서 가장 조용하게, 확인 파트에서 서서히 밝아짐",
+      "search_keywords": "calm, lofi, electric piano, soft bass, 80 bpm",
+      "generation_prompt": "Instrumental lofi track, calm mood, 80 BPM, electric piano and soft bass, quietest in the first half and gradually brighter toward the end, no vocals, 40 seconds."
+    }
+  ],
+  "cuts": [
+    {
+      "part": "hook",
+      "dur": 5,
+      "shot": "pov",
+      "move": "punch-in",
+      "move_note": "100→135%, 0.3초",
+      "source": "촬영",
+      "sketch": "first-person view of a hand reaching toward the address bar of a browser on a laptop, a small empty box shape in the bar",
+      "desc": "내 손이 노트북 브라우저 주소창을 누르려는 1인칭 시점",
+      "intent": "시청자가 직접 주소를 치는 느낌으로 시작해 질문을 자기 일로 받아들이게 한다",
+      "narration": "주소를 칠 때마다 컴퓨터는 길을 새로 물어볼까요?",
+      "voice": "adr",
+      "adr_reason": "촬영 현장 소리가 없고 훅 길이에 말을 정확히 맞춰야 해서 후시녹음",
+      "sfx": [
+        "낮은 클릭"
+      ]
+    },
+    {
+      "part": "hook",
+      "dur": 6,
+      "shot": "title-card",
+      "move": "hold",
+      "source": "모션그래픽",
+      "sketch": "almost empty frame with one large simple magnifier symbol in the center and wide blank margins around it",
+      "desc": "돋보기 아이콘 하나만 있는 카드. 글자는 편집에서 얹는다",
+      "intent": "답을 주지 않고 질문을 한 번 더 키워 다음 컷을 기다리게 한다",
+      "narration": "매번 물어본다면 훨씬 느려야 합니다. 그런데 왜 빠를까요?",
+      "voice": "adr",
+      "adr_reason": "모션그래픽 컷이라 영상 길이를 확정한 뒤 말을 맞춘다",
+      "overlay": "카드 위에 물음표 자막"
+    },
+    {
+      "part": "problem",
+      "dur": 8,
+      "shot": "motion-diagram",
+      "move": "zoom-out-reveal",
+      "move_note": "160→100%, 1.2초",
+      "source": "모션그래픽",
+      "sketch": "left box standing for a browser, a long line to a far box standing for a name server, a small empty speech bubble shape floating between them",
+      "desc": "브라우저 상자에서 이름 서버 상자까지 긴 선이 이어지는 그림이 확대 상태에서 전체로 드러난다",
+      "intent": "작은 부분에서 시작해 전체 구조를 한 번에 보여 줘 이름과 주소가 따로라는 사실을 잡는다",
+      "narration": "브라우저는 이름만 알고 주소는 모릅니다. 이름을 숫자 주소로 바꿔 주는 곳이 DNS 서버입니다.",
+      "voice": "adr",
+      "adr_reason": "용어가 많은 설명이라 한 번에 읽기 어렵고 모션 길이를 먼저 확정해야 해서 후시녹음",
+      "overlay": "브라우저·DNS 서버 이름표 자막",
+      "sfx": [
+        "짧은 스윕"
+      ]
+    },
+    {
+      "part": "problem",
+      "dur": 7,
+      "shot": "screen-full",
+      "move": "slow-push-in",
+      "move_note": "100→108%, 컷 전체",
+      "source": "화면 녹화",
+      "sketch": "full monitor view with a dark terminal window made of a few horizontal bars, one short bar highlighted with a hollow rectangle",
+      "desc": "터미널에 도메인을 조회하는 명령을 치고 답이 돌아오는 화면",
+      "intent": "앞 그림의 과정이 실제로 일어난다는 것을 보여 주고 자연스럽게 조용한 현장음 컷으로 쉬게 한다",
+      "narration": "",
+      "voice": "live",
+      "overlay": "답으로 돌아온 주소 줄에 형광 강조"
+    },
+    {
+      "part": "problem",
+      "dur": 7,
+      "shot": "motion-diagram",
+      "move": "split-compare",
+      "source": "모션그래픽",
+      "sketch": "two halves separated by a thin line, left half a long winding path to a far box, right half a short straight path to a near box",
+      "desc": "왼쪽은 매번 먼 서버로 가는 긴 길, 오른쪽은 가까운 기억에서 바로 꺼내는 짧은 길",
+      "intent": "캐시가 없을 때와 있을 때를 같은 배율로 나란히 놓아 차이를 한눈에 느끼게 한다",
+      "narration": "캐시가 없으면 매번 먼 서버까지 갔다 오고, 있으면 가까운 기억에서 바로 꺼냅니다.",
+      "voice": "adr",
+      "adr_reason": "비교 그림이 움직이는 시간에 맞춰 말해야 해서 후시녹음",
+      "overlay": "왼쪽 '캐시 없음', 오른쪽 '캐시 있음' 자막"
+    },
+    {
+      "part": "mechanism",
+      "dur": 8,
+      "shot": "motion-diagram",
+      "move": "pan-follow",
+      "move_note": "Position X 이동, 배율 115% 고정",
+      "source": "모션그래픽",
+      "sketch": "a small packet shape travels along a line from a browser box through a middle box to a far box and a copy shape stays in the middle box",
+      "desc": "답이 서버에서 돌아오며 중간 상자에 사본이 남는 흐름",
+      "intent": "답이 흐르는 방향을 시선이 따라가게 해 사본이 남는 순간을 놓치지 않게 한다",
+      "narration": "처음 한 번은 DNS 서버에 물어보고, 받은 답은 정해진 시간 동안 내 컴퓨터에 저장합니다.",
+      "voice": "adr",
+      "adr_reason": "모션 길이를 확정한 뒤 설명을 맞춰야 해서 후시녹음",
+      "sfx": [
+        "부드러운 팝"
+      ]
+    },
+    {
+      "part": "mechanism",
+      "dur": 6,
+      "shot": "screen-zoom",
+      "move": "spotlight",
+      "move_note": "바깥 밝기 50%, 0.3초",
+      "source": "화면 녹화",
+      "sketch": "close crop of a terminal region, one bar shape much larger than the rest and a hollow circle around its right end",
+      "desc": "조회 결과 중 TTL 값 하나만 밝게 남기고 나머지는 어둡게",
+      "intent": "여러 값 중 TTL 하나로 시선을 모아 새 용어를 한 번에 하나씩만 받아들이게 한다",
+      "narration": "TTL은 이 답을 얼마나 오래 믿을지 정한 시간입니다.",
+      "voice": "adr",
+      "adr_reason": "화면 녹화 중 말하면 클릭이 늦어져서 영상을 보며 후시녹음"
+    },
+    {
+      "part": "mechanism",
+      "dur": 5,
+      "shot": "hands-keyboard",
+      "move": "jump-cut",
+      "source": "촬영",
+      "sketch": "close view of two hands typing on a keyboard seen from above, a small round clock shape placed beside the keyboard",
+      "desc": "키보드 위 손과 옆에 놓인 시계, 시간이 지나는 것을 암시",
+      "intent": "말 없이 시간이 흐르는 것을 보여 앞의 개념을 소화할 틈을 준다",
+      "narration": "",
+      "voice": "none"
+    },
+    {
+      "part": "proof",
+      "dur": 8,
+      "shot": "screen-full",
+      "move": "speed-ramp",
+      "move_note": "기다리는 구간 400%, 결과 순간 50%",
+      "source": "화면 녹화",
+      "sketch": "full monitor view with two stacked terminal windows made of bars, each ending in a short bar shape on the right side",
+      "desc": "같은 도메인을 두 번 조회해 결과가 뜨는 화면",
+      "intent": "기다리는 구간은 건너뛰고 결과가 뜨는 순간만 늘려 비교할 대상을 정확히 보여 준다",
+      "narration": "같은 도메인을 두 번 조회하면 두 번째 응답 시간이 눈에 띄게 줄어듭니다.",
+      "voice": "adr",
+      "adr_reason": "클릭 타이밍과 말이 겹치지 않게 화면 녹화와 설명을 따로 만든다"
+    },
+    {
+      "part": "proof",
+      "dur": 6,
+      "shot": "screen-zoom",
+      "move": "punch-in",
+      "move_note": "100→140%, 0.3초",
+      "source": "화면 녹화",
+      "sketch": "close crop of two result bars, the first long and the second very short, with a hollow rectangle around the short one",
+      "desc": "첫 조회 시간과 두 번째 조회 시간 두 줄 중 두 번째 줄을 크게",
+      "intent": "증거 숫자를 콕 집어 보여 메시지가 사실임을 확정한다",
+      "narration": "첫 조회는 수십 밀리초, 두 번째는 거의 0에 가깝습니다.",
+      "voice": "adr",
+      "adr_reason": "숫자와 단위가 있는 문장이라 정확히 읽어야 해서 후시녹음",
+      "sfx": [
+        "짧은 팝"
+      ]
+    },
+    {
+      "part": "wrap",
+      "dur": 7,
+      "shot": "title-card",
+      "move": "slow-push-in",
+      "move_note": "100→105%, 컷 전체",
+      "source": "모션그래픽",
+      "sketch": "almost empty frame with one large simple arrow symbol pointing right in the center and wide blank margins",
+      "desc": "화살표 하나만 있는 마무리 카드",
+      "intent": "요약을 되풀이하지 않고 시청자가 직접 해 보고 말하고 싶은 질문 하나로 닫는다",
+      "narration": "여러분 컴퓨터 캐시에는 지금 뭐가 들어 있나요? 조회해서 댓글로 알려 주세요.",
+      "voice": "adr",
+      "adr_reason": "모션그래픽 컷이라 길이를 확정한 뒤 말을 맞춘다",
+      "overlay": "캐시 조회 명령 한 줄 자막"
+    }
+  ]
+}

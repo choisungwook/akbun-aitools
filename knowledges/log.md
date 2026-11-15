@@ -1,5 +1,11 @@
 # Update log
 
+## 2026-11-15
+
+* **Updated**: akbun-youtube gains akbun-youtube-storyboard-dami (idea → editable pptx storyboard with a Resolve-style timeline, plus script.md); design decisions recorded in the plugin concept; manifest version 1.0.2.
+* **Updated**: akbun-youtube-storyboard-dami keeps its philosophy in `references/philosophy.md` (three owner-given drop-off principles first) and real outputs as PNGs in `examples/` for before/after; pptx is gitignored (`*.pptx`, `storyboard-output/`); timeline splits into 120-second slides.
+* **Updated**: knowledges must be updated before push/PR. AGENTS.md reading-order item 5 rewritten and `.claude/hooks/check-knowledges-before-push.sh` added (PreToolUse on `git push` / `gh pr create` only); verification policy and AGENTS.md `last_modified` refreshed.
+
 ## 2026-11-14
 
 * **Updated**: akbun-draw gains akbun-draw-gaon (fine-line street drawing prompts with a day/night inversion); manifest version 1.0.56.

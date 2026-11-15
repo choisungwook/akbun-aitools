@@ -1,7 +1,7 @@
 {
   "name": "akbun-youtube",
-  "version": "1.0.1",
-  "description": "YouTube skills written as YAML for people and AI — a channel settings sheet that follows official YouTube documentation, Codex computer-use skills that set an uploaded video's metadata and register AI-translated titles and descriptions (English, Japanese, French, Simplified Chinese), and analysis of your own videos' metrics and style",
+  "version": "1.0.2",
+  "description": "YouTube skills written as YAML for people and AI — a channel settings sheet that follows official YouTube documentation, Codex computer-use skills that set an uploaded video's metadata and register AI-translated titles and descriptions (English, Japanese, French, Simplified Chinese), analysis of your own videos' metrics and style, and a storyboard (editable pptx) and script from an idea or quote",
   "author": {
     "name": "akbun",
     "url": "https://github.com/choisungwook"
@@ -18,6 +18,8 @@
     "translation",
     "analytics",
     "style",
+    "storyboard",
+    "script",
     "yaml",
     "computer-use",
     "codex"
@@ -25,8 +27,8 @@
   "skills": "./skills/",
   "interface": {
     "displayName": "akbun YouTube",
-    "shortDescription": "YouTube Studio channel setup, video metadata, translated titles, and analysis of your own videos and style",
-    "longDescription": "Sets up and reviews a YouTube channel. Rules and outputs are YAML so both people and AI can read them, and settings and limits follow official YouTube documentation only. akbun-youtube-plan-channel-settings writes a channel settings sheet (channel keywords, made-for-kids fixed to no, auto dubbing, feature eligibility, upload defaults, comment moderation, watermark, translated channel name and description) with the Studio location, value, limit and official source per item; the description template always lists filming gear and background music. It never operates the screen. akbun-youtube-set-video-metadata and akbun-youtube-translate-title-description are Codex computer-use skills: they open an uploaded video by video ID, read the current values, show a YAML table of current and proposed values, enter only approved values, save, and re-read to verify. Sign-in, two-step verification and identity checks are handed to the creator. Translation is done by the AI itself into English, Japanese, French and Simplified Chinese (only when listed), keeps gear and music items, links and chapter timestamps, and enforces the 100-character title and 5000-byte description limits. Without computer use the two skills produce the tables only. akbun-youtube-analyze-my-videos lays the creator's own videos side by side, compares them with the channel median, finds where each video is stuck (impressions, clicks, watching), separates observations from hypotheses, and proposes one variable to test next. akbun-youtube-analyze-my-style extracts the current visual, rhythmic and delivery style from frames, colors, cut intervals and captions, and checks it against the creator's archetype.",
+    "shortDescription": "YouTube Studio channel setup, video metadata, translated titles, analysis of your own videos and style, and storyboards with scripts",
+    "longDescription": "Sets up and reviews a YouTube channel. Rules and outputs are YAML so both people and AI can read them, and settings and limits follow official YouTube documentation only. akbun-youtube-plan-channel-settings writes a channel settings sheet (channel keywords, made-for-kids fixed to no, auto dubbing, feature eligibility, upload defaults, comment moderation, watermark, translated channel name and description) with the Studio location, value, limit and official source per item; the description template always lists filming gear and background music. It never operates the screen. akbun-youtube-set-video-metadata and akbun-youtube-translate-title-description are Codex computer-use skills: they open an uploaded video by video ID, read the current values, show a YAML table of current and proposed values, enter only approved values, save, and re-read to verify. Sign-in, two-step verification and identity checks are handed to the creator. Translation is done by the AI itself into English, Japanese, French and Simplified Chinese (only when listed), keeps gear and music items, links and chapter timestamps, and enforces the 100-character title and 5000-byte description limits. Without computer use the two skills produce the tables only. akbun-youtube-analyze-my-videos lays the creator's own videos side by side, compares them with the channel median, finds where each video is stuck (impressions, clicks, watching), separates observations from hypotheses, and proposes one variable to test next. akbun-youtube-analyze-my-style extracts the current visual, rhythmic and delivery style from frames, colors, cut intervals and captions, and checks it against the creator's archetype. akbun-youtube-storyboard-dami turns an idea or quote into a 16:9 storyboard (editable pptx with a DaVinci Resolve-style timeline, sound and voice-over plan, and one sketch per cut) and a script; the creator's face is never drawn.",
     "developerName": "akbun",
     "category": "Productivity",
     "capabilities": [
@@ -41,7 +43,8 @@
       "업로드한 영상의 제목·설명·챕터·태그·최종 화면을 입력표로 보여주고 승인한 값만 YouTube Studio에 넣어줘 (akbun-youtube-set-video-metadata)",
       "업로드한 영상의 한국어 제목과 설명을 영어·일본어·프랑스어·중국어로 번역해서 YouTube Studio 언어 화면에 등록해줘 (akbun-youtube-translate-title-description)",
       "내 최근 영상 12개를 나란히 놓고 잘된 것과 안된 것을 비교해서 다음에 바꿀 한 가지를 알려줘 (akbun-youtube-analyze-my-videos)",
-      "내 영상 4개에서 지금 스타일을 뽑아 스타일 프로필로 정리하고 아키타입과 어긋나는 곳을 알려줘 (akbun-youtube-analyze-my-style)"
+      "내 영상 4개에서 지금 스타일을 뽑아 스타일 프로필로 정리하고 아키타입과 어긋나는 곳을 알려줘 (akbun-youtube-analyze-my-style)",
+      "이 아이디어로 얼굴 없는 영상 스토리보드와 대본을 만들어줘. 컷별 스케치 자리, 타임라인, 후시녹음 구간까지 (akbun-youtube-storyboard-dami)"
     ],
     "brandColor": "#DC2626",
     "screenshots": []

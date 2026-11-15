@@ -221,3 +221,7 @@ generated/
 
 # Antigravity CLI local runtime state
 .antigravitycli
+
+# akbun-youtube-storyboard-dami 산출물. 대표 예시는 skill의 examples/에 PNG로만 둔다
+storyboard-output/
+*.pptx
