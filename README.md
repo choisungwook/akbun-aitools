@@ -358,6 +358,7 @@ $akbun-davinciresolve-explainer 이 대본을 fiery-ocean 색, akbun 도형으�
 | [akbun-youtube-analyze-my-videos](./plugins/akbun-youtube/skills/akbun-youtube-analyze-my-videos/) | 내 영상들의 지표를 비교해 볼 때 |
 | [akbun-youtube-analyze-my-style](./plugins/akbun-youtube/skills/akbun-youtube-analyze-my-style/) | 내 영상 스타일을 정리해 다음 영상에 쓰고 싶을 때 |
 | [akbun-youtube-storyboard-dami](./plugins/akbun-youtube/skills/akbun-youtube-storyboard-dami/) | 아이디어나 글귀를 영상 스토리보드와 대본으로 만들 때 |
+| [akbun-youtube-storyboard-dami-detail](./plugins/akbun-youtube/skills/akbun-youtube-storyboard-dami-detail/) | 만든 스토리보드로 녹화하거나 AI로 영상을 만들기 전에 컷마다 세부 지시가 필요할 때 |
 
 </details>
 
