@@ -9,7 +9,7 @@ sources:
   - id: agents
     resource: ../../AGENTS.md
     title: AGENTS.md
-    last_modified: 2026-11-13T16:00:00Z
+    last_modified: 2026-11-15T03:25:00Z
   - id: readme
     resource: ../../README.md
     title: README
