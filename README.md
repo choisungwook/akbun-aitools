@@ -80,7 +80,7 @@ agy plugin list --json
 | [akbun-agent-ops](#akbun-agent-ops) | agent 기억과 세션 맥락 |
 | [akbun-pulse](#akbun-pulse) | GitHub·Readwise 하루·기간 요약 |
 | [akbun-editvideo](#akbun-editvideo) | DaVinci Resolve 영상 편집 |
-| [akbun-youtube](#akbun-youtube) | 채널·영상 설정과 분석 |
+| [akbun-youtube](#akbun-youtube) | 채널·영상 설정과 분석, 스토리보드 |
 | [akbun-contentcreator](#akbun-contentcreator) | 악분일상 영상 주제·대본·업로드 준비물(제목·블로그·쇼츠) |
 
 ## plugin 예시
@@ -348,7 +348,7 @@ $akbun-davinciresolve-explainer 이 대본을 fiery-ocean 색, akbun 도형으�
 
 ### akbun-youtube
 
-<details><summary>채널·영상 설정과 분석</summary>
+<details><summary>채널·영상 설정과 분석, 스토리보드</summary>
 
 | skill | 이럴 때 쓰세요 |
 |---|---|
@@ -357,6 +357,7 @@ $akbun-davinciresolve-explainer 이 대본을 fiery-ocean 색, akbun 도형으�
 | [akbun-youtube-translate-title-description](./plugins/akbun-youtube/skills/akbun-youtube-translate-title-description/) | 제목·설명을 여러 언어로 등록할 때 |
 | [akbun-youtube-analyze-my-videos](./plugins/akbun-youtube/skills/akbun-youtube-analyze-my-videos/) | 내 영상들의 지표를 비교해 볼 때 |
 | [akbun-youtube-analyze-my-style](./plugins/akbun-youtube/skills/akbun-youtube-analyze-my-style/) | 내 영상 스타일을 정리해 다음 영상에 쓰고 싶을 때 |
+| [akbun-youtube-storyboard-dami](./plugins/akbun-youtube/skills/akbun-youtube-storyboard-dami/) | 아이디어나 글귀를 영상 스토리보드와 대본으로 만들 때 |
 
 </details>
 
