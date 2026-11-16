@@ -1,5 +1,9 @@
 # Update log
 
+## 2026-11-16
+
+* **Updated**: akbun-draw-diagram-haru arrows straight by default, `split` layout gets per-half top-left `titles`; akbun-draw 1.1.6.
+
 ## 2026-11-15
 
 * **Updated**: akbun-youtube gains akbun-youtube-storyboard-dami-detail (detail mode: per-cut beats, recording steps and AI video prompts on the summary spec, one slide per cut); summary skill now offers it after a run; manifest version 1.0.3.
