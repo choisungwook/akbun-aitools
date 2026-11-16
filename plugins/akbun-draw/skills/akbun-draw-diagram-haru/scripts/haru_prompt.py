@@ -18,7 +18,7 @@ BANNED_RE = re.compile(rf"\b({'|'.join(BANNED)})s?\b", re.I)
 
 # spec에 쓸 수 있는 키. 이 밖의 키(예: icon)는 감점한다.
 KEYS = {
-  "spec": {"palette", "layout", "subject", "nodes", "edges", "notes", "groups"},
+  "spec": {"palette", "layout", "subject", "titles", "nodes", "edges", "notes", "groups"},
   "groups": {"id", "label", "members"},
   "nodes": {"id", "label", "shape", "half", "tier", "col"},
   "edges": {"from", "to", "kind", "label", "step"},
@@ -56,6 +56,15 @@ def group_ok(nodes, key, allowed, min_groups, used):
   if not used:
     return not any(key in n for n in nodes)
   return all(n.get(key) in allowed for n in nodes) and len({n[key] for n in nodes}) >= min_groups
+
+
+def titles_ok(spec):
+  """split이면 titles가 left·right 두 판의 제목(각 1~20자)이고, 다른 배치에서는 titles가 없다."""
+  if spec.get("layout") != "split":
+    return "titles" not in spec
+  titles = spec.get("titles")
+  return (isinstance(titles, dict) and set(titles) == {"left", "right"}
+          and all(isinstance(t, str) and text_ok(t, 20) for t in titles.values()))
 
 
 def groups_ok(spec):
@@ -104,7 +113,8 @@ def check(spec):
   steps = [e["step"] for e in es if "step" in e]
   linked = {e.get("from") for e in es} | {e.get("to") for e in es}
   words = len(subject.split())
-  free = " ".join([subject] + [name(n) for n in nodes] + [name(g) for g in spec.get("groups", [])] + [e.get("label", "") for e in es] + [x.get("text", "") for x in notes])
+  titles = spec.get("titles")
+  free = " ".join([subject] + [str(t) for t in (titles.values() if isinstance(titles, dict) else [])] + [name(n) for n in nodes] + [name(g) for g in spec.get("groups", [])] + [e.get("label", "") for e in es] + [x.get("text", "") for x in notes])
   extra = unknown_keys(spec)
   return [
     ("keys", not extra, f"쓸 수 없는 키: {extra}"),
@@ -117,6 +127,7 @@ def check(spec):
      "도형 이름 1~2줄, 줄마다 1~12자(공백 포함), 영어·한글"),
     ("halves", group_ok(nodes, "half", ("left", "right"), 2, layout == "split"),
      "split이면 모든 도형에 half(left·right), 두 판 모두 사용, 아니면 half 없음"),
+    ("titles", titles_ok(spec), "split이면 titles에 left·right 판 제목(각 1~20자, 영어·한글), 아니면 titles 없음"),
     ("tiers", group_ok(nodes, "tier", (1, 2, 3, 4), 2, layout == "layers"),
      "layers면 모든 도형에 tier(1~4, 1이 맨 위), 2개 층 이상, 아니면 tier 없음"),
     ("cols", group_ok(nodes, "col", (1, 2, 3, 4), 2, layout == "columns"),
@@ -180,10 +191,13 @@ def build(spec):
             f'It encloses {" and ".join([", ".join(inner[:-1]), inner[-1]] if len(inner) > 1 else inner)} fully inside it with clear padding.')
 
   notes = [f'Just below {ref(x["node"])}, a small note in {p["accent"]} lettering reads "{x["text"]}".' for x in spec.get("notes", [])]
+  layout = LIB["layouts"][spec["layout"]]
+  titles = [layout["title"].format(half=half, text=spec["titles"][half], **p) for half in ("left", "right")] if "titles" in spec else []
   parts = [
     style["medium"]["prompt"],
-    f"LAYOUT: {LIB['layouts'][spec['layout']]['prompt']}",
+    f"LAYOUT: {layout['prompt']}",
     f"SUBJECT: {spec['subject']}",
+    "TITLES: " + " ".join(titles) if titles else "",
     f"SHAPES ({len(nodes)}): " + " ".join(map(shape, nodes)),
     (f"GROUPS ({len(groups)}): " + " ".join(map(group, groups)) +
      " Group outlines only enclose their members: a group inside another group sits wholly within it, and no group outline crosses a shape or another group." if groups else ""),
@@ -255,6 +269,7 @@ def selftest():
   # 화살표는 모두 강조색이고 검정 주 흐름 화살표·아이콘이 없다. 그림은 화면 가운데에 놓인다.
   arrows = out.split("ARROWS")[1].split("NOTES")[0]
   assert "#1E1E1E" not in arrows and " dot " not in out and "no arrow is black" in out
+  assert "curved" not in arrows and "a straight solid #4A90D0 line" in arrows and "Arrows are straight lines" in out
   assert "main" not in LIB["edges"] and failed(dict(good, edges=[dict(good["edges"][0], kind="main")] + good["edges"][1:])) == {"edge kinds"}
   assert " icon " not in out and "no icons or pictograms" in out
   assert "centered on the canvas both horizontally and vertically" in out
@@ -274,13 +289,22 @@ def selftest():
   assert "labels" in failed(dict(good, nodes=[dict(good["nodes"][1], label="DB")] + good["nodes"][2:] + good["nodes"][:1]))
 
   twin_nodes = good["nodes"] + [{"id": "db2", "label": ["etcd"], "shape": "cylinder"}]
-  twin = dict(good, layout="split", nodes=[dict(n, half=h) for n, h in zip(twin_nodes, ("left", "left", "left", "right"))],
+  twin = dict(good, layout="split", titles={"left": "Before", "right": "캐시 추가 후"}, nodes=[dict(n, half=h) for n, h in zip(twin_nodes, ("left", "left", "left", "right"))],
               edges=good["edges"] + [{"from": "ctl", "to": "db2", "kind": "sync"}])
   assert score(check(twin)) == 100, check(twin)
   assert "cylinder in the right half" in build(twin) and 'to shape 4 ("etcd")' in build(twin)
   assert "halves" in failed(dict(twin, nodes=good["nodes"] + [twin["nodes"][3]]))
   assert "halves" in failed(dict(twin, nodes=[dict(n, half="left") for n in twin["nodes"]]))
-  assert "halves" in failed(dict(twin, layout="hub"))
+  assert {"halves", "titles"} <= failed(dict(twin, layout="hub"))
+  tb = build(twin)
+  assert 'The left half has the title "Before" written in #1E1E1E' in tb and "at its top-left corner" in tb and 'The right half has the title "캐시 추가 후"' in tb and "{" not in tb
+  assert "TITLES" not in out and "half has the title" not in out and "not quoted above" in out and failed(dict(good, titles={"left": "A", "right": "B"})) == {"titles"}
+  assert failed(dict(good, titles=None)) == {"titles"} and not failed(dict(twin, titles={"left": "A", "right": "x" * 20}))
+  untitled = {k: v for k, v in twin.items() if k != "titles"}
+  assert failed(untitled) == {"titles"}
+  for bad_titles in ({"left": "A"}, {"left": "A", "right": ""}, {"left": "A", "right": "B", "top": "C"}, {"left": "A", "right": "x" * 21}, {"left": "A", "right": 3}, {"left": "A", "right": 'Say "hi"'}, ["A", "B"], None):
+    assert failed(dict(untitled, titles=bad_titles)) == {"titles"}, bad_titles
+  assert failed(dict(twin, titles={"left": "A", "right": "3d"})) == {"no banned words"}
 
   tiered = dict(good, layout="layers", nodes=[dict(n, tier=t) for n, t in zip(good["nodes"] + [cache], (1, 2, 3, 3))],
                 edges=good["edges"] + [{"from": "ctl", "to": "x", "kind": "call"}])

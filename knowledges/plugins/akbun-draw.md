@@ -4,13 +4,13 @@ title: akbun-draw
 description: "Image drawing skills by akbun — image-generation prompts and editable SVGs in fixed akbun styles"
 resource: ../../plugins/akbun-draw/
 tags: [plugin]
-generated: { by: claude-code/claude-opus-5-5, at: 2026-11-14T03:30:00Z }
+generated: { by: claude-code, at: 2026-11-16T00:00:00Z }
 stale_after: 2027-02-13T00:00:00Z
 sources:
   - id: manifest
     resource: ../../plugins/akbun-draw/.claude-plugin/plugin.json
     title: akbun-draw Claude manifest
-    last_modified: 2026-11-13T14:13:02Z
+    last_modified: 2026-11-16T00:00:00Z
   - id: readme
     resource: ../../README.md
     title: README plugin list
@@ -25,6 +25,7 @@ Image drawing skills by akbun — image-generation prompts and editable SVGs in 
 - Three manifests (`.claude-plugin`, `.codex-plugin`, `.antigravity-plugin`), same `version`. Rules: [plugin-versioning](../policies/plugin-versioning.md)
 - Skill list and when to use each: README `## plugin 목록` → `### akbun-draw` table (source of truth)[^readme]
 - Choosing a draw skill: [docs/manual_draw.md](../../docs/manual_draw.md)
+- `akbun-draw-diagram-haru`: arrows are straight (a bend is allowed only where a straight line would cross another shape); the `split` layout requires `titles` (`left`·`right`), drawn at the top-left of each half. Rejected: putting the half name in every shape `label` — it repeats the same word and spends the 12-character label limit.
 - Decisions: [0002](../decisions/0002-reference-image-is-not-pixel-target.md), [0008](../decisions/0008-explainer-svg-reduced-to-chalkboard.md)
 
 [^manifest]: akbun-draw Claude manifest

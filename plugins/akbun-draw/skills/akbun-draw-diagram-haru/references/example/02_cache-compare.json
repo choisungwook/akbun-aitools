@@ -2,12 +2,15 @@
   "palette": "ink-blue",
   "layout": "split",
   "subject": "Before and after adding a cache: every read hits the database in 120 ms versus most reads served from cache in 8 ms.",
+  "titles": {
+    "left": "Before",
+    "right": "After"
+  },
   "nodes": [
     {
       "id": "app1",
       "label": [
-        "App",
-        "(before)"
+        "App"
       ],
       "shape": "box",
       "half": "left"
@@ -23,8 +26,7 @@
     {
       "id": "app2",
       "label": [
-        "App",
-        "(after)"
+        "App"
       ],
       "shape": "box",
       "half": "right"
