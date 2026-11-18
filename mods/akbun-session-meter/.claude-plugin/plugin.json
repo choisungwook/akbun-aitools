@@ -1,0 +1,12 @@
+{
+  "name": "akbun-session-meter",
+  "version": "0.1.0",
+  "description": "Claude Code mod that shows session ID, estimated cost, tokens, context window usage and the agent list in a pane and the status line",
+  "author": {
+    "name": "akbun"
+  },
+  "repository": "https://github.com/choisungwook/akbun-aitools",
+  "license": "MIT",
+  "keywords": ["mod", "status-line", "cost", "tokens", "context-window", "agents"],
+  "types": "./types/index.d.ts"
+}
