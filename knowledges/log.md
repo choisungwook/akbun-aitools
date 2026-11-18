@@ -2,8 +2,7 @@
 
 ## 2026-11-18
 
-* **Created**: akbun-session-meter mod concept (mods/ folder, Claude marketplace only).
-* **Updated**: akbun-session-meter 0.2.0 adds git diff pane and folder install/uninstall guide.
+* **Created**: akbun-session-meter mod concept (mods/ folder, Claude marketplace only, git diff pane, folder install guide).
 
 ## 2026-11-16
 

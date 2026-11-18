@@ -28,6 +28,8 @@ export type DiffFile = {
 export type DiffSnapshot = {
   isGitRepo: boolean
   files: DiffFile[]
+  hiddenCount: number
+  isOutputTruncated: boolean
 }
 
 declare module 'claude-code' {

@@ -55,13 +55,15 @@ const NEW_FILE_DIFF = [
 
 const DIFF_PANE = { ...PANE, requestId: 'session-diff', props: { ...PANE.props, title: 'Changes', placement: 'dock', bodyColumns: 100 } } as const
 
+// 앞의 'git -c core.quotePath=false'를 떼고 하위 명령으로 응답한다
 function answerGit(on: Parameters<Parameters<typeof test>[1]>[1]) {
   on('process.run', (_, e) => {
-    const argv = e.argv.join(' ')
-    if (argv.startsWith('git rev-parse')) return { value: { exitCode: 0, stdout: '/repo\n', stderr: '' } }
-    if (argv.startsWith('git diff HEAD')) return { value: { exitCode: 0, stdout: GIT_DIFF, stderr: '' } }
-    if (argv.startsWith('git ls-files')) return { value: { exitCode: 0, stdout: 'notes.md\0', stderr: '' } }
-    if (argv.includes('--no-index')) return { value: { exitCode: 1, stdout: NEW_FILE_DIFF, stderr: '' } }
+    const args = e.argv.slice(3).join(' ')
+    if (args.startsWith('rev-parse --show-toplevel')) return { value: { exitCode: 0, stdout: '/repo\n', stderr: '' } }
+    if (args.startsWith('rev-parse --verify')) return { value: { exitCode: 0, stdout: 'abc\n', stderr: '' } }
+    if (args.startsWith('ls-files')) return { value: { exitCode: 0, stdout: 'notes.md\0', stderr: '' } }
+    if (args.includes('--no-index')) return { value: { exitCode: 1, stdout: NEW_FILE_DIFF, stderr: '' } }
+    if (args.startsWith('diff') && args.endsWith('HEAD')) return { value: { exitCode: 0, stdout: GIT_DIFF, stderr: '' } }
     return { value: { exitCode: 1, stdout: '', stderr: 'unexpected' } }
   })
 }
@@ -86,6 +88,7 @@ test('pane과 status line에 세션 값과 에이전트 목록을 표시한다',
   await $.session.start({ cwd: '/', surface: 'desktop', isInteractive: true })
 
   expect(statuses.at(-1)).toBe('abcdef12 | ~$1.23 | 45.2k/200.0k (23%) | agents 1')
+  await $.command.run({ command: 'session-diff' })
 
   for (const surface of ['terminal', 'desktop', 'vscode', 'mobile'] as const) {
     const ui = await $.ui.mount({ ...PANE, surface })
@@ -103,7 +106,7 @@ test('pane과 status line에 세션 값과 에이전트 목록을 표시한다',
     expect(await ui.find({ type: 'Button', key: 'file:notes.md' })).toBeTruthy()
     const code = await ui.find({ type: 'Code' })
     expect(code?.props.format).toBe('diff')
-    expect(code?.props.source).toBe('@@ -1,2 +1,2 @@\n const a = 1\n-const b = 2\n+const b = 3\n')
+    expect(code?.props.source).toBe('@@ -1,2 +1,2 @@\n const a = 1\n-const b = 2\n+const b = 3')
     await ui.unmount()
   }
 })

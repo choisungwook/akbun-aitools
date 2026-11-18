@@ -1,6 +1,6 @@
 {
   "name": "akbun-session-meter",
-  "version": "0.2.0",
+  "version": "0.1.0",
   "description": "Claude Code mod that shows session ID, estimated cost, tokens, context window usage, the agent list and a git diff view in a pane and the status line",
   "author": {
     "name": "akbun"
