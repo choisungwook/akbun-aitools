@@ -83,6 +83,31 @@ agy plugin list --json
 | [akbun-youtube](#akbun-youtube) | 채널·영상 설정과 분석, 스토리보드 |
 | [akbun-contentcreator](#akbun-contentcreator) | 악분일상 영상 주제·대본·업로드 준비물(제목·블로그·쇼츠) |
 
+## mod
+
+Claude Code 화면에 정보를 더하는 hooks module입니다. Claude Code에서만 동작하고, Codex·Antigravity 설치 대상이 아닙니다.
+
+| mod | 하는 일 |
+|---|---|
+| [akbun-session-meter](mods/akbun-session-meter/README.md) | 세션 ID, 예상 비용, 토큰, 컨텍스트 사용률, 에이전트 목록, 변경 파일 diff 표시 |
+
+Claude Code 입력창에서 설치하는 명령입니다.
+
+```bash
+/plugin marketplace add choisungwook/akbun-aitools
+/plugin install akbun-session-meter@akbun-aitools
+/reload-plugins
+```
+
+설치를 해제하는 명령입니다.
+
+```bash
+/plugin uninstall akbun-session-meter@akbun-aitools
+/reload-plugins
+```
+
+`~/.claude`에 설치하지 않고 받은 폴더를 지정해 쓰는 방법은 [mod README](mods/akbun-session-meter/README.md#디렉터리-지정)에 있습니다.
+
 ## plugin 예시
 
 그림을 누르면 그 skill 문서로 이동합니다.

@@ -9,5 +9,6 @@
 * [akbun-learning](akbun-learning.md) - Study and learning helpers — English and Japanese practice tools, plus YouTube and X (Twitter) video transcript Markdown conversion
 * [akbun-presentation](akbun-presentation.md) - Technical presentation decks (pptx) and speaker scripts (md): fixed dark design plus paper-style light-sandwich and dark-step styles
 * [akbun-pulse](akbun-pulse.md) - Daily pulse skills — today's GitHub issues, discussions, merged and open/draft PRs as a Korean review digest, and yesterday's Readwise Reader documents and highlights as a Korean changelog/worth-reading mail draft delivered via Gmail, Apple Notes, Google Docs, or Markdown
+* [akbun-session-meter](akbun-session-meter.md) - Claude Code mod — session ID, estimated cost, tokens, context window usage, the agent list and a git diff view in panes and the status line
 * [akbun-writing](akbun-writing.md) - Writing, review, and blog support skills by akbun
 * [akbun-youtube](akbun-youtube.md) - YouTube skills written as YAML for people and AI — a channel settings sheet that follows official YouTube documentation, Codex computer-use skills that set an uploaded video's metadata and register AI-translated titles and descriptions (English, Japanese, French, Simplified Chinese), analysis of your own videos' metrics and style, and a storyboard (editable pptx) and script from an idea or quote
