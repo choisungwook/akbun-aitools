@@ -89,7 +89,7 @@ Claude Code 화면에 정보를 더하는 hooks module입니다. Claude Code에�
 
 | mod | 하는 일 |
 |---|---|
-| [akbun-session-meter](mods/akbun-session-meter/README.md) | 세션 ID, 예상 비용, 토큰, 컨텍스트 사용률, 에이전트 목록 표시 |
+| [akbun-session-meter](mods/akbun-session-meter/README.md) | 세션 ID, 예상 비용, 토큰, 컨텍스트 사용률, 에이전트 목록, 변경 파일 diff 표시 |
 
 Claude Code 입력창에서 설치하는 명령입니다.
 
@@ -98,6 +98,15 @@ Claude Code 입력창에서 설치하는 명령입니다.
 /plugin install akbun-session-meter@akbun-aitools
 /reload-plugins
 ```
+
+설치를 해제하는 명령입니다.
+
+```bash
+/plugin uninstall akbun-session-meter@akbun-aitools
+/reload-plugins
+```
+
+`~/.claude`에 설치하지 않고 받은 폴더를 지정해 쓰는 방법은 [mod README](mods/akbun-session-meter/README.md#디렉터리-지정)에 있습니다.
 
 ## plugin 예시
 
