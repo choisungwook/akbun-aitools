@@ -137,7 +137,7 @@ Claude Code 입력창에서 설치하는 명령입니다.
 </tr>
 <tr>
 <td><a href="./plugins/akbun-draw/skills/akbun-draw-learning-mono/SKILL.md"><img src="./imgs/akbun-draw-learning-mono.jpg" alt="akbun-draw-learning-mono" width="260"></a><br><code>akbun-draw-learning-mono</code></td>
-<td><a href="./plugins/akbun-draw/skills/akbun-draw-diagram-haru/SKILL.md"><img src="./imgs/akbun-draw-diagram-haru.jpg" alt="akbun-draw-diagram-haru" width="260"></a><br><code>akbun-draw-diagram-haru</code></td>
+<td><a href="./plugins/akbun-draw/skills/akbun-draw-diagram-haru/SKILL.md"><img src="./imgs/akbun-draw-diagram-haru.jpg" alt="akbun-draw-diagram-haru" width="260"></a><br><a href="#diagram-haru-레이아웃과-색"><img src="./imgs/akbun-draw-diagram-haru-stack.jpg" alt="akbun-draw-diagram-haru stack 레이아웃" width="260"></a><br><code>akbun-draw-diagram-haru</code> (<a href="#diagram-haru-레이아웃과-색">레이아웃</a>)</td>
 <td><a href="./plugins/akbun-draw/skills/akbun-draw-wash/SKILL.md"><img src="./imgs/akbun-draw-wash.jpg" alt="akbun-draw-wash" width="260"></a><br><code>akbun-draw-wash</code></td>
 </tr>
 <tr>
