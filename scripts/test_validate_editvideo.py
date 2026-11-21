@@ -33,7 +33,7 @@ class RepositoryTests(unittest.TestCase):
   def test_stale_inventory_and_missing_prompt_are_rejected(self):
     with tempfile.TemporaryDirectory() as temporary:
       root = Path(temporary)
-      for name in ("plugins", "docs"):
+      for name in ("plugins", "docs", "mods"):
         shutil.copytree(ROOT / name, root / name)
       for name in ("README.md", "AGENTS.md"):
         shutil.copy2(ROOT / name, root / name)
