@@ -137,7 +137,7 @@ Claude Code 입력창에서 설치하는 명령입니다.
 </tr>
 <tr>
 <td><a href="./plugins/akbun-draw/skills/akbun-draw-learning-mono/SKILL.md"><img src="./imgs/akbun-draw-learning-mono.jpg" alt="akbun-draw-learning-mono" width="260"></a><br><code>akbun-draw-learning-mono</code></td>
-<td><a href="./plugins/akbun-draw/skills/akbun-draw-diagram-haru/SKILL.md"><img src="./imgs/akbun-draw-diagram-haru.jpg" alt="akbun-draw-diagram-haru" width="260"></a><br><code>akbun-draw-diagram-haru</code></td>
+<td><a href="./plugins/akbun-draw/skills/akbun-draw-diagram-haru/SKILL.md"><img src="./imgs/akbun-draw-diagram-haru.jpg" alt="akbun-draw-diagram-haru" width="260"></a><br><a href="./plugins/akbun-draw/skills/akbun-draw-diagram-haru/SKILL.md"><img src="./imgs/akbun-draw-diagram-haru-stack.jpg" alt="akbun-draw-diagram-haru stack 레이아웃" width="260"></a><br><code>akbun-draw-diagram-haru</code><br>위·아래 비교: 요청에 <code>stack 배치, mono-yellow 색</code></td>
 <td><a href="./plugins/akbun-draw/skills/akbun-draw-wash/SKILL.md"><img src="./imgs/akbun-draw-wash.jpg" alt="akbun-draw-wash" width="260"></a><br><code>akbun-draw-wash</code></td>
 </tr>
 <tr>
@@ -202,29 +202,6 @@ Claude Code 입력창에서 설치하는 명령입니다.
 
 ```text
 $akbun-davinciresolve-explainer 이 대본을 fiery-ocean 색, akbun 도형으로 만들어줘.
-```
-
-### diagram-haru 레이아웃과 색
-
-`akbun-draw-diagram-haru`는 호출할 때 배치(레이아웃)와 색을 말로 고를 수 있습니다. 말하지 않으면 내용에 맞는 배치와 `ink-blue` 색(강조색 파랑 화살표)을 고릅니다. 배치마다 언제 쓰는지와 도형에 붙는 칸은 [layouts.jsonl](./plugins/akbun-draw/skills/akbun-draw-diagram-haru/references/layouts.jsonl), 색 값은 [palettes.jsonl](./plugins/akbun-draw/skills/akbun-draw-diagram-haru/references/palettes.jsonl)에 있습니다.
-
-| 배치 | 이럴 때 고릅니다 |
-|---|---|
-| `hub` | 중심 하나에 여럿이 붙을 때 |
-| `row` · `column` | 순서대로 가로·세로로 흐를 때 |
-| `layers` · `columns` | 위→아래 계층, 왼쪽→오른쪽 단계일 때 |
-| `loop` | 흐름이 처음으로 되돌아올 때 |
-| `split` | 전후·A/B를 좌우로 비교할 때(판마다 왼쪽 위 제목) |
-| `stack` | 두 흐름을 위·아래 판으로 비교하거나 위 흐름이 아래로 이어질 때(판마다 실선 테두리·왼쪽 위 제목, 같은 저장소는 점선으로 이어 표시) |
-
-`mono-yellow` 색은 화살표·라벨·순서 번호를 모두 검정으로 그리고, 비교의 중심 두 도형만 서로 다른 옅은 노랑으로 칠합니다. 아래는 `stack` 배치와 `mono-yellow` 색으로 만든 예입니다.
-
-<img src="./imgs/akbun-draw-diagram-haru-stack.jpg" alt="akbun-draw-diagram-haru stack mono-yellow" width="640">
-
-배치와 색을 정해 호출하는 예입니다.
-
-```text
-/akbun-draw-diagram-haru 요약 저장과 읽기 흐름을 stack 배치, mono-yellow 색으로 그려줘.
 ```
 
 ## plugin 목록

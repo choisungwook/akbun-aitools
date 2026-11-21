@@ -2,6 +2,7 @@
 
 ## 2026-11-21
 
+* **Updated**: AGENTS.md requires running triggered workflow commands locally before a PR and all `gh pr checks` green before merge, including pre-existing main failures; editvideo test fixture now copies `mods/`.
 * **Updated**: akbun-draw-diagram-haru moves layout routing into `layouts.jsonl` fields, adds `stack` layout and `mono-yellow` palette (`focus`, `same`, per-panel steps); README gets a haru layout section; akbun-draw 1.1.8.
 * **Updated**: akbun-draw-diagram-haru adds `blocked` edge, `split` gap has no divider, group names get top padding and arrows avoid text; akbun-draw 1.1.7.
 
