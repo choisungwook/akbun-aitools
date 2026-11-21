@@ -20,7 +20,7 @@ BANNED_RE = re.compile(rf"\b({'|'.join(BANNED)})s?\b", re.I)
 KEYS = {
   "spec": {"palette", "layout", "subject", "titles", "nodes", "edges", "notes", "groups"},
   "groups": {"id", "label", "members"},
-  "nodes": {"id", "label", "shape", "half", "tier", "col"},
+  "nodes": {"id", "label", "shape", "focus", "same"},
   "edges": {"from", "to", "kind", "label", "step"},
   "notes": {"node", "text"},
 }
@@ -32,6 +32,9 @@ def load(name):
 
 
 LIB = {name: load(name) for name in ("style", "palettes", "layouts", "shapes", "edges", "groups")}
+# 배치 라우팅은 layouts.jsonl이 정한다. 줄에 key가 있으면 모든 도형이 그 키(values 중 하나)로 칸을 고른다.
+LAYOUT_KEYS = sorted({l["key"] for l in LIB["layouts"].values() if "key" in l})
+KEYS["nodes"] |= set(LAYOUT_KEYS)
 
 
 def text_ok(s, hi):
@@ -51,20 +54,89 @@ def unknown_keys(spec):
   return sorted(found)
 
 
-def group_ok(nodes, key, allowed, min_groups, used):
-  """배치가 key를 쓰면 모든 도형이 allowed 값을 갖고 min_groups개 이상으로 나뉜다. 안 쓰면 key가 없다."""
-  if not used:
+def lay_of(spec):
+  return LIB["layouts"].get(spec.get("layout"), {})
+
+
+def key_ok(nodes, key, lay):
+  """배치 줄의 key가 이 key면 모든 도형이 values 중 하나를 갖고 2칸 이상으로 나뉜다. 아니면 key가 없다."""
+  if lay.get("key") != key:
     return not any(key in n for n in nodes)
-  return all(n.get(key) in allowed for n in nodes) and len({n[key] for n in nodes}) >= min_groups
+  return all(n.get(key) in lay["values"] and type(n[key]) is not bool for n in nodes) and len({n[key] for n in nodes}) >= 2
 
 
 def titles_ok(spec):
-  """split이면 titles가 left·right 두 판의 제목(각 1~20자)이고, 다른 배치에서는 titles가 없다."""
-  if spec.get("layout") != "split":
+  """배치 줄에 title이 있으면 titles가 values 칸마다 제목(각 1~20자)이고, 없으면 titles가 없다."""
+  lay = lay_of(spec)
+  if "title" not in lay:
     return "titles" not in spec
   titles = spec.get("titles")
-  return (isinstance(titles, dict) and set(titles) == {"left", "right"}
+  return (isinstance(titles, dict) and set(titles) == set(lay["values"])
           and all(isinstance(t, str) and text_ok(t, 20) for t in titles.values()))
+
+
+def focus_ok(spec):
+  """focus는 팔레트에 focus 색이 있을 때만, 0~2개 도형에 true. 두 개면 서로 다른 판에 둔다."""
+  nodes, lay = spec.get("nodes", []), lay_of(spec)
+  marked = [n for n in nodes if "focus" in n]
+  if not marked:
+    return True
+  pal = LIB["palettes"].get(spec.get("palette"), {})
+  if "focus" not in pal or "title" not in lay or len(marked) > len(pal["focus"]) or not all(n["focus"] is True for n in marked):
+    return False
+  return len({n.get(lay["key"]) for n in marked}) == len(marked)
+
+
+def side_of(spec):
+  """판이 있는 배치에서 도형·묶음 id → 판. 묶음은 안에 든 도형의 판이고, 두 판에 걸치면 None."""
+  lay = lay_of(spec)
+  side = {n.get("id"): n.get(lay.get("key")) for n in spec.get("nodes", [])}
+  gs = spec.get("groups", [])
+  for _ in gs:  # 중첩 묶음까지 퍼지도록 묶음 수만큼 반복
+    for g in gs:
+      vals = {side.get(m) for m in g.get("members", [])}
+      side[g.get("id")] = vals.pop() if len(vals) == 1 else None
+  return side
+
+
+def panels_ok(spec):
+  """판이 있는 배치면 묶음이 한 판 안에만 있다(두 판에 걸친 경계는 판 테두리와 충돌)."""
+  if "title" not in lay_of(spec):
+    return True
+  side = side_of(spec)
+  return all(side.get(g.get("id")) is not None for g in spec.get("groups", []))
+
+
+def same_ok(spec):
+  """same은 판이 있는 배치에서만, 다른 판에 있는 같은 도형·같은 이름의 도형 id를 가리킨다."""
+  nodes, lay = spec.get("nodes", []), lay_of(spec)
+  by_id = {n.get("id"): n for n in nodes}
+  for n in nodes:
+    if "same" not in n:
+      continue
+    t, key = by_id.get(n["same"]), lay.get("key")
+    if "same" not in lay or not t or t is n or t.get(key) == n.get(key) or t.get("shape") != n.get("shape") or t.get("label") != n.get("label") or "same" in t:
+      return False
+  return True
+
+
+def steps_ok(spec):
+  """step은 그림 전체에서 1부터 빠짐없이 잇거나, 판이 있는 배치면 판마다 1부터 다시 시작해도 된다(판 = from 도형의 판)."""
+  es, lay = spec.get("edges", []), lay_of(spec)
+
+  def run(steps):
+    return all(type(n) is int for n in steps) and sorted(steps) == list(range(1, len(steps) + 1))
+
+  steps = [e["step"] for e in es if "step" in e]
+  if len(steps) == 1:
+    return False
+  if run(steps):
+    return True
+  if "title" not in lay:
+    return False
+  side = side_of(spec)
+  per = [[e["step"] for e in es if "step" in e and side.get(e.get("from")) == v] for v in lay["values"]]
+  return sum(map(len, per)) == len(steps) and all(len(p) != 1 and run(p) for p in per)
 
 
 def groups_ok(spec):
@@ -101,7 +173,7 @@ def ancestors(spec, item):
 def check(spec):
   """(항목, 통과 여부, 이유) 목록. 항목 하나 = 1점, 점수 = 통과 수 / 항목 수 × 100(내림)."""
   pal, lay, shapes, kinds = (LIB[n] for n in ("palettes", "layouts", "shapes", "edges"))
-  layout = spec.get("layout")
+  layout, this = spec.get("layout"), lay_of(spec)
   lo, hi = lay[layout]["nodes"] if layout in lay else (0, 0)
   # ponytail: 묶음이 도형을 덩어리로 나눠 읽기 부담을 덜므로 묶음이 있으면 도형 상한을 3개 올린다
   hi += 3 if spec.get("groups") else 0
@@ -125,13 +197,12 @@ def check(spec):
     ("shapes", all(n.get("shape") in shapes for n in nodes), f"shapes.jsonl id: {sorted(shapes)}"),
     ("labels", all(isinstance(n.get("label"), list) and 1 <= len(n["label"]) <= 2 and all(text_ok(l, 12) for l in n["label"]) for n in nodes),
      "도형 이름 1~2줄, 줄마다 1~12자(공백 포함), 영어·한글"),
-    ("halves", group_ok(nodes, "half", ("left", "right"), 2, layout == "split"),
-     "split이면 모든 도형에 half(left·right), 두 판 모두 사용, 아니면 half 없음"),
-    ("titles", titles_ok(spec), "split이면 titles에 left·right 판 제목(각 1~20자, 영어·한글), 아니면 titles 없음"),
-    ("tiers", group_ok(nodes, "tier", (1, 2, 3, 4), 2, layout == "layers"),
-     "layers면 모든 도형에 tier(1~4, 1이 맨 위), 2개 층 이상, 아니면 tier 없음"),
-    ("cols", group_ok(nodes, "col", (1, 2, 3, 4), 2, layout == "columns"),
-     "columns면 모든 도형에 col(1~4, 1이 맨 왼쪽), 2개 열 이상, 아니면 col 없음"),
+    *[(key, key_ok(nodes, key, this), f"layouts.jsonl에서 key가 {key}인 배치면 모든 도형에 {key}(그 줄의 values), 2칸 이상, 아니면 {key} 없음")
+      for key in LAYOUT_KEYS],
+    ("titles", titles_ok(spec), "layouts.jsonl 줄에 title이 있으면 titles에 values 칸마다 제목(각 1~20자, 영어·한글), 아니면 titles 없음"),
+    ("focus", focus_ok(spec), "focus: true는 focus 색이 있는 팔레트와 title이 있는 배치(split·stack)에서만 0~2개, 판마다 하나"),
+    ("panel groups", panels_ok(spec), "판이 있는 배치면 묶음은 한 판 안의 도형만 감쌈"),
+    ("same", same_ok(spec), "same은 layouts.jsonl 줄에 same이 있을 때만, 다른 판의 같은 도형·이름 도형 id"),
     ("edge count", 1 <= len(es) <= 12, f"화살표 {len(es)}개, 1~12개"),
     ("edge ends", all(e.get("from") in ends and e.get("to") in ends and e["from"] != e["to"]
                       and e["to"] not in ancestors(spec, e["from"]) and e["from"] not in ancestors(spec, e["to"]) for e in es),
@@ -140,8 +211,8 @@ def check(spec):
     ("edge kinds", all(e.get("kind") in kinds for e in es), f"edges.jsonl id: {sorted(kinds)}"),
     ("edge labels", len(labeled) <= 5 and all(text_ok(e["label"], 14) for e in labeled),
      f"이름 붙은 화살표 {len(labeled)}개, 0~5개, 각 1~14자"),
-    ("steps", all(type(n) is int for n in steps) and sorted(steps) == list(range(1, len(steps) + 1)) and len(steps) != 1,
-     f"step {steps}: 없거나, 2개 이상이면 1부터 빠짐없이 이어지는 정수"),
+    ("steps", steps_ok(spec),
+     f"step {steps}: 없거나, 2개 이상이면 1부터 빠짐없이 이어지는 정수(판이 있는 배치는 판마다 1부터도 됨)"),
     ("all linked", all(i in linked or set(ancestors(spec, i)) & linked for i in ids),
      f"화살표가 닿지 않은 도형(속한 묶음에도 닿지 않음): {sorted(i for i in ids if i not in linked and not set(ancestors(spec, i)) & linked)}"),
     ("notes", len(notes) <= 2 and all(x.get("node") in ids and text_ok(x.get("text", ""), 32) for x in notes),
@@ -156,8 +227,12 @@ def score(rows):
 
 
 def build(spec):
-  style = LIB["style"]
   p = LIB["palettes"][spec["palette"]]
+  mono = "focus" in p
+  # ponytail: focus 색이 있는 팔레트만 style 줄의 mono 문장으로 바꾼다. 팔레트별 문장이 더 늘면 팔레트에 style id를 둔다
+  style = {k: dict(v, prompt=v.get("mono", v["prompt"]) if mono else v["prompt"]) for k, v in LIB["style"].items()}
+  layout = LIB["layouts"][spec["layout"]]
+  fills = iter(p.get("focus", []))
   nodes = spec["nodes"]
   num = {n["id"]: i for i, n in enumerate(nodes, 1)}
   by_id = {n["id"]: n for n in nodes}
@@ -173,13 +248,15 @@ def build(spec):
 
   def shape(n):
     text = " over ".join(f'"{l}"' for l in n["label"]) + (" on two lines" if len(n["label"]) == 2 else "")
-    where = (f" in the {n['half']} half" if "half" in n else f" in tier {n['tier']} from the top" if "tier" in n
-             else f" in column {n['col']} from the left" if "col" in n else "")
-    return f"{num[n['id']]}. {LIB['shapes'][n['shape']]['prompt']}{where} named {text}."
+    where = layout["where"].format(v=n[layout["key"]]) if "key" in layout else ""
+    fill = f", filled flat pale yellow {next(fills)}" if n.get("focus") else ""
+    return f"{num[n['id']]}. {LIB['shapes'][n['shape']]['prompt']}{where} named {text}{fill}."
 
   def arrow(i, e):
     out = f"{i}. from {ref(e['from'])} to {ref(e['to'])}: {LIB['edges'][e['kind']]['prompt'].format(**p)}"
-    if "step" in e:
+    if "step" in e and mono:
+      out += f', with a small white circle outlined in {p["accent"]} holding the number "{e["step"]}" in {p["accent"]}, ' + ("placed just before its label" if e.get("label") else "beside the middle of the line")
+    elif "step" in e:
       out += f', with a small hollow {p["accent"]} circle holding the number "{e["step"]}" in {p["accent"]} near the middle of the line'
     if e.get("label"):
       out += f', labeled "{e["label"]}" in small {p["accent"]} lettering beside the line'
@@ -191,20 +268,20 @@ def build(spec):
             f'It encloses {" and ".join([", ".join(inner[:-1]), inner[-1]] if len(inner) > 1 else inner)} fully inside it with clear padding.')
 
   notes = [f'Just below {ref(x["node"])}, a small note in {p["accent"]} lettering reads "{x["text"]}".' for x in spec.get("notes", [])]
-  layout = LIB["layouts"][spec["layout"]]
-  titles = [layout["title"].format(half=half, text=spec["titles"][half], **p) for half in ("left", "right")] if "titles" in spec else []
+  titles = [layout["title"].format(v=v, text=spec["titles"][v], **p) for v in layout["values"]] if "titles" in spec else []
+  same = [layout["same"].format(a=num[n["same"]], b=num[n["id"]], **p) for n in nodes if "same" in n]
   parts = [
     style["medium"]["prompt"],
-    f"LAYOUT: {layout['prompt']}",
+    f"LAYOUT: {layout['prompt'].format(**p)}",
     f"SUBJECT: {spec['subject']}",
     "TITLES: " + " ".join(titles) if titles else "",
-    f"SHAPES ({len(nodes)}): " + " ".join(map(shape, nodes)),
+    f"SHAPES ({len(nodes)}): " + " ".join(map(shape, nodes)) + "".join(" " + x for x in same),
     (f"GROUPS ({len(groups)}): " + " ".join(map(group, groups)) +
      " Group outlines only enclose their members: a group inside another group sits wholly within it, and no group outline crosses a shape or another group." if groups else ""),
     f"ARROWS ({len(spec['edges'])}): " + " ".join(arrow(i, e) for i, e in enumerate(spec["edges"], 1)),
     "NOTES: " + " ".join(notes) if notes else "",
     "TEXT: The only words in the image are the quoted texts above, spelled exactly.",
-    f"COLOR PALETTE: background {p['bg']}; ink {p['ink']}; accent {p['accent']}. Use no other colors.",
+    f"COLOR PALETTE: background {p['bg']}; ink {p['ink']}; accent {p['accent']}" + (f"; pale yellow fills {', '.join(p['focus'])} only on the shapes named with them" if mono else "") + ". Use no other colors.",
     "STYLE: " + " ".join(style[k]["prompt"].format(**p) for k in style if k not in ("medium", "avoid")),
     style["avoid"]["prompt"],
   ]
@@ -275,7 +352,11 @@ def selftest():
   assert "centered on the canvas both horizontally and vertically" in out
   assert "forming an X" in build(dict(good, edges=[dict(good["edges"][0], kind="blocked")] + good["edges"][1:]))
   assert out.rstrip().endswith(LIB["style"]["avoid"]["prompt"]) and out.count("DO NOT") == 1
-  assert all(set(p) == {"id", "use", "ink", "accent", "bg"} for p in LIB["palettes"].values())
+  assert all({"id", "use", "ink", "accent", "bg"} <= set(p) <= {"id", "use", "ink", "accent", "bg", "focus"} for p in LIB["palettes"].values())
+  # 배치 라우팅 필드: key가 있으면 values·where, title이 있으면 key, same이 있으면 title이 함께 있다.
+  for l in LIB["layouts"].values():
+    assert {"id", "pick", "ko", "nodes", "prompt"} <= set(l), l["id"]
+    assert ("key" in l) == ("values" in l) == ("where" in l) and ("title" not in l or "key" in l) and ("same" not in l or "title" in l), l["id"]
   assert failed(dict(good, nodes=[dict(good["nodes"][0], icon="key")] + good["nodes"][1:])) == {"keys"}
   assert failed(dict(good, edges=[dict(good["edges"][1], icon="eye")] + good["edges"][:1] + good["edges"][2:])) == {"keys"}
   assert failed(dict(good, title="x")) == {"keys"}
@@ -294,9 +375,9 @@ def selftest():
               edges=good["edges"] + [{"from": "ctl", "to": "db2", "kind": "sync"}])
   assert score(check(twin)) == 100, check(twin)
   assert "cylinder in the right half" in build(twin) and 'to shape 4 ("etcd")' in build(twin)
-  assert "halves" in failed(dict(twin, nodes=good["nodes"] + [twin["nodes"][3]]))
-  assert "halves" in failed(dict(twin, nodes=[dict(n, half="left") for n in twin["nodes"]]))
-  assert {"halves", "titles"} <= failed(dict(twin, layout="hub"))
+  assert "half" in failed(dict(twin, nodes=good["nodes"] + [twin["nodes"][3]]))
+  assert "half" in failed(dict(twin, nodes=[dict(n, half="left") for n in twin["nodes"]]))
+  assert {"half", "titles"} <= failed(dict(twin, layout="hub"))
   tb = build(twin)
   assert 'The left half has the title "Before" written in #1E1E1E' in tb and "at its top-left corner" in tb and 'The right half has the title "캐시 추가 후"' in tb and "{" not in tb
   assert "TITLES" not in out and "half has the title" not in out and "not quoted above" in out and failed(dict(good, titles={"left": "A", "right": "B"})) == {"titles"}
@@ -311,8 +392,8 @@ def selftest():
                 edges=good["edges"] + [{"from": "ctl", "to": "x", "kind": "call"}])
   assert score(check(tiered)) == 100, check(tiered)
   assert "cylinder in tier 3 from the top" in build(tiered)
-  assert "tiers" in failed(dict(tiered, layout="hub"))
-  assert "tiers" in failed(dict(tiered, nodes=[dict(n, tier=1) for n in tiered["nodes"]]))
+  assert "tier" in failed(dict(tiered, layout="hub"))
+  assert "tier" in failed(dict(tiered, nodes=[dict(n, tier=1) for n in tiered["nodes"]]))
 
   numbered = dict(good, edges=[dict(e, step=i) for i, e in enumerate(good["edges"][:2], 1)] + good["edges"][2:])
   assert score(check(numbered)) == 100, check(numbered)
@@ -341,8 +422,44 @@ def selftest():
 
   cols = dict(tiered, layout="columns", nodes=[{**{k: v for k, v in n.items() if k != "tier"}, "col": n["tier"]} for n in tiered["nodes"]])
   assert score(check(cols)) == 100, failed(cols)
-  assert "in column 3 from the left" in build(cols) and "cols" in failed(dict(cols, layout="hub"))
-  assert "cols" in failed(dict(cols, nodes=[dict(n, col=5) for n in cols["nodes"]]))
+  assert "in column 3 from the left" in build(cols) and "col" in failed(dict(cols, layout="hub"))
+  assert "col" in failed(dict(cols, nodes=[dict(n, col=5) for n in cols["nodes"]]))
+
+  # stack: 위·아래 판, focus 노랑 채움은 mono-yellow에서만, same은 다른 판 같은 도형, step은 판마다 1부터도 된다.
+  sides = ("top", "top", "bottom", "bottom")
+  stack = dict(good, layout="stack", palette="mono-yellow", titles={"top": "Write", "bottom": "Read"},
+               nodes=[dict(n, panel=v) for n, v in zip(twin_nodes, sides)],
+               edges=[{"from": "spec", "to": "ctl", "kind": "call", "step": 1, "label": "send"},
+                      {"from": "db", "to": "db2", "kind": "sync", "step": 2},
+                      {"from": "db2", "to": "db", "kind": "sync", "step": 3}])
+  stack["nodes"][1]["focus"] = stack["nodes"][2]["focus"] = True
+  stack["nodes"][3] = dict(stack["nodes"][3], label=["Desired", "State"], shape="box", same="spec")
+  stack["nodes"][2]["label"] = ["etcd"]
+  stack["nodes"][3]["same"] = "spec"
+  stack["nodes"][0]["panel"] = "top"
+  assert score(check(stack)) == 100, failed(stack)
+  sb = build(stack)
+  assert "in the bottom panel" in sb and 'The top panel has the title "Write"' in sb and "thin solid #1E1E1E rounded rectangle" in sb
+  assert 'named "Controller", filled flat pale yellow #FFF5C9' in sb and 'named "etcd", filled flat pale yellow #F8E9A7' in sb
+  assert "Shape 1 and shape 4 are the same component" in sb and "directly above the other" in sb
+  assert "no arrow is black" not in sb and "drawn in black (#1E1E1E)" in sb and "parallel straight lines" in sb
+  assert 'holding the number "1" in #1E1E1E, placed just before its label' in sb and "pale yellow fills #FFF5C9, #F8E9A7" in sb and "{" not in sb
+  assert "pale yellow" not in out and "no arrow is black" in out
+  assert failed(dict(stack, palette="ink-blue")) == {"focus"}
+  assert "focus" in failed(dict(good, palette="mono-yellow", nodes=[dict(good["nodes"][0], focus=True)] + good["nodes"][1:]))
+  assert failed(dict(stack, groups=[{"id": "g", "label": ["Job"], "members": ["ctl", "db"]}])) == {"panel groups"}
+  gstack = dict(stack, groups=[{"id": "g", "label": ["Job"], "members": ["ctl"]}],
+                edges=[{"from": "spec", "to": "g", "kind": "call", "step": 1}, {"from": "g", "to": "spec", "kind": "sync", "step": 2},
+                       {"from": "db", "to": "db2", "kind": "sync", "step": 1}, {"from": "db2", "to": "db", "kind": "sync", "step": 2}])
+  assert failed(gstack) == set(), failed(gstack)
+  assert "tier" in failed(dict(tiered, nodes=[dict(n, tier=True) for n in tiered["nodes"]]))
+  assert failed(dict(stack, nodes=[dict(n, focus=True) for n in stack["nodes"][:3]] + stack["nodes"][3:])) == {"focus"}
+  assert failed(dict(stack, nodes=stack["nodes"][:3] + [dict(stack["nodes"][3], label=["Other"])])) == {"same"}
+  assert "same" in failed(dict(stack, layout="hub"))
+  restart = [dict(e, step=n) for e, n in zip(stack["edges"], (1, 1, 2))] + [{"from": "ctl", "to": "spec", "kind": "sync", "step": 2}]
+  assert failed(dict(stack, edges=restart)) == set() and failed(dict(good, edges=[dict(e, step=n) for e, n in zip(good["edges"], (1, 1, 2))])) == {"steps"}
+  assert failed(dict(stack, edges=[dict(e, step=n) for e, n in zip(stack["edges"], (1, 2, 2))])) == {"steps"}
+  assert failed(dict(stack, titles={"left": "A", "right": "B"})) == {"titles"} and "panel" in failed(dict(stack, layout="split"))
 
   assert margins((100, 50, 1100, 650), (1280, 720)) == ((100, 180, 50, 70), 6.25, 2.7777777777777777)
   print("selftest ok")
