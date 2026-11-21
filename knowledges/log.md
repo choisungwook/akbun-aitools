@@ -1,5 +1,9 @@
 # Update log
 
+## 2026-11-21
+
+* **Updated**: akbun-draw-diagram-haru adds `blocked` edge, `split` gap has no divider, group names get top padding and arrows avoid text; akbun-draw 1.1.7.
+
 ## 2026-11-18
 
 * **Created**: akbun-session-meter mod concept (mods/ folder, Claude marketplace only, git diff pane, folder install guide).

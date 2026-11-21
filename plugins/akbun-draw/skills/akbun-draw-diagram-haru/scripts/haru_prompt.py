@@ -273,6 +273,7 @@ def selftest():
   assert "main" not in LIB["edges"] and failed(dict(good, edges=[dict(good["edges"][0], kind="main")] + good["edges"][1:])) == {"edge kinds"}
   assert " icon " not in out and "no icons or pictograms" in out
   assert "centered on the canvas both horizontally and vertically" in out
+  assert "forming an X" in build(dict(good, edges=[dict(good["edges"][0], kind="blocked")] + good["edges"][1:]))
   assert out.rstrip().endswith(LIB["style"]["avoid"]["prompt"]) and out.count("DO NOT") == 1
   assert all(set(p) == {"id", "use", "ink", "accent", "bg"} for p in LIB["palettes"].values())
   assert failed(dict(good, nodes=[dict(good["nodes"][0], icon="key")] + good["nodes"][1:])) == {"keys"}
