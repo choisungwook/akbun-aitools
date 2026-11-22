@@ -1,10 +1,10 @@
 ---
-name: akbun-agentops-cleancomment
+name: akbun-agentops-prune-comments
 description: 디자인 문서·의사결정 기록 같은 문서나 실제 codebase와 어긋나는 주석을 찾아 과감히 지운다. 새 컨텍스트 subagent가 찾고, 부모가 판정·삭제한다. "주석 정리해줘", "문서랑 안 맞는 주석 지워줘" 요청에 사용한다. 사용자가 직접 호출할 때만 실행한다.
 disable-model-invocation: true
 ---
 
-# akbun-agentops-cleancomment
+# akbun-agentops-prune-comments
 
 ## 의도
 

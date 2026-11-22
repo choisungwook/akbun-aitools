@@ -334,7 +334,7 @@ $akbun-davinciresolve-explainer 이 대본을 fiery-ocean 색, akbun 도형으�
 | [akbun-memory-setup](./plugins/akbun-agent-ops/skills/akbun-memory-setup/) | agent가 기억할 구조를 처음 만들 때 |
 | [akbun-recall](./plugins/akbun-agent-ops/skills/akbun-recall/) | 새 세션에서 이전 작업 맥락을 이어받을 때 |
 | [akbun-reflect](./plugins/akbun-agent-ops/skills/akbun-reflect/) | 세션에서 배운 것을 SKILL.md에 남길 때 |
-| [akbun-agentops-cleancomment](./plugins/akbun-agent-ops/skills/akbun-agentops-cleancomment/) | 문서나 코드와 어긋난 주석을 지울 때 |
+| [akbun-agentops-prune-comments](./plugins/akbun-agent-ops/skills/akbun-agentops-prune-comments/) | 문서나 코드와 어긋난 주석을 지울 때 |
 
 </details>
 
