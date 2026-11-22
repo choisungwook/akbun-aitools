@@ -28,6 +28,7 @@
 | 상황 | 스킬 | 결과물 |
 |---|---|---|
 | 시스템 구조·요청 흐름·시간순 메시지를 흰 바탕 손그림 다이어그램 이미지로 보여 주고 싶음 | [akbun-draw-diagram-haru](../plugins/akbun-draw/skills/akbun-draw-diagram-haru/SKILL.md) | 검정 외곽선 빈 도형·검정 속 빈 화살표·손글씨 이름(음영 칩은 비교할 때만)을 아이콘 없이 화면 가운데에 놓는 다이어그램 프롬프트(spec을 스크립트가 조립·채점) |
+| DB 권한 실습(GRANT·소유자·Role)을 실제 SQL이 적힌 관계도로 보여 주고 싶음 | [akbun-draw-mermaid-database-garam](../plugins/akbun-draw/skills/akbun-draw-mermaid-database-garam/SKILL.md) | DB subgraph·스키마.테이블과 소유자 노드·GRANT SQL 실선·검증할 SQL 점선을 담고 결과는 비운 Mermaid `flowchart LR` 코드 |
 | 소품 가득한 아늑한 배경 속 동물 캐릭터 일상 장면이 필요함 | [akbun-draw-bori](../plugins/akbun-draw/skills/akbun-draw-bori/SKILL.md) | 갈색 손그림 선·셀 채색 장면 프롬프트(spec을 스크립트가 조립·채점) |
 | 굵은 잉크 선·단색 면으로 동물·사물의 엉뚱한 한 순간을 그리고 싶음 | [akbun-draw-moss](../plugins/akbun-draw/skills/akbun-draw-moss/SKILL.md) | 올리브 잉크 선·그늘 없는 단색·단색 배경·강조색 하나 그림 프롬프트(spec을 스크립트가 조립·채점) |
 | 콩 눈·사선 볼터치를 단 2.5등신 캐릭터로 소소한 일상 한 순간을 일상툰처럼 그리고 싶음 | [akbun-draw-dotori](../plugins/akbun-draw/skills/akbun-draw-dotori/SKILL.md) | 붓펜 선·차분한 단색·색 면 없는 미색 종이 배경 그림 프롬프트(spec을 스크립트가 조립·채점) |

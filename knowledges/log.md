@@ -2,6 +2,7 @@
 
 ## 2026-11-22
 
+* **Created**: akbun-draw-mermaid-database-garam draws DB permission labs as Mermaid `flowchart LR` (DB subgraph, schema.table + owner nodes, real GRANT SQL on solid arrows, SQL to verify on dotted arrows, results left blank, fixed frontmatter theme); akbun-draw 1.1.12. 결정 없음: 새 skill 추가뿐이고 삭제로 되돌릴 수 있음.
 * **Updated**: akbun-draw-diagram-haru uses no shade color by default; label chips only when the figure compares roles or cases, and a single chip color fails the check; ADR 0009 updated; akbun-draw 1.1.11.
 * **Updated**: akbun-draw-diagram-haru starts from the relation to show and maps it to a layout, adds `sequence` (lifelines, `wait`, `spans`, edge notes), lets the work folder define shapes/palettes, and replaces accent/focus colors with ink lines plus role label chips (`pastel`); ADR 0009 rewritten; akbun-draw 1.1.10.
 * **Updated**: push/PR hook now also requires a decision in `knowledges/decisions/` (or `결정 없음: <reason>` in the log) and runs from Claude Code, Codex (`.codex/hooks.json`) and Antigravity (`.agents/hooks.json`); decision 0009 records diagram-haru's spec-assembled prompt and color roles.
