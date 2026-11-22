@@ -9,3 +9,4 @@
 | [0005](0005-describe-youtube-transcript-output-is-transcript-grounded.md) | akbun-describe-youtube-transcript | 출력은 자막에 근거한 시간순 대본 |
 | [0006](0006-travel-vlog-orchestrator-is-the-color-workflow-skill.md) | akbun-editvideo / akbun-davinciresolve-workflow | 여행 브이로그 오케스트레이터는 색보정 workflow skill 하나. 촬영 시간순 타임라인이 항상 첫 단계, 하늘은 workflow 밖 |
 | [0008](0008-explainer-svg-router-reduced-to-chalkboard-skill.md) | akbun-draw / akbun-draw-chalkboard | 정적 16:9 SVG 그림체는 칠판 skill 하나. 그림체는 `styles/chalkboard.json` 디자인 토큰이고 토큰은 구도를 고정하지 않음 |
+| [0009](0009-diagram-haru-spec-assembled-prompt-and-color-roles.md) | akbun-draw / akbun-draw-diagram-haru | 모델은 spec만 쓰고 프롬프트는 스크립트가 jsonl로 조립. 글자는 모두 검정, 강조색은 화살표에만, focus 채움은 한 색 |

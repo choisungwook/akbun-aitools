@@ -1,0 +1,16 @@
+{
+  "knowledges-before-push": {
+    "PreToolUse": [
+      {
+        "matcher": "run_command",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash ../.claude/hooks/check-knowledges-before-push.sh --agy",
+            "timeout": 30
+          }
+        ]
+      }
+    ]
+  }
+}
