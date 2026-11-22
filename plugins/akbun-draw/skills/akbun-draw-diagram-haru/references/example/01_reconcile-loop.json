@@ -1,5 +1,5 @@
 {
-  "palette": "ink-green",
+  "palette": "pastel",
   "layout": "loop",
   "subject": "A Kubernetes controller watches desired state, compares it with running pods, and creates or deletes pods until both match.",
   "nodes": [

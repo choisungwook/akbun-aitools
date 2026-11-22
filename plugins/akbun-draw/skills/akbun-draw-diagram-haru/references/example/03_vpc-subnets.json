@@ -1,5 +1,5 @@
 {
-  "palette": "ink-blue",
+  "palette": "pastel",
   "layout": "columns",
   "subject": "A web request enters an AWS VPC through a load balancer in the public subnet and reaches the app and database in the private subnet.",
   "nodes": [

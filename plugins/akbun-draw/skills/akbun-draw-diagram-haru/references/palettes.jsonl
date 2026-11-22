@@ -1,4 +1,1 @@
-{"id": "ink-blue", "use": "기본. 대부분의 시스템 흐름·외부 호출", "ink": "#1E1E1E", "accent": "#4A90D0", "bg": "#FFFFFF"}
-{"id": "ink-green", "use": "배포·성공·데이터 흐름이 주제일 때", "ink": "#1E1E1E", "accent": "#2E9E6B", "bg": "#FFFFFF"}
-{"id": "ink-red", "use": "장애·공격·위험 경로가 주제일 때(비밀값·인증 흐름 자체는 ink-blue)", "ink": "#1E1E1E", "accent": "#D9534F", "bg": "#FFFFFF"}
-{"id": "mono-yellow", "use": "split·stack에서 비교의 중심 도형(판마다 하나)만 같은 옅은 노랑 한 색으로 강조하고 화살표·라벨·번호를 모두 검정으로 둘 때", "ink": "#1E1E1E", "accent": "#1E1E1E", "bg": "#FFFFFF", "focus": "#FFF5C9"}
+{"id": "pastel", "use": "기본. 역할을 구별해야 하는 화살표 라벨 뒤에만 옅은 칩 색을 깐다", "ink": "#1E1E1E", "bg": "#FFFFFF", "chips": {"blue": "#BFE1FA", "yellow": "#FBE9A6", "pink": "#F7C6CC", "green": "#C8EBD3"}}
