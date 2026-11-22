@@ -1,6 +1,6 @@
 {
   "name": "akbun-draw",
-  "version": "1.1.11",
+  "version": "1.1.12",
   "description": "Image drawing skills by akbun — image-generation prompts and editable SVGs in fixed akbun styles",
   "author": {
     "name": "akbun",
@@ -59,7 +59,8 @@
       "Turn this topic into a gentle Korean title plus a one-panel deadpan gag in the moss style where one character quietly endures the other (akbun-draw-template-comedy)",
       "Turn this short story into a 4-panel 4koma comic in the wash style with hand-lettered Korean speech bubbles (akbun-draw-template-cartoon)",
       "Draw a cozy everyday moment in the dotori style: two-and-a-half-head characters, warm brush-pen lines on plain cream paper (akbun-draw-dotori)",
-      "Turn this short daily-life story into a vertical instatoon carousel with narration captions and zigzag speech bubbles in the dotori style (akbun-draw-template-cartoon-maru)"
+      "Turn this short daily-life story into a vertical instatoon carousel with narration captions and zigzag speech bubbles in the dotori style (akbun-draw-template-cartoon-maru)",
+      "Draw this PostgreSQL GRANT lab as a Mermaid flowchart LR: DB subgraph, schema.table nodes with owners, real GRANT SQL on solid arrows, the SQL to verify as dotted arrows, results left blank (akbun-draw-mermaid-database-garam)"
     ],
     "brandColor": "#0F766E",
     "screenshots": []
