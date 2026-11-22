@@ -6,6 +6,8 @@ akbun(악분)이 매일 쓰는 AI skill을 Claude Code, Codex, Antigravity plugi
 
 Claude Code와 Codex 명령의 `akbun-draw`를 설치할 plugin 이름으로 바꿔 실행합니다. plugin 이름은 아래 표에 있습니다.
 
+터미널 명령은 각 블록의 변수로 profile 디렉터리를 정합니다. 기본값은 기본 profile 위치(`~/.claude`, `~/.codex`, Antigravity는 `~` 아래 `.gemini`)입니다. 다른 profile을 쓰면 실행 전에 `CLAUDE_CONFIG_DIR`, `CODEX_HOME`, `AGY_HOME`을 그 디렉터리의 절대 경로로 지정합니다. Claude Code 입력창 명령은 그 Claude Code가 쓰는 profile에 설치됩니다.
+
 Claude Code 입력창에서 marketplace를 등록하고 plugin을 설치하는 명령입니다.
 
 ```bash
@@ -17,16 +19,18 @@ Claude Code 입력창에서 marketplace를 등록하고 plugin을 설치하는 �
 Codex에서 marketplace를 등록하고 plugin을 설치하는 명령입니다.
 
 ```bash
-codex plugin marketplace add choisungwook/akbun-aitools --json
-codex plugin add akbun-draw@akbun-aitools --json
+CODEX_DIR="${CODEX_HOME:-$HOME/.codex}"
+CODEX_HOME="$CODEX_DIR" codex plugin marketplace add choisungwook/akbun-aitools --json
+CODEX_HOME="$CODEX_DIR" codex plugin add akbun-draw@akbun-aitools --json
 ```
 
-Antigravity는 Google 공식 marketplace만 등록할 수 있어서 저장소를 받은 뒤 plugin 폴더를 지정해 설치합니다. 아래 명령은 이 저장소의 모든 plugin을 한 번에 설치합니다. 설치하면 `~/.gemini/config/plugins/`로 복사되므로 받은 폴더는 지워도 됩니다. 새 agent 세션부터 skill이 보입니다.
+Antigravity는 Google 공식 marketplace만 등록할 수 있어서 저장소를 받은 뒤 plugin 폴더를 지정해 설치합니다. 아래 명령은 이 저장소의 모든 plugin을 한 번에 설치합니다. Antigravity는 profile 전용 변수가 없고 `HOME` 아래 `.gemini/config`를 쓰므로 `AGY_HOME`을 `HOME`으로 넘깁니다. 설치하면 `$AGY_HOME/.gemini/config/plugins/`로 복사되므로 받은 폴더는 지워도 됩니다. 새 agent 세션부터 skill이 보입니다.
 
 ```bash
 rm -rf /tmp/akbun-aitools
 git clone --depth 1 https://github.com/choisungwook/akbun-aitools /tmp/akbun-aitools
-for d in /tmp/akbun-aitools/plugins/*/; do agy plugin install "${d%/}"; done
+AGY_HOME="${AGY_HOME:-$HOME}"
+for d in /tmp/akbun-aitools/plugins/*/; do HOME="$AGY_HOME" agy plugin install "${d%/}"; done
 ```
 
 ## 재설치
@@ -36,23 +40,25 @@ plugin을 최신 버전으로 다시 받을 때 씁니다. 외부 marketplace는
 Claude Code의 marketplace를 갱신한 뒤 marketplace에 있는 모든 plugin을 지우고 다시 설치하는 터미널 명령입니다. `jq`가 필요합니다. 끝나면 Claude Code에서 `/reload-plugins`를 실행합니다.
 
 ```bash
-claude plugin marketplace update akbun-aitools
-for P in $(jq -r '.plugins[].name' ~/.claude/plugins/marketplaces/akbun-aitools/.claude-plugin/marketplace.json); do
-  claude plugin uninstall $P@akbun-aitools
-  claude plugin install $P@akbun-aitools
+CLAUDE_DIR="${CLAUDE_CONFIG_DIR:-$HOME/.claude}"
+CLAUDE_CONFIG_DIR="$CLAUDE_DIR" claude plugin marketplace update akbun-aitools
+for P in $(jq -r '.plugins[].name' "$CLAUDE_DIR"/plugins/marketplaces/akbun-aitools/.claude-plugin/marketplace.json); do
+  CLAUDE_CONFIG_DIR="$CLAUDE_DIR" claude plugin uninstall $P@akbun-aitools
+  CLAUDE_CONFIG_DIR="$CLAUDE_DIR" claude plugin install $P@akbun-aitools
 done
 ```
 
 Codex의 캐시를 비우고 marketplace를 다시 받은 뒤 모든 plugin을 지우고 다시 설치하는 터미널 명령입니다. `jq`가 필요합니다.
 
 ```bash
-rm -rf ~/.codex/plugins/cache/akbun-aitools ~/.codex/.tmp/marketplaces/akbun-aitools
-codex plugin marketplace add choisungwook/akbun-aitools --json
-for P in $(jq -r '.plugins[].name' ~/.codex/.tmp/marketplaces/akbun-aitools/.agents/plugins/marketplace.json); do
-  codex plugin remove $P@akbun-aitools --json
-  codex plugin add $P@akbun-aitools --json
+CODEX_DIR="${CODEX_HOME:-$HOME/.codex}"
+rm -rf "$CODEX_DIR"/plugins/cache/akbun-aitools "$CODEX_DIR"/.tmp/marketplaces/akbun-aitools
+CODEX_HOME="$CODEX_DIR" codex plugin marketplace add choisungwook/akbun-aitools --json
+for P in $(jq -r '.plugins[].name' "$CODEX_DIR"/.tmp/marketplaces/akbun-aitools/.agents/plugins/marketplace.json); do
+  CODEX_HOME="$CODEX_DIR" codex plugin remove $P@akbun-aitools --json
+  CODEX_HOME="$CODEX_DIR" codex plugin add $P@akbun-aitools --json
 done
-codex plugin list --json
+CODEX_HOME="$CODEX_DIR" codex plugin list --json
 ```
 
 Antigravity의 모든 plugin을 지우고 남은 복사본까지 비운 뒤 저장소를 새로 받아 다시 설치하는 터미널 명령입니다. 끝나면 agent 세션을 새로 엽니다.
@@ -60,13 +66,14 @@ Antigravity의 모든 plugin을 지우고 남은 복사본까지 비운 뒤 저�
 ```bash
 rm -rf /tmp/akbun-aitools
 git clone --depth 1 https://github.com/choisungwook/akbun-aitools /tmp/akbun-aitools
+AGY_HOME="${AGY_HOME:-$HOME}"
 for d in /tmp/akbun-aitools/plugins/*/; do
   P=$(basename "$d")
-  agy plugin uninstall "$P"
-  rm -rf ~/.gemini/config/plugins/"$P"
-  agy plugin install "${d%/}"
+  HOME="$AGY_HOME" agy plugin uninstall "$P"
+  rm -rf "$AGY_HOME"/.gemini/config/plugins/"$P"
+  HOME="$AGY_HOME" agy plugin install "${d%/}"
 done
-agy plugin list --json
+HOME="$AGY_HOME" agy plugin list --json
 ```
 
 ## plugin
