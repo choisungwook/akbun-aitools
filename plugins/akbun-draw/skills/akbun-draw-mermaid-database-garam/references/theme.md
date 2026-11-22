@@ -1,6 +1,6 @@
 # garam 테마
 
-Mermaid 코드 맨 위에 아래 frontmatter를 한 글자도 바꾸지 않고 붙인다. 베이지 둥근 노드와 테라코타 글자, 파란 테두리 알약 모양 화살표 라벨, 옅은 회색 가는 선, 테두리만 있는 DB 상자를 만든다. 글꼴은 SIL OFL인 Pretendard와 Noto Sans KR이고, 둘 다 없으면 보는 사람 환경의 sans-serif로 그린다.
+Mermaid 코드 맨 위에 아래 frontmatter를 한 글자도 바꾸지 않고 붙인다. 베이지 둥근 노드와 테라코타 글자, 파란 테두리 알약 모양 화살표 라벨, `<code>`로 감싼 GRANT SQL은 테두리 없이 화살표 위에 얹은 글씨, 옅은 회색 가는 선, 테두리만 있는 DB 상자를 만든다. 글꼴은 SIL OFL인 Pretendard와 Noto Sans KR이고, 둘 다 없으면 보는 사람 환경의 sans-serif로 그린다.
 
 ```yaml
 ---
@@ -24,9 +24,12 @@ config:
     .edgeLabel, .edgeLabel p, .edgeLabel .labelBkg { background: transparent !important; }
     .edgeLabel span.edgeLabel { display: inline-block; background: #FAFAF8 !important; color: #C8714F !important; font-weight: 500; border: 1.5px solid #4A86E8; border-radius: 999px; padding: 2px 12px; }
     .edgeLabel foreignObject { overflow: visible; }
+    .edgeLabel .labelBkg:has(code) { transform: translateY(calc(-50% - 6px)); }
+    .edgeLabel span.edgeLabel:has(code) { border: none; background: transparent !important; padding: 0; }
+    .edgeLabel code { font-family: inherit; font-size: inherit; color: #C8714F; }
     .flowchart-link { stroke-width: 1px !important; }
     .cluster-label .nodeLabel, .cluster-label span { color: #222222 !important; font-weight: 400; }
 ---
 ```
 
-`themeCSS`는 Mermaid 11 HTML 라벨 기준이다. 렌더러가 frontmatter나 `themeCSS`를 막으면(예: GitHub) 색 없이 기본 테마로 그려질 뿐 관계도 내용은 같다. Mermaid 11.4.1에서 frontmatter의 `flowchart.curve`·간격 값은 적용되지 않아 넣지 않는다.
+`themeCSS`는 Mermaid 11 HTML 라벨 기준이다. Mermaid는 화살표 라벨에 edge id를 남기지 않아서, GRANT 라벨은 CSS가 `<code>` 태그로 골라낸다. 렌더러가 frontmatter나 `themeCSS`를 막으면(예: GitHub) 색 없이 기본 테마로 그려질 뿐 관계도 내용은 같다. Mermaid 11.4.1에서 frontmatter의 `flowchart.curve`·간격 값은 적용되지 않아 넣지 않는다.
