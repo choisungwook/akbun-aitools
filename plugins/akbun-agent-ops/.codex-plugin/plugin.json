@@ -1,6 +1,6 @@
 {
   "name": "akbun-agent-ops",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Agent operations skills — set up a project's memory layout once, rebuild working context at session start, and turn each session's lessons into approved edits to the memory structure the codebase already has",
   "author": {
     "name": "akbun",
@@ -36,7 +36,7 @@
       "이 프로젝트에 agent 기억 디렉터리와 AGENTS.md 읽기 순서를 만들어줘 (akbun-memory-setup)",
       "지난주에 내가 이 repo에서 뭘 하고 있었는지 복원해줘 (akbun-recall)",
       "이 세션에서 배운 걸 skill 수정으로 정리해줘 (akbun-reflect)",
-      "디자인 문서나 코드와 안 맞는 주석을 지워줘 (akbun-agentops-cleancomment)"
+      "디자인 문서나 코드와 안 맞는 주석을 지워줘 (akbun-agentops-prune-comments)"
     ],
     "brandColor": "#1D4ED8",
     "screenshots": []
