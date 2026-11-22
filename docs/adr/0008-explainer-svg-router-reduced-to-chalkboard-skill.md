@@ -4,7 +4,7 @@ Scope: akbun-draw / akbun-draw-chalkboard
 
 ## Decision
 
-`akbun-draw-explainer-svg` 라우터를 칠판 그림체 하나만 그리는 `akbun-draw-chalkboard` skill로 바꾸고, `clay-isometric`·`marker-wireframe` 토큰은 지운다. 그림체는 여전히 `styles/chalkboard.json` 토큰과 `check_style_svg.py`가 정하고 검사하며, 토큰은 구도를 고정하지 않는다. 0007의 "정적 그림체는 토큰 하나로 라우터에 추가" 결정을 대체한다.
+`akbun-draw-explainer-svg` 라우터를 칠판 그림체 하나만 그리는 `akbun-draw-chalkboard` skill로 바꾸고, `clay-isometric`·`marker-wireframe` 토큰은 지운다. 그림체는 여전히 `styles/chalkboard.json` 토큰과 `check_style_svg.py`가 정하고 검사하며, 토큰은 구도를 고정하지 않는다. 토큰은 색·선·글꼴·효과·여백만 고정한다. 구도 문장이 스타일 규칙에 섞이면 시험에서 응답 흐름을 생략하는 결과가 나왔기 때문이다.
 
 ## Reason
 
