@@ -33,23 +33,25 @@ for d in /tmp/akbun-aitools/plugins/*/; do agy plugin install "${d%/}"; done
 
 plugin을 최신 버전으로 다시 받을 때 씁니다. 외부 marketplace는 자동으로 갱신되지 않습니다.
 
-Claude Code의 plugin 하나를 지우고 marketplace를 갱신한 뒤 다시 설치하는 터미널 명령입니다. 끝나면 Claude Code에서 `/reload-plugins`를 실행합니다.
+Claude Code의 marketplace를 갱신한 뒤 marketplace에 있는 모든 plugin을 지우고 다시 설치하는 터미널 명령입니다. `jq`가 필요합니다. 끝나면 Claude Code에서 `/reload-plugins`를 실행합니다.
 
 ```bash
-P=akbun-draw
-claude plugin uninstall $P@akbun-aitools
 claude plugin marketplace update akbun-aitools
-claude plugin install $P@akbun-aitools
+for P in $(jq -r '.plugins[].name' ~/.claude/plugins/marketplaces/akbun-aitools/.claude-plugin/marketplace.json); do
+  claude plugin uninstall $P@akbun-aitools
+  claude plugin install $P@akbun-aitools
+done
 ```
 
-Codex의 plugin 하나를 지우고 캐시를 비운 뒤 다시 설치하는 터미널 명령입니다.
+Codex의 캐시를 비우고 marketplace를 다시 받은 뒤 모든 plugin을 지우고 다시 설치하는 터미널 명령입니다. `jq`가 필요합니다.
 
 ```bash
-P=akbun-draw
-codex plugin remove $P@akbun-aitools --json
 rm -rf ~/.codex/plugins/cache/akbun-aitools ~/.codex/.tmp/marketplaces/akbun-aitools
 codex plugin marketplace add choisungwook/akbun-aitools --json
-codex plugin add $P@akbun-aitools --json
+for P in $(jq -r '.plugins[].name' ~/.codex/.tmp/marketplaces/akbun-aitools/.agents/plugins/marketplace.json); do
+  codex plugin remove $P@akbun-aitools --json
+  codex plugin add $P@akbun-aitools --json
+done
 codex plugin list --json
 ```
 
