@@ -10,7 +10,7 @@
 
 ```mermaid
 flowchart LR
-    Admin["관리자 postgres"] -->|"GRANT SELECT ON TABLE billing.invoices TO report_reader"| R["report_reader"]
+    Admin["관리자 postgres"] -->|"<code>GRANT SELECT ON TABLE billing.invoices TO report_reader</code>"| R["report_reader"]
     subgraph Billing["billing 데이터베이스"]
         T["billing.invoices<br/>소유자: app_owner"]
     end
