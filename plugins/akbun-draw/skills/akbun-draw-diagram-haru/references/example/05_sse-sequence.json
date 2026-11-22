@@ -1,0 +1,21 @@
+{
+  "palette": "pastel",
+  "layout": "sequence",
+  "subject": "Server-Sent Events: the client sends one GET, the server sends headers first and then each event over the same HTTP response.",
+  "nodes": [
+    {"id": "client", "label": ["Client"], "shape": "box"},
+    {"id": "server", "label": ["Server"], "shape": "box"}
+  ],
+  "edges": [
+    {"from": "client", "to": "server", "kind": "call", "label": "GET /events", "chip": "blue"},
+    {"from": "server", "to": "client", "kind": "call", "label": "200 OK headers", "chip": "yellow"},
+    {"from": "server", "to": "client", "kind": "call", "label": "hello / world", "chip": "pink", "wait": "Wait 2 s"},
+    {"from": "server", "to": "client", "kind": "call", "label": "next", "chip": "pink"},
+    {"from": "server", "to": "client", "kind": "call", "label": "last", "chip": "pink"}
+  ],
+  "spans": [{"first": 2, "last": 5, "label": ["One HTTP", "response"]}],
+  "notes": [
+    {"edge": 2, "text": "Headers first"},
+    {"edge": 4, "text": "Send each event as ready"}
+  ]
+}

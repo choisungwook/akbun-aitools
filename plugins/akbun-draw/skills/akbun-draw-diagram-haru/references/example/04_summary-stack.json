@@ -1,14 +1,14 @@
 {
-  "palette": "mono-yellow",
+  "palette": "pastel",
   "layout": "stack",
   "subject": "A batch job writes conversation summaries to a store, and later the chat API reads that same summary back to build a short prompt.",
   "titles": {"top": "Write path", "bottom": "Read path"},
   "nodes": [
     {"id": "api1", "label": ["Chat API"], "shape": "box", "panel": "top"},
-    {"id": "sum", "label": ["Summarizer"], "shape": "box", "panel": "top", "focus": true},
+    {"id": "sum", "label": ["Summarizer"], "shape": "box", "panel": "top"},
     {"id": "store1", "label": ["Summary", "Store"], "shape": "cylinder", "panel": "top"},
     {"id": "api2", "label": ["Chat API"], "shape": "box", "panel": "bottom"},
-    {"id": "ctx", "label": ["Context", "Builder"], "shape": "box", "panel": "bottom", "focus": true},
+    {"id": "ctx", "label": ["Context", "Builder"], "shape": "box", "panel": "bottom"},
     {"id": "store2", "label": ["Summary", "Store"], "shape": "cylinder", "panel": "bottom", "same": "store1"}
   ],
   "groups": [{"id": "job", "label": ["Batch job"], "members": ["sum"]}],

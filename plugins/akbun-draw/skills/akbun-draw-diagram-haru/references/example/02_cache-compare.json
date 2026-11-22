@@ -1,5 +1,5 @@
 {
-  "palette": "ink-blue",
+  "palette": "pastel",
   "layout": "split",
   "subject": "Before and after adding a cache: every read hits the database in 120 ms versus most reads served from cache in 8 ms.",
   "titles": {

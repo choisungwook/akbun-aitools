@@ -1,4 +1,4 @@
-{"id": "call", "ko": "요청·호출: {accent} 실선 직선, 빈 삼각형 머리", "prompt": "a straight solid {accent} line with a hollow {accent} triangle head"}
-{"id": "sync", "ko": "응답·비동기·구독·보조: {accent} 점선 직선, 빈 삼각형 머리", "prompt": "a straight dashed {accent} line with a hollow {accent} triangle head"}
-{"id": "sync-pair", "ko": "양방향 보조: {accent} 점선 직선 두 개가 나란히 반대 방향", "prompt": "two short parallel straight dashed {accent} lines side by side, one pointing each way, each with a hollow {accent} triangle head"}
-{"id": "blocked", "ko": "차단·실패(권한 거부·검증 실패): {accent} 점선 직선 가운데와 머리 사이에 짧은 {accent} 획 두 개를 X로 교차(글자·빨강 아님), 빈 삼각형 머리", "prompt": "a straight dashed {accent} line with two short crossing {accent} strokes forming an X between the middle and the head (a drawn mark, not a letter, never red), and a hollow {accent} triangle head"}
+{"id": "call", "ko": "요청·호출: {ink} 실선 직선, 빈 삼각형 머리", "prompt": "a straight solid {ink} line with a hollow {ink} triangle head"}
+{"id": "sync", "ko": "응답·비동기·구독·보조: {ink} 점선 직선, 빈 삼각형 머리", "prompt": "a straight dashed {ink} line with a hollow {ink} triangle head"}
+{"id": "sync-pair", "ko": "양방향 보조: {ink} 점선 직선 두 개가 나란히 반대 방향", "prompt": "two short parallel straight dashed {ink} lines side by side, one pointing each way, each with a hollow {ink} triangle head"}
+{"id": "blocked", "ko": "차단·실패(권한 거부·검증 실패): {ink} 점선 직선 가운데와 머리 사이에 짧은 {ink} 획 두 개를 X로 교차(글자·빨강 아님), 빈 삼각형 머리", "prompt": "a straight dashed {ink} line with two short crossing {ink} strokes forming an X between the middle and the head (a drawn mark, not a letter, never red), and a hollow {ink} triangle head"}

@@ -146,7 +146,7 @@ Claude Code 입력창에서 설치하는 명령입니다.
 </tr>
 <tr>
 <td><a href="./plugins/akbun-draw/skills/akbun-draw-learning-mono/SKILL.md"><img src="./imgs/akbun-draw-learning-mono.jpg" alt="akbun-draw-learning-mono" width="260"></a><br><code>akbun-draw-learning-mono</code></td>
-<td><a href="./plugins/akbun-draw/skills/akbun-draw-diagram-haru/SKILL.md"><img src="./imgs/akbun-draw-diagram-haru.jpg" alt="akbun-draw-diagram-haru" width="260"></a><br><a href="./plugins/akbun-draw/skills/akbun-draw-diagram-haru/SKILL.md"><img src="./imgs/akbun-draw-diagram-haru-stack.jpg" alt="akbun-draw-diagram-haru stack 레이아웃" width="260"></a><br><code>akbun-draw-diagram-haru</code><br>위·아래 비교: 요청에 <code>stack 배치, mono-yellow 색</code></td>
+<td><a href="./plugins/akbun-draw/skills/akbun-draw-diagram-haru/SKILL.md"><img src="./imgs/akbun-draw-diagram-haru.jpg" alt="akbun-draw-diagram-haru" width="260"></a><br><a href="./plugins/akbun-draw/skills/akbun-draw-diagram-haru/SKILL.md"><img src="./imgs/akbun-draw-diagram-haru-stack.jpg" alt="akbun-draw-diagram-haru stack 레이아웃" width="260"></a><br><code>akbun-draw-diagram-haru</code><br>위·아래 비교: 요청에 <code>stack 배치</code></td>
 <td><a href="./plugins/akbun-draw/skills/akbun-draw-wash/SKILL.md"><img src="./imgs/akbun-draw-wash.jpg" alt="akbun-draw-wash" width="260"></a><br><code>akbun-draw-wash</code></td>
 </tr>
 <tr>
@@ -245,7 +245,7 @@ $akbun-davinciresolve-explainer 이 대본을 fiery-ocean 색, akbun 도형으�
 | [akbun-draw-code-nari](./plugins/akbun-draw/skills/akbun-draw-code-nari/) | 터미널·AI 도구 화면 녹화에 화살표·라벨을 붙여 짚는 영상 장면이 필요할 때 |
 | [akbun-draw-explain-sora](./plugins/akbun-draw/skills/akbun-draw-explain-sora/) | 어두운 배경 손채색 그림으로 비유·대화를 보여 주는 설명 장면이 필요할 때 |
 | [akbun-draw-raon](./plugins/akbun-draw/skills/akbun-draw-raon/) | 연필 막대 인물로 개념을 일상 비유로 풀어 줄 때 |
-| [akbun-draw-diagram-haru](./plugins/akbun-draw/skills/akbun-draw-diagram-haru/) | 시스템 구조·요청 흐름을 흰 바탕 손그림 다이어그램 이미지로 만들 때 |
+| [akbun-draw-diagram-haru](./plugins/akbun-draw/skills/akbun-draw-diagram-haru/) | 시스템 구조·요청 흐름·시간순 메시지를 흰 바탕 손그림 다이어그램 이미지로 만들 때 |
 | [akbun-draw-bori](./plugins/akbun-draw/skills/akbun-draw-bori/) | 아늑한 배경 속 동글동글한 동물들의 일상 장면 그림이 필요할 때 |
 | [akbun-draw-moss](./plugins/akbun-draw/skills/akbun-draw-moss/) | 굵은 잉크 선·단색 면에 강조색 하나만 칠한 엉뚱한 한 컷이 필요할 때 |
 | [akbun-draw-dotori](./plugins/akbun-draw/skills/akbun-draw-dotori/) | 붓펜 선 2.5등신 캐릭터가 빈 미색 종이 위에 있는 일상툰 그림이 필요할 때 |
