@@ -93,9 +93,11 @@ def titles_ok(spec):
 
 
 def chips_ok(spec):
-  """chip은 이름 붙은 화살표에만, 팔레트 chips의 색 이름 하나."""
+  """chip은 비교할 때만: 이름 붙은 화살표에 팔레트 chips의 색 이름 하나, 쓰면 서로 다른 색이 2개 이상."""
   chips = LIB["palettes"].get(spec.get("palette"), {}).get("chips", {})
-  return all(e.get("label") and isinstance(e["chip"], str) and e["chip"] in chips for e in spec.get("edges", []) if "chip" in e)
+  used = [e for e in spec.get("edges", []) if "chip" in e]
+  ok = all(e.get("label") and isinstance(e["chip"], str) and e["chip"] in chips for e in used)
+  return ok and (not used or len({e["chip"] for e in used}) >= 2)
 
 
 def sequence_ok(spec):
@@ -227,7 +229,7 @@ def check(spec):
     *[(key, key_ok(nodes, key, this), f"layouts.jsonl에서 key가 {key}인 배치면 모든 도형에 {key}(그 줄의 values), 2칸 이상, 아니면 {key} 없음")
       for key in LAYOUT_KEYS],
     ("titles", titles_ok(spec), "layouts.jsonl 줄에 title이 있으면 titles에 values 칸마다 제목(각 1~20자, 영어·한글), 아니면 titles 없음"),
-    ("chips", chips_ok(spec), "chip은 이름 붙은 화살표에만, 팔레트 chips 색 이름 하나"),
+    ("chips", chips_ok(spec), "chip은 비교해 보여 줄 때만, 이름 붙은 화살표에 팔레트 chips 색 이름 하나, 쓰면 서로 다른 색 2개 이상"),
     ("sequence", sequence_ok(spec), "sequence 배치면 groups·step 없음, wait 1~14자, spans 0~2개(first<last, 이름 1~2줄 각 1~14자), 메모 edge는 화살표 번호. 다른 배치면 wait·spans·edge 메모 없음"),
     ("panel groups", panels_ok(spec), "판이 있는 배치면 묶음은 한 판 안의 도형만 감쌈"),
     ("same", same_ok(spec), "same은 layouts.jsonl 줄에 same이 있을 때만, 다른 판의 같은 도형·이름 도형 id"),
@@ -387,8 +389,13 @@ def selftest():
   # 글자는 팔레트와 무관하게 모두 검정이고 강조색 글자가 없다.
   assert '"watch" in small #1E1E1E lettering beside the line' in out and "note in #1E1E1E lettering" in out
   assert "curved" not in arrows and "Arrows are straight lines" in out
-  chipped = build(dict(good, edges=[good["edges"][0], dict(good["edges"][1], chip="pink")] + good["edges"][2:]))
-  assert 'lettering on a flat pale rounded chip of #F7C6CC behind the text' in chipped and "pale label chips #F7C6CC only behind" in chipped
+  # 음영 칩은 비교할 때만: 한 색만 쓰면 비교가 아니므로 감점, 두 색 이상이면 통과.
+  one = dict(good, edges=[dict(good["edges"][0], label="go"), dict(good["edges"][1], chip="pink")] + good["edges"][2:])
+  assert failed(one) == {"chips"}
+  two = dict(one, edges=[dict(one["edges"][0], chip="blue")] + one["edges"][1:])
+  assert failed(two) == set(), failed(two)
+  chipped = build(two)
+  assert 'lettering on a flat pale rounded chip of #F7C6CC behind the text' in chipped and "pale label chips #BFE1FA, #F7C6CC only behind" in chipped
   assert failed(dict(good, edges=[dict(good["edges"][0], chip="pink")] + good["edges"][1:])) == {"chips"}
   assert failed(dict(good, edges=[good["edges"][0], dict(good["edges"][1], chip="purple")] + good["edges"][2:])) == {"chips"}
   assert "main" not in LIB["edges"] and failed(dict(good, edges=[dict(good["edges"][0], kind="main")] + good["edges"][1:])) == {"edge kinds"}
@@ -528,9 +535,9 @@ def selftest():
   with tempfile.TemporaryDirectory() as d:
     saved = {k: dict(LIB[k]) for k in LOCAL}
     Path(d, "shapes.jsonl").write_text('{"id": "queue", "ko": "q", "prompt": "a lying cylinder"}\n', encoding="utf-8")
-    Path(d, "palettes.jsonl").write_text('{"id": "mint", "use": "u", "ink": "#111111", "bg": "#FFFFFF", "chips": {"mint": "#CFF3E6"}}\n', encoding="utf-8")
+    Path(d, "palettes.jsonl").write_text('{"id": "mint", "use": "u", "ink": "#111111", "bg": "#FFFFFF", "chips": {"mint": "#CFF3E6", "sand": "#F3E3C8"}}\n', encoding="utf-8")
     extend(d)
-    local = dict(good, palette="mint", nodes=good["nodes"][:2] + [dict(good["nodes"][2], shape="queue")], edges=[good["edges"][0], dict(good["edges"][1], chip="mint")] + good["edges"][2:])
+    local = dict(good, palette="mint", nodes=good["nodes"][:2] + [dict(good["nodes"][2], shape="queue")], edges=[dict(good["edges"][0], label="go", chip="sand"), dict(good["edges"][1], chip="mint")] + good["edges"][2:])
     assert failed(local) == set() and "a lying cylinder" in build(local) and "#CFF3E6" in build(local)
     for bad_line in ('{"id": "box", "ko": "x", "prompt": "y"}', '{"id": "q2", "prompt": "y"}'):
       Path(d, "shapes.jsonl").write_text(bad_line + "\n", encoding="utf-8")

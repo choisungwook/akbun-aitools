@@ -1,1 +1,1 @@
-{"id": "pastel", "use": "기본. 역할을 구별해야 하는 화살표 라벨 뒤에만 옅은 칩 색을 깐다", "ink": "#1E1E1E", "bg": "#FFFFFF", "chips": {"blue": "#BFE1FA", "yellow": "#FBE9A6", "pink": "#F7C6CC", "green": "#C8EBD3"}}
+{"id": "pastel", "use": "기본. 음영 색은 쓰지 않고, 비교해 보여 줄 때만 화살표 라벨 뒤에 옅은 칩 색을 비교 대상마다 다르게 깐다", "ink": "#1E1E1E", "bg": "#FFFFFF", "chips": {"blue": "#BFE1FA", "yellow": "#FBE9A6", "pink": "#F7C6CC", "green": "#C8EBD3"}}
