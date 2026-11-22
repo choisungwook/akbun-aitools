@@ -76,13 +76,13 @@ def titles_ok(spec):
 
 
 def focus_ok(spec):
-  """focus는 팔레트에 focus 색이 있을 때만, 0~2개 도형에 true. 두 개면 서로 다른 판에 둔다."""
+  """focus는 팔레트에 focus 색이 있을 때만, 판마다 하나까지 true."""
   nodes, lay = spec.get("nodes", []), lay_of(spec)
   marked = [n for n in nodes if "focus" in n]
   if not marked:
     return True
   pal = LIB["palettes"].get(spec.get("palette"), {})
-  if "focus" not in pal or "title" not in lay or len(marked) > len(pal["focus"]) or not all(n["focus"] is True for n in marked):
+  if "focus" not in pal or "title" not in lay or not all(n["focus"] is True for n in marked):
     return False
   return len({n.get(lay["key"]) for n in marked}) == len(marked)
 
@@ -232,7 +232,6 @@ def build(spec):
   # ponytail: focus 색이 있는 팔레트만 style 줄의 mono 문장으로 바꾼다. 팔레트별 문장이 더 늘면 팔레트에 style id를 둔다
   style = {k: dict(v, prompt=v.get("mono", v["prompt"]) if mono else v["prompt"]) for k, v in LIB["style"].items()}
   layout = LIB["layouts"][spec["layout"]]
-  fills = iter(p.get("focus", []))
   nodes = spec["nodes"]
   num = {n["id"]: i for i, n in enumerate(nodes, 1)}
   by_id = {n["id"]: n for n in nodes}
@@ -249,17 +248,17 @@ def build(spec):
   def shape(n):
     text = " over ".join(f'"{l}"' for l in n["label"]) + (" on two lines" if len(n["label"]) == 2 else "")
     where = layout["where"].format(v=n[layout["key"]]) if "key" in layout else ""
-    fill = f", filled flat pale yellow {next(fills)}" if n.get("focus") else ""
+    fill = f", filled flat pale yellow {p['focus']}" if n.get("focus") else ""
     return f"{num[n['id']]}. {LIB['shapes'][n['shape']]['prompt']}{where} named {text}{fill}."
 
   def arrow(i, e):
     out = f"{i}. from {ref(e['from'])} to {ref(e['to'])}: {LIB['edges'][e['kind']]['prompt'].format(**p)}"
     if "step" in e and mono:
-      out += f', with a small white circle outlined in {p["accent"]} holding the number "{e["step"]}" in {p["accent"]}, ' + ("placed just before its label" if e.get("label") else "beside the middle of the line")
+      out += f', with a small white circle outlined in {p["accent"]} holding the number "{e["step"]}" in {p["ink"]}, ' + ("placed just before its label" if e.get("label") else "beside the middle of the line")
     elif "step" in e:
-      out += f', with a small hollow {p["accent"]} circle holding the number "{e["step"]}" in {p["accent"]} near the middle of the line'
+      out += f', with a small hollow {p["accent"]} circle holding the number "{e["step"]}" in {p["ink"]} near the middle of the line'
     if e.get("label"):
-      out += f', labeled "{e["label"]}" in small {p["accent"]} lettering beside the line'
+      out += f', labeled "{e["label"]}" in small {p["ink"]} lettering beside the line'
     return out + "."
 
   def group(g):
@@ -267,7 +266,7 @@ def build(spec):
     return (f'{gnum[g["id"]]}. {LIB["groups"]["boundary"]["prompt"].format(label=g["label"][0], **p)}. '
             f'It encloses {" and ".join([", ".join(inner[:-1]), inner[-1]] if len(inner) > 1 else inner)} fully inside it with clear padding.')
 
-  notes = [f'Just below {ref(x["node"])}, a small note in {p["accent"]} lettering reads "{x["text"]}".' for x in spec.get("notes", [])]
+  notes = [f'Just below {ref(x["node"])}, a small note in {p["ink"]} lettering reads "{x["text"]}".' for x in spec.get("notes", [])]
   titles = [layout["title"].format(v=v, text=spec["titles"][v], **p) for v in layout["values"]] if "titles" in spec else []
   same = [layout["same"].format(a=num[n["same"]], b=num[n["id"]], **p) for n in nodes if "same" in n]
   parts = [
@@ -281,7 +280,7 @@ def build(spec):
     f"ARROWS ({len(spec['edges'])}): " + " ".join(arrow(i, e) for i, e in enumerate(spec["edges"], 1)),
     "NOTES: " + " ".join(notes) if notes else "",
     "TEXT: The only words in the image are the quoted texts above, spelled exactly.",
-    f"COLOR PALETTE: background {p['bg']}; ink {p['ink']}; accent {p['accent']}" + (f"; pale yellow fills {', '.join(p['focus'])} only on the shapes named with them" if mono else "") + ". Use no other colors.",
+    f"COLOR PALETTE: background {p['bg']}; ink {p['ink']} for every outline and all text; accent {p['accent']} only for arrow lines, heads and step circles" + (f"; one pale yellow {p['focus']} for every shape named with it, identical on each" if mono else "") + ". Use no other colors.",
     "STYLE: " + " ".join(style[k]["prompt"].format(**p) for k in style if k not in ("medium", "avoid")),
     style["avoid"]["prompt"],
   ]
@@ -345,14 +344,16 @@ def selftest():
 
   # 화살표는 모두 강조색이고 검정 주 흐름 화살표·아이콘이 없다. 그림은 화면 가운데에 놓인다.
   arrows = out.split("ARROWS")[1].split("NOTES")[0]
-  assert "#1E1E1E" not in arrows and " dot " not in out and "no arrow is black" in out
+  assert "solid #1E1E1E" not in arrows and "dashed #1E1E1E" not in arrows and " dot " not in out and "no arrow is black" in out
+  # 글자는 팔레트와 무관하게 모두 검정이고 강조색 글자가 없다.
+  assert '"watch" in small #1E1E1E lettering' in out and "note in #1E1E1E lettering" in out and "#4A90D0 lettering" not in out
   assert "curved" not in arrows and "a straight solid #4A90D0 line" in arrows and "Arrows are straight lines" in out
   assert "main" not in LIB["edges"] and failed(dict(good, edges=[dict(good["edges"][0], kind="main")] + good["edges"][1:])) == {"edge kinds"}
   assert " icon " not in out and "no icons or pictograms" in out
   assert "centered on the canvas both horizontally and vertically" in out
   assert "forming an X" in build(dict(good, edges=[dict(good["edges"][0], kind="blocked")] + good["edges"][1:]))
   assert out.rstrip().endswith(LIB["style"]["avoid"]["prompt"]) and out.count("DO NOT") == 1
-  assert all({"id", "use", "ink", "accent", "bg"} <= set(p) <= {"id", "use", "ink", "accent", "bg", "focus"} for p in LIB["palettes"].values())
+  assert all({"id", "use", "ink", "accent", "bg"} <= set(p) <= {"id", "use", "ink", "accent", "bg", "focus"} and isinstance(p.get("focus", ""), str) for p in LIB["palettes"].values())
   # 배치 라우팅 필드: key가 있으면 values·where, title이 있으면 key, same이 있으면 title이 함께 있다.
   for l in LIB["layouts"].values():
     assert {"id", "pick", "ko", "nodes", "prompt"} <= set(l), l["id"]
@@ -398,7 +399,7 @@ def selftest():
   numbered = dict(good, edges=[dict(e, step=i) for i, e in enumerate(good["edges"][:2], 1)] + good["edges"][2:])
   assert score(check(numbered)) == 100, check(numbered)
   assert 'circle holding the number "2"' in build(numbered) and "circle holding" not in out
-  assert "#1E1E1E" not in build(numbered).split("ARROWS")[1].split("NOTES")[0]
+  assert 'circle holding the number "1" in #1E1E1E' in build(numbered) and "solid #1E1E1E" not in build(numbered)
   for bad_steps in ((1, 3), (2, 3), (1, 1), (1,)):
     e2 = [dict(e, step=n) for e, n in zip(good["edges"], bad_steps)] + good["edges"][len(bad_steps):]
     assert "steps" in failed(dict(good, edges=e2)), bad_steps
@@ -440,10 +441,10 @@ def selftest():
   assert score(check(stack)) == 100, failed(stack)
   sb = build(stack)
   assert "in the bottom panel" in sb and 'The top panel has the title "Write"' in sb and "thin solid #1E1E1E rounded rectangle" in sb
-  assert 'named "Controller", filled flat pale yellow #FFF5C9' in sb and 'named "etcd", filled flat pale yellow #F8E9A7' in sb
+  assert 'named "Controller", filled flat pale yellow #FFF5C9' in sb and 'named "etcd", filled flat pale yellow #FFF5C9' in sb and "exact same flat tone #FFF5C9" in sb
   assert "Shape 1 and shape 4 are the same component" in sb and "directly above the other" in sb
   assert "no arrow is black" not in sb and "drawn in black (#1E1E1E)" in sb and "parallel straight lines" in sb
-  assert 'holding the number "1" in #1E1E1E, placed just before its label' in sb and "pale yellow fills #FFF5C9, #F8E9A7" in sb and "{" not in sb
+  assert 'holding the number "1" in #1E1E1E, placed just before its label' in sb and "one pale yellow #FFF5C9" in sb and "{" not in sb
   assert "pale yellow" not in out and "no arrow is black" in out
   assert failed(dict(stack, palette="ink-blue")) == {"focus"}
   assert "focus" in failed(dict(good, palette="mono-yellow", nodes=[dict(good["nodes"][0], focus=True)] + good["nodes"][1:]))

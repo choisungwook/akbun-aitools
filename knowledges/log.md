@@ -1,5 +1,9 @@
 # Update log
 
+## 2026-11-22
+
+* **Updated**: akbun-draw-diagram-haru writes all text in ink (accent only on arrow lines, heads, step circles) and `mono-yellow` uses one yellow for every focus shape; superseded ADR 0007 deleted and 0008 stands alone; akbun-draw 1.1.9.
+
 ## 2026-11-21
 
 * **Updated**: AGENTS.md requires running triggered workflow commands locally before a PR and all `gh pr checks` green before merge, including pre-existing main failures; editvideo test fixture now copies `mods/`.
