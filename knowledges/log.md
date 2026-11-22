@@ -2,6 +2,7 @@
 
 ## 2026-11-22
 
+* **Updated**: akbun-reflect rewritten as one short list-based pass usable in any project (three reviewers, synthesizer and `references/` removed); approval table `번호 | local repo | remote repo | 수정 내용`, installed plugin caches edited only as copies, no PR or push, Backlog stays in the report and asks where to record it; akbun-agent-ops 1.1.0. 결정 없음: skill 문구 재작성이고 되돌리기 쉬움.
 * **Updated**: akbun-agentops-cleancomment renamed to akbun-agentops-prune-comments (verb-first, natural English); akbun-agent-ops 1.0.5. 결정 없음: 이름 변경뿐이고 되돌리기 쉬움.
 * **Updated**: akbun-agentops-cleancomment no longer names this repo's doc paths; it finds design docs and decision records through the target project's AGENTS.md or README; akbun-agent-ops 1.0.4. 결정 없음: 문구 일반화뿐이고 되돌리기 쉬움.
 * **Updated**: akbun-agent-ops gains akbun-agentops-cleancomment (fresh-context subagent finds comments that conflict with design docs, decision records or the code; parent verifies and deletes, offers encodings for constraint comments); akbun-agent-ops 1.0.3. 결정 없음: 새 skill 추가뿐이고 삭제로 되돌릴 수 있음.
