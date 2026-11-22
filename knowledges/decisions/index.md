@@ -5,3 +5,4 @@
 * [0005 YouTube output is a transcript-grounded script](0005-youtube-transcript-is-grounded.md) - Produce a chronological Markdown transcript, not a summary
 * [0006 Travel vlog orchestrator is the color workflow skill](0006-travel-vlog-orchestrator-is-color-workflow.md) - akbun-davinciresolve-workflow owns the full order from cut to render
 * [0008 Explainer SVG reduced to the chalkboard skill](0008-explainer-svg-reduced-to-chalkboard.md) - Replace the akbun-draw-explainer-svg router with the akbun-draw-chalkboard skill and delete the other tokens
+* [0009 diagram-haru assembles prompts from a spec; text is ink, accent only on arrows](0009-diagram-haru-spec-assembled-prompt-and-color-roles.md) - Spec-only model output, jsonl-assembled prompt, all text ink, one focus fill color

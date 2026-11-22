@@ -2,6 +2,7 @@
 
 ## 2026-11-22
 
+* **Updated**: push/PR hook now also requires a decision in `knowledges/decisions/` (or `결정 없음: <reason>` in the log) and runs from Claude Code, Codex (`.codex/hooks.json`) and Antigravity (`.agents/hooks.json`); decision 0009 records diagram-haru's spec-assembled prompt and color roles.
 * **Updated**: akbun-draw-diagram-haru writes all text in ink (accent only on arrow lines, heads, step circles) and `mono-yellow` uses one yellow for every focus shape; superseded ADR 0007 deleted and 0008 stands alone; akbun-draw 1.1.9.
 
 ## 2026-11-21
