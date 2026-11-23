@@ -4,7 +4,7 @@ title: akbun-draw
 description: "Image drawing skills by akbun — image-generation prompts and editable SVGs in fixed akbun styles"
 resource: ../../plugins/akbun-draw/
 tags: [plugin]
-generated: { by: claude-code/claude-opus-5-5, at: 2026-11-23T04:00:00Z }
+generated: { by: claude-code/claude-opus-5-5, at: 2026-11-24T01:10:00Z }
 stale_after: 2027-02-13T00:00:00Z
 sources:
   - id: manifest
@@ -22,6 +22,7 @@ Image drawing skills by akbun — image-generation prompts and editable SVGs in 
 ## Where
 
 - Skills: [plugins/akbun-draw/skills/](../../plugins/akbun-draw/skills/)
+- Agent: [akbun-draw-review-loupe](../../plugins/akbun-draw/agents/akbun-draw-review-loupe.md) judges composition of result images against `akbun-draw-template-cartoon/references/composition.jsonl`
 - Three manifests (`.claude-plugin`, `.codex-plugin`, `.antigravity-plugin`), same `version`. Rules: [plugin-versioning](../policies/plugin-versioning.md)
 - Skill list and when to use each: README `## plugin 목록` → `### akbun-draw` table (source of truth)[^readme]
 - Choosing a draw skill: [docs/manual_draw.md](../../docs/manual_draw.md)

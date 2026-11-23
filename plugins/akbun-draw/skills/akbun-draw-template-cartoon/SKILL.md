@@ -33,7 +33,7 @@ disable-model-invocation: true
 | 6 | 상황 → 시도 → 문제 → 다시 시도 → 뜻밖의 일 → 마무리 |
 | 7~10(1장씩 템플릿만) | 4컷 역할에서 전개를 늘린다. 마지막 컷이 결말인 것은 같다 |
 
-첫 컷에서 인물과 장소를 보여 주고, 마지막 컷이 결말(웃음·깨달음)이다. 웃음의 결은 스타일 skill을 따른다. 무표정 그림체면 담담한 얼굴과 어이없는 상황의 차이로 웃긴다. 4컷 이상이면 한 컷은 한 캐릭터의 머리와 어깨만 크게 보여 줘 같은 구도가 반복되지 않게 한다.
+첫 컷에서 인물과 장소를 보여 주고, 마지막 컷이 결말(웃음·깨달음)이다. 웃음의 결은 스타일 skill을 따른다. 무표정 그림체면 담담한 얼굴과 어이없는 상황의 차이로 웃긴다. 컷마다 `camera`를 골라 같은 구도가 반복되지 않게 한다. 같은 값을 3컷 연달아 쓰지 않고, 4컷 이상이면 3종류 이상 쓴다(검사가 본다).
 
 ## 작업 흐름
 
@@ -55,6 +55,7 @@ disable-model-invocation: true
 | `cast` | `[{"name", "look"}]` 1~3명, `name` 중복 없이 영어 한 단어. `look`은 종·색·옷을 담은 영어 4단어 이상. 모든 컷에 글자 그대로 들어간다 |
 | `panels` | 읽는 순서대로 |
 | `panels[].scene` | 이 컷에서 일어나는 일, 영어 6~40단어(공백으로 나눈 수, 경계 포함). 캐릭터는 `name`으로 부른다 |
+| `panels[].camera` | `wide`(장소 소개)·`full`(상황)·`medium`(대화)·`close`(감정)·`extreme-close`(결정적 표정·사물)·`low`(압도)·`high`(초라함)·`top`(전체 배치)·`tilt`(대치·긴장) 중 하나 |
 | `panels[].lines` | `[{"who", "text"}]` 0~2개, 말하는 순서대로. `who`는 `cast`의 `name`. `text`는 한국어, `\n`으로 나눈 2줄 이하, 줄마다 1~12자(공백·문장부호 포함) |
 | `panels[].sfx` | 효과음, 한 줄 6자 이하. 없으면 뺀다 |
 
@@ -68,10 +69,10 @@ disable-model-invocation: true
   "style": "akbun-draw-wash",
   "cast": [{"name": "otter", "look": "a small brown otter in a mustard knit vest"}],
   "panels": [
-    {"scene": "The otter stands at a bus stop holding a paper cup, looking down the empty road.", "lines": [{"who": "otter", "text": "버스 언제 와"}]},
-    {"scene": "Close-up of the otter checking a wristwatch with a blank face.", "lines": [{"who": "otter", "text": "5분 남았네"}]},
-    {"scene": "A bus passes behind the otter, who is still staring at the wristwatch.", "sfx": "부웅"},
-    {"scene": "The otter sits on the bench alone, sipping from the paper cup calmly.", "lines": [{"who": "otter", "text": "다음 거 타지"}]}
+    {"camera": "full", "scene": "The otter stands at a bus stop holding a paper cup, looking down the empty road.", "lines": [{"who": "otter", "text": "버스 언제 와"}]},
+    {"camera": "close", "scene": "Close-up of the otter checking a wristwatch with a blank face.", "lines": [{"who": "otter", "text": "5분 남았네"}]},
+    {"camera": "high", "scene": "A bus passes behind the otter, who is still staring at the wristwatch.", "sfx": "부웅"},
+    {"camera": "medium", "scene": "The otter sits on the bench alone, sipping from the paper cup calmly.", "lines": [{"who": "otter", "text": "다음 거 타지"}]}
   ]
 }
 ```
@@ -111,6 +112,7 @@ ffmpeg -v error -y -pattern_type glob -i 'cartoon-output/<작업명>/cartoon_*.p
 어긋난 장은 같은 프롬프트로 다시 생성하고, 몇 번 만에 맞았는지 결과 보고에 적는다. 대사 글자가 계속 틀리면 그 대사를 더 짧게 고쳐 3단계부터 다시 한다.
 
 - 컷 수·배치·읽는 순서 번호가 템플릿과 같은가.
+- 구도는 `akbun-draw-review-loupe` agent(없으면 그 파일의 판정표를 직접 적용)로 판정한다. 종합이 `다시 생성`이면 같은 프롬프트로, `spec 수정`이면 수정 문구대로 spec을 고쳐 3단계부터 다시 한다.
 - 대사·효과음이 spec의 글자 그대로이고, 그 밖의 글자가 없는가.
 - 말풍선 꼬리가 말하는 캐릭터를 가리키고, 말풍선이 얼굴을 가리지 않는가.
 - 같은 캐릭터가 모든 컷에서 같은 종·색·옷·비율이고, 모든 컷이 고른 스타일 skill의 그림체인가.

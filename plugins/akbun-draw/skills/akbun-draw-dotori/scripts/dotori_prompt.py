@@ -10,6 +10,8 @@ import sys
 from pathlib import Path
 
 REF = Path(__file__).resolve().parent.parent / "references"
+sys.path.insert(0, str(REF.parent.parent / "akbun-draw-template-cartoon" / "scripts"))
+from cartoon_prompt import bad_camera, composition, framing  # noqa: E402
 BANNED_STYLE = r"\b(3d|photorealistic|realistic|anime|gradients?|neon|shading|glossy|watercolou?r|font|typeface)\b"
 NO_TEXT = "No written words, letters, numbers or speech bubbles anywhere in the image."
 
@@ -43,6 +45,7 @@ def check(spec):
         ("moment length", 6 <= words <= 30, f"moment {words}단어, 6~30단어"),
         ("accent target", accent not in ("", "a", "an", "the") and any(re.search(rf"\b{re.escape(accent)}\b", n) for n in named),
          "accent_on은 characters.what 또는 props 한 항목에 낱말 단위로 들어 있는 말(관사만은 안 됨)"),
+        ("camera", "camera" not in spec or not bad_camera(spec["camera"], len(chars)), str(bad_camera(spec.get("camera"), len(chars)))),
         ("english", text.isascii(), "모델이 쓴 글은 영어(ASCII)만"),
         ("no banned style", not re.search(BANNED_STYLE, text, re.I), "3d·realistic·anime·gradient·neon·shading·glossy·watercolor·font 금지"),
     ]
@@ -60,6 +63,7 @@ def build(spec):
     colors = "; ".join(f"{k} {v}" for k, v in c.items())
     rules = " ".join(style[k]["prompt"].format(**c) for k in style if k != "medium")
     return "\n\n".join([
+        *framing(spec.get("camera")),
         f"{style['medium']['prompt']} {can[spec['canvas']]['prompt']}.",
         f"MOMENT: {spec['moment']}",
         f"CHARACTERS ({len(spec['characters'])}): {chars}",
@@ -67,6 +71,7 @@ def build(spec):
         f"ACCENT: only {spec['accent_on']} is colored {c['accent']}.",
         f"COLOR PALETTE: build the picture from these colors: {colors}. Any other color stays soft and pastel.",
         f"STYLE: {rules}",
+        composition("bubble"),
         f"TEXT: {NO_TEXT}",
         "DO NOT: no realistic proportions or faces, no 3D, no gradients or soft shading, no detailed scenery, "
         "no colored patch or panel behind the characters, no thick heavy outlines, no existing mascots or known cartoon characters, no watermark.",
@@ -96,6 +101,8 @@ def selftest():
     failed = {n for n, ok, _ in check(bad) if not ok}
     assert {"palette", "character fields", "props", "moment length", "accent target", "no banned style"} <= failed, failed
     assert not dict((n, ok) for n, ok, _ in check(dict(good, moment="전자레인지 앞에서 마지막 초를 세는 아이 한 장면")))["english"]
+    assert "FRAMING" in build(dict(good, camera="close")) and score(check(dict(good, camera=["x"]))) < 100
+    assert score(check(dict(good, camera="tilt", characters=good["characters"][:1]))) < 100
     print("selftest ok")
 
 
