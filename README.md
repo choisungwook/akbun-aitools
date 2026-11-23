@@ -171,7 +171,7 @@ Claude Code 입력창에서 설치하는 명령입니다.
 </tr>
 <tr>
 <td><a href="./plugins/akbun-draw/skills/akbun-draw-mermaid-database-garam/SKILL.md"><img src="./imgs/akbun-draw-mermaid-database-garam.png" alt="akbun-draw-mermaid-database-garam" width="260"></a><br><code>akbun-draw-mermaid-database-garam</code></td>
-<td><a href="./plugins/akbun-draw/skills/akbun-draw-impasto/SKILL.md"><img src="./imgs/akbun-draw-impasto.jpg" alt="akbun-draw-impasto" width="260"></a><br><code>akbun-draw-impasto</code></td>
+<td><a href="./plugins/akbun-draw/skills/akbun-draw-folk/SKILL.md"><img src="./imgs/akbun-draw-folk.jpg" alt="akbun-draw-folk" width="260"></a><br><code>akbun-draw-folk</code></td>
 </tr>
 </table>
 
@@ -256,7 +256,7 @@ $akbun-davinciresolve-explainer 이 대본을 fiery-ocean 색, akbun 도형으�
 | [akbun-draw-wash](./plugins/akbun-draw/skills/akbun-draw-wash/) | 흰 종이 여백이 넓은 펜 선·수채 칠 동물 장면 그림이 필요할 때 |
 | [akbun-draw-sena](./plugins/akbun-draw/skills/akbun-draw-sena/) | 사람 없는 장면을 바랜 옛 필름 사진처럼 담은 이미지가 필요할 때 |
 | [akbun-draw-storybook-vintage](./plugins/akbun-draw/skills/akbun-draw-storybook-vintage/) | 사물·동물 장면을 옛 그림책 수채 삽화처럼 그린 이미지가 필요할 때 |
-| [akbun-draw-impasto](./plugins/akbun-draw/skills/akbun-draw-impasto/) | 장면을 두꺼운 물감과 짙은 윤곽선의 소박한 유화처럼 그린 이미지가 필요할 때 |
+| [akbun-draw-folk](./plugins/akbun-draw/skills/akbun-draw-folk/) | 장면을 두꺼운 물감과 짙은 윤곽선의 소박한 유화처럼 그린 이미지가 필요할 때 |
 | [akbun-draw-gaon](./plugins/akbun-draw/skills/akbun-draw-gaon/) | 가는 펜 선으로 세부 많은 건물과 얼굴 없는 작은 인물이 있는 거리·장소 풍경을 낮이나 밤으로 그리고 싶을 때 |
 | [akbun-draw-title-nib](./plugins/akbun-draw/skills/akbun-draw-title-nib/) | 이미 있는 그림에 옛 그림책 표지 같은 손글씨 제목을 그려 넣고 싶을 때 |
 | [akbun-draw-title-pastel](./plugins/akbun-draw/skills/akbun-draw-title-pastel/) | 그림이나 사진 위에 크레용으로 덧그린 듯한 굵은 손글씨 제목을 넣고 싶을 때 |

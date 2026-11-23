@@ -1,14 +1,14 @@
 ---
-name: akbun-draw-impasto
-description: 캔버스에 두껍게 올린 임파스토 물감, 모든 형태를 감싸는 고른 굵기의 짙은 고동색 붓 윤곽선, 원근 없이 납작하고 조금 삐뚠 소박파 모양, 형태마다 또렷한 고유색과 나란히 찍은 밝고 어두운 획으로 사람 없는 평화로운 한 장면을 그리는 이미지 생성 프롬프트 스타일 impasto. 모델은 장면 spec(JSON)만 쓰고, 스크립트가 references의 스타일·팔레트 라이브러리로 영어 프롬프트를 조립하고 채점한다. 사용자가 직접 호출할 때만 실행한다.
+name: akbun-draw-folk
+description: 캔버스에 두껍게 올린 임파스토 물감, 모든 형태를 감싸는 고른 굵기의 짙은 고동색 붓 윤곽선, 원근 없이 납작하고 조금 삐뚠 소박파 모양, 형태마다 또렷한 고유색과 나란히 찍은 밝고 어두운 획으로 사람 없는 평화로운 한 장면을 그리는 이미지 생성 프롬프트 스타일 folk. 모델은 장면 spec(JSON)만 쓰고, 스크립트가 references의 스타일·팔레트 라이브러리로 영어 프롬프트를 조립하고 채점한다. 사용자가 직접 호출할 때만 실행한다.
 disable-model-invocation: true
 ---
 
-# akbun-draw-impasto
+# akbun-draw-folk
 
 ## 목적
 
-아무 장면을 impasto 소박파 회화 스타일로 담는 영어 이미지 생성 프롬프트를 만든다. 이 skill이 고정하는 것은 물감 질감·윤곽선·모양·색 쓰는 법·빛·분위기이고, 무엇을 그릴지(사물·동물·장소)와 구도는 입력에 맞춰 정한다.
+아무 장면을 folk 소박파 회화 스타일로 담는 영어 이미지 생성 프롬프트를 만든다. 이 skill이 고정하는 것은 물감 질감·윤곽선·모양·색 쓰는 법·빛·분위기이고, 무엇을 그릴지(사물·동물·장소)와 구도는 입력에 맞춰 정한다.
 
 모델은 프롬프트 문장을 직접 쓰지 않는다. spec만 쓰고, 스타일 문장은 스크립트가 라이브러리에서 가져온다. 그래서 몇 장을 만들어도 같은 그림체가 나온다.
 
@@ -30,7 +30,7 @@ disable-model-invocation: true
 
 ### 2. spec 쓰기
 
-출력 폴더는 사용자가 정한 곳, 없으면 작업 디렉터리 아래 `impasto-output/<작업명>/`이고, build 전에 폴더를 먼저 만든다. 사람이 나오는 요청은 사람 대신 그 사람이 남긴 사물(세워 둔 자전거, 뒤로 밀린 의자)을 `subjects`에 둔다. 화면·간판·우편물처럼 글자가 들어갈 자리는 글자 없는 단색 면으로 쓰고(예: `a laptop with a blank screen`), 건물의 쓰임은 간판 대신 사물(우체통, 빵)로 보인다.
+출력 폴더는 사용자가 정한 곳, 없으면 작업 디렉터리 아래 `folk-output/<작업명>/`이고, build 전에 폴더를 먼저 만든다. 사람이 나오는 요청은 사람 대신 그 사람이 남긴 사물(세워 둔 자전거, 뒤로 밀린 의자)을 `subjects`에 둔다. 화면·간판·우편물처럼 글자가 들어갈 자리는 글자 없는 단색 면으로 쓰고(예: `a laptop with a blank screen`), 건물의 쓰임은 간판 대신 사물(우체통, 빵)로 보인다.
 
 | 키 | 값 |
 |---|---|
@@ -47,7 +47,7 @@ disable-model-invocation: true
 spec을 채점하고 프롬프트 파일을 쓰는 명령이다.
 
 ```bash
-uv run --python 3.12 python -I <skill>/scripts/impasto_prompt.py build impasto-output/<작업명>/01_<id>.json -o impasto-output/<작업명>/01_<id>.txt
+uv run --python 3.12 python -I <skill>/scripts/folk_prompt.py build folk-output/<작업명>/01_<id>.json -o folk-output/<작업명>/01_<id>.txt
 ```
 
 채점표만 보려면 `build` 대신 `check`를 쓴다. 채점은 위 표의 값 외에 모델이 쓴 글(spec의 문자열만. 스크립트가 붙이는 스타일·DO NOT 문장은 세지 않는다)이 영어(ASCII)인지, 금지 낱말 세 묶음이 없는지 본다. 사람(human·person·people·man·woman·boy·girl·child·kid·face·portrait·hand·silhouette·crowd), 스타일을 깨는 말(photo·photorealistic·realistic·3d·cgi·render·anime·vector·neon·hdr·4k·8k·ultra·glossy·glow·gradient·perspective·cyberpunk), 그림 안 글자(text·letter·lettering·word·title·caption·sign·signboard·label·logo·signature·watermark). 낱말은 대소문자를 가리지 않고 단어 경계로 세며, -s·-es 복수형까지 센다(그 밖의 활용형은 세지 않는다).
@@ -55,12 +55,12 @@ uv run --python 3.12 python -I <skill>/scripts/impasto_prompt.py build impasto-o
 스크립트나 jsonl을 고쳤으면 예시 txt를 `build`로 다시 쓰고 자체 검사가 `selftest ok`를 내는지 본다.
 
 ```bash
-uv run --python 3.12 python -I <skill>/scripts/impasto_prompt.py --selftest
+uv run --python 3.12 python -I <skill>/scripts/folk_prompt.py --selftest
 ```
 
 ### 4. 이미지 생성과 확인
 
-사용자가 이미지까지 요청했을 때만, 사용자가 쓰는 이미지 생성 도구와 기본 모델에 `impasto-output/<작업명>/01_<id>.txt` 전문을 그대로 넣어 spec의 `canvas` 비율로 만들고 같은 폴더에 `01_<id>.png`로 저장한다. 여러 장은 장마다 따로, 동시에 만들어도 된다.
+사용자가 이미지까지 요청했을 때만, 사용자가 쓰는 이미지 생성 도구와 기본 모델에 `folk-output/<작업명>/01_<id>.txt` 전문을 그대로 넣어 spec의 `canvas` 비율로 만들고 같은 폴더에 `01_<id>.png`로 저장한다. 여러 장은 장마다 따로, 동시에 만들어도 된다.
 
 여러 장이면 결과를 한 장으로 붙여 한 번만 보고 아래를 확인한다. 어긋난 장은 같은 프롬프트로 다시 생성한다.
 

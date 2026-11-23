@@ -2,7 +2,7 @@
 
 ## 2026-11-23
 
-* **Created**: akbun-draw-impasto builds naive folk-art painting prompts (thick impasto relief, even near-black outline around every shape and every repeated dab, flat frontal shapes without perspective, one local color per shape, no people) from a spec via `impasto_prompt.py`; palettes `cobalt`/`terracotta`/`dusk`, canvas `16:9`/`3:4`; akbun-draw 1.1.14. 결정 없음: 새 skill 추가뿐이고 삭제로 되돌릴 수 있음.
+* **Created**: akbun-draw-folk builds naive folk-art painting prompts (thick impasto relief, even near-black outline around every shape and every repeated dab, flat frontal shapes without perspective, one local color per shape, no people) from a spec via `folk_prompt.py`; palettes `cobalt`/`terracotta`/`dusk`, canvas `16:9`/`3:4`; akbun-draw 1.1.14. 결정 없음: 새 skill 추가뿐이고 삭제로 되돌릴 수 있음.
 
 ## 2026-11-22
 
