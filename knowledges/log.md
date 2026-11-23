@@ -1,5 +1,9 @@
 # Update log
 
+## 2026-11-23
+
+* **Created**: akbun-draw-impasto builds naive folk-art painting prompts (thick impasto relief, even near-black outline around every shape and every repeated dab, flat frontal shapes without perspective, one local color per shape, no people) from a spec via `impasto_prompt.py`; palettes `cobalt`/`terracotta`/`dusk`, canvas `16:9`/`3:4`; akbun-draw 1.1.14. 결정 없음: 새 skill 추가뿐이고 삭제로 되돌릴 수 있음.
+
 ## 2026-11-22
 
 * **Updated**: akbun-reflect rewritten as one short list-based pass usable in any project (three reviewers, synthesizer and `references/` removed); approval table `번호 | local repo | remote repo | 수정 내용`, installed plugin caches edited only as copies, no PR or push, Backlog stays in the report and asks where to record it; akbun-agent-ops 1.1.0. 결정 없음: skill 문구 재작성이고 되돌리기 쉬움.
