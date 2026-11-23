@@ -35,6 +35,7 @@
 | 흰 종이 여백이 넓은 펜 선·수채 칠 장면이 필요함 | [akbun-draw-wash](../plugins/akbun-draw/skills/akbun-draw-wash/SKILL.md) | 끊어 겹친 펜 선·옅은 수채 칠·무표정 동물 장면 프롬프트(spec을 스크립트가 조립·채점) |
 | 사람 없는 장면을 바랜 옛 필름 사진처럼 보여 주고 싶음 | [akbun-draw-sena](../plugins/akbun-draw/skills/akbun-draw-sena/SKILL.md) | 필름 입자·무른 초점·실제 광원·아날로그 사물 사진 프롬프트(spec을 스크립트가 조립·채점) |
 | 사물·동물 장면을 옛 그림책 삽화처럼 보여 주고 싶음 | [akbun-draw-storybook-vintage](../plugins/akbun-draw/skills/akbun-draw-storybook-vintage/SKILL.md) | 갈색 연필 윤곽·겹친 수채·한 색 얼룩 바탕·바랜 종이결 삽화 프롬프트(spec을 스크립트가 조립·채점) |
+| 장면을 두꺼운 물감의 소박한 유화처럼 보여 주고 싶음 | [akbun-draw-folk](../plugins/akbun-draw/skills/akbun-draw-folk/SKILL.md) | 두꺼운 임파스토 질감·모든 형태를 감싸는 짙은 윤곽선·원근 없는 납작한 모양 회화 프롬프트(spec을 스크립트가 조립·채점) |
 | 거리·역·부두 같은 장소를 가는 펜 선 라인 드로잉으로 보여 주고 싶음 | [akbun-draw-gaon](../plugins/akbun-draw/skills/akbun-draw-gaon/SKILL.md) | 미색 종이 위 굵기 하나인 가는 선, 원근 없는 정면 건물의 촘촘한 세부, 얼굴 없이 팔다리를 두 줄로 연 길쭉한 인물, 강조색 1~2개, 밤이면 남색 종이에 옅은 선으로 반전하는 그림 프롬프트(spec을 스크립트가 조립·채점) |
 | 이미 있는 그림에 제목을 손글씨처럼 그려 넣고 싶음 | [akbun-draw-title-nib](../plugins/akbun-draw/skills/akbun-draw-title-nib/SKILL.md) | 폰트 없이 이미지 모델이 그림 위에 그리는 세리프 제목·부제 편집 프롬프트(spec을 스크립트가 조립·채점) |
 | 그림·사진 위에 크레용으로 덧그린 듯한 굵은 손글씨 제목을 넣고 싶음 | [akbun-draw-title-pastel](../plugins/akbun-draw/skills/akbun-draw-title-pastel/SKILL.md) | 폰트 없이 이미지 모델이 그리는 굵고 둥근 크레용 질감 제목·부제 편집 프롬프트(spec을 스크립트가 조립·채점) |
