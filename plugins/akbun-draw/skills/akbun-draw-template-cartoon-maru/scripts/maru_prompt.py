@@ -15,7 +15,7 @@ from pathlib import Path
 sys.dont_write_bytecode = True
 HERE = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(HERE.parent / "akbun-draw-template-cartoon" / "scripts"))
-from cartoon_prompt import BANNED, SKILLS, bad_camera, bad_palette, composition, framing, style_parts  # noqa: E402
+from cartoon_prompt import BANNED, NO_FACE_TICKS, SKILLS, bad_camera, bad_palette, composition, framing, style_parts  # noqa: E402
 
 REF = HERE / "references"
 HEX = re.compile(r"#[0-9A-Fa-f]{6}")
@@ -26,8 +26,7 @@ LETTERING = ("LETTERING: every letter is written by hand directly into the artwo
              "regular, geometric or machine-uniform, and have no outline and no shadow. Narration uses the same handwriting, a little larger. "
              "Write each Korean text exactly as given, character by character, with correct Hangul spelling. "
              "Do not add any other words, letters, captions, signatures or watermarks anywhere.")
-DONT = ("DO NOT: no panel border lines, no existing mascots or known cartoon characters, no watermark or signature, "
-        "no short straight tick, motion, surprise or emphasis lines around a face or head, even if the art style allows comic marks; marks drawn on the cheeks stay.")
+DONT = f"DO NOT: no panel border lines, no existing mascots or known cartoon characters, no watermark or signature, {NO_FACE_TICKS}"
 
 
 def load(name):

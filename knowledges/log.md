@@ -10,7 +10,7 @@
 
 ## 2026-11-24
 
-* **Updated**: akbun-draw gains shared composition rules (`akbun-draw-template-cartoon/references/composition.jsonl`: focal, depth, lines, room, bubble, camera) assembled into the cartoon, maru, comedy, dotori and wash prompts; cartoon panels require `camera` and the other four accept it, placed right after FORMAT as FRAMING (inside each PANEL on multi-panel sheets); maru no longer draws short straight lines around faces; new agent `akbun-draw-review-loupe` judges composition from result images; akbun-draw 1.1.15. 결정 없음: 프롬프트 문장과 검사 추가뿐이고 되돌리기 쉬움.
+* **Updated**: akbun-draw gains shared composition rules (`akbun-draw-template-cartoon/references/composition.jsonl`: focal, depth, lines, room, bubble, camera) assembled into the cartoon, maru, comedy, dotori and wash prompts; cartoon panels require `camera` and the other four accept it, placed right after FORMAT as FRAMING (inside each PANEL on multi-panel sheets); maru, cartoon and dotori no longer draw short straight lines around faces; new agent `akbun-draw-review-loupe` judges composition from result images; akbun-draw 1.1.15. 결정 없음: 프롬프트 문장과 검사 추가뿐이고 되돌리기 쉬움.
 
 ## 2026-11-23
 

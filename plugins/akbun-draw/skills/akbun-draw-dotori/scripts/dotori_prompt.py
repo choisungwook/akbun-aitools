@@ -11,7 +11,7 @@ from pathlib import Path
 
 REF = Path(__file__).resolve().parent.parent / "references"
 sys.path.insert(0, str(REF.parent.parent / "akbun-draw-template-cartoon" / "scripts"))
-from cartoon_prompt import bad_camera, composition, framing  # noqa: E402
+from cartoon_prompt import NO_FACE_TICKS, bad_camera, composition, framing  # noqa: E402
 BANNED_STYLE = r"\b(3d|photorealistic|realistic|anime|gradients?|neon|shading|glossy|watercolou?r|font|typeface)\b"
 NO_TEXT = "No written words, letters, numbers or speech bubbles anywhere in the image."
 
@@ -74,7 +74,7 @@ def build(spec):
         composition("bubble"),
         f"TEXT: {NO_TEXT}",
         "DO NOT: no realistic proportions or faces, no 3D, no gradients or soft shading, no detailed scenery, "
-        "no colored patch or panel behind the characters, no thick heavy outlines, no existing mascots or known cartoon characters, no watermark.",
+        "no colored patch or panel behind the characters, no thick heavy outlines, no existing mascots or known cartoon characters, no watermark, " + NO_FACE_TICKS,
     ])
 
 
@@ -101,6 +101,7 @@ def selftest():
     failed = {n for n, ok, _ in check(bad) if not ok}
     assert {"palette", "character fields", "props", "moment length", "accent target", "no banned style"} <= failed, failed
     assert not dict((n, ok) for n, ok, _ in check(dict(good, moment="전자레인지 앞에서 마지막 초를 세는 아이 한 장면")))["english"]
+    assert NO_FACE_TICKS in build(good) and "motion strokes" not in build(good)
     assert "FRAMING" in build(dict(good, camera="close")) and score(check(dict(good, camera=["x"]))) < 100
     assert score(check(dict(good, camera="tilt", characters=good["characters"][:1]))) < 100
     print("selftest ok")

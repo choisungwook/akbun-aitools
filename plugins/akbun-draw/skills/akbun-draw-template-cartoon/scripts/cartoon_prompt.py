@@ -38,6 +38,7 @@ CAMERAS = {  # 샷 크기와 카메라 높이. 지평선 자리가 높이를 정
     "top": "Camera: straight-down bird's-eye view, the figures and objects laid along one strong diagonal of the frame.",
     "tilt": "Camera: close on two faces at different heights, only their heads and shoulders in frame, the line between their eyes running on a steep diagonal for tension, overriding any full-body description.",
 }
+NO_FACE_TICKS = "no short straight tick, motion, surprise or emphasis lines around a face or head, even if the art style allows comic marks; marks drawn on the cheeks stay."
 LETTERING = ("LETTERING: every letter is hand-lettered as part of the artwork, drawn with the same pen and medium as the lines "
              "of the illustration: rounded, slightly uneven hand strokes of even weight; the letters themselves have no outline and no shadow. "
              "Write each Korean text exactly as given, character by character, with correct Hangul spelling. "
@@ -152,7 +153,7 @@ def prompts(spec):
     cast = "CHARACTERS (identical in every panel, same species, colors, outfit and proportions): " + " ".join(
         f"The {c['name']} is {c['look']}." for c in spec["cast"])
     head = [f"STYLE: {style}", cast]
-    tail = [composition(), LETTERING, "Leave the top quarter of each panel calm so the speech bubbles do not cover faces."]
+    tail = [composition(), LETTERING, "Leave the top quarter of each panel calm so the speech bubbles do not cover faces.", f"DO NOT: {NO_FACE_TICKS}"]
     if t[1]:
         frame = f"FORMAT: one comic page, {t[0]}, with {t[1]}. Thin hand-drawn panel borders with even white gutters."
         return [("cartoon", "\n\n".join([frame] + head + [panel_text(i, p, spec["cast"]) for i, p in enumerate(spec["panels"], 1)] + tail))]
@@ -178,6 +179,7 @@ def selftest():
     assert "COMPOSITION:" in p and "Camera: low angle" in p and "bubble" not in composition("bubble").lower() and "bird's-eye" in framing("top")[0] and framing(None) == []
     agent = (SKILLS.parent / "agents" / "akbun-draw-review-loupe.md").read_text()
     assert all(f"`{json.loads(ln)['id']}`" in agent for ln in (SKILLS / "akbun-draw-template-cartoon/references/composition.jsonl").read_text().splitlines()), "리뷰 agent가 구도 규칙을 모두 판정"
+    assert NO_FACE_TICKS in p and all(NO_FACE_TICKS in t for _, t in ig)
     flat = json.loads(json.dumps(good))
     for q in flat["panels"]:
         q["camera"] = "full"
