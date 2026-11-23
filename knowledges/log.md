@@ -2,6 +2,7 @@
 
 ## 2026-11-23
 
+* **Updated**: akbun-writing adds templates (`references/templates/tech-blog.md` default, user overrides in `~/.config/akbun-writing/templates/`), a per-paragraph "그래서 뭐?" check in tokenops, and a final pass by the new `akbun-cold-reader` agent that reads only the draft file and reports 8 types of reader gaps; akbun-writing 1.0.81. 결정 없음: skill 문구·agent 추가이고 되돌리기 쉬움(tsuzuri의 문장별 의도 기록 CLI·뷰어 앱은 글 1편에 비해 무거워 가져오지 않음).
 * **Created**: akbun-draw-folk builds naive folk-art painting prompts (thick impasto relief, even near-black outline around every shape and every repeated dab, flat frontal shapes without perspective, one local color per shape, no people) from a spec via `folk_prompt.py`; palettes `cobalt`/`terracotta`/`dusk`, canvas `16:9`/`3:4`; akbun-draw 1.1.14. 결정 없음: 새 skill 추가뿐이고 삭제로 되돌릴 수 있음.
 
 ## 2026-11-22
