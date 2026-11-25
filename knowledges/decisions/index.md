@@ -5,4 +5,4 @@
 * [0005 YouTube output is a transcript-grounded script](0005-youtube-transcript-is-grounded.md) - Produce a chronological Markdown transcript, not a summary
 * [0006 Travel vlog orchestrator is the color workflow skill](0006-travel-vlog-orchestrator-is-color-workflow.md) - akbun-davinciresolve-workflow owns the full order from cut to render
 * [0008 Explainer SVG reduced to the chalkboard skill](0008-explainer-svg-reduced-to-chalkboard.md) - Replace the akbun-draw-explainer-svg router with the akbun-draw-chalkboard skill and delete the other tokens
-* [0009 diagram-haru picks a layout from the relation; shade chips only for comparisons](0009-diagram-haru-spec-assembled-prompt-and-color-roles.md) - Relation-first layout incl. sequence, work-folder shapes/palettes, ink lines and text, shade chips only when comparing
+* [0009 diagram-haru picks a layout from the relation; shade chips only for comparisons](0009-diagram-haru-spec-assembled-prompt-and-color-roles.md) - Spec-only model output assembled from jsonl; relation-first layout choice including sequence; work-folder shapes/palettes; ink lines and text, shade chips only when comparing
