@@ -1,0 +1,39 @@
+{
+  "name": "akbun-thinking",
+  "version": "1.0.0",
+  "description": "Thinking principle skills — let evidence lead the conclusion instead of fitting evidence to a preset answer, and read others' words by their most charitable interpretation",
+  "author": {
+    "name": "akbun",
+    "url": "https://github.com/choisungwook"
+  },
+  "homepage": "https://github.com/choisungwook/akbun-aitools",
+  "repository": "https://github.com/choisungwook/akbun-aitools",
+  "license": "MIT",
+  "keywords": [
+    "thinking",
+    "reasoning",
+    "evidence",
+    "charity",
+    "principle"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "akbun Thinking",
+    "shortDescription": "Short thinking principles: evidence-first reasoning and charitable interpretation",
+    "longDescription": "A collection of one- or two-sentence thinking principles applied while reasoning — let the evidence lead the conclusion rather than fitting it to a preset answer, and interpret others' words in their most reasonable sense before judging them.",
+    "developerName": "akbun",
+    "category": "Productivity",
+    "capabilities": [
+      "Interactive"
+    ],
+    "websiteURL": "https://github.com/choisungwook/akbun-aitools",
+    "privacyPolicyURL": "https://docs.github.com/site-policy/privacy-policies/github-general-privacy-statement",
+    "termsOfServiceURL": "https://docs.github.com/en/site-policy/github-terms/github-terms-of-service",
+    "defaultPrompt": [
+      "정해 둔 답 없이 증거부터 모아서 이 장애 원인을 따져줘 (akbun-thinking-holmes)",
+      "이 리뷰 코멘트를 가장 선의로 해석하면 무슨 뜻일까? (akbun-thinking-dennett)"
+    ],
+    "brandColor": "#2563EB",
+    "screenshots": []
+  }
+}
