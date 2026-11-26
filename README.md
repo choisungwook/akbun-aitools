@@ -100,7 +100,16 @@ Claude Code 화면에 정보를 더하는 hooks module입니다. Claude Code에�
 |---|---|
 | [akbun-session-meter](mods/akbun-session-meter/README.md) | 세션 ID, 예상 비용, 토큰, 컨텍스트 사용률, 에이전트 목록, 변경 파일 diff 표시 |
 
-Claude Code 입력창에서 설치하는 명령입니다.
+### mod 설치
+
+두 방법 중 하나를 고릅니다.
+
+| 방법 | 설치 위치 | 이럴 때 |
+|---|---|---|
+| marketplace 설치 | `~/.claude/plugins/` | Claude Code가 mod를 관리하게 할 때 |
+| 디렉터리 지정 | 내가 받은 폴더 | `~/.claude`에 설치하지 않고 폴더를 직접 관리할 때 |
+
+Claude Code 입력창에서 marketplace를 등록하고 mod를 설치하는 명령입니다.
 
 ```bash
 /plugin marketplace add choisungwook/akbun-aitools
@@ -108,14 +117,70 @@ Claude Code 입력창에서 설치하는 명령입니다.
 /reload-plugins
 ```
 
-설치를 해제하는 명령입니다.
+터미널에서 설치하는 명령입니다. 설치 뒤 Claude Code를 다시 시작합니다.
+
+```bash
+CLAUDE_DIR="${CLAUDE_CONFIG_DIR:-$HOME/.claude}"
+CLAUDE_CONFIG_DIR="$CLAUDE_DIR" claude plugin marketplace add choisungwook/akbun-aitools
+CLAUDE_CONFIG_DIR="$CLAUDE_DIR" claude plugin install akbun-session-meter@akbun-aitools
+```
+
+디렉터리 지정은 저장소를 받은 뒤 실행할 때 mod 폴더를 넘깁니다. 아래 예시는 `~/tools`에 받습니다.
+
+```bash
+git clone --depth 1 https://github.com/choisungwook/akbun-aitools ~/tools/akbun-aitools
+claude --plugin-dir ~/tools/akbun-aitools/mods/akbun-session-meter
+```
+
+매번 지정하지 않으려면 셸 설정 파일(`~/.zshrc`, `~/.bashrc`)에 환경 변수를 넣습니다. 셸 설정 파일의 변수는 터미널에서 실행한 Claude Code만 읽습니다.
+
+```bash
+export CLAUDE_CODE_PLUGIN_DIRS="$HOME/tools/akbun-aitools/mods/akbun-session-meter"
+```
+
+데스크톱 앱은 `~/.claude/settings.json`의 `env`에 넣습니다. JSON에서는 `$HOME`이 풀리지 않으니 `~`나 절대 경로를 씁니다.
+
+```json
+{
+  "env": {
+    "CLAUDE_CODE_PLUGIN_DIRS": "~/tools/akbun-aitools/mods/akbun-session-meter"
+  }
+}
+```
+
+### mod 업데이트
+
+marketplace로 설치했다면 최신 버전으로 다시 받는 터미널 명령입니다. 끝나면 Claude Code에서 `/reload-plugins`를 실행합니다.
+
+```bash
+CLAUDE_DIR="${CLAUDE_CONFIG_DIR:-$HOME/.claude}"
+CLAUDE_CONFIG_DIR="$CLAUDE_DIR" claude plugin marketplace update akbun-aitools
+CLAUDE_CONFIG_DIR="$CLAUDE_DIR" claude plugin update akbun-session-meter@akbun-aitools
+```
+
+디렉터리를 지정했다면 받은 폴더를 갱신하고 Claude Code를 다시 시작합니다.
+
+```bash
+git -C ~/tools/akbun-aitools pull
+```
+
+### mod 설치 해제
+
+Claude Code 입력창에서 mod를 지우는 명령입니다.
 
 ```bash
 /plugin uninstall akbun-session-meter@akbun-aitools
 /reload-plugins
 ```
 
-`~/.claude`에 설치하지 않고 받은 폴더를 지정해 쓰는 방법은 [mod README](mods/akbun-session-meter/README.md#디렉터리-지정)에 있습니다.
+터미널에서 지우는 명령입니다. 끝나면 Claude Code를 다시 시작합니다.
+
+```bash
+CLAUDE_DIR="${CLAUDE_CONFIG_DIR:-$HOME/.claude}"
+CLAUDE_CONFIG_DIR="$CLAUDE_DIR" claude plugin uninstall akbun-session-meter@akbun-aitools
+```
+
+디렉터리를 지정했다면 `--plugin-dir` 옵션을 빼고 실행합니다. 환경 변수를 넣었다면 셸 설정 파일이나 `settings.json`에서 `CLAUDE_CODE_PLUGIN_DIRS`를 지운 뒤 Claude Code를 새로 엽니다. 표시하는 값과 사용법은 [mod README](mods/akbun-session-meter/README.md)에 있습니다.
 
 ## plugin 예시
 
