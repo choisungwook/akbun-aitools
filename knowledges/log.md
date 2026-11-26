@@ -2,6 +2,7 @@
 
 ## 2026-11-26
 
+* **Updated**: akbun-writing gains a 서술 section (write for the reader who does not know the answer yet, connect facts as question → expectation → observation → cause, cut facts the post's one question does not need) with matching checklist items 8-10 and a 서술 group in akbun-style-reviewer; akbun-writing 1.0.81. 결정 없음: skill 문구 추가이고 되돌리기 쉬움.
 * **Created**: akbun-thinking plugin 1.0.0 collects short thinking principles as `akbun-thinking-<proper noun>` skills: akbun-thinking-holmes (evidence leads the conclusion, not the other way) and akbun-thinking-dennett (principle of charity before judging). 결정 없음: 새 plugin 추가뿐이고 삭제로 되돌릴 수 있음.
 
 ## 2026-11-25
