@@ -75,6 +75,12 @@
       "strict": true
     },
     {
+      "name": "akbun-thinking",
+      "source": "./plugins/akbun-thinking",
+      "description": "Thinking principle skills — let evidence lead the conclusion instead of fitting evidence to a preset answer, and read others' words by their most charitable interpretation",
+      "strict": true
+    },
+    {
       "name": "akbun-session-meter",
       "source": "./mods/akbun-session-meter",
       "description": "Claude Code mod — session ID, estimated cost, tokens, context window usage, the agent list and a git diff view in panes and the status line",

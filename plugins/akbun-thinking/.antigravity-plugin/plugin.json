@@ -1,0 +1,20 @@
+{
+  "name": "akbun-thinking",
+  "displayName": "akbun Thinking",
+  "version": "1.0.0",
+  "description": "Thinking principle skills — let evidence lead the conclusion instead of fitting evidence to a preset answer, and read others' words by their most charitable interpretation",
+  "author": {
+    "name": "akbun",
+    "url": "https://github.com/choisungwook"
+  },
+  "homepage": "https://github.com/choisungwook/akbun-aitools",
+  "repository": "https://github.com/choisungwook/akbun-aitools",
+  "license": "MIT",
+  "keywords": [
+    "thinking",
+    "reasoning",
+    "evidence",
+    "charity",
+    "principle"
+  ]
+}

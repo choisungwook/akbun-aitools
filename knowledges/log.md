@@ -1,5 +1,9 @@
 # Update log
 
+## 2026-11-26
+
+* **Created**: akbun-thinking plugin 1.0.0 collects short thinking principles as `akbun-thinking-<proper noun>` skills: akbun-thinking-holmes (evidence leads the conclusion, not the other way) and akbun-thinking-dennett (principle of charity before judging). 결정 없음: 새 plugin 추가뿐이고 삭제로 되돌릴 수 있음.
+
 ## 2026-11-25
 
 * **Updated**: bundle upgraded from OKF v0.2 to v0.3 (`okf_version: "0.3"`, root `title`/`description`, spec link moved to open-knowledge-format; How to read notes file-relative paths, current-only `verified` and `superseded_by`); existing paths were already file-relative; `../../` repo paths stay external under OKF and are opened from the checkout; akbun-draw actor and 0009 index entry fixed. 결정 없음: 스펙 버전 추종이고 index.md 한 줄로 되돌릴 수 있음.
