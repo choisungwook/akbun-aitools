@@ -2,6 +2,7 @@
 
 ## 2026-11-26
 
+* **Updated**: akbun-writing gains a structure step before drafting (ending sentence first, one-fact index cards, discard cards the ending does not need, order cards for a reader who does not know the answer, join cards by cause instead of listing); intro states the ending and the last section closes on it; checklist and akbun-style-reviewer gain matching structure items; akbun-writing 1.0.81. 결정 없음: 규칙 추가이고 SKILL.md 한 절을 지우면 되돌릴 수 있음.
 * **Created**: akbun-thinking plugin 1.0.0 collects short thinking principles as `akbun-thinking-<proper noun>` skills: akbun-thinking-holmes (evidence leads the conclusion, not the other way) and akbun-thinking-dennett (principle of charity before judging). 결정 없음: 새 plugin 추가뿐이고 삭제로 되돌릴 수 있음.
 
 ## 2026-11-25

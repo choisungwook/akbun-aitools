@@ -4,13 +4,13 @@ title: akbun-writing
 description: "Writing, review, and blog support skills by akbun"
 resource: ../../plugins/akbun-writing/
 tags: [plugin]
-generated: { by: claude-code/claude-opus-5-5, at: 2026-11-13T14:20:00Z }
+generated: { by: claude-code, at: 2026-11-26T00:00:00Z }
 stale_after: 2027-02-13T00:00:00Z
 sources:
   - id: manifest
     resource: ../../plugins/akbun-writing/.claude-plugin/plugin.json
     title: akbun-writing Claude manifest
-    last_modified: 2026-11-13T14:10:15Z
+    last_modified: 2026-11-26T00:00:00Z
   - id: readme
     resource: ../../README.md
     title: README plugin list
