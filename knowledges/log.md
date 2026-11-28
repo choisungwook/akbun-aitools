@@ -10,6 +10,7 @@
 
 ## 2026-11-23
 
+* **Created**: akbun-agentops-ship (from portfolio repo-pr-ship) runs only fast local tests (skipped if already run on the current tree) and leaves full CI to GitHub Actions, opens a PR with the repo PR template or a default body, waits for CI and reviews (gh `pr checks --watch`, PR event subscription, or `resume` in MCP-only sessions), fixes CI failures and review comments up to 3 rounds, merges only with `merge`; akbun-agent-ops 1.1.1. 결정 없음: 새 skill 추가뿐이고 삭제로 되돌릴 수 있음.
 * **Created**: akbun-draw-folk builds naive folk-art painting prompts (thick impasto relief, even near-black outline around every shape and every repeated dab, flat frontal shapes without perspective, one local color per shape, no people) from a spec via `folk_prompt.py`; palettes `cobalt`/`terracotta`/`dusk`, canvas `16:9`/`3:4`; akbun-draw 1.1.14. 결정 없음: 새 skill 추가뿐이고 삭제로 되돌릴 수 있음.
 
 ## 2026-11-22
