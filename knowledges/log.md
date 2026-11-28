@@ -8,6 +8,10 @@
 
 * **Updated**: bundle upgraded from OKF v0.2 to v0.3 (`okf_version: "0.3"`, root `title`/`description`, spec link moved to open-knowledge-format; How to read notes file-relative paths, current-only `verified` and `superseded_by`); existing paths were already file-relative; `../../` repo paths stay external under OKF and are opened from the checkout; akbun-draw actor and 0009 index entry fixed. 결정 없음: 스펙 버전 추종이고 index.md 한 줄로 되돌릴 수 있음.
 
+## 2026-11-24
+
+* **Updated**: akbun-draw gains shared composition rules (`akbun-draw-template-cartoon/references/composition.jsonl`: focal, depth, lines, room, bubble, camera) assembled into the cartoon, maru, comedy, dotori and wash prompts; new reference skill `akbun-draw-camera` is the single source of camera values; cartoon panels require `camera` and the other four accept it, placed right after FORMAT as FRAMING (inside each PANEL on multi-panel sheets); maru, cartoon and dotori no longer draw short straight lines around faces; new agent `akbun-draw-review-loupe` judges composition from result images; akbun-draw 1.1.15. 결정 없음: 프롬프트 문장과 검사 추가뿐이고 되돌리기 쉬움.
+
 ## 2026-11-23
 
 * **Created**: akbun-draw-folk builds naive folk-art painting prompts (thick impasto relief, even near-black outline around every shape and every repeated dab, flat frontal shapes without perspective, one local color per shape, no people) from a spec via `folk_prompt.py`; palettes `cobalt`/`terracotta`/`dusk`, canvas `16:9`/`3:4`; akbun-draw 1.1.14. 결정 없음: 새 skill 추가뿐이고 삭제로 되돌릴 수 있음.

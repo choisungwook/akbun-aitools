@@ -60,3 +60,4 @@
 | 상황 | 스킬 | 결과물 |
 |---|---|---|
 | 다른 그림에 akbun 고래 마스코트를 같은 모습으로 넣어야 함 | [akbun-mascot-whale](../plugins/akbun-draw/skills/akbun-mascot-whale/SKILL.md) | 마스코트 외형 기준. 다른 스킬이 참조한다 |
+| 만화·일러스트 장면의 샷 크기와 카메라 높이를 고르거나 고쳐야 함 | [akbun-draw-camera](../plugins/akbun-draw/skills/akbun-draw-camera/SKILL.md) | camera 값 기준. 다른 스킬이 참조한다 |

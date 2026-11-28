@@ -15,7 +15,9 @@ from pathlib import Path
 sys.dont_write_bytecode = True
 HERE = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(HERE.parent / "akbun-draw-template-cartoon" / "scripts"))
-from cartoon_prompt import BANNED, SKILLS, bad_palette, style_parts  # noqa: E402
+sys.path.insert(0, str(HERE.parent / "akbun-draw-camera" / "scripts"))
+from camera_prompt import bad_camera, framing  # noqa: E402
+from cartoon_prompt import BANNED, NO_FACE_TICKS, SKILLS, bad_palette, composition, style_parts  # noqa: E402
 
 REF = HERE / "references"
 HEX = re.compile(r"#[0-9A-Fa-f]{6}")
@@ -26,7 +28,7 @@ LETTERING = ("LETTERING: every letter is written by hand directly into the artwo
              "regular, geometric or machine-uniform, and have no outline and no shadow. Narration uses the same handwriting, a little larger. "
              "Write each Korean text exactly as given, character by character, with correct Hangul spelling. "
              "Do not add any other words, letters, captions, signatures or watermarks anywhere.")
-DONT = "DO NOT: no panel border lines, no existing mascots or known cartoon characters, no watermark or signature."
+DONT = f"DO NOT: no panel border lines, no existing mascots or known cartoon characters, no watermark or signature, {NO_FACE_TICKS}"
 
 
 def load(name):
@@ -92,6 +94,11 @@ def check(spec):
         total = len(cap.replace("\n", "")) + len(sfx) + sum(len(ln.get("text", "").replace("\n", "")) for ln in lines)
         if total > MAX_TOTAL:
             out.append(f"{i}번 글자 합 {total}자: 한 장 {MAX_TOTAL}자 이하(caption·대사·sfx, 줄바꿈 제외)")
+    for i, b in enumerate(beats, 1):
+        people = sum(bool(re.search(rf"(?i)\b{re.escape(str(n))}\b", b.get("scene", ""))) or any(
+            ln.get("who") == n and ln.get("kind", "say") not in ("offscreen", "box") for ln in b.get("lines", [])) for n in names)
+        if "camera" in b and (e := bad_camera(b["camera"], people)):
+            out.append(f"{i}번 {e}")
     english = " ".join([spec.get("style_text", "")] + [c.get("look", "") for c in cast] + [b.get("scene", "") + " " + b.get("place", "") for b in beats])
     if not english.isascii():
         out.append("style_text·cast.look·scene·place는 영어(ASCII)만")
@@ -111,7 +118,7 @@ def beat_text(i, n, b, spec, style):
     if b["shot"] == "caption-only":
         return head + ["PAGE: a plain page in the same paper color as the other images of the episode, with no scene area, no background block, no characters and no drawings.",
                        shots[b["shot"]]["prompt"], f"CAPTION: {quote(b['caption'])}", LETTERING, DONT]
-    parts = head + ["PAGE: " + " ".join(r["prompt"] for r in page.values()), shots[b["shot"]]["prompt"], f"STYLE: {style}"]
+    parts = head + framing(b.get("camera")) + ["PAGE: " + " ".join(r["prompt"] for r in page.values()), shots[b["shot"]]["prompt"], f"STYLE: {style}"]
     lines = b.get("lines", [])
     seen = [c for c in spec["cast"] if re.search(rf"(?i)\b{re.escape(c['name'])}\b", b["scene"])
             or any(ln["who"] == c["name"] and ln.get("kind", "say") not in ("offscreen", "box") for ln in lines)]
@@ -127,7 +134,7 @@ def beat_text(i, n, b, spec, style):
     parts.append("BUBBLES in reading order: " + (" ".join(bubbles) if bubbles else "none."))
     if b.get("sfx"):
         parts.append(f'SOUND EFFECT, hand-lettered large without a bubble: "{b["sfx"]}".')
-    return parts + [LETTERING, DONT]
+    return parts + [composition(), LETTERING, DONT]
 
 
 def prompts(spec):
@@ -160,6 +167,12 @@ def selftest():
     assert all(k in errs for k in ("who 'ghost'", "줄마다 1~12자", "rapid-fire 대사는 3~5개", "caption은", "font·typeface")), errs
     same = dict(good, beats=[dict(good["beats"][0], shot="two-shot") for _ in range(4)])
     assert "3장 연달아" in " ".join(check(same)) and "3종류" in " ".join(check(same))
+    cam = json.loads(json.dumps(good))
+    cam["beats"][0]["camera"] = "close"
+    assert check(cam) == [] and "FRAMING" in prompts(cam)[0][1]
+    cam["beats"][0]["camera"] = ["x"]
+    assert "camera" in " ".join(check(cam))
+    assert all("no short straight tick" in t for _, t in prompts(good)) and "burst" not in load("shots.jsonl")["reaction"]["prompt"]
     assert "style_text" in " ".join(check(dict(good, style="akbun-draw-motion-doodle")))
     assert "palette" in " ".join(check(dict(good, palette="no-such")))
     print("selftest ok")

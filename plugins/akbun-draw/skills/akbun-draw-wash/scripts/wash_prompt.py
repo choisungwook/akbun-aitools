@@ -10,6 +10,10 @@ import sys
 from pathlib import Path
 
 REF = Path(__file__).resolve().parent.parent / "references"
+sys.path.insert(0, str(REF.parent.parent / "akbun-draw-template-cartoon" / "scripts"))
+sys.path.insert(0, str(REF.parent.parent / "akbun-draw-camera" / "scripts"))
+from camera_prompt import bad_camera, framing  # noqa: E402
+from cartoon_prompt import composition  # noqa: E402
 
 # 모델이 쓴 글에 나오면 안 되는 말. 알려진 캐릭터와 닮을 수 있는 종·털 묘사, 사람, 스타일을 깨는 표현.
 BANNED_BEINGS = (r"\b(dogs?|pupp(y|ies)|poodles?|sheepdogs?|cats?|kittens?|humans?|person|people|man|men|"
@@ -62,6 +66,7 @@ def check(spec):
     words = len(spec.get("scene", "").split())
     return common_rows(spec, cast, text) + [
         ("character count", 1 <= len(cast) <= 4, f"{len(cast)}명, 1~4명(경계 포함)"),
+        ("camera", "camera" not in spec or not bad_camera(spec["camera"], len(cast)), str(bad_camera(spec.get("camera"), len(cast)))),
         ("scene length", 6 <= words <= 40, f"scene {words}단어, 6~40단어(공백으로 나눈 수)"),
         ("props", len(set(props)) == len(props) <= 6, f"소품 {len(props)}개, 0~6개, 중복 없이"),
     ]
@@ -76,11 +81,13 @@ def build(spec):
     setting = spec.get("setting") or "no particular place, just the white page"
     props = ", ".join(spec.get("props", [])) or "none"
     return "\n\n".join([
+        *framing(spec.get("camera")),
         style["medium"]["prompt"],
         f"SCENE: {spec['scene']} Setting: {setting}.",
         f"CHARACTERS ({len(spec['characters'])}): {who(spec['characters'])}",
         f"PROPS (only these, drawn just enough to read): {props}.",
         *style_block(spec["palette"]),
+        composition("bubble"),
         DONT,
     ])
 
@@ -125,6 +132,8 @@ def selftest():
     assert {"palette", "character ids", "actions", "scene length", "props", "no banned beings"} <= failed, failed
     assert score(check(dict(good, scene=good["scene"] + " Drawn photorealistic."))) < 100
     assert score(check(dict(good, scene="A catalog of category mistakes is read aloud by the otter."))) == 100
+    assert "FRAMING" in build(dict(good, camera="close")) and score(check(dict(good, camera=["x"]))) < 100
+    assert score(check(dict(good, camera="tilt", characters=good["characters"][:1]))) < 100
     print("selftest ok")
 
 

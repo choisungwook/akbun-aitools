@@ -15,7 +15,9 @@ from pathlib import Path
 sys.dont_write_bytecode = True
 HERE = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(HERE.parent / "akbun-draw-template-cartoon" / "scripts"))
-from cartoon_prompt import BANNED, SKILLS, bad_palette, style_parts  # noqa: E402
+sys.path.insert(0, str(HERE.parent / "akbun-draw-camera" / "scripts"))
+from camera_prompt import FULL_BODY, bad_camera, framing  # noqa: E402
+from cartoon_prompt import BANNED, SKILLS, bad_palette, composition, style_parts  # noqa: E402
 
 REF = HERE / "references"
 HANGUL = re.compile("[가-힣]")
@@ -53,6 +55,8 @@ def check(spec):
             out.append(f"{k}: look은 종·색(옷은 스타일 skill 규칙대로)을 담은 영어 4단어 이상, action은 영어 3단어 이상")
     if e.get("look") and e.get("look") == u.get("look"):
         out.append("endurer와 unaware는 서로 다른 look")
+    if "camera" in spec and (err := bad_camera(spec["camera"], 2, FULL_BODY)):
+        out.append(err)
     text = " ".join([spec.get("setting", ""), prop] + [c.get(x, "") for c in (e, u) for x in ("look", "action")])
     if not text.isascii():
         out.append("모델이 쓴 영어 글은 ASCII만")
@@ -67,12 +71,14 @@ def build(spec):
     style, _ = style_parts(spec)
     return "\n\n".join([
         "FORMAT: a single-panel illustration, landscape 16:9.",
+        *framing(spec.get("camera")),
         "STAGING: " + " ".join(staging[k]["prompt"] for k in staging if k not in g.get("skip", [])),
         "GAG: " + g["prompt"].format(prop=spec.get("prop", "")),
         f"ENDURING CHARACTER: {e['look']}, {e['action']}.",
         f"UNAWARE CHARACTER: {u['look']}, {u['action']}.",
         f"SETTING: {spec.get('setting') or 'no particular place, the background follows the style'}.",
         f"STYLE: {style}",
+        composition("bubble"),
         DONT,
     ])
 
@@ -94,6 +100,7 @@ def selftest():
     assert "fill" in " ".join(check(dict(good, style="akbun-draw-bori", palette=None)))
     assert check(dict(good, style="akbun-draw-bori", palette=None, fill={"season": "autumn", "line": "#5A4636"})) == []
     assert "style_text" in " ".join(check(dict(good, style="akbun-draw-motion-doodle")))
+    assert "camera" in " ".join(check(dict(good, camera="close"))) and check(dict(good, camera="low")) == [] and "camera" in " ".join(check(dict(good, camera=["x"]))) and "camera" in " ".join(check(dict(good, camera="wide")))
     bad = dict(good, title="Waiting", gag="sealed-mouth", style="ghibli",
                unaware={"look": "otter in Helvetica font", "action": "x"})
     errs = " ".join(check(bad))

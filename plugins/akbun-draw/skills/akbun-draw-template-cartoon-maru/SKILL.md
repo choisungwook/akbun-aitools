@@ -42,6 +42,7 @@ disable-model-invocation: true
 | `beats[].shot` | shots.jsonl `id` |
 | `beats[].place` | 장소 영어 구절. 같은 장소는 글자 그대로 같게 쓴다. 없으면 뺀다 |
 | `beats[].scene` | 이 장에서 일어나는 일, 영어 6~40단어(공백으로 나눈 수, 경계 포함). 캐릭터는 `name`으로 부른다. 그 장 프롬프트에는 `scene`에 이름이 나오거나 그림 안에서 말하는 캐릭터만 들어간다. `caption-only`면 뺀다 |
+| `beats[].camera` | 선택. [akbun-draw-camera](../akbun-draw-camera/SKILL.md)의 값 중 하나. 없으면 장면에 맞게 모델이 정한다 |
 | `beats[].caption` | 내레이션, 한국어. `\n`으로 나눈 2줄 이하, 줄마다 1~16자(공백·문장부호 포함). `caption-only`면 필수이고 그 장은 `lines`·`sfx`를 뺀다. 없으면 뺀다 |
 | `beats[].lines` | `[{"who", "text", "kind"}]`, 읽는 순서대로. 0~3개, `rapid-fire`는 3~5개(경계 포함). `who`는 `cast`의 `name`(`kind`가 `box`면 `narrator`). `text`는 한국어, `\n`으로 나눈 2줄 이하, 줄마다 1~12자 |
 | `beats[].sfx` | 효과음, 한 줄 1~6자(공백·문장부호 포함, 경계 포함). `reaction`이면 필수, 그 밖에는 없으면 뺀다 |
@@ -79,6 +80,8 @@ uv run --python 3.12 python -I <skill>/scripts/maru_prompt.py --selftest
 
 결과를 가로로 붙여 한 번만 본다(template-cartoon 5단계의 명령, `cartoon_*` 대신 `maru_*`). 어긋난 장은 같은 프롬프트로 다시 생성하고, 몇 번 만에 맞았는지 결과 보고에 적는다. 글자가 계속 틀리면 그 대사를 더 짧게 고쳐 3단계부터 다시 한다.
 
+- 구도는 `akbun-draw-review-loupe` agent(없으면 그 파일의 판정표를 직접 적용)로 판정한다. 종합이 `다시 생성`이면 같은 프롬프트로, `spec 수정`이면 수정 문구대로 spec을 고쳐 3단계부터 다시 한다.
+- 얼굴·머리 둘레에 짧은 직선(놀람·강조·동작선)이 없다. 스타일의 볼 표시는 그대로 둔다.
 - 장마다 테두리와 캐릭터 뒤 색 면 없이 종이 위에 장면이 그려지고, 내레이션이 장면 위 여백에 상자 없이 있다.
 - 말풍선이 모서리 둥근 사각형에 아래로 밀린 납작한 그림자와 갈고리 꼬리가 있고, 위에서 아래로 대사 순서대로 놓이며, 서로 겹치거나 얼굴을 가리지 않는다.
 - 말풍선이 캐릭터마다 spec의 `bubble` 색이고, 색이 없는 캐릭터는 흰색이다.

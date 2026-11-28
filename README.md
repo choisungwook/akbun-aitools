@@ -238,6 +238,7 @@ CLAUDE_CONFIG_DIR="$CLAUDE_DIR" claude plugin uninstall akbun-session-meter@akbu
 <tr>
 <td><a href="./plugins/akbun-draw/skills/akbun-draw-mermaid-database-garam/SKILL.md"><img src="./imgs/akbun-draw-mermaid-database-garam.png" alt="akbun-draw-mermaid-database-garam" width="260"></a><br><code>akbun-draw-mermaid-database-garam</code></td>
 <td><a href="./plugins/akbun-draw/skills/akbun-draw-folk/SKILL.md"><img src="./imgs/akbun-draw-folk.jpg" alt="akbun-draw-folk" width="260"></a><br><code>akbun-draw-folk</code></td>
+<td><a href="./plugins/akbun-draw/skills/akbun-draw-camera/SKILL.md"><img src="./imgs/akbun-draw-camera.jpg" alt="akbun-draw-camera" width="260"></a><br><code>akbun-draw-camera</code></td>
 </tr>
 </table>
 
@@ -339,6 +340,7 @@ $akbun-davinciresolve-explainer 이 대본을 fiery-ocean 색, akbun 도형으�
 | [akbun-draw-chalkboard](./plugins/akbun-draw/skills/akbun-draw-chalkboard/) | 시스템 구조·개념을 칠판 분필 그림체 16:9 SVG 한 장으로 설명 영상·슬라이드에 넣을 때 |
 | [akbun-draw-mermaid-database-garam](./plugins/akbun-draw/skills/akbun-draw-mermaid-database-garam/) | DB 권한 실습(GRANT·소유자·Role)을 실제 SQL이 적힌 Mermaid 관계도로 보여 줄 때 |
 | [akbun-mascot-whale](./plugins/akbun-draw/skills/akbun-mascot-whale/) | 다른 그림에 akbun 고래 마스코트를 같은 모습으로 넣어야 할 때 |
+| [akbun-draw-camera](./plugins/akbun-draw/skills/akbun-draw-camera/) | 만화·일러스트 장면의 샷 크기와 카메라 높이를 고르거나 고쳐야 할 때 |
 
 </details>
 

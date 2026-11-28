@@ -49,6 +49,7 @@ disable-model-invocation: true
 | `prop` | gags.jsonl 줄의 `prop`이 `true`면 참는 쪽이 쥐는 사물, 영어 2단어 이상. `overhead-hold`·`mutual-hold`는 크기·무게가 어이없는 생활 사물(예: 자동차 바퀴만 한 프라이팬), `white-knuckle`은 손에 든 평범한 사물로 휘거나 금 갈 수 있는 것. `false`면 `""` |
 | `endurer` | 참는 쪽 `{"look", "action"}`. `look`은 종·색을 담은 영어 4단어 이상. 옷을 입힐지, 어떤 종을 쓸지는 스타일 skill의 캐릭터 규칙(라이브러리가 있으면 그 안에서)을 따른다. `action`은 영어 3단어 이상으로, 무엇을 얼마나 참아 왔는지 |
 | `unaware` | 모르는 쪽 `{"look", "action"}`. `action`은 태연히 계속하는 사소한 버릇. `endurer`와 다른 `look` |
+| `camera` | 선택. [akbun-draw-camera](../akbun-draw-camera/SKILL.md)의 값 중 전신이 보이는 값. 없으면 장면에 맞게 모델이 정한다 |
 | `setting` | 어디인지 영어 한 구절. 의미 없으면 `""`(배경은 스타일 skill이 정함) |
 
 ### 3. 프롬프트 조립
@@ -75,6 +76,7 @@ uv run --python 3.12 python -I <skill>/scripts/comedy_prompt.py --selftest
 
 여러 장이면 결과를 한 장으로 붙여 한 번만 보고 아래를 확인한다. 어긋난 장은 같은 프롬프트로 다시 생성한다.
 
+- 구도는 `akbun-draw-review-loupe` agent(없으면 그 파일의 판정표를 직접 적용)로 판정한다. 종합이 `다시 생성`이면 같은 프롬프트로, `spec 수정`이면 수정 문구대로 spec을 고쳐 3단계부터 다시 한다.
 - 참는 쪽 얼굴이 무표정이고(땀방울 하나 정도), 몸 동작만 과장돼 있다.
 - 모르는 쪽이 참는 쪽을 보지 않는다(`mutual-hold`는 둘이 마주 보되 숨긴 사물을 보지 않는다).
 - 아무도 맞거나 다치지 않았다(`white-knuckle`의 쥔 사물이 휘거나 금 간 것은 된다).
