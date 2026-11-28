@@ -49,7 +49,7 @@ disable-model-invocation: true
 | `prop` | gags.jsonl 줄의 `prop`이 `true`면 참는 쪽이 쥐는 사물, 영어 2단어 이상. `overhead-hold`·`mutual-hold`는 크기·무게가 어이없는 생활 사물(예: 자동차 바퀴만 한 프라이팬), `white-knuckle`은 손에 든 평범한 사물로 휘거나 금 갈 수 있는 것. `false`면 `""` |
 | `endurer` | 참는 쪽 `{"look", "action"}`. `look`은 종·색을 담은 영어 4단어 이상. 옷을 입힐지, 어떤 종을 쓸지는 스타일 skill의 캐릭터 규칙(라이브러리가 있으면 그 안에서)을 따른다. `action`은 영어 3단어 이상으로, 무엇을 얼마나 참아 왔는지 |
 | `unaware` | 모르는 쪽 `{"look", "action"}`. `action`은 태연히 계속하는 사소한 버릇. `endurer`와 다른 `look` |
-| `camera` | 선택. 두 캐릭터의 전신 동작이 보이는 `full`·`low`(압도)·`high`(초라함)·`top`(전체 배치) 중 하나. 없으면 장면에 맞게 모델이 정한다 |
+| `camera` | 선택. [akbun-draw-camera](../akbun-draw-camera/SKILL.md)의 값 중 전신이 보이는 값. 없으면 장면에 맞게 모델이 정한다 |
 | `setting` | 어디인지 영어 한 구절. 의미 없으면 `""`(배경은 스타일 skill이 정함) |
 
 ### 3. 프롬프트 조립

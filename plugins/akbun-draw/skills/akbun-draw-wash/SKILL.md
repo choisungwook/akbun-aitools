@@ -39,7 +39,7 @@ disable-model-invocation: true
 | `scene` | 어떤 상황인지 영어 6~40단어(공백으로 나눈 수, 경계 포함). 캐릭터별 행동은 `action`에만 쓴다 |
 | `setting` | 어디인지 영어 한 구절. 장소가 의미 없으면 `""`(흰 종이만) |
 | `characters` | `[{"id", "action"}]` 1~4개, `id` 중복 없이. `action`은 영어 3단어 이상 |
-| `camera` | 선택. `wide`(장소 소개)·`full`(상황)·`medium`(대화)·`close`(감정)·`extreme-close`(결정적 표정·사물)·`low`(압도)·`high`(초라함)·`top`(전체 배치)·`tilt`(대치·긴장) 중 하나. 없으면 장면에 맞게 모델이 정한다 |
+| `camera` | 선택. [akbun-draw-camera](../akbun-draw-camera/SKILL.md)의 값 중 하나. 없으면 장면에 맞게 모델이 정한다 |
 | `props` | 장소·행동을 알아보게 하는 사물 영어 구절 0~6개, 중복 없이. 종이 여백이 이 스타일의 핵심이므로 장소를 채우지 않고 꼭 필요한 것만 |
 
 ### 3. 프롬프트 조립

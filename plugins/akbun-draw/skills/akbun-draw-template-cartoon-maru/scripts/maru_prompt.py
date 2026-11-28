@@ -15,7 +15,9 @@ from pathlib import Path
 sys.dont_write_bytecode = True
 HERE = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(HERE.parent / "akbun-draw-template-cartoon" / "scripts"))
-from cartoon_prompt import BANNED, NO_FACE_TICKS, SKILLS, bad_camera, bad_palette, composition, framing, style_parts  # noqa: E402
+sys.path.insert(0, str(HERE.parent / "akbun-draw-camera" / "scripts"))
+from camera_prompt import bad_camera, framing  # noqa: E402
+from cartoon_prompt import BANNED, NO_FACE_TICKS, SKILLS, bad_palette, composition, style_parts  # noqa: E402
 
 REF = HERE / "references"
 HEX = re.compile(r"#[0-9A-Fa-f]{6}")

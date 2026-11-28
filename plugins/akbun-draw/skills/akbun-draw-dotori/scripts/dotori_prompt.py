@@ -11,7 +11,9 @@ from pathlib import Path
 
 REF = Path(__file__).resolve().parent.parent / "references"
 sys.path.insert(0, str(REF.parent.parent / "akbun-draw-template-cartoon" / "scripts"))
-from cartoon_prompt import NO_FACE_TICKS, bad_camera, composition, framing  # noqa: E402
+sys.path.insert(0, str(REF.parent.parent / "akbun-draw-camera" / "scripts"))
+from camera_prompt import bad_camera, framing  # noqa: E402
+from cartoon_prompt import NO_FACE_TICKS, composition  # noqa: E402
 BANNED_STYLE = r"\b(3d|photorealistic|realistic|anime|gradients?|neon|shading|glossy|watercolou?r|font|typeface)\b"
 NO_TEXT = "No written words, letters, numbers or speech bubbles anywhere in the image."
 

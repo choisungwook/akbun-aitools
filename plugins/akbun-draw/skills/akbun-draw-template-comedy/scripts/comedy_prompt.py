@@ -15,11 +15,12 @@ from pathlib import Path
 sys.dont_write_bytecode = True
 HERE = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(HERE.parent / "akbun-draw-template-cartoon" / "scripts"))
-from cartoon_prompt import BANNED, SKILLS, bad_camera, bad_palette, composition, framing, style_parts  # noqa: E402
+sys.path.insert(0, str(HERE.parent / "akbun-draw-camera" / "scripts"))
+from camera_prompt import FULL_BODY, bad_camera, framing  # noqa: E402
+from cartoon_prompt import BANNED, SKILLS, bad_palette, composition, style_parts  # noqa: E402
 
 REF = HERE / "references"
 HANGUL = re.compile("[가-힣]")
-FULL_BODY = {"full", "low", "high", "top"}  # 개그는 두 캐릭터의 몸 동작이 보여야 한다
 DONT = ("DO NOT: no existing mascots or known cartoon characters, nobody is hit or hurt, no blood or weapons, "
         "no written words, captions, speech text, signatures or watermark anywhere in the image.")
 

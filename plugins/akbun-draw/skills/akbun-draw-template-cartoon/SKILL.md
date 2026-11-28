@@ -55,7 +55,7 @@ disable-model-invocation: true
 | `cast` | `[{"name", "look"}]` 1~3명, `name` 중복 없이 영어 한 단어. `look`은 종·색·옷을 담은 영어 4단어 이상. 모든 컷에 글자 그대로 들어간다 |
 | `panels` | 읽는 순서대로 |
 | `panels[].scene` | 이 컷에서 일어나는 일, 영어 6~40단어(공백으로 나눈 수, 경계 포함). 캐릭터는 `name`으로 부른다 |
-| `panels[].camera` | `wide`(장소 소개)·`full`(상황)·`medium`(대화)·`close`(감정)·`extreme-close`(결정적 표정·사물)·`low`(압도)·`high`(초라함)·`top`(전체 배치)·`tilt`(대치·긴장) 중 하나 |
+| `panels[].camera` | [akbun-draw-camera](../akbun-draw-camera/SKILL.md)의 값 중 하나 |
 | `panels[].lines` | `[{"who", "text"}]` 0~2개, 말하는 순서대로. `who`는 `cast`의 `name`. `text`는 한국어, `\n`으로 나눈 2줄 이하, 줄마다 1~12자(공백·문장부호 포함) |
 | `panels[].sfx` | 효과음, 한 줄 6자 이하. 없으면 뺀다 |
 

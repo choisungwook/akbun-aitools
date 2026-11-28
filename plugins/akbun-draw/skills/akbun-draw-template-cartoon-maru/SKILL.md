@@ -42,7 +42,7 @@ disable-model-invocation: true
 | `beats[].shot` | shots.jsonl `id` |
 | `beats[].place` | 장소 영어 구절. 같은 장소는 글자 그대로 같게 쓴다. 없으면 뺀다 |
 | `beats[].scene` | 이 장에서 일어나는 일, 영어 6~40단어(공백으로 나눈 수, 경계 포함). 캐릭터는 `name`으로 부른다. 그 장 프롬프트에는 `scene`에 이름이 나오거나 그림 안에서 말하는 캐릭터만 들어간다. `caption-only`면 뺀다 |
-| `beats[].camera` | 선택. `wide`(장소 소개)·`full`(상황)·`medium`(대화)·`close`(감정)·`extreme-close`(결정적 표정·사물)·`low`(압도)·`high`(초라함)·`top`(전체 배치)·`tilt`(대치·긴장) 중 하나. 없으면 장면에 맞게 모델이 정한다 |
+| `beats[].camera` | 선택. [akbun-draw-camera](../akbun-draw-camera/SKILL.md)의 값 중 하나. 없으면 장면에 맞게 모델이 정한다 |
 | `beats[].caption` | 내레이션, 한국어. `\n`으로 나눈 2줄 이하, 줄마다 1~16자(공백·문장부호 포함). `caption-only`면 필수이고 그 장은 `lines`·`sfx`를 뺀다. 없으면 뺀다 |
 | `beats[].lines` | `[{"who", "text", "kind"}]`, 읽는 순서대로. 0~3개, `rapid-fire`는 3~5개(경계 포함). `who`는 `cast`의 `name`(`kind`가 `box`면 `narrator`). `text`는 한국어, `\n`으로 나눈 2줄 이하, 줄마다 1~12자 |
 | `beats[].sfx` | 효과음, 한 줄 1~6자(공백·문장부호 포함, 경계 포함). `reaction`이면 필수, 그 밖에는 없으면 뺀다 |

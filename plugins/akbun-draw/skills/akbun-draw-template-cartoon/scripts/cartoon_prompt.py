@@ -15,6 +15,8 @@ from pathlib import Path
 
 sys.dont_write_bytecode = True
 SKILLS = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(SKILLS / "akbun-draw-camera" / "scripts"))
+from camera_prompt import CAMERAS, bad_camera, framing  # noqa: E402
 
 TEMPLATES = {  # 컷 수 → 한 장의 비율과 배치. per_panel이면 컷마다 1장
     "4koma": {4: ("portrait 2:3", "four equal-height panels stacked in one column, read top to bottom")},
@@ -27,37 +29,11 @@ TEMPLATES = {  # 컷 수 → 한 장의 비율과 배치. per_panel이면 컷마
 MAX_CHARS, MAX_LINES, MAX_SFX = 12, 2, 6  # 대사 한 줄 글자 수(공백·문장부호 포함), 말풍선 줄 수, 효과음 글자 수
 BANNED = re.compile(r"(?i)\b(font|typeface|typography)\b")  # 글씨체는 폰트 이름이 아니라 획 모양으로 묘사한다
 ASPECT = re.compile(r"(?i)\s*(single[- ]panel\s*|,?\s*(landscape|portrait|square)\s+\d+:\d+)")
-CAMERAS = {  # 샷 크기와 카메라 높이. 지평선 자리가 높이를 정한다
-    "wide": "Camera: wide establishing shot, the subject small at a rule-of-thirds point, the horizon on the upper or lower third, the vanishing point pushed off to one side on a vertical third line, never at the center, with the subject standing at that off-center point.",
-    "full": "Camera: full shot at eye level, whole body in frame, the horizon at the subject's eye height.",
-    "medium": "Camera: medium shot at eye level, cropped at the waist or thighs, with no feet in frame.",
-    "close": "Camera: close shot at eye level, only head and shoulders in frame, large, with no legs or feet, overriding any full-body description.",
-    "extreme-close": "Camera: extreme close-up, one face or key object fills over 70% of the frame and is cut off by its edges, with no body below the neck, no legs, no feet and no ground line, overriding any full-body description.",
-    "low": "Camera: low angle from near the ground, the horizon near the bottom edge, feet large and close, the body tapering up to a smaller head.",
-    "high": "Camera: high angle looking down, the horizon near the top edge or out of frame, the head large and close, the body tapering down to small feet.",
-    "top": "Camera: straight-down bird's-eye view, the figures and objects laid along one strong diagonal of the frame.",
-    "tilt": "Camera: close on two faces at different heights, only their heads and shoulders in frame, the line between their eyes running on a steep diagonal for tension, overriding any full-body description.",
-}
 NO_FACE_TICKS = "no short straight tick, motion, surprise or emphasis lines around a face or head, even if the art style allows comic marks; marks drawn on the cheeks stay."
 LETTERING = ("LETTERING: every letter is hand-lettered as part of the artwork, drawn with the same pen and medium as the lines "
              "of the illustration: rounded, slightly uneven hand strokes of even weight; the letters themselves have no outline and no shadow. "
              "Write each Korean text exactly as given, character by character, with correct Hangul spelling. "
              "Do not add any other words, letters, captions, signatures or watermarks anywhere.")
-
-
-def bad_camera(camera, people, allowed=CAMERAS):
-    """camera 값의 실패 이유. 없으면 None. tilt는 두 얼굴이 필요하다."""
-    if not isinstance(camera, str) or camera not in allowed:
-        return f"camera는 {sorted(allowed)} 중 하나: {camera}"
-    if camera == "tilt" and people < 2:
-        return "camera tilt는 그 장면에 인물이 2명 이상일 때만 쓴다"
-    return None
-
-
-def framing(camera):
-    """한 장에 한 장면인 프롬프트의 앞머리(FORMAT 바로 뒤)에 둘 샷 문장. 뒤에 두면 그림체의 전신 묘사에 밀린다.
-    한 장에 여러 컷이면 컷마다 다르므로 PANEL 문장 안에 둔다. camera가 없으면 빈 목록."""
-    return [f"FRAMING (highest priority, overrides every later description of body, ground or layout): {CAMERAS[camera]}"] if camera else []
 
 
 def composition(*skip):

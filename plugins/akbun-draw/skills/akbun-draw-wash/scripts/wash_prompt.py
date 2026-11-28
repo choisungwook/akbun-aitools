@@ -11,7 +11,9 @@ from pathlib import Path
 
 REF = Path(__file__).resolve().parent.parent / "references"
 sys.path.insert(0, str(REF.parent.parent / "akbun-draw-template-cartoon" / "scripts"))
-from cartoon_prompt import bad_camera, composition, framing  # noqa: E402
+sys.path.insert(0, str(REF.parent.parent / "akbun-draw-camera" / "scripts"))
+from camera_prompt import bad_camera, framing  # noqa: E402
+from cartoon_prompt import composition  # noqa: E402
 
 # 모델이 쓴 글에 나오면 안 되는 말. 알려진 캐릭터와 닮을 수 있는 종·털 묘사, 사람, 스타일을 깨는 표현.
 BANNED_BEINGS = (r"\b(dogs?|pupp(y|ies)|poodles?|sheepdogs?|cats?|kittens?|humans?|person|people|man|men|"
